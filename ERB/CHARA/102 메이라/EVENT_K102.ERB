@@ -526,7 +526,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
     IF CFLAG:9001 == 0
         ;굴복 각인 Lv2 이상
         IF MARK:2 >= 2
-            PRINTFORMW 「햐아아아아악!? 하하하핥핥핥핥아!?」
+            PRINTFORMW 「햐아아아아악!? 안 돼, 핥지 마!?」
         ;그 이외
         ELSE
             PRINTFORMW 「ㅁ, ㅁ, 뭐~!!!!」
@@ -1553,9 +1553,9 @@ IF SELECTCOM == 46
         ;연모
         IF TALENT:150
             PRINTFORMW 「그것이 주인의 소망이라면」
-        ;그 외의 경우
+        ;그 외의 경우 (원문: 「またベタな真似を………」)
         ELSE
-            PRINTFORMW 「またベタな真似を………」
+            PRINTFORMW 「또 쓸데없는 짓을………」
         ENDIF
         CFLAG:5261= 1
         RETURN 0
