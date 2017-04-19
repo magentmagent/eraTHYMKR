@@ -76,6 +76,9 @@ PRINTL 목욕탕 플레이
 TSTR:0 = 목욕탕 플레이
 CALL TRAIN_MESSAGE_COM350
 
+;목욕탕 출입에 걸리는 시간
+TFLAG:107 += 2
+
 ;목욕탕에의 출입(종료시는 수정 없음)
 ;샤워는 강제적으로 제지당한다
 IF TEQUIP:53
