@@ -8907,8 +8907,8 @@ ELSEIF CFLAG:6831 == 17
         PRINTFORMW …뭐?
         PRINTL [0] 허락한다
         PRINTL [1] 거절한다
-            INPUT
-            IF RESULT == 0
+        INPUT
+        IF RESULT == 0
             PRINTFORMW …그녀가 무슨 생각으로 한 말인지는 모르겠다만
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 자신에게도 여러 방책이 있으니 괜찮을거다…라고 생각했다
             PRINTFORML
@@ -9037,29 +9037,30 @@ ELSEIF CFLAG:6831 == 17
             PRINTFORML
             PRINTFORMW 냉랭한 하늘의 공기는 녹아내렸고
             PRINTFORMW 하늘의 빛은 따뜻한 대기를 타고 내려와
-             PRINTFORMW 에이키의 얼굴에 아름다운 미소를 띄웠다.
+            PRINTFORMW 에이키의 얼굴에 아름다운 미소를 띄웠다.
             PRINTFORMW 「천만에요…」
             WAIT
             WAIT
             WAIT
             PRINTFORMW 그날, \@(TIME == 0) ? 따뜻하게 녹아내리는 석양빛이 # 부드럽게 빛나는 백색달빛이 \@ 에이키의 미소에 물들어있었다…
-                MARK:2 = 3 
-                ABL:10 = 3
-                EXP:20 = 200 
-                CFLAG:2 += 1000
-                CFLAG:6834 = 1
-                CFLAG:6831 += 1
+			MARK:2 = 3 
+			ABL:10 = 3
+			EXP:20 = 200 
+			CFLAG:2 += 1000
+			CFLAG:6834 = 1
+			CFLAG:6831 += 1
+			TALENT:MASTER:22 = 0
             DRAWLINE
             PRINTFORMW 당신은 잊었던 감정들을 조각으로 나마 되찾았습니다.
             PRINTFORMW 당신은 [감정결여]를 잃었습니다…
-            ELSEIF RESULT == 1
+        ELSE
             PRINTFORML
             PRINTFORMW 「그렇…습니까…」
             PRINTFORML
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 어떤 위험도 감당할 가치는 없다고 생각했다…
             PRINTFORMW 방을 뒤로했다…
-                CFLAG:6833 = 1
-            ENDIF
+            CFLAG:6833 = 1
+        ENDIF
 ;7번째 이후(7-2/후에 추가)
 ELSEIF CFLAG:6831 == 18 && CFLAG:6833 == 2
         PRINTFORML
@@ -9212,14 +9213,15 @@ ELSEIF CFLAG:6831 == 18 && CFLAG:6833 == 2
         PRINTFORMW 「…」
         PRINTFORMW 「그래도…당신안에서 무언가 보였으니…」
         PRINTFORMW 「후훗… 뭐,그걸로 만족하죠…」
-                MARK:2 = 3 
-                ABL:10 = 3
-                EXP:20 = 200 
-                CFLAG:2 += 1000
-                CFLAG:6834 = 1
-                CFLAG:6831 += 1
-                CFLAG:6833 = 0
-                ;CFLAG:6831 == 17
+		MARK:2 = 3 
+		ABL:10 = 3
+		EXP:20 = 200 
+		CFLAG:2 += 1000
+		CFLAG:6834 = 1
+		CFLAG:6831 += 1
+		CFLAG:6833 = 0
+		;CFLAG:6831 == 17
+		TALENT:MASTER:22 = 0
         PRINTFORML
         PRINTFORML
         PRINTFORML
