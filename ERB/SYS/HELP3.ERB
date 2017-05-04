@@ -53,7 +53,6 @@ ELSEIF LOCAL == LOCAL:1
     PRINTLC [990] 조교 메뉴 등록
     PRINTLC [991] 조교 메뉴 표시
     PRINTLC [992] 조교 메뉴 실행
-    PRINTLC [994] 조수더러 고르게 한다
     PRINTLC [997] 동방조교전
     IF FLAG:999 == 0
         SIF TALENT:MASTER:998
@@ -6758,14 +6757,6 @@ PRINTL 【조교 메뉴 실행】
 PRINTL 등록되어 있는 조교 메뉴를 실행한다.
 PRINTL 조교 메뉴가 등록되지 않았다고 선택할 수 없다.
 PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
-
-;조수에 선택하게 한다
-@DICTIONARY_TRAIN_COMMAND_994
-PRINTL 【조수에 선택하게 한다】
-PRINTL 조수에 다음의 조교 커맨드를 선택하게 해 실행한다.
-PRINTL 조수 조교가 아니면 안되어, 촉수 관련은 선택하지 않는다. ]
-PRINTL 또 커스텀 커맨드 필터 상태에 따라서는,
-PRINTW 아무것도 선택할 수 없는 것도 있을 수 있는 것에 주의.
 
 ;동방 조교전
 @DICTIONARY_TRAIN_COMMAND_997
