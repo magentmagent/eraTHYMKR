@@ -155,10 +155,11 @@ ELSEIF LOCAL:2 >= 150 && LOCAL:2 < 200 && LOCAL:4 == 1
 ELSE
     LOCALS = ＜%조사처리(CSVNAME(LOCAL:2,0),"를")% 구입했다.＞
     MONEY -= ITEMSALES:(LOCAL:1)
-    ;처음 구입한 캐릭터 플래그
-    SIF !FLAG:250
-        FLAG:250 = LOCAL:2
 ENDIF
+
+;처음 구입한 캐릭터 플래그
+SIF FLAG:250 == 0
+    FLAG:250 = LOCAL:2
 
 ;購入した奴隷を表記
 SIF TFLAG:209 == 1

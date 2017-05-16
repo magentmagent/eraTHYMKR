@@ -19260,8 +19260,9 @@ ENDIF
 IF TFLAG:200 == 324
     ;妖精になっている
     IF TALENT:200 == 1
-        CFLAG:4900 |= 1
+        CFLAG:(LOCAL@SELF_KOJO):4900 |= 1
     ENDIF
+	CFLAG:(LOCAL@SELF_KOJO):5112 = CFLAG:5112
 ENDIF
 
 ;-------------------------------------------------

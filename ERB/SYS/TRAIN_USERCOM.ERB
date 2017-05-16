@@ -88,8 +88,6 @@ IF TFLAG:224 != 555
             PRINTC 조교 메뉴 실행[992]
         ENDIF
     ENDIF
-    SIF ASSI >= 0 && ASSIPLAY 
-        PRINTC 조수에게 고르게함[994]
     PRINTC 동방조교전[997]
     SIF TALENT:MASTER:998
         PRINTC 디버그메뉴[998]
@@ -227,13 +225,6 @@ ELSEIF RESULT == 991 && FLAG:550 > 0 && FLAG:14 & 64
 ELSEIF RESULT == 992 && FLAG:550 > 0 && FLAG:14 & 64
     CALL COMSEQ_TRAIN
     RETURN 1
-ELSEIF RESULT == 994 && ASSI >= 0 && ASSIPLAY
-    CALL ASSI_SELECT_TRAIN
-    IF RESULT != 99
-        SELECTCOM:1 = RESULT
-        CALLTRAIN 1
-    ENDIF
-    RETURN 1
 ELSEIF RESULT == 997
     CALL DICTIONARY_MENU
     RETURN 1
@@ -318,122 +309,3 @@ ELSE
     DITEMTYPE:999:RESULT = (DITEMTYPE:999:RESULT) ? 0 # 1
 ENDIF
 GOTO PRINT_LIST_PAGE
-
-;=============================================================================
-;조수의 커맨드 선택 처리
-;=============================================================================
-@ASSI_SELECT_TRAIN
-;ランダム選択による行き先がすべて実行できない場合は戻すので.
-LOCAL = 0
-FOR COUNT , 0, 500
-    STRLENS TRAINNAME:COUNT
-    SIF RESULT <= 0
-        CONTINUE
-    CALLFORM COM_ABLE{COUNT}
-    SIF RESULT == 1
-        LOCAL += 1
-NEXT
-[SKIPSTART]
-@COM_ABLE37
-;에러 땜빵용 테스트
-RETurn LOCAL
-
-IF LOCAL <= 0
-    PRINTFORML %조사처리(CALLNAME:ASSI,"는")% 특별히 하고 싶은 조교가 없는 것 같다.
-    RETURN 99
-ENDIF
-
-;새드끼 높은 조수
-IF ABL:ASSI:20 > 3 && RAND:3 == 0
-    LOCAL = RAND:25 + 220
-    SELECTCASE LOCAL
-        CASE 237
-            LOCAL = 240
-        CASE 238
-            LOCAL = 241
-        CASE 239
-            LOCAL = 242
-        CASE 240
-            LOCAL = 243
-        CASE 241
-            LOCAL = 244
-        CASE 242
-            LOCAL = 245
-        CASE 243
-            LOCAL = 251
-        CASE 244
-            LOCAL = 252
-    ENDSELECT
-;마조끼 높은 조수
-ELSEIF ABL:ASSI:21 > 3 && RAND:3 == 0
-    LOCAL = RAND:5
-    SELECTCASE LOCAL
-        CASE 0
-            LOCAL = 270
-        CASE 1
-            LOCAL = 271
-        CASE 2
-            LOCAL = 262
-        CASE 3
-            LOCAL = 445
-        CASE 4
-            LOCAL = 446
-    ENDSELECT
-;정액중독 높은 조수
-ELSEIF ABL:ASSI:31 > 3 && RAND:3 == 0
-    LOCAL = RAND:21
-    SELECTCASE LOCAL
-        CASE 0 TO 2
-            LOCAL = 5
-        CASE 3
-            LOCAL = 292
-        CASE 4
-            LOCAL = 293
-        CASE 5
-            LOCAL = 303
-        CASE 6
-            LOCAL = 304
-        CASE 7
-            LOCAL = 306
-        CASE 8
-            LOCAL = 307
-        CASE 9
-            LOCAL = 308
-        CASE 10
-            LOCAL = 321
-        CASE 11
-            LOCAL = 322
-        CASE 12
-            LOCAL = 323
-        CASE 13
-            LOCAL = 324
-        CASE 14
-            LOCAL = 325
-        CASE 15
-            LOCAL = 326
-        CASE 16
-            LOCAL = 331
-        CASE 17
-            LOCAL = 332
-        CASE 18
-            LOCAL = 333
-        CASE 19
-            LOCAL = 334
-        CASE 20
-            LOCAL = 335
-    ENDSELECT
-;자위중독 높은 조수
-ELSEIF ABL:ASSI:30 > 3 && RAND:3 == 0
-    LOCAL = RAND:4 + 115
-;그 외
-ELSE
-    LOCAL = RAND:500
-ENDIF
-STRLENS TRAINNAME:LOCAL
-SIF RESULT <= 0
-    RESTART
-CALLFORM COM_ABLE{LOCAL}
-SIF RESULT == 0
-    RESTART
-RETURN LOCAL
-[SKIPEND]
