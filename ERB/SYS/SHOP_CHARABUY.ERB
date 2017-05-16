@@ -160,6 +160,10 @@ ELSE
         FLAG:250 = LOCAL:2
 ENDIF
 
+;最初に購入したかどうか, してなければ選んだ番号を入れる
+SIF FLAG:250 == 0
+    FLAG:250 = LOCAL:2
+
 ;購入した奴隷を表記
 SIF TFLAG:209 == 1
     PRINTFORML 액봉투를 열어보니 %조사처리(CSVNAME(LOCAL:2,0),"가")% 들어있었다.

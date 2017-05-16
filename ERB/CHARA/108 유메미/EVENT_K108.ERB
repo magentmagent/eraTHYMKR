@@ -92,46 +92,46 @@ IF CFLAG:5001 == 0
 ;굴복각인Lv1
 ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は腕を組んで仁王立ちとなって待っていた
-    PRINTFORMW 「来たわね.ねえ%CALLNAME:MASTER%,ちょっと提案があるんだけど」
-    PRINTFORMW 「私を解放してくれれば,警察には言わないし,個人的に復讐したりもしないわ」
-    PRINTFORMW 「そしてそう,特別にあなたの願いをなんでも叶えてあげる!」
-    PRINTFORMW 「万能ってわけじゃないけど,お金や名誉なら相当な物が与えられ――」
-    PRINTFORMW %CALLNAME:MASTER%は夢美の言葉を最後まで聞かず,服を剥ぎ取った
-    PRINTFORMW 「く……やっぱり逃げ出すしかないか」
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미는 팔짱을 끼고 우뚝 서서 기다리고 있었다.
+    PRINTFORMW 「왔네. 저기, %CALLNAME:MASTER%, 좀 제안이 있는데」
+    PRINTFORMW 「날 풀어 주면 경찰에게 말하지 않고, 사적인 복수도 하지 않을게」
+    PRINTFORMW 「그리고, 그래, 특별히 당신의 소원을 뭐든지 들어 줄게!」
+    PRINTFORML 「만능은 아니지만, 돈이나 명예라면 얼마든지 줄 수 있」
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미 말을 끝까지 듣지 않고, 옷을 쥐어뜯었다.
+    PRINTFORMW 「끄…… 역시 달아날 수밖에 없나」
     CFLAG:5001 = 2
     RETURN 1
 
 ;굴복각인Lv2
 ELSEIF CFLAG:5001 < 3 && MARK:2 == 2
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は赤く泣き腫らした目を上げた
-    PRINTFORMW どうやらずっと泣いていたようだ
-    PRINTFORMW 「……なによ? 泣いてなんかいないわよ」
-    PRINTFORMW 「触んないで! 自分で脱ぐから!」
-    PRINTFORMW そう言って夢美は,不機嫌そうな顔で服を脱ぎ始めた
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미는 펑펑 울어서 붉게 퉁퉁 부은 눈으로 올려 봤다.
+    PRINTFORMW 아무래도 계속 울고 있었던 모양이다.
+    PRINTFORMW 「……뭐? 안 울었어」
+    PRINTFORMW 「만지지 마! 내가 벗을게!」
+    PRINTFORMW 그러면서, 유메미는 언짢은 듯한 얼굴로 옷을 벗기 시작했다.
     CFLAG:5001 = 3
     RETURN 1
 
 ;굴복각인Lv3
 ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:150 == 0
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%の姿を見ると,夢美はいそいそと服を脱ぎ始めた
-    PRINTFORMW 「……うん.私も大人になって考えたのよ」
-    PRINTFORMW 「どうせ抵抗しても無駄だから,こっちも楽しんだ方が得じゃない」
-    PRINTFORMW 「でもこの状況を納得しているわけじゃないんだからね?」
+    PRINTFORMW %CALLNAME:MASTER% 모습을 보고, 유메미는 부랴부랴 옷을 벗기 시작했다.
+    PRINTFORMW 「……응. 나도 얌전해져야겠다고 생각했어」
+    PRINTFORMW 「어차피 저항해도 소용 없으니까, 이쪽도 즐기는 게 득이잖아」
+    PRINTFORMW 「그래도 이 상황을 납득한 건 아니거든?」
     CFLAG:5001 = 4
     RETURN 1
 
 ;연모
 ELSEIF CFLAG:5001 < 5 && TALENT:150
     DRAWLINE
-    PRINTFORMW 夢美は一糸まとわぬ姿で%CALLNAME:MASTER%を待っていた
-    PRINTFORMW 「あの,今まで生意気なこと言って,ごめんなさい……」
-    PRINTFORMW 「私,もうあなた無しの生活なんて考えられないの」
-    PRINTFORMW 「これまでのことぜんぶ謝るから,だからお願い!」
-    PRINTFORMW 「私をずっと,あなたの奴隷として可愛がって下さい……ご主人様」
-    PRINTFORMW そう言って夢美は,%CALLNAME:MASTER%の足に静かにキスをした
+    PRINTFORMW 유메미는 실오라기 하나 걸치지 않은 모습으로 %조사처리(CALLNAME:MASTER, "을")% 기다리고 있었다.
+    PRINTFORMW 「저기, 지금까지 건방진 소리 해서, 미안해……」
+    PRINTFORMW 「나, 이제 당신 없는 삶은 상상할 수 없어」
+    PRINTFORMW 「지난 일들은 모두 사과하니까, 그러니까 부탁할게!」
+    PRINTFORMW 「날 계속, 당신의 노예로 귀엽게 봐 주세요…… 주인님」
+    PRINTFORMW 그러면서 유메미는, %CALLNAME:MASTER% 발에 조용히 키스했다.
     CFLAG:5001 = 5
     RETURN 1
 
@@ -150,43 +150,43 @@ ELSEIF NO:ASSI == 107
     IF CFLAG:5002 == 0
         ;연모＋연모시 첫 대사(함락 이벤트)가 발생 완료
         IF TALENT:150 && CFLAG:201 >= 5
-            PRINTFORMW 「あれ,ちゆり.なんでこんなところにいるの?」
-            PRINTFORMW 『ふふん,前のご主人さま.残念ながら私の今の御主人さまはあっちだぜ』
-            PRINTFORMW 「あらそう.私の御主人様と同じね」
-            PRINTFORMW 『って,ありゃ? なんだ,もう堕ちてたのかよ』
-            PRINTFORMW 「堕ちるって失礼ね.忠誠を誓ったと言いなさい!」
-            PRINTFORMW 『ああもう,どっちでもいいぜ.今日は私が助手だから,たっぷり可愛がってやる』
+            PRINTFORMW 「어머, 치유리. 왜 이런 곳에 있니?」
+            PRINTFORMW 『흐흥, 전 주인님. 미안하지만 내 지금 주인님은 저쪽이라구』
+            PRINTFORMW 「어머, 그래. 내 주인님과 같네」
+            PRINTFORMW 『어, 어라? 뭐야, 결국 굴복한 건가』
+            PRINTFORMW 「굴복이라니 실례네. 충성을 다짐한 거라고 말해!」
+            PRINTFORMW 『아, 정말, 어느 쪽이든 됐어. 오늘은 내가 조수니까, 잔뜩 귀여워 해 주지』
         ;그 외
         ELSE
-            PRINTFORMW 助手のちゆりの顔を見ると,夢美は表情をぱっと明るくした
-            PRINTFORMW 「ちゆり! 助けに来てくれたのね! ああ,あなたのこと信じててよかった」
-            PRINTFORMW 「さあ,早くここから出すのよ.科学魔法の道具は持ってきた? 小さくても必殺の武器は?」
-            PRINTFORMW 『残念だったな,ご主人さま……いや,岡崎夢美』
-            PRINTFORMW 「ちょっとなにふざけてるの.そんな芝居がかった言い回しなんかして」
-            PRINTFORMW 『芝居がかったは余計だぜ.ともかく,助けに来たと思ったら大間違いだ』
-            PRINTFORMW 「え……ちょっといや,まさか……」
-            PRINTFORMW 『そのまさかだよ.今日の私は,忠実な奴隷として夢美を調教しに来た!』
+            PRINTFORMW 조수인 치유리 얼굴을 보고, 유메미는 표정이 활짝 밝아졌다.
+            PRINTFORMW 「치유리! 도와 주러 왔구나! 아, 널 믿은 게 정말 다행이야」
+            PRINTFORMW 「자, 어서 여기서 꺼내 줘. 과학 마법 도구는 갖고 왔어? 작지만 필살의 무기는?」
+            PRINTFORMW 『유감이구만, 주인님…… 아니, 오카자키 유메미』
+            PRINTFORMW 「잠깐, 무슨 소리야. 그런 신파적인 표현이나 하고」
+            PRINTFORMW 『신파적인 표현은 역시 쓸데없다구. 아무튼, 도와 주러 왔다고 생각하면 오산이다』
+            PRINTFORMW 「에…… 잠깐, 아니, 설마……」
+            PRINTFORMW 『그 설마야. 오늘 난, 충실한 노예로서 유메미를 조교하러 왔다!』
         ENDIF
         CFLAG:5002 = 1
         RETURN 1
     ;2회째 이후
-    ELSE CFLAG:5002 == 1 && FLAG:11 ==2
+    ELSEIF CFLAG:5002 == 1 && FLAG:11 == 2
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あらちゆり,また来たの?」
-            PRINTFORMW 『またって……もうずいぶん余裕だな,あんた』
-            PRINTFORMW 「ちゆりこそあんた呼ばわりしてくれるなんて……まあいっか,どっちも御主人様の奴隷だし」
-            PRINTFORMW 「今回はあんたがしてくれるの? まあ女の子も好きだけど……やっぱり御主人様がいいな」
-            PRINTFORMW 『そりゃこっちのセリフだよ.私だってできることなら御主人様に弄られていたいぜ』
-            PRINTFORMW 「ふふふ,残念ながら今は私の番でした」
-            PRINTFORMW 『言ったな.その余裕綽々の顔,快楽でひいひい歪ませてやるぜ』
+            PRINTFORMW 「어머, 치유리, 또 왔어?」
+            PRINTFORMW 『어휴…… 넌 벌써 여유만발이구나』
+            PRINTFORMW 「치유리에게 너라고 불리다니…… 뭐, 됐어. 어느 쪽이든 주인님의 노예니까」
+            PRINTFORMW 「이번엔 네가 하는 거야? 뭐, 여자도 좋은데…… 역시 주인님이 좋겠어」
+            PRINTFORMW 『피차일반이야. 나도 되도록이면 주인님이 해 줬으면 해』
+            PRINTFORMW 「후후후, 아쉽지만 지금은 내 차례야」
+            PRINTFORMW 『잘도 말하는군. 그 여유만만한 얼굴, 쾌락으로 질질 짜게 만들겠어』
         ;그 외
         ELSE
-            PRINTFORMW 助手のちゆりの顔を見ると,夢美は表情を暗くした
-            PRINTFORMW 「よりによって……なんでまたちゆりにされなきゃいけないのよ」
-            PRINTFORMW 『御主人さまの命令だからな.あんたも早いところ,素直になったほうがいいぜ』
-            PRINTFORMW 「だ,誰がそんな変態なんかに!」
-            PRINTFORMW 『言ったな.すぐに夢美も,腰振りながら喘いで求めてくるようにしてやるぜ』
+            PRINTFORMW 조수인 치유리의 얼굴을 보고 유메미의 얼굴이 어두워졌다.
+            PRINTFORMW 「하필…… 왜 또 치유리와 해야 해?」
+            PRINTFORMW 『주인님의 명령이니까. 너도 어서, 솔직해지는 게 좋아』
+            PRINTFORMW 「누, 누가 그런 변태 같은 걸!」
+            PRINTFORMW 『잘도 말하는군. 빨리 유메미도, 허리 흔들면서 허덕이게 만들자』
         ENDIF
         RETURN 1
     ENDIF
@@ -225,153 +225,146 @@ ENDIF
 ;조교 개시시(2회째 이후) CFLAG 없음
 ;-------------------------------------------------
 @K108_KOJO2
+SIF FLAG:11 != 2
+    RETURN 0
+
 LOCAL = RAND:5
+DRAWLINE
 ;반발각인Lv3
-IF MARK:9 == 3 && FLAG:11 == 2
-    DRAWLINE
-    PRINTFORMW 夢美は部屋の片隅でうずくまっている
-    PRINTFORMW だが%CALLNAME:MASTER%の姿を見ると,火がついたように叫び始めた
+IF MARK:9 == 3
+    PRINTFORMW 유메미는 방 한 구석에 웅크리고 있다.
+    PRINTFORMW 하지만 %CALLNAME:MASTER% 모습을 보고, 불같이 외치기 시작했다.
     IF LOCAL == 4
-        PRINTFORMW 「バカ! ド変態!」
+        PRINTFORMW 「바보! 변태!」
     ELSEIF LOCAL == 3
-        PRINTFORMW 「レイプ魔! 地獄に落ちろ!」
+        PRINTFORMW 「강간범! 지옥에나 떨어져!」
     ELSEIF LOCAL == 2
-        PRINTFORMW 「異常者! ケダモノ!」
+        PRINTFORMW 「정신병자! 짐승!」
     ELSEIF LOCAL == 1
-        PRINTFORMW 「犯罪者! 早く死ね!」
+        PRINTFORMW 「범죄자! 당장 죽어!」
     ELSE
-        PRINTFORMW 「底辺の下衆! 殺してやる!」
+        PRINTFORMW 「쓰레기 자식! 죽여 버려!」
     ENDIF
-    PRINTFORMW %CALLNAME:MASTER%は抵抗する夢美から,無理やり服を剥ぎ取った
-    RETURN 1
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 저항하는 유메미의 옷을 억지로 쥐어뜯었다.
 
 ;굴복각인Lv0
-ELSEIF MARK:2 == 0 && FLAG:11 == 2
-    DRAWLINE
-    PRINTFORM 「ねえ,解放してくれたら,
+ELSEIF MARK:2 == 0
+    PRINTFORM 「저기, 풀어 주면, 
     IF LOCAL == 4
-        PRINTFORM 鉛を金に変換する機械を作ってあげ
+        PRINTFORM 연금 기계를 만들어 줄
     ELSEIF LOCAL == 3
-        PRINTFORM 絶対に選挙で勝てる方程式を教えてあげ
+        PRINTFORM 반드시 선거에서 이기는 방정식을 알려 줄
     ELSEIF LOCAL == 2
-        PRINTFORM 私の必殺技『苺クロス』を伝授す
+        PRINTFORM 내 필살기『딸기 크로스』를 전수할
     ELSEIF LOCAL == 1
-        PRINTFORM あなたにメイドロボをあげ
+        PRINTFORM 네게 메이드 로봇을 줄
     ELSE
-        PRINTFORM 女の子を意のままに操れるぽわわ銃を発明す
+        PRINTFORM 여자를 뜻대로 사로잡는 총을 발명해 줄
     ENDIF
-    PRINTFORMW るけど,どう?」
-    PRINTFORMW %CALLNAME:MASTER%は夢美の言葉に耳を貸さず,服を剥ぎ取った
-    PRINTFORM 「うう……
+    PRINTFORMW 게, 어때?」
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미 말을 귓등으로 넘기고, 옷을 쥐어뜯었다.
+    PRINTFORM 「우우…… 
     IF LOCAL == 4
-        PRINTFORMW お金とか欲しくないの?」
+        PRINTFORMW 돈은 필요 없어?」
     ELSEIF LOCAL == 3
-        PRINTFORMW 大統領にだってなれるのに」
+        PRINTFORMW 대통령도 될 수 있을 텐데」
     ELSEIF LOCAL == 2
-        PRINTFORMW 最強技なのに」
+        PRINTFORMW 최강기인데」
     ELSEIF LOCAL == 1
-        PRINTFORMW 夜のご奉仕もお手の物なのに」
+        PRINTFORMW 밤 기술도 능숙한데」
     ELSE
-        PRINTFORMW よく考えたら真っ先に私に向けて使われそう」
+        PRINTFORMW 다시 생각해 보면 제일 먼저 나한테 쓰겠네」
     ENDIF
-    RETURN 1
 
 ;굴복각인Lv1
-ELSEIF MARK:2 == 1 && FLAG:11 == 2
-    DRAWLINE
+ELSEIF MARK:2 == 1
     IF LOCAL == 4
-        PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は床を外して穴を掘っている最中だった
-        PRINTFORMW 「……あ,しまった!」
-        PRINTFORMW 夢美には服を剥ぎ取る前に,まず床の修理を強制させた……
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미는 바닥을 까서 구멍을 파는 중이었다.
+        PRINTFORMW 「……아, 아차!」
+        PRINTFORMW 유메미의 옷을 쥐어뜯기 전에, 먼저 바닥 수리를 강제로 시켰다…….
     ELSEIF LOCAL == 3
-        PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は天井の一部を外そうとしていた
-        PRINTFORMW 「……く,見つかった!」
-        PRINTFORMW 夢美には服を剥ぎ取る前に,まず天井の修理を強制させた……
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미가 천장 일부를 뜯어냈다.
+        PRINTFORMW 「……끄, 들켰다!」
+        PRINTFORMW 유메미의 옷을 쥐어뜯기 전에, 먼저 천장 수리를 강제로 시켰다…….
     ELSEIF LOCAL == 2
-        PRINTFORMW %CALLNAME:MASTER%が部屋の扉を開けると,そこに夢美はいなかった.
-        PRINTFORMW 窓に服を繋いで作ったヒモがぶらさがっている
-        PRINTFORMW だが%CALLNAME:MASTER%は慌てずに扉の陰を覗いて,そこに全裸で隠れている夢美の姿を見つけた
-        PRINTFORMW 「ちぇっ,うまく行くと思ったのに」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방 문을 열자, 거기에 유메미는 없었다.
+        PRINTFORMW 창엔 옷을 엮어 만든 끈이 달렸다.
+        PRINTFORMW 그러나 %조사처리(CALLNAME:MASTER, "이")% 당황하지 않고 문 그림자를 들여다보니, 거기에 알몸으로 숨어 있던 유메미의 모습이 보였다.
+        PRINTFORMW 「쳇, 잘 갈 수 있었는데」
     ELSEIF LOCAL == 1
-        PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は窓の鉄格子を糸ノコで切ろうとしていた
-        PRINTFORMW どこから手に入れたのかと焦ったが,よく見ればそれは糸ノコではなく髪の毛だった
-        PRINTFORMW どう考えても無駄な行為だったがとりあえずやめさせて,夢美の服を剥ぎ取った
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미는 창문의 쇠창살을 실톱으로 끊으려 하고 있었다.
+        PRINTFORMW 어디서 구했는지 당황했지만, 잘 보니 그건 실톱이 아니라 머리카락이었다.
+        PRINTFORMW 아무래도 헛된 행위였지만, 일단 그만두게 하고 유메미의 옷을 쥐어뜯었다.
     ELSE
-        PRINTFORMW %CALLNAME:MASTER%が部屋に入ると床に謎の魔法陣が描かれており,その隣に不機嫌顔の夢美がいた
-        PRINTFORMW 「……本で読んだテレポートの魔法陣,インチキだった」
-        PRINTFORMW %CALLNAME:MASTER%は夢美の服を剥ぎ取ったが,すっかりふて腐れたためかあまり抵抗をされなかった
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자 바닥에 수수께끼의 마법진이 그려져 있고, 그 옆에 언짢은 표정을 한 유메미가 있었다.
+        PRINTFORMW 「……책에서 읽은 텔레포트 마법진, 사기였어」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미 옷을 쥐어뜯었지만, 심통이 나서 그런지 별 저항은 없었다.
     ENDIF
-    RETURN 1
 
 ;굴복각인Lv2
-ELSEIF MARK:2 == 2 && FLAG:11 == 2
-    DRAWLINE
+ELSEIF MARK:2 == 2
     IF LOCAL == 4
-        PRINTFORMW %CALLNAME:MASTER%が部屋に入ると,夢美は涙の跡のある顔をあげた
-        PRINTFORMW 「もう,好きにすればいいでしょ?」
-        PRINTFORMW 夢美は不機嫌そうな顔で服を脱ぎ始めた
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방에 들어가자, 유메미는 눈물 자국을 띤 얼굴로 올려봤다.
+        PRINTFORMW 「이제, 좋을 대로 하든지 그래?」
+        PRINTFORMW 유메미는 언짢은 듯한 얼굴로 옷을 벗기 시작했다.
     ELSEIF LOCAL == 3
-        PRINTFORMW 夢美はうつぶせになって寝ている
-        PRINTFORMW %CALLNAME:MASTER%が声をかけるとしぶしぶ起き上がり,服を脱ぎ始めた
-        PRINTFORMW 「……早くこの悪夢,さめないかなあ」
+        PRINTFORMW 유메미는 엎드려 자고 잇다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 말을 걸자 울며 겨자 먹기 식으로 일어나, 옷을 벗기 시작했다.
+        PRINTFORMW 「……빨리 이 악몽, 끝나지 않을까?」
     ELSEIF LOCAL == 2
-        PRINTFORMW 夢美は言われるがままに服を脱いだが,そのあと動こうとせずに立ち尽くしている
-        PRINTFORMW %CALLNAME:MASTER%が夢美の手首をつかむと,彼女はビクンと大きく体を震わせた
-        PRINTFORMW 「はは……天才大学教授の私がなんでこんな目に……」
+        PRINTFORMW 유메미는 말한 대로 옷을 벗었지만, 그 후 움직이지 않고 서 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 유메미 손목을 쥐자, 그녀는 움찔 크게 몸을 떨었다.
+        PRINTFORMW 「하하…… 천재 대학 교수인 내가 이런 꼴을……」
     ELSEIF LOCAL == 1
-        PRINTFORMW 「……ねえ,今日だけは勘弁してくれない? 今日だけでいいから.ねっ?」
-        PRINTFORMW %CALLNAME:MASTER%は耳を貸さず,夢美の服を乱暴に剥ぎ取った
-        PRINTFORMW 「いやぁ! もういやなのこんなの! お願いだからやめてぇぇぇ!」
+        PRINTFORMW 「……저기, 오늘만큼만 참아 주지 않을래? 오늘만이라도. 어?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 귀를 기울이지 않고, 유메미의 옷을 거칠게 풀어헤쳤다.
+        PRINTFORMW 「싫어어! 더 이상 이런 거 싫다고! 제발 그만해에에에!」
     ELSE
-        PRINTFORMW 「最近ね,あんまり辛くないのよ.前ほど恥ずかしいとも思わないし」
-        PRINTFORMW 「……でもそれが,たまらなくイヤ……」
-        PRINTFORMW 夢美は服を脱ぎながら,そう呟いた
+        PRINTFORMW 「요즘 말야, 별로 힘들지 않아. 전처럼 부끄럽단 생각도 없고」
+        PRINTFORMW 「……그게 못 견딜 만큼, 혐오스러워……」
+        PRINTFORMW 유메미는 옷을 벗으며, 그렇게 중얼거렸다.
     ENDIF
-    RETURN 1
 
 ;굴복각인Lv3＋연모 없음
-ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
-    DRAWLINE
+ELSEIF MARK:2 == 3 && TALENT:150 == 0
     IF LOCAL == 4
-        PRINTFORMW 「あんまり乱暴にしないでね?」
-        PRINTFORMW 夢美はおとなしく服を脱ぎ始めた
+        PRINTFORMW 「너무 난폭하게 하지 않을 거지?」
+        PRINTFORMW 유메미는 얌전히 옷을 벗기 시작했다.
     ELSEIF LOCAL == 3
-        PRINTFORMW 「あ,もうそんな時間? ちょっと待ってて」
-        PRINTFORMW 夢美はどこか楽しげに服を脱ぎ始めた
+        PRINTFORMW 「아, 벌서 이 시간이야? 좀 기다려 줘」
+        PRINTFORMW 유메미는 어딘가 즐거운 듯이 옷을 벗기 시작했다.
     ELSEIF LOCAL == 2
-        PRINTFORMW 「エッチなことって,毎日やっても飽きないとは思わなかったわ.男も,女もね」
-        PRINTFORMW 夢美はいそいそと服を脱ぎ始めた
+        PRINTFORMW 「야한 건, 매일 해도 질리지 않는 거란 걸 몰랐어. 남자도, 여자도」
+        PRINTFORMW 유메미는 부랴부랴 옷을 벗기 시작했다.
     ELSEIF LOCAL == 1
-        PRINTFORMW 「昔,論文受理してやるから抱かせろって言われてぶん殴ったことあったけど……今ならやっちゃいそうだわ」
-        PRINTFORMW 夢美は自発的に服を脱ぎながらそう言った
+        PRINTFORMW 「전에, 논문 접수해 주는 대신 안게 해달라고 해서 내리친 적이 있었는데…… 지금이라면 했겠지」
+        PRINTFORMW 유메미는 자발적으로 옷을 벗으며 그렇게 말했다.
     ELSE
-        PRINTFORMW 「やっぱり,本で知るのと体験するのでは大違いよね?」
-        PRINTFORMW 夢美はそう言って微笑みながら服を脱ぎ捨てた
+        PRINTFORMW 「역시, 책으로 아는 것과 경험하는 건 크게 다르구나」
+        PRINTFORMW 유메미는 웃으면서 그렇게 말하고 옷을 벗어 던졌다.
     ENDIF
-    RETURN 1
 
 ;연모
-ELSEIF TALENT:150 && FLAG:11 == 2
-    DRAWLINE
+ELSEIF TALENT:150
     IF LOCAL == 4
-        PRINTFORMW 「ご主人様,待ってたわ」
-        PRINTFORMW 夢美は全裸のまま一礼をすると,そのまま%CALLNAME:MASTER%に絡み付いてきた
+        PRINTFORMW 「주인님, 기다렸어」
+        PRINTFORMW 유메미는 벌거벗은 채 인사를 한 뒤, 그대로 %CALLNAME:MASTER%에게 휘감겼다.
     ELSEIF LOCAL == 3
-        PRINTFORMW 夢美は一糸まとわぬ姿で%CALLNAME:MASTER%を待っていた
-        PRINTFORMW 「ご主人様……早く……可愛がって……」
+        PRINTFORMW 유메미는 실오라기 하나 걸치지 않은 모습으로 %조사처리(CALLNAME:MASTER, "을")% 기다리고 있었다.
+        PRINTFORMW 「주인님…… 빨리…… 귀여워 해 줘……」
     ELSEIF LOCAL == 2
-        PRINTFORMW 「待ちきれなかったの! 早く犯して私を犯してメチャクチャにしてぇ!」
-        PRINTFORMW そう叫びながら裸の夢美が%CALLNAME:MASTER%に抱きついてきた
+        PRINTFORMW 「못 참겠어! 어서 날 범하고 엉망진창으로 만들어 줘~!」
+        PRINTFORMW 그렇게 말하고 벌거벗은 유메미가 %CALLNAME:MASTER%에게 안겨 왔다.
     ELSEIF LOCAL == 1
-        PRINTFORMW 「エッチなこといっぱいしてね,ご主人様」
-        PRINTFORMW 生まれたままの姿でいた夢美は,自分の身体をまさぐりながらそう言った
+        PRINTFORMW 「야한 거 많이 해 줘, 주인님」
+        PRINTFORMW 갓 태어난 모습으로 있던 유메미는, 자기 몸을 만지작거리며 그렇게 말했다.
     ELSE
-        PRINTFORMW 「私の心も身体もご主人様の物です……ほら,こんなにヨダレを流して欲しがってる」
-        PRINTFORMW 何も着ずに待っていた夢美は,そう言って己の局部を開いた
+        PRINTFORMW 「내 몸도 맘도 주인님 거야…… 자, 이렇게 침을 흘리며 원하잖아」
+        PRINTFORMW 아무것도 입지 않고 기다리던 유메미는, 그렇게 말하고 자기 국부를 벌렸다.
     ENDIF
-    RETURN 1
 ENDIF
-RETURN 0
+
+RETURN 1
 
 ;-------------------------------------------------
 ;EVENTEND 관계
@@ -397,49 +390,39 @@ SIF NO:TARGET != 108
 ;--------------------------------------------------
 ;조교 종료시 대사
 ;--------------------------------------------------
+DRAWLINE
 ;반발각인Lv3
 IF MARK:9 == 3
-    DRAWLINE
-    PRINTFORMW 「………………死んじゃえ」
-    PRINTFORMW 夢美は殺意のこもった目で%CALLNAME:MASTER%を睨みつけた
-    RETURN 1
+    PRINTFORMW 「………………죽어 버려」
+    PRINTFORMW 유메미는 살기 어린 눈빛으로 %조사처리(CALLNAME:MASTER, "을")% 노려 봤다.
 
 ;굴복각인Lv1이하
 ELSEIF MARK:2 <= 1
-    DRAWLINE
-    PRINTFORMW 夢美は服を着ながら,恨みがましい目で%CALLNAME:MASTER%を見ている
-    PRINTFORMW 「おぼえてなさいよ……」
-    RETURN 1
+    PRINTFORMW 유메미는 옷을 입으며, 원망스러운 눈으로 %조사처리(CALLNAME:MASTER, "을")% 보고 있다.
+    PRINTFORMW 「기억해 둬……」
 
 ;굴복각인Lv2
 ELSEIF MARK:2 == 2
-    DRAWLINE
-    PRINTFORMW 夢美は無言のまま,のろのろと服を着始めた
-    PRINTFORMW %CALLNAME:MASTER%が出て行くと,ほどなくして部屋の中から泣く声が聞こえてきた
-    RETURN 1
+    PRINTFORMW 유메미는 말 없이, 천천히 옷을 입기 시작했다.
+    PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 떠난 지 얼마 안 돼, 방에서 흐느낌이 들렸다.
 
 ;굴복각인Lv3
 ELSEIF MARK:2 == 3 && TALENT:150 == 0
-    DRAWLINE
-    PRINTFORMW 「え,もう終わ……」
-    PRINTFORMW そう言いかけてから夢美は慌てて口をつぐみ,黙ったまま服を着始めた
-    RETURN 1
+    PRINTFORMW 「어, 벌써 끝이……」
+    PRINTFORMW 그렇게 말하다 유메미는 황급히 입을 다물고 조용히 옷을 입기 시작했다.
 
 ;연모＋체력 500 미만
-;ELSEIF TALENT:150 && BASE:0 < 500
-    DRAWLINE
-    PRINTFORMW 「ご,ご主人様……もう許して」
-    PRINTFORMW 「腰が……腰が立たないの」
-    RETURN 1
+ELSEIF TALENT:150 && BASE:0 < 500
+    PRINTFORMW 「주, 주인님…… 이제 용서해 줘」
+    PRINTFORMW 「허리…… 허리가 서질 않아」
 
 ;연모
 ELSEIF TALENT:150
-    DRAWLINE
-    PRINTFORMW 「ご,ご主人様.足りないの」
-    PRINTFORMW 「もっと,もっと可愛がって……」
-    RETURN 1
+    PRINTFORMW 「주, 주인님. 부족해」
+    PRINTFORMW 「더욱, 더 귀여워 해 줘……」
 ENDIF
-RETURN 0
+
+RETURN 1
 
 ;--------------------------------------------------
 ;@KOJO_MESSAGE_COM 관계
@@ -479,38 +462,38 @@ IF SELECTCOM == 0
     IF CFLAG:9000 == 0
         ;굴복각인Lv3
         IF MARK:2 == 3
-            PRINTFORMW 「ん……あ,素敵……」
-            PRINTFORMW 夢美はくすぐったげに身体をよじった
+            PRINTFORMW 「응…… 아, 멋져……」
+            PRINTFORMW 유메미는 간지러운 듯 몸을 돌렸다.
         ;굴복각인Lv3
         ELSEIF MARK:2 == 2
-            PRINTFORMW 「ん,あ……触らないで……」
+            PRINTFORMW 「응, 아…… 만지지 마……」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,ちょっと,やめ……」
-            PRINTFORMW 「んんん! ……くすぐったい」
+            PRINTFORMW 「싫어, 잠깐, 그만……」
+            PRINTFORMW 「으으응! ……간지러워」
         ENDIF
         CFLAG:9000 = 1
     ;2회째 이후
     ELSE
         ;연모+굴복각인Lv3
         IF TALENT:150 && MARK:2 == 3 && (CFLAG:9000 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,もっと触って」
-            PRINTFORMW 「私の身体,いっぱい愛して……」
+            PRINTFORMW 「주인님, 더 만져 줘」
+            PRINTFORMW 「내 몸, 많이 사랑해 줘……」
             CFLAG:9000 = 5
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9000 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ん,そこ,そこイイ!」
-            PRINTFORMW 夢美は快感に身体を震わせている
+            PRINTFORMW 「응, 거기, 거기 좋아!」
+            PRINTFORMW 유메미는 쾌감에 몸을 떨고 있다.
             CFLAG:9000 = 4
         ;굴복각인Lv2
         ELSEIF MARK:2 == 2 && (CFLAG:9000 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……む……んん!」
-            PRINTFORMW (ダメ……流されちゃう)
+            PRINTFORMW 「응…… 음…… 으응!」
+            PRINTFORMW (안 돼…… 흘려 버려)
             CFLAG:9000 = 3
         ;그 외
         ELSEIF MARK:2 <= 1 && (CFLAG:9000 <= 1 || FLAG:11 == 2)
-            PRINTFORMW 「ん……あ……む」
-            PRINTFORMW 「気持ち……よくなんてない……」
+            PRINTFORMW 「응…… 아…… 음」
+            PRINTFORMW 「기분…… 좋지 않아……」
             CFLAG:9000 = 2
         ENDIF
     ENDIF
@@ -527,30 +510,30 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
     IF CFLAG:9001 == 0
         ;굴복각인Lv2이상
         IF MARK:2 >= 2
-            PRINTFORMW 「うぁ,やめて……そこ,舐めないで……」
-            PRINTFORMW そう言いながらも夢美の身体からは少しずつ力が抜けていった
+            PRINTFORMW 「으아, 그만해…… 거기, 빨지 마……」
+            PRINTFORMW 그러면서도 유메미의 몸에서 조금씩 힘이 빠져나갔다.
         ;그 외
         ELSE
-            PRINTFORMW 「こら,ちょっと,どこを舐めようとして……んん!」
-            PRINTFORMW 夢美は%CALLNAME:MASTER%の頭を押さえて抵抗している
+            PRINTFORMW 「야, 잠깐, 어딜 핥으려는 거야…… 으응!」
+            PRINTFORMW 유메미는 %CALLNAME:MASTER% 머리를 누르고 저항하고 있다.
         ENDIF
         CFLAG:9001 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9001 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「もっと,もっとクリを弄んで……」
-            PRINTFORMW 「ご主人様ぁ……気持ちいいです……」
+            PRINTFORMW 「더, 더 클리를 만지작거려……」
+            PRINTFORMW 「주인님…… 기분 좋아요……」
             CFLAG:9001 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9001 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……素敵,もっと舐めて……」
-            PRINTFORMW 夢美は%CALLNAME:MASTER%の頭をしっかりと股間に押しつけている
+            PRINTFORMW 「응…… 멋져, 더 빨아……」
+            PRINTFORMW 유메미는 %CALLNAME:MASTER% 머리를 제대로 가랑이에 대고 있다.
             CFLAG:9001 = 3
         ;그 외
         ELSEIF CFLAG:9001 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん,あ,やめなさいよ……」
-            PRINTFORMW 「気持ち……悪い」
+            PRINTFORMW 「응, 아, 그만해……」
+            PRINTFORMW 「기분…… 나빠」
             CFLAG:9001 = 2
         ENDIF
     ENDIF
@@ -560,28 +543,28 @@ ENDIF
 IF SELECTCOM == 611
     ;연모+노출벽 Lv3이상+C감각Lv3이상
     IF TALENT:150 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:9611 <= 5 || FLAG:11 == 2)
-        PRINTFORMW 「見て,ご主人様.私のおまんこから,汁がポタポタって垂れてる」
-        PRINTFORMW 鏡に映る自分の裸体を見て,夢美はますます欲情しているようだ
+        PRINTFORMW 「봐, 주인님. 내 보지에서, 물이 줄줄 흘러 나와」
+        PRINTFORMW 거울 속 자기 알몸을 보며, 유메미는 더욱 욕정한다.
         CFLAG:9611 = 6
     ;연모
     ELSEIF TALENT:150 && (CFLAG:9611 <= 4 || FLAG:11 == 2)
-        PRINTFORMW 「あ,やだ……こんな格好」
-        PRINTFORMW 「ご主人様の顔に,エッチな汁が零れちゃう……!」
+        PRINTFORMW 「아, 싫어…… 이런 자세」
+        PRINTFORMW 「주인님 얼굴에, 야한 물 흘려 버려……!」
         CFLAG:9611 = 5
     ;굴복각인Lv3+노출벽Lv3이상+C감각Lv3이상
     ELSEIF MARK:2 == 3 && ABL:0 >= 3 && ABL:14 >= 3 && (CFLAG:9611 <= 3 || FLAG:11 == 2)
-        PRINTFORMW 「うああ,イイ! 私のあそこからお汁がいっぱい!」
-        PRINTFORMW 夢美は鏡を見ながら,欲情の度合いを強めていた
+        PRINTFORMW 「으아아, 좋아! 내 거기에서 물이 많이!」
+        PRINTFORMW 유메미는 거울을 보며, 욕정의 강도를 높였다.
         CFLAG:9611 = 4
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:9611 <= 2 || FLAG:11 == 2)
-        PRINTFORMW 「う,あ,私の裸……全部映っちゃって……」
-        PRINTFORMW 「汁が垂れてるのまで,見えちゃう……」
+        PRINTFORMW 「으, 아, 내 알몸…… 다 비쳐서……」
+        PRINTFORMW 「물이 나오는 것까지, 보여……」
         CFLAG:9611 = 3
     ;그 외
     ELSEIF CFLAG:9611 <= 1 || FLAG:11 == 2
-        PRINTFORMW 「あ……ん! ぐむ! んんんあ!」
-        PRINTFORMW 夢美は襲い掛かる快感に耐えながら,正面の鏡から必死に顔をそらしていた
+        PRINTFORMW 「아…… 응! 끄음! 응으으아!」
+        PRINTFORMW 유메미는 덮치는 쾌감에 견디며, 정면의 거울을 필사적으로 외면하고 있었다.
         CFLAG:9611 = 2
     ENDIF
     RETURN 0
@@ -593,31 +576,31 @@ ENDIF
 IF SELECTCOM == 2
     ;처음
     IF CFLAG:9002 == 0
-        PRINTFORMW 「え,なに.やめてよ,そこ……!」
-        PRINTFORMW 夢美は激しく肩を震わせた
+        PRINTFORMW 「에, 뭐야. 그만해, 거기……!」
+        PRINTFORMW 유메미는 격렬하게 어깨를 들썩였다.
         CFLAG:9002 = 1
     ;2회째 이후
     ELSE
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……そこ,弱いの……」
-            PRINTFORMW 彼女のアナルは,%CALLNAME:MASTER%の指を激しく締め付けてくる
+            PRINTFORMW 「주인님…… 거기, 약해……」
+            PRINTFORMW 그녀의 항문은, %CALLNAME:MASTER% 손가락을 강하게 조였다.
             CFLAG:9002 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「つっ……まだ,濡れてない……」
-            PRINTFORMW 「焦らないで,ご主人様」
+        ELSEIF TALENT:150 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「끄으…… 아직, 젖지 않았어……」
+            PRINTFORMW 「서두르지 마, 주인님」
             CFLAG:9002 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「うあぁ,いや! いやぁ!」
-            PRINTFORMW (お尻が気持ちいい……!)
+            PRINTFORMW 「으아아, 싫어! 싫어어!」
+            PRINTFORMW (엉덩이 기분 좋아……!)
             CFLAG:9002 = 3
         ;그 외
         ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「そこ,違う.違うのに……」
-            PRINTFORMW 言葉とは裏腹に,彼女のアナルは敏感に反応していた
+            PRINTFORMW 「거기, 아냐. 아닌데……」
+            PRINTFORMW 말과 달리, 그녀의 항문은 민감하게 반응하고 있었다.
             CFLAG:9002 = 2
         ENDIF
     ENDIF
@@ -632,30 +615,30 @@ IF SELECTCOM == 3
     IF CFLAG:9003 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……私の胸,どう?」
-            PRINTFORMW 「これでもＣはあるんだから.Ｄに限りなく近いＣよ」
+            PRINTFORMW 「주인님…… 내 가슴, 어때?」
+            PRINTFORMW 「이래도 C는 되니까. D에 매우 근접한 C야」
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと,そんなに乱暴に揉まないで!」
-            PRINTFORMW 「うぁ……気持ちよくなんてないわよ」
+            PRINTFORMW 「잠깐, 그렇게 세게 문지르지 마!」
+            PRINTFORMW 「으아…… 기분 좋지 않아」
         ENDIF
         CFLAG:9003 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9003 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「もっと,もっと私の胸をいじめて……」
-            PRINTFORMW 「乳首ももっとグリグリって潰して!」
+            PRINTFORMW 「자꾸, 자꾸 내 가슴 괴롭혀 줘……」
+            PRINTFORMW 「젖꼭지도 더 돌리고 문질러!」
             CFLAG:9003 = 4
         ;B감각Lv3이상
         ELSEIF ABL:3 >= 3 && (CFLAG:9003 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「やだ,胸で感じちゃう……」
-            PRINTFORMW 「なんで……胸だけでこんなに気持ちいいの……!」
+            PRINTFORMW 「싫어, 가슴으로 느껴……」
+            PRINTFORMW 「왜…… 가슴만으로 이렇게 기분 좋은 거야……!」
             CFLAG:9003 = 3
         ;그 외
         ELSEIF CFLAG:9003 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ぐ……あ……」
-            PRINTFORMW 「なんでそんなに,胸ばかり……」
+            PRINTFORMW 「끄…… 아……」
+            PRINTFORMW 「왜 그렇게, 가슴만……」
             CFLAG:9003 = 2
         ENDIF
     ENDIF
@@ -674,28 +657,28 @@ IF SELECTCOM == 4
         IF TALENT:0 == 1
             ;연모
             IF TALENT:150
-                PRINTFORMW 「んっ……ご主人様」
-                PRINTFORMW 「そんな奥まで入れたら……んああっ!」
+                PRINTFORMW 「읏…… 주인님」
+                PRINTFORMW 「그렇게 깊게 넣으면…… 응아악!」
             ;그 외
             ELSE
-                PRINTFORMW 「う,やだ,どこまで奥に入れるのよ」
-                PRINTFORMW 「膜が破れたらどうす……んあああああっ!」
+                PRINTFORMW 「으, 싫어, 어디까지 깊게 넣는 거야」
+                PRINTFORMW 「막이 찢어지면 어쩌려…… 응아아아아악!」
             ENDIF
             CFLAG:9004 = 1
         ;비처녀
         ELSE
             ;연모
             IF TALENT:150
-                PRINTFORMW 「ん……ご主人様の……指……来て」
-                PRINTFORMW 夢美は自らの手を添えて,%CALLNAME:MASTER%の指を導いた
+                PRINTFORMW 「응…… 주인님…… 손가락이…… 들어 와」
+                PRINTFORMW 유메미는 자기 손을 얹고, %CALLNAME:MASTER% 손가락을 이끌었다.
             ;V감각Lv3이상
             ELSEIF ABL:1 >= 3
-                PRINTFORMW 「うぁ,入っちゃう……入ってくる……!」
-                PRINTFORMW 夢美は襲い来る快感のために,頭をガクガクと振っていた
+                PRINTFORMW 「으아, 들어 와…… 들어오고 있어……!」
+                PRINTFORMW 유메미는 덮치는 쾌감에, 머리를 부들부들 흔들고 있었다.
             ;그 외
             ELSE
-                PRINTFORMW 「う,いた,うう……」
-                PRINTFORMW 「ちょっと早く……この指を抜いて」
+                PRINTFORMW 「으, 아아, 으으……」
+                PRINTFORMW 「빨리 좀…… 그 손가락 빼」
             ENDIF
             CFLAG:9004 = 1
         ENDIF
@@ -703,18 +686,18 @@ IF SELECTCOM == 4
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9004 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「もっと,もっとかき回して!」
-            PRINTFORMW 「ぐちゃぐちゃって,えっちな音いっぱい響かせて!」
+            PRINTFORMW 「더, 더 휘저어 줘!」
+            PRINTFORMW 「푹푹하고, 야한 소리 많이 내 줘!」
             CFLAG:9004 = 4
         ;V감각Lv3이상
         ELSEIF ABL:1 >= 3 && (CFLAG:9004 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……もっと,いっぱい指,入れて……」
-            PRINTFORMW %CALLNAME:MASTER%が入れる指を一本増やすと,夢美は甘い鳴き声を上げた
+            PRINTFORMW 「응…… 더, 많이 손가락, 들어가서……」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 넣은 손가락을 하나 늘리자, 유메미는 달콤한 신음을 질렀다.
             CFLAG:9004 = 3
         ;그 외
         ELSEIF CFLAG:9004 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ゆび……指を……」
-            PRINTFORMW 「中でそんなに……動かさないで」
+            PRINTFORMW 「손가락…… 손가락을……」
+            PRINTFORMW 「안에서 그렇게…… 움직이지 마」
             CFLAG:9004 = 2
         ENDIF
     ENDIF
@@ -724,18 +707,18 @@ ENDIF
 IF SELECTCOM == 600
     ;연모
     IF TALENT:150 && (CFLAG:9600 <= 3 || FLAG:11 == 2)
-        PRINTFORMW 「そこっ,そこが一番,そこぉ!」
-        PRINTFORMW 「もっと引っ掻いて! ご主人様!」
+        PRINTFORMW 「거깃, 거기가 제일, 거기이!」
+        PRINTFORMW 「더 문질러 줘! 주인님!」
         CFLAG:9600 = 4
     ;V감각Lv3이상
     ELSEIF ABL:1 >= 3 && (CFLAG:9600 <= 2 || FLAG:11 == 2)
-        PRINTFORMW 「あっ! んんっ! やだっ!」
-        PRINTFORMW 「Ｇスポ……感じすぎちゃう……!」
+        PRINTFORMW 「앗! 응읏! 싫엇!」
+        PRINTFORMW 「G스팟…… 너무 느껴……!」
         CFLAG:9600 = 3
     ;그 외
     ELSEIF CFLAG:9600 <= 1 || FLAG:11 == 2
-        PRINTFORMW 「ふぁ,はああぁん! もう,やめて……」
-        PRINTFORMW 「おか……しくなる……ひゃうああっ!」
+        PRINTFORMW 「흐아, 하아아앙! 이제, 그만해……」
+        PRINTFORMW 「이상…… 해져 버려…… 햐으아앗!」
         CFLAG:9600 = 2
     ENDIF
     RETURN 0
@@ -749,30 +732,30 @@ IF SELECTCOM == 5
     IF CFLAG:9005 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……これが男の人のなんですね……」
-            PRINTFORMW 夢美は初めて感じる快楽に酔いしれていた
+            PRINTFORMW 「주인님…… 이게 남자의 그거군요……」
+            PRINTFORMW 유메미는 처음 느끼는 쾌락에 취했다.
         ;그 외
         ELSE
-            PRINTFORMW 「んっ! ああ……なにこれ……!」
-            PRINTFORMW 夢美は初めて感じる快楽に戸惑っていた
+            PRINTFORMW 「읏! 아아…… 이게 뭐야……!」
+            PRINTFORMW 유메미는 처음 느끼는 쾌락에 허둥댔다.
         ENDIF
         CFLAG:9005 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9005 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「おちんちん……気持ちいい……」
-            PRINTFORMW 「ご主人様,もう出そうです……」
+            PRINTFORMW 「자지…… 기분 좋아……」
+            PRINTFORMW 「주인님, 이제 쌀게요……」
             CFLAG:9005 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んあぁぁ! ぞくぞくする……!」
-            PRINTFORMW 「男って,いっつもこんなに気持ちよかったんだ」
+            PRINTFORMW 「응아아아! 오싹거려……!」
+            PRINTFORMW 「남자는, 항상 이렇게 기분 좋구나」
             CFLAG:9005 = 3
         ;그 외
         ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「いやだ……私,女の子なのに」
-            PRINTFORMW (でも気持ちよくって,癖になっちゃいそう)
+            PRINTFORMW 「싫어…… 나, 여자인데」
+            PRINTFORMW (근데 기분 좋아서, 버릇 들 것 같아)
             CFLAG:9005 = 2
         ENDIF
     ENDIF
@@ -787,30 +770,30 @@ IF SELECTCOM == 6
     IF CFLAG:9006 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「んん……」
-            PRINTFORMW 「……岡崎夢美の心と身体は,すべてご主人様の所有物です」
+            PRINTFORMW 「으응……」
+            PRINTFORMW 「……오카자키 유메미의 몸과 마음은, 오롯이 주인님의 소유물입니다」
         ;그 외
         ELSE
-            PRINTFORMW 夢美は%CALLNAME:MASTER%を押しのけようともがいていたが,やがておとなしくなった
-            PRINTFORMW 「……唇は奪えても,心まで思い通りになるなんて考えないことね」
+            PRINTFORMW 유메미는 %조사처리(CALLNAME:MASTER, "을")% 밀어내려고 발버둥쳤지만, 이윽고 잠잠해졌다.
+            PRINTFORMW 「……입술은 빼앗아도, 마음까지 그럴 거라고 생각하진 마」
         ENDIF
         CFLAG:9006 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9006 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「んむ……ちゅ」
-            PRINTFORMW 二人が身体を離しても,%CALLNAME:MASTER%と夢美の唇は光る唾液の橋で結ばれていた
+            PRINTFORMW 「으음…… 쪽」
+            PRINTFORMW 두 사람의 몸이 떨어지고도, %조사처리(CALLNAME:MASTER, "과")% 유메미의 입술은 빛나는 침의 다리로 이어져 있었다.
             CFLAG:9006 = 4
         ;순종Lv2이상
         ELSEIF ABL:10 >=2 && (CFLAG:9006 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……あ……」
-            PRINTFORMW 「キスして貰えると,犯されてることを忘れられるわ」
+            PRINTFORMW 「응…… 아……」
+            PRINTFORMW 「키스할 때는, 범해진다는 사실을 잊을 수 있어」
             CFLAG:9006 = 3
         ;그 외
         ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「む……ぐぐ,んっ!」
-            PRINTFORMW 唇を離したあと,夢美は口を手の甲でこすりながら,恨みがましい目でにらんできた
+            PRINTFORMW 「므…… 끄으, 읍!」
+            PRINTFORMW 입술을 떼고, 유메미는 입을 손등으로 닦아내며, 원망스러운 눈으로 노려봤다.
             CFLAG:9006 = 2
         ENDIF
     ENDIF
@@ -825,31 +808,31 @@ ENDIF
 IF SELECTCOM == 7 && TEQUIP:54 == 0
     ;처음
     IF CFLAG:9007 == 0
-        PRINTFORMW 「じ,自分でしろだなんて……」
-        PRINTFORMW 「したことなんてないわよ! やり方は友達に聞いただけで」
-        PRINTFORMW 「あ……ん」
+        PRINTFORMW 「스, 스스로 하라니……」
+        PRINTFORMW 「한 적 없어! 하는 방법은 친구한테 들은 적은 있어도」
+        PRINTFORMW 「아…… 응」
         CFLAG:9007 = 1
     ;2회째 이후
     ELSE
         ;연모＋자위중독Lv3이상
         IF TALENT:150 && ABL:30 >= 3 && (CFLAG:9007 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,私のおまんこ見て……」
-            PRINTFORMW 「ほら,こんなに広がって,トロトロで……んんんっ!」
+            PRINTFORMW 「주인님, 내 보지 봐……」
+            PRINTFORMW 「자, 이렇게 펴져서, 끈적하게…… 응으읏!」
             CFLAG:9007 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9007 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様のが欲しい……ご主人様のが欲しいけど……」
-            PRINTFORMW 「でも,見られながらするのもいいかも……」
+            PRINTFORMW 「주인님 걸 원해…… 주인님 걸 원하는데……」
+            PRINTFORMW 「그래도, 보이면서 하는 것도 좋을지도……」
             CFLAG:9007 = 4
         ;자위중독Lv3이상
         ELSEIF ABL:30 >= 3 && (CFLAG:9007 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「いや……止まんないわ……自分の指じゃないみたい……!」
-            PRINTFORMW 激しい水音をたてながら,夢美の指は己の秘所をかきまわしていた
+            PRINTFORMW 「싫어…… 멈추질 않아…… 내 손가락이 아닌 것 같아……!」
+            PRINTFORMW 치열한 물소리를 내며, 유메미의 손가락은 자기 음부를 할퀴고 있었다.
             CFLAG:9007 = 3
         ;그 외
         ELSEIF CFLAG:9007 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん,ああ……やだ,見ないでよ」
-            PRINTFORMW 夢美は片手で秘所を弄びながら,もう片方の手で紅潮した顔を隠していた
+            PRINTFORMW 「응, 아아…… 싫어, 보지 마」
+            PRINTFORMW 유메미는 한 손으로 음부를 만지작거리며, 다른 손으로 붉어진 얼굴을 가렸다.
             CFLAG:9007 = 2
         ENDIF
     ENDIF
@@ -858,32 +841,32 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
 ELSEIF SELECTCOM == 7 && TEQUIP:54
     ;처음
     IF CFLAG:8801 == 0
-        PRINTFORMW 「シャワーを当てながら……するの?」
-        PRINTFORMW 「んっ! これ,水流が強すぎて……」
-        PRINTFORMW 「腰が抜けそう……」
-        PRINTFORMW 秘所に当てたシャワーの角度を変えてやると,夢美はビクンと身体を震わせた
+        PRINTFORMW 「샤워기를 대서…… 하라고?」
+        PRINTFORMW 「응! 이거, 물살이 너무 세서……」
+        PRINTFORMW 「허리 힘이 빠질 것 같아……」
+        PRINTFORMW 음부에 댄 샤워기의 각도를 바꾸며, 유메미는 움찔 몸을 떨었다.
         CFLAG:8801 = 1
     ;2회째 이후
     ELSE
         ;연모＋자위중독Lv3이상
         IF TALENT:150 && ABL:30 >= 3 && (CFLAG:8801 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ああ……シャワーでオナニーしてる,いけない私を見て!」
-            PRINTFORMW 夢美は股を限界まで広げ,秘所にくいこまんばかりにシャワーを押し付けていた
+            PRINTFORMW 「아아…… 샤워기로 자위하는, 못된 날 봐 줘!」
+            PRINTFORMW 유메미는 가랑이를 한껏 펴고, 음부로 먹으려는 듯 샤워기를 떠밀고 있었다.
             CFLAG:8801 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:8801 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様ぁ……ご主人様ぁ……」
-            PRINTFORMW 夢美はシャワーノズルを股間に挟み,甘ったるい声で鳴き続けていた
+            PRINTFORMW 「주인님…… 주인님……」
+            PRINTFORMW 유메미는 샤워기 노즐을 가랑이에 끼고 달콤한 목소리로 울고 있었다.
             CFLAG:8801 = 4
         ;자위중독Lv3이상
         ELSEIF ABL:30 >= 3 && (CFLAG:8801 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……ああっ……あぁん!」
-            PRINTFORMW 「指だけのより……ずっと……気持ちいい」
+            PRINTFORMW 「응…… 아앗…… 아앙!」
+            PRINTFORMW 「손가락보다…… 더…… 기분 좋아」
             CFLAG:8801 = 3
         ;그 외
         ELSEIF CFLAG:8801 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「清潔っていえば清潔かもしれないけど……ん!」
-            PRINTFORMW 「こんなことばっかりしてたら,普通にシャワーを浴びれなくなりそう」
+            PRINTFORMW 「청결하다면 청결하겠지만…… 응!」
+            PRINTFORMW 「이런 것만 하면, 평범하게 목욕을 하지 않을 것 같아」
             CFLAG:8801 = 2
         ENDIF
     ENDIF
@@ -898,24 +881,24 @@ IF SELECTCOM == 9
     IF CFLAG:9009 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……? どうしたの?」
+            PRINTFORMW 「주인님……? 무슨 일 있어?」
         ;그 외
         ELSE
-            PRINTFORMW 「……あれ? ひょっとしてもう終わり?」
-            PRINTFORMW 夢美の言葉に%CALLNAME:MASTER%は首を横に振った
+            PRINTFORMW 「……어머? 혹시 이제 끝이야?」
+            PRINTFORMW 유메미 말에 %조사처리(CALLNAME:MASTER, "은")% 고개를 저었다.
         ENDIF
         CFLAG:9009 = 1
     ;2회째 이후
     ELSE
         ;연모＋욕정Lv3이상
         IF TALENT:150 && PALAM:13 >= PALAMLV:3 && (CFLAG:9009 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……焦らさないで.早く,早く!」
-            PRINTFORMW 夢美は勝手に胸と秘所を弄り始めようとしたが,%CALLNAME:MASTER%の手によって押し留められた
+            PRINTFORMW 「주인님…… 애태우지 마. 빨리, 빨리!」
+            PRINTFORMW 유메미는 멋대로 가슴과 음부를 만지려 했으나, %CALLNAME:MASTER% 손에 제지당했다.
             CFLAG:9009 = 4
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9009 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「あ……ん.ご主人様……」
-            PRINTFORMW 触れられてもいないのに,あふれ出した雫が夢美の太ももを伝って流れ落ちた
+            PRINTFORMW 「아…… 응. 주인님……」
+            PRINTFORMW 만지지도 않았는데, 분비된 물방울이 유메미 허벅지를 타고 흘러내렸다.
             CFLAG:9009 = 3
         ;그 외
         ;ELSEIF CFLAG:9009 <= 1 || FLAG:11 == 2
@@ -934,30 +917,30 @@ IF SELECTCOM == 10
     IF CFLAG:9010 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あ,ご主人様.知ってますよそれ,ピンクローターでしょ?」
-            PRINTFORMW 「ん……でも使うのは初めてで……ああああぁんっ!」
+            PRINTFORMW 「아, 주인님. 알고 있어. 그거, 핑크 로터지?」
+            PRINTFORMW 「응…… 근데 쓰는 건 처음이라…… 아아아아앙!」
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと,それってもしかして……ピンクローター?」
-            PRINTFORMW 「や,やだ,当てないで……んあぁ!」
+            PRINTFORMW 「잠깐, 그거 혹시…… 핑크 로터?」
+            PRINTFORMW 「시, 싫어, 대지 마…… 응아아!」
         ENDIF
         CFLAG:9010 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9010 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「クリがチリチリしちゃってもう……ふあぁんっ!」
-            PRINTFORMW 夢美は大きく仰け反ってあえぎ声を上げた
+            PRINTFORMW 「클리가 찌릿거리잖아, 정말…… 흐아아앙!」
+            PRINTFORMW 유메미는 크게 몸을 뒤로 젖히며 헐떡이는 소리를 질렀다.
             CFLAG:9010 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9010 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「あ……んんっ……ローターが……こんなに気持ちよかったなんて」
-            PRINTFORMW 「……女友達がみんな持ってたわけ,ようやくわかったわ」
+            PRINTFORMW 「아…… 으응…… 로터가…… 이렇게 기분 좋다니」
+            PRINTFORMW 「……친구들이 모두 가진 이유를, 겨우 알았어」
             CFLAG:9010 = 3
         ;그 외
         ELSEIF CFLAG:9010 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あ,ぐ……ん……」
-            PRINTFORMW 「痺れるだけよ,感じてなんかいないわ」
+            PRINTFORMW 「아, 끄…… 응……」
+            PRINTFORMW 「저리기만 하고, 느낌 없어」
             CFLAG:9010 = 2
         ENDIF
     ENDIF
@@ -972,30 +955,30 @@ IF SELECTCOM == 11
     IF CFLAG:9011 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あ……それ,もしかして」
-            PRINTFORMW 「ふああぁぁぁぁ! ビリビリきちゃう……」
+            PRINTFORMW 「아…… 그거, 설마」
+            PRINTFORMW 「흐아아아아아아! 짜릿해……」
         ;그 외
         ELSE
-            PRINTFORMW 「なにそれ.そんなものを使うような年じゃないんだけど」
-            PRINTFORMW 「って,そこに当てるのそれ……んんんんんっ!」
+            PRINTFORMW 「그건 뭐야. 그런 걸 쓸 나이는 아닌데」
+            PRINTFORMW 「그, 그걸 거기에 댄다고…… 으으으으응!」
         ENDIF
         CFLAG:9011 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9011 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,もっと,もっと押し付けて」
-            PRINTFORMW 「と,飛んでっちゃうみたい……!」
+            PRINTFORMW 「주인님, 더, 더 밀어붙여」
+            PRINTFORMW 「나, 날아갈 것 같아……!」
             CFLAG:9011 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9011 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……あ……だめ,よすぎる……」
-            PRINTFORMW 「もう普通の用途じゃ使えなくなっちゃった気がする……」
+            PRINTFORMW 「응…… 아…… 안 돼, 너무 좋아……」
+            PRINTFORMW 「이제 보통 용도로 쓸 수 없을 것 같아……」
             CFLAG:9011 = 3
         ;그 외
         ELSEIF CFLAG:9011 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん……まだやるの?」
-            PRINTFORMW 「こそばゆいだけよ」
+            PRINTFORMW 「응…… 또 해?」
+            PRINTFORMW 「간지럽기만 한데」
             CFLAG:9011 = 2
         ENDIF
     ENDIF
@@ -1013,23 +996,23 @@ IF SELECTCOM == 12 && TEQUIP:20
         IF TALENT:0 == 1
             ;연모
             IF TALENT:150
-                PRINTFORMW 「え? あ……バイブでだなんて」
-                PRINTFORMW 「んっ……ご主人様に……捧げたかったのに」
+                PRINTFORMW 「에? 아…… 바이브로 한다니」
+                PRINTFORMW 「읏…… 주인님에게…… 바치고 싶었는데」
             ;그 외
             ELSE
-                PRINTFORMW 「あ,いや,いや! いやぁ! だめぇ!」
-                PRINTFORMW 夢美の抵抗にかまわず,%CALLNAME:MASTER%はバイブを奥深く突き刺した
+                PRINTFORMW 「아, 안 돼, 안 돼! 싫어! 그만해!」
+                PRINTFORMW 유메미의 저항에 신경 끄고, %조사처리(CALLNAME:MASTER, "은")% 바이브를 깊숙히 박았다.
             ENDIF
         ;비처녀
         ELSE
             ;연모
             IF TALENT:150
-                PRINTFORMW 「あ,バイブだ.ふふ,実物を見るのは初めて」
-                PRINTFORMW 「前から,どんな感じがするのか興味あったのよね」
+                PRINTFORMW 「아, 바이브네. 후후, 실제로 보는 건 처음이야」
+                PRINTFORMW 「전부터, 어떤 느낌일지 흥미는 있었어」
             ;그 외
             ELSE
-                PRINTFORMW 「え,ちょっとなに,バイブってそんなに太かったっけ?」
-                PRINTFORMW 「その大きさじゃ入るわけ……くぅぅぅぅ!」
+                PRINTFORMW 「어, 잠깐, 뭐야, 바이브가 이렇게 굵은 거였어?」
+                PRINTFORMW 「그렇게 큰 거 안 들어가…… 끄으으으으!」
             ENDIF
         ENDIF
         CFLAG:9012 = 1
@@ -1037,18 +1020,18 @@ IF SELECTCOM == 12 && TEQUIP:20
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9012 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「はぁん! もっと奥まで突っ込んで……」
-            PRINTFORMW 「おまんこ溶けちゃうくらい,ぐちゃぐちゃにかき回して!」
+            PRINTFORMW 「하앙! 더 안쪽까지 넣어 줘……」
+            PRINTFORMW 「보지가 녹을 만큼, 엉망으로 저어 줘!」
             CFLAG:9012 = 4
         ;V감각Lv3이상
         ELSEIF ABL:1 >= 3 && (CFLAG:9012 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「やだ,やだ,いやなのに……」
-            PRINTFORMW 「奥で感じちゃ……はぁあん!」
+            PRINTFORMW 「싫어, 싫어, 싫은데……」
+            PRINTFORMW 「깊은 곳에서 느낌이…… 하아앙!」
             CFLAG:9012 = 3
         ;그 외
         ELSEIF CFLAG:9012 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「たっ,痛……痛い! 痛いって!」
-            PRINTFORMW 「ぐぐ……う,動かさないで」
+            PRINTFORMW 「앗, 아파…… 아파! 아프다고!」
+            PRINTFORMW 「끄으…… 우, 움직이지 마」
             CFLAG:9012 = 2
         ENDIF
     ENDIF
@@ -1057,13 +1040,13 @@ IF SELECTCOM == 12 && TEQUIP:20
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8811 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「はひゅん!」
-        PRINTFORMW 「ふふ,ほら,私のおまんこがご主人様のを欲しがってる」
+        PRINTFORMW 「하흐응!」
+        PRINTFORMW 「후후, 봐, 내 보지가 주인을 원해」
         CFLAG:8811 = 2
     ;그 외
     ELSEIF CFLAG:8811 < 1 || FLAG:11 == 2
-        PRINTFORMW 「んぐっ!」
-        PRINTFORMW 夢美は顔をしかめながら,自分の股間をさすっていた
+        PRINTFORMW 「으끅!」
+        PRINTFORMW 유메미는 얼굴을 찌푸리며, 자기 사타구니를 문지르고 있었다.
         CFLAG:8811 = 1
     ENDIF
     RETURN 0
@@ -1078,35 +1061,35 @@ IF SELECTCOM == 13 && TEQUIP:25
     IF CFLAG:9013 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「それって……アナル用の?」
-            PRINTFORMW 「ふふ.いいわよ,ご主人様になら」
+            PRINTFORMW 「그건…… 애널용?」
+            PRINTFORMW 「후후, 주인님이니까 허락할게」
         ;그 외
         ELSE
-            PRINTFORMW 「え,やだ,それって……!」
-            PRINTFORMW 「お尻なんてだめ……んああああっ!」
+            PRINTFORMW 「에, 싫어, 그건……!」
+            PRINTFORMW 「엉덩이만은 안 돼…… 응아아아악!」
         ENDIF
         CFLAG:9013 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9013 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「あぁん! ああ! それ好き!」
-            PRINTFORMW 「もっと……アナル犯して!」
+            PRINTFORMW 「아앙! 아아! 거기 좋아!」
+            PRINTFORMW 「더…… 애널 범해 줘!」
             CFLAG:9013 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9013 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「また,そっちなんですか……ご主人様」
-            PRINTFORMW 「ふぁぁん! でも,こっちの方が気持ちいい……」
+            PRINTFORMW 「또, 거기예요……? 주인님」
+            PRINTFORMW 「흐아앙! 근데, 이쪽이 기분 좋아……」
             CFLAG:9013 = 4
         ;A감각Lv3이상
         ELSEIF ABL:2 >= 3 && (CFLAG:9013 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んあ! ん! ふあ……はぁん!」
-            PRINTFORMW (どうしてこんなにお尻で感じちゃうのよ……)
+            PRINTFORMW 「응아! 응! 흐아…… 하앙!」
+            PRINTFORMW (왜 이렇게 엉덩이로 느끼는 거야……)
             CFLAG:9013 = 3
         ;그 외
         ELSEIF CFLAG:9013 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん……ぐ……んん……」
-            PRINTFORMW (いやぁ,そこ弱いのに.責めないで……)
+            PRINTFORMW 「응…… 끄…… 으응……」
+            PRINTFORMW (싫어, 거기 약해. 괴롭히지 마……)
             CFLAG:9013 = 2
         ENDIF
     ENDIF
@@ -1115,18 +1098,18 @@ IF SELECTCOM == 13 && TEQUIP:25
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8812 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「ああっ……もっと,してぇ……」
-        PRINTFORMW 夢美のアナルは物欲しげにヒクヒクとうごめいている
+        PRINTFORMW 「아앗…… 더, 해 줘……」
+        PRINTFORMW 유메미의 애널은 애달프게 뻐끔뻐끔 꿈틀거렸다.
         CFLAG:8812 = 3
     ;A감각Lv3이상
     ELSEIF ABL:2 >= 3 && (CFLAG:8812 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ふあぁん! もう……終わり?」
-        PRINTFORMW 夢美は抜かれたアナルバイブを残念そうに見つめている
+        PRINTFORMW 「흐아앙! 이제…… 끝이야?」
+        PRINTFORMW 유메미는 빠진 애널 바이브를 아쉬운 듯 바라보고 있다.
         CFLAG:8812 = 2
     ;그 외
     ELSEIF CFLAG:8812 < 1 || FLAG:11 == 2
-        PRINTFORMW 「ひゅあんっ!」
-        PRINTFORMW 「まだ入ってない? ……ほんと?」
+        PRINTFORMW 「휴아앙!」
+        PRINTFORMW 「이제 넣지 않을 거지? ……정말?」
         CFLAG:8812 = 1
     ENDIF
     RETURN 0
@@ -1141,29 +1124,29 @@ IF SELECTCOM == 14 && TEQUIP:30
     IF CFLAG:9014 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 夢美はクリキャップを興味深そうに眺めていた
-            PRINTFORMW だが振動が始まると,たちまち悶え始めた
-            PRINTFORMW 「んあ! クリが……ビリビリする」
-            PRINTFORMW 「ただのローターよりも……凄い……」
+            PRINTFORMW 유메미는 클리캡을 흥미롭게 바라보고 있었다.
+            PRINTFORMW 하지만 진동이 시작되자, 곧 몸부림 치기 시작했다.
+            PRINTFORMW 「응아! 클리가…… 찌릿해」
+            PRINTFORMW 「그냥 로터보다도…… 굉장히……」
         ;그 외
         ELSE
-            PRINTFORMW 「なにそれ,スポイトの頭?」
-            PRINTFORMW 夢美はクリキャップを興味深そうに眺めている
-            PRINTFORMW 「え,そこにつけるの……ふぁっ!」
-            PRINTFORMW スイッチを入れると,夢美は身体を丸めて悶え始めた
+            PRINTFORMW 「그건 뭐야? 스포이트 머리?」
+            PRINTFORMW 유메미는 클리캡을 흥미롭게 바라보고 있었다.
+            PRINTFORMW 「어, 거기에 대…… 흐앗!」
+            PRINTFORMW 스위치를 넣자, 유메미는 몸을 구부리고 몸부림 치기 시작했다.
         ENDIF
         CFLAG:9014 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9014 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「クリが……クリが吸われてる……」
-            PRINTFORMW 「だめ……感じすぎちゃって立てない」
+            PRINTFORMW 「클리가…… 클리가 빨려……」
+            PRINTFORMW 「안 돼…… 너무 느끼니까 세우지 마」
             CFLAG:9014 = 3
         ;그 외
         ELSEIF CFLAG:9014 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「やだ,吸わないで……!」
-            PRINTFORMW 「ん! あ! 取って,取って!」
+            PRINTFORMW 「싫어, 빨지 마……!」
+            PRINTFORMW 「응! 아! 빼, 빼라고!」
             CFLAG:9014 = 2
         ENDIF
     ENDIF
@@ -1172,13 +1155,13 @@ IF SELECTCOM == 14 && TEQUIP:30
 ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8813 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「んあぁぁぁぁ!」
-        PRINTFORMW 「……外すときが,たまらなく気持ちいいの.それ」
+        PRINTFORMW 「응아아아아아!」
+        PRINTFORMW 「……이거, 뺄 때가, 못 견딜 만큼 기분 좋아」
         CFLAG:8813 = 2
     ;그 외
     ELSEIF CFLAG:8813 < 1 || FLAG:11 == 2
-        PRINTFORMW 「んあぁ!」
-        PRINTFORMW 電動クリキャップを外した後も,夢美は内股になって太ももをこすりあわせている
+        PRINTFORMW 「응아아!」
+        PRINTFORMW 전동 클리캡을 뺀 뒤에도, 유메미는 안짱다리가 된 채 허벅지를 서로 문질렀다.
         CFLAG:8813 = 1
     ENDIF
     RETURN 0
@@ -1193,27 +1176,27 @@ IF SELECTCOM == 15 && TEQUIP:35
     IF CFLAG:9015 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「そ,それつけるの?」
-            PRINTFORMW 「ああんっ! 乳首が……!」
-            PRINTFORMW 夢美は背筋を逸らし,快感の波に酔いしれていた
+            PRINTFORMW 「그, 그걸 달어?」
+            PRINTFORMW 「아앙! 유두가……!」
+            PRINTFORMW 유메미는 허리를 돌리며, 쾌감의 파도에 취했다.
         ;그 외
         ELSE
-            PRINTFORMW 「え,なに……?」
-            PRINTFORMW 「んああぁ! 先っぽがぁぁぁ!」
-            PRINTFORMW 夢美は外そうともがいたが,%CALLNAME:MASTER%はその手を押さえつけた
+            PRINTFORMW 「어, 뭐야……?」
+            PRINTFORMW 「응아아아! 끝에가아아아!」
+            PRINTFORMW 유메미는 빼려고 했지만, %조사처리(CALLNAME:MASTER, "은")% 그 손을 밀어냈다.
         ENDIF
         CFLAG:9015 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9015 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「乳首が……焼けちゃう……」
-            PRINTFORMW 「ご主人様ぁ,ご主人様ぁ!」
+            PRINTFORMW 「유두가…… 타겠어……」
+            PRINTFORMW 「주인님, 주인님!」
             CFLAG:9015 = 3
         ;그 외
         ELSEIF CFLAG:9015 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「胸の先っぽが……取れちゃう……」
-            PRINTFORMW 苦しげに身をよじるたびに胸が揺れ,夢美にさらなる快感を与えていた
+            PRINTFORMW 「가슴 끝이…… 빠지겠어……」
+            PRINTFORMW 괴로움에 몸이 자지러질 때마다 가슴이 흔들려, 유메미에게 새로운 쾌감을 줬다.
             CFLAG:9015 = 2
         ENDIF
     ENDIF
@@ -1222,13 +1205,13 @@ IF SELECTCOM == 15 && TEQUIP:35
 ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8814 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「んっ……もう終わり?」
-        PRINTFORMW 「一日中つけててもよかったのに.……なんてね」
+        PRINTFORMW 「응…… 이제 끝이야?」
+        PRINTFORMW 「하루 종일 달아도 될 텐데. ……해본 말이야」
         CFLAG:8814 = 2
     ;그 외
     ELSEIF CFLAG:8814 < 1 || FLAG:11 == 2
-        PRINTFORMW 「んんっ……!」
-        PRINTFORMW 「それ,もうやだ……」
+        PRINTFORMW 「으응……!」
+        PRINTFORMW 「그거, 이젠 싫어……」
         CFLAG:8814 = 1
     ENDIF
     RETURN 0
@@ -1241,28 +1224,28 @@ ENDIF
 IF SELECTCOM == 16 && TEQUIP:30
     ;처음
     IF CFLAG:9016 == 0
-        PRINTFORMW 夢美は未知の刺激に,身体を大きく震わせた
+        PRINTFORMW 유메미는 미지의 자극에, 몸을 크게 떨었다.
         ;연모
         IF TALENT:150
-            PRINTFORMW 「まさかおちんちんが生えた上に,こんなものを付けられるなんて……」
-            PRINTFORMW 「でも,男の性欲には前から興味があったのよね.んっ……」
+            PRINTFORMW 「설마 자지가 달린 데다가, 이거까지 쓰다니……」
+            PRINTFORMW 「그래도, 남자의 성욕엔 전부터 흥미가 있었어. 응……」
         ;그 외
         ELSE
-            PRINTFORMW 「たしかに,男はどんなふうに感じるかって,疑問だったけど」
-            PRINTFORMW 「こういう形で知りたくなかったわ」
+            PRINTFORMW 「확실히, 남자는 어떻게 느낄까, 의문이었는데」
+            PRINTFORMW 「이런 식으로 알긴 싫었어」
         ENDIF
         CFLAG:9016 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9016 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん,あ……道具なんてずるい」
-            PRINTFORMW 「でも気持ちよくて……ふあぁぁぁ!」
+            PRINTFORMW 「응, 아…… 도구를 쓰다니 치사해」
+            PRINTFORMW 「근데 기분 좋아…… 흐아아아아!」
             CFLAG:9016 = 3
         ;그 외
         ELSEIF CFLAG:9016 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「私だって……女の子なのに……」
-            PRINTFORMW 「こんなことで……感じるなんて……」
+            PRINTFORMW 「나…… 여자인데……」
+            PRINTFORMW 「이런 걸로…… 느끼다니……」
             CFLAG:9016 = 2
         ENDIF
     ENDIF
@@ -1271,13 +1254,13 @@ IF SELECTCOM == 16 && TEQUIP:30
 ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8014 < 2 || FLAG:11 == 2)
-        PRINTFORMW 夢美はオナホールを名残惜しそうに見つめていた
-        PRINTFORMW 「こんどそれ,自作しようかなぁ」
+        PRINTFORMW 유메미는 오나홀을 아쉬운 듯이 바라보고 있었다.
+        PRINTFORMW 「이번에 이거 자작해 볼까~」
         CFLAG:8815 = 2
     ;그 외
     ELSEIF CFLAG:8014 < 1 || FLAG:11 == 2
-        PRINTFORMW 快感から解放された夢美は荒い息をついている
-        PRINTFORMW そして一瞬だけ,オナホールに未練がましい視線を送った
+        PRINTFORMW 쾌감에서 해방된 유메미는 거친 숨을 돌리고 있다.
+        PRINTFORMW 그리고 한 순간, 오나홀에 미련 섞인 시선을 돌렸다.
         CFLAG:8815 = 1
     ENDIF
     RETURN 0
@@ -1293,30 +1276,30 @@ IF SELECTCOM == 20
         IF TALENT:0 == 1
             ;연모
             IF TALENT:150
-                PRINTFORMW 夢美は痛みに顔をしかめつつも,%CALLNAME:MASTER%の背中に腕をまわしてきた
-                PRINTFORMW 「よかった,処女をご主人様に貰ってもらえて」
-                PRINTFORMW 「私,ずっと研究ばかりで,男の人と付き合ったことなんてほとんどないけど」
-                PRINTFORMW 「でも,初めては,尊敬できる人とって夢が,叶って……んっ!」
-                PRINTFORMW そして夢美は,繋がったまま%CALLNAME:MASTER%とキスを交わした
+                PRINTFORMW 유메미는 통증으로 얼굴을 찡그리면서도, %CALLNAME:MASTER% 등에 팔을 둘렀다.
+                PRINTFORMW 「다행이야, 처녀를 주인님에게 줄 수 있어서」
+                PRINTFORMW 「나, 계속 연구만 하느라, 남자랑 엮일 일이 별로 없었어」
+                PRINTFORMW 「그런데도, 처음은, 존경하는 사람과 이어지는 꿈을, 이룰 수 있어서…… 응!」
+                PRINTFORMW 그리고 유메미는, 이어진 채 %조사처리(CALLNAME:MASTER, "과")% 키스를 나눴다.
             ;그 외
             ELSE
-                PRINTFORMW 「ちょっとやだ! それだけは!」
-                PRINTFORMW 「んぐ! ああああああぁぁぁ!」
-                PRINTFORMW 「もう……やだ……処女まで奪われて……」
-                PRINTFORMW 虚ろになった夢美の目から,一筋の涙が零れ落ちた
+                PRINTFORMW 「잠깐, 싫어! 그것만은!」
+                PRINTFORMW 「응끄! 아아아아아아아아아!」
+                PRINTFORMW 「더는…… 싫어…… 처녀까지 빼앗겼어……」
+                PRINTFORMW 텅 빈 유메미의 눈에서, 한 줄기 눈물이 흘렀다.
             ENDIF
         ;비처녀
         ELSE
             ;연모
             IF TALENT:150
-                PRINTFORMW 「この体勢……初めてだっけ? んっ」
-                PRINTFORMW 「処女を散らすときはこの格好って考えていたんだけどなぁ」
-                PRINTFORMW 「ま,いいか.さあご主人様,いっぱい愛して!」
+                PRINTFORMW 「이 자세…… 처음이네? 읏」
+                PRINTFORMW 「처녀를 줄 땐 이 자세가 좋다고 생각하고 있었는데~」
+                PRINTFORMW 「뭐, 괜찮나. 자, 주인님, 맘껏 사랑해 줘!」
             ;그 외
             ELSE
-                PRINTFORMW 「んっ,はっ,ああっ」
-                PRINTFORMW (……好きでもない人と私,なにやってんだろ)
-                PRINTFORMW 夢美はわずかに眉を寄せたが,すぐに激しいピストン運動に押し流されていった
+                PRINTFORMW 「응, 핫, 아앗」
+                PRINTFORMW (……좋아하지도 않는 인간이랑 나, 뭐하는 거야?)
+                PRINTFORMW 유메미는 살짝 눈썹을 찡그렸지만, 곧 격렬한 피스톤 운동에 휩쓸렸다.
             ENDIF
         ENDIF
         CFLAG:9020 = 1
@@ -1324,23 +1307,23 @@ IF SELECTCOM == 20
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9020 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……抱いてっ,ぎゅっとしてっ!」
-            PRINTFORMW 「じゃないと,飛んでっちゃいそうで,怖いの!」
+            PRINTFORMW 「주인님…… 꾹, 안아 줘!」
+            PRINTFORMW 「안 그러면, 날아가 버릴 것 같아서, 무서워!」
             CFLAG:9020 = 5
         ;굴복각인Lv3＋V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9020 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「んあぁっ! おまんこ……感じすぎちゃって……」
-            PRINTFORMW 「バ……バカになっちゃう……!」
+            PRINTFORMW 「응아앗! 보지가…… 너무 느껴서……」
+            PRINTFORMW 「바…… 바보가 돼 버려……!」
             CFLAG:9020 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9020 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「う,ぐ……んああ」
-            PRINTFORMW 「気持ちよく……なんないわよ……?」
+            PRINTFORMW 「으, 끄…… 응아아」
+            PRINTFORMW 「기분 좋지…… 않단 말야……?」
             CFLAG:9020 = 3
         ;그 외
         ELSEIF CFLAG:9020 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あっ,うあっ,やだ,やだ……」
-            PRINTFORMW 「早く……終わって……」
+            PRINTFORMW 「앗, 으앗, 싫어, 싫어……」
+            PRINTFORMW 「빨리…… 끝내……」
             CFLAG:9020 = 2
         ENDIF
     ENDIF
@@ -1357,30 +1340,30 @@ IF SELECTCOM == 21
         IF TALENT:0 == 1
             ;연모
             IF TALENT:150
-                PRINTFORMW 「四つんばいになれって……また変なこと考えてるんでしょ?」
-                PRINTFORMW 「えっ? やあ! 後ろから……!」
-                PRINTFORMW 「初めてなのに……こんな……」
-                PRINTFORMW 夢美の腕は力なく崩れ,布団へと突っ伏す
-                PRINTFORMW だが%CALLNAME:MASTER%は腰を持ち上げたまま離さず,ピストン運動を始めた
+                PRINTFORMW 「엎드리라니…… 또 이상한 생각을 하네?」
+                PRINTFORMW 「어? 싫어! 뒤에서……!」
+                PRINTFORMW 「처음인데…… 이렇게……」
+                PRINTFORMW 유메미의 팔은 힘없이 구부러져, 이불에 푹 쓰러졌다.
+                PRINTFORMW 하지만 %조사처리(CALLNAME:MASTER, "은")% 허리를 들어올린 채 떼지 않고, 피스톤 운동을 시작했다.
             ;그 외
             ELSE
-                PRINTFORMW 「四つんばいになれ? またろくでもないことを」
-                PRINTFORMW 「えっ? 痛っ,ああああああああ!」
-                PRINTFORMW 「ま,まさか……」
-                PRINTFORMW 夢美は後ろを振り向き,そこに予想通りの光景が展開されてるのを見た
-                PRINTFORMW 彼女は布団に顔を埋めて,嗚咽を上げはじめた
+                PRINTFORMW 「엎드리라고? 또 쓸데없는 짓을」
+                PRINTFORMW 「엣? 아파악, 아아아아아아아아!」
+                PRINTFORMW 「서, 설마……」
+                PRINTFORMW 유메미가 뒤를 돌아보자, 거기엔 예상대로의 광경이 전개돼 있었다.
+                PRINTFORMW 그녀는 이불에 얼굴을 파묻고, 오열하기 시작했다.
             ENDIF
         ;비처녀
         ELSE
             ;연모
             IF TALENT:150
-                PRINTFORMW 「四つんばいにさせて……なにをするのかと思ったら……!」
-                PRINTFORMW 「ご主人様も,たいがい好奇心旺盛ですね!」
-                PRINTFORMW 皮肉を言いながらも,夢美の腰もわずかに動いていた
+                PRINTFORMW 「엎드리라 해서…… 뭐 하나 싶었더니……!」
+                PRINTFORMW 「주인님도, 참 호기심 많으시네요!」
+                PRINTFORMW 빈정거리면서도, 유메미의 허리도 조금씩 움직였다.
             ;그 외
             ELSE
-                PRINTFORMW 「あ……ぐんっ……」
-                PRINTFORMW 「やだ,この格好……」
+                PRINTFORMW 「아…… 끄윽……」
+                PRINTFORMW 「싫어, 이런 자세……」
             ENDIF
         ENDIF
         CFLAG:9021 = 1
@@ -1388,23 +1371,23 @@ IF SELECTCOM == 21
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9021 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご,ご,ご主人様,ご主人様ぁ!」
-            PRINTFORMW 「私はメス犬です! だから,だからもっと突いて!」
+            PRINTFORMW 「주, 주, 주인님, 주인님!」
+            PRINTFORMW 「전 못된 암캐예요! 그러니까, 그러니까 더 깊게!」
             CFLAG:9021 = 5
         ;굴복각인Lv3＋V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9021 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ああ! ふあぁあん!」
-            PRINTFORMW 夢美は%CALLNAME:MASTER%の動きに合わせて腰を振っている
+            PRINTFORMW 「아아! 흐아아아앙!」
+            PRINTFORMW 유메미는 %CALLNAME:MASTER% 움직임에 맞춰 허리를 흔들고 있다.
             CFLAG:9021 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9021 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んぁ……こんな格好してると……」
-            PRINTFORMW 「盛りのついた犬みたい……んあぁ!」
+            PRINTFORMW 「응아…… 이런 자세로 하면……」
+            PRINTFORMW 「발정난 개같아…… 으아아!」
             CFLAG:9021 = 3
         ;그 외
         ELSEIF CFLAG:9021 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ぐ……む……んああ」
-            PRINTFORMW 夢美は布団を噛んで,必死に声を押し殺している
+            PRINTFORMW 「끄…… 음…… 응아아」
+            PRINTFORMW 유메미는 이불을 씹으며, 필사적으로 소리를 억누르고 있다.
             CFLAG:9021 = 2
         ENDIF
     ENDIF
@@ -1419,35 +1402,35 @@ IF SELECTCOM == 22
     IF CFLAG:9022 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ん……ご主人様……」
-            PRINTFORMW 夢美は%CALLNAME:MASTER%に唇を重ねながら,脚を絡み付けてきた
+            PRINTFORMW 「응…… 주인님……」
+            PRINTFORMW 유메미는 %CALLNAME:MASTER%에게 입술을 맞추며, 다리를 감아 왔다.
         ;그 외
         ELSE
-            PRINTFORMW 「んあ……ん……ふあぁ!」
-            PRINTFORMW 夢美は身をよじって暴れたが,そのせいで接合部からさらなる快感が生まれていた
+            PRINTFORMW 「응아…… 응…… 흐아아!」
+            PRINTFORMW 유메미는 몸을 비틀어 날뛰었지만, 그 때문에 접합부에서 새로운 쾌감이 태어났다.
         ENDIF
         CFLAG:9022 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9022 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 夢美は%CALLNAME:MASTER%にしっかりと抱きつき,唇を重ね,舌を絡ませた
-            PRINTFORMW 「ご主人様……好き,好きなの……抱いて,ずっと抱いていて」
+            PRINTFORMW 유메미는 %조사처리(CALLNAME:MASTER, "을")% 꼭 껴안고, 입술을 맞추고, 혀를 얽었다.
+            PRINTFORMW 「주인님…… 좋아, 좋으니까…… 안아 줘, 계속 안아 줘」
             CFLAG:9022 = 5
         ;굴복각인Lv3＋V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9022 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「んあっ,もっと奥まで……唇も……むぐっ」
-            PRINTFORMW 夢美は自ら腰を振りながら,積極的に唇を重ねてきた
+            PRINTFORMW 「응앗, 더 깊은 곳까지…… 입술도…… 므읍」
+            PRINTFORMW 유메미는 스스로 허리를 흔들며, 적극적으로 입술을 맞췄다.
             CFLAG:9022 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9022 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……あぁっ,ふぁ……」
-            PRINTFORMW 「……これ,頭の高さが同じになるのがいいわね.キスしやすくて,ふふふ」
+            PRINTFORMW 「응…… 아앗, 흐아……」
+            PRINTFORMW 「……이거, 머리 높이가 같아져서 좋네. 키스하기 쉬워서. 후후후」
             CFLAG:9022 = 3
         ;그 외
         ELSEIF CFLAG:9022 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「うあぁ……いや……いやよ」
-            PRINTFORMW 嫌がる夢美を押さえつけ,挿入したまま強引に唇を奪った
+            PRINTFORMW 「으아아…… 싫어…… 싫어」
+            PRINTFORMW 싫어하는 유메미를 짓누르고, 삽입한 채 억지로 입술을 빼앗았다.
             CFLAG:9022 = 2
         ENDIF
     ENDIF
@@ -1464,35 +1447,35 @@ IF SELECTCOM == 23
     IF CFLAG:9023 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……これ,顔が見えないから怖い……んんっ」
-            PRINTFORMW 怯える夢美の首筋を舐めると,彼女はビクンと身体を震わせた
+            PRINTFORMW 「주인님…… 이거, 얼굴이 안 보여서 무서워…… 으응」
+            PRINTFORMW 겁먹은 유메미의 목덜미를 핥자, 그녀는 움찔 몸을 떨었다.
         ;그 외
         ELSE
-            PRINTFORMW 「あん……やだ……くぅ」
-            PRINTFORMW 後ろから挿入しながら耳を甘噛みすると,夢美は身体をビクンと震わせた
+            PRINTFORMW 「아응…… 싫어…… 끄으」
+            PRINTFORMW 뒤에서 삽입하며 귀를 가볍게 깨물자, 유메미는 몸을 움찔 떨었다.
         ENDIF
         CFLAG:9023 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9023 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「おまんこも,クリも,乳首も気持ちいい……」
-            PRINTFORMW 「ご主人様……ご主人様ぁ!」
+            PRINTFORMW 「보지도, 클리도, 유두도 기분 좋아……」
+            PRINTFORMW 「주인님…… 주인님!」
             CFLAG:9023 = 5
         ;굴복각인Lv3＋V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9023 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「感じる……イイッ! どこも感じちゃう!」
-            PRINTFORMW 「もっと私の体中,めちゃくちゃにしてっ!」
+            PRINTFORMW 「느껴…… 좋앗! 어디든지 느껴 버려!」
+            PRINTFORMW 「더욱 내 몸 속을, 엉망진창으로 만들어 줘엇!」
             CFLAG:9023 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9023 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「こ,これ,体中気持ちよすぎて……変になりそう……」
-            PRINTFORMW %CALLNAME:MASTER%は夢美に挿入しながら,右手でクリトリスを弄び,左手で乳首をつまんでいた
+            PRINTFORMW 「이, 이거, 몸 속이 너무 기분 좋아서…… 이상해질 것 같아……」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미에게 삽입하면서, 오른손으로 클리토리스를 만지작거리고, 왼손으로 유두를 잡고 있었다.
             CFLAG:9023 = 3
         ;그 외
         ELSEIF CFLAG:9023 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もういや……ふ,ふあぁ!」
-            PRINTFORMW また夢美がもがきだしたが,耳を噛んでやると甘い声を上げておとなしくなった
+            PRINTFORMW 「이젠 싫어…… 흐, 흐아아!」
+            PRINTFORMW 아직 유메미는 바르작거렸지만, 귀를 물자 달콤한 목소리를 울리며 잠잠해졌다.
             CFLAG:9023 = 2
         ENDIF
     ENDIF
@@ -1504,40 +1487,40 @@ IF SELECTCOM == 612
     IF CFLAG:9612 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご,ご主人様……こんなところで……」
-            PRINTFORMW 「ふぁ……すごい……」
+            PRINTFORMW 「주, 주인님…… 이런 곳에서……」
+            PRINTFORMW 「흐아…… 대단해……」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,こんなところで……見たくない」
-            PRINTFORMW 「んっ,あああぁ!」
+            PRINTFORMW 「싫어, 이런 곳에서…… 보이지 마」
+            PRINTFORMW 「읏, 아아아아!」
         ENDIF
         CFLAG:9612 = 1
     ;2회째 이후
     ELSE
         ;연모+노출벽Lv3이상+V감각Lv3이상
         IF TALENT:150 && ABL:14 >= 3 && ABL:1 >= 3 && (CFLAG:9612 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「んぁ! もっと……もっとよ」
-            PRINTFORMW 「ほら,ご主人様ぁ,私をもっと,彩って……あぁ!」
+            PRINTFORMW 「응아! 더…… 계속해」
+            PRINTFORMW 「봐, 주인님, 날 더, 칠해 줘…… 아아!」
             CFLAG:9612 = 6
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9612 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……ほら,これが大学教授ですよ……」
-            PRINTFORMW 「ふふふ,馬鹿みたいだけど,なんか幸せそうな顔してる」
+            PRINTFORMW 「주인님…… 자, 이게 대학교수예요……」
+            PRINTFORMW 「후후후, 바보 같은데, 왠지 행복한 얼굴이야」
             CFLAG:9612 = 5
         ;굴복각인Lv3+노출벽Lv3이상+V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:14 >= 3 && ABL:1 >= 3 && (CFLAG:9612 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ん……はぁっ,ほらみて,素敵でしょう,私」
-            PRINTFORMW 「おまんこから,いっぱいツユが垂れちゃって……んんんんっ!」
+            PRINTFORMW 「응…… 하앗, 자, 봐, 나 멋지지」
+            PRINTFORMW 「보지에서, 저렇게 물이 늘어져서…… 으으으응!」
             CFLAG:9612 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9612 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「う……すごい,こんな風になってたんだ」
-            PRINTFORMW 「赤黒いのが,私のあそこを……んっ」
+            PRINTFORMW 「으…… 대단해, 이렇게 되는구나」
+            PRINTFORMW 「검붉은 게, 내 거기를…… 읏」
             CFLAG:9612 = 3
         ;그 외
         ELSEIF CFLAG:9612 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「見せないで……やだ……」
-            PRINTFORMW 「……悪趣味よ」
+            PRINTFORMW 「비치지 마…… 싫어……」
+            PRINTFORMW 「……악취미네」
             CFLAG:9612 = 2
         ENDIF
     ENDIF
@@ -1554,37 +1537,37 @@ IF SELECTCOM == 24
         IF TALENT:0 == 1
             ;연모
             IF TALENT:150
-                PRINTFORMW 「こ,これが初めて.本当に初めてなのよ?」
-                PRINTFORMW 「ご主人様になら,処女を捧げてもいいって思えるから……その」
-                PRINTFORMW 「ああもう! じゃあいくからね!」
-                PRINTFORMW 夢美はペニスの先端がわずかに入ったところで腰を止めていた
-                PRINTFORMW %CALLNAME:MASTER%は辛抱強く,夢美が動くのを待っている
-                PRINTFORMW やがて夢美は,ゆっくりと膝を落としてペニスを奥深くまで導きいれた
-                PRINTFORMW 「……うぁ……うあああああ!」
-                PRINTFORMW ペニスが一番奥に達した瞬間,夢美の身体は大きく痙攣した
+                PRINTFORMW 「이, 이게 처음이야. 정말 처음이거든?」
+                PRINTFORMW 「주인님이라면, 처녀를 바쳐도 좋다고 생각하니까…… 그」
+                PRINTFORMW 「아, 됐어! 그럼 갈게!」
+                PRINTFORMW 유메미는 페니스 끝이 좀 들어가자 허리가 멈췄다.
+                PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 인내를 가지고, 유메미가 움직이길 기다리고 있다.
+                PRINTFORMW 이윽고 유메미는, 천천히 무릎을 내려 페니스를 깊이 삼켰다.
+                PRINTFORMW 「……으아…… 으아아아아아!」
+                PRINTFORMW 페니스가 가장 안쪽에 이른 순간, 유메미의 몸은 크게 떨렸다.
             ;그 외
             ELSE
-                PRINTFORMW 「冗談でしょ? え,嘘でしょ?」
-                PRINTFORMW 「なんで私の処女をあなたになんか」
-                PRINTFORMW 「しかも自分で腰を下ろせって……うっ」
-                PRINTFORMW 「……で,できるはずないじゃない」
-                PRINTFORMW 夢美はペニスの先端がわずかに入ったところで腰を止めていた
-                PRINTFORMW いつまでたっても動く様子が無い
-                PRINTFORMW %CALLNAME:MASTER%は夢美の腰を掴んで奥まで一気に突き入れた
-                PRINTFORMW 「うああああああああああああああっ!」
-                PRINTFORMW 「処女が……私の処女が……」
-                PRINTFORMW 夢美の目から,大粒の涙が零れだした
+                PRINTFORMW 「농담이지? 어? 무슨 말 같지도 않은 소리야?」
+                PRINTFORMW 「왜 내 처녀를 당신 따위에게……」
+                PRINTFORMW 「게다가 스스로 허리를 내려서…… 윽」
+                PRINTFORMW 「……되, 될 리가 없잖아」
+                PRINTFORMW 유메미는 페니스 끝이 좀 들어가자 허리가 멈췄다.
+                PRINTFORMW 아무리 기다려도 움직일 기미가 없다.
+                PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미의 허리를 잡고 안쪽까지 단번에 박아 넣었다.
+                PRINTFORMW 「으아아아아아아아아아아아아아악!」
+                PRINTFORMW 「처녀가…… 내 처녀가……」
+                PRINTFORMW 유메미의 눈에서, 굵은 눈물이 흘러 내리기 시작했다.
             ENDIF
         ;비처녀
         ELSE
             ;연모
             IF TALENT:150
-                PRINTFORMW 「私の方が上になるの?」
-                PRINTFORMW 「じゃあ行きますよ,ご主人様」
+                PRINTFORMW 「내가 위에 가는 거야?」
+                PRINTFORMW 「그럼 갈게요, 주인님」
             ;그 외
             ELSE
-                PRINTFORMW 「私から入れろって……あなたって本当に残酷よね」
-                PRINTFORMW 「う……じゃあ,いくわよ」
+                PRINTFORMW 「내가 넣으라고…… 당신 참 잔인하네」
+                PRINTFORMW 「으…… 그럼, 갈게」
             ENDIF
         ENDIF
         CFLAG:9024 = 1
@@ -1592,23 +1575,23 @@ IF SELECTCOM == 24
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9024 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「あぁん! ご主人様,もっと突き上げて!」
-            PRINTFORMW 夢美は激しく腰を上下させ,髪と胸が大きく揺れていた
+            PRINTFORMW 「아앙! 주인님, 더 찔러 올려 줘!」
+            PRINTFORMW 유메미가 격하게 허리를 위아래로 흔들자, 머리카락과 가슴이 크게 흔들리고 있었다.
             CFLAG:9024 = 5
         ;굴복각인Lv3+봉사정신Lv3이상＋V감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:1 >= 3 && (CFLAG:9024 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「あんん! もっと,突いて!」
-            PRINTFORMW 「子宮口に,ごつごつ当たってる!」
+            PRINTFORMW 「아으앙! 더, 찔러!」
+            PRINTFORMW 「자궁구에, 울퉁불퉁하게!」
             CFLAG:9024 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9024 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んん……ふあぁ! このっ,体勢って」
-            PRINTFORMW 「なんだか私が主導権握ってるみたいで,素敵よね……あんっ!」
+            PRINTFORMW 「으응…… 흐아아! 이, 자세」
+            PRINTFORMW 「왠지 내가 주도권을 잡은 것 같아서, 멋져…… 아앙!」
             CFLAG:9024 = 3
         ;그 외
         ELSEIF CFLAG:9024 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あぐぁ……痛……激しすぎ……」
-            PRINTFORMW 「お願いだから,そんなに突き上げないで」
+            PRINTFORMW 「아끄아…… 아파…… 너무 세……」
+            PRINTFORMW 「부탁이니까, 그렇게 세게 올려치지 마」
             CFLAG:9024 = 2
         ENDIF
     ENDIF
@@ -1624,28 +1607,28 @@ IF SELECTCOM == 25
     IF CFLAG:9025 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「え,ちょっとご主人様,待って」
-            PRINTFORMW 「これじゃ立場が逆じゃない……んんっ!」
-            PRINTFORMW 「まさか……女の子を……犯す羽目になるなんて」
+            PRINTFORMW 「어, 잠깐만, 주인님, 기다려 봐」
+            PRINTFORMW 「이러면 입장이 반대잖아…… 으읏!」
+            PRINTFORMW 「설마…… 여자를…… 범하게 되다니」
         ;그 외
         ELSE
-            PRINTFORMW 「や,だめ! おちんちんは敏感なんだから,そんなにいきなり……!」
-            PRINTFORMW 「ぐ……んんっ……だめ……」
-            PRINTFORMW 口では否定しながらも,夢美の顔には深い快感が表れていた
-            PRINTFORMW (あー……女の子の膣ってこんなに気持ちよかったんだ)
+            PRINTFORMW 「싫어, 안 돼! 자지 민감하니까, 그렇게 갑자기……!」
+            PRINTFORMW 「끄…… 으읏…… 안 돼……」
+            PRINTFORMW 입으론 부인했지만, 유메미의 얼굴엔 진한 쾌감이 쓰여 있다.
+            PRINTFORMW (아…… 여자의 질은 이렇게 기분 좋구나)
         ENDIF
         CFLAG:9025 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9025 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んっ,あっ,いい! いいわよあなたの膣……!」
-            PRINTFORMW (なるほど.男があんなにがっついてくるわけもわかるわ)
+            PRINTFORMW 「읏, 앗, 좋아! 당신 질, 좋아……!」
+            PRINTFORMW (과연, 남자가 왜 그렇게 기를 쓰는지 이해가 가)
             CFLAG:9025 = 3
         ;그 외
         ELSEIF CFLAG:9025 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「やだ……こんなことしたく……ないのに」
-            PRINTFORMW 口では否定していたが,夢美は腰を激しく振っていた
+            PRINTFORMW 「싫어…… 이런 거 하고 싶지…… 않은데」
+            PRINTFORMW 입으론 부정했지만, 유메미는 허리를 격렬히 흔들고 있다.
             CFLAG:9025 = 2
         ENDIF
     ENDIF
@@ -1655,6 +1638,7 @@ ENDIF
 ;-------------------------------------------------
 ;조수를 범한다 CFLAG:9026
 ;-------------------------------------------------
+[SKIPSTART]
 IF SELECTCOM == 26
     ;처음
     IF CFLAG:9026 == 0
@@ -1680,6 +1664,7 @@ IF SELECTCOM == 26
     ENDIF
     RETURN 0
 ENDIF
+[SKIPEND]
 
 ;------------------------------------------------
 ;정상위애널 CFLAG:9030
@@ -1689,12 +1674,12 @@ IF SELECTCOM == 30
     IF CFLAG:9030 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……来て……」
-            PRINTFORMW 「え,そっちなの?」
+            PRINTFORMW 「주인님…… 와 줘……」
+            PRINTFORMW 「어, 거기로?」
         ;그 외
         ELSE
-            PRINTFORMW 「う,あ,……ん」
-            PRINTFORMW 「ちょっと,どっちに入れてるの!?」
+            PRINTFORMW 「으, 아…… 응」
+            PRINTFORMW 「잠깐만, 어디다 넣는 거야!?」
         ENDIF
         CFLAG:9030 = 1
     ;2회째 이후
@@ -1702,23 +1687,23 @@ IF SELECTCOM == 30
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9030 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ふっ,ああ……もっと深く」
-            PRINTFORMW 夢美は力いっぱい背中を抱きしめてきた
+            PRINTFORMW 「흣, 아아…… 더 깊게」
+            PRINTFORMW 유메미는 힘껏 등을 껴안았다.
             CFLAG:9030 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ぐぎ……うぁ……」
-            PRINTFORMW 「まだ,濡れてないのに……ご主人様」
+        ELSEIF TALENT:150 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「끄익…… 으아……」
+            PRINTFORMW 「아직, 안 젖었는데…… 주인님」
             CFLAG:9030 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9030 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ひぁ……お尻に……入ってくる」
-            PRINTFORMW 夢美は身体を震わせていた
+            PRINTFORMW 「히아…… 엉덩이에…… 들어오고 있어」
+            PRINTFORMW 유메미는 몸을 떨었다.
             CFLAG:9030 = 3
         ;그 외
         ELSEIF CFLAG:9030 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ぐ,あ,いたい……」
-            PRINTFORMW 夢美は背中に爪を立ててきた
+            PRINTFORMW 「끄, 아, 아파……」
+            PRINTFORMW 유메미는 등에 손톱을 세웠다.
             CFLAG:9030 = 2
         ENDIF
     ENDIF
@@ -1733,12 +1718,12 @@ IF SELECTCOM == 31
     IF CFLAG:9031 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うあぁ……後ろから,お尻にだと」
-            PRINTFORMW 「直腸の奥まで……届いてる……」
+            PRINTFORMW 「으아아…… 뒤에서, 엉덩이라」
+            PRINTFORMW 「직장 속까지…… 닿겠어……」
         ;그 외
         ELSE
-            PRINTFORMW 「う,後ろから,お尻にだなんて……」
-            PRINTFORMW 「すごい……屈辱的……」
+            PRINTFORMW 「뒤, 뒤에서, 엉덩이라니……」
+            PRINTFORMW 「너무…… 굴욕적이야……」
         ENDIF
         CFLAG:9031 = 1
     ;2회째 이후
@@ -1746,23 +1731,23 @@ IF SELECTCOM == 31
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9031 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「奥までえぐって……Ｓ字結腸に届くくらい」
-            PRINTFORMW 「んあああ!」
+            PRINTFORMW 「안쪽까지 파고들어…… S자 결장에 닿을 만큼」
+            PRINTFORMW 「응아아아!」
             CFLAG:9031 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9031 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ぐむ……ちょっと,痛いかな」
-            PRINTFORMW 「ご主人様のもの……大きすぎるから」
+        ELSEIF TALENT:150 && (CFLAG:9031 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「끄음…… 좀, 아파」
+            PRINTFORMW 「주인님 게…… 너무 커서」
             CFLAG:9031 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9031 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふぁ,もっと,もっと激しく……」
-            PRINTFORMW 「ふふふ.ぱんっぱんって,音してる」
+            PRINTFORMW 「흐아, 더, 더 세게……」
+            PRINTFORMW 「후후후. 팡팡 소리가 나」
             CFLAG:9031 = 3
         ;그 외
         ELSEIF CFLAG:9031 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「うあ,やだ,抜いて」
-            PRINTFORMW 夢美はシーツに爪を立てて耐えていた
+            PRINTFORMW 「으아, 싫어, 빼」
+            PRINTFORMW 유메미는 시트에 손톱을 세우고 참았다.
             CFLAG:9031 = 2
         ENDIF
     ENDIF
@@ -1777,12 +1762,12 @@ IF SELECTCOM == 32
     IF CFLAG:9032 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様……よろしくお願いします」
-            PRINTFORMW 「う,ぐ,はぁぁ!」
+            PRINTFORMW 「주인님…… 잘 부탁해요」
+            PRINTFORMW 「으, 끄, 하아아!」
         ;그 외
         ELSE
-            PRINTFORMW 「う……なんで,こんなことしなくちゃ」
-            PRINTFORMW 「ぐぅぅ……あぁ」
+            PRINTFORMW 「으…… 어째서, 이런 걸 해야 해?」
+            PRINTFORMW 「끄으으…… 아아」
         ENDIF
         CFLAG:9032 = 1
     ;2회째 이후
@@ -1790,23 +1775,23 @@ IF SELECTCOM == 32
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9032 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「んあっ,ご主人様の体温を……」
-            PRINTFORMW 「外からも中からも感じます……ひぅ!」
+            PRINTFORMW 「응앗, 주인님의 체온을……」
+            PRINTFORMW 「밖에서도 안에서도 느껴요…… 히으!」
             CFLAG:9032 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9032 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「く,ちょっと,痛いかな……」
-            PRINTFORMW 「痛まなくなるよう,ぎゅって抱いて」
+        ELSEIF TALENT:150 && (CFLAG:9032 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「끄, 좀, 아프네……」
+            PRINTFORMW 「아프지 않게, 꼭 안아 줘」
             CFLAG:9032 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9032 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふぁ……お尻が,びくんびくんって……」
-            PRINTFORMW 夢美のアナルが貪欲なまでに締め付けてくる
+            PRINTFORMW 「흐아…… 엉덩이가, 움찔거려……」
+            PRINTFORMW 유메미의 애널이 탐욕스럽게 조여든다.
             CFLAG:9032 = 3
         ;그 외
         ELSEIF CFLAG:9032 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ぐっ,うああぁ……」
-            PRINTFORMW 「こんなことして,ユルユルになったら,どうすんのよ」
+            PRINTFORMW 「끅, 으아아아……」
+            PRINTFORMW 「이러다, 헐렁해지면, 어떡할 거야?」
             CFLAG:9032 = 2
         ENDIF
     ENDIF
@@ -1821,12 +1806,12 @@ IF SELECTCOM == 33
     IF CFLAG:9033 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様の上に座ってる.ふふふ」
-            PRINTFORMW 「ん,ああっ!」
+            PRINTFORMW 「주인님 위에 앉았어. 후후후」
+            PRINTFORMW 「응, 아앗!」
         ;그 외
         ELSE
-            PRINTFORMW 「これ,尖った杭に座るみたいで,なんか怖いんだけど」
-            PRINTFORMW 「ふぅ! んあぁ……」
+            PRINTFORMW 「이거, 뾰족한 말뚝에 앉은 것 같아서, 왠지 무서운데」
+            PRINTFORMW 「흐으! 응아아……」
         ENDIF
         CFLAG:9033 = 1
     ;2회째 이후
@@ -1834,23 +1819,23 @@ IF SELECTCOM == 33
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9033 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ふうぅっ! 動く,腰が動いちゃう」
-            PRINTFORMW 「見て,ご主人様.私のアナルから,いっぱい粘液が出て……ふふふ」
+            PRINTFORMW 「흐으읏! 움직여, 허리가 움직여 버려」
+            PRINTFORMW 「봐, 주인님, 내 애널에서, 잔뜩 진물이 나와…… 후후후」
             CFLAG:9033 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9033 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「まだ……濡れてないから……ぐっ」
-            PRINTFORMW 「キツイけど……奥まで入った」
+        ELSEIF TALENT:150 && (CFLAG:9033 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「아직…… 젖지 않아서…… 끅」
+            PRINTFORMW 「힘든데…… 안까지 들어갔어」
             CFLAG:9033 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9033 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「お尻が……感じすぎちゃって」
-            PRINTFORMW 「胸も……もう,どうにでもして……」
+            PRINTFORMW 「엉덩이가…… 너무 느껴」
+            PRINTFORMW 「가슴도…… 이제, 어떻게라도 해 줘……」
             CFLAG:9033 = 3
         ;그 외
         ELSEIF CFLAG:9033 <= 1 || FLAG:11 == 2
-            PRINTFORMW (お尻が……じんじんしてるっていうのに)
-            PRINTFORMW (胸を同時にもまれちゃって……んんっ!)
+            PRINTFORMW (엉덩이가…… 저릿거리는데)
+            PRINTFORMW (가슴까지 동시에 쓸어서…… 응읏!)
             CFLAG:9033 = 2
         ENDIF
     ENDIF
@@ -1865,12 +1850,12 @@ IF SELECTCOM == 34
     IF CFLAG:9034 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あ,ぐ,う……」
-            PRINTFORMW 「どう,ご主人様.私のアナルは?」
+            PRINTFORMW 「아, 끄, 으……」
+            PRINTFORMW 「주인님. 내 애널 어때?」
         ;그 외
         ELSE
-            PRINTFORMW 「う……自分で,しかも後ろに入れろだなんて」
-            PRINTFORMW 「ん……あ……ふぁぁぁ!」
+            PRINTFORMW 「으…… 스스로, 그것도 뒤로 넣으라니」
+            PRINTFORMW 「응…… 아…… 흐아아아!」
         ENDIF
         CFLAG:9034 = 1
     ;2회째 이후
@@ -1878,23 +1863,23 @@ IF SELECTCOM == 34
         LOCAL = PALAM:10 + UP:10
         ;연모+윤활Lv2이상
         IF TALENT:150 && LOCAL >= PALAMLV:2 && (CFLAG:9034 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「どう? どう? 気持ちいい?」
-            PRINTFORMW 「もっと締め付けてあげるから,中で出して」
+            PRINTFORMW 「어때? 어때? 기분 좋아?」
+            PRINTFORMW 「더 조여 줄게, 안에 싸 줘」
             CFLAG:9034 = 5
         ;연모+윤활Lv2미만
-        ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && (CFLAG:9034 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「あう……ごめんなさい.まだあんまり濡れてなくて?」
-            PRINTFORMW 「ご主人様,痛くない? 私は……我慢できるけど」
+        ELSEIF TALENT:150 && (CFLAG:9034 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「아으…… 미안해. 아직 별로 젖지 않아서」
+            PRINTFORMW 「주인님, 안 아파? 난…… 참을 수 있는데」
             CFLAG:9034 = 4
         ;윤활Lv2이상＋A감각Lv3이상
         ELSEIF LOCAL >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9034 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「はぁう……気持ちいい,気持ちいいよこれ」
-            PRINTFORMW 「お尻でするの……大好き」
+            PRINTFORMW 「하아으…… 기분 좋아, 이거 기분 좋아」
+            PRINTFORMW 「엉덩이로 하는 거…… 너무 좋아」
             CFLAG:9034 = 3
         ;그 외
         ELSEIF CFLAG:9034 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ぐむ,うぁ,キツイ……」
-            PRINTFORMW 「まだ……終わっちゃだめなの?」
+            PRINTFORMW 「끄음, 으아, 괴로워……」
+            PRINTFORMW 「이제…… 끝내면 안 돼?」
             CFLAG:9034 = 2
         ENDIF
     ENDIF
@@ -1909,39 +1894,39 @@ IF GROUPMATCH(SELECTCOM, 37, 38)
     IF CFLAG:9037 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「え,アナルって……」
-            PRINTFORMW 「むー……わかった.いいわよ」
-            PRINTFORMW 「でも,ご主人様だから許すのよ.そうでもなきゃ……」
-            PRINTFORMW 「ってこら! そんなに焦らな……んあぁぁぁ!」
+            PRINTFORMW 「뭐, 애널로……」
+            PRINTFORMW 「으…… 알았어. 할게」
+            PRINTFORMW 「근데, 주인님이니까 봐 주는 거지, 안 그러면……」
+            PRINTFORMW 「윽, 정말! 그렇게 서두르지…… 응아아아아!」
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと,そっちは……」
-            PRINTFORMW 「違う! 違うのに! んああっ!」
-            PRINTFORMW 夢美は激しく首を振って,アナルから伝わる衝撃をこらえている
+            PRINTFORMW 「잠깐, 거긴……」
+            PRINTFORMW 「아냐! 아니라고! 응아악!」
+            PRINTFORMW 유메미는 세차게 고개를 흔들며, 애널에 전해지는 충격을 참고 있다.
         ENDIF
         CFLAG:9037 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && (CFLAG:9037 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「んああ! アナルが……アナルがいいのぉ!」
+            PRINTFORMW 「응아아! 애널…… 애널 좋아!」
             SIF ABL:2 > ABL:1
-                PRINTFORMW 「おまんこなんかよりも,こっちの方が好き……!」
+                PRINTFORMW 「보지로 하는 것보다, 여기가 좋아……!」
             CFLAG:9037 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9037 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……あんまり激しくしないで……」
-            PRINTFORMW 「アナルが,壊れちゃう……」
+            PRINTFORMW 「주인님…… 너무 세게 하지 마……」
+            PRINTFORMW 「애널이, 망가져 버려……」
             CFLAG:9037 = 4
         ;A감각Lv3이상
         ELSEIF ABL:2 >= 3 && (CFLAG:9037 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んっ,ぐっ,そっちじゃないって,言ってるのに」
-            PRINTFORMW そう言いながらも夢美のアナルは,%CALLNAME:MASTER%のペニスをきつく締め上げていた
+            PRINTFORMW 「읏, 읏, 거긴 아니라고, 말했는데」
+            PRINTFORMW 그러면서도 유메미의 애널은, %CALLNAME:MASTER% 페니스를 단단히 다잡았다.
             CFLAG:9037 = 3
         ;그 외
         ELSEIF CFLAG:9037 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「痛い,痛いってば! 早く抜いて!」
-            PRINTFORMW しかし夢美のアナルは,早くも%CALLNAME:MASTER%のペニスに馴染んできていた
+            PRINTFORMW 「아파, 아프다니까! 당장 빼!」
+            PRINTFORMW 그러나 유메미의 애널은, 이미 %CALLNAME:MASTER% 페니스에 물들어 가고 있었다.
             CFLAG:9037 = 2
         ENDIF
     ENDIF
@@ -1956,31 +1941,31 @@ IF SELECTCOM == 40
     IF CFLAG:9040 == 0
         ;봉사정신Lv3이상
         IF ABL:13 >= 3
-            PRINTFORMW 「手で気持ちよくしろって?」
-            PRINTFORMW 「ふふん.この私の才能,見せつけてやるわよ」
+            PRINTFORMW 「손으로 기분 좋게 하라고?」
+            PRINTFORMW 「흐흥. 내 재능을 보여야겠어」
         ;그 외
         ELSE
-            PRINTFORMW 「手でこすれって?」
-            PRINTFORMW 「それは,やり方くらいは知ってるわよ」
-            PRINTFORMW 「でも……うっ,臭いがこんなにきついなんて」
+            PRINTFORMW 「손으로 문질러?」
+            PRINTFORMW 「그거, 방법은 알고 있어」
+            PRINTFORMW 「근데…… 윽, 냄새가 이렇게 역겹다니」
         ENDIF
         CFLAG:9040 = 1
     ;2회째 이후
     ELSE
         ;연모＋봉사정신Lv5
         IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9040 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ふふっ,どう? ご主人様」
-            PRINTFORMW 夢美は巧みな指さばきで,竿だけではなく睾丸も念入りに揉んでいた
+            PRINTFORMW 「후훗, 어때? 주인님」
+            PRINTFORMW 유메미는 능란한 손놀림으로, 장대뿐만 아니라 고환도 공들여서 문질렀다.
             CFLAG:9040 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9040 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「私にかかればこんなの簡単よ.ほら,早く出しちゃいなさい」
-            PRINTFORMW 夢美は慣れた手つきで,肉棒をしごいていた
+            PRINTFORMW 「내게 이런 건 간단하지. 자, 빨리 싸 버려」
+            PRINTFORMW 유메미는 익숙한 손놀림으로, 육봉을 훑고 있었다.
             CFLAG:9040 = 3
         ;그 외
         ELSEIF CFLAG:9040 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ううっ,臭いし……もうイヤ」
-            PRINTFORMW 「なんかアオミドロを採取したときを思い出したわよ」
+            PRINTFORMW 「으윽, 냄새…… 더는 싫어」
+            PRINTFORMW 「왠지 해캄을 채취할 때가 떠올랐어」
             CFLAG:9040 = 2
         ENDIF
     ENDIF
@@ -1995,35 +1980,35 @@ IF SELECTCOM == 41
     IF CFLAG:9041 == 0
         ;봉사정신Lv3이상
         IF ABL:13 >= 3
-            PRINTFORMW 「これを,舐めればいいのね」
-            PRINTFORMW 「ペロ……ん……え,しゃぶるのも?」
-            PRINTFORMW 「ほら,これでどうよ……んちゅ」
-            PRINTFORMW 舌の動きはぎこちなかったが,歯を立てないように努力しているのが感じられた
-        ;그 외
+            PRINTFORMW 「이걸, 핥으면 되지?」
+            PRINTFORMW 「할짝…… 응…… 응? 빠는 것도?」
+            PRINTFORMW 「자, 이건 어때…… 응, 쯉」
+            PRINTFORMW 혀의 움직임은 어색했지만, 이가 닿지 않게 노력하는 게 느껴졌다.
+        ;그 외 (1993번째 줄 원문: 「ふわっ!? はふへほほふふほほっ!」)
         ELSE
-            PRINTFORMW 「ペロ……んえっ,しょっぱい.変な味」
-            PRINTFORMW 「次は口でしゃぶれって? うう,なんでそんなことまで」
-            PRINTFORMW 夢美はしぶしぶペニスを咥えたが,歯を平気で当ててきた
-            PRINTFORMW %CALLNAME:MASTER%は夢美の両頬を指で強く押して,顎をむりやり開かせた
-            PRINTFORMW 「ふわっ!? はふへほほふふほほっ!」
+            PRINTFORMW 「할짝…… 우웩, 짜고 이상한 맛 나」
+            PRINTFORMW 「다음엔 입으로 빨아? 으으, 왜 그런 것까지……」
+            PRINTFORMW 유메미는 울며 겨자 먹기 식으로 페니스를 물었지만, 이를 세웠다.
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미의 두 뺨을 손가락으로 강하게 눌러, 턱을 억지로 벌렸다.
+            PRINTFORMW 「후왁!? 합하히 우흔 힛이야!」
         ENDIF
         CFLAG:9041 = 1
     ;2회째 이후
     ELSE
         ;연모＋봉사정신Lv5
         IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9041 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ん……ちゅむ……気持ちいい? ご主人様」
-            PRINTFORMW 亀頭だけでなく,竿や睾丸,肛門に至るまで夢美は口と舌で奉仕していった
+            PRINTFORMW 「응…… 쯉…… 기분 좋아? 주인님」
+            PRINTFORMW 귀두뿐만 아니라, 장대와 고환, 항문에 이르기까지 유메미는 입과 혀로 봉사했다.
             CFLAG:9041 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9041 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ちゅぱ……この臭い,くせになりそう」
-            PRINTFORMW 夢美は舌と指を巧みに使い,快楽を引き出そうとしていた
+            PRINTFORMW 「쮸파…… 이 냄새, 버릇될 것 같아」
+            PRINTFORMW 유메미는 혀와 손가락을 능숙하게 써서, 쾌락을 자아냈다.
             CFLAG:9041 = 3
         ;그 외
         ELSEIF CFLAG:9041 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん……ぐぇ,いやだっていうのに.これ」
-            PRINTFORMW 「臭いし汚いし,最悪」
+            PRINTFORMW 「응…… 끄에, 이거 싫다고 했는데」
+            PRINTFORMW 「냄새 나고, 더럽고, 최악이야」
             CFLAG:9041 = 2
         ENDIF
     ENDIF
@@ -2038,33 +2023,33 @@ IF SELECTCOM == 42
     IF CFLAG:9042 == 0
         ;봉사정신Lv3이상
         IF ABL:13 >= 3
-            PRINTFORMW 「胸で挟めって……わかったわよ,やってやろうじゃない」
-            PRINTFORMW 「たしかこうやって,両手で持って挟むのよね」
-            PRINTFORMW 「こう見えても胸の形には自信があるんだから」
-            PRINTFORMW 夢美は柔らかくすべすべした胸で,ペニスをしごいていた
+            PRINTFORMW 「가슴으로 끼우라니…… 알겠어, 하면 되잖아」
+            PRINTFORMW 「확실히 이렇게, 두 손으로 잡아서 끼우는 거지」
+            PRINTFORMW 「이래봬도 가슴 모양은 자신 있거든」
+            PRINTFORMW 유메미는 부드럽고 매끈한 가슴으로, 페니스를 훑고 있었다.
         ;그 외
         ELSE
-            PRINTFORMW 「胸でって……うぁぁ」
-            PRINTFORMW 「女の子の身体だったらどこでもいいわけ?」
-            PRINTFORMW 「う.臭いがもろに上がってくる」
+            PRINTFORMW 「가슴으로…… 으아아」
+            PRINTFORMW 「여자의 몸이면 어디든지 좋다는 거야?」
+            PRINTFORMW 「으. 냄새가 다 위로 올라와」
         ENDIF
         CFLAG:9042 = 1
     ;2회째 이후
     ELSE
         ;연모＋봉사정신Lv5
         IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9042 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ん……素敵.私の胸も感じて……ちゅむ」
-            PRINTFORMW 夢美は胸で挟んだペニスを,そのまま口でも咥えはじめた
+            PRINTFORMW 「응…… 멋져. 내 가슴도 느끼고…… 쯉」
+            PRINTFORMW 유메미는 가슴에 낀 페니스를, 그대로 입으로 물기 시작했다.
             CFLAG:9042 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9042 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「びくびくしてる.気持ちいいの,ほら」
-            PRINTFORMW 夢美は胸でペニスを擦り上げながら,亀頭を吐息でくすぐった
+            PRINTFORMW 「움찔거리네. 기분 좋아, 자」
+            PRINTFORMW 유메미는 가슴으로 페니스를 문지르며, 귀두를 한숨으로 간지럽혔다.
             CFLAG:9042 = 3
         ;그 외
         ELSEIF CFLAG:9042 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もっと早くなんて……これ以上無理よ」
-            PRINTFORMW 「こんなことばっかりしてたら,胸の形が崩れそうね」
+            PRINTFORMW 「더 빨리 하라니…… 더 이상은 무리야」
+            PRINTFORMW 「이런 거만 하다간, 가슴 모양 망가지겠어」
             CFLAG:9042 = 2
         ENDIF
     ENDIF
@@ -2079,26 +2064,26 @@ IF SELECTCOM == 43
     IF CFLAG:9043 == 0
         ;연모 있음
         IF TALENT:150
-            PRINTFORMW 「入れないで擦るだけ? んっと」
-            PRINTFORMW 「なんだかこれ,とてももどかしいんだけど」
-            PRINTFORMW 夢美のすべすべとした内股に,思う存分ペニスを擦りつけた
+            PRINTFORMW 「넣지 말고 문지르기만 해? 영차」
+            PRINTFORMW 「왠지 이거, 너무 아쉬운데」
+            PRINTFORMW 유메미의 매끄러운 허벅지에, 마음껏 페니스를 문질렀다.
         ;그 외
         ELSE
-            PRINTFORMW 「……入れないのね? 本当ね?」
-            PRINTFORMW 「でもこれ,今にも入りそうで……怖い」
+            PRINTFORMW 「……넣지 않아? 진짜지?」
+            PRINTFORMW 「그래도 이거, 당장이라도 들어갈 것 같아서…… 무서워」
         ENDIF
         CFLAG:9043 = 1
     ;2회째 이후
     ELSE
         ;연모 있음
         IF TALENT:150 && (CFLAG:9043 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……! あ……!」
-            PRINTFORMW 「おちんちんが出たり入ったりして.ふふ,素敵」
+            PRINTFORMW 「응……! 아……!」
+            PRINTFORMW 「자지가 들락날락거려. 후후, 멋져」
             CFLAG:9043 = 3
         ;그 외
         ELSEIF CFLAG:9043 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「うあ! おちんちんが……クリに擦れて……」
-            PRINTFORMW (あれ……なんか,入れたくなってきちゃってる)
+            PRINTFORMW 「으아! 자지가…… 클리를 문질러서……」
+            PRINTFORMW (어…… 왠지, 넣고 싶어졌어)
             CFLAG:9043 = 2
         ENDIF
     ENDIF
@@ -2113,35 +2098,35 @@ IF SELECTCOM == 44
     IF CFLAG:9044 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「う……でも,ご主人様のなら」
-            PRINTFORMW 夢美は一瞬ためらっていたが,おずおずと舌を伸ばした
+            PRINTFORMW 「으…… 그래도, 주인님이니까」
+            PRINTFORMW 유메미는 잠시 망설이다가, 쭈뼛거리며 혀를 뻗었다.
         ;그 외
         ELSE
-            PRINTFORMW 「ぐ,汚い.なんでこんなこと……」
-            PRINTFORMW 夢美は涙を流しながら奉仕していた
+            PRINTFORMW 「끄, 더러워. 왜 이런 짓을……」
+            PRINTFORMW 유메미는 눈물을 흘리며 봉사했다.
         ENDIF
         CFLAG:9044 = 1
     ;2회째 이후
     ELSE
         ;연모+순종Lv5이상
         IF TALENT:150 && ABL:10 >= 5 && (CFLAG:9044 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ちゅる……ん……ちゅば」
-            PRINTFORMW 夢美は舐めるだけではなく,アナルの奥にまで舌を差し込んでいた
+            PRINTFORMW 「쮸릅…… 응…… 쮸파」
+            PRINTFORMW 유메미는 핥을 뿐만 아니라, 애널 속까지 혀를 넣고 있었다.
             CFLAG:9044 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9044 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ちゅむ……あ,ご主人様」
-            PRINTFORMW 夢美はなんらためらうことなくアナルを舐め始めた
+            PRINTFORMW 「쯉…… 아, 주인님」
+            PRINTFORMW 유메미는 아무 망설임 없이 애널을 핥기 시작했다.
             CFLAG:9044 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9044 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……ペロ……ちゅ」
-            PRINTFORMW 夢美は舌だけではなく,唇全体を使って奉仕していた
+            PRINTFORMW 「응…… 할짝…… 쪽」
+            PRINTFORMW 혀뿐만 아니라, 입술 전체를 써서 봉사했다.
             CFLAG:9044 = 3
         ;그 외
         ELSEIF CFLAG:9044 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「えぐ……もう,やだ」
-            PRINTFORMW 夢美は泣きながらアナルを舐めている
+            PRINTFORMW 「에끅…… 더는, 싫어」
+            PRINTFORMW 유메미는 울면서 애널을 빨고 있다.
             CFLAG:9044 = 2
         ENDIF
     ENDIF
@@ -2156,25 +2141,25 @@ IF SELECTCOM == 60
     IF CFLAG:9060 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あ……気遣ってくれてるんだ」
-            PRINTFORMW 「ちょっと嬉しい」
+            PRINTFORMW 「아…… 염려했구나」
+            PRINTFORMW 「좀 기뻐」
         ;그 외
         ELSE
-            PRINTFORMW 「う……ローション?」
-            PRINTFORMW 「またろくでもないことが始まる予感しかしないんだけど」
+            PRINTFORMW 「으…… 로션?」
+            PRINTFORMW 「또 변변찮은 게 시작될 것 같은 느낌밖에 안 드는데」
         ENDIF
         CFLAG:9060 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9060 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ぬるぬる……ふふふ」
-            PRINTFORMW 夢美は積極的に,自分の身体にローションを塗り伸ばしている
+            PRINTFORMW 「미끌거려…… 후후후」
+            PRINTFORMW 유메미는 적극적으로, 자기 몸에 로션을 펴 발랐다.
             CFLAG:9060 = 3
         ;그 외
         ELSEIF CFLAG:9060 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「う,このぬるぬる感」
-            PRINTFORMW 「どう考えても,悪いことの前兆よね……」
+            PRINTFORMW 「으, 이 미끌거리는 느낌」
+            PRINTFORMW 「아무리 봐도, 나쁜 일의 전조네……」
             CFLAG:9060 = 2
         ENDIF
     ENDIF
@@ -2189,25 +2174,25 @@ IF SELECTCOM == 61
     IF CFLAG:9061 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「身体が……こんなに火照って」
-            PRINTFORMW 「こんな薬があったなんて……」
+            PRINTFORMW 「몸이…… 이렇게 후끈거리다니」
+            PRINTFORMW 「이런 약이 있었구나……」
         ;그 외
         ELSE
-            PRINTFORMW 「媚薬? そんなもの……都市伝説でしょ?」
-            PRINTFORMW そう夢美は強がったが,身体を撫でると甘い声を上げてうずくまってしまった
+            PRINTFORMW 「미약? 그거…… 도시전설이잖아?」
+            PRINTFORMW 그렇게 유메미는 저항했지만, 몸을 쓰다듬자 달콤한 목소리를 내며 웅크리고 말았다.
         ENDIF
         CFLAG:9061 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9061 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「いつものことながら,これ,凄い効き目」
-            PRINTFORMW 「伝説にある魔女の軟膏みたい.もしかしてこれ,魔法の薬?」
+            PRINTFORMW 「새삼스럽지만, 이거 효과가 뛰어나」
+            PRINTFORMW 「전설에 있는 마녀의 연고같아. 혹시 그거, 마법의 약이야?」
             CFLAG:9061 = 3
         ;그 외
         ELSEIF CFLAG:9061 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「媚薬なんて迷信,媚薬なんて迷信,媚薬なんて迷信……」
-            PRINTFORMW 夢美はぶつぶつと呟いているが,その顔は上気しており吐息は甘い音色を帯びていた
+            PRINTFORMW 「미약은 미신이야, 미약은 미신이야, 미약은 미신……」
+            PRINTFORMW 유메미는 뭐라고 중얼거리고 있지만, 그 얼굴은 상기돼 있으며 한숨은 달콤한 음색을 띠고 있었다.
             CFLAG:9061 = 2
         ENDIF
     ENDIF
@@ -2220,23 +2205,23 @@ ENDIF
 IF SELECTCOM == 62
     ;연모+오줌싸개
     IF TALENT:150 && TALENT:45 && (CFLAG:9062 < 4 || FLAG:11 == 2)
-        PRINTFORMW 「ご主人様,こんなもの飲まされたら……」
-        PRINTFORMW 「また……漏らしちゃう」
+        PRINTFORMW 「주인님, 이런 거 먹이면……」
+        PRINTFORMW 「또…… 흘릴 거야」
         CFLAG:9062 = 4
     ;연모
     ELSEIF TALENT:150 && (CFLAG:9062 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「う……あ,ご主人様」
-        PRINTFORMW 「おしっこが……」
+        PRINTFORMW 「으…… 아, 주인님」
+        PRINTFORMW 「오줌이……」
         CFLAG:9062 = 3
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:9062 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ん……この薬って」
-        PRINTFORMW 「トイレに行かせてくれる気は……ないわよね」
+        PRINTFORMW 「응…… 이 약은……」
+        PRINTFORMW 「화장실에 보내 줄 생각은…… 없나 보네」
         CFLAG:9062 = 2
     ;그 외
     ELSEIF CFLAG:9062 < 1 || FLAG:11 == 2
-        PRINTFORMW 「あ……ん……」
-        PRINTFORMW 夢美は内股になって,尿意をこらえている
+        PRINTFORMW 「아…… 응……」
+        PRINTFORMW 유메미는 안짱다리가 된 채, 요의를 참고 있다.
         CFLAG:9062 = 1
     ENDIF
     RETURN 0
@@ -2251,21 +2236,21 @@ IF SELECTCOM == 90 && TEQUIP:59
     IF CFLAG:9090 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ふふふ.ほらほら,伝説の裸エプロンですよ?」
+            PRINTFORMW 「후후후. 봐, 전설의 알몸 에이프런이에요?」
         ;그 외
         ELSE
-            PRINTFORMW 「む……裸エプロンなんて,現実でやるとは思わなかった」
+            PRINTFORMW 「으…… 알몸 에이프런이라니, 실제로 할 줄은 몰랐어」
         ENDIF
         CFLAG:9090 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9090 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「おかえりなさいませご主人様……なんてね」
+            PRINTFORMW 「어서오세요, 주인님…… 이라고 할까?」
             CFLAG:9090 = 3
         ;그 외
         ELSEIF CFLAG:9090 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「うーん.なんかすっごく悔しい,この格好」
+            PRINTFORMW 「음. 이런 꼴, 왠지 엄청 억울해」
             CFLAG:9090 = 2
         ENDIF
     ENDIF
@@ -2276,21 +2261,21 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
     IF CFLAG:8823 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「もう外すの? 結構面白かったのに」
+            PRINTFORMW 「이제 벗어? 꽤 재밌었는데」
         ;그 외
         ELSE
-            PRINTFORMW 「脱いだ方が恥ずかしくなくなるって……変よね」
+            PRINTFORMW 「벗는 쪽이 부끄럽지 않다니…… 이상하네」
         ENDIF
         CFLAG:8823 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8823 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「また裸エプさせてね」
+            PRINTFORMW 「또 알몸 에이프런하자」
             CFLAG:8823 = 3
         ;그 외
         ELSEIF CFLAG:8022 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「全裸になって安心するなんて……私もおかしくなったなぁ」
+            PRINTFORMW 「알몸이 돼서 안심한다니…… 나도 이상하네」
             CFLAG:8823 = 2
         ENDIF
     ENDIF
@@ -2305,25 +2290,25 @@ IF SELECTCOM == 100 && TEQUIP:50
     IF CFLAG:9100 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「え? ビデオなんて撮るの?」
-            PRINTFORMW 「……男の人が撮影好きって,本当だったんだ」
+            PRINTFORMW 「뭐? 비디오로 찍어?」
+            PRINTFORMW 「……남자가 촬영 좋아한다는 게, 사실이구나」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ! ビデオなんてなんでこの世界にあるの!」
-            PRINTFORMW 「やめて! 撮らないで!」
+            PRINTFORMW 「안 돼! 비디오가 왜 이 세계에 있는 거야!」
+            PRINTFORMW 「그만해! 찍지 마!」
         ENDIF
         CFLAG:9100 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9100 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ねえ,ダビングして一本は手元に置いとかない?」
-            PRINTFORMW 「で,えっちのときに流すの.ほら,素敵じゃない?」
+            PRINTFORMW 「저기, 복사하고 하나는 소장할래?」
+            PRINTFORMW 「그리고, 섹스할 때 트는 거야. 어때, 멋지지?」
             CFLAG:9100 = 3
         ;그 외
         ELSEIF CFLAG:9100 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「やだ……こんなとこ撮って……しかも売るだなんて」
-            PRINTFORMW 「こんなのばらまかれたら,もう学会に戻れない……」
+            PRINTFORMW 「싫어…… 이런 걸 찍어서…… 거기다 판다니」
+            PRINTFORMW 「이런 게 퍼지면, 더 이상 학계로 돌아갈 수 없어……」
             CFLAG:9100 = 2
         ENDIF
     ENDIF
@@ -2338,34 +2323,34 @@ IF SELECTCOM == 103 && TEQUIP:56
     IF CFLAG:9103 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ん……鏡の前で,なにを?」
-            PRINTFORMW 夢美は鏡と%CALLNAME:MASTER%を,交互に見比べている
+            PRINTFORMW 「응…… 거울 앞에서, 뭘 해?」
+            PRINTFORMW 유메미는 거울과 %조사처리(CALLNAME:MASTER, "을")% 번갈아 보고 있다.
         ;노출벽Lv3이상
         ELSEIF ABL:14 >= 3
-            PRINTFORMW 「ふふふ……」
-            PRINTFORMW 夢美は鏡に映った自分を見て,妖艶な笑みを浮かべた
+            PRINTFORMW 「후후후……」
+            PRINTFORMW 유메미는 거울에 비친 자신을 보고, 요염한 미소를 띠었다.
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと,こんなとこでなにする気?」
-            PRINTFORMW 夢美は恥ずかしげに鏡から視線を外した
+            PRINTFORMW 「잠깐, 여기에서 하려고?」
+            PRINTFORMW 유메미는 수줍은 듯 거울에서 시선을 뗐다.
         ENDIF
         CFLAG:9103 = 1
     ;2회째 이후
     ELSE
         ;연모+노출벽Lv3이상
         IF TALENT:150 && ABL:14 >= 3 && (CFLAG:9103 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「素敵……どう,ご主人様?」
-            PRINTFORMW 夢美は己の裸身を誇るように鏡に晒した
+            PRINTFORMW 「멋져…… 어때, 주인님?」
+            PRINTFORMW 유메미는 자기 나신을 자랑스럽게 거울에 비쳤다.
             CFLAG:9103 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9103 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「……恥ずかしい」
-            PRINTFORMW 夢美は手で裸身を隠したが,鏡からは目を離せずにいた
+            PRINTFORMW 「……부끄러워」
+            PRINTFORMW 유메미는 손으로 나신을 숨겼지만, 거울에서 눈을 떼지 못 했다.
             CFLAG:9103 = 4
         ;노출벽Lv3이상
-        ELSEIF ABL:14 >= 3
-            PRINTFORMW 「ほら,ふふふ」
-            PRINTFORMW 夢美は裸身が映されているのも気にせず,ふざけてモデルのようなポーズをとっていた
+        ELSEIF ABL:14 >= 3 && (CFLAG:9103 <= 2 || FLAG:11 == 2)
+            PRINTFORMW 「봐, 후후후」
+            PRINTFORMW 유메미는 알몸이 비치고 있는 것도 개의치 않고, 시시덕거리며 모델 같은 포즈를 취하고 있었다.
             CFLAG:9103 = 3
         ;그 외
         ;ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
@@ -2380,21 +2365,21 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
     IF CFLAG:8822 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「もっと見られても,よかったんだけどな」
+            PRINTFORMW 「더 보여 주는 게, 좋았을 텐데」
         ;그 외
         ELSE
-            PRINTFORMW 夢美は小さく安堵の息を吐いた
+            PRINTFORMW 유메미는 작게 안도의 숨을 내쉬었다.
         ENDIF
         CFLAG:8822 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8822 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 夢美は一瞬,名残惜しそうな視線を鏡に送った
+            PRINTFORMW 유메미는 순간, 서운한 듯한 시선을 거울에 보냈다
             CFLAG:8822 = 3
         ;그 외
         ELSEIF CFLAG:8822 <= 1 || FLAG:11 == 2
-            PRINTFORMW 夢美は安心したかのように肩の力を抜いた
+            PRINTFORMW 유메미는 안심한 것처럼 어깨의 힘을 뺐다.
             CFLAG:8822 = 2
         ENDIF
     ENDIF
@@ -2410,30 +2395,30 @@ IF SELECTCOM == 104 && TEQUIP:52
     IF CFLAG:9104 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「首輪なんかつけて,どうするの?」
-            PRINTFORMW 「外へ? ……ま,まぁ,ご主人様がどうしてもっていうなら」
+            PRINTFORMW 「목걸이를 채우고, 어떻게 할 거야?」
+            PRINTFORMW 「밖에? ……무, 뭐, 주인님이 원한다면……」
         ;그 외
         ELSE
-            PRINTFORMW 「外に行くって……裸に首輪のこの格好で!?」
-            PRINTFORMW 「いや! せめてマントだけでも羽織らせて!」
+            PRINTFORMW 「밖에 간다고…… 알몸에 목걸이만 채우고!?」
+            PRINTFORMW 「안 돼! 적어도 망토만은 입게 해 줘!」
         ENDIF
         CFLAG:9104 = 1
     ;2회째 이후
     ELSE
         ;연모＋노출벽Lv3이상
         IF TALENT:150 && ABL:14 >= 3 && (CFLAG:9104 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……私の裸……綺麗ですか?」
-            PRINTFORMW 「ふふふ,もっと人目のある場所に行きましょうよ」
+            PRINTFORMW 「주인님…… 내 알몸…… 아름다워요?」
+            PRINTFORMW 「후후후, 더 사람 보는 곳으로 가요」
             CFLAG:9104 = 4
         ;노출벽Lv3이상
         ELSEIF ABL:14 >= 3 && (CFLAG:9104 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 裸に首輪だけの姿で野外に出され,夢美の顔は赤く染まっている
-            PRINTFORMW (やだ.恥ずかしいのに……どうしてちょっぴり楽しいの?)
+            PRINTFORMW 알몸에 목걸이만 단 모습으로 밖에 나가자, 유메미의 얼굴은 빨갛게 물든다.
+            PRINTFORMW (싫어. 부끄러운데…… 왜 서서히 재미가 생기는 거야?)
             CFLAG:9104 = 3
         ;그 외
         ELSEIF CFLAG:9104 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「こ,このくらいでまいると思ったら大間違いよ」
-            PRINTFORMW 夢美は胸を張って強がったが,物音がするたびに慌てて身を縮こまらせていた
+            PRINTFORMW 「이, 이 정도로 굴복할 거라 생각하면 오산이야」
+            PRINTFORMW 유메미는 가슴을 펴고 허세를 부렸지만, 소리가 날 때마다 황급히 몸을 웅크렸다.
             CFLAG:9104 = 2
         ENDIF
     ENDIF
@@ -2442,13 +2427,13 @@ IF SELECTCOM == 104 && TEQUIP:52
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8821 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「結局,誰にも見られなかったわ.ちぇっ」
-        PRINTFORMW 部屋に戻ってきたのに,なぜか夢美はなかなか首輪を外そうとしなかった
+        PRINTFORMW 「결국, 아무도 바라보지 않았어. 쳇」
+        PRINTFORMW 방으로 돌아왔으나, 왠지 유메미는 좀처럼 목걸이를 벗지 않았다.
         CFLAG:8821 = 2
     ;그 외
     ELSEIF CFLAG:8821 < 1 || FLAG:11 == 2
-        PRINTFORMW 「う…………ふう」
-        PRINTFORMW 緊張しっぱなしだった夢美は,部屋に戻ってきてようやく安堵のため息をついた
+        PRINTFORMW 「으………… 휴」
+        PRINTFORMW 잔뜩 긴장했던 유메미는, 방에 돌아와서야 겨우 안도의 한숨을 내쉬었다.
         CFLAG:8821 = 1
     ENDIF
     RETURN 0
@@ -2462,23 +2447,23 @@ ENDIF
 IF SELECTCOM == 111
     ;연모+오줌싸개+야외 플레이
     IF TALENT:150 && TALENT:45 && TEQUIP:52 && (CFLAG:9111 < 5 || FLAG:11 == 2)
-        PRINTFORMW 「おしっこ出ちゃったけど……片付けの手間がなくていいよね」
+        PRINTFORMW 「오줌 싸도…… 청소할 필요가 없어서 좋네」
         CFLAG:9111 = 5
     ;연모+오줌싸개
     ELSEIF TALENT:150 && TALENT:45 && (CFLAG:9111 < 4 || FLAG:11 == 2)
-        PRINTFORMW 「ん! 漏れちゃった……ごめんなさい,ご主人様」
+        PRINTFORMW 「응! 싸 버렸어…… 미안해, 주인님」
         CFLAG:9111 = 4
     ;노출벽Lv5
     ELSEIF ABL:14 >= 5 && (CFLAG:9111 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「う,ほら,おもらししちゃってる」
+        PRINTFORMW 「으, 봐, 오줌 싸고 있어」
         CFLAG:9111 = 3
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:9111 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「あ,あれ,おしっこ,出ちゃった……」
+        PRINTFORMW 「어, 어라, 오줌, 싸 버렸어……」
         CFLAG:9111 = 2
     ;그 외
     ELSEIF CFLAG:9111 < 1 || FLAG:11 == 2
-        PRINTFORMW 「やだ……漏らしてなんかない……違うの」
+        PRINTFORMW 「싫어…… 싸지 않았어…… 아니라고」
         CFLAG:9111 = 1
     ENDIF
     RETURN 0
@@ -2487,28 +2472,28 @@ ENDIF
 IF SELECTCOM == 620
     ;연모+오줌싸개+야외 플레이
     IF TALENT:150 && TALENT:45 && TEQUIP:52 && (CFLAG:9620 < 5 || FLAG:11 == 2)
-        PRINTFORMW 「ん……んぁ,見て,ご主人様」
-        PRINTFORMW 「ふふふ,犬みたいでしょ?」
+        PRINTFORMW 「응…… 응아, 봐, 주인님」
+        PRINTFORMW 「후후후, 개같지?」
         CFLAG:9620 = 5
     ;연모+오줌싸개
     ELSEIF TALENT:150 && TALENT:45 && (CFLAG:9620 < 4 || FLAG:11 == 2)
-        PRINTFORMW 「あん……こんなところで……」
-        PRINTFORMW 「癖になっちゃいそう」
+        PRINTFORMW 「앙…… 이럴 때……」
+        PRINTFORMW 「버릇이 됐네」
         CFLAG:9620 = 4
     ;노출벽Lv5
     ELSEIF ABL:14 >= 5 && (CFLAG:9620 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「う,あ,出ちゃう……」
-        PRINTFORMW 「ほら見て,凄い色してるから」
+        PRINTFORMW 「으, 아, 싼다……」
+        PRINTFORMW 「자, 봐, 색이 진하지」
         CFLAG:9620 = 3
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:9620 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「んん……こんなとこ見たら,醒めちゃわない?」
-        PRINTFORMW 「かえって興奮するの? 変なの」
+        PRINTFORMW 「으응…… 이런 걸 보면, 가라앉지 않아?」
+        PRINTFORMW 「오히려 흥분된다고? 이상하네」
         CFLAG:9620 = 2
     ;그 외
     ELSEIF CFLAG:9620 < 1 || FLAG:11 == 2
-        PRINTFORMW 「出ちゃう……出ちゃう……!」
-        PRINTFORMW 「見ないで……音も聞かないで!」
+        PRINTFORMW 「나와…… 나와……!」
+        PRINTFORMW 「보지 마…… 소리도 듣지 마!」
         CFLAG:9620 = 1
     ENDIF
     RETURN 0
@@ -2523,32 +2508,32 @@ IF SELECTCOM == 171 && TEQUIP:25
     IF CFLAG:9171 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「う……あ……これって」
-            PRINTFORMW 「で,電気?」
+            PRINTFORMW 「으…… 아…… 이건」
+            PRINTFORMW 「저, 전기?」
         ;그 외
         ELSE
-            PRINTFORMW 「いた! 痛い! やめて!」
-            PRINTFORMW 「なにこれ……電気?」
+            PRINTFORMW 「악! 아파! 하지 마!」
+            PRINTFORMW 「이거 뭐야…… 전기?」
         ENDIF
         CFLAG:9171 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상＋마조끼Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9171 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「うぐぅ……はぁっ! あぁぁ!」
-            PRINTFORMW 夢美は悲鳴を上げたが,その声はどこか嬉しそうだ
+            PRINTFORMW 「으윽…… 하앗! 아아아!」
+            PRINTFORMW 유메미는 비명을 질렀지만, 그 목소리는 어딘가 기쁜 듯하다.
             CFLAG:9171 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9171 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「これ,苦手なの……ご主人様」
+            PRINTFORMW 「이거, 괴로워…… 주인님」
             CFLAG:9171 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9171 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「これ……お腹の中からジンジンって……ひぅ!」
+            PRINTFORMW 「이거…… 뱃속이 찌릿해…… 히으!」
             CFLAG:9171 = 3
         ;그 외
         ELSEIF CFLAG:9171 <= 1 || FLAG:11 == 2
-            PRINTFORMW 夢美は歯を食いしばって耐えている
+            PRINTFORMW 유메미는 이를 악물며 참고 있다.
             CFLAG:9171 = 2
         ENDIF
     ENDIF
@@ -2557,15 +2542,15 @@ IF SELECTCOM == 171 && TEQUIP:25
 ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8851 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「ご主人様……もう勘弁して」
+        PRINTFORMW 「주인님…… 이제 용서해 줘」
         CFLAG:8851 = 3
     ;A감각Lv3이상＋마조끼Lv3이상
     ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8851 < 2 || FLAG:11 == 2)
-        PRINTFORMW 夢美の身体はビクンと大きく跳ねた
+        PRINTFORMW 유메미의 몸은 크게 움찔거렸다.
         CFLAG:8851 = 2
     ;그 외
     ELSEIF CFLAG:8851 < 1 || FLAG:11 == 2
-        PRINTFORMW 「う……あ……」
+        PRINTFORMW 「으…… 아……」
         CFLAG:8851 = 1
     ENDIF
     RETURN 0
@@ -2580,35 +2565,35 @@ IF SELECTCOM == 172 && TEQUIP:25
     IF CFLAG:9172 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あっ,んっ,つぶつぶが……」
-            PRINTFORMW 「一個ずつ,入ってくる……」
+            PRINTFORMW 「앗, 읏, 알알이……」
+            PRINTFORMW 「하나씩, 들어 와……」
         ;그 외
         ELSE
-            PRINTFORMW 「数珠? ブディズムでも始める気?」
-            PRINTFORMW 「やだ! そんなところに……入れるなんて……」
+            PRINTFORMW 「염주? 불교에 귀의하게?」
+            PRINTFORMW 「안 돼! 그런 곳에…… 넣는다니……」
         ENDIF
         CFLAG:9172 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상＋마조끼Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「３つめ……んっ! ４つめ……ふぁっ! ５つめ……くぅ!」
-            PRINTFORMW 夢美は入ってくるビーズを数えながら,そのたびに甘い声を上げていた
+            PRINTFORMW 「3개…… 읏! 4개…… 흐앗! 5개…… 끄으!」
+            PRINTFORMW 유메미는 들어온 구슬을 헤아리며, 그때마다 달콤한 신음을 질렀다.
             CFLAG:9172 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9172 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,もっとゆっくり……ひゃうん!」
-            PRINTFORMW ビーズが入るたびに,夢美は激しく身悶えした
+            PRINTFORMW 「주인님, 더 살살…… 햐응!」
+            PRINTFORMW 비즈가 들어갈 때마다, 유메미는 심하게 몸부림쳤다.
             CFLAG:9172 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んあっ……一個一個が……気持ちよすぎて」
-            PRINTFORMW 夢美のアナルは貪欲にビーズを飲み込んでいる
+            PRINTFORMW 「응앗…… 한 알 한 알이…… 너무 기분 좋게 해」
+            PRINTFORMW 유메미의 애널은 게걸스럽게 구슬을 삼키고 있다.
             CFLAG:9172 = 3
         ;그 외
         ELSEIF CFLAG:9172 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「そんなに入れたら……お腹が破裂しちゃう」
-            PRINTFORMW だが夢美のアナルは,ビーズをやすやすと飲み込んでいった
+            PRINTFORMW 「그렇게 넣으면…… 배가 터질 것 같아」
+            PRINTFORMW 그러나 유메미의 항문은, 비즈를 쉽게 소화했다.
             CFLAG:9172 = 2
         ENDIF
     ENDIF
@@ -2617,18 +2602,18 @@ IF SELECTCOM == 172 && TEQUIP:25
 ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8852 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「あんっ,んああぁ!」
-        PRINTFORMW 「ご主人様……私のアナルが,淋しがってます」
+        PRINTFORMW 「아응, 응아아아!」
+        PRINTFORMW 「주인님…… 내 애널이, 외로워요」
         CFLAG:8852 = 3
     ;A감각Lv3이상＋마조끼Lv3이상
     ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8852 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「んぁぁぁぁぁ! いいのぉ!」
-        PRINTFORMW 夢美は一気に引き抜かれた快感に悶えていた
+        PRINTFORMW 「응아아아아아! 좋아!」
+        PRINTFORMW 유메미는 한번에 빼는 쾌감에 몸부림쳤다.
         CFLAG:8852 = 2
     ;그 외
     ELSEIF CFLAG:8852 < 1 || FLAG:11 == 2
-        PRINTFORMW 「あうぁぁぁ!」
-        PRINTFORMW 「そんなに強くしたら……お尻壊れちゃう……」
+        PRINTFORMW 「아으아아아!」
+        PRINTFORMW 「그렇게 세게 하면…… 엉덩이 찢어져……」
         CFLAG:8852 = 1
     ENDIF
     RETURN 0
@@ -2643,29 +2628,29 @@ IF SELECTCOM == 173 && TEQUIP:25
     IF CFLAG:9173 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うあっ! いくらなんでも無理……んっ」
+            PRINTFORMW 「으악! 아무리 그래도 무리…… 윽」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,裂ける! 裂けちゃう!」
+            PRINTFORMW 「안 돼, 찢어져! 찢어진다고!」
         ENDIF
         CFLAG:9173 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상＋마조끼Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9173 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ん……こんなに拡がるなんて,人体の神秘ね」
+            PRINTFORMW 「응…… 이렇게까지 벌어진다니, 인체의 신비네」
             CFLAG:9173 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9173 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「こ,これ,全然慣れないんだけど」
+            PRINTFORMW 「이, 이거, 전혀 익숙해지지 않아」
             CFLAG:9173 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9173 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「うぁ……拡がってきてる」
+            PRINTFORMW 「으아…… 벌어지고 있어」
             CFLAG:9173 = 3
         ;그 외
         ELSEIF CFLAG:9173 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「痛い! どうする気よ!」
+            PRINTFORMW 「아파! 어쩔 생각이야!」
             CFLAG:9173 = 2
         ENDIF
     ENDIF
@@ -2674,16 +2659,16 @@ IF SELECTCOM == 173 && TEQUIP:25
 ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8853 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「アナルがどんどんビラビラになってきてる」
-        PRINTFORMW 「ふふふ.こんなに拡げてなにに使う気?」
+        PRINTFORMW 「애널이 점점 헐렁해지고 있어」
+        PRINTFORMW 「후후후. 이렇게 벌려서 어떻게 할 생각이야?」
         CFLAG:8853 = 3
     ;A감각Lv3이상＋마조끼Lv3이상
     ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8853 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ひゃうんっ! ふあぁ……」
+        PRINTFORMW 「햐으응! 흐아아……」
         CFLAG:8853 = 2
     ;그 외
     ELSEIF CFLAG:8853 < 1 || FLAG:11 == 2
-        PRINTFORMW 「ああああぁぁっ!」
+        PRINTFORMW 「아아아아아악!」
         CFLAG:8853 = 1
     ENDIF
     RETURN 0
@@ -2698,35 +2683,35 @@ IF SELECTCOM == 174 && TEQUIP:25
     IF CFLAG:9174 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「そのぶっとい注射器って……まさか浣腸?」
-            PRINTFORMW 「ご,ご主人様.それだけはかんべ……んんんんっ!」
+            PRINTFORMW 「그 두꺼운 주사기는…… 설마 관장?」
+            PRINTFORMW 「주, 주인님. 그것만은 제발…… 으으으응!」
         ;그 외
         ELSE
-            PRINTFORMW 「え,やだ,それって,浣腸じゃないの」
-            PRINTFORMW 「冗談でしょ? やだ,やだ,やだぁぁぁぁ!」
+            PRINTFORMW 「엑, 싫어, 그거, 관장이잖아」
+            PRINTFORMW 「장난치는 거지? 아니, 안 돼, 싫어어어어어!」
         ENDIF
         CFLAG:9174 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상＋마조끼Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9174 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 浣腸液は驚くほど入り,夢美は腹はまるで妊婦のように膨らんだ
-            PRINTFORMW 「はぁ……はぁ……」
-            PRINTFORMW %CALLNAME:MASTER%は夢美の腹に足を乗せ,強く押した
-            PRINTFORMW 「やあぁぁぁ! だめえぇぇぇ!」
+            PRINTFORMW 관장액이 경이로울 만큼 들어가서, 유메미의 배는 마치 산모처럼 불어났다.
+            PRINTFORMW 「하아…… 하아……」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 유메미의 배에 발을 얹고, 강하게 눌렀다.
+            PRINTFORMW 「꺄아아아아! 안 돼에에에!」
             CFLAG:9174 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9174 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「お願い……トイレに行かせて」
+            PRINTFORMW 「제발…… 화장실에 보내 줘」
             CFLAG:9174 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9174 <= 2 || FLAG:11 == 2)
-            PRINTFORMW (出ちゃいそうだけど,出しちゃったら……)
-            PRINTFORMW (でも……それもいいかも……)
+            PRINTFORMW (나올 것 같은데, 싸 버리면……)
+            PRINTFORMW (하지만…… 그것도 괜찮을까……)
             CFLAG:9174 = 3
         ;그 외
         ELSEIF CFLAG:9174 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん……はぁ……お腹がパンパン……」
+            PRINTFORMW 「응…… 하아…… 배가 빵빵해……」
             CFLAG:9174 = 2
         ENDIF
     ENDIF
@@ -2741,29 +2726,29 @@ IF SELECTCOM == 174 && TEQUIP:25 == 0
     IF CFLAG:8854 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うあああっ! ご主人様!」
+            PRINTFORMW 「으아아악! 주인님!」
         ;그 외
         ELSE
-            PRINTFORMW 「だめぇ! 見ないでっ!」
+            PRINTFORMW 「안 돼에! 보지 마악!」
         ENDIF
         CFLAG:8854 = 1
     ;2회째 이후
     ELSE
         ;연모＋A감각Lv3이상＋마조끼Lv3이상
         IF TALENT:150 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8854 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ふあ……ふふ……あははは……」
+            PRINTFORMW 「흐아…… 후후…… 아하하하……」
             CFLAG:8854 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:8854 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「……これが大学教授の姿なんて,思ってもらえないよね」
+            PRINTFORMW 「……이게 대학 교수의 꼴이라니, 상상도 못 할 일이겠지」
             CFLAG:8854 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8854 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「見な……いで……」
+            PRINTFORMW 「보지…… 마……」
             CFLAG:8854 = 3
         ;그 외
         ELSEIF CFLAG:8854 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「いやあぁぁぁぁ!」
+            PRINTFORMW 「꺄아아아아아!」
             CFLAG:8854 = 2
         ENDIF
     ENDIF
@@ -2779,11 +2764,11 @@ IF SELECTCOM == 175 && TEQUIP:25
     IF CFLAG:9175 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「う,空気入れられるなんて……」
-            PRINTFORMW 「子供の頃,カエルで遊んだ罰かしら」
+            PRINTFORMW 「으, 공기를 넣는다니……」
+            PRINTFORMW 「어렸을 때, 개구리한테 장난 쳤던 벌이구나」
         ;그 외
         ELSE
-            PRINTFORMW 「や,やめてやめて! そんなの……ぐっ!」
+            PRINTFORMW 「그, 그만, 그만해! 그건…… 끅!」
         ENDIF
         CFLAG:9175 = 1
     ;2회째 이후
@@ -2798,11 +2783,11 @@ IF SELECTCOM == 175 && TEQUIP:25
             ;CFLAG:9175 = 4
         ;A감각Lv3이상＋마조끼Lv3이상
         IF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9175 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「あ,お腹張ってるのが……なんか楽しい」
+            PRINTFORMW 「아, 배가 불어나는 게…… 왠지 재밌어」
             CFLAG:9175 = 3
         ;그 외
         ELSEIF CFLAG:9175 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「う……あ……お腹キツイ……」
+            PRINTFORMW 「으…… 아…… 배 아파……」
             CFLAG:9175 = 2
         ENDIF
     ENDIF
@@ -2811,15 +2796,15 @@ IF SELECTCOM == 175 && TEQUIP:25
 ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8855 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「あ……恥ずかしい」
+        PRINTFORMW 「아…… 부끄러워」
         CFLAG:8855 = 3
     ;A감각Lv3이상＋마조끼Lv3이상
     ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8855 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ふふふ,聞いた? 今の汚らしい音」
+        PRINTFORMW 「후후후, 내 추잡한 소리, 들었어?」
         CFLAG:8855 = 2
     ;그 외
     ELSEIF CFLAG:8855 < 1 || FLAG:11 == 2
-        PRINTFORMW 「やめて! 聞かないで!」
+        PRINTFORMW 「그만해! 듣지 마!」
         CFLAG:8855 = 1
     ENDIF
     RETURN 0
@@ -2833,30 +2818,30 @@ IF SELECTCOM == 180
     IF CFLAG:9180 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「そ,そんなとこ……」
-            PRINTFORMW 「汚いから……ご主人様」
+            PRINTFORMW 「거, 거긴……」
+            PRINTFORMW 「더러우니까…… 주인님」
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと,どこ舐めてるの!」
-            PRINTFORMW 「やめなさ……んっ!」
+            PRINTFORMW 「잠깐, 어딜 핥는 거야!」
+            PRINTFORMW 「그만두…… 읏!」
         ENDIF
         CFLAG:9180 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9180 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「やだ……気持ちよすぎる」
-            PRINTFORMW 「ご主人様,もっと舐めて……」
+            PRINTFORMW 「싫어…… 기분 너무 좋아」
+            PRINTFORMW 「주인님, 더 핥아 줘……」
             CFLAG:9180 = 4
         ;A감각Lv3이상
         ELSEIF ABL:2 >= 3 && (CFLAG:9180 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「やだ……ぞくぞくしちゃう」
-            PRINTFORMW 「お願い……もっと……」
+            PRINTFORMW 「싫어…… 오싹거려」
+            PRINTFORMW 「부탁이니까…… 더……」
             CFLAG:9180 = 3
         ;그 외
         ELSEIF CFLAG:9180 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「お尻舐めるのが好きなんて,この変態……んっ」
-            PRINTFORMW 夢美のアナルは敏感に反応していた
+            PRINTFORMW 「엉덩이 핥는 걸 좋아한다니, 이 변태…… 읏」
+            PRINTFORMW 유메미의 항문은 민감하게 반응하고 있었다.
             CFLAG:9180 = 2
         ENDIF
     ENDIF
@@ -2872,27 +2857,27 @@ IF SELECTCOM == 191 && TEQUIP:35
     IF CFLAG:9191 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「その機械はなに? ……おっぱいを絞るって」
-            PRINTFORMW 「こんなものでそう上手くできる……ふああぁん!」
-            PRINTFORMW 搾乳機から与えられる快感に,夢美は身をよじった
+            PRINTFORMW 「그 기계는 뭐야? ……젖을 짠다고?」
+            PRINTFORMW 「이런 게 그렇게 잘 될…… 흐아아앙!」
+            PRINTFORMW 착유기가 주는 쾌감에, 유메미는 몸을 꼬았다.
         ;그 외
         ELSE
-            PRINTFORMW 「なにその機械? え,おっぱいを絞るって」
-            PRINTFORMW 「ちょっと,私のこと牛かなにかだと思って……んぐああっ!」
-            PRINTFORMW 搾乳機からの刺激が強すぎたのか,夢美の口からは悲鳴と唾液がもれはじめた
+            PRINTFORMW 「뭐야, 그 기계? 뭐? 젖을 짠다고?」
+            PRINTFORMW 「잠깐, 날 무슨 소로 생각하는…… 응끄아아앗!」
+            PRINTFORMW 착유기의 자극이 너무 강했는지, 유메미의 입에서 비명과 타액이 새기 시작했다.
         ENDIF
         CFLAG:9191 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9191 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「この機械……絞るだけなのに」
-            PRINTFORMW 「なんでこんなに気持ちいいの……!」
+            PRINTFORMW 「이 기계…… 쥐어짜는 것뿐인데」
+            PRINTFORMW 「왜 이렇게 기분 좋은 거야……!」
             CFLAG:9191 = 3
         ;그 외
         ELSEIF CFLAG:9191 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「んああ……おっぱいが……」
-            PRINTFORMW 夢美は呆然とした目で,貯められていく母乳を見ていた
+            PRINTFORMW 「응아아…… 젖이……」
+            PRINTFORMW 유메미는 멍한 눈으로, 쌓이는 모유를 보고 있었다.
             CFLAG:9191 = 2
         ENDIF
     ENDIF
@@ -2901,13 +2886,13 @@ IF SELECTCOM == 191 && TEQUIP:35
 ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8861 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「できればそれ,ご主人様に飲んでもらいたいな」
-        PRINTFORMW 「夢美印の苺ミルクよ?」
+        PRINTFORMW 「될 수 있으면 이거, 주인님이 마셨으면 해」
+        PRINTFORMW 「유메미 표 딸기 우유니까」
         CFLAG:8861 = 2
     ;그 외
     ELSEIF CFLAG:8861 < 1 || FLAG:11 == 2
-        PRINTFORMW 「んああ……」
-        PRINTFORMW 「やだこれ,痣にならないわよね?」
+        PRINTFORMW 「응아아……」
+        PRINTFORMW 「싫어, 이거, 멍 들지 않겠지?」
         CFLAG:8861 = 1
     ENDIF
     RETURN 0
@@ -2921,40 +2906,40 @@ IF SELECTCOM == 220
     IF CFLAG:9220 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「いた! 痛い!」
-            PRINTFORMW 「ご主人様,私,なにか悪いことした?」
+            PRINTFORMW 「아야! 아파!」
+            PRINTFORMW 「주인님, 나, 잘못한 거 있어?」
         ;그 외
         ELSE
-            PRINTFORMW 「きゃあ! なんで叩くの……あぐぅ!」
-            PRINTFORMW 「お尻なんて叩かれたの,小学生のとき以来だわ」
+            PRINTFORMW 「까아! 왜 때려…… 아윽!」
+            PRINTFORMW 「엉덩이 맞은 건, 초등학생 이후 처음이야」
         ENDIF
         CFLAG:9220 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9220 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様っ,もっと,もっと叩いて!」
-            PRINTFORMW 「この,いけない夢美に罰を!」
+            PRINTFORMW 「주인님, 더, 더 때려 줘!」
+            PRINTFORMW 「이, 못된 유메미에게 벌을 줘!」
             CFLAG:9220 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9220 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「あ,うぁ,ご主……人様ぁ」
-            PRINTFORMW 「気持ち……いいです……」
+            PRINTFORMW 「아, 으아, 주인…… 님」
+            PRINTFORMW 「기분…… 좋아요……」
             CFLAG:9220 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9220 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,ごめんなさい」
-            PRINTFORMW 夢美は体を固くして耐えていた
+            PRINTFORMW 「주인님, 죄송해요」
+            PRINTFORMW 유메미는 몸을 경직시키며 견뎌냈다.
             CFLAG:9220 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9220 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「う……あ……ぐ……」
-            PRINTFORMW (痛いのが……なんかすごく気持ちいい)
+            PRINTFORMW 「으…… 아…… 끄……」
+            PRINTFORMW (아픈 게…… 왠지 엄청 기분 좋아)
             CFLAG:9220 = 3
         ;그 외
         ELSEIF CFLAG:9220 <= 1 || FLAG:11 == 2
-            PRINTFORMW 夢美は歯を食いしばって痛みに耐えている
-            PRINTFORMW 「今に見てなさいよ」
+            PRINTFORMW 유메미는 이를 악물고 아픔을 견디고 있다.
+            PRINTFORMW 「두고 보자」
             CFLAG:9220 = 2
         ENDIF
     ENDIF
@@ -2969,40 +2954,40 @@ IF SELECTCOM == 221
     IF CFLAG:9221 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うぁ! ご主人様!」
-            PRINTFORMW 「鞭って,こんなに痛かったんだ……」
+            PRINTFORMW 「으아! 주인님!」
+            PRINTFORMW 「채찍은, 이렇게 아픈 거구나……」
         ;그 외
         ELSE
-            PRINTFORMW 「うっ,ぐっ,鞭なんて……」
-            PRINTFORMW 「旧世紀の体罰じゃ……あるまいし……」
+            PRINTFORMW 「윽, 끅, 채찍이라니……」
+            PRINTFORMW 「구세기적 체벌도…… 아니고……」
         ENDIF
         CFLAG:9221 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9221 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「ふあ……うぁあ! 鞭……もっと……ひゃぁ!」
-            PRINTFORMW もはや夢美はまったく痛みを感じておらず,ただ快感を貪っていた
+            PRINTFORMW 「흐아…… 으아아! 채찍…… 더…… 햐아!」
+            PRINTFORMW 이제 유메미는 전혀 통증을 느끼지 않았고, 그저 쾌감을 탐하고 있었다.
             CFLAG:9221 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9221 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「鞭が……こんなに気持ちいいなんて」
-            PRINTFORMW 「アメとムチって,もしかしてどっちもご褒美の意味じゃないかしら」
+            PRINTFORMW 「채찍이…… 이렇게 기분 좋다니」
+            PRINTFORMW 「당근과 채찍은, 혹시 둘 다 포상이 아닐까?」
             CFLAG:9221 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9221 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「これがほんとの愛の鞭なんて……ぐっ!」
-            PRINTFORMW 何度も鞭で叩かれながらも,夢美にはまだ余裕がありそうだった
+            PRINTFORMW 「이게 진짜 사랑의 채찍이구나…… 끅!」
+            PRINTFORMW 계속해서 채찍으로 맞으면서도, 유메미는 아직 여유가 많아 보였다.
             CFLAG:9221 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9221 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「うっ……ああっ……ん」
-            PRINTFORMW 口から洩れ出る呻き声が,どこか艶を帯びていた
+            PRINTFORMW 「윽…… 아앗…… 응」
+            PRINTFORMW 입에서 새는 신음 소리에, 어딘가 색기를 띠고 있엇다.
             CFLAG:9221 = 3
         ;그 외
         ELSEIF CFLAG:9221 <= 1 || FLAG:11 == 2
-            PRINTFORMW 夢美は黙ったまま痛みに耐えていた
-            PRINTFORMW 「科学や宗教が……暴力に屈するとでも」
+            PRINTFORMW 유메미는 묵묵히 통증을 견뎠다.
+            PRINTFORMW 「과학과 종교가…… 폭력에 꺾일 것 같아?」
             CFLAG:9221 = 2
         ENDIF
     ENDIF
@@ -3017,36 +3002,36 @@ IF SELECTCOM == 222
     IF CFLAG:9222 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「へえ,ご主人様って鍼灸も心得てたんだ」
-            PRINTFORMW 「……というわけじゃ,ないみたいね」
-            PRINTFORMW 「なんとなくわかってたけど……たっ! いたたたたた!」
+            PRINTFORMW 「오, 주인님 침술도 알고 있구나」
+            PRINTFORMW 「……아닌가 보네」
+            PRINTFORMW 「뭘 하려는지 알 것 같은데…… 악! 아파아아아아!」
         ;그 외
         ELSE
-            PRINTFORMW 「ちょっと針って,それはさすがに洒落にならないわよ」
-            PRINTFORMW 「しかもどこに刺そうとして……うあぁぁぁぁぁ!」
+            PRINTFORMW 「잠깐, 바늘이라니, 그건 역시 말도 안 되잖아」
+            PRINTFORMW 「거기다 어디에 찌르려고…… 으아아아아아아!」
         ENDIF
         CFLAG:9222 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9222 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「ふあぁ……もっと……もっと刺して……」
-            PRINTFORMW もう刺すところがないのに,夢美はだらしなくよだれを垂らしながらおねだりしてきた
+            PRINTFORMW 「흐아아…… 더…… 더 찔러 줘……」
+            PRINTFORMW 더 이상 찌를 곳이 없는데도, 유메미는 그냥 침 흘리며 조르고 있다.
             CFLAG:9222 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9222 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「あ……う……ぴりぴりして,気持ちよすぎて……ダメ」
-            PRINTFORMW 「体中……串刺しになってるみたい……」
+            PRINTFORMW 「아…… 으…… 따끔거리고, 기분 너무 좋아서…… 안 되겠어」
+            PRINTFORMW 「몸이…… 꼬챙이가 되어 가고 있어……」
             CFLAG:9222 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9222 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「乳首が剣山みたいになってる」
-            PRINTFORMW %CALLNAME:MASTER%が針を爪で弾くと,夢美は甲高い声で鳴いた
+            PRINTFORMW 「유두가 바늘꽂이처럼 됐어」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 바늘을 손톱으로 치자, 유메미가 새된 소리로 울었다.
             CFLAG:9222 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9222 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 夢美は体を震わせているが,さほど痛みを感じていないようだ
-            PRINTFORMW (あれ,なんで気持ちいいのかな.本当に鍼治療? まさか……)
+            PRINTFORMW 유메미는 몸을 떨고 있지만, 별로 통증을 느끼지 않는 듯하다.
+            PRINTFORMW (어, 왜 기분 좋지? 진짜 침술이야? 설마……)
             CFLAG:9222 = 3
         ;그 외
         ELSEIF CFLAG:9222 <= 1 || FLAG:11 == 2
@@ -3066,37 +3051,37 @@ IF SELECTCOM == 224 && TEQUIP:40
     IF CFLAG:9224 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「縛られるなんて……ほんとに奴隷気分」
-            PRINTFORMW 「これ,亀甲縛りって言うんでしょ? え,違う? 菱縄?」
+            PRINTFORMW 「묶이다니…… 정말 노예가 된 기분이야」
+            PRINTFORMW 「이거, 귀갑묶기지? 응, 아냐? 마름모꼴 묶기?」
         ;그 외
         ELSE
-            PRINTFORMW 「ん……緊縛なんて,そんな伝統芸能を」
-            PRINTFORMW 「というか,よくもまあ……器用よね」
+            PRINTFORMW 「응…… 긴박이라, 이런 전통 예능을……」
+            PRINTFORMW 「뭐라고 할까, 잘도 무슨…… 재주가 있네」
         ENDIF
         CFLAG:9224 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9224 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「んんっ……すごい,素敵」
-            PRINTFORMW 「服なんか着るより,ずっと綺麗になった.私の身体」
+            PRINTFORMW 「응읏…… 대단해, 멋져」
+            PRINTFORMW 「옷을 입는 것보다, 내 몸이 훨씬 예뻐졌어」
             CFLAG:9224 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9224 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様ぁ……びりびりしてきて……助けて」
+            PRINTFORMW 「주인님…… 찌릿거려…… 도와 줘」
             CFLAG:9224 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9224 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「動けないと,けっこう退屈なんだけど」
+            PRINTFORMW 「움직이지 못 하니까, 꽤 심심한데」
             CFLAG:9224 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9224 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……」
-            PRINTFORMW (やだ,縄が食い込んだところがびりびりする……)
+            PRINTFORMW 「응……」
+            PRINTFORMW (안 돼, 밧줄이 죄여드는 곳이 짜릿해……)
             CFLAG:9224 = 3
         ;그 외
         ELSEIF CFLAG:9224 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「腕とか……痺れてきたんだけど」
+            PRINTFORMW 「팔이…… 저리는데」
             CFLAG:9224 = 2
         ENDIF
     ENDIF
@@ -3104,14 +3089,14 @@ IF SELECTCOM == 224 && TEQUIP:40
 ;종료시
 ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
     SIF FLAG:11 == 2 || CFLAG:8872 < 1 + TALENT:150
-        PRINTFORM 夢美は自分の裸身に残った縄の跡を,
+        PRINTFORM 유메미는 자기 나신에 남은 줄의 흔적을, 
     ;연모
     IF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
-        PRINTFORMW うっとりした目で眺めていた
+        PRINTFORMW 황홀한 눈으로 바라보고 있었다.
         CFLAG:8872 = 2
     ;그 외
     ELSEIF CFLAG:8872 < 1 || FLAG:11 == 2
-        PRINTFORMW 恨めしそうな目で眺めていた
+        PRINTFORMW 원망스러운 눈으로 바라보고 있었다.
         CFLAG:8872 = 1
     ENDIF
     RETURN 0
@@ -3126,39 +3111,39 @@ IF SELECTCOM == 225 && TEQUIP:41
     IF CFLAG:9225 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「目隠しプレイ? それもまた素敵」
-            PRINTFORMW 「む……実際やってみると,見えないだけであんまり面白くない?」
+            PRINTFORMW 「눈가리기 플레이? 그것도 멋지네」
+            PRINTFORMW 「음…… 실제로 해 보니까, 보이지 않기만 해서 별로 재미 없는 것 같은데?」
         ;그 외
         ELSE
-            PRINTFORMW 「いまさら目隠ししてどうするの.犯人の顔はしっかり覚えているけど?」
-            PRINTFORMW 「ちょっと返事しなさいよ.ここにいるんでしょう? ねえ!」
-            PRINTFORMW 夢美は手探りで%CALLNAME:MASTER%の姿を求めている
+            PRINTFORMW 「이제 와서 눈 가리고 뭐 해. 범인 얼굴은 다 외웠는데?」
+            PRINTFORMW 「대답해 봐. 여기 있지? 어?」
+            PRINTFORMW 유메미는 손으로 더듬으며 %CALLNAME:MASTER%의 존재를 바라고 있다.
         ENDIF
         CFLAG:9225 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9225 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「ふふ,ご主人様.なにもできない夢美を早く可愛がって」
+            PRINTFORMW 「후후, 주인님. 아무 것도 못 하는 유메미를 어서 귀여워 해 줘」
             CFLAG:9225 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9225 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様……早く……なにかして」
+            PRINTFORMW 「주인님…… 빨리…… 뭐라도 해 줘」
             CFLAG:9225 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9225 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「次になにをされるかわからないって,ちょっと怖いんだけど……」
+            PRINTFORMW 「다음에 뭘 할지 모르니까, 좀 무서운데……」
             CFLAG:9225 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9225 <= 2 || FLAG:11 == 2)
-            PRINTFORMW (なんだか怖いような,楽しみなような)
-            PRINTFORMW (なんだろ,この気持ち)
+            PRINTFORMW (왠지 무서우면서도 즐거운걸)
+            PRINTFORMW (이 기분, 뭐지?)
             CFLAG:9225 = 3
         ;그 외
         ELSEIF CFLAG:9225 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「こんなことしたって,なんの意味が……」
-            PRINTFORMW 「ほら,早く外しなさい」
-            PRINTFORMW 夢美の声にはわずかに怯えた色が混じっていた
+            PRINTFORMW 「이런 걸 해서 무슨 의미가 있어……」
+            PRINTFORMW 「자, 어서 벗겨 줘」
+            PRINTFORMW 유메미의 목소리에 약간 겁이 느껴진다.
             CFLAG:9225 = 2
         ENDIF
     ENDIF
@@ -3166,14 +3151,14 @@ IF SELECTCOM == 225 && TEQUIP:41
 ;종료시
 ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
     SIF FLAG:11 == 2 || CFLAG:8871 < 1 + TALENT:150
-        PRINTFORMW 「う……」
+        PRINTFORMW 「으……」
     ;연모
     IF TALENT:150 && (CFLAG:8871 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「……うん.ご主人様の顔みたら,ほっとするわ」
+        PRINTFORMW 「……응. 주인님 얼굴을 보니까, 안심했어」
         CFLAG:8871 = 2
     ;그 외
     ELSEIF CFLAG:8871 < 1 || FLAG:11 == 2
-        PRINTFORMW 夢美は眩しげに目を細めている
+        PRINTFORMW 유메미는 눈부신 듯 눈을 가늘게 뜨고 있다.
         CFLAG:8871 = 1
     ENDIF
     RETURN 0
@@ -3185,38 +3170,38 @@ ENDIF
 ;개시시
 IF SELECTCOM == 226 && TEQUIP:42
     SIF FLAG:11 == 2 || CFLAG:9226 <= 1 || (CFLAG:9226 <= 2 && ABL:21 >= 3) || (CFLAG:9226 <= 3 && TALENT:150) || (CFLAG:9226 <= 4 && TALENT:150 && ABL:21 >= 3) || (CFLAG:9226 <= 5 && TALENT:150 && ABL:21 >= 5)
-        PRINTFORM ボールギャグを付けられた夢美は,
+        PRINTFORM 볼 개그를 낀 유메미는, 
     ;처음
     IF CFLAG:9226 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 不思議そうな顔で%CALLNAME:MASTER%を見ている
+            PRINTFORMW 희한한 듯 %조사처리(CALLNAME:MASTER, "를")% 보고 있다.
         ;그 외
         ELSE
-            PRINTFORMW 憎しみのこもった視線を%CALLNAME:MASTER%に送った
+            PRINTFORMW 증오 어린 시선을 %CALLNAME:MASTER%에게 던졌다.
         ENDIF
         CFLAG:9226 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9226 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 顔を上気させて%CALLNAME:MASTER%に擦り寄ってきた
+            PRINTFORMW 얼굴을 상기시키고 %CALLNAME:MASTER%에게 바짝 다가갔다.
             CFLAG:9226 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9226 <= 4 || FLAG:11 == 2)
-            PRINTFORMW うつむきながらも息を荒くしていた
+            PRINTFORMW 고개를 떨구면서도 숨을 몰아쉬고 있다.
             CFLAG:9226 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9226 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 物欲しげな目を%CALLNAME:MASTER%に向けた
+            PRINTFORMW 탐내는 듯한 눈을 %CALLNAME:MASTER%에게 보냈다.
             CFLAG:9226 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9226 <= 2 || FLAG:11 == 2)
-            PRINTFORMW なぜか少し興奮している
+            PRINTFORMW 왠지 조금 흥분한 것 같다.
             CFLAG:9226 = 3
         ;그 외
         ELSEIF CFLAG:9226 <= 1 || FLAG:11 == 2
-            PRINTFORMW 不満げな顔をしている
+            PRINTFORMW 불만스러운 얼굴을 하고 있다.
             CFLAG:9226 = 2
         ENDIF
     ENDIF
@@ -3225,13 +3210,13 @@ IF SELECTCOM == 226 && TEQUIP:42
 ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
     ;연모
     IF TALENT:150 && (CFLAG:8872 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ん……」
-        PRINTFORMW 夢美は顔中,自分のよだれにまみれていた
+        PRINTFORMW 「응……」
+        PRINTFORMW 유메미의 얼굴은, 자기 침으로 젖어 있었다.
         CFLAG:8872 = 2
     ;그 외
-    ELSEIF CFLAG:8873 < 1 || FLAG:11 == 2
-        PRINTFORMW 「うあ……」
-        PRINTFORMW 夢美の顎には,幾筋ものよだれの跡があった
+    ELSEIF CFLAG:8872 < 1 || FLAG:11 == 2
+        PRINTFORMW 「으아……」
+        PRINTFORMW 유메미의 턱엔, 몇 가닥의 침의 자취가 있었다.
         CFLAG:8872 = 1
     ENDIF
     RETURN 0
@@ -3245,30 +3230,30 @@ IF SELECTCOM == 230
     IF CFLAG:9230 == 0
         ;봉사정신Lv3이상
         IF ABL:13 >= 3
-            PRINTFORMW 「ふわっ! むぐっ!」
-            PRINTFORMW 夢美は一瞬驚いたようだったが,すぐに手馴れた様子で舌をからめてきた
+            PRINTFORMW 「흐어억! 므끄윽!」
+            PRINTFORMW 유메미는 한순간 놀란 듯했지만, 곧 능숙한 솜씨로 혀를 감았다.
         ;그 외
         ELSE
-            PRINTFORMW 「うぐぁ! もがぁ!」
-            PRINTFORMW 夢美は反射的に歯を立てようとしていたが,むりやり顎を開かせた
+            PRINTFORMW 「으끄아! 므어억!」
+            PRINTFORMW 유메미는 반사적으로 이를 세우려 했지만, 억지로 턱을 벌렸다.
         ENDIF
         CFLAG:9230 = 1
     ;2회째 이후
     ELSE
         ;연모＋봉사정신Lv5
         IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9230 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「んっ,あっ,ふむぁ!」
-            PRINTFORMW 強引なピストン運動にも,夢美はすぐに調子を合わせてきた
+            PRINTFORMW 「읍, 억, 흐므아!」
+            PRINTFORMW 억지스러운 피스톤 운동에도, 유메미는 곧 호흡을 맞췄다.
             CFLAG:9230 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9230 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んぶ……むぶ……んん」
-            PRINTFORMW 夢美は目を閉じたまま,されるがままになっている
+            PRINTFORMW 「읍…… 므읍…… 으응」
+            PRINTFORMW 유메미는 눈을 감은 채, 하는 대로 따랐다.
             CFLAG:9230 = 3
         ;그 외
         ELSEIF CFLAG:9230 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あぐ! げほぉ! いやぁ……んあぁぁ!」
-            PRINTFORMW 夢美は何度も咳き込んだが,そのたびにペニスを押し込みなおした
+            PRINTFORMW 「어윽! 콜록! 시러…… 응아아아!」
+            PRINTFORMW 유메미는 자꾸 콜록거렸지만, 그 때마다 페니스를 넣어 멈췄다.
             CFLAG:9230 = 2
         ENDIF
     ENDIF
@@ -3283,40 +3268,40 @@ IF GROUPMATCH (SELECTCOM, 231, 232, 233)
     IF CFLAG:9231 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あ……指……嬉しい」
-            PRINTFORMW 「え? どこまで突っ込んでるの!? んっあああああ!」
+            PRINTFORMW 「아…… 손가락…… 좋아」
+            PRINTFORMW 「응? 어디까지 넣는 거야!? 응끄아아아아아!」
         ;그 외
         ELSE
-            PRINTFORMW 「はぁ……うぁ,指を……何本入れる気よ」
-            PRINTFORMW 「うそっ! 手を丸ごとって……うぐあぁぁぁぁ!」
+            PRINTFORMW 「하아…… 으아, 손가락을…… 몇 개나 집어넣는 거야」
+            PRINTFORMW 「뭐야! 손을 전부…… 으끄아아아아아!」
         ENDIF
         CFLAG:9231 = 1
     ;2회째 이후
     ELSE
         ;연모＋마조끼Lv5이상
         IF TALENT:150 && ABL:21 >= 5 && (CFLAG:9231 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「ご主人様,もっと奥まで突っ込んで,中で指を動かしてっ!」
-            PRINTFORMW %CALLNAME:MASTER%の手は,手首までやすやすと夢美の中に埋没していた
+            PRINTFORMW 「주인님, 더 안쪽까지 넣고, 안쪽에서 손을 움직여 줘!」
+            PRINTFORMW %CALLNAME:MASTER% 손은, 손목까지 쉽게 유메미 안으로 들어갔다.
             CFLAG:9231 = 6
         ;연모＋마조끼Lv3이상
         ELSEIF TALENT:150 && ABL:21 >= 3 && (CFLAG:9231 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「あ,うぅ,ご,ご主人様」
-            PRINTFORMW 「ほら,ちゃんと入ったでしょ?」
+            PRINTFORMW 「아, 으으, 주, 주인님」
+            PRINTFORMW 「봐, 제대로 들어갔지?」
             CFLAG:9231 = 5
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9231 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「う……あ……入った」
-            PRINTFORMW 「人体の神秘ね……なんで入っちゃうのかしら」
+            PRINTFORMW 「으…… 아…… 들어갔어」
+            PRINTFORMW 「인체의 신비네…… 어떻게 들어간 걸까?」
             CFLAG:9231 = 4
         ;마조끼Lv3이상
         ELSEIF ABL:21 >= 3 && (CFLAG:9231 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「うああ……痛い,痛い……」
-            PRINTFORMW 泣き叫びながらも,夢美の身体は快楽を感じ始めていた
+            PRINTFORMW 「으아아…… 아파, 아파……」
+            PRINTFORMW 울부짖으면서도, 유메미의 몸은 쾌락을 느끼고 있었다.
             CFLAG:9231 = 3
         ;그 외
         ELSEIF CFLAG:9231 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「んあああ! きつい,きついから!」
-            PRINTFORMW 「無理だって,早く抜いて!」
+            PRINTFORMW 「응아아아! 아파, 아프다니까!」
+            PRINTFORMW 「무리라고, 빨리 빼!」
             CFLAG:9231 = 2
         ENDIF
     ENDIF
@@ -3456,25 +3441,25 @@ IF GROUPMATCH (SELECTCOM, 307, 308) && !TALENT:ASSI:120
     IF CFLAG:9307 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ふふっ,まさか女に生まれてこんな経験ができるなんて」
-            PRINTFORMW 「ほら! 股を開きなさい!」
+            PRINTFORMW 「후훗, 설마 여자로 태어나서 이런 경험을 하다니」
+            PRINTFORMW 「자! 다리 벌려!」
         ;그 외
         ELSE
-            PRINTFORMW 「犯せって……私に!?」
-            PRINTFORMW 「ご,ごめん.恨まないでね? 恨むならあっちよ」
+            PRINTFORMW 「범하라고…… 내가!?」
+            PRINTFORMW 「미, 미안해. 원망하지 않을 거지? 원망할 건 저쪽이야」
         ENDIF
         CFLAG:9307 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9307 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふぁ……あぁん! 女の子って気持ちいい……!」
-            PRINTFORMW 夢美はちらりと%CALLNAME:MASTER%を見ると,小さく舌を出した
+            PRINTFORMW 「흐아…… 아앙! 여자, 기분 좋아……!」
+            PRINTFORMW 유메미는 언뜻 %조사처리(CALLNAME:MASTER, "를")% 보고, 살짝 혀를 내밀었다.
             CFLAG:9307 = 3
         ;그 외
         ELSEIF CFLAG:9307 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あっ! ひぅ! ごめ,ごめんなさい……」
-            PRINTFORMW (あー,でも女の子を犯すのはちょっと楽しいなぁ)
+            PRINTFORMW 「앗! 히으! 미안, 미안해……」
+            PRINTFORMW (아, 근데 여자를 범하는 거 좀 재밌네)
             CFLAG:9307 = 2
         ENDIF
     ENDIF
@@ -3489,23 +3474,23 @@ IF SELECTCOM == 350 && TEQUIP:53
     IF CFLAG:9350 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「お風呂? ……む,わかった」
-            PRINTFORMW 「またなんか,新しいえっちを試そうとしてるんでしょ?」
+            PRINTFORMW 「목욕? ……으, 알았어」
+            PRINTFORMW 「또 뭔가, 새로운 H를 시험하려는 거구나?」
         ;그 외
         ELSE
-            PRINTFORMW %CALLNAME:MASTER%が一緒に入ってきたのを見て,夢美は不機嫌そうな顔をしている
-            PRINTFORMW 「せっかくリラックスできると思ったのに……ここでもやるの?」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 같이 들어오는 걸 보고, 유메미는 언짢은 듯한 표정을 짓고 있다.
+            PRINTFORMW 「모처럼 진정하려 했는데…… 여기서도 하는 거야?」
         ENDIF
         CFLAG:9350 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9350 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「さて,お背中でも流しましょうか?」
+            PRINTFORMW 「그럼, 등목시켜 줄까?」
             CFLAG:9350 = 3
         ;그 외
         ELSEIF CFLAG:9350 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「たまには一人で入らせてくれない?」
+            PRINTFORMW 「가끔은 혼자 둘 수 없어?」
             CFLAG:9350 = 2
         ENDIF
     ENDIF
@@ -3516,21 +3501,21 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
     IF CFLAG:8824 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ん,さっぱりした」
+            PRINTFORMW 「응, 상쾌해」
         ;그 외
         ELSE
-            PRINTFORMW 「ボディーソープだけ,やけに高級品だったわね」
+            PRINTFORMW 「바디 로션만, 쓸데없이 고급품이네」
         ENDIF
         CFLAG:8824 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8824 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……ソープの残り香,いい匂い」
+            PRINTFORMW 「응…… 비누 냄새, 좋아」
             CFLAG:8824 = 3
         ;그 외
         ELSEIF CFLAG:8824 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「そのうち,お風呂場がトラウマになったらどうするのよ」
+            PRINTFORMW 「이러다, 욕실에 트라우마가 생기면 어쩌지?」
             CFLAG:8824 = 2
         ENDIF
     ENDIF
@@ -3545,25 +3530,25 @@ IF SELECTCOM == 351 && TEQUIP:54
     IF CFLAG:9351 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ん,あったかい.気持ちいい」
-            PRINTFORMW 「さて,さっぱりしたところで,再開しましょうか」
+            PRINTFORMW 「응, 따뜻해서 기분 좋아」
+            PRINTFORMW 「자, 상쾌해졌는데, 다시 할까?」
         ;그 외
         ELSE
-            PRINTFORMW 「ふぅ……シャワーは嬉しいんだけど」
-            PRINTFORMW 「なんか嫌な予感がするのよね.なにか企んでない?」
+            PRINTFORMW 「휴…… 샤워는 좋은데」
+            PRINTFORMW 「왠지 꺼림칙한 예감이 들어. 무슨 꿍꿍이가 있어?」
         ENDIF
         CFLAG:9351 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9351 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んー,いいシャワーでした」
-            PRINTFORMW 「じゃ,ご主人様.もう上がる? それともまたこれ使ってオナニーする?」
+            PRINTFORMW 「응, 샤워 잘했어」
+            PRINTFORMW 「자, 주인님. 이제 갈까? 아니면 이걸 써서 자위해?」
             CFLAG:9351 = 3
         ;그 외
         ELSEIF CFLAG:9351 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「さっぱりするのはいいんだけど……」
-            PRINTFORMW 「どうせまたこれ使ってオナニーしろっていうんでしょ?」
+            PRINTFORMW 「깨끗해진 건 좋은데……」
+            PRINTFORMW 「어차피 또 이걸 써서 자위시킬 거잖아?」
             CFLAG:9351 = 2
         ENDIF
     ENDIF
@@ -3578,30 +3563,30 @@ IF SELECTCOM == 352
     IF CFLAG:9352 == 0
         ;봉사정신Lv3이상
         IF ABL:13 >= 3
-            PRINTFORMW 「タオルもスポンジも使えないのが,難しいけど……」
-            PRINTFORMW 「ん,ほら……どう? ご主人様」
+            PRINTFORMW 「수건도 스펀지도 못 쓰니까 어렵네……」
+            PRINTFORMW 「음, 자…… 어때? 주인님」
         ;그 외
         ELSE
-            PRINTFORMW 「手も使わず,身体だけで洗えって……う」
-            PRINTFORMW 「なかなか……難しいんだけど?」
+            PRINTFORMW 「손도 쓰지 않고, 몸만으로 닦으라니…… 으」
+            PRINTFORMW 「너무…… 어렵잖아?」
         ENDIF
         CFLAG:9352 = 1
     ;2회째 이후
     ELSE
         ;연모＋봉사정신Lv5
         IF TALENT:150 && ABL:13 >= 5 && (CFLAG:9352 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「はぁっ,はぁっ,ご主人様……」
-            PRINTFORMW 「これ,私の方が,気持ちよくなっちゃって……きゃうんっ!」
+            PRINTFORMW 「하앗, 하앗, 주인님……」
+            PRINTFORMW 「이거, 내가, 기분 좋아져서…… 꺄으응!」
             CFLAG:9352 = 4
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:9352 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふふふ,ほら見て」
-            PRINTFORMW 「二人とも泡の繭に包まれているみたいで,素敵」
+            PRINTFORMW 「후후후, 자, 봐」
+            PRINTFORMW 「둘이서 거품에 휩싸이는 것 같아서, 멋져」
             CFLAG:9352 = 3
         ;그 외
         ELSEIF CFLAG:9352 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ちょっとこれ,凄く疲れるんだけど」
-            PRINTFORMW 「それになんか擦れるから……んっ」
+            PRINTFORMW 「잠깐, 이거, 피곤한데」
+            PRINTFORMW 「거기에 뭔가 스쳐서…… 읏」
             CFLAG:9352 = 2
         ENDIF
     ENDIF
@@ -3617,30 +3602,30 @@ IF SELECTCOM == 500 && TEQUIP:90
     IF CFLAG:9500 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うわ! なにそれ? 召喚魔法? 凄い!」
-            PRINTFORMW 「う,でも用途はやっぱりこっちなのね」
+            PRINTFORMW 「우와! 이거 뭐야? 소환 마법? 굉장해!」
+            PRINTFORMW 「으, 근데 용도는 역시 그거구나」
         ;그 외
         ELSE
-            PRINTFORMW 「ど,どっから召喚したのよ,それ」
-            PRINTFORMW 「いやぁ! 絡み付いて,これ……やめてぇ!」
+            PRINTFORMW 「어, 어떻게 소환한 거야, 이거」
+            PRINTFORMW 「싫어! 휘감겨, 이거…… 하지 마!」
         ENDIF
         CFLAG:9500 = 1
     ;2회째 이후
     ELSE
         ;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
         IF TALENT:150 && EXP:53 >= 20 && (CFLAG:9500 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ふふふ,触手さんだ.素敵」
-            PRINTFORMW 「今日もいっぱい犯してくださいね」
+            PRINTFORMW 「후후후, 촉수네. 멋져」
+            PRINTFORMW 「오늘도 많이 범해 줘요」
             CFLAG:9500 = 4
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9500 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん……せっかく凄い召喚魔法ができるのに」
-            PRINTFORMW 「えっちなことにしか使わないなんて……まぁ,私も好きだけど」
+            PRINTFORMW 「음…… 모처럼 굉장한 소환 마법을 봤는데」
+            PRINTFORMW 「야한 짓만 한다니…… 뭐, 나도 만족하지만」
             CFLAG:9500 = 3
         ;그 외
         ELSEIF CFLAG:9500 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「う……あ……うねうねが,絡み付いて」
-            PRINTFORMW 「いや……気持ち悪い」
+            PRINTFORMW 「으…… 아…… 구불거리는 게, 얽혀 와」
+            PRINTFORMW 「싫어…… 징그러워」
             CFLAG:9500 = 2
         ENDIF
     ENDIF
@@ -3649,18 +3634,18 @@ IF SELECTCOM == 500 && TEQUIP:90
 ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
     ;연모+촉수경험 20 이상(소비 기본치가 3분의 1이 됨)
     IF TALENT:150 && EXP:53 >= 20 && (CFLAG:8901 < 3 || FLAG:11 == 2)
-        PRINTFORMW 触手から解放された夢美は,残念そうな表情を浮かべた
-        PRINTFORMW 「もっといっぱいして欲しかったのに……」
+        PRINTFORMW 촉수에게 해방된 유메미는, 아쉬운 표정을 지었다.
+        PRINTFORMW 「더 많이 하고 싶었는데……」
         CFLAG:8901 = 3
     ;연모
     ELSEIF TALENT:150 && (CFLAG:8901 < 2 || FLAG:11 == 2)
-        PRINTFORMW 触手から解放された夢美は,興味深そうな顔であなたを見ている
-        PRINTFORMW 「あれはどこから召喚された何なのかしら.旧支配者?」
+        PRINTFORMW 촉수에게 해방된 유메미는, 흥미로운 듯한 얼굴로 당신을 보고 있다.
+        PRINTFORMW 「저건 어디에서 소환된 뭔지 궁금하네. 옛 지배자?」
         CFLAG:8901 = 2
     ;그 외
     ELSEIF CFLAG:8901 < 1 || FLAG:11 == 2
-        PRINTFORMW 触手から解放された夢美は,動く気力もなく座り込んでいる
-        PRINTFORMW 「やだ……もう……触手やだ」
+        PRINTFORMW 촉수에게 해방된 유메미는, 움직일 기력조차 없는지 주저앉고 있다.
+        PRINTFORMW 「싫어…… 이제…… 촉수 싫어」
         CFLAG:8901 = 1
     ENDIF
     RETURN 0
@@ -3674,39 +3659,39 @@ IF SELECTCOM == 602
     IF CFLAG:9602 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「む……むぐ……はぁ」
-            PRINTFORMW 快感のために集中できないのか,夢美の舌使いはぎこちなかった
+            PRINTFORMW 「므…… 므윽…… 하아」
+            PRINTFORMW 쾌감 때문에 집중 못 하는지, 유메미의 혀놀림이 어색하다.
         ;그 외
         ELSE
-            PRINTFORMW 「う……こんな,んむ……格好で」
-            PRINTFORMW 体勢に抵抗があるのか,夢美の舌使いは鈍かった
+            PRINTFORMW 「으…… 이런, 으음…… 자세로」
+            PRINTFORMW 자세에 거부감이 있는지, 유메미의 혀놀림은 둔했다.
         ENDIF
         CFLAG:9602 = 1
     ELSE
         ;연모+봉사정신Lv3이상+C감각Lv3이상
         IF TALENT:150 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 5 || FLAG:11 == 2)
-            PRINTFORMW 「あ,んちゅ,もう,ちゅむ……ぷはぁ」
-            PRINTFORMW 夢美は快感の波に押し流されながらも,巧みに舌を動かしている
+            PRINTFORMW 「아, 응, 쪽, 이제, 쯉…… 푸하아」
+            PRINTFORMW 유메미는 쾌감의 파도에 휩쓸리면서도, 교묘하게 혀를 쓰고 있다.
             CFLAG:9602 = 6
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9602 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「んちゅ……ふふ,ご主人様」
-            PRINTFORMW 「一緒に気持ちよくなれるって,素敵よね」
+            PRINTFORMW 「응츄…… 후후, 주인님」
+            PRINTFORMW 「같이 기분 좋아질 수 있다니, 멋지네」
             CFLAG:9602 = 5
         ;굴복각인Lv3+봉사정신Lv3이상+C감각Lv3이상
         ELSEIF MARK:2 == 3 && ABL:13 >= 3 && ABL:0 >= 3 && (CFLAG:9602 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「ちゅば……ちゅむ……ぴちゃ」
-            PRINTFORMW 夢美は快感に震えながらも,舌使いをやめようとはしない
+            PRINTFORMW 「쮸파…… 쯉…… 피쨔」
+            PRINTFORMW 유메미는 쾌감에 떨면서도, 혀놀림을 멈추지 않는다.
             CFLAG:9602 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9602 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ちゅむ,ん,ちゅぱ……んん」
-            PRINTFORMW 夢美は自分に与えられる快感に負けじと,積極的に舌を動かしている
+            PRINTFORMW 「쯉, 음, 쮸파…… 으응」
+            PRINTFORMW 유메미는 자기에게 주어지는 쾌감에 질세라, 적극적으로 혀를 움직이고 있다.
             CFLAG:9602 = 3
         ;그 외
         ELSEIF CFLAG:9602 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ん……んむ……」
-            PRINTFORMW 夢美はぎこちなく舌を動かしている
+            PRINTFORMW 「응…… 으음……」
+            PRINTFORMW 유메미는 어색하게 혀를 움직이고 있다.
             CFLAG:9602 = 2
         ENDIF
     ENDIF
@@ -3721,35 +3706,35 @@ IF SELECTCOM == 610
     IF CFLAG:9610 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「あむ……んん……ふぁぁ」
-            PRINTFORMW 「２人……同時で……んぁぁ!」
+            PRINTFORMW 「아음…… 으응…… 흐아아」
+            PRINTFORMW 「둘이서…… 동시에…… 응아아!」
         ;그 외
         ELSE
-            PRINTFORMW 「あっ……ぐ,うぁ!」
-            PRINTFORMW (ああ私,３Ｐしちゃってる……)
+            PRINTFORMW 「악…… 끄, 으아!」
+            PRINTFORMW (아, 나, 3P 당하고 있어……)
         ENDIF
         CFLAG:9610 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9610 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「んぁぁ,ご主人様……」
-            PRINTFORMW 「もう,なにがなんだかわからなく……くぅぅぅん!」
+            PRINTFORMW 「응아아, 주인님……」
+            PRINTFORMW 「이제, 뭐가 뭔지 모르겠…… 끄으으응!」
             CFLAG:9610 = 5
         ;V감각Lv3이상＋A감각Lv3이상
         ELSEIF ABL:1 >= 3 && ABL:2 >= 3 && (CFLAG:9610 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「あっ,あっ,ああっ! もう,もうダメ!」
-            PRINTFORMW 「体中,感じすぎちゃって……もうなにもわかんない!」
+            PRINTFORMW 「앗, 앗, 아앗! 이제, 이제 안 돼!」
+            PRINTFORMW 「몸이, 너무 느껴서…… 이제 아무것도 모르겠어!」
             CFLAG:9610 = 4
         ;굴복각인Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9610 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふぁぁ,これ,凄い……!」
-            PRINTFORMW 「あっちも……こっちも……ジンジンして,くぅ!」
+            PRINTFORMW 「흐아아, 이거, 굉장해……!」
+            PRINTFORMW 「이쪽…… 저쪽…… 징징거려서, 끄으!」
             CFLAG:9610 = 3
         ;그 외
         ELSEIF CFLAG:9610 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あ……む,ぐ」
-            PRINTFORMW (あちこち,責められて……変になる……!)
+            PRINTFORMW 「아…… 므, 끄」
+            PRINTFORMW (여기저기, 괴롭혀서…… 이상해지겠어……!)
             CFLAG:9610 = 2
         ENDIF
     ENDIF
@@ -3791,29 +3776,28 @@ SIF EQUIP:14 || TFLAG:899 > 0
 ;-------------------------------------------------
 ;처음으로 윤활이 LV2 넘었다 CFLAG:8001
 ;-------------------------------------------------
-LOCAL = PALAM:10 + UP:10
-IF LOCAL > PALAMLV:2 && CFLAG:8001 == 0
+IF PALAM:10 + UP:10 > PALAMLV:2 && CFLAG:8001 == 0
     ;연모
     IF TALENT:150
         ;로션을 사용했을 경우
         IF SELECTCOM == 60
-            PRINTFORMW 「ふふふ.さあ,受け入れ準備は整ってるわよ」
+            PRINTFORMW 「후후후, 자, 받아들일 준비가 됐어」
         ;그 외
         ELSE
-            PRINTFORMW 夢美は自分が愛液にまみれていることに気付いた
-            PRINTFORMW 「ふふふ,ご主人様ったら,今まで全然えっちなことしてくれなかったのに」
-            PRINTFORMW 「やっとその気になったの? いいよ,私を貰って」
+            PRINTFORMW 유메미는 자기가 애액에 젖은 걸 알았다.
+            PRINTFORMW 「후후후, 주인님도 참, 지금까지 전혀 야한 거 안 했었는데」
+            PRINTFORMW 「겨우 결심했어? 좋아, 날 가져」
         ENDIF
     ;그 외
     ELSE
         ;로션을 사용했을 경우
         IF SELECTCOM == 60
-            PRINTFORMW 「もう,ぬるぬる……なにする気?」
+            PRINTFORMW 「정말, 미끈거려…… 뭘 하려고?」
         ;그 외
         ELSE
-            PRINTFORMW 夢美は自分が愛液にまみれていることに気付いた
-            PRINTFORMW 「ち,違う! 別にあなた相手に感じているわけじゃ……」
-            PRINTFORMW 「……ただの生理現象よ,馬鹿!」
+            PRINTFORMW 유메미는 자기가 애액에 젖은 걸 알았다.
+            PRINTFORMW 「아, 아냐! 별로 당신 상대로 느끼는 게……」
+            PRINTFORMW 「……단지 생리 현상이야, 멍청아!」
         ENDIF
     ENDIF
     CFLAG:8001 = 1
@@ -3822,27 +3806,26 @@ ENDIF
 ;-------------------------------------------------
 ;처음으로 욕정이 LV2 넘었다 CFLAG:8002
 ;-------------------------------------------------
-LOCAL = PALAM:13 + UP:13
-IF LOCAL > PALAMLV:2 && CFLAG:8002 == 0
+IF PALAM:13 + UP:13 > PALAMLV:2 && CFLAG:8002 == 0
     ;연모
     IF TALENT:150
         ;미약을 사용했을 경우
         IF SELECTCOM == 61
-            PRINTFORMW 「ご主人様.早く……」
+            PRINTFORMW 「주인님, 빨리……」
         ;그 외
         ELSE
-            PRINTFORMW 「もう,身体が火照って,どうしようもないの」
-            PRINTFORMW 「ご主人様,早く私を,蹂躙して」
+            PRINTFORMW 「이제, 몸이 달아올라서, 어쩌지 못 하겠어」
+            PRINTFORMW 「주인님, 빨리 날, 유린해 줘」
         ENDIF
     ;그 외
     ELSE
         ;미약을 사용했을 경우
         IF SELECTCOM == 61
-            PRINTFORMW 「ひゃぅ!……薬で,こんなことが,出来るなんて……」
+            PRINTFORMW 「햐으! ……약으로, 이렇게, 되다니……」
         ;그 외
         ELSE
-            PRINTFORMW (ん……なにこれ,感じてる……まさか)
-            PRINTFORMW 夢美は下唇を噛み,自分の欲情を必死に押し殺そうとしている
+            PRINTFORMW (응…… 뭐야 이거, 느끼고 있어…… 설마)
+            PRINTFORMW 유메미는 아랫입술을 깨물고, 자신의 욕정을 한사코 억누르고 있다.
         ENDIF
     ENDIF
     CFLAG:8002 = 1
@@ -3851,14 +3834,13 @@ ENDIF
 ;-------------------------------------------------
 ;처음으로 치정이 LV2 넘었다 CFLAG:8003
 ;-------------------------------------------------
-LOCAL = PALAM:15 + UP:15
-IF LOCAL > PALAMLV:2 && CFLAG:8003 == 0
+IF PALAM:15 + UP:15 > PALAMLV:2 && CFLAG:8003 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「やだ,恥ずかしい……ご主人様」
+        PRINTFORMW 「어머, 부끄러워…… 주인님」
     ;그 외
     ELSE
-        PRINTFORMW 「うっ,こんな恥ずかしいこと……死んじゃいたい」
+        PRINTFORMW 「읏, 이런 부끄러운 짓을…… 죽겠어」
     ENDIF
     CFLAG:8003 = 1
 ENDIF
@@ -3866,16 +3848,15 @@ ENDIF
 ;-------------------------------------------------
 ;처음으로 공포가 LV2 넘었다 CFLAG:8004
 ;-------------------------------------------------
-LOCAL = PALAM:17 + UP:17
-IF LOCAL > PALAMLV:2 && CFLAG:8004 == 0
+IF PALAM:17 + UP:17 > PALAMLV:2 && CFLAG:8004 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 夢美は怯えた目で%CALLNAME:MASTER%を見ている
-        PRINTFORMW 「ご主人様……許して」
+        PRINTFORMW 유메미는 겁먹은 눈으로 %조사처리(CALLNAME:MASTER, "을")% 보고 있다.
+        PRINTFORMW 「주인님…… 용서해 줘」
     ;그 외
     ELSE
-        PRINTFORMW 夢美が%CALLNAME:MASTER%を見る目に,恐怖の色が混ざってきた
-        PRINTFORMW 「……なによ,怖がってなんかいないわよ」
+        PRINTFORMW 유메미가 %조사처리(CALLNAME:MASTER, "을")% 보는 눈에, 공포가 서려 있다.
+        PRINTFORMW 「……뭐야, 무서워 하지 않았어」
     ENDIF
     CFLAG:8004 = 1
 ENDIF
@@ -3886,11 +3867,11 @@ ENDIF
 IF NOWEX:0 > 0 && CFLAG:8005 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「クリで,クリでイっちゃう……!」
+        PRINTFORMW 「클리, 클리로 가 버려……!」
     ;그 외
     ELSE
-        PRINTFORMW 「あっ……ん,んんんっ!」
-        PRINTFORMW (いや! クリでイっちゃう!)
+        PRINTFORMW 「앗…… 응, 으으읏!」
+        PRINTFORMW (싫어! 클리로 가 버려!)
     ENDIF
     CFLAG:8005 = 1
 ENDIF
@@ -3901,10 +3882,10 @@ ENDIF
 IF NOWEX:1 > 0 && CFLAG:8006 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「ふぁ,ふああ! おまんこでイっちゃう!」
+        PRINTFORMW 「흐아, 흐아아! 보지로 가 버려!」
     ;그 외
     ELSE
-        PRINTFORMW 「んんっ,あっ! 中が……中がぁ!」
+        PRINTFORMW 「으읏, 앗! 안이…… 몸 속이!」
     ENDIF
     CFLAG:8006 = 1
 ENDIF
@@ -3915,11 +3896,11 @@ ENDIF
 IF NOWEX:2 > 0 && CFLAG:8007 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「ご主人様,お尻がジンジンしてもう……ああああっ!」
+        PRINTFORMW 「주인님, 엉덩이가 저려서 이제…… 아아아앗!」
     ;그 외
     ELSE
-        PRINTFORMW 「あ,なにこれ,ふあ……はぁぁぁぁん!」
-        PRINTFORMW (お尻で……イっちゃった)
+        PRINTFORMW 「아, 이거 뭐야, 흐아…… 하아아아앙!」
+        PRINTFORMW (엉덩이로…… 가 버렸어)
     ENDIF
     CFLAG:8007 = 1
 ENDIF
@@ -3930,11 +3911,11 @@ ENDIF
 IF NOWEX:3 > 0 && CFLAG:8008 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「ご主人様,胸が,胸からなんかキてる!」
+        PRINTFORMW 「주인님, 가슴이, 가슴에 뭔가 와!」
     ;그 외
     ELSE
-        PRINTFORMW 「あ,あ,ふぁあああああああああ!」
-        PRINTFORMW (乳首が……溶けちゃいそう)
+        PRINTFORMW 「아, 아, 흐아아아아아아아아아아!」
+        PRINTFORMW (유두가…… 녹을 것 같아)
     ENDIF
     CFLAG:8008 = 1
 ENDIF
@@ -3942,15 +3923,14 @@ ENDIF
 ;-------------------------------------------------
 ;처녀상실(처녀만) CFLAG:8009
 ;-------------------------------------------------
-LOCAL = UP:20 + UP:21
 IF TFLAG:0 > 0 && CFLAG:8009 == 0
     ;연모에다 주인의 섹스로 처녀상실
     IF TFLAG:2
         ;연모에다 반발각인 미취득
-        IF LOCAL < 500
-            PRINTFORMW 「んんっ……ふふっ」
-            PRINTFORMW 「……ねえ.なんだか今,凄く幸せなの」
-            PRINTFORMW 「こんなに満ち足りた気分になれるなんて.怖がってたのが馬鹿みたい」
+        IF UP:20 + UP:21 < 500
+            PRINTFORMW 「으읏…… 후훗」
+            PRINTFORMW 「……저기, 왠지 지금, 너무 행복해」
+            PRINTFORMW 「이렇게 행복한 기분이 들다니, 두려워 했던 게 바보같아」
         ;연모에다 반발각인 취득
         ;ELSE
             ;PRINTFORMW 
@@ -3959,19 +3939,19 @@ IF TFLAG:0 > 0 && CFLAG:8009 == 0
     ELSEIF SELECTCOM == 4
         ;연모
         IF TALENT:150
-            PRINTFORMW 「破っちゃったの? ……もったいない」
+            PRINTFORMW 「찢어졌어? ……아까워」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,なくなっちゃった.私の初めての証が……」
+            PRINTFORMW 「싫어, 없어졌어, 내 처음의 증거가……」
         ENDIF
     ;그 외 상황에서 처녀상실
     ELSE
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様のおちんちんで,破って欲しかったのに……」
+            PRINTFORMW 「주인님 자지로, 뚫어줬으면 했는데……」
         ;그 외
         ELSE
-            PRINTFORMW 「いや……初めてが……こんなのって」
+            PRINTFORMW 「싫어…… 처음이…… 이렇게」
         ENDIF
     ENDIF
     CFLAG:8009 = 1
@@ -3984,30 +3964,30 @@ ENDIF
 IF TFLAG:9 > 0
     ;연모
     IF TALENT:150 && (CFLAG:8011 <= 3 || FLAG:11 == 2)
-        PRINTFORMW 「ご主人様の精液が……お尻の中にいっぱい出されて……」
+        PRINTFORMW 「주인님 정액…… 엉덩이 속에 잔뜩 쌌어……」
         CFLAG:8011 = 4
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:8011 <= 2 || FLAG:11 == 2)
-        PRINTFORMW 「んんっ,あっ……お尻に……熱いのが」
+        PRINTFORMW 「으읏, 앗…… 엉덩이에…… 뜨거운 게」
         CFLAG:8011 = 3
     ;그 외
     ELSEIF CFLAG:8011 <= 1 || FLAG:11 == 2
-        PRINTFORMW 「ふぁぁっ! なにこれ……お尻の中が熱くなって……」
+        PRINTFORMW 「흐아앗! 이게 뭐야…… 엉덩이 속이 뜨거워……」
         CFLAG:8011 = 2
     ENDIF
 ;그 외(질내사정)
 ELSEIF TFLAG:10 > 0
     ;연모
     IF TALENT:150 && (CFLAG:8010 <= 3 || FLAG:11 == 2)
-        PRINTFORMW 「中に,中に出されてる! 精液がいっぱいぃぃっ!」
+        PRINTFORMW 「안에, 안에 싸 줘! 정액 잔뜨으으윽!」
         CFLAG:8010 = 4
     ;굴복각인Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:8010 <= 2 || FLAG:11 == 2)
-        PRINTFORMW 「ん! ……ちょっと,誰が中に出していいって」
+        PRINTFORMW 「응! ……잠깐, 누가 안에 싸도 된다고 했어?」
         CFLAG:8010 = 3
     ;그 외
     ELSEIF CFLAG:8010 <= 1 || FLAG:11 == 2
-        PRINTFORMW 「うああっ! やだ,抜いて! 中で出さないで!」
+        PRINTFORMW 「으아악! 싫어, 빼! 안에 싸지 마!」
         CFLAG:8010 = 2
     ENDIF
 ENDIF
@@ -4018,15 +3998,15 @@ ENDIF
 IF TFLAG:12 > 0
     ;봉사정신Lv5
     IF ABL:13 >= 5 && (CFLAG:8012 <= 2 || FLAG:11 == 2)
-        PRINTFORMW 「まだ,びゅくびゅく出てる.あなたってほんと底なしね」
+        PRINTFORMW 「또, 퓻퓻 나오네. 당신 정말 무한하구나」
         CFLAG:8012 = 3
     ;봉사정신Lv3
     ELSEIF ABL:13 >= 3 && (CFLAG:8012 <= 1 || FLAG:11 == 2)
-        PRINTFORMW 「うわっ,こんなに飛ばして……ずいぶん,満足そうな顔ね」
+        PRINTFORMW 「우왓, 이렇게 뿌리고…… 참, 만족스러운 얼굴이네」
         CFLAG:8012 = 2
     ;그 외
     ELSEIF CFLAG:8012 <= 0 || FLAG:11 == 2
-        PRINTFORMW 「う,アルカリ臭い……」
+        PRINTFORMW 「으, 알칼리 냄새……」
         CFLAG:8012 = 1
     ENDIF
 ENDIF
@@ -4036,37 +4016,37 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:11 > 0 || TFLAG:29 > 0
     ;펠라, 이라마치오인 경우
-    IF SELECTCOM == 41 || SELECTCOM == 230 || SELECTCOM == 602
+    IF GROUPMATCH(SELECTCOM, 41, 230, 602)
         ;정액중독Lv5
         IF ABL:31 >= 5 && (CFLAG:8013 < 5 || FLAG:11 == 2)
-            PRINTFORMW 「んあ……もっと精液飲ませて,お腹いっぱいになるくらい」
+            PRINTFORMW 「응아…… 더 정액 먹여 줘, 배가 부를 때까지」
             CFLAG:8013 = 5
         ;정액중독Lv3
         ELSEIF ABL:31 >= 3 && (CFLAG:8013 < 3 || FLAG:11 == 2)
-            PRINTFORMW 「ん,おいし.これ,くせになる」
+            PRINTFORMW 「응, 맛있어. 이거, 버릇 들 것 같아」
             CFLAG:8013 = 3
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:8013 < 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん,ふふふ.どう? 気持ちよかった?」
+            PRINTFORMW 「응, 후후후. 어때? 기분 좋았어?」
             CFLAG:8013 = 2
         ;그 외
         ELSEIF CFLAG:8013 < 1 || FLAG:11 == 2
-            PRINTFORMW 「んん……がはっ! 口で出すなんて」
+            PRINTFORMW 「으응…… 끄학! 입에 싸다니」
             CFLAG:8013 = 1
         ENDIF
     ;파이즈리인 경우
-    ELSEIF SELECTCOM == 42 || SELECTCOM == 208 || SELECTCOM == 209
+    ELSEIF GROUPMATCH(SELECTCOM, 42, 208, 209)
         ;봉사정신Lv5
         IF ABL:13 >= 5 && (CFLAG:8014 < 3 || FLAG:11 == 2)
-            PRINTFORMW 「いっぱい出た.ほら,髪の毛にまで飛んで」
+            PRINTFORMW 「잔뜩 쌌네. 봐, 머리카락에도 묻었어」
             CFLAG:8014 = 3
         ;봉사정신Lv3이상
         ELSEIF ABL:13 >= 3 && (CFLAG:8014 < 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふふふ.胸に精液が溜まって,乳首と合わせて苺ミルクみたい」
+            PRINTFORMW 「후후후. 가슴에 정액이 고여서, 유두랑 같이 보니까 딸기 우유 같아」
             CFLAG:8014 = 2
         ;그 외
         ELSEIF CFLAG:8014 < 1 || FLAG:11 == 2
-            PRINTFORMW 「うあ……胸の間から噴水みたいに出てる」
+            PRINTFORMW 「으아…… 가슴 사이에서 분수처럼 나와」
             CFLAG:8014 = 1
         ENDIF
     ENDIF
@@ -4080,26 +4060,26 @@ IF TFLAG:30 > 0
     IF CFLAG:8015 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「ご主人様,なんかおちんちんが熱くなって……」
-            PRINTFORMW 「出ちゃう! なんか出ちゃう!」
-            PRINTFORMW 夢美は自分の出した精液をまじまじと眺めている
-            PRINTFORMW 「私の精液……ふふふ」
+            PRINTFORMW 「주인님, 왠지 자지가 뜨거워……」
+            PRINTFORMW 「나와! 뭔가 나와!」
+            PRINTFORMW 유메미는 자기가 싼 정액을 말끄러미 바라보고 있다.
+            PRINTFORMW 「내 정액…… 후후후」
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,なにこれ.なんか出る……なんか出ちゃう……!!」
-            PRINTFORMW 夢美は呆然と,自分の出した精液を眺めている
-            PRINTFORMW 「私が……こんなの出しちゃうなんて」
+            PRINTFORMW 「싫어, 이게 뭐야, 뭔가 나와…… 뭔가 나와……!!」
+            PRINTFORMW 유메미는 망연자실한 채, 자기가 싼 정액을 바라보고 있다.
+            PRINTFORMW 「내가…… 이런 걸 싸다니」
         ENDIF
         CFLAG:8015 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8015 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「あ,ふあ,精液出る,精液出ちゃう!」
+            PRINTFORMW 「아, 흐아, 정액 나와, 정액 싸 버려!」
             CFLAG:8015 = 3
         ;그 외
         ELSEIF CFLAG:8015 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「やだ,やだ,出したくないのに,いやぁぁ!」
+            PRINTFORMW 「싫어, 안 돼, 싸고 싶지 않은데, 싫어어어!」
             CFLAG:8015 = 2
         ENDIF
     ENDIF
@@ -4113,26 +4093,26 @@ IF TFLAG:31 > 0
     IF CFLAG:8016 == 0
         ;순종Lv4이상
         IF ABL:10 >= 4
-            PRINTFORMW 「あっ,ふぁぁぁ!」
-            PRINTFORMW 「なにこれ……なんで母乳が……」
+            PRINTFORMW 「앗, 흐아아아!」
+            PRINTFORMW 「이게 뭐야…… 왜 모유가……」
         ;그 외
         ELSE
-            PRINTFORMW 「う,ああっ! ……あれ,これって」
-            PRINTFORMW 「孕ん……じゃったの?」
-            PRINTFORMW 夢美は母乳を目にした後,険しい目で%CALLNAME:MASTER%を睨んできた
+            PRINTFORMW 「으, 아앗! ……어, 이건」
+            PRINTFORMW 「생긴…… 거야?」
+            PRINTFORMW 유메미는 모유를 보고, 험상궂은 눈으로 %조사처리(CALLNAME:MASTER, "을")% 노려 봤다.
         ENDIF
         CFLAG:8016 = 1
     ;2회째 이후
     ELSE
         ;순종Lv4이상
         IF ABL:10 >= 4 && (CFLAG:8016 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ふ,ふあ……またおっぱい出ちゃう!」
-            PRINTFORMW 「ふふふ,飲んでみる?」
+            PRINTFORMW 「흐, 흐아…… 또 젖 나와!」
+            PRINTFORMW 「후후후, 마실래?」
             CFLAG:8016 = 3
         ;그 외
         ELSEIF CFLAG:8016 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「う,ああっ,やだ,また出る,おっぱい出ちゃう……」
-            PRINTFORMW 「う……ああ……やだ」
+            PRINTFORMW 「으, 으앗, 싫어, 또 나와, 젖 나와……」
+            PRINTFORMW 「으…… 아아…… 싫어」
             CFLAG:8016 = 2
         ENDIF
     ENDIF
@@ -4146,26 +4126,26 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
     IF CFLAG:8017 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「うぁ……なにこれ,クリがじんじんして」
-            PRINTFORMW 「飛んでっちゃう.ご主人様,ご主人様ぁぁ!」
+            PRINTFORMW 「으아…… 이게 뭐야, 클리가 저려」
+            PRINTFORMW 「날아가 버려, 주인님, 주인니이임!」
         ;그 외
         ELSE
-            PRINTFORMW 「え,あ,うあ,やああああ」
-            PRINTFORMW 「な,なにこれ.ふあっ,ふああっ,ふああああああ!」
+            PRINTFORMW 「어, 아, 으아, 시러어어어」
+            PRINTFORMW 「이, 이게 뭐야. 흐앗, 흐아앗, 흐아아아아아아!」
         ENDIF
-        PRINTFORMW 夢美はクリトリスへの耐え切れないほどの刺激に,膝を激しく震わせた
+        PRINTFORMW 유메미는 클리토리스에 대한 참을 수 없는 자극에, 무릎을 심하게 떨었다.
         CFLAG:8017 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8017 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「気持ちいい……クリが気持ちいい,ご主人様ぁ!」
-            PRINTFORMW 夢美はクリトリスの刺激を,悦楽に歪んだ顔で求め続けた
+            PRINTFORMW 「기분 좋아…… 클리 기분 좋아, 주인님!」
+            PRINTFORMW 유메미는 클리토리스의 자극을, 열락에 일그러진 얼굴로 계속 요구했다.
             CFLAG:8017 = 3
         ;그 외
         ELSEIF CFLAG:8017 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「やだ,もうそこ弄るのやめて,ふあ,ふあああ!」
-            PRINTFORMW 夢美はクリトリスの刺激に,涎を垂らしながら首を振っていた
+            PRINTFORMW 「싫어, 이제 거기 만지지 마, 흐아, 흐아아아!」
+            PRINTFORMW 유메미는 클리토리스의 자극에, 침을 흘리면서 고개를 흔들고 있었다.
             CFLAG:8017 = 2
         ENDIF
     ENDIF
@@ -4179,27 +4159,27 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
     IF CFLAG:8018 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「んくぅ! お,奥が熱くなって」
-            PRINTFORMW 「んぁぁ,またおまんこでイっちゃう,またイっちゃう!」
-            PRINTFORMW 夢美の膣口は強く締まり,快楽をすべて搾り取ろうとしているようだった
+            PRINTFORMW 「응끄으! 아, 안이 뜨거워」
+            PRINTFORMW 「응아아, 또 보지로 가 버려, 또 가 버려!」
+            PRINTFORMW 유메미의 질구는 세게 조이며, 쾌락을 모두 집으려는 것 같았다.
         ;그 외
         ELSE
-            PRINTFORMW 「あぐ,うあっ,やだ,くる,奥からなんか来る」
-            PRINTFORMW 「やああああ! もういやあああ!」
-            PRINTFORMW 言葉では否定していたが,夢美の膣は貪欲に快楽を求めていた
+            PRINTFORMW 「아끄, 으앗, 싫어, 와, 안에서 뭔가 와」
+            PRINTFORMW 「시러어어어! 더는 시러어어어!」
+            PRINTFORMW 말로는 부인했지만, 유메미의 질은 탐욕스럽게 쾌락을 요구하고 있었다.
         ENDIF
         CFLAG:8018 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8018 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ご,ご主人様,もっとおまんこぐちゃぐちゃにして!」
-            PRINTFORMW 夢美の膣は度重なる快楽にも敏感に反応していた
+            PRINTFORMW 「주, 주인님, 보지 더 엉망으로 해 줘!」
+            PRINTFORMW 유메미의 질은 잦은 쾌락에도 민감하게 반응하고 있었다.
             CFLAG:8018 = 3
         ;그 외
         ELSEIF CFLAG:8018 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もうやめ……やだ,また奥をかき回されて……んあぁ!」
-            PRINTFORMW 夢美は度重なる膣からの快楽に,息も絶え絶えにあえいでいた
+            PRINTFORMW 「이제 그만…… 싫어, 또 안에서 휘저으면…… 응아아!」
+            PRINTFORMW 유메미는 거듭되는 질의 쾌락에, 숨을 할딱거리며 허덕였다.
             CFLAG:8018 = 2
         ENDIF
     ENDIF
@@ -4213,29 +4193,29 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
     IF CFLAG:8019 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「くあぁ,また,アナルでイっちゃ,くぅぅ!」
-            PRINTFORMW 「アナル,好き……もっと,えぐって……」
-            PRINTFORMW 夢美は敏感なアナルからの快楽を従順に受け止めている
+            PRINTFORMW 「끄아아, 또, 애널로 가 버, 끄으으!」
+            PRINTFORMW 「애널, 좋아…… 또, 후벼 줘……」
+            PRINTFORMW 유메미는 민감한 애널의 쾌락을 순순히 받아들이고 있다.
         ;그 외
         ELSE
-            PRINTFORMW 「やだ,お尻が……ふぅぅぅぅぅんっ!」
-            PRINTFORMW 「お願い,もうそこ触っちゃ……やああああっ!」
-            PRINTFORMW 夢美は敏感なアナルからの快楽に必死で耐えていた
+            PRINTFORMW 「싫어, 엉덩이가…… 흐으으으으으응!」
+            PRINTFORMW 「제발, 거기 만지면…… 시러어어엇!」
+            PRINTFORMW 유메미는 민감한 애널의 쾌락에 필사적으로 버텼다.
         ENDIF
         CFLAG:8019 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8019 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「あっふあぁ! アナル,アナルいいのっ!」
-            PRINTFORMW 「そこ,大好き……ふぁぁぁぁっ!」
-            PRINTFORMW 夢美は敏感なアナルからの快楽にすっかり溺れていた
+            PRINTFORMW 「앗흐아아! 애널, 애널 좋아앗!」
+            PRINTFORMW 「거기, 제일 좋아…… 흐아아아앗!」
+            PRINTFORMW 유메미는 민감한 애널의 쾌락에 푹 빠졌다.
             CFLAG:8019 = 3
         ;그 외
         ELSEIF CFLAG:8019 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「あ,もうやだ,やだっ,そこもういじっちゃ」
-            PRINTFORMW 「くぁ,んんぁっ,うあああああああ!」
-            PRINTFORMW 夢美は敏感なアナルからの快楽を否定しきれず絶頂に達した
+            PRINTFORMW 「아, 더는 싫어, 싫엇, 거기 이제 괴롭히면」
+            PRINTFORMW 「끄아, 응으앗, 으아아아아아아!」
+            PRINTFORMW 유메미는 민감한 애널의 쾌락을 부정하지 못 하고 절정에 다다랐다.
             CFLAG:8019 = 2
         ENDIF
     ENDIF
@@ -4249,27 +4229,27 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
     IF CFLAG:8020 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 「んんっ,乳首がこんなにコリコリになって」
-            PRINTFORMW 「またイっちゃう,乳首でイっちゃうの!」
-            PRINTFORMW 夢美は乳首からの快楽に耐え切れず,絶頂に達した
+            PRINTFORMW 「응읏, 유두가 이렇게 오똑해져서」
+            PRINTFORMW 「또 가 버려, 유두로 가 버려!」
+            PRINTFORMW 유메미는 젖꼭지의 쾌락을 견디지 못 하고, 절정에 달했다.
         ;그 외
         ELSE
-            PRINTFORMW 「なにこれ……やだ,胸が」
-            PRINTFORMW 「ん,くぅぅぅ,ふああああっ!」
-            PRINTFORMW 夢美は信じられないほど突出した自分の乳首に,呆然としていた
+            PRINTFORMW 「이게 뭐야…… 싫어, 가슴이」
+            PRINTFORMW 「응, 끄으으으, 흐아아아앗!」
+            PRINTFORMW 유메미는 놀랍도록 튀어나온 자기 유두를 보고, 멍하니 있었다.
         ENDIF
         CFLAG:8020 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:8020 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「んっ,乳首イイ! もっと弄って! ちぎれるくらいにっ!」
-            PRINTFORMW 夢美は乳首からの絶え間ない快楽にどっぷりと浸っていた
+            PRINTFORMW 「읏, 유두 좋아! 더 괴롭혀 줘! 녹을 때까지!」
+            PRINTFORMW 유메미는 유두의 끊임 없는 쾌락에 푹 젖어 있었다.
             CFLAG:8020 = 3
         ;그 외
         ELSEIF CFLAG:8020 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「ふっ,あっ,胸,やだ,もう,いやなの……んんんっ!」
-            PRINTFORMW 夢美は乳首からの際限ない快感に,恐怖を抱きながらも絶頂に達した
+            PRINTFORMW 「흣, 앗, 가슴, 싫어, 이제, 싫어…… 응으읏!」
+            PRINTFORMW 유메미는 유두를 통한 끝없는 쾌감에, 공포를 느끼면서도 절정에 이르렀다.
             CFLAG:8020 = 2
         ENDIF
     ENDIF
@@ -4309,14 +4289,14 @@ SIF EQUIP:14 || TFLAG:899 > 0
 IF TFLAG:40 == 3 && CFLAG:8096 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「あぐぅ! 痛い,痛い! ご主人様!」
-        PRINTFORMW 「ごめんなさいご主人様,許して……」
-        PRINTFORMW 夢美は怯えた目で%CALLNAME:MASTER%を見ていた
+        PRINTFORMW 「아끄으! 아파, 아파! 주인님!」
+        PRINTFORMW 「죄송해요, 주인님, 용서를……」
+        PRINTFORMW 유메미는 겁먹은 눈으로 %조사처리(CALLNAME:MASTER, "을")% 보고 있었다.
     ELSE
-        PRINTFORMW 夢美は必死に痛みに耐えていたが,ついに限界となったのか泣いて許しを求めた
-        PRINTFORMW 「う,ぐぐぅ……んああぁあ! もうやだ! 無理!」
-        PRINTFORMW 「や,やめて.これ以上痛くしないで」
-        PRINTFORMW 「意地張ってごめん,謝るから.だからもう……!」
+        PRINTFORMW 유메미는 필사적으로 통증을 참았지만, 마침내 한계인지 울면서 용서를 구했다.
+        PRINTFORMW 「으, 끄으으…… 으아아아아! 이제 싫어! 무리야!」
+        PRINTFORMW 「그, 그만해. 더 이상 아프게 하지 마」
+        PRINTFORMW 「오기 부려서 미안해, 사과할게, 그러니까 이젠……!」
     ENDIF
     CFLAG:8096 = 1
 ENDIF
@@ -4327,12 +4307,12 @@ ENDIF
 IF TFLAG:41 == 3 && CFLAG:8097 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「あっ,ふああ,気持ちいい……ご主人様,もっと」
-        PRINTFORMW 夢美は快楽に蕩けた声で%CALLNAME:MASTER%を求めた
+        PRINTFORMW 「앗, 흐아아, 기분 좋아…… 주인님, 더 해 줘」
+        PRINTFORMW 유메미는 쾌락에 녹은 목소리로 %조사처리(CALLNAME:MASTER, "을")% 요구했다.
     ELSE
-        PRINTFORMW 「ん……あ……」
-        PRINTFORMW (やだ,なにこれ.気持ちよすぎて……変になるっ!)
-        PRINTFORMW 夢美は自分の感情を押し殺しているようだったが,その目は完全に快楽に蕩けていた
+        PRINTFORMW 「응…… 아……」
+        PRINTFORMW (싫어, 이게 뭐야. 기분 너무 좋아서…… 이상해지겠어!)
+        PRINTFORMW 유메미는 자기 감정을 억누르는 듯했지만, 그 눈은 완전히 쾌락에 녹아 있었다.
     ENDIF
     CFLAG:8097 = 1
 ENDIF
@@ -4343,9 +4323,9 @@ ENDIF
 IF TFLAG:42 == 3 && CFLAG:8098 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「んぁ……ご主人様」
-        PRINTFORMW 「嬉しい.もっと私を,奴隷のように扱って……んんっ!」
-        PRINTFORMW 夢美は自分の言葉にすら感じているようだった
+        PRINTFORMW 「응아…… 주인님」
+        PRINTFORMW 「기뻐. 더욱 날, 노예처럼 다뤄 줘…… 으읏!」
+        PRINTFORMW 유메미는 자기가 한 말로 느끼는 듯했다.
     ;ELSE
         ;PRINTFORMW 
     ENDIF
@@ -4358,14 +4338,14 @@ ENDIF
 IF TFLAG:44 == 3 && CFLAG:8099 == 0
     ;연모
     IF TALENT:150
-        PRINTFORMW 「ん……ぎ,ご主人様」
-        PRINTFORMW 「もっと優しくして,くれないと」
-        PRINTFORMW 夢美の瞳に,わずかに殺意のこもった光が見えた
+        PRINTFORMW 「으…… 윽, 주인님」
+        PRINTFORMW 「자꾸 부드럽게, 안 하면……」
+        PRINTFORMW 유메미의 눈동자에서, 다소 살의가 보였다.
     ELSE
-        PRINTFORMW 「う,ぐぐっ……こんな屈辱を,与えてくれるなんて」
-        PRINTFORMW 「絶対このままじゃ済まさない.憶えてなさい」
-        PRINTFORMW 「人類史上最悪の拷問器具を発明して,実験台にしてやる……!」
-        PRINTFORMW 夢美は憎悪に顔をゆがめながら,%CALLNAME:MASTER%を睨んでいた
+        PRINTFORMW 「으, 끄윽…… 이런 굴욕을 주다니」
+        PRINTFORMW 「절대 이대로 끝내지 않을 거야, 기억해 둬」
+        PRINTFORMW 「인류 역사상 최악의 고문 기구를 발명해서, 실험 대상으로 쓸 거야……!」
+        PRINTFORMW 유메미는 증오로 가득찬 표정으로, %조사처리(CALLNAME:MASTER, "을")% 노려보고 있었다.
     ENDIF
     CFLAG:8099 = 1
 ENDIF
@@ -4395,21 +4375,21 @@ ENDIF
 IF TFLAG:200 == 130
     ;연모+반발각인Lv3미만
     IF TALENT:150 && MARK:9 < 3
-        PRINTFORMW 「……え,ちょっと嘘でしょ? ご主人様」
-        PRINTFORMW 「いや,離れたくなんてないの.ご主人様……ご主人様ぁぁ!」
+        PRINTFORMW 「……응, 잠깐, 장난하는 거야? 주인님?」
+        PRINTFORMW 「싫어, 떠나고 싶지 않아. 주인님…… 주인니이이임!」
     ;반발각인Lv3
     ELSEIF MARK:9 == 3
-        PRINTFORMW 夢美は売られていく間,終始無言であった
-        PRINTFORMW ただ最後の瞬間に,%CALLNAME:MASTER%を見ながら鼻で笑うような声を出した
+        PRINTFORMW 유메미는 팔려 가는 동안 시종일관 침묵을 지켰다.
+        PRINTFORMW 그저 마지막 순간, %조사처리(CALLNAME:MASTER, "을")% 보며 코웃음 같은 소리를 냈다.
     ;음란
     ELSEIF TALENT:170
-        PRINTFORMW 「ん……ふぁぁ……売るって?」
-        PRINTFORMW 「もう気持ちいいことしてくれないの……あ,他の人がしてくれるんだ」
-        PRINTFORMW 「じゃ,いいか……」
+        PRINTFORMW 「응…… 흐아아…… 판다고?」
+        PRINTFORMW 「이제 기분 좋은 일 못 하잖아…… 아, 다른 사람이 해 준다고?」
+        PRINTFORMW 「그럼, 됐나……」
     ;그 외
     ELSE
-        PRINTFORMW すっかり身体が開発された夢美は,高価な商品として売却された
-        PRINTFORMW 売られていく夢美の表情は,敗北感で満ちていた
+        PRINTFORMW 완전히 몸이 개발된 유메미는 고가 상품으로 팔렸다.
+        PRINTFORMW 팔리는 유메미의 표정에, 패배감이 감돌았다.
     ENDIF
 ENDIF
 
@@ -4419,18 +4399,18 @@ ENDIF
 IF TFLAG:200 == 140
     ;연모
     IF TALENT:150 && (CFLAG:8240 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「ん……ちゅぱ……おはよう,ご主人様」
-        PRINTFORMW 「このまま出してあげるから,ちょっと待っててね」
+        PRINTFORMW 「응…… 쮸파…… 안녕, 주인님」
+        PRINTFORMW 「이대로 싸게 해 줄게, 좀 기다려」
         CFLAG:8240 = 3
     ;봉사정신Lv5이상
     ELSEIF ABL:13 >= 5 && (CFLAG:8240 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「んちゅ……ふふふ,朝から豪勢でしょ?」
-        PRINTFORMW 「今日もたっぷり奉仕してあげるから」
+        PRINTFORMW 「응, 쪽…… 후후후, 아침부터 건강하네?」
+        PRINTFORMW 「오늘도 많이 봉사할 거야」
         CFLAG:8240 = 2
     ;그 외
     ELSEIF CFLAG:8240 < 1 || FLAG:11 == 2
-        PRINTFORMW 「ちゅむ……ん,起きた?」
-        PRINTFORMW 「寝込みを襲われるってどんな感じ? びっくりした?」
+        PRINTFORMW 「쮸음…… 응, 일어났어?」
+        PRINTFORMW 「자고 있는 사이에 습격당하니까 어떤 기분이야? 놀랐어?」
         CFLAG:8240 = 1
     ENDIF
 ENDIF
@@ -4441,13 +4421,13 @@ ENDIF
 IF TFLAG:200 == 150
     ;V감각Lv4이상
     IF ABL:1 >= 4 && (CFLAG:8250 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ん,イイ! セックス気持ちいい!」
-        PRINTFORMW 「もっと,もっと突いて! 私がダメになっちゃうくらい!」
+        PRINTFORMW 「응, 좋아! 섹스 기분 좋아!」
+        PRINTFORMW 「더, 더 찔러 줘! 날 엉망으로 만들어 줘!」
         CFLAG:8250 = 2
     ;그 외
     ELSEIF CFLAG:8250 < 1 || FLAG:11 == 2
-        PRINTFORMW 「足りなかったの……抱いて,もっと」
-        PRINTFORMW 「もっとずっと深く,奥まで強く……んんんああ!」
+        PRINTFORMW 「부족해…… 더, 안아 줘」
+        PRINTFORMW 「더 깊게, 안쪽까지 강하게…… 응으으아아!」
         CFLAG:8250 = 1
     ENDIF
 ENDIF
@@ -4458,18 +4438,18 @@ ENDIF
 IF TFLAG:200 == 151
     ;연모
     IF TALENT:150 && (CFLAG:8251 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「ご主人様……足りない,足りないのよ」
-        PRINTFORMW 「身体の奥が疼いて止まらなくて……んっ!」
+        PRINTFORMW 「주인님…… 부족해, 부족하다구」
+        PRINTFORMW 「몸이 욱신거리는 게 멈추질 않아…… 읏!」
         CFLAG:8251 = 3
     ;자위중독Lv3이상
     ELSEIF ABL:30 >= 3 && (CFLAG:8251 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「気持ちいい……これ,もう病みつきになっちゃって」
-        PRINTFORMW 「クリがジンジンじちゃって……ふあぁ!」
+        PRINTFORMW 「기분 좋아…… 이거, 이제 버릇이 됐어」
+        PRINTFORMW 「클리가 저려서…… 흐아아!」
         CFLAG:8251 = 2
     ;그 외
     ELSEIF CFLAG:8251 < 1 || FLAG:11 == 2
-        PRINTFORMW 「やだ……なんだか,あそこが,疼いて」
-        PRINTFORMW 「こんなことしちゃダメなのに……くぅんんっ!」
+        PRINTFORMW 「싫어…… 왠지, 거기가, 욱신거려」
+        PRINTFORMW 「이러면 안 되는데…… 끄으으응!」
         CFLAG:8251 = 1
     ENDIF
 ENDIF
@@ -4480,23 +4460,23 @@ ENDIF
 IF TFLAG:200 == 154
     ;연모
     IF TALENT:150 && (CFLAG:8254 < 4 || FLAG:11 == 2)
-        PRINTFORMW 「あ……んぁ……ご主人様とのもいいけど」
-        PRINTFORMW 「やっぱり女の子もいいわ……んっ」
+        PRINTFORMW 「아…… 응아…… 주인님하고도 좋은데」
+        PRINTFORMW 「역시 여자도 좋아…… 응」
         CFLAG:8254 = 4
     ;레즈중독Lv3이상
     ELSEIF ABL:32 >= 3 && (CFLAG:8254 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「ん,ふふふ,ほら,もっとして」
-        PRINTFORMW 「女の子の匂い……たまらないわ」
+        PRINTFORMW 「응, 후후후, 자, 더 하자」
+        PRINTFORMW 「여자 냄새…… 견딜 수 없어」
         CFLAG:8254 = 3
     ;레즈끼 Lv3이상
     ELSEIF ABL:22 >= 3 && (CFLAG:8254 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「ん……あ……ん」
-        PRINTFORMW 「やっぱり女の子,いいなぁ.男よりずっといい……」
+        PRINTFORMW 「응…… 아…… 응」
+        PRINTFORMW 「역시 여자가 좋아. 남자보다 훨씬 나아……」
         CFLAG:8254 = 2
     ;그 외
     ELSEIF CFLAG:8254 < 1 || FLAG:11 == 2
-        PRINTFORMW 「やだ! せっかく終わったのに,なんでこんなこと!」
-        PRINTFORMW 「女の子同士なのにこんなに……うぁぁ!」
+        PRINTFORMW 「싫어! 모처럼 끝났는데, 왜 이런 짓을!」
+        PRINTFORMW 「여자끼리인데 이렇게…… 으아아!」
         CFLAG:8254 = 1
     ENDIF
 ENDIF
@@ -4507,14 +4487,14 @@ ENDIF
 IF TFLAG:200 == 158
     ;V감각Lv5이상
     IF ABL:1 >= 5 && (CFLAG:8258 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「足りない……足りないの!」
-        PRINTFORMW 「もうここがこんなに疼いて……ほら」
-        PRINTFORMW 「嫌だといっても,犯させてもらうから……んああ!」
+        PRINTFORMW 「부족해…… 부족하다구!」
+        PRINTFORMW 「이제 여기가 이렇게 쑤셔서…… 봐」
+        PRINTFORMW 「싫다고 해도, 범할 거야…… 응아아!」
         CFLAG:8258 = 2
     ;그 외
     ELSEIF CFLAG:8258 < 1 || FLAG:11 == 2
-        PRINTFORMW 「んふあっ! あそこが熱くて……このままじゃ眠れないの」
-        PRINTFORMW 「犯して,もっといっぱい.くぅぅぅぅん!」
+        PRINTFORMW 「응흐앗! 거기가 뜨거워서…… 이래선 못 자」
+        PRINTFORMW 「범해 줘, 더, 잔뜩, 끄으으으응!」
         CFLAG:8258 = 1
     ENDIF
 ENDIF
@@ -4523,26 +4503,24 @@ ENDIF
 ;약혼 반지 사용시
 ;-------------------------------------------------
 IF TFLAG:200 == 200
-    PRINTFORMW 指輪を贈られた夢美は,ひどく戸惑っていた
-    PRINTFORMW 「な,なにこれ.指輪って……」
-    PRINTFORMW 「もしかして,私に?」
-    PRINTFORMW 「ちょっと,私はただの奴隷なのよ? %CALLNAME:MASTER%専属の性奴隷」
-    PRINTFORMW 「犯されて弄ばれて,そのことを愛液を垂らしながら喜ぶような女なのに……なんで」
-    PRINTFORMW 指輪を外そうとする夢美を,%CALLNAME:MASTER%は押し留めた
-    PRINTFORMW 「……ほんとにいいの? 私なんかで」
-    PRINTFORMW 「わかった.そんなにっていうなら,これ,頂くわ」
-    PRINTFORMW 夢美の目からは,涙が零れていた
-    PRINTFORMW 「じゃあこれからもよろしくお願いします.ご主人様あらため旦那様」
+    PRINTFORMW 반지를 받은 유메미는, 몹시 혼란스러워 했다.
+    PRINTFORMW 「이, 이게 뭐야, 반지……」
+    PRINTFORMW 「혹시, 나한테?」
+    PRINTFORMW 「잠깐, 난 그냥 노예잖아? %CALLNAME:MASTER% 전용 성노예라구」
+    PRINTFORMW 「만져지고 범해지면서 그거에 애액을 늘어뜨리며 즐기는 여자인데…… 왜?」
+    PRINTFORMW 반지를 빼려는 유메미를, %조사처리(CALLNAME:MASTER, "은")% 말렸다.
+    PRINTFORMW 「……나 따위가, 정말 좋아?」
+    PRINTFORMW 「알았어. 그렇다고 한다면, 이거, 받을게」
+    PRINTFORMW 유메미의 눈에서, 눈물이 흘러내리고 있었다.
+    PRINTFORMW 「그럼 앞으로도 잘 부탁해요. 주인님이 아닌, 서방님으로서」
 ENDIF
 
 ;-------------------------------------------------
 ;붉은 목걸이 사용시
 ;-------------------------------------------------
-[SKIPSTART]
-IF TFLAG:200 == 201
-    PRINTFORMW 
-ENDIF
-[SKIPEND]
+;IF TFLAG:200 == 201
+;    PRINTFORMW 
+;ENDIF
 
 TFLAG:200 = 0
 RETURN 0
@@ -4585,7 +4563,7 @@ PRINTFORMW 한 명 한 명이 보통 사람은 상상하지 못할 정도의 마
 PRINTFORMW 「자, 전세계가 숨을 집어삼킬 거야! 새로운 문명의 시작을 보여주자!」
 PRINTFORMW 유메미의 목소리와 함께, 배가 그 속력을 높인 것 같았다.
 PRINTFORMW 
-PRINTFORMW         ―― Ending No.171 (유메미 엔딩)
+PRINTFORMW         ―― Ending No.{1000+NO:TARGET} (유메미 엔딩)
 
 RETURN 0
 
