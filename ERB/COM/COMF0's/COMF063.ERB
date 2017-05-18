@@ -49,10 +49,10 @@ RETURN 1
 @COM63
 IF TEQUIP:15 & 1
     PRINTL 좌약 추가 삽입
-    TSTR:0 = 좌약 추가 삽입
+    COM_NAME = 좌약 추가 삽입
 ELSE
     PRINTL 좌약 삽입
-    TSTR:0 = 좌약 삽입
+    COM_NAME = 좌약 삽입
 ENDIF
 
 ;調合知識があれば消費を抑える

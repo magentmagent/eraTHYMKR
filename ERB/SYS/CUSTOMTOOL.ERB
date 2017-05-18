@@ -88,8 +88,8 @@ IF    LOCAL:0 > -1
     LOCAL:11 = FLAG:1120
     IF LOCAL:11 == -1
         ;誰のでもなければ普通品
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
         RETURN 0
     ENDIF
     LOCAL:12 = LOCAL:0 + 700
@@ -111,16 +111,16 @@ IF    LOCAL:0 > -1
         CALL SPECIALNAME_CUSTOMTOOL
         LOCAL:10 = RESULT
         IF LOCAL:10
-            TSTR:8 = %TSTR:7%
-            TSTR:9 = %TSTR:7%
+
+            COM_TOOL_CALLNAME = %COM_TOOL_NAME%
         ELSE
             IF LOCAL:11 == TARGET
                 LOCALS:0 =  자신이 특별히 조정한
             ELSE
                 LOCALS:0 = (이)가 특별히 조정한
             ENDIF
-            TSTR:8 = %CALLNAME:(LOCAL:11)% 특제 %TSTR:7%
-            TSTR:9 = %CALLNAME:(LOCAL:11)%%LOCALS:0% %TSTR:7%
+            COM_TOOL_NAME = %CALLNAME:(LOCAL:11)% 특제 %COM_TOOL_NAME%
+            COM_TOOL_CALLNAME = %CALLNAME:(LOCAL:11)%%LOCALS:0% %COM_TOOL_NAME%
         ENDIF
     ELSEIF LOCAL:1 == 1
         ;上質／高性能を使用する場合
@@ -133,11 +133,11 @@ IF    LOCAL:0 > -1
         ELSE
             LOCALS:0 = 상급
         ENDIF
-        TSTR:8 = %LOCALS:0% %TSTR:7%
-        TSTR:9 = %LOCALS:0%의 %TSTR:7%
+        COM_TOOL_NAME = %LOCALS:0% %COM_TOOL_NAME%
+        COM_TOOL_CALLNAME = %LOCALS:0%의 %COM_TOOL_NAME%
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
 ENDIF
 RETURN 0

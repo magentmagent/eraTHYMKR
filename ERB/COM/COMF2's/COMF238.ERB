@@ -59,17 +59,17 @@ RETURN 1
 ;--------------------------------------------------
 ;기절시킬 뿐. 또한 기절중이라든지는 사용할 수 없다(라고 할까 효과를 알 수 있지 않아)
 @COM238
-TSTR:7 = 스턴건
+COM_TOOL_NAME = 스턴건
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 37
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-PRINTFORML %TSTR:8%
-TSTR:0 = 스턴건
+PRINTFORML %COM_TOOL_NAME%
+COM_NAME = 스턴건
 CALL TRAIN_MESSAGE_COM238
 
 DOWNBASE:0 += 10
@@ -117,4 +117,4 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 PRINTL
-PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 쐈다….
+PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 쐈다….

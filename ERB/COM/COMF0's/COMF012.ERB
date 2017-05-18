@@ -66,19 +66,19 @@ RETURN 1
 @COM12
 IF TEQUIP:90
     PRINTL 촉수 삽입
-    TSTR:0 = 촉수 삽입
+    COM_NAME = 촉수 삽입
 ELSE
-    TSTR:7 = 바이브
+    COM_TOOL_NAME = 바이브
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 3
         CALL NAMECHECK_CUSTOMTOOL
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 바이브레이터
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 바이브레이터
 ENDIF
 CALL TRAIN_MESSAGE_COM12
 
@@ -236,13 +236,13 @@ RETURN 1
 IF TEQUIP:90
     PRINTL <촉수 삽입 중>
 ELSE
-    TSTR:7 = 바이브
+    COM_TOOL_NAME = 바이브
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 3
         CALL NAMECHECK_CUSTOMTOOL
     ENDIF
-    PRINTFORML <%TSTR:7% 삽입 중>
+    PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 ENDIF
 
 DOWNBASE:0 += 10
@@ -392,14 +392,14 @@ IF TEQUIP:90
     ENDIF
 ELSE
     IF TEQUIP:20
-        PRINTFORML %조사선택(CALLNAME:TARGET, "로")%부터 %조사선택(TSTR:7, "를")% 천천히 뽑아 냈다.
+        PRINTFORML %조사선택(CALLNAME:TARGET, "로")%부터 %조사선택(COM_TOOL_NAME, "를")% 천천히 뽑아 냈다.
         IF EQUIP:14 == 0 && TFLAG:899 == 0
             IF EXP:0 > 200 && TALENT:150
                 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 질 내의 상실감에 참기 힘들어 눈물\@(TEQUIP:42) ? #과 군침\@ 을 흘리고 
             ELSEIF EXP:0 > 150 && TALENT:150
                 PRINTFORM %CALLNAME:TARGET%의 질 내에 모여 있던 점액이 긁어내 져 방울져 떨어져, 웅덩이를 만들고 
             ELSEIF EXP:0 > 120 && TALENT:150
-                PRINTFORM %조사선택(TSTR:7, "가")% 뽑아진 %CALLNAME:TARGET%의 육 벽에서 툭툭 애액이 물방울지고 
+                PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 뽑아진 %CALLNAME:TARGET%의 육 벽에서 툭툭 애액이 물방울지고 
             ELSEIF EXP:0 > 70 && TALENT:150
                 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 머뭇머뭇 가랑이를 만지며 %조사선택(CALLNAME:PLAYER, "를")% 보고 
             ELSEIF EXP:0 > 40 && TALENT:150
@@ -422,7 +422,7 @@ ELSE
         ELSE
             PRINT 보지에 
         ENDIF
-        PRINTFORML %TSTR:9%의 끝을 꼭 대고 비볐다….
+        PRINTFORML %COM_TOOL_CALLNAME%의 끝을 꼭 대고 비볐다….
 
         IF EQUIP:14 == 0 && TFLAG:899 == 0
             PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
@@ -445,11 +445,11 @@ ELSE
             ELSEIF EXP:0 > 70 && TALENT:150
                 PRINTFORM 욕구에 가득한 눈으로 %조사선택(CALLNAME:PLAYER, "를")% 보고 
             ELSEIF EXP:0 > 40 && TALENT:150
-                PRINTFORM %조사선택(TSTR:7, "가")% 스치는 감촉에 도취된 \@(TEQUIP:42) ? 표정을 보이고 # 것 처럼 한숨을 쉬고 \@ 
+                PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 스치는 감촉에 도취된 \@(TEQUIP:42) ? 표정을 보이고 # 것 처럼 한숨을 쉬고 \@ 
             ELSEIF EXP:0 > 0 && TALENT:150
-                PRINTFORM %조사선택(TSTR:7, "가")% 스치는 감촉에 몸을 꼬며 애액을 흘리고 
+                PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 스치는 감촉에 몸을 꼬며 애액을 흘리고 
             ELSE
-                PRINTFORM %조사선택(TSTR:7, "가")% 스치는 감촉에 육벽을 움찔거리고 
+                PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 스치는 감촉에 육벽을 움찔거리고 
             ENDIF
             PRINTL 있다.
             PRINT 그런 
@@ -459,6 +459,6 @@ ELSE
         PRINTFORM %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 젖어있는 
-        PRINTFORMW 성기에 %조사선택(TSTR:9, "를")% 꽂았다….
+        PRINTFORMW 성기에 %조사선택(COM_TOOL_CALLNAME, "를")% 꽂았다….
     ENDIF
 ENDIF

@@ -56,21 +56,21 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM171
-TSTR:7 = 전극
+COM_TOOL_NAME = 전극
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 14
     CALL NAMECHECK_CUSTOMTOOL
-    IF TSTR:8 != "전극"
-        PRINTFORML 애널 %TSTR:8% 
+    IF COM_TOOL_NAME != "전극"
+        PRINTFORML 애널 %COM_TOOL_NAME% 
     ELSE
         PRINTL 애널 전극
     ENDIF 
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     PRINTL 애널 전극
 ENDIF
-TSTR:0 = 애널 전극
+COM_NAME = 애널 전극
 CALL TRAIN_MESSAGE_COM171
 
 DOWNBASE:0 += 100
@@ -228,13 +228,13 @@ RETURN 1
 ;애널 전극 삽입중
 ;--------------------------------------------------
 @EQUIP_COM171
-TSTR:7 = 전극
+COM_TOOL_NAME = 전극
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 14
     CALL NAMECHECK_CUSTOMTOOL
-    IF TSTR:8 != "전극"
-        PRINTFORM <애널 %TSTR:8% 
+    IF COM_TOOL_NAME != "전극"
+        PRINTFORM <애널 %COM_TOOL_NAME% 
     ELSE
         PRINT <애널 전극 
     ENDIF 
@@ -402,9 +402,9 @@ PRINTL
 ;전극의 착탈
 IF TEQUIP:25
     IF MARK:9 > 1
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 항문에서 %조사선택(TSTR:7, "를")% 뽑아 던져버렸다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 항문에서 %조사선택(COM_TOOL_NAME, "를")% 뽑아 던져버렸다….
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 항문에서 %조사선택(TSTR:7, "를")% 뽑아 주었다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 항문에서 %조사선택(COM_TOOL_NAME, "를")% 뽑아 주었다….
     ENDIF
 ELSE
     IF MARK:9 > 1
@@ -412,11 +412,11 @@ ELSE
         PRINTFORM 그리고, %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 점액 투성이가 된 
-        PRINTFORMW 항문에 %조사선택(TSTR:9, "를")% 삽입해 스위치를 넣었다….
+        PRINTFORMW 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입해 스위치를 넣었다….
     ELSE
         PRINTFORM %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 점액 투성이가 된 
-        PRINTFORMW 항문에 %조사선택(TSTR:9, "를")% 삽입해 스위치를 넣었다….
+        PRINTFORMW 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입해 스위치를 넣었다….
     ENDIF
 ENDIF

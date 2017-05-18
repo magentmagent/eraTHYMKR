@@ -46,10 +46,10 @@ RETURN 1
 ;토요일의 밤은!
 IF DAY:7 == 7 && TIME == 1
     PRINTL 토요일 밤 피버!
-    TSTR:0 = 토요일 밤 피버!
+    COM_NAME = 토요일 밤 피버!
 ELSE
     PRINTL 피버!
-    TSTR:0 = 피버!
+    COM_NAME = 피버!
 ENDIF
 CALL TRAIN_MESSAGE_COM449
 

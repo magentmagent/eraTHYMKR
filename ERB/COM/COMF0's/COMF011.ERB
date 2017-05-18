@@ -46,17 +46,17 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM11
-TSTR:7 = 전기안마기
+COM_TOOL_NAME = 전기안마기
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 1
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-PRINTFORML %TSTR:8%
-TSTR:0 = 전기안마기
+PRINTFORML %COM_TOOL_NAME%
+COM_NAME = 전기안마기
 CALL TRAIN_MESSAGE_COM011
 
 DOWNBASE:0 += 30
@@ -125,7 +125,7 @@ IF TEQUIP:68
     ELSE
         PRINT 보지에 
     ENDIF
-    PRINTFORM 진동하는 %조사선택(TSTR:9, "를")% 갖다 댔다….
+    PRINTFORM 진동하는 %조사선택(COM_TOOL_CALLNAME, "를")% 갖다 댔다….
     SIF EQUIP:14
         PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 작게 신음을 흘리며 경련했다….
     PRINTW
@@ -136,7 +136,7 @@ ELSE
     ELSE
         PRINT 보지에 
     ENDIF
-    PRINTFORML 진동하는 %조사선택(TSTR:9, "를")% 갖다 댔다….
+    PRINTFORML 진동하는 %조사선택(COM_TOOL_CALLNAME, "를")% 갖다 댔다….
     PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
     IF EQUIP:14
         PRINTW 작게 신음소리를 내며, 몸을 부들부들 떨었다….

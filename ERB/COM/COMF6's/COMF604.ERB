@@ -97,9 +97,9 @@ ENDIF
 ;실행 결정
 ;-------------------------------------------------
 IF LOCAL:99 == 1
-    TSTR:0 = 독심기러기 목
+    COM_NAME = 독심기러기 목
 ELSE
-    TSTR:0 = 기러기 목
+    COM_NAME = 기러기 목
 ENDIF
 SELECTCOM = 604
 CALL TRAIN_MESSAGE_COM604

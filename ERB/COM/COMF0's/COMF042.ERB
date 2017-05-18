@@ -106,11 +106,11 @@ ENDIF
 ;실행 결정
 ;-------------------------------------------------
 IF NO:TARGET == 37
-    TSTR:0 = 단풍 비비기
+    COM_NAME = 단풍 비비기
 ELSEIF NO:TARGET == 41
-    TSTR:0 = 모미지 비비기
+    COM_NAME = 모미지 비비기
 ELSE
-    TSTR:0 = 파이즈리
+    COM_NAME = 파이즈리
 ENDIF
 CALL TRAIN_MESSAGE_COM042
 

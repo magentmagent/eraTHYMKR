@@ -96,20 +96,20 @@ RETURN 1
 ;피스트 성교를 기본으로 작성
 @COM234
 IF NO:PLAYER == 10
-    TSTR:0 = 보지 크레이들
+    COM_NAME = 보지 크레이들
 ELSEIF PREVCOM == 234
-    TSTR:0 = 동굴탐험
+    COM_NAME = 동굴탐험
 ELSE
-    TSTR:0 = 보지 다이빙
+    COM_NAME = 보지 다이빙
 ENDIF
 IF NO:PLAYER == 23
-    TSTR:0 = 스이카의 %TSTR:0%
+    COM_NAME = 스이카의 %COM_NAME%
 ELSEIF NO:PLAYER == 88
-    TSTR:0 = 샹하이의 %TSTR:0%
+    COM_NAME = 샹하이의 %COM_NAME%
 ELSEIF NO:PLAYER == 89
-    TSTR:0 = 호라이의 %TSTR:0%
+    COM_NAME = 호라이의 %COM_NAME%
 ENDIF
-PRINTFORML %TSTR:0%
+PRINTFORML %COM_NAME%
 CALL TRAIN_MESSAGE_COM234
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)

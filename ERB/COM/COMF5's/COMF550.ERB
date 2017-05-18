@@ -34,7 +34,7 @@ RETURN 1
 ;말분기에 TFLAG:99(0=최면 성공,1=최면 실패)와 TFLAG:201(0=최면 개시,1=최면 종료)를 사용. 무엇보다 TFLAG:201은 TEQUIP:92를 보면 좋지만.
 @COM550
 PRINTL 촉수 최면
-TSTR:0 = 촉수 최면
+COM_NAME = 촉수 최면
 TFLAG:99 = 0
 IF TEQUIP:92
     DOWNBASE:0 += 0

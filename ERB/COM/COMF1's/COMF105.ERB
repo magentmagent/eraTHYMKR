@@ -210,7 +210,7 @@ RETURN 1
 ;-------------------------------------------------
 @COM105_SUCCESS
 ;칭호 취득에 관계 있으므로 이 자구를 바꾸는 경우, SOURCE2.ERB도 참조.
-TSTR:0 = 공개 노출 라이브
+COM_NAME = 공개 노출 라이브
 
 ;-------------------------------------------------
 ;소스의 계산
@@ -352,10 +352,10 @@ PRINTFORM %조사선택(CALLNAME:TARGET, "는")%
 IF TEQUIP:41
     IF FLAG:1100 & 1
         ;技師パッチ有効でアイマスク装備中なら特殊な名前チェック
-        TSTR:7 = 아이마스크
+        COM_TOOL_NAME = 아이마스크
         FLAG:1110 = 30
         CALL NAMECHECK_CUSTOMTOOL
-        PRINTFORM %조사선택(TSTR:7, "를")% 
+        PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
     ELSE
         PRINT 안대를 
     ENDIF
@@ -366,40 +366,40 @@ IF TEQUIP:30
     IF TEQUIP:30 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でクリキャップ装備中なら特殊な名前チェック
-            TSTR:7 = 클리캡
+            COM_TOOL_NAME = 클리캡
             FLAG:1110 = 15
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 클리 캡을 
         ENDIF
     ELSEIF TEQUIP:30 == 2
         IF FLAG:1100 & 1
             ;技師パッチ有効でオナホール装備中なら特殊な名前チェック
-            TSTR:7 = 오나홀
+            COM_TOOL_NAME = 오나홀
             FLAG:1110 = 16
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 오나홀을 
         ENDIF
     ELSEIF TEQUIP:30 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効で陰核電極装備中なら特殊な名前チェック
-            TSTR:7 = 클리 전극
+            COM_TOOL_NAME = 클리 전극
             FLAG:1110 = 18
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 클리 전극을 
         ENDIF
     ELSEIF TEQUIP:30 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効で電極オナホール装備中なら特殊な名前チェック
-            TSTR:7 = 전극 오나홀
+            COM_TOOL_NAME = 전극 오나홀
             FLAG:1110 = 17
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극 오나홀을 
         ENDIF
@@ -415,30 +415,30 @@ IF TEQUIP:35
     IF TEQUIP:35 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でニプルキャップ装備中なら特殊な名前チェック
-            TSTR:7 = 유두캡
+            COM_TOOL_NAME = 유두캡
             FLAG:1110 = 20
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 유두캡을 
         ENDIF
     ELSEIF TEQUIP:35 == 2
         IF FLAG:1100 & 1
             ;技師パッチ有効で搾乳機装備中なら特殊な名前チェック
-            TSTR:7 = 착유기
+            COM_TOOL_NAME = 착유기
             FLAG:1110 = 21
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 착유기를 
         ENDIF
     ELSEIF TEQUIP:35 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でテープ付き電極装備中なら特殊な名前チェック
-            TSTR:7 = 테이프 첨부 전극
+            COM_TOOL_NAME = 테이프 첨부 전극
             FLAG:1110 = 23
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 테이프 첨부 전극을 
         ENDIF
@@ -451,10 +451,10 @@ IF TEQUIP:20
     IF TEQUIP:20 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でバイブ装備中なら特殊な名前チェック
-            TSTR:7 = 바이브
+            COM_TOOL_NAME = 바이브
             FLAG:1110 = 3
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바이브를 
         ENDIF
@@ -465,10 +465,10 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 3
         IF FLAG:1100 & 1
             ;技師パッチ有効でローター装備中なら特殊な名前チェック
-            TSTR:7 = 로터
+            COM_TOOL_NAME = 로터
             FLAG:1110 = 0
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 로터를 
         ENDIF
@@ -476,12 +476,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナ電極装備中なら特殊な名前チェック
-            TSTR:7 = 전극
+            COM_TOOL_NAME = 전극
             FLAG:1110 = 7
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:7
-                TSTR:7 = 전극
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:7
+                COM_TOOL_NAME = 전극
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극을 
         ENDIF
@@ -489,12 +489,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 5
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバーベル装備中なら特殊な名前チェック
-            TSTR:7 = 바벨
+            COM_TOOL_NAME = 바벨
             FLAG:1110 = 4
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:4
-                TSTR:7 = 바벨
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:4
+                COM_TOOL_NAME = 바벨
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바벨을 
         ENDIF
@@ -502,12 +502,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバルーン装備中なら特殊な名前チェック
-            TSTR:7 = 풍선
+            COM_TOOL_NAME = 풍선
             FLAG:1110 = 5
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:5
-                TSTR:7 = 풍선
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:5
+                COM_TOOL_NAME = 풍선
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 풍선을 
         ENDIF
@@ -515,10 +515,10 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 7
         IF FLAG:1100 & 1
             ;技師パッチ有効で愛液採集器装備中なら特殊な名前チェック
-            TSTR:7 = 애액 채집기
+            COM_TOOL_NAME = 애액 채집기
             FLAG:1110 = 6
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 애액 채집기를 
         ENDIF
@@ -538,10 +538,10 @@ IF TEQUIP:25
     IF TEQUIP:25 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でアナルバイブ装備中なら特殊な名前チェック
-            TSTR:7 = 애널 바이브
+            COM_TOOL_NAME = 애널 바이브
             FLAG:1110 = 9
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 애널 바이브를 
         ENDIF
@@ -551,46 +551,46 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 3
         IF FLAG:1100 & 1
             ;技師パッチ有効でローター装備中なら特殊な名前チェック
-            TSTR:7 = 로터
+            COM_TOOL_NAME = 로터
             FLAG:1110 = 0
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 로터를 
         ENDIF
     ELSEIF TEQUIP:25 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナ電極装備中なら特殊な名前チェック
-            TSTR:7 = 전극
+            COM_TOOL_NAME = 전극
             FLAG:1110 = 14
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:14
-                TSTR:7 = 전극
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:14
+                COM_TOOL_NAME = 전극
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극을 
         ENDIF 
     ELSEIF TEQUIP:25 == 5
         IF FLAG:1100 & 1
             ;技師パッチ有効でアナルビーズ装備中なら特殊な名前チェック
-            TSTR:7 = 비즈
+            COM_TOOL_NAME = 비즈
             FLAG:1110 = 11
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:11
-                TSTR:7 = 비즈
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:11
+                COM_TOOL_NAME = 비즈
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 비즈를 
         ENDIF
     ELSEIF TEQUIP:25 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効で拡張バルーン装備中なら特殊な名前チェック
-            TSTR:7 = 벌룬
+            COM_TOOL_NAME = 벌룬
             FLAG:1110 = 13
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:13
-                TSTR:7 = 벌룬
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:13
+                COM_TOOL_NAME = 벌룬
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 벌룬을 
         ENDIF
@@ -598,12 +598,12 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 7 || TEQUIP:25 == 8
         IF FLAG:1100 & 1
             ;技師パッチ有効でプラグ装備中なら特殊な名前チェック
-            TSTR:7 = 플러그
+            COM_TOOL_NAME = 플러그
             FLAG:1110 = 10
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:10
-                TSTR:7 = 플러그
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:10
+                COM_TOOL_NAME = 플러그
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 플러그를 
         ENDIF
@@ -614,12 +614,12 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 10
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバーベル装備中なら特殊な名前チェック
-            TSTR:7 = 바벨
+            COM_TOOL_NAME = 바벨
             FLAG:1110 = 4
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:4
-                TSTR:7 = 바벨
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:4
+                COM_TOOL_NAME = 바벨
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바벨을 
         ENDIF
@@ -644,10 +644,10 @@ ELSEIF TEQUIP:59
 ELSEIF TEQUIP:36
     IF FLAG:1100 & 1
         ;技師パッチ有効でサラシ装備中なら特殊な名前チェック
-        TSTR:7 = 사라시
+        COM_TOOL_NAME = 사라시
         FLAG:1110 = 24
         CALL NAMECHECK_CUSTOMTOOL
-        PRINTFORM %조사선택(TSTR:7, "를")% 입고 
+        PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 입고 
     ELSE
         PRINT 사라시를 입고 
     ENDIF
@@ -737,7 +737,7 @@ RETURN 1
 ;실행 결정(실패)
 ;-------------------------------------------------
 @COM105_FAIL
-TSTR:0 = 후회 야외 라이브
+COM_NAME = 후회 야외 라이브
 
 ;-------------------------------------------------
 ;소스의 계산
@@ -830,10 +830,10 @@ PRINTFORM %조사선택(CALLNAME:TARGET, "는")%
 IF TEQUIP:41
     IF FLAG:1100 & 1
         ;技師パッチ有効でアイマスク装備中なら特殊な名前チェック
-        TSTR:7 = 아이마스크
+        COM_TOOL_NAME = 아이마스크
         FLAG:1110 = 30
         CALL NAMECHECK_CUSTOMTOOL
-        PRINTFORM %조사선택(TSTR:7, "를")% 
+        PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
     ELSE
         PRINT 안대를 
     ENDIF
@@ -844,40 +844,40 @@ IF TEQUIP:30
     IF TEQUIP:30 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でクリキャップ装備中なら特殊な名前チェック
-            TSTR:7 = 클리캡
+            COM_TOOL_NAME = 클리캡
             FLAG:1110 = 15
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 클리 캡을 
         ENDIF
     ELSEIF TEQUIP:30 == 2
         IF FLAG:1100 & 1
             ;技師パッチ有効でオナホール装備中なら特殊な名前チェック
-            TSTR:7 = 오나홀
+            COM_TOOL_NAME = 오나홀
             FLAG:1110 = 16
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 오나홀을 
         ENDIF
     ELSEIF TEQUIP:30 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効で陰核電極装備中なら特殊な名前チェック
-            TSTR:7 = 클리 전극
+            COM_TOOL_NAME = 클리 전극
             FLAG:1110 = 18
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 클리 전극을 
         ENDIF
     ELSEIF TEQUIP:30 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効で電極オナホール装備中なら特殊な名前チェック
-            TSTR:7 = 전극 오나홀
+            COM_TOOL_NAME = 전극 오나홀
             FLAG:1110 = 17
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극 오나홀을 
         ENDIF
@@ -893,30 +893,30 @@ IF TEQUIP:35
     IF TEQUIP:35 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でニプルキャップ装備中なら特殊な名前チェック
-            TSTR:7 = 유두캡
+            COM_TOOL_NAME = 유두캡
             FLAG:1110 = 20
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 유두캡을 
         ENDIF
     ELSEIF TEQUIP:35 == 2
         IF FLAG:1100 & 1
             ;技師パッチ有効で搾乳機装備中なら特殊な名前チェック
-            TSTR:7 = 착유기
+            COM_TOOL_NAME = 착유기
             FLAG:1110 = 21
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 착유기를 
         ENDIF
     ELSEIF TEQUIP:35 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でテープ付き電極装備中なら特殊な名前チェック
-            TSTR:7 = 테이프 첨부 전극
+            COM_TOOL_NAME = 테이프 첨부 전극
             FLAG:1110 = 23
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 테이프 첨부 전극을 
         ENDIF
@@ -929,10 +929,10 @@ IF TEQUIP:20
     IF TEQUIP:20 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でバイブ装備中なら特殊な名前チェック
-            TSTR:7 = 바이브
+            COM_TOOL_NAME = 바이브
             FLAG:1110 = 3
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바이브를 
         ENDIF
@@ -943,10 +943,10 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 3
         IF FLAG:1100 & 1
             ;技師パッチ有効でローター装備中なら特殊な名前チェック
-            TSTR:7 = 로터
+            COM_TOOL_NAME = 로터
             FLAG:1110 = 0
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 로터를 
         ENDIF
@@ -954,12 +954,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナ電極装備中なら特殊な名前チェック
-            TSTR:7 = 전극
+            COM_TOOL_NAME = 전극
             FLAG:1110 = 7
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:7
-                TSTR:7 = 전극
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:7
+                COM_TOOL_NAME = 전극
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극을 
         ENDIF
@@ -967,12 +967,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 5
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバーベル装備中なら特殊な名前チェック
-            TSTR:7 = 바벨
+            COM_TOOL_NAME = 바벨
             FLAG:1110 = 4
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:4
-                TSTR:7 = 바벨
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:4
+                COM_TOOL_NAME = 바벨
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바벨을 
         ENDIF
@@ -980,12 +980,12 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバルーン装備中なら特殊な名前チェック
-            TSTR:7 = 풍선
+            COM_TOOL_NAME = 풍선
             FLAG:1110 = 5
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:5
-                TSTR:7 = 풍선
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:5
+                COM_TOOL_NAME = 풍선
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 풍선을 
         ENDIF
@@ -993,10 +993,10 @@ IF TEQUIP:20
     ELSEIF TEQUIP:20 == 7
         IF FLAG:1100 & 1
             ;技師パッチ有効で愛液採集器装備中なら特殊な名前チェック
-            TSTR:7 = 애액 채집기
+            COM_TOOL_NAME = 애액 채집기
             FLAG:1110 = 6
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 애액 채집기를 
         ENDIF
@@ -1016,10 +1016,10 @@ IF TEQUIP:25
     IF TEQUIP:25 == 1
         IF FLAG:1100 & 1
             ;技師パッチ有効でアナルバイブ装備中なら特殊な名前チェック
-            TSTR:7 = 애널 바이브
+            COM_TOOL_NAME = 애널 바이브
             FLAG:1110 = 9
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 애널 바이브를 
         ENDIF
@@ -1029,46 +1029,46 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 3
         IF FLAG:1100 & 1
             ;技師パッチ有効でローター装備中なら特殊な名前チェック
-            TSTR:7 = 로터
+            COM_TOOL_NAME = 로터
             FLAG:1110 = 0
             CALL NAMECHECK_CUSTOMTOOL
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 로터를 
         ENDIF
     ELSEIF TEQUIP:25 == 4
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナ電極装備中なら特殊な名前チェック
-            TSTR:7 = 전극
+            COM_TOOL_NAME = 전극
             FLAG:1110 = 14
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:14
-                TSTR:7 = 전극
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:14
+                COM_TOOL_NAME = 전극
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 전극을 
         ENDIF 
     ELSEIF TEQUIP:25 == 5
         IF FLAG:1100 & 1
             ;技師パッチ有効でアナルビーズ装備中なら特殊な名前チェック
-            TSTR:7 = 비즈
+            COM_TOOL_NAME = 비즈
             FLAG:1110 = 11
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:11
-                TSTR:7 = 비즈
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:11
+                COM_TOOL_NAME = 비즈
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 비즈를 
         ENDIF
     ELSEIF TEQUIP:25 == 6
         IF FLAG:1100 & 1
             ;技師パッチ有効で拡張バルーン装備中なら特殊な名前チェック
-            TSTR:7 = 벌룬
+            COM_TOOL_NAME = 벌룬
             FLAG:1110 = 13
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:13
-                TSTR:7 = 벌룬
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:13
+                COM_TOOL_NAME = 벌룬
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 벌룬을 
         ENDIF
@@ -1076,12 +1076,12 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 7 || TEQUIP:25 == 8
         IF FLAG:1100 & 1
             ;技師パッチ有効でプラグ装備中なら特殊な名前チェック
-            TSTR:7 = 플러그
+            COM_TOOL_NAME = 플러그
             FLAG:1110 = 10
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:10
-                TSTR:7 = 플러그
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:10
+                COM_TOOL_NAME = 플러그
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 플러그를 
         ENDIF
@@ -1092,12 +1092,12 @@ IF TEQUIP:25
     ELSEIF TEQUIP:25 == 10
         IF FLAG:1100 & 1
             ;技師パッチ有効でヴァギナバーベル装備中なら特殊な名前チェック
-            TSTR:7 = 바벨
+            COM_TOOL_NAME = 바벨
             FLAG:1110 = 4
             CALL NAMECHECK_CUSTOMTOOL
-            SIF TSTR:7 == ITEMNAME:4
-                TSTR:7 = 바벨
-            PRINTFORM %조사선택(TSTR:7, "를")% 
+            SIF COM_TOOL_NAME == ITEMNAME:4
+                COM_TOOL_NAME = 바벨
+            PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
         ELSE
             PRINT 바벨을 
         ENDIF
@@ -1122,10 +1122,10 @@ ELSEIF TEQUIP:59
 ELSEIF TEQUIP:36
     IF FLAG:1100 & 1
         ;技師パッチ有効でサラシ装備中なら特殊な名前チェック
-        TSTR:7 = 사라시
+        COM_TOOL_NAME = 사라시
         FLAG:1110 = 24
         CALL NAMECHECK_CUSTOMTOOL
-        PRINTFORM %조사선택(TSTR:7, "를")% 입고 
+        PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 입고 
     ELSE
         PRINT 사라시를 입고 
     ENDIF

@@ -67,7 +67,7 @@ IF TALENT:PLAYER:831 && FLAG:574 > 0
             RETURN 0
         ELSE
             PRINTL 로션
-            TSTR:0 = 로션
+            COM_NAME = 로션
             CALL TRAIN_MESSAGE_COM060
             SOURCE:19 = 10000
             IF NOITEM == 0
@@ -80,7 +80,7 @@ IF TALENT:PLAYER:831 && FLAG:574 > 0
         SIF RESULT < 0 || RESULT > FLAG:574
             GOTO INPUT_LOOP
         PRINTL 로션 연성
-        TSTR:0 = 로션 연성
+        COM_NAME = 로션 연성
         IF FLAG:10
             PRINTL
             PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% 채소로 로션을 연성했다.
@@ -90,7 +90,7 @@ IF TALENT:PLAYER:831 && FLAG:574 > 0
     ENDIF
 ELSE
     PRINTL 로션
-    TSTR:0 = 로션
+    COM_NAME = 로션
     CALL TRAIN_MESSAGE_COM060
     SOURCE:19 = 10000
     IF NOITEM == 0

@@ -68,15 +68,15 @@ SIF TEQUIP:90 == 0
     TFLAG:177 = KANTYO_BLEND_CHECK(TARGET)
 IF TEQUIP:90
     PRINTL 촉수 관장
-    TSTR:0 = 촉수 관장
+    COM_NAME = 촉수 관장
     TFLAG:99 = 0
 ELSEIF TEQUIP:25 == 7
     PRINTL 관장 플러그 빼내기
-    TSTR:0 = 관장 플러그 빼내기
+    COM_NAME = 관장 플러그 빼내기
     TFLAG:99 = 1
 ELSEIF TFLAG:177 <= 0
     PRINTL 관장 플레이
-    TSTR:0 = 관장 플레이
+    COM_NAME = 관장 플레이
     TFLAG:99 = 1
 ELSE
     VARSET LOCALS,""
@@ -108,7 +108,7 @@ ELSE
     ENDIF
     TFLAG:99 = RESULT + 1
     PRINTFORML %LOCALS:RESULT%관장
-    TSTR:0 = %LOCALS:RESULT%관장
+    COM_NAME = %LOCALS:RESULT%관장
 ENDIF
 CALL TRAIN_MESSAGE_COM174
 

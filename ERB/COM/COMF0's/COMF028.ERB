@@ -104,9 +104,9 @@ ENDIF
 ;실행 결정
 ;-------------------------------------------------
 IF NO:TARGET == 73 || NO:TARGET == 77
-    TSTR:0 = 불단 뒤집기
+    COM_NAME = 불단 뒤집기
 ELSE
-    TSTR:0 = 배면입위
+    COM_NAME = 배면입위
 ENDIF
 CALL TRAIN_MESSAGE_COM028
 

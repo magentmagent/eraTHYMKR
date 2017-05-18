@@ -1343,27 +1343,27 @@ INPUT
 IF RESULT == 100
     RETURN 1
 ELSEIF RESULT == 1
-    TSTR:99 = 능력
+    COM_TOOL_CALLNAME9 = 능력
 ELSEIF RESULT == 2
-    TSTR:99 = 소질
+    COM_TOOL_CALLNAME9 = 소질
 ELSEIF RESULT == 3
-    TSTR:99 = 경험
+    COM_TOOL_CALLNAME9 = 경험
 ELSEIF RESULT == 4
-    TSTR:99 = 각인
+    COM_TOOL_CALLNAME9 = 각인
 ELSEIF RESULT == 5
-    TSTR:99 = 구슬
+    COM_TOOL_CALLNAME9 = 구슬
 ELSEIF RESULT == 6
-    TSTR:99 = 기념일
+    COM_TOOL_CALLNAME9 = 기념일
 ELSEIF RESULT == 7
-    TSTR:99 = 체력,기력
+    COM_TOOL_CALLNAME9 = 체력,기력
 ELSEIF RESULT == 8
-    TSTR:99 = 호감도,돈벌이,스트레스
+    COM_TOOL_CALLNAME9 = 호감도,돈벌이,스트레스
 ELSEIF RESULT == 9
-    TSTR:99 = 칭호,주인호칭
+    COM_TOOL_CALLNAME9 = 칭호,주인호칭
 ELSEIF RESULT == 10 && TALENT:MASTER:998
-    TSTR:99 = Debug용CFLAG
+    COM_TOOL_CALLNAME9 = Debug용CFLAG
 ELSEIF RESULT == 11 && TALENT:MASTER:998
-    TSTR:99 = Debug용CSTR
+    COM_TOOL_CALLNAME9 = Debug용CSTR
 ELSE
     GOTO INPUT_LOOP
 ENDIF
@@ -1381,13 +1381,13 @@ SPLIT "생일,구입된 날,끌려온 날,결혼기념일,계약기념일,함락
 $PRINT_LIST
 LOCAL:2 = 0
 DRAWLINE
-PRINTFORML 검색할 %TSTR:99%\@(TFLAG:0 == 10) ? (0~9999) # \@\@(TFLAG:0 == 11) ?  (0~99) # \@(을)를 선택해 주세요.  ＜page. {LOCAL:1}＞
+PRINTFORML 검색할 %COM_TOOL_CALLNAME9%\@(TFLAG:0 == 10) ? (0~9999) # \@\@(TFLAG:0 == 11) ?  (0~99) # \@(을)를 선택해 주세요.  ＜page. {LOCAL:1}＞
 IF TFLAG:0 == 6
     REPEAT 6
         LOCAL:(COUNT + 100) = 0
-        TSTR:0 = %LOCALS:COUNT%
+        COM_NAME = %LOCALS:COUNT%
         SIF LOCAL:2 / 30 >= LOCAL:1 && LOCAL:2 / 30 < 1 + LOCAL:1
-        PRINTFORMLC [{COUNT, 3}] %TSTR:0, 12, LEFT%
+        PRINTFORMLC [{COUNT, 3}] %COM_NAME, 12, LEFT%
         LOCAL:2 += 1
         LOCAL:(COUNT + 100) = 1
     REND
@@ -1399,31 +1399,31 @@ ELSEIF TFLAG:0 != 10 && TFLAG:0 != 11
                 CONTINUE
             SIF STRLENS(ABLNAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %ABLNAME:COUNT%
+            COM_NAME = %ABLNAME:COUNT%
         ELSEIF TFLAG:0 == 2
             SIF STRLENS(TALENTNAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %TALENTNAME:COUNT%
+            COM_NAME = %TALENTNAME:COUNT%
             SIF COUNT == 164 && (NO:MASTER == 21 || NO:MASTER == 13)
-                TSTR:0 = 식
+                COM_NAME = 식
         ELSEIF TFLAG:0 == 3
             SIF COUNT >= 100
                 CONTINUE
             SIF STRLENS(EXPNAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %EXPNAME:COUNT%
+            COM_NAME = %EXPNAME:COUNT%
         ELSEIF TFLAG:0 == 4
             SIF COUNT >= 12
                 CONTINUE
             SIF STRLENS(MARKNAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %MARKNAME:COUNT%
+            COM_NAME = %MARKNAME:COUNT%
         ELSEIF TFLAG:0 == 5
             SIF (COUNT >= 20 && COUNT < 30) || COUNT > 198
                 CONTINUE
             SIF STRLENS(PALAMNAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %PALAMNAME:COUNT%의 구슬
+            COM_NAME = %PALAMNAME:COUNT%의 구슬
         ELSEIF TFLAG:0 == 7
             SIF COUNT >= 2 && COUNT <= 9
                 CONTINUE
@@ -1431,7 +1431,7 @@ ELSEIF TFLAG:0 != 10 && TFLAG:0 != 11
                 CONTINUE
             SIF STRLENS(BASENAME:COUNT) <= 0
                 CONTINUE
-            TSTR:0 = %BASENAME:COUNT%
+            COM_NAME = %BASENAME:COUNT%
         ELSEIF TFLAG:0 == 8
             STRLENS CFLAGNAME:COUNT
             SIF RESULT < 1
@@ -1440,18 +1440,18 @@ ELSEIF TFLAG:0 != 10 && TFLAG:0 != 11
                 CONTINUE
             SIF (COUNT == 80 || COUNT == 81) && FLAG:13 & 1024 == 0
                 CONTINUE
-            TSTR:0 = %CFLAGNAME:COUNT%
+            COM_NAME = %CFLAGNAME:COUNT%
         ELSEIF TFLAG:0 == 9
             IF COUNT == 0
-                TSTR:0 = 칭호
+                COM_NAME = 칭호
             ELSEIF COUNT == 1
-                TSTR:0 = 주인의 호칭
+                COM_NAME = 주인의 호칭
             ELSE
                 CONTINUE
             ENDIF
         ENDIF
         SIF LOCAL:2 / 30 >= LOCAL:1 && LOCAL:2 / 30 < 1 + LOCAL:1
-            PRINTFORMLC [{COUNT, 3}] %TSTR:0, 12, LEFT%
+            PRINTFORMLC [{COUNT, 3}] %COM_NAME, 12, LEFT%
         LOCAL:2 += 1
         LOCAL:(COUNT + 100) = 1
     REND
@@ -1491,33 +1491,33 @@ ELSEIF RESULT < 0 || (TFLAG:0 != 10 && TFLAG:0 != 11 && (RESULT > 250 || LOCAL:(
 ENDIF
 
 IF TFLAG:0 == 1
-    TSTR:0 = %ABLNAME:RESULT%
+    COM_NAME = %ABLNAME:RESULT%
 ELSEIF TFLAG:0 == 2
-    TSTR:0 = %TALENTNAME:RESULT%
+    COM_NAME = %TALENTNAME:RESULT%
 ELSEIF TFLAG:0 == 3
-    TSTR:0 = %EXPNAME:RESULT%
+    COM_NAME = %EXPNAME:RESULT%
 ELSEIF TFLAG:0 == 4
-    TSTR:0 = %MARKNAME:RESULT%
+    COM_NAME = %MARKNAME:RESULT%
 ELSEIF TFLAG:0 == 5
-    TSTR:0 = %PALAMNAME:RESULT%의 구슬
+    COM_NAME = %PALAMNAME:RESULT%의 구슬
 ELSEIF TFLAG:0 == 6
-    TSTR:0 = %LOCALS:RESULT%
+    COM_NAME = %LOCALS:RESULT%
 ELSEIF TFLAG:0 == 7
-    TSTR:0 = %BASENAME:RESULT%
+    COM_NAME = %BASENAME:RESULT%
 ELSEIF TFLAG:0 == 8
     SIF (RESULT == 80 || RESULT == 81) && FLAG:13 & 1024 == 0
         GOTO INPUT_LOOP_0
-    TSTR:0 = %CFLAGNAME:RESULT%
+    COM_NAME = %CFLAGNAME:RESULT%
 ELSEIF TFLAG:0 == 9
     IF RESULT == 0
-        TSTR:0 = 칭호
+        COM_NAME = 칭호
     ELSEIF RESULT == 1
-        TSTR:0 = 주인의 호칭
+        COM_NAME = 주인의 호칭
     ENDIF
 ELSEIF TFLAG:0 == 10
-    TSTR:0 = CFLAG:{RESULT}
+    COM_NAME = CFLAG:{RESULT}
 ELSEIF TFLAG:0 == 11
-    TSTR:0 = CSTR:{RESULT}
+    COM_NAME = CSTR:{RESULT}
 ENDIF
 CALL SHOW_SEARCH_CHARADATA, RESULT
 RESTART
@@ -1558,11 +1558,11 @@ REPEAT CHARANUM
     ELSEIF TFLAG:0 == 8 || TFLAG:0 == 10
         SIF CFLAG:COUNT:ARG == 0
             CONTINUE
-    ELSEIF TFLAG:0 == 9 && TSTR:0 == "칭호"
+    ELSEIF TFLAG:0 == 9 && COM_NAME == "칭호"
         STRLENS NICKNAME:COUNT
         SIF RESULT <= 0
             CONTINUE
-    ELSEIF TFLAG:0 == 9 && TSTR:0 == "주인의 호칭"
+    ELSEIF TFLAG:0 == 9 && COM_NAME == "주인의 호칭"
         STRLENS MASTERNAME:COUNT
         SIF RESULT <= 0
             CONTINUE
@@ -1580,7 +1580,7 @@ LOCAL:1 = (LOCAL:2 - 1) / 20
 
 $PRINT_LIST
 DRAWLINE
-PRINTFORML %TSTR:0%(을)를 소지하고 있는 캐릭터 목록입니다 ＜page.{LOCAL+1}＞
+PRINTFORML %COM_NAME%(을)를 소지하고 있는 캐릭터 목록입니다 ＜page.{LOCAL+1}＞
 CALL SHOW_SEARCH_LIST, LOCAL, ARG
 DRAWLINE
 PRINTFORMLC \@(LOCAL <= 0) ? %" " * 16% # [1001] 앞 페이지로\@
@@ -1714,16 +1714,16 @@ ELSEIF TFLAG:0 == 7
     ENDIF
 ELSEIF TFLAG:0 == 6
     STR:2 = ({LOCAL}일째)
-ELSEIF TFLAG:0 == 9 && TSTR:0 == "칭호"
+ELSEIF TFLAG:0 == 9 && COM_NAME == "칭호"
     STR:2 = : %NICKNAME:ARG%
-ELSEIF TFLAG:0 == 9 && TSTR:0 == "주인의 호칭"
+ELSEIF TFLAG:0 == 9 && COM_NAME == "주인의 호칭"
     STR:2 = : %MASTERNAME:ARG%
 ELSEIF TFLAG:0 == 11
     STR:2 = : %CSTR:ARG:(ARG:1)%
 ELSE
     STR:2 = ({LOCAL})
 ENDIF
-STR:3 = %TSTR:0, 12%%STR:2%
+STR:3 = %COM_NAME, 12%%STR:2%
 SIF TFLAG:0 == 2 && ARG:1 == 153 && CFLAG:ARG:156 & 1
     STR:3 = %"상사상애", 12%%STR:2%
 

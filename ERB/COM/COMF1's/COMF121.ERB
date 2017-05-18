@@ -45,17 +45,17 @@ RETURN 1
 ;--------------------------------------------------
 @COM121
 PRINTL 사정 막기
-TSTR:7 = 리본
+COM_TOOL_NAME = 리본
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 19
     CALL NAMECHECK_CUSTOMTOOL
-    SIF TSTR:9 == "리본"
-        TSTR:9 = 프릴이 붙은 사랑스러운 %TSTR:7%
+    SIF COM_TOOL_CALLNAME == "리본"
+        COM_TOOL_CALLNAME = 프릴이 붙은 사랑스러운 %COM_TOOL_NAME%
 ELSE
-    TSTR:9 = 프릴이 붙은 사랑스러운 %TSTR:7%
+    COM_TOOL_CALLNAME = 프릴이 붙은 사랑스러운 %COM_TOOL_NAME%
 ENDIF
-TSTR:0 = 사정막기
+COM_NAME = 사정막기
 CALL TRAIN_MESSAGE_COM121
 
 ;리본의 착탈
@@ -167,8 +167,8 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 
 PRINTL
 IF TEQUIP:69
-    PRINTFORMW %조사선택(CALLNAME:TARGET, "를")% 괴롭히던 %조사선택(TSTR:7, "를")% 스륵 풀어주었다….
+    PRINTFORMW %조사선택(CALLNAME:TARGET, "를")% 괴롭히던 %조사선택(COM_TOOL_NAME, "를")% 스륵 풀어주었다….
 ELSE
-    PRINTFORML %CALLNAME:TARGET%의 페니스의 뿌리에, %조사선택(TSTR:9, "를")% 단단히 묶었다.
+    PRINTFORML %CALLNAME:TARGET%의 페니스의 뿌리에, %조사선택(COM_TOOL_CALLNAME, "를")% 단단히 묶었다.
     PRINTFORMW 갈 곳 없이 모여든 피 덕분에 %CALLNAME:TARGET%의 귀두는 검붉게 팽창하고 있다….
 ENDIF

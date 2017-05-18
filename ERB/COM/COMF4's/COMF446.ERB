@@ -39,10 +39,10 @@ RETURN 1
 ;조수의 에이키 님이 할 때는 당신도 말려 들어가 「받는다」 것으로
 IF NO:MASTER == 36
     PRINTL 설교를 한다
-    TSTR:0 = 설교를 한다
+    COM_NAME = 설교를 한다
 ELSE
     PRINTL 설교를 받는다
-    TSTR:0 = 설교를 받는다
+    COM_NAME = 설교를 받는다
 ENDIF
 CALL TRAIN_MESSAGE_COM446
 

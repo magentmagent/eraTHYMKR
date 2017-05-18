@@ -53,14 +53,14 @@ RETURN 1
 @COM224
 ;촉수 조교중은 아니고, CONFIG로 고문계, 정신 조작계 커맨드가 유효해,
 ;지금부터 노예를 긴박 하는 경우, 묶는 방법을 선택할 수가 있다.
-TSTR:7 = 밧줄
+COM_TOOL_NAME = 밧줄
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 29
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
 
 IF TEQUIP:40 == 0 && TEQUIP:90 == 0 && FLAG:15 & 16
@@ -76,13 +76,13 @@ IF TEQUIP:40 == 0 && TEQUIP:90 == 0 && FLAG:15 & 16
 ENDIF
 IF TEQUIP:90
     PRINTL 촉수 결박
-    TSTR:0 = 촉수 결박
+    COM_NAME = 촉수 결박
 ELSEIF TEQUIP:40
-    PRINTFORML %TSTR:8%해방
-    TSTR:0 = 밧줄해방
+    PRINTFORML %COM_TOOL_NAME%해방
+    COM_NAME = 밧줄해방
 ELSE
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 밧줄
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 밧줄
 ENDIF
 ;-------------------------------------------------
 ;소스의 계산
@@ -323,14 +323,14 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 ;토리코 모드에서의 직접 호출 대비
-TSTR:7 = 밧줄
+COM_TOOL_NAME = 밧줄
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 29
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
 
 PRINTL
@@ -343,27 +343,27 @@ IF TEQUIP:90
 ELSE
     PRINTFORM %조사선택(CALLNAME:PLAYER, "는")% 
     IF TEQUIP:40
-        PRINTFORMW %CALLNAME:TARGET%의 %조사선택(TSTR:7, "를")% 풀어 주었다….
+        PRINTFORMW %CALLNAME:TARGET%의 %조사선택(COM_TOOL_NAME, "를")% 풀어 주었다….
     ELSE
         ;도착적이어 공포 각인이 1 이하로 반발 각인이 없을 때
         IF TALENT:80 && MARK:8 < 2 && MARK:9 < 1
-            PRINTFORML %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 묶었다.
+            PRINTFORML %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 묶었다.
             PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 밧줄의 감촉을 전신으로 느끼며, 쾌감을 마음껏 맛보고 있는 것 같다….
         ;반항적인가 저항을 가져 함락 하지 않는 경우
         ELSEIF (TALENT:11 || TALENT:34) && TALENT:150 == 0 && TALENT:160 == 0 && TALENT:170 == 0
-            PRINTFORMW 격렬하게 바둥대는 %조사선택(CALLNAME:TARGET, "를")% 억지로 %조사선택(TSTR:9, "로")% 붙들어 매었다….
+            PRINTFORMW 격렬하게 바둥대는 %조사선택(CALLNAME:TARGET, "를")% 억지로 %조사선택(COM_TOOL_CALLNAME, "로")% 붙들어 매었다….
         ;겁쟁이 소유나 공포 각인 2이상으로 기장과 감정결여를 가지지 않고, 함락 하고 있지 않는 경우
         ELSEIF  (TALENT:10 || MARK:8 >= 2) && TALENT:12 == 0 && TALENT:22 == 0 && TALENT:150 == 0 && TALENT:160 == 0 && TALENT:170 == 0
-            PRINTFORMW 공포에 질린 %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 정중하게 묶었다….
+            PRINTFORMW 공포에 질린 %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 정중하게 묶었다….
         ;프라이드 높은가 신령해 게다가, 굴복 각인과 치욕 각인이 1 이하로, 함락 하고 있지 않는 경우
         ELSEIF (TALENT:16 || TALENT:222) && MARK:2 < 2 && MARK:4 < 2 && TALENT:150 == 0 && TALENT:160 == 0 && TALENT:170 == 0
-            PRINTFORML %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 묶었다.
+            PRINTFORML %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 묶었다.
             PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 속박되면서도, 그 프라이드만은 꺾이지 않는 것 같다….
         ;해방이나 쾌감에 솔직한가 봄의 사람으로 아픔에 약하지만 않고, 반발 각인이 없는 경우
         ELSEIF (TALENT:33 || TALENT:70 || TALENT:263) && TALENT:40 == 0 && MARK:9 <= 0
-            PRINTFORMW 어딘지 즐거워 보이는 %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 정중하게 묶었다….
+            PRINTFORMW 어딘지 즐거워 보이는 %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 정중하게 묶었다….
         ELSE
-            PRINTFORMW %조사선택(CALLNAME:TARGET, "를")% %조사선택(TSTR:9, "로")% 묶었다….
+            PRINTFORMW %조사선택(CALLNAME:TARGET, "를")% %조사선택(COM_TOOL_CALLNAME, "로")% 묶었다….
         ENDIF
     ENDIF
 ENDIF

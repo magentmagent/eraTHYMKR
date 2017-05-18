@@ -40,19 +40,19 @@ RETURN 1
 @COM222
 IF TEQUIP:90
     PRINTL 촉수바늘 고문
-    TSTR:0 = 촉수바늘 고문
+    COM_NAME = 촉수바늘 고문
 ELSE
-    TSTR:7 = 바늘
+    COM_TOOL_NAME = 바늘
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 33
         CALL NAMECHECK_CUSTOMTOOL
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 바늘
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 바늘
 ENDIF
 CALL TRAIN_MESSAGE_COM222
 
@@ -156,8 +156,8 @@ IF TEQUIP:90
 ELSE
     PRINTFORM %CALLNAME:TARGET%의 유두와 \@(TALENT:120 || TALENT:121) ? 페니스 # 클리토리스\@에 
     IF TALENT:PLAYER:53 || TALENT:PLAYER:81 || TALENT:PLAYER:177
-        PRINTFORMW 가차 없이 %조사선택(TSTR:9, "를")% 찔렀다….
+        PRINTFORMW 가차 없이 %조사선택(COM_TOOL_CALLNAME, "를")% 찔렀다….
     ELSE
-        PRINTFORMW %조사선택(TSTR:9, "를")% 찔렀다….
+        PRINTFORMW %조사선택(COM_TOOL_CALLNAME, "를")% 찔렀다….
     ENDIF
 ENDIF

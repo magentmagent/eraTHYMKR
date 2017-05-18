@@ -105,7 +105,7 @@ IF TARGET == LOCAL && !LOCAL:10
             RETURN 0
     ENDIF
 ENDIF
-TSTR:0 = \@ TEQUIP:50 && TARGET == LOCAL ?  공개 # \@\@ TEQUIP:52 && TARGET == LOCAL ?  야외 # \@\@ TEQUIP:74 && TARGET == LOCAL ? 독심 # \@우산\@ TALENT:120 || TALENT:121 ? 펠라 # 커닐링구스 \@\@ TARGET == LOCAL ? 자위 # \@
+COM_NAME = \@ TEQUIP:50 && TARGET == LOCAL ?  공개 # \@\@ TEQUIP:52 && TARGET == LOCAL ?  야외 # \@\@ TEQUIP:74 && TARGET == LOCAL ? 독심 # \@우산\@ TALENT:120 || TALENT:121 ? 펠라 # 커닐링구스 \@\@ TARGET == LOCAL ? 자위 # \@
 
 CALL TRAIN_MESSAGE_COM453
 

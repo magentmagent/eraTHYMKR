@@ -34,10 +34,10 @@ RETURN 1
 @COM62
 IF TEQUIP:90
     PRINTL 촉수 이뇨제 전개
-    TSTR:0 = 촉수 이뇨제 전개
+    COM_NAME = 촉수 이뇨제 전개
 ELSE
     PRINTL 이뇨제
-    TSTR:0 = 이뇨제
+    COM_NAME = 이뇨제
 ENDIF
 CALL TRAIN_MESSAGE_COM062
 

@@ -307,14 +307,14 @@ LOCAL:2 = 0
 
 ;난이도 PHANTASM일 때 표시 없음
 IF FLAG:3 == 5
-    TSTR:0 = ―
+    COM_NAME = ―
     TSTR:1 = ―
     TSTR:2 = ―
     TSTR:3 = ―
     RETURN 0
 ;아나타는 측정 불능
 ELSEIF ARG == 0 || ARG == 400
-    TSTR:0 = \@(ARG == 400) ? 만능 # 불명\@
+    COM_NAME = \@(ARG == 400) ? 만능 # 불명\@
     TSTR:1 = \@(ARG == 400) ? 귀중 # 불명\@
     TSTR:2 = \@(ARG == 400) ? 무한 # 불명\@
     TSTR:3 = \@(ARG == 400) ? 야채 # 불명\@
@@ -528,33 +528,33 @@ SIF ARG == 72
     LOCAL += 1
 
 IF LOCAL < 0
-    TSTR:0 = Ｆ
+    COM_NAME = Ｆ
 ELSEIF LOCAL < 2
-    TSTR:0 = Ｅ
+    COM_NAME = Ｅ
 ELSEIF LOCAL < 4
-    TSTR:0 = Ｄ
+    COM_NAME = Ｄ
 ELSEIF LOCAL < 7
-    TSTR:0 = Ｃ
+    COM_NAME = Ｃ
 ELSEIF LOCAL < 10
-    TSTR:0 = Ｂ
+    COM_NAME = Ｂ
 ELSEIF LOCAL < 14
-    TSTR:0 = Ａ
+    COM_NAME = Ａ
 ELSEIF LOCAL < 18
-    TSTR:0 = Ｓ
+    COM_NAME = Ｓ
 ELSEIF LOCAL < 23
-    TSTR:0 = ＳＳ
+    COM_NAME = ＳＳ
 ELSEIF LOCAL < 27
-    TSTR:0 = ＳＳＳ
+    COM_NAME = ＳＳＳ
 ELSEIF LOCAL < 31
-    TSTR:0 = ＳＳＳＳ
+    COM_NAME = ＳＳＳＳ
 ELSEIF LOCAL < 36
-    TSTR:0 = ＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳ
 ELSEIF LOCAL < 40
-    TSTR:0 = ＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳ
 ELSEIF LOCAL < 44
-    TSTR:0 = ＳＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳＳ
 ELSE
-    TSTR:0 = ★
+    COM_NAME = ★
 ENDIF
 
 ;………………………………………………
@@ -891,7 +891,7 @@ ELSEIF ABL:ARG:10 >= 3 && ABL:ARG:11 >=3 && ABL:ARG:12 >=3 && ABL:ARG:13 >=3 && 
 ELSE
     PRINTFORM 성장도：육성중　
 ENDIF
-PRINTFORML 공헌도：%TSTR:0%　매각치：%TSTR:1%
+PRINTFORML 공헌도：%COM_NAME%　매각치：%TSTR:1%
 CALL NEW_DRAWLINE
 ;-------------------------------------------------
 ;신장  · 체중 · 3사이즈의 표시 처리

@@ -135,7 +135,7 @@ ENDIF
 ;--------------------------------------------------
 ;캐릭터 해설 본체
 ;--------------------------------------------------
-;TSTR:0：공헌도　TSTR:1：매각치　TSTR:2：성장도　TSTR:3：난이도　TSTR:4：종족　TSTR:5：추가정보
+;COM_NAME：공헌도　TSTR:1：매각치　TSTR:2：성장도　TSTR:3：난이도　TSTR:4：종족　TSTR:5：추가정보
 @CHARA_PROFILE
 CALL CALC_CHARABUY, TFLAG:201
 SIF TFLAG:201 < 10
@@ -1549,7 +1549,7 @@ ELSEIF TFLAG:201 == 498
     PRINTL 플러스 요소만으로 가득찬 어엿한 공주님.
     PRINTL 당연히 조교대상이나 조수로도 우수한, 그야말로 성스러운 성의 공주님이다.
 ENDIF
-PRINTFORML 종족：%TSTR:4%　난이도：%TSTR:3%　성장도：%TSTR:2%　공헌도：%TSTR:0%　매각치：%TSTR:1%
+PRINTFORML 종족：%TSTR:4%　난이도：%TSTR:3%　성장도：%TSTR:2%　공헌도：%COM_NAME%　매각치：%TSTR:1%
 ;難易度がEASY～HARDのときは追加情報表示
 SIF FLAG:3 < 4
     CALL SHOW_ADDITIONAL_INFO
@@ -1557,7 +1557,7 @@ SIF FLAG:3 < 4
 ;--------------------------------------------------
 ;종족 공헌도 매각가 성장도 자동 표시 
 ;--------------------------------------------------
-;TSTR:0：공헌도　TSTR:1：매각가　TSTR:2：성장도　TSTR:3：난이도　TSTR:4：종족
+;COM_NAME：공헌도　TSTR:1：매각가　TSTR:2：성장도　TSTR:3：난이도　TSTR:4：종족
 @CALC_CHARABUY, ARG
 ;토리코모드용 변수 선언
 LOCAL:99 = 0
@@ -1567,21 +1567,21 @@ TSTR:4 = %CSVCSTR(ARG, 33, 0)%
 
 ;難易度PHANTASMのとき表示なし
 IF FLAG:3 == 5
-    TSTR:0 = ―
+    COM_NAME = ―
     TSTR:1 = ―
     TSTR:2 = ―
     TSTR:3 = ―
     RETURN 0
 ;あなたは測定不能
 ELSEIF ARG == 0 || ARG == 400
-    TSTR:0 = \@(ARG == 400) ? 만능 # 불명\@
+    COM_NAME = \@(ARG == 400) ? 만능 # 불명\@
     TSTR:1 = \@(ARG == 400) ? 귀중 # 불명\@
     TSTR:2 = \@(ARG == 400) ? 무한 # 불명\@
     TSTR:3 = \@(ARG == 400) ? 야채 # 불명\@
     RETURN 0
 ;娘, ランダムキャラは不定を返す
 ELSEIF ARG == 148 || ARG == 149 || (ARG >= 150 && ARG < 200)
-    TSTR:0 = 불명
+    COM_NAME = 불명
     TSTR:1 = 불명
     TSTR:2 = 불명
     TSTR:3 = 불명
@@ -1782,33 +1782,33 @@ SIF ARG == 72
     LOCAL += 1
 
 IF LOCAL < 0
-    TSTR:0 = Ｆ
+    COM_NAME = Ｆ
 ELSEIF LOCAL < 2
-    TSTR:0 = Ｅ
+    COM_NAME = Ｅ
 ELSEIF LOCAL < 4
-    TSTR:0 = Ｄ
+    COM_NAME = Ｄ
 ELSEIF LOCAL < 7
-    TSTR:0 = Ｃ
+    COM_NAME = Ｃ
 ELSEIF LOCAL < 10
-    TSTR:0 = Ｂ
+    COM_NAME = Ｂ
 ELSEIF LOCAL < 14
-    TSTR:0 = Ａ
+    COM_NAME = Ａ
 ELSEIF LOCAL < 18
-    TSTR:0 = Ｓ
+    COM_NAME = Ｓ
 ELSEIF LOCAL < 23
-    TSTR:0 = ＳＳ
+    COM_NAME = ＳＳ
 ELSEIF LOCAL < 27
-    TSTR:0 = ＳＳＳ
+    COM_NAME = ＳＳＳ
 ELSEIF LOCAL < 31
-    TSTR:0 = ＳＳＳＳ
+    COM_NAME = ＳＳＳＳ
 ELSEIF LOCAL < 36
-    TSTR:0 = ＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳ
 ELSEIF LOCAL < 40
-    TSTR:0 = ＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳ
 ELSEIF LOCAL < 44
-    TSTR:0 = ＳＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳＳ
 ELSE
-    TSTR:0 = ★
+    COM_NAME = ★
 ENDIF
 
 ;………………………………………………

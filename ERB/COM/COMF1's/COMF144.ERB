@@ -69,21 +69,21 @@ RETURN 1
 ;카테터과 전극계 커맨드로부터 마개조.
 @COM144
 IF FLAG:1100 & 1
-    TSTR:7 = 전극 카테터
+    COM_TOOL_NAME = 전극 카테터
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 28
     CALL NAMECHECK_CUSTOMTOOL
-    SIF TSTR:7 == ITEMNAME:28
-        TSTR:7 = 전극 첨부 카테터
-    SIF TSTR:9 == ITEMNAME:28
-        TSTR:9 = 전극이 달린 카테터
+    SIF COM_TOOL_NAME == ITEMNAME:28
+        COM_TOOL_NAME = 전극 첨부 카테터
+    SIF COM_TOOL_CALLNAME == ITEMNAME:28
+        COM_TOOL_CALLNAME = 전극이 달린 카테터
 ELSE
-    TSTR:7 = 전극 첨부 카테터
-    TSTR:8 = 전극 카테터
-    TSTR:9 = 전극이 달린 카테터
+    COM_TOOL_NAME = 전극 첨부 카테터
+    COM_TOOL_NAME = 전극 카테터
+    COM_TOOL_CALLNAME = 전극이 달린 카테터
 ENDIF
-PRINTFORML %TSTR:8%
-TSTR:0 = 전극 카테터
+PRINTFORML %COM_TOOL_NAME%
+COM_NAME = 전극 카테터
 
 LOCAL:1 = 80
 
@@ -300,20 +300,20 @@ RETURN 1
 ;전극 카테터 삽입중
 ;--------------------------------------------------
 @EQUIP_COM144
-TSTR:7 = 전극 카테터
+COM_TOOL_NAME = 전극 카테터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 28
     CALL NAMECHECK_CUSTOMTOOL
-    IF TSTR:7 == ITEMNAME:28
-        TSTR:9 = 전극 첨부 카테터
+    IF COM_TOOL_NAME == ITEMNAME:28
+        COM_TOOL_CALLNAME = 전극 첨부 카테터
     ELSE
-        TSTR:9 = %TSTR:7%
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
 ELSE
-    TSTR:9 = 전극 첨부 카테터
+    COM_TOOL_CALLNAME = 전극 첨부 카테터
 ENDIF
-PRINTFORML <%TSTR:7% 삽입 중>
+PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 
 LOCAL = 40
 
@@ -512,7 +512,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 
 PRINTL
 IF TEQUIP:32 == 4
-    PRINTFORM %CALLNAME:TARGET%의 요도로부터 %조사선택(TSTR:7, "가")% 뽑혀진 순간, 뜨거운 물보라가 포물선을 그리며 뿜어 나왔다.
+    PRINTFORM %CALLNAME:TARGET%의 요도로부터 %조사선택(COM_TOOL_NAME, "가")% 뽑혀진 순간, 뜨거운 물보라가 포물선을 그리며 뿜어 나왔다.
     PRINTL
 
     IF ABL:14 >= 5 && TALENT:45
@@ -528,7 +528,7 @@ IF TEQUIP:32 == 4
         PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 치욕감에 새빨갛게 된 얼굴을 돌려버렸다.
     ENDIF
 ELSE
-    PRINTFORML %CALLNAME:TARGET%의 요도에 %조사선택(TSTR:9, "를")% 삽입했다.
+    PRINTFORML %CALLNAME:TARGET%의 요도에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입했다.
     PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 요도를 가득 채우는 전극 카테터의 감촉에 오열하고 있다….
 ENDIF
 WAIT
@@ -542,7 +542,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 PRINTL
-PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 요도에 %조사선택(TSTR:9, "를")% 넣어진 채로 계속해서 괴롭혀지고 있다….
+PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 요도에 %조사선택(COM_TOOL_CALLNAME, "를")% 넣어진 채로 계속해서 괴롭혀지고 있다….
 PRINTL
 IF ABL:21 == 0
     PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 요도에 차오르는 이물감과 전격을 받아들일 수 없는지, 고뇌의 표정을 짓고 있다.

@@ -33,13 +33,13 @@ RETURN 1
 @COM61
 IF TEQUIP:90
     PRINTL 촉수 미약 전개
-    TSTR:0 = 촉수 미약 전개
+    COM_NAME = 촉수 미약 전개
 ELSEIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000
     PRINTL 야채식 체액 미약 변환
-    TSTR:0 = 야채식 체액 미약 변환
+    COM_NAME = 야채식 체액 미약 변환
 ELSE
     PRINTL 미약
-    TSTR:0 = 미약
+    COM_NAME = 미약
 ENDIF
 CALL TRAIN_MESSAGE_COM061
 
