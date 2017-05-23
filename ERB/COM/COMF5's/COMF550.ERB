@@ -369,9 +369,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQIUP_MESSAGE_COM550
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 SELECTCASE TFLAG:99
     CASE 0

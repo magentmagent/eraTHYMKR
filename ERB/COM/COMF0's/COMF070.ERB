@@ -136,9 +136,13 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM070
+
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORMW 흥분제의 효과가 끝난 %조사선택(CALLNAME:TARGET, "는")% 양팔로 전신을 움켜쥐곤 몰려오는 불쾌함을 억지로 참고 있다.

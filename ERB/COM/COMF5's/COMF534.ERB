@@ -413,9 +413,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM534
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 항문에서 촉수의 알이 밀어 넣어져 항문이 막힌 채로, 계속 능욕당하고 있다.
