@@ -10,6 +10,23 @@
 
 ------
 
+## 비활성화된 기능 활성화하기
+
+ERB 폴더의 FEATURES 폴더 안에있는 ERH 파일들을 열어보시면 ;#DEFINE 으로 시작하는 줄이 있습니다  
+여기서 #DEFINE앞의 ;를 지우시면 해당하는 기능이 활성화됩니다
+
+### 현재 비활성화된 기능들
+
+>### MESSAGE_ENABLE.ERH  
+>* ENABLE_KOJO_EQUIP_MESSAGE  
+>캐릭터별 아이템 장착 구문 출력(현재 구현되어있는 캐릭터는 없음)
+>### TRANSLATOR_ENABLE.ERH
+>* ENABLE_TRANS_13  
+>첸 번역기 구상 출력
+
+
+------
+
 ## 기여하는 방법
 
 1. GitHub 아이디를 만듭니다
