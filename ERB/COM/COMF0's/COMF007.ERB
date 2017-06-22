@@ -123,7 +123,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = %LOCALS%
+COM_NAME = %LOCALS%
 CALL TRAIN_MESSAGE_COM007
 
 DOWNBASE:0 += 5
@@ -913,23 +913,23 @@ IF FLAG:1100 & 1
     ;技師パッチ有効なら、各調教道具の特殊な名前チェック
     IF TEQUIP:20 == 1
         ;バイブ挿してる場合はバイブの特殊な名前チェック
-        TSTR:7 = 바이브
+        COM_TOOL_NAME = 바이브
         FLAG:1110 = 3
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:0 = %TSTR:7%
+        LOCALS:0 = %COM_TOOL_NAME%
     ELSE
         LOCALS:0 = 바이브
     ENDIF
     IF TEQUIP:25 == 1
         ;アナルバイブ挿してる場合はアナルバイブの特殊な名前チェック
-        TSTR:7 = 애널바이브
+        COM_TOOL_NAME = 애널바이브
         FLAG:1110 = 9
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:1 = %TSTR:7%
+        LOCALS:1 = %COM_TOOL_NAME%
         IF LOCALS:1 == "애널바이브"
             LOCALS:2 = 바이브
         ELSE
-            LOCALS:2 = %TSTR:7%
+            LOCALS:2 = %COM_TOOL_NAME%
         ENDIF
     ELSE
         LOCALS:1 = 애널바이브
@@ -942,19 +942,19 @@ IF FLAG:1100 & 1
     ENDIF
     IF TEQUIP:21
         ;クスコ挿してる場合はクスコの開発者確認
-        TSTR:7 = 쿠스코
+        COM_TOOL_NAME = 쿠스코
         FLAG:1110 = 8
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:4 = %TSTR:7%
+        LOCALS:4 = %COM_TOOL_NAME%
     ELSE
         LOCALS:4 = 쿠스코
     ENDIF
     IF TEQUIP:30 == 2
         ;オナホールはめてる場合はオナホールの開発者確認
-        TSTR:7 = 오나홀
+        COM_TOOL_NAME = 오나홀
         FLAG:1110 = 16
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:4 = %TSTR:7%
+        LOCALS:4 = %COM_TOOL_NAME%
     ELSE
         LOCALS:4 = 쿠스코
     ENDIF

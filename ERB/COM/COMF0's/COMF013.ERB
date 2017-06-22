@@ -61,19 +61,19 @@ RETURN 1
 @COM13
 IF TEQUIP:90
     PRINTL 애널 촉수
-    TSTR:0 = 애널 촉수
+    COM_NAME = 애널 촉수
 ELSE
-    TSTR:7 = 애널 바이브
+    COM_TOOL_NAME = 애널 바이브
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 9
         CALL NAMECHECK_CUSTOMTOOL
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 애널 바이브
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 애널 바이브
 ENDIF
 
 DOWNBASE:0 += 60
@@ -252,13 +252,13 @@ RETURN 1
 IF TEQUIP:90
     PRINTL <애널 촉수 삽입 중>
 ELSE
-    TSTR:7 = 애널 바이브
+    COM_TOOL_NAME = 애널 바이브
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 9
         CALL NAMECHECK_CUSTOMTOOL
     ENDIF
-    PRINTFORML <%TSTR:7% 삽입 중>
+    PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 ENDIF
 
 DOWNBASE:0 += 30
@@ -414,7 +414,7 @@ IF TEQUIP:90
     ENDIF
 ELSE
     IF TEQUIP:25
-        PRINTFORML %CALLNAME:TARGET%의 항문에서 %조사선택(TSTR:7, "를")% 뽑았다.
+        PRINTFORML %CALLNAME:TARGET%의 항문에서 %조사선택(COM_TOOL_NAME, "를")% 뽑았다.
         IF EQUIP:14 == 0 && TFLAG:899 == 0
             PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
             IF EXP:1 > 180
@@ -435,7 +435,7 @@ ELSE
             PRINTW 있다….
         ENDIF
     ELSE
-        PRINTFORML %CALLNAME:TARGET%의 항문에 %조사선택(TSTR:9, "를")% 꾹 대었다…. 
+        PRINTFORML %CALLNAME:TARGET%의 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 꾹 대었다…. 
         IF EQUIP:14 == 0 && TFLAG:899 == 0
             PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
             IF EXP:1 > 180
@@ -461,6 +461,6 @@ ELSE
         PRINTFORM %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 점액 투성이가 되어있는 
-        PRINTFORMW 항문에 %조사선택(TSTR:9, "를")% 꽂았다….
+        PRINTFORMW 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 꽂았다….
     ENDIF
 ENDIF

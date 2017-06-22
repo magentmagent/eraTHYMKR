@@ -89,11 +89,11 @@ RETURN 1
 ;--------------------------------------------------
 @COM313
 IF (NO:PLAYER == 14 && CFLAG:PLAYER:0 == 0) || (TALENT:208 && TALENT:ASSI:208)
-    TSTR:0 = 퍼펫 머펫
+    COM_NAME = 퍼펫 머펫
 ELSE
-    TSTR:0 = 더블 A 피스트
+    COM_NAME = 더블 A 피스트
 ENDIF
-PRINTFORML %TSTR:0% 
+PRINTFORML %COM_NAME% 
 CALL TRAIN_MESSAGE_COM313
 
 ;-------------------------------------------------

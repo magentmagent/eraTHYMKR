@@ -71,7 +71,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM147
 PRINTL 요도 비즈
-TSTR:0 = 요도비즈
+COM_NAME = 요도비즈
 CALL TRAIN_MESSAGE_COM147
 
 ;-------------------------------------------------
@@ -485,9 +485,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM147
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 요도에 비즈가 넣어진 채로 계속해서 괴롭혀지고 있다….

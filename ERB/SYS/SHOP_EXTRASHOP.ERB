@@ -364,13 +364,13 @@ DRAWLINE
 ;주인의 現在の기교 Lvが5未満なら기교 Lvを習得できる
 IF ABL:MASTER:12 < 5
     LOCAL:10 = BUY_SKILL_MASTER_TECH_PRICE()
-    PRINTFORMLC [10] 【기교 Lv{ABL:MASTER:12 + 1}】(%TSTR:0%원)
+    PRINTFORMLC [10] 【기교 Lv{ABL:MASTER:12 + 1}】(%COM_NAME%원)
 ENDIF
 ;주인의 현재 요리기능 Lv이 5 미만이고 도시락 · 라이브 ON이라면 요리기능 Lv을 습득할 수 있을지도 모른다
 IF ABL:MASTER:70 < 5 && FLAG:12 & 16
     LOCAL:11 = BUY_SKILL_MASTER_COOKING_PRICE()
     SIF LOCAL:11 > 0
-        PRINTFORMLC [11] 【요리기능 Lv{ABL:MASTER:70 + 1}】(%TSTR:0%원)
+        PRINTFORMLC [11] 【요리기능 Lv{ABL:MASTER:70 + 1}】(%COM_NAME%원)
 ELSEIF ABL:MASTER:70 >= 5 && TALENT:MASTER:193 == 0 && TALENT:MASTER:194 == 0 && FLAG:12 & 16
     LOCAL:11 = BUY_SKILL_MASTER_COOK_PRICE()
     SIF LOCAL:11 > 0
@@ -384,7 +384,7 @@ ENDIF
 IF ABL:MASTER:71 < 5 && (ITEM:50 || ITEM:51 || NOITEM) && FLAG:15 & 128
     LOCAL:12 = BUY_SKILL_MASTER_CAMERA_PRICE()
     SIF LOCAL:12 > 0
-        PRINTFORMLC [12] 【촬영기능 Lv{ABL:MASTER:71 + 1}】(%TSTR:0%원)
+        PRINTFORMLC [12] 【촬영기능 Lv{ABL:MASTER:71 + 1}】(%COM_NAME%원)
 ELSEIF ABL:MASTER:71 >= 5 && TALENT:MASTER:196 == 0 && (ITEM:50 || ITEM:51 || NOITEM) && FLAG:15 & 128
     LOCAL:12 = BUY_SKILL_MASTER_REPORTER_PRICE()
     SIF LOCAL:12 > 0
@@ -394,7 +394,7 @@ ENDIF
 IF ABL:MASTER:72 < 5 && (ITEM:52 || NOITEM) && FLAG:12 & 16
     LOCAL:13 = BUY_SKILL_MASTER_SINGING_PRICE()
     SIF LOCAL:13 > 0
-        PRINTFORMLC [13] 【가창기능 Lv{ABL:MASTER:72 + 1}】(%TSTR:0%원)
+        PRINTFORMLC [13] 【가창기능 Lv{ABL:MASTER:72 + 1}】(%COM_NAME%원)
 ELSEIF ABL:MASTER:72 >= 5 && TALENT:MASTER:191 == 0 && (ITEM:52 || NOITEM) && FLAG:12 & 16
     LOCAL:13 = BUY_SKILL_MASTER_SINGER_PRICE()
     SIF LOCAL:13 > 0
@@ -404,7 +404,7 @@ ENDIF
 IF ABL:MASTER:99 < 5
     LOCAL:14 = BUY_SKILL_MASTER_TRAINER_PRICE()
     SIF LOCAL:14 > 0
-        PRINTFORMLC [14] 【조교사 Lv{ABL:MASTER:99 + 1}】(%TSTR:0%원)
+        PRINTFORMLC [14] 【조교사 Lv{ABL:MASTER:99 + 1}】(%COM_NAME%원)
 ENDIF
 ;주인이 [サド]でないなら[サド]を習得できる
 IF TALENT:MASTER:81 == 0
@@ -786,7 +786,7 @@ SIF LOCAL:2 >= 10000
     LOCALS:0 = {(LOCAL:2)/10000}만
 SIF (LOCAL:2)%10000 > 0
     LOCALS:1 = {(LOCAL:2)%10000}
-TSTR:0 = % LOCALS:0 + LOCALS:1 %
+COM_NAME = % LOCALS:0 + LOCALS:1 %
 RETURNF LOCAL:2
 
 ;-----------------------------------------------
@@ -817,7 +817,7 @@ SIF EXP:MASTER:70 < LOCAL
 
 LOCAL:1 = ABL:MASTER:70
 LOCAL:2 = 10000 * (1 + LOCAL:1)
-TSTR:0 = {(LOCAL:2)/10000}만
+COM_NAME = {(LOCAL:2)/10000}만
 RETURNF LOCAL:2
 
 ;-----------------------------------------------
@@ -849,7 +849,7 @@ ELSE
     LOCAL:1 = ABL:MASTER:71
 ENDIF
 LOCAL:2 = 30000 * LOCAL:1
-TSTR:0 = {(LOCAL:2)/10000}만
+COM_NAME = {(LOCAL:2)/10000}만
 RETURNF LOCAL:2
 
 ;-----------------------------------------------
@@ -880,7 +880,7 @@ SIF EXP:MASTER:73 < LOCAL
 
 LOCAL:1 = ABL:MASTER:72
 LOCAL:2 = 10000 * (1 + LOCAL:1)
-TSTR:0 = {(LOCAL:2)/10000}만
+COM_NAME = {(LOCAL:2)/10000}만
 RETURNF LOCAL:2
 
 ;-----------------------------------------------
@@ -920,7 +920,7 @@ SIF LOCAL:3 >= 10000
     LOCALS:0 = {(LOCAL:3)/10000}만
 SIF (LOCAL:3)%10000 > 0
     LOCALS:1 = {(LOCAL:3)%10000}
-TSTR:0 = % LOCALS:0 + LOCALS:1 %
+COM_NAME = % LOCALS:0 + LOCALS:1 %
 RETURNF LOCAL:3
 
 ;-----------------------------------------------
@@ -942,7 +942,7 @@ SIF LOCAL >= 10000
     LOCALS = {(LOCAL)/10000}만
 SIF (LOCAL)%10000 > 0
     LOCALS:1 = {(LOCAL)%10000}
-TSTR:0 = % LOCALS + LOCALS:1 %
+COM_NAME = % LOCALS + LOCALS:1 %
 RETURNF LOCAL
 
 ;-----------------------------------------------
@@ -964,7 +964,7 @@ SIF LOCAL >= 10000
     LOCALS = {(LOCAL)/10000}만
 SIF (LOCAL)%10000 > 0
     LOCALS:1 = {(LOCAL)%10000}
-TSTR:0 = % LOCALS + LOCALS:1 %
+COM_NAME = % LOCALS + LOCALS:1 %
 RETURNF LOCAL
 
 ;-----------------------------------------------

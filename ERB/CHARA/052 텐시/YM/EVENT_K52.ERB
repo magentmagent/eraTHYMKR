@@ -4274,7 +4274,7 @@ IF SELECTCOM == 93
     PRINTFORML 
     ;初めて
     IF CFLAG:8296 == 0
-        PRINTFORMW 「%TSTR:0%？他にもいっぱいあるのね……ふぅ～ん……」
+        PRINTFORMW 「%COM_NAME%？他にもいっぱいあるのね……ふぅ～ん……」
         PRINTFORMW %CALLNAME:TARGET%は他のコスプレにも少なからず興味を示しているようだ。
         CFLAG:8296= 1
         RETURN 0

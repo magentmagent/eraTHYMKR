@@ -55,17 +55,17 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM151
-TSTR:7 = 로터
+COM_TOOL_NAME = 로터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 0
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-PRINTFORML %TSTR:8% 삽입
-TSTR:0 = 로터 삽입
+PRINTFORML %COM_TOOL_NAME% 삽입
+COM_NAME = 로터 삽입
 CALL TRAIN_MESSAGE_COM151
 
 DOWNBASE:0 += 20
@@ -193,13 +193,13 @@ RETURN 1
 ;로터 삽입중
 ;-------------------------------------------------
 @EQUIP_COM151
-TSTR:7 = 로터
+COM_TOOL_NAME = 로터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 0
     CALL NAMECHECK_CUSTOMTOOL
 ENDIF
-PRINTFORML <%TSTR:7% 삽입 중>
+PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 
 
 DOWNBASE:0 += 10
@@ -320,19 +320,19 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 ;토리코 모드에서의 직접 호출 대비
-TSTR:7 = 로터
+COM_TOOL_NAME = 로터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 0
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
 
 PRINTL
 IF TEQUIP:20 == 3
-    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%에서 고속으로 진동하는 %조사선택(TSTR:7, "를")% 천천히 뽑아 냈다.
+    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%에서 고속으로 진동하는 %조사선택(COM_TOOL_NAME, "를")% 천천히 뽑아 냈다.
     IF EQUIP:14 == 0 && TFLAG:899 == 0
         IF EXP:0 > 200 && TALENT:150
             PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 음탕한 표정을 지으며, 완전히 풀려버린 구멍을 채울 페니스를 요구해왔다….
@@ -364,7 +364,7 @@ ELSE
     ELSE
         PRINT 보지에 
     ENDIF
-    PRINTFORML %조사선택(TSTR:9, "를")% 눌러 비벼, 애액이 나오기 쉽게 했다….
+    PRINTFORML %조사선택(COM_TOOL_CALLNAME, "를")% 눌러 비벼, 애액이 나오기 쉽게 했다….
 
     IF EQUIP:14 == 0 && TFLAG:899 == 0
         PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
@@ -373,7 +373,7 @@ ELSE
         ELSEIF TALENT:0 && TALENT:170
             PRINT 그걸론 부족하다는 듯이 입을 비죽 내밀고 
         ELSEIF TALENT:0
-            PRINTFORM 눈을 질끈 감고 %TSTR:7%에서 전해지는 자극을 참아내고 
+            PRINTFORM 눈을 질끈 감고 %COM_TOOL_NAME%에서 전해지는 자극을 참아내고 
 
         ELSEIF EXP:0 > 200 && TALENT:150
             PRINT 그걸론 부족하다는 듯이 입을 비죽 내밀고 
@@ -384,11 +384,11 @@ ELSE
         ELSEIF EXP:0 > 70 && TALENT:150
             PRINTFORM 쾌락에 대한 욕심으로 눈물을 글썽이며 %조사선택(CALLNAME:PLAYER, "를")% 보고 
         ELSEIF EXP:0 > 40 && TALENT:150
-            PRINTFORM 고속으로 진동하는 %조사선택(TSTR:7, "를")% 삼키고 싶은 듯이 질구를 벌름거리고 
+            PRINTFORM 고속으로 진동하는 %조사선택(COM_TOOL_NAME, "를")% 삼키고 싶은 듯이 질구를 벌름거리고 
         ELSEIF EXP:0 > 0 && TALENT:150
-            PRINTFORM %TSTR:7%의 진동으로 애액을 튀겨대고 
+            PRINTFORM %COM_TOOL_NAME%의 진동으로 애액을 튀겨대고 
         ELSE
-            PRINTFORM %조사선택(TSTR:7, "가")% 주는 자극에 가랑이를 움찔움찔 거리고 
+            PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 주는 자극에 가랑이를 움찔움찔 거리고 
         ENDIF
         PRINTL 있다….
     ELSE
@@ -397,5 +397,5 @@ ELSE
     PRINTFORM 준비가 되었다고 판단한 %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 
     SIF PALAM:10 >= PALAMLV:4
         PRINT 흠뻑 젖어있는 
-    PRINTFORMW 성기에 %조사선택(TSTR:9, "를")% 삽입했다….
+    PRINTFORMW 성기에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입했다….
 ENDIF

@@ -55,15 +55,15 @@ RETURN 1
 ;조교자가 새드 또는 왕S의 경우, 커맨드가 큰폭으로 약체화 한다
 @COM236
 PRINTL 경혈 찌르기
-TSTR:7 = 바늘
+COM_TOOL_NAME = 바늘
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 33
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-TSTR:0 = 경혈 찌르기
+COM_NAME = 경혈 찌르기
 CALL TRAIN_MESSAGE_COM236
 
 IF TALENT:PLAYER:81 || TALENT:PLAYER:177
@@ -124,10 +124,10 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 PRINTL
 ;조교자가 새드이 왕S
 IF TALENT:PLAYER:81 || TALENT:PLAYER:177
-    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(TSTR:9, "로")% 자극하기 시작했다.
+    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(COM_TOOL_CALLNAME, "로")% 자극하기 시작했다.
     PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 그 격렬한 공격에 비명을 지르고 있다….
 ELSE
-    PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(TSTR:9, "로")% 자극하기 시작했다….
+    PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(COM_TOOL_CALLNAME, "로")% 자극하기 시작했다….
 ENDIF
 
 ;--------------------------------------------------

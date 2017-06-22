@@ -49,7 +49,7 @@ RETURN 1
 LOCAL:1 = 1
 PRINTL 샤워
 IF TEQUIP:54 || (FLAG:15 & 1024) == 0
-    TSTR:0 = 샤워
+    COM_NAME = 샤워
 ELSE
     CALL SELECT_SHOWER
     LOCAL:1 = RESULT + 1
@@ -195,11 +195,11 @@ PRINTL [2] - 뜨겁게!
 $INPUT_LOOP
 INPUT
 IF RESULT == 0
-    TSTR:0 = 온수 샤워
+    COM_NAME = 온수 샤워
 ELSEIF RESULT == 1
-    TSTR:0 = 냉수 샤워
+    COM_NAME = 냉수 샤워
 ELSEIF RESULT == 2
-    TSTR:0 = 열탕 샤워
+    COM_NAME = 열탕 샤워
 ELSE
     GOTO INPUT_LOOP
 ENDIF

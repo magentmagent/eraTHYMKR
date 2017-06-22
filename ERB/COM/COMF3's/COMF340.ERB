@@ -53,10 +53,10 @@ RETURN 1
 @COM340
 IF NO:TARGET == 59 || (NO:TARGET == 14 && CFLAG:0 == 0 && TALENT:158)
     PRINTL 파루파루
-    TSTR:0 = 파루파루
+    COM_NAME = 파루파루
 ELSE
     PRINTL 파후파후
-    TSTR:0 = 파후파후
+    COM_NAME = 파후파후
 ENDIF
 CALL TRAIN_MESSAGE_COM340
 

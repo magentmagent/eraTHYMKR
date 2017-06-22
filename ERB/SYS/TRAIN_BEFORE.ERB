@@ -12,6 +12,12 @@
     ;CALL SELECT_TEXT_DISPLAY, TARGET
 
 ;助手が酔い潰れている場合, ここで離脱する処理を追加
+
+;시작하기전에 변수를 초기화
+COM_NAME = 
+COM_TOOL_NAME = 
+COM_TOOL_CALLNAME = 
+
 IF ASSI >= 0 && BASE:ASSI:8 > MAXBASE:ASSI:8
     PRINTFORML 술에 취해서인지 %CALLNAME:ASSI%의 얼굴이 시퍼렇다.
     PRINTFORMW 당분간 %조사처리(CALLNAME:ASSI,"를")% 쉬게 하기로 했다…….
@@ -67,9 +73,6 @@ FLAG:422 = CFLAG:3109
 ;助手がおれば最後に助手をしたキャラを記録(IDで)
 SIF ASSI >= 0
     FLAG:423 = CFLAG:ASSI:3109
-
-;전 회 커맨드 표시를 리셋
-TSTR:0 = 
 
 ;펑션 측의 처리 호출
 CALL EVENTTRAIN_PANCTION

@@ -75,7 +75,7 @@ SIF (ITEM:(TFLAG:149) >= 3 || NOITEM) && EX:0 >= 30 && EX:1 >= 30 && EX:2 >= 30 
     JUMP COM649
 
 PRINTFORML %조사처리(ITEMNAME:(TFLAG:149),"를")% 먹인다
-TSTR:0 = %조사처리(ITEMNAME:(TFLAG:149),"를")% 먹인다
+COM_NAME = %조사처리(ITEMNAME:(TFLAG:149),"를")% 먹인다
 CALL TRAIN_MESSAGE_COM348
 
 ;-------------------------------------------------

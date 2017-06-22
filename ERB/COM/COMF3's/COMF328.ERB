@@ -38,22 +38,22 @@ RETURN 1
 ;직전이 정상위의 경우, 정상위 목덜미귀고문에 파생
 IF TFLAG:102 && PREVCOM == 20 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && TFLAG:133 == 0))
     PRINTL 정상위 목덜미귀고문
-    TSTR:0 = 정상위 목덜미귀고문
+    COM_NAME = 정상위 목덜미귀고문
     LOCAL:1 = 1
 ;직전이 후배위의 경우, 대면좌위 목덜미귀고문에 파생
 ELSEIF TFLAG:102 && PREVCOM == 21 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && TFLAG:133 == 0))
     PRINTL 후배위 목덜미귀고문
-    TSTR:0 = 후배위 목덜미귀고문
+    COM_NAME = 후배위 목덜미귀고문
     LOCAL:1 = 2
 ;직전이 대면좌위의 경우, 대면좌위 목덜미귀고문에 파생
 ELSEIF TFLAG:102 && PREVCOM == 22 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && TFLAG:133 == 0))
     PRINTL 대면좌위 목덜미귀고문
-    TSTR:0 = 대면좌위 목덜미귀고문
+    COM_NAME = 대면좌위 목덜미귀고문
     LOCAL:1 = 3
 ;직전이 배면좌위의 경우, 배면좌위 목덜미귀고문에 파생
 ELSEIF TFLAG:102 && PREVCOM == 23 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && TFLAG:133 == 0))
     PRINTL 배면좌위 목덜미귀고문
-    TSTR:0 = 배면좌위 목덜미귀고문
+    COM_NAME = 배면좌위 목덜미귀고문
     LOCAL:1 = 4
 ;주인 조교시에 직전이 조수의 목덜미귀고문의 경우, 또는
 ;조수 조교시에 직전이 주인의 목덜미귀고문의 경우, 더블 목덜미귀고문에 파생
@@ -64,7 +64,7 @@ ELSEIF PREVCOM == 328 && ((ASSIPLAY == 0 && TFLAG:133) || (ASSIPLAY && TFLAG:133
 ;통상의 목덜미귀고문
 ELSE
     PRINTL 목덜미귀고문
-    TSTR:0 = 목덜미귀고문
+    COM_NAME = 목덜미귀고문
     LOCAL:1 = 0
 ENDIF
 ;말용

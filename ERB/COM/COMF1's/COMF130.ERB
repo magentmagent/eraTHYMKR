@@ -53,21 +53,21 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM130
-TSTR:7 = 빨래집게
+COM_TOOL_NAME = 빨래집게
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 36
     CALL NAMECHECK_CUSTOMTOOL
-    IF TSTR:8 != "빨래집게"
-        PRINTFORML 음핵 %TSTR:8%
+    IF COM_TOOL_NAME != "빨래집게"
+        PRINTFORML 음핵 %COM_TOOL_NAME%
     ELSE
         PRINTL 음핵 클립
     ENDIF 
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     PRINTL 음핵 클립
 ENDIF
-TSTR:0 = 음핵 클립
+COM_NAME = 음핵 클립
 CALL TRAIN_MESSAGE_COM130
 
 DOWNBASE:0 += 30
@@ -113,13 +113,13 @@ RETURN 1
 ;빨래집게(클리토리스)
 ;-------------------------------------------------
 @EQUIP_COM130
-TSTR:7 = 빨래집게
+COM_TOOL_NAME = 빨래집게
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 36
     CALL NAMECHECK_CUSTOMTOOL
 ENDIF
-PRINTFORML ＜%TSTR:7%(클리토리스)＞
+PRINTFORML ＜%COM_TOOL_NAME%(클리토리스)＞
 
 DOWNBASE:0 += 50
 DOWNBASE:1 += 50
@@ -224,15 +224,15 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 PRINTL
 IF TEQUIP:30 == 5
     IF MARK:9 > 1
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 클리토리스로부터 %조사선택(TSTR:7, "를")% 벗어 던져버렸다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 클리토리스로부터 %조사선택(COM_TOOL_NAME, "를")% 벗어 던져버렸다….
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 클리토리스로부터 %조사선택(TSTR:7, "를")% 벗겼다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 클리토리스로부터 %조사선택(COM_TOOL_NAME, "를")% 벗겼다….
     ENDIF
 ELSE
     IF MARK:9 > 1
         PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 싫어서 버둥대는 %조사선택(CALLNAME:TARGET, "를")% 억눌렀다.
-        PRINTFORMW 그리고, %CALLNAME:TARGET%의\@(TALENT:100) ? 민감한 # \@클리토리스를 %조사선택(TSTR:9, "로")% 강하게 집었다.
+        PRINTFORMW 그리고, %CALLNAME:TARGET%의\@(TALENT:100) ? 민감한 # \@클리토리스를 %조사선택(COM_TOOL_CALLNAME, "로")% 강하게 집었다.
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의\@(TALENT:100) ? 민감한 # \@ 클리토리스를 %조사선택(TSTR:9, "로")% 집었다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의\@(TALENT:100) ? 민감한 # \@ 클리토리스를 %조사선택(COM_TOOL_CALLNAME, "로")% 집었다….
     ENDIF
 ENDIF

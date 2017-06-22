@@ -63,7 +63,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM533
 PRINTL 촉수 산란
-TSTR:0 = 촉수 산란
+COM_NAME = 촉수 산란
 CALL TRAIN_MESSAGE_COM533
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -417,9 +417,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM533
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 자궁에 촉수의 알을 품은 채로, 촉수로 질구를 막힌 상태가 되어있다.

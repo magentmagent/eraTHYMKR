@@ -125,7 +125,7 @@ RETURN 1
 @COM106_IN
 ;육변기 플레이
 PRINTL 육변기 플레이
-TSTR:0 = 육변기 플레이
+COM_NAME = 육변기 플레이
 CALL TRAIN_MESSAGE_COM106_IN
 
 DOWNBASE:0 += 750
@@ -296,20 +296,20 @@ ENDIF
 LOCAL:1 = 0
 IF NO:TARGET == 10
     PRINTL 전세계 공중 육변기
-    TSTR:0 = 전세계 공중 육변기
+    COM_NAME = 전세계 공중 육변기
     LOCAL:1 = 1
 ELSEIF NO:TARGET == 52
     PRINTL 전인류의 공중 육변기
-    TSTR:0 = 전인류의 공중 육변기
+    COM_NAME = 전인류의 공중 육변기
     LOCAL:1 = 2
 ;가 EX화하지 않은 것이 조건
 ELSEIF NO:TARGET == 63 && CFLAG:0 == 0
     PRINTL 핵융합 공중 육변기
-    TSTR:0 = 핵융합 공중 육변기
+    COM_NAME = 핵융합 공중 육변기
     LOCAL:1 = 3
 ELSE
     PRINTL 공중 육변기 플레이
-    TSTR:0 = 공중 육변기 플레이
+    COM_NAME = 공중 육변기 플레이
 ENDIF
 
 DOWNBASE:0 += 850

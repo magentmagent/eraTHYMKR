@@ -44,7 +44,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM65
 PRINTL 현자의 피
-TSTR:0 = 현자의 피
+COM_NAME = 현자의 피
 CALL TRAIN_MESSAGE_COM065
 
 DOWNBASE:0 += 20
@@ -275,9 +275,12 @@ PRINTW
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM065
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 현자의 피의 효과가 끊어진 것 같다.

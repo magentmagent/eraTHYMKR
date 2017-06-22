@@ -71,23 +71,23 @@ RETURN 1
 @COM141
 IF TEQUIP:90
     PRINTL 촉수 요도 삽입
-    TSTR:0 = 촉수 요도 삽입
+    COM_NAME = 촉수 요도 삽입
 ELSE
-    TSTR:7 = 카테터
+    COM_TOOL_NAME = 카테터
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 25
         CALL NAMECHECK_CUSTOMTOOL
-        IF TSTR:8 != "카테터"
-            PRINTFORML 요도 %TSTR:8%
+        IF COM_TOOL_NAME != "카테터"
+            PRINTFORML 요도 %COM_TOOL_NAME%
         ELSE
             PRINTL 요도 카테터
         ENDIF
     ELSE
-        TSTR:9 = %TSTR:7%
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
         PRINTL 요도 카테터
     ENDIF
-    TSTR:0 = 요도 카테터
+    COM_NAME = 요도 카테터
 ENDIF
 
 LOCAL:1 = 40
@@ -308,13 +308,13 @@ RETURN 1
 IF TEQUIP:90
     PRINTL <촉수 요도 삽입 중>
 ELSE
-    TSTR:7 = 카테터
+    COM_TOOL_NAME = 카테터
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 25
         CALL NAMECHECK_CUSTOMTOOL
     ENDIF
-    PRINTFORML <%TSTR:7% 삽입 중>
+    PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 ENDIF
 
 LOCAL:3 = 20
@@ -508,7 +508,7 @@ IF TEQUIP:32 == 1
     IF TEQUIP:90
         PRINT 촉수가 
     ELSE
-        PRINTFORM %조사선택(TSTR:7, "가")% 
+        PRINTFORM %조사선택(COM_TOOL_NAME, "가")% 
     ENDIF
     PRINTL 빠져 나온 순간, 뜨거운 물보라가 포물선을 그리며 뿜어 나왔다.
     PRINTL
@@ -529,8 +529,8 @@ ELSE
     IF TEQUIP:90
         PRINTFORML 가느다란 촉수가 %CALLNAME:TARGET%의 요도안에 파고들어 비벼댔다.
     ELSE
-        PRINTFORML %CALLNAME:TARGET%의 요도에 요도 개발용의 %조사선택(TSTR:7, "를")% 삽입했다.
-        PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 요도를 가득 채우는 %TSTR:9%의 감촉에 오열하고 있다….
+        PRINTFORML %CALLNAME:TARGET%의 요도에 요도 개발용의 %조사선택(COM_TOOL_NAME, "를")% 삽입했다.
+        PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 요도를 가득 채우는 %COM_TOOL_CALLNAME%의 감촉에 오열하고 있다….
     ENDIF
 ENDIF
 WAIT
@@ -539,16 +539,20 @@ WAIT
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM141
+
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 요도에 
 IF TEQUIP:90
     PRINT 촉수를 
 ELSE
-    PRINTFORM %조사선택(TSTR:7, "를")% 
+    PRINTFORM %조사선택(COM_TOOL_NAME, "를")% 
 ENDIF
 PRINTL 넣은 채로 계속 괴롭혀지고 있다.
 PRINTL

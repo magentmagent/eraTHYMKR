@@ -206,7 +206,7 @@ CATCH
 ENDCATCH
 RETURN LOCAL
 
-
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 ;--------------------------------------------------
 ;@KOJO_EQUIP_MESSAGE_COM 관계
 ;기구 장착시에 지문 표시를 제어할 수 있습니다.
@@ -235,6 +235,7 @@ CATCH
     ENDIF
 ENDCATCH
 RETURN LOCAL
+[ENDIF]
 
 
 ;-------------------------------------------------

@@ -38,21 +38,21 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM190
-TSTR:7 = 로터
+COM_TOOL_NAME = 로터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 0
     CALL NAMECHECK_CUSTOMTOOL
-    IF TSTR:8 != "로터"
-        PRINTFORML 유두 %TSTR:8%
+    IF COM_TOOL_NAME != "로터"
+        PRINTFORML 유두 %COM_TOOL_NAME%
     ELSE
         PRINTL 유두 로터
     ENDIF 
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     PRINTL 유두 로터
 ENDIF
-TSTR:0 = 유두 로터
+COM_NAME = 유두 로터
 CALL TRAIN_MESSAGE_COM190
 
 DOWNBASE:0 += 100
@@ -246,8 +246,8 @@ ELSE
     SIF PALAM:13 >= PALAMLV:3
         PRINT 기대에 딱딱하게 솟은 
     IF TEQUIP:68
-        PRINTFORMW 유두의 주위를 %조사선택(TSTR:9, "로")% 위를 덧썼다….
+        PRINTFORMW 유두의 주위를 %조사선택(COM_TOOL_CALLNAME, "로")% 위를 덧썼다….
     ELSE
-        PRINTFORMW 유두에 진동하는 %조사선택(TSTR:9, "를")% 꽉 눌렀다….
+        PRINTFORMW 유두에 진동하는 %조사선택(COM_TOOL_CALLNAME, "를")% 꽉 눌렀다….
     ENDIF
 ENDIF

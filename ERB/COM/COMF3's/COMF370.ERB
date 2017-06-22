@@ -81,15 +81,15 @@ RETURN 1
 @COM370
 IF NO:TARGET == 25 || NO:TARGET == 32 || NO:TARGET == 63
     PRINTL 한증 새 찜
-    TSTR:0 = 한증 새 찜
+    COM_NAME = 한증 새 찜
     LOCAL:1 = 1
 ELSEIF NO:TARGET == 37 || NO:TARGET == 38
     PRINTL 한증 감자 찜
-    TSTR:0 = 한증 감자 찜
+    COM_NAME = 한증 감자 찜
     LOCAL:1 = 2
 ELSE
     PRINTL 한증탕
-    TSTR:0 = 한증탕
+    COM_NAME = 한증탕
     LOCAL:1 = 0
 ENDIF
 CALL TRAIN_MESSAGE_COM370

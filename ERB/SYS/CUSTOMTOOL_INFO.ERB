@@ -165,13 +165,13 @@ REPEAT 90
                 IF FLAG:1100 & 4
                     ;アイテム番号併記の場合
                     IF LOCAL:90 < 10
-                        LOCALS = %TSTR:7%(No.0{LOCAL:90})
+                        LOCALS = %COM_TOOL_NAME%(No.0{LOCAL:90})
                     ELSE
-                        LOCALS = %TSTR:7%(No.{LOCAL:90})
+                        LOCALS = %COM_TOOL_NAME%(No.{LOCAL:90})
                     ENDIF
                 ELSE
                     ;本来の調教道具名併記の場合
-                    LOCALS = %TSTR:7%(%ITEMNAME:(LOCAL:90)%)
+                    LOCALS = %COM_TOOL_NAME%(%ITEMNAME:(LOCAL:90)%)
                 ENDIF
             ELSE
                 IF FLAG:1100 & 4

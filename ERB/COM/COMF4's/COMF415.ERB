@@ -31,10 +31,10 @@ RETURN 1
 @COM415
 IF TEQUIP:74
     PRINTL 독심 중단
-    TSTR:0 = 독심 중단
+    COM_NAME = 독심 중단
 ELSE
     PRINTL 독심 개시
-    TSTR:0 = 독심 개시
+    COM_NAME = 독심 개시
 ENDIF
 CALL TRAIN_MESSAGE_COM415
 

@@ -57,10 +57,10 @@ ELSE
 ENDIF
 IF NO:TARGET == 11
     PRINTFORML %LOCALS% 엉덩이를 둘이서 팡팡 
-    TSTR:0 = %LOCALS% 엉덩이를 둘이서 팡팡
+    COM_NAME = %LOCALS% 엉덩이를 둘이서 팡팡
 ELSE
     PRINTFORML %LOCALS% 엉덩이를 둘이서 때린다
-    TSTR:0 = %LOCALS% 엉덩이를 둘이서 때린다
+    COM_NAME = %LOCALS% 엉덩이를 둘이서 때린다
 ENDIF
 CALL TRAIN_MESSAGE_COM311
 
