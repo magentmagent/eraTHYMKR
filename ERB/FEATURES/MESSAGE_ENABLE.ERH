@@ -1,2 +1,2 @@
 ;캐릭터별 아이템 장착 구문 출력
-;#define ENABLE_KOJO_EQUIP_MESSAGE
+;#DEFINE ENABLE_KOJO_EQUIP_MESSAGE
