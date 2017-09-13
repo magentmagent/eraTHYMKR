@@ -335,15 +335,22 @@ TFLAG:99 = ARG:2
 TFLAG:223 = 0
 ;대사의 존재 판정
 RESULT = 0
-TRYCCALLFORM TRY_{NO:TARGET}
-    TRYCALLFORM SELF_KOJO_K{NO:TARGET}
-    SIF TFLAG:223 && FLAG:22 == 0
-        TRYCALL SELF_KOJO_X
-CATCH
-    ;범용 대사 미사용이 아니라면 범용 대사 표시
-    SIF FLAG:22 == 0
-        TRYCALL SELF_KOJO_X
-ENDCATCH
+
+;자고 있거나 조교중일때 기절했거나 볼재갈 착용시 대사를 표시하지 않음
+IF EQUIP:14 || (TFLAG:999 && (TEQUIP:42 || (TFLAG:899 >= 1 && TFLAG:200 != 12)))
+
+ELSE
+    TRYCCALLFORM TRY_{NO:TARGET}
+        TRYCALLFORM SELF_KOJO_K{NO:TARGET}
+        SIF TFLAG:223 && FLAG:22 == 0
+            TRYCALL SELF_KOJO_X
+    CATCH
+        ;범용 대사 미사용이 아니라면 범용 대사 표시
+        SIF FLAG:22 == 0
+            TRYCALL SELF_KOJO_X
+    ENDCATCH
+ENDIF
+
 ;글자 색을 원래대로
 RESETCOLOR
 TARGET = LOCAL

@@ -8,9 +8,6 @@ SIF FLAG:4 == 3
 ;범용 말미사용이라면 돌아온다
 SIF FLAG:22 == 1
     RETURN 0
-;자고 있는 경우, 조교중이라면 기절중(TFLAG:899는 대상 노예의 기절이므로 조수에게는 관계없다)이나 구가포함의라고 하고도 돌아온다
-SIF EQUIP:14 || (TFLAG:999 && (KX_MOUSE_CHECK(TARGET) || (TARGET != ASSI && TFLAG:899 >= 1)))
-    RETURN 0
 CALL JINKAKU
 ;(원래) 남자 혹은 말할 수가 없는 인형도 돌아온다
 SIF (TALENT:120 && CFLAG:4995 != 2) || TALENT:208 == 1
