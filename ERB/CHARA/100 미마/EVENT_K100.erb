@@ -209,7 +209,7 @@ ELSEIF ASSINO() == 01
         ;미마와 레이무에 연모
         IF TALENT:150 == 1 && TALENT:ASSI:150 == 1
             PRINTFORMW 『……어째서 주인님은 미마만 상대하는 거야!』
-            PRINTFORMW 「뭐, 나에게 있고 당신에게 없는 것이 있기 때문이 아닐까?」
+            PRINTFORMW 「뭐, 나에게만 있고 당신에게 없는 것 때문이 아닐까?」
             PRINTFORMW 그렇게 말한 미마는 풍만한 유방을 강조하듯 팔짱을 꼈다
         ;미마에게만 연모
         ELSEIF TALENT:150 == 1 && TALENT:ASSI:150 == 0
@@ -218,11 +218,11 @@ ELSEIF ASSINO() == 01
         ;레이무에게만 연모
         ELSEIF TALENT:150 == 0 && TALENT:ASSI:150 == 1
             PRINTFORMW 『빨리 하자. 주인님이 기다리고 있어』
-            PRINTFORMW 「……하쿠레이 무녀도 타락했군」
+            PRINTFORMW 「……하쿠레이 무녀도 갈 때 까지 갔군」
         ;그 이외
         ELSE
             PRINTFORMW 『미마……ㅆ……』
-            PRINTFORMW 「레이무……, 레이무에까지 이런 일을 시킨다니……!」
+            PRINTFORMW 「레이무……, 레이무 한테까지 이런 일을 시키다니……!」
         ENDIF
             RETURN 1
     ENDIF
@@ -249,7 +249,7 @@ ELSEIF ASSINO() == 02
         ;미마에게만 연모
         ELSEIF TALENT:150 == 1 && TALENT:ASSI:150 == 0
             PRINTFORMW 「이거참, 마리사잖아? 그동안 건강했어?」
-            PRINTFORMW 『...미마 님! 어째서 여기에...!』
+            PRINTFORMW 『…미마 님! 어째서 여기에…!』
             PRINTFORMW 「어째서 라긴……아아, 그런가. 마리사는 아직 저항할 생각이 있는거구나.」
             PRINTFORMW 「마리사, 무의미한 저항은 빨리 그만두는게 좋아. 포기하면 편해.」
         ;마리사에게만 연모
@@ -260,12 +260,12 @@ ELSEIF ASSINO() == 02
             PRINTFORMW 「뭔……」
             PRINTFORMW 『빨리 시작할 순 없을까? 나는 이제 기다릴 수 없어……』
             PRINTFORMW 「……마리사, 반드시 구해줄게」
-            PRINTFORMW 살의가 깃들인 시선을%조사처리(CALLNAME:MASTER,"를")% 향하면서, 미마는 조용히 옷을 벗었다
+            PRINTFORMW 살의가 깃들인 시선을 %조사처리(CALLNAME:MASTER,"를")% 향하면서, 미마는 조용히 옷을 벗었다
         ;그 이외
         ELSE
             PRINTFORMW 「마, 마리사……?　정말로, 마리사인거야……?」
             PRINTFORMW 『아아, 그래요, 미마 님. 나는 미마 님이 알고 있는 마리사야……』
-            PRINTFORMW 「제길……마리사에게까지 손을 대다니……」
+            PRINTFORMW 「제길……마리사까지 손을 대다니……」
         ENDIF
             CFLAG:7006 = 1
             RETURN 1
@@ -312,7 +312,7 @@ ELSEIF ASSINO() == 14
         ELSEIF TALENT:150 == 0 && TALENT:ASSI:150 == 1
             PRINTFORMW 『힉! 어째서 당신이 여기에 있어!?』
             PRINTFORMW 「그것은 이쪽의 대사야!　왜 당신이 여기에 있는거야?」
-            PRINTFORMW 『왜라니, 나는 조수이니까. 불만 있어? 』
+            PRINTFORMW 『왜라니, 나는 조수이니까. 불만 있어?』
             PRINTFORMW 「조수라고……농담이겠지……?」
             PRINTFORMW 미마가 넋을 놓고 있는 동안, 앨리스는 %CALLNAME:MASTER%에게 안기며 물었다.
             PRINTFORMW 「저기, 이런 악령은 버려두고, 날 안아주지 않겠어? 」
@@ -523,7 +523,7 @@ SIF NO:TARGET != 100
 IF MARK:9 == 3 && TALENT:150 == 0
     DRAWLINE
     PRINTFORMW 「……조심하는게 좋아」
-    PRINTFORMW 진짜 한순간이지만, 미마의 몸에서 마력이 느껴졌다
+    PRINTFORMW 진짜 한순간이지만, 미마에게서 살기라고 할 수 있는게 느껴졌다
     RETURN 1
 
 ;굴복 각인 Lv1 이하
@@ -1293,7 +1293,7 @@ IF SELECTCOM == 7
                 ;연모＋자위 중독 Lv3 이상
                 IF TALENT:150 == 1 && ABL:30 >= 3 && (CFLAG:7116 <= 4 || FLAG:11 == 2)
                     PRINTFORMW 「하읏, 이제 기다릴 수 없어!」
-                    PRINTFORMW 「빨리, %CSTR:90%를!　%CSTR:90%를 여기에!」
+                    PRINTFORMW 「빨리, %조사처리(CSTR:90,"를")%!　%조사처리(CSTR:90,"를")% 여기에!」
                     CFLAG:7116 = 5
                 ;연모
                 ELSEIF TALENT:150 == 1 && (CFLAG:7116 <= 3 || FLAG:11 == 2)
@@ -1534,7 +1534,7 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「응, 이제 된거야?」
-            PRINTFORMW 「그럼 다음은, %CSTR:90%를 넣어 줄래?」
+            PRINTFORMW 「그럼 다음은, %조사처리(CSTR:90,"를")% 넣어 줄래?」
         ;그 이외
         ELSE
             PRINTFORMW 「햣, 응……이런 장난감에, 나는 굴복하지 않아!」
@@ -1744,7 +1744,7 @@ IF SELECTCOM == 15 && TEQUIP:35 == 1
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7149 <= 3 || FLAG:11 == 2)
             PRINTFORMW 「읏, 가슴을 괴롭힐 땐, 그런건 쓰지 말았으면 좋겠어……」
-            PRINTFORMW 「%CSTR:90%가 직접 해줬으면 좋겠어……」
+            PRINTFORMW 「%조사처리(CSTR:90,"가")% 직접 해줬으면 좋겠어……」
             CFLAG:7149 = 4
         ;B감각 Lv3 이상
         ELSEIF ABL:3 >= 3 && (CFLAG:7149 <= 2 || FLAG:11 == 2)
@@ -1777,7 +1777,7 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
         IF TALENT:150 == 1 && (CFLAG:7150 <= 3 || FLAG:11 == 2)
             PRINTFORMW 「핫, 읏, 좀더, 만져줘……」
             SIF TEQUIP:41 == 0
-                PRINTFORMW 미마는 넋을 잃고%조사처리(CALLNAME:MASTER,"를")% 바라보면서, 뜨거운 숨을 토했다
+                PRINTFORMW 미마는 넋을 잃고 %조사처리(CALLNAME:MASTER,"를")% 바라보면서, 뜨거운 숨을 토했다
             CFLAG:7150 = 4
         ;B감각 Lv3 이상
         ELSEIF ABL:3 >= 3 && (CFLAG:7150 <= 2 || FLAG:11 == 2)
@@ -1883,7 +1883,7 @@ IF SELECTCOM == 20
             ;연모
             IF TALENT:150 == 1
                 PRINTFORMW 「안쪽까지, 넣지 않으면 화낼거야」
-                PRINTFORMW 「자, 빨리……%CSTR:90%를 느끼게 해줘……」
+                PRINTFORMW 「자, 빨리……%조사처리(CSTR:90,"를")% 느끼게 해줘……」
             ;그 이외
             ELSE
                 PRINTFORMW 「읏, 넌 지금 보면서 좋겠지……」
@@ -2073,7 +2073,7 @@ IF SELECTCOM == 23
             CFLAG:7164 = 5
         ;굴복 각인 Lv3＋V감각 Lv3 이상
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:7164 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「하앗, 하앗……가슴이, 타것 같앗……!」
+            PRINTFORMW 「하앗, 하앗……가슴이, 타는것 같앗……!」
             CFLAG:7164 = 4
         ;굴복 각인 Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:7164 <= 2 || FLAG:11 == 2)
@@ -2132,7 +2132,7 @@ IF SELECTCOM == 24
             PRINTFORMW 허리를 움직일 때 마다, 미마는 고함과 비슷한 교성을 냈다
             ELSE
             PRINTFORMW 「크힛！？　앗、잠깐！　내가、움직일거니까！」
-            PRINTFORMW 「%CSTR:90%는、가만히 있엇！　앗！　아앗！　가만히、있으라곳！」
+            PRINTFORMW 「%조사처리(CSTR:90,"는")%、가만히 있엇！　앗！　아앗！　가만히、있으라곳！」
             ENDIF
             RETURN 1
             CFLAG:7165 = 5
@@ -2368,7 +2368,7 @@ IF SELECTCOM == 27
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「으, 읏!　이런 몸의 자세가, 되면」
-            PRINTFORMW 「%CSTR:90%를, 안을 수가 없잖아, 아앗!」
+            PRINTFORMW 「%조사처리(CSTR:90,"를")%, 안을 수가 없잖아, 아앗!」
             SIF TEQUIP:40 == 0
                 PRINTFORMW 미마는 %CALLNAME:MASTER%의 목에 손을 끼고 뜨거운 입맞춤을 교환하면 허리를 흔들었다
         ;그 이외
@@ -2376,7 +2376,7 @@ IF SELECTCOM == 27
             PRINTFORMW 「엣, 뭘, 히얏!」
             PRINTFORMW 미마의 몸을 끌어안고 몸을 공중에 올려세웠다
             PRINTFORMW 페니스만이 버팀목이 되어 있으므로, 미마에게 도망갈 장소는 없었다
-            PRINTFORMW 「그만, 큿!　아래가, 빠, 빨리!　빼, 빼줫, 아아ー앗!」
+            PRINTFORMW 「그만, 큿!　아래가, 빠, 빨리! 빼, 빼줫, 아아앗!」
         ENDIF
             CFLAG:7169 = 1
             RETURN 0
@@ -2436,7 +2436,7 @@ IF SELECTCOM == 28
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7170 <= 4 || FLAG:11 == 2)
             IF RAND:2 == 0
-            PRINTFORMW 「아앙♪　%CSTR:90%의가, 안쪽까지 왔어……」
+            PRINTFORMW 「아앙♪　%조사처리(CSTR:90,"가")%, 안쪽까지 왔어……」
             PRINTFORMW 미마는 녹아내릴거 같은 표정을 지으며, 질의 조임을 강하게 했다
             ELSE
             PRINTFORMW 「깊어、읏、좋、좋앗！」
@@ -2474,7 +2474,7 @@ IF SELECTCOM == 30
         ;음고＋연모
         IF TALENT:173 == 1 && TALENT:150 == 1
             PRINTFORMW 「큿, 아앗!」
-            PRINTFORMW 「안잇, 뜨거워서!　타버릴거 같아!」
+            PRINTFORMW 「안이, 뜨거워서! 타버릴거 같아!」
         ;연모
         ELSEIF TALENT:150 == 1
             PRINTFORMW 「읏……엉덩이에 넣는거구나?」
@@ -2594,7 +2594,7 @@ IF SELECTCOM == 31
 ENDIF
 
 ;-------------------------------------------------
-;자위 CFLAG:7191
+;수음 CFLAG:7191
 ;-------------------------------------------------
 IF SELECTCOM == 40
     ;처음
@@ -2905,7 +2905,7 @@ IF SELECTCOM == 90 && TEQUIP:59 == 1
     ELSE
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7221 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「으윽, 이런거러면 차라리 메이드 제복을 입는데 낫겠어」
+            PRINTFORMW 「으윽, 이런거라면 차라리 메이드 제복을 입는게 낫겠어」
             PRINTFORMW 미마는 뺨을 붉게 물들이면서, 에이프런을 입었다
             CFLAG:7221 = 3
         ;그 이외
@@ -2958,7 +2958,7 @@ IF SELECTCOM == 100 && TEQUIP:50 == 1
         ;그 이외
         ELSE
             PRINTFORMW 「그것은 도대체……」
-            PRINTFORMW 비디오 카메라에 대한 것을 설명해 주자0, 미마의 표정이 변했다
+            PRINTFORMW 비디오 카메라에 대한 것을 설명해 주자, 미마의 표정이 변했다
             PRINTFORMW 「도대체 무슨 생각을 하는거야! 넌 미쳤어!」
         ENDIF
             CFLAG:7223 = 1
@@ -3139,7 +3139,7 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
             PRINTFORMW 「하아……다른 사람에게 발각되면, 더는 살아갈 수가 없어……」
             CFLAG:7227 = 2
         ENDIF
-            RETURN 0
+			RETURN 0
     ENDIF
 ENDIF
 
@@ -3577,7 +3577,7 @@ IF SELECTCOM == 204
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7278 <= 3 || FLAG:11 == 2)
             PRINTFORMW 「아아……좋아……」
-            PRINTFORMW 「좀더, 마셧……마셔줬……」
+            PRINTFORMW 「좀더, 마셧……마셔줘……」
             CFLAG:7278 = 4
         ;분유중독 Lv3 이상
         ELSEIF ABL:34 >= 3 && (CFLAG:7278 <= 2 || FLAG:11 == 2)
@@ -4584,7 +4584,8 @@ IF SELECTCOM == 352
         ;연모＋봉사 정신 Lv5
         IF TALENT:150 == 1 && ABL:13 >= 5 && (CFLAG:7355 <= 4 || FLAG:11 == 2)
             PRINTFORMW 「아아……대단해, 뜨거워지고 있어……」
-            PRINTFORMW 「하아, 하아……나도 점점……기분 좋아져……」            CFLAG:7355 = 5
+            PRINTFORMW 「하아, 하아……나도 점점……기분 좋아져……」            
+			CFLAG:7355 = 5
         ;연모
         ELSEIF TALENT:150 == 1 && (CFLAG:7355 <= 3 || FLAG:11 == 2)
             PRINTFORMW 「후훗, 내가 할테니까에, 편하게 있어」
@@ -5460,7 +5461,7 @@ IF TFLAG:9 > 0
             CFLAG:7610 = 4
         ;굴복 각인 Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:7610 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「큭……뜨거웟……」
+            PRINTFORMW 「큭……뜨거워……」
             PRINTFORMW 미마는 입술을 깨물며 거역할 수 없는 자신의 모습에 초조함을 느꼈다
             CFLAG:7610 = 3
         ;그 이외
@@ -5482,7 +5483,7 @@ IF TFLAG:10 > 0
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「읏……느껴져……」
-            PRINTFORMW 「%CSTR:90%의 정액이, 내 안에 있는겟……」
+            PRINTFORMW 「%CSTR:90%의 정액이, 내 안에 있는게……」
             PRINTFORMW 미마는 쾌감의 여운을 맛보면서, 질을 강하게 조였다
         ;그 이외
         ELSE
@@ -5870,8 +5871,8 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
     IF CFLAG:7621 == 0
         ;연모
         IF TALENT:150 == 1
-            PRINTFORMW 「응아앗……유두갓!　뜨거워서!」
-            PRINTFORMW 「점점 더 뜨거워졋, 앗, 또, 간닷!」
+            PRINTFORMW 「응아앗……유두가!　뜨거워서!」
+            PRINTFORMW 「점점 더 뜨거워져, 앗, 또, 간닷!」
         ;그 이외
         ELSE
             PRINTFORMW 「싫엇, 또, 유두로 느끼다닛, 아앗!」
@@ -5887,7 +5888,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
             CFLAG:7621 = 3
         ;그 이외
         ELSEIF CFLAG:7621 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「하, 으읏, 이젠……참을 수갓……」
+            PRINTFORMW 「하, 으읏, 이젠……참을 수가……」
             PRINTFORMW 「아, 또, 간닷!」
             CFLAG:7621 = 2
         ENDIF
@@ -6009,7 +6010,7 @@ ENDIF
 IF TFLAG:200 == 130
     ;연모＋반발 각인 Lv3 미만
     IF TALENT:150 == 1 && MARK:9 < 3
-        PRINTFORMW 「팔는거네……나를……」
+        PRINTFORMW 「파는거네……나를……」
         PRINTFORMW 「뭐, 원래는 %조사처리(CSTR:90,"가")% 무리하게 데려 온거니까 어쩔 수 없는걸까……」
         PRINTFORMW 미마는 평정심을 가장할려고 했지만 눈에서 눈물이 흘러나오고 있다.
     ;반발 각인 Lv3
@@ -6129,7 +6130,7 @@ IF TFLAG:200 == 151
     ELSE
         ;연모
         IF TALENT:150 ==1 && (CFLAG:7703 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「하아……좋은 ……좀더……좀더 날 범해줘!」
+            PRINTFORMW 「하아……좋아 ……좀더……좀더 날 범해줘!」
             PRINTFORMW 미마는 %CALLNAME:MASTER%에게 범해지는걸 떠올리면서 자신을 위로했다.
             CFLAG:7703 = 4
         ;자위 중독 Lv3 이상
@@ -6246,8 +6247,8 @@ IF TFLAG:200 == 1
             PRINTFORMW 「나에게도、싫은 일의 정도가 있어」
             PRINTFORMW 「싫은 일을 하라고 해서, 하는 사람이 있을까?」
         ELSE
-            PRINTFORML 「하아……웃기지도 않은 일은 하지 말아줬으면 좋겠는데？」
-            PRINTFORMW 「당신의 명령에 따를 의무가 있을까?」
+            PRINTFORMW 「그 눈 옆에 달려있는게 장식이라면 참 유감이니 다시 말해줄게.」
+            PRINTFORMW 「――꺼져」 
         ENDIF
     ENDIF
 ENDIF
@@ -6286,15 +6287,16 @@ IF TFLAG:200 == 158
 ENDIF
 
 ;-------------------------------------------------
-;약혼 반지 사용시
+;약혼 반지나 청산호의 반지 사용시
 ;-------------------------------------------------
-IF TFLAG:200 == 200
+IF TFLAG:200 == 200 || TFLAG:200 == 205
     PRINTFORMW 「바, 반지 같은건 나한텐 어울리지 않아」
     PRINTFORMW 「하, 하지만, %CSTR:90%의 기분은……나도 알아」
     PRINTFORMW 「……나로……괜찮은거야?」
 ENDIF
-    TFLAG:200 = 0
-    RETURN 0
+
+TFLAG:200 = 0
+RETURN 0
 
 ;-------------------------------------------------
 @NAME_CHANGE_100
@@ -6411,7 +6413,7 @@ PRINTFORMW ………
 PRINTFORMW ……
 PRINTFORMW 마을로부터 조금 멀어진 곳에,작은 숲이 있었다
 PRINTFORMW 요괴도 풀꽃도 나무꾼도 안오는 환상향에서 조용한 숲이다.
-PRINTFORMW 단지 두 명을 제외해……
+PRINTFORMW 단지 두 명을 제외하고서……
 PRINTFORMW 　
 PRINTFORMW 숲에 도착하고 재빨리 미마는 엉덩이를 쑥 내밀고 %조사처리(CALLNAME:MASTER,"를")% 요구했다
 PRINTFORML 아직 아무것도 안했는데 미마의 보지는 흥건히 젖어 있다.
