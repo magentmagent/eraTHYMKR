@@ -423,10 +423,10 @@ ENDIF
 IF MARK:9 == 3 && TALENT:150 == 0 && FLAG:11 == 2
     DRAWLINE
     IF RAND:2 == 0
-    PRINTFORMW 방에 들어가자 미마가 혐오스러운 것을 보는 시선으로 %조사처리(CALLNAME:MASTER,"를")% 보고 있다.
-    PRINTFORMW 「……언제까지고 당신의 세상이라고 생각하진 않는게 좋을거야」
+        PRINTFORMW 방에 들어가자 미마가 혐오스러운 것을 보는 시선으로 %조사처리(CALLNAME:MASTER,"를")% 보고 있다.
+        PRINTFORMW 「……언제까지고 당신의 세상이라고 생각하진 않는게 좋을거야」
     ELSE
-    PRINTFORMW 「어떤 저주를 받고 싶어？ 악령은 건드리는게 아니야」
+        PRINTFORMW 「어떤 저주를 받고 싶어？ 악령은 건드리는게 아니야」
     ENDIF
     RETURN 1
 
@@ -434,10 +434,10 @@ IF MARK:9 == 3 && TALENT:150 == 0 && FLAG:11 == 2
 ELSEIF MARK:2 == 0 && TALENT:150 == 0 && FLAG:11 == 2
     DRAWLINE
     IF RAND:2 == 0
-    PRINTFORMW 「……왠만하면, 빨리 해방 해주지 않을래?」
-    PRINTFORMW 「너 따위에게, 나는 어울리지 않아」
+       PRINTFORMW 「……왠만하면, 빨리 해방 해주지 않을래?」
+       PRINTFORMW 「너 따위에게, 나는 어울리지 않아」
     ELSE
-    PRINTFORMW 「하아……맛있는 술이라도 없는걸까나」
+       PRINTFORMW 「하아……맛있는 술이라도 없는걸까나」
     ENDIF
     RETURN 1
 
@@ -445,10 +445,10 @@ ELSEIF MARK:2 == 0 && TALENT:150 == 0 && FLAG:11 == 2
 ELSEIF MARK:2 == 1 && TALENT:150 == 0 && FLAG:11 == 2
     DRAWLINE
     IF RAND:2 == 0
-    PRINTFORMW 「빨리 해방해주면 고맙겠지만 ……」
+        PRINTFORMW 「빨리 해방해주면 고맙겠지만 ……」
     ELSE
-    PRINTFORMW 「좀 더 넓은 방은 없는거야？」
-    PRINTFORMW 「이런 좁아 터진 방은 속상하다고.」
+        PRINTFORMW 「좀 더 넓은 방은 없는거야？」
+        PRINTFORMW 「이런 좁아 터진 방은 속상하다고.」
     ENDIF
     RETURN 1
 
@@ -456,11 +456,11 @@ ELSEIF MARK:2 == 1 && TALENT:150 == 0 && FLAG:11 == 2
 ELSEIF MARK:2 == 2 && TALENT:150 == 0 && FLAG:11 == 2
     DRAWLINE
     IF RAND:2 == 0
-    PRINTFORMW 「또 하나? 이런이런……」
-    PRINTFORMW 미마는 한숨을 쉬면서 옷을 벗기 시작했다.
+        PRINTFORMW 「또 하나? 이런이런……」
+        PRINTFORMW 미마는 한숨을 쉬면서 옷을 벗기 시작했다.
     ELSE
-    PRINTFORMW 「예이에이、오늘은 또 뭘 하는거야？」
-    PRINTFORMW 미마는 한숨을 쉬면서、%CALLNAME:MASTER%에게 물었다
+        PRINTFORMW 「예이에이、오늘은 또 뭘 하는거야？」
+        PRINTFORMW 미마는 한숨을 쉬면서、%CALLNAME:MASTER%에게 물었다
     ENDIF
     RETURN 1
 
@@ -468,9 +468,9 @@ ELSEIF MARK:2 == 2 && TALENT:150 == 0 && FLAG:11 == 2
 ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
     DRAWLINE
     IF RAND:2 == 0
-    PRINTFORMW (……싫은 데, 몸이 반응해……)
+        PRINTFORMW (……싫은 데, 몸이 반응해……)
     ELSE
-    PRINTFORMW （이제……포기할 수 밖에 없는건가……）
+        PRINTFORMW （이제……포기할 수 밖에 없는건가……）
     ENDIF
     RETURN 1
 
@@ -622,8 +622,8 @@ IF SELECTCOM == 0
             PRINTFORMW 「멋대로 만지지 말아줄래?」
             PRINTFORMW 「나는 당신에게 어울릴만큼 질 낮은 여자가 아니거든」
         ENDIF
-            CFLAG:7101 = 1
-            RETURN 0
+        CFLAG:7101 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -646,7 +646,7 @@ IF SELECTCOM == 0
             PRINTFORMW 미마는 거의 표정을 바꾸지 않고 단언했다
             CFLAG:7101 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -669,8 +669,8 @@ IF SELECTCOM == 1
             PRINTFORMW 「앗, 그곳은!」
             PRINTFORMW 클리토리스에 혀를 갖다 대자, 미마는 비명을 질렀다
         ENDIF
-            CFLAG:7102 = 1
-            RETURN 0
+        CFLAG:7102 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -688,7 +688,7 @@ IF SELECTCOM == 1
             PRINTFORMW 「읏, 느낄 리가……」
             CFLAG:7102 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -715,8 +715,8 @@ IF SELECTCOM == 2
                 PRINTFORMW 「잠, 그만둬, 읏!」
                 PRINTFORMW 바이브래이터를 탈부착하자, 미마는 고통으로 얼굴을 찡그리고 있다.
             ENDIF
-                CFLAG:7103 = 1
-                RETURN 0
+        CFLAG:7103 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;음고＋연모
@@ -739,7 +739,7 @@ IF SELECTCOM == 2
                 PRINTFORMW 「큿! 움직이다니 무슨……그, 그만둬! 그만!」
                 CFLAG:7103 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;애널 비즈 장착중
     ELSEIF TEQUIP:25 == 5
@@ -760,8 +760,8 @@ IF SELECTCOM == 2
                 PRINTFORMW 그 대신에, %조사처리(CALLNAME:MASTER,"는")% 느긋하게 애널비즈를 뽑아 냈다
                 PRINTFORMW 「뭔, 그런, 그만둬! 크읏!」
             ENDIF
-                CFLAG:7104 = 1
-                RETURN 0
+        CFLAG:7104 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;음고＋연모
@@ -784,7 +784,7 @@ IF SELECTCOM == 2
                 PRINTFORMW 「힛, 이제 그것은! 싫어! 으응!」
                 CFLAG:7104 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -804,8 +804,8 @@ IF SELECTCOM == 2
                 PRINTFORMW 「앗, 그만둬! 그쪽은 다른……읏, 큿!」
                 PRINTFORMW 미마는 이를 악물며, 애널의 아픔을 필사적으로 견뎠다
             ENDIF
-                CFLAG:7105 = 1
-                RETURN 0
+        CFLAG:7105 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             LOCAL = PALAM:10 + UP:10
@@ -837,7 +837,7 @@ IF SELECTCOM == 2
                 PRINTFORMW 「이런 곳으로 느끼는건……읏……」
                 CFLAG:7105 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -855,8 +855,8 @@ IF SELECTCOM == 3
         ELSE
             PRINTFORMW 「하아, 하아……멋대로 ……손대지 마!」
         ENDIF
-            CFLAG:7106 = 1
-            RETURN 0
+        CFLAG:7106 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -874,7 +874,7 @@ IF SELECTCOM == 3
             PRINTFORMW 「응……이 정도론, 나에겐 소용없어」
             CFLAG:7106 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -897,8 +897,8 @@ IF SELECTCOM == 4
                 PRINTFORMW 「잠! 움직이면! 으, 큿!」
                 PRINTFORMW 바이브래이터를 삽입하기 시작하자, 미마의 몸은 몇번이나 뛰었다.
             ENDIF
-                CFLAG:7107 = 1
-                RETURN 0
+        CFLAG:7107 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -915,7 +915,7 @@ IF SELECTCOM == 4
                 PRINTFORMW 조금 괴로운 듯한 표정을 띄우면서, 미마는 침밷듯 말했다
                 CFLAG:7107 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -946,8 +946,8 @@ IF SELECTCOM == 4
                     PRINTFORMW 「제길……이런건 모욕을 받다니……」
                 ENDIF
             ENDIF
-                CFLAG:7108 = 1
-                RETURN 0
+        CFLAG:7108 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -965,7 +965,7 @@ IF SELECTCOM == 4
                 PRINTFORMW 「큿……이런 치욕을 느끼게 하다니……」
                 CFLAG:7108 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -985,8 +985,8 @@ IF SELECTCOM == 5
             PRINTFORMW 「큿! 그, 그만둬!」
             PRINTFORMW 「안돼! 앗, 아앗!」
         ENDIF
-            CFLAG:7109 = 1
-            RETURN 0
+        CFLAG:7109 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1002,7 +1002,7 @@ IF SELECTCOM == 5
             PRINTFORMW 「크으……읏! 이제, 그만둬!」
             CFLAG:7109 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1025,8 +1025,8 @@ IF SELECTCOM == 6
                 PRINTFORMW 무리하게 입술을 빼았기자, 미마는 격렬히 저항했다
             ENDIF
         ENDIF
-            CFLAG:7110 = 1
-            RETURN 0
+        CFLAG:7110 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1045,7 +1045,7 @@ IF SELECTCOM == 6
             PRINTFORMW 「읏, 떨어져!」
             CFLAG:7110 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1073,8 +1073,8 @@ IF SELECTCOM == 7
                 PRINTFORMW 「큿, 아앗! 핫, 으응!」
                 PRINTFORMW 말 할 여유도 없는 것인지, 미마는 몸을 비비꼬며 몸부림쳤다
             ENDIF
-                CFLAG:7111 = 1
-                RETURN 0
+        CFLAG:7111 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋V감각 Lv3 이상＋A감각 Lv3 이상
@@ -1097,7 +1097,7 @@ IF SELECTCOM == 7
                 PRINTFORMW 필사적으로 목소리를 억누르는 미마였지만, 점차 교성이 넘쳐흐르게 되었다
                 CFLAG:7111 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;바이브래이터 자위
     ELSEIF TEQUIP:20 == 1
@@ -1113,8 +1113,8 @@ IF SELECTCOM == 7
             ELSE
                 PRINTFORMW 「큿, 당신이 넣어주는 것도 아닌데 큿……아앙!」
             ENDIF
-                CFLAG:7112 = 1
-                RETURN 0
+        CFLAG:7112 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋V감각 Lv3 이상
@@ -1138,7 +1138,7 @@ IF SELECTCOM == 7
                 PRINTFORMW 자위를 하면서도, 미마는 저항의 의사를 말했다
                 CFLAG:7112 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;애널 바이브래이터 자위
     ELSEIF TEQUIP:25 == 1
@@ -1158,8 +1158,8 @@ IF SELECTCOM == 7
                 SIF TEQUIP:41 == 0
                     PRINTFORMW 미마는 %조사처리(CALLNAME:MASTER,"를")% 흘겨 보면서, 천천히 완구를 움직였다
             ENDIF
-                CFLAG:7113 = 1
-                RETURN 0
+        CFLAG:7113 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;음고＋연모
@@ -1189,7 +1189,7 @@ IF SELECTCOM == 7
                      PRINTFORMW %조사처리(CALLNAME:MASTER,"를")% 흘겨 보고 붙이면서, 미마는 뜨거워진 몸을 위로했다
                 CFLAG:7113 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;공개 자위
     ELSEIF TEQUIP:50 == 1
@@ -1204,8 +1204,8 @@ IF SELECTCOM == 7
                 PRINTFORMW 「생판 남이, 이 광경을 보다니……」
                 PRINTFORMW 미마는 스스로를 위로하면서, 거역할 수 없는 자신의 무력함을 부끄러워했다
             ENDIF
-                CFLAG:7114 = 1
-                RETURN 0
+        CFLAG:7114 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋노출버릇 Lv3 이상
@@ -1230,7 +1230,7 @@ IF SELECTCOM == 7
                     PRINTFORMW 미마는 혐오의 시선을 눈동자에 담으면서, 말해진 대로 했다
                 CFLAG:7114 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;샤워 자위
     ELSEIF TEQUIP:54 == 1
@@ -1245,8 +1245,8 @@ IF SELECTCOM == 7
                 PRINTFORMW 「응……이런 일을 시켜서, 뭐가 재미있다는 거야……」
                 PRINTFORMW 납득할 수 없는 표정을 지으면서, 미마는 샤워기를 비밀의 틈에 가져갔다
             ENDIF
-                CFLAG:7115 = 1
-                RETURN 0
+        CFLAG:7115 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋자위 중독 Lv3 이상
@@ -1268,7 +1268,7 @@ IF SELECTCOM == 7
                 PRINTFORMW 이빨을 이를 악물어, 미마는 분함을 견뎠다
                 CFLAG:7115 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -1369,8 +1369,8 @@ IF SELECTCOM == 9
             PRINTFORMW 「……뭘 생각하는 거야?」
             PRINTFORMW 미마는 %CALLNAME:MASTER%에게서 거리를 벌리며 주의깊게 살폈다
         ENDIF
-            CFLAG:7118 = 1
-            RETURN 0
+        CFLAG:7118 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋욕망 Lv5 이상
@@ -1388,7 +1388,7 @@ IF SELECTCOM == 9
             PRINTFORMW 「흥, 당신의 앞에서 틈 따위는 보이지 않을거야」
             CFLAG:7118 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1408,8 +1408,8 @@ IF SELECTCOM == 10
             PRINTFORMW 비순에 갖다댄 순간, 미마는 비명을 닮은 목소리를 냈다
             PRINTFORMW 아무래도 예상 이상으로 효과가 강한 것 같다
         ENDIF
-            CFLAG:7141 = 1
-            RETURN 0
+        CFLAG:7141 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1429,7 +1429,7 @@ IF SELECTCOM == 10
             PRINTFORMW 저항하는건지 머리를 좌우로 흔들며 ,미마는 쾌락을 필사적으로 부정했다
             CFLAG:7141 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1451,8 +1451,8 @@ IF SELECTCOM == 11
             PRINTFORMW 「그만!, 그만둬!, 큿!, 으읏!, 아아아앗!」
             PRINTFORMW 전기 안마기를 비소 아래에 댄 순간, 미마는 미친 사람처럼 소리쳤다.
         ENDIF
-            CFLAG:7142 = 1
-            RETURN 0
+        CFLAG:7142 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1470,7 +1470,7 @@ IF SELECTCOM == 11
             PRINTFORMW 입술을 깨물며 미마는 필사적으로 쾌락을 참았다
             CFLAG:7142 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1504,8 +1504,8 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
                 PRINTFORMW 바이브래이터를 넣는 순간, 미마의 얼굴은 고통에 일그러졌다
             ENDIF
         ENDIF
-            CFLAG:7143 = 1
-            RETURN 0
+        CFLAG:7143 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1525,7 +1525,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
             PRINTFORMW 미마는 강한척 하지만, 이마에는 많은 양의 땀이 흐르고 있었다
             CFLAG:7143 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
@@ -1539,8 +1539,8 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
         ELSE
             PRINTFORMW 「햣, 응……이런 장난감에, 나는 굴복하지 않아!」
         ENDIF
-            CFLAG:7144 = 1
-            RETURN 0
+        CFLAG:7144 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1558,7 +1558,7 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
             PRINTFORMW 「핫, 하앗……도구를 사용하다니 한계가 온 모양이네」
             CFLAG:7144 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1583,8 +1583,8 @@ IF SELECTCOM == 13 && TEQUIP:25 == 1
             PRINTFORMW 「앗, 이런!　그런 것, 넣다……큿!」
             PRINTFORMW 저항하는 미마를 밀어 넘어뜨려, %조사처리(CALLNAME:MASTER,"는")% 억지로 바이브래이터를 집어넣었다
         ENDIF
-            CFLAG:7145 = 1
-            RETURN 0
+        CFLAG:7145 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;음고＋연모
@@ -1611,7 +1611,7 @@ IF SELECTCOM == 13 && TEQUIP:25 == 1
             PRINTFORMW 이마에 진땀을 띄우면서, 미마는 필사적으로 저항을 시도했다
             CFLAG:7145 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
@@ -1626,8 +1626,8 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
             SIF TEQUIP:41 == 0
                 PRINTFORMW 느껴지는 아픔과 굴복감에, 미마는 눈물을 흘렸다
         ENDIF
-            CFLAG:7146 = 1
-            RETURN 0
+        CFLAG:7146 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1644,7 +1644,7 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
             PRINTFORMW 「하아……하아……겨우……끝났다」
             CFLAG:7146 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1665,8 +1665,8 @@ IF SELECTCOM == 14 && TEQUIP:30 == 1
             SIF TEQUIP:41 == 0
                 PRINTFORMW 미마는 점차 거칠게 숨을 쉬면서, %조사처리(CALLNAME:MASTER,"를")% 노려봤다
         ENDIF
-            CFLAG:7147 = 1
-            RETURN 0
+        CFLAG:7147 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1683,7 +1683,7 @@ IF SELECTCOM == 14 && TEQUIP:30 == 1
             PRINTFORMW 「읏, 또 도구에 의지하는 거야?」
             CFLAG:7147 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
@@ -1698,8 +1698,8 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
             PRINTFORMW 「하앗, 하아……이 정도, 나에겐 소용 없어」
             PRINTFORMW 호흡을 정돈하면서, 미마는 %CALLNAME:MASTER%에게 단언했다
         ENDIF
-            CFLAG:7148 = 1
-            RETURN 0
+        CFLAG:7148 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1717,7 +1717,7 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
             PRINTFORMW 「이런 일, 아무리 해도 쓸데 없어」
             CFLAG:7148 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1737,8 +1737,8 @@ IF SELECTCOM == 15 && TEQUIP:35 == 1
             PRINTFORMW 「응, 가슴으로 느낀다고 생각해?」
             PRINTFORMW 「네 뜻대로 될거라고 생각 하지 마」
         ENDIF
-            CFLAG:7149 = 1
-            RETURN 0
+        CFLAG:7149 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1755,7 +1755,7 @@ IF SELECTCOM == 15 && TEQUIP:35 == 1
             PRINTFORMW 「……이런 걸론 아무렇지도 않아. 다른 방법을 써보라고」
             CFLAG:7149 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
@@ -1769,8 +1769,8 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
         ELSE
             PRINTFORMW 「이봐, 말했었잖아? 이런걸론, 날 함락시킬 수 없어」
         ENDIF
-            CFLAG:7150 = 1
-            RETURN 0
+        CFLAG:7150 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1789,7 +1789,7 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
             PRINTFORMW 「도구만 사용하면, 날 함락시킬 순 없어」
             CFLAG:7150 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1809,8 +1809,8 @@ IF SELECTCOM == 16 && TEQUIP:30 == 2
             PRINTFORMW 「읏, 이런 추잡한 일을 시키다니……」
             PRINTFORMW 「그냥 끝난다고 생각하지 않는게 좋을거야」
         ENDIF
-            CFLAG:7151 = 1
-            RETURN 0
+        CFLAG:7151 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1823,7 +1823,7 @@ IF SELECTCOM == 16 && TEQUIP:30 == 2
             PRINTFORMW 「크읏! 이런 장난감 따위에, 농락당하다니……읏!」
             CFLAG:7151 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
@@ -1838,8 +1838,8 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
             PRINTFORMW 「겨우, 끝났다……」
             PRINTFORMW 미마는 호흡을 정돈하면서, 끝났다는 사실에 안도했다
         ENDIF
-            CFLAG:7152 = 1
-            RETURN 0
+        CFLAG:7152 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1852,7 +1852,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
             PRINTFORMW 「큿……나는, 너 따위에게……크!」
             CFLAG:7152 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1890,8 +1890,8 @@ IF SELECTCOM == 20
                 PRINTFORMW 미마는 이빨을 이를 악물며, 굴욕을 견뎠다
             ENDIF
         ENDIF
-            CFLAG:7161 = 1
-            RETURN 0
+        CFLAG:7161 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1921,7 +1921,7 @@ IF SELECTCOM == 20
             PRINTFORMW 노골적인까지 혐오의 표정을 지으며, 미마는 %조사처리(CALLNAME:MASTER,"과")% 뒤섞였다
             CFLAG:7161 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -1959,8 +1959,8 @@ IF SELECTCOM == 21
                 PRINTFORMW 상대를 굴복 시키는 것 같은 몸의 자세에, 미마는 분노를 느꼈다
             ENDIF
         ENDIF
-            CFLAG:7162 = 1
-            RETURN 0
+        CFLAG:7162 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -1987,7 +1987,7 @@ IF SELECTCOM == 21
             PRINTFORMW 때때로 신음 소리를 내면서, 미마는 %조사처리(CALLNAME:MASTER,"과")% 얽히었다
             CFLAG:7162 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2006,8 +2006,8 @@ IF SELECTCOM == 22
             PRINTFORMW 「앗, 그렇게, 격렬하게 하면!」
             PRINTFORMW 「아앗, 앗, 아읏!」
         ENDIF
-            CFLAG:7163 = 1
-            RETURN 0
+        CFLAG:7163 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2035,7 +2035,7 @@ IF SELECTCOM == 22
             PRINTFORMW 격렬하게 움직이자, 미마의 몸은 몇번이나 떨렸다
             CFLAG:7163 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2055,8 +2055,8 @@ IF SELECTCOM == 23
             PRINTFORMW 「읏, 넌 보면서 좋겠지만……」
             PRINTFORMW 「이런 일로, 나는……히얏! 난, 크읏!」
         ENDIF
-            CFLAG:7164 = 1
-            RETURN 0
+        CFLAG:7164 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2086,7 +2086,7 @@ IF SELECTCOM == 23
             PRINTFORMW 교성을 억누르려 하지만, 미마의 몸은 %CALLNAME:MASTER%에 농락 될 뿐이었다
             CFLAG:7164 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2121,8 +2121,8 @@ IF SELECTCOM == 24
                 PRINTFORMW 「읏, 언젠가, 죽여주겠어!」
             ENDIF
         ENDIF
-            CFLAG:7165 = 1
-            RETURN 0
+        CFLAG:7165 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2152,7 +2152,7 @@ IF SELECTCOM == 24
             PRINTFORMW 미마는 쾌락을 버티면서 굴복하지 않겠다는 의사를 보였다
             CFLAG:7165 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2169,8 +2169,8 @@ IF SELECTCOM == 25
         ELSE
             PRINTFORMW 「너무해……이제 놔주지 않을거야」
         ENDIF
-            CFLAG:7166 = 1
-            RETURN 0
+        CFLAG:7166 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2182,7 +2182,7 @@ IF SELECTCOM == 25
             PRINTFORMW 「앗, 큿, 꽤, 능숙, 하넷!」
             CFLAG:7166 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2265,8 +2265,8 @@ IF SELECTCOM == 26
                     ENDIF
                 ENDIF
             ENDIF
-                CFLAG:7167 = 1
-                RETURN 0
+        CFLAG:7167 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;미마에 연모
@@ -2297,7 +2297,7 @@ IF SELECTCOM == 26
                     CFLAG:7167 = 2
                 ENDIF
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE 
@@ -2324,8 +2324,8 @@ IF SELECTCOM == 26
                     PRINTFORMW 미마는 %CALLNAME:MASTER%과%CALLNAME:ASSI%로부터 눈을 돌려 행위가 끝나는 것을 기다렸다
                 ENDIF
             ENDIF
-                CFLAG:7168 = 1
-                RETURN 0
+        CFLAG:7168 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;미마에 연모
@@ -2354,7 +2354,7 @@ IF SELECTCOM == 26
                     CFLAG:7168 = 2
                 ENDIF
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -2378,18 +2378,18 @@ IF SELECTCOM == 27
             PRINTFORMW 페니스만이 버팀목이 되어 있으므로, 미마에게 도망갈 장소는 없었다
             PRINTFORMW 「그만, 큿!　아래가, 빠, 빨리! 빼, 빼줫, 아아앗!」
         ENDIF
-            CFLAG:7169 = 1
-            RETURN 0
+        CFLAG:7169 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7169 <= 4 || FLAG:11 == 2)
             IF RAND:2 == 0
-            PRINTFORMW 「하앗, 하아……앉아서 할 때 보다, 으읏, 격렬햇……!」
-            PRINTFORMW 미마는 가슴을 파묻으며, 음란하게 허리를 흔들었다
+                PRINTFORMW 「하앗, 하아……앉아서 할 때 보다, 으읏, 격렬햇……!」
+                PRINTFORMW 미마는 가슴을 파묻으며, 음란하게 허리를 흔들었다
             ELSE
-            PRINTFORMW 「으음……혀、내밀어줘……」
-            PRINTFORMW 미마는%CALLNAME:MASTER%를 껴안고、진한 입맞춤을 나눴다
+                PRINTFORMW 「으음……혀、내밀어줘……」
+                PRINTFORMW 미마는%CALLNAME:MASTER%를 껴안고、진한 입맞춤을 나눴다
             ENDIF
             RETURN 1
             CFLAG:7169 = 5
@@ -2409,7 +2409,7 @@ IF SELECTCOM == 27
             PRINTFORMW 미마는 괴로운 듯한 소리를 내며, %CALLNAME:MASTER%에 가슴에 얼굴을 파묻었다
             CFLAG:7169 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2429,18 +2429,18 @@ IF SELECTCOM == 28
             PRINTFORMW 미마의 몸을 안아, 가랑이를 벌려 음부를 괴롭혔다
             PRINTFORMW 소중한 부위를 드러내자 미마는 귀까지 빨갛게 변했다
         ENDIF
-            CFLAG:7170 = 1
-            RETURN 0
+        CFLAG:7170 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7170 <= 4 || FLAG:11 == 2)
             IF RAND:2 == 0
-            PRINTFORMW 「아앙♪　%조사처리(CSTR:90,"가")%, 안쪽까지 왔어……」
-            PRINTFORMW 미마는 녹아내릴거 같은 표정을 지으며, 질의 조임을 강하게 했다
+                PRINTFORMW 「아앙♪　%조사처리(CSTR:90,"가")%, 안쪽까지 왔어……」
+                PRINTFORMW 미마는 녹아내릴거 같은 표정을 지으며, 질의 조임을 강하게 했다
             ELSE
-            PRINTFORMW 「깊어、읏、좋、좋앗！」
-            PRINTFORMW 「히얏！　가、가슴、비비면! 앗、아아앗！」
+                PRINTFORMW 「깊어、읏、좋、좋앗！」
+                PRINTFORMW 「히얏！　가、가슴、비비면! 앗、아아앗！」
             ENDIF
             RETURN 1
             CFLAG:7170 = 5
@@ -2461,7 +2461,7 @@ IF SELECTCOM == 28
             PRINTFORMW 미마가 몸을 비틀어도, 반 공중에 뜬 상태에서는 아무것도 할 수가 없었다
             CFLAG:7170 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2486,8 +2486,8 @@ IF SELECTCOM == 30
             PRINTFORMW 「엉덩이에 넣다니……」
             PRINTFORMW 「어떻게 그럴 수가 있어, 당신……」
         ENDIF
-            CFLAG:7181 = 1
-            RETURN 0
+        CFLAG:7181 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;음고＋연모
@@ -2526,7 +2526,7 @@ IF SELECTCOM == 30
             PRINTFORMW 「히깃, 빨……빨리, 빼엣!」
             CFLAG:7181 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2550,8 +2550,8 @@ IF SELECTCOM == 31
             PRINTFORMW 「뒤로 한다고? 도대체 무슨 말을 하는거야……」
             PRINTFORMW 이해하지 못하는 미마의 뒤로 돌아가, 맥박치는 페니스를 항문에 찔렀다
         ENDIF
-            CFLAG:7182 = 1
-            RETURN 0
+        CFLAG:7182 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;음고＋연모
@@ -2589,7 +2589,7 @@ IF SELECTCOM == 31
             PRINTFORMW 허리를 움직일 때 마다, 신음 소리가 미마의 입에서 흘러나왔다
             CFLAG:7182 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2610,8 +2610,8 @@ IF SELECTCOM == 40
         ELSE
             PRINTFORMW 「이런……불결하고 추접스러운걸……」
         ENDIF
-            CFLAG:7191 = 1
-            RETURN 0
+        CFLAG:7191 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -2632,7 +2632,7 @@ IF SELECTCOM == 40
             PRINTFORMW 「힘이 돌아왔으면……이런건 그냥 뜯어버릴텐데……」
             CFLAG:7191 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2656,8 +2656,8 @@ IF SELECTCOM == 41
             PRINTFORMW 「읏, 지독한 냄새……」
             PRINTFORMW 질린거 같은 표정을 지으면서, 미마는 마지못해 페니스를 계속 빨았다
         ENDIF
-            CFLAG:7192 = 1
-            RETURN 0
+        CFLAG:7192 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -2681,7 +2681,7 @@ IF SELECTCOM == 41
                 PRINTFORMW 혐오하는 시선으로, 미마는 마지못해 페니스를 계속 빨았다
             CFLAG:7192 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2703,8 +2703,8 @@ IF SELECTCOM == 42
         ELSE
             PRINTFORMW 「이런 일을 시키다니 어떻게든 벗어나고 싶어……」
         ENDIF
-            CFLAG:7193 = 1
-            RETURN 0
+        CFLAG:7193 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -2727,7 +2727,7 @@ IF SELECTCOM == 42
             PRINTFORMW 「읏……지독한 냄새……」
             CFLAG:7193 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2750,8 +2750,8 @@ IF SELECTCOM == 43
             PRINTFORMW 「하아……이런게 어디가 좋은건지……」
             PRINTFORMW 미마는 한숨을 쉬면서, %CALLNAME:MASTER%의 페니스를 가랑이에 끼웠다
         ENDIF
-            CFLAG:7194 = 1
-            RETURN 0
+        CFLAG:7194 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -2773,7 +2773,7 @@ IF SELECTCOM == 43
             PRINTFORMW 「가랑이를 이런 일에 사용하다니……」
             CFLAG:7194 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2790,8 +2790,8 @@ IF SELECTCOM == 60
         ELSE
             PRINTFORMW 「……이런 걸 써서, 뭘 할 생각이야……」
         ENDIF
-            CFLAG:7201 = 1
-            RETURN 0
+        CFLAG:7201 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2804,7 +2804,7 @@ IF SELECTCOM == 60
             PRINTFORMW 「또……쓰는거야?」
             CFLAG:7201 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2821,8 +2821,8 @@ IF SELECTCOM == 61
         ELSE
             PRINTFORMW 「핫, 읏, 이런 걸론, 나는 저속해지지 않아!」
         ENDIF
-            CFLAG:7202 = 1
-            RETURN 0
+        CFLAG:7202 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2835,7 +2835,7 @@ IF SELECTCOM == 61
             PRINTFORMW 미마는 얼굴을 붉게 물들이면서도, 다부지게 행동했다
             CFLAG:7202 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2858,8 +2858,8 @@ IF SELECTCOM == 62
             SIF TEQUIP:41 == 0
                 PRINTFORMW 미마는 점차 호흡을 거칠게 쉬면서, 날카로운 시선으로 %조사처리(CALLNAME:MASTER,"를")% 노려보았다
         ENDIF
-            CFLAG:7203 = 1
-            RETURN 0
+        CFLAG:7203 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋오줌싸게 버릇
@@ -2877,7 +2877,7 @@ IF SELECTCOM == 62
             PRINTFORMW 때때로 몸을 떨면서, 미마는 요의를 참았다
             CFLAG:7203 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2899,8 +2899,8 @@ IF SELECTCOM == 90 && TEQUIP:59 == 1
             PRINTFORMW 「이런 것까지 입게 만들다니……」
             PRINTFORMW (힘만 있으면, 이런 놈 따윈……)
         ENDIF
-            CFLAG:7221 = 1
-            RETURN 0
+        CFLAG:7221 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2914,7 +2914,7 @@ IF SELECTCOM == 90 && TEQUIP:59 == 1
             PRINTFORMW 「레이무들의 웃음거리가 될거야……」
             CFLAG:7221 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
@@ -2928,8 +2928,8 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
         ELSE
             PRINTFORMW 벗으라고 지시하자, 미마는 에이프런을 아무렇게나 벗어던졌다
         ENDIF
-            CFLAG:7222 = 1
-            RETURN 0
+        CFLAG:7222 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2941,7 +2941,7 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
             PRINTFORMW 「이런 걸론, 난 흔들리지 않아」
             CFLAG:7222 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -2961,8 +2961,8 @@ IF SELECTCOM == 100 && TEQUIP:50 == 1
             PRINTFORMW 비디오 카메라에 대한 것을 설명해 주자, 미마의 표정이 변했다
             PRINTFORMW 「도대체 무슨 생각을 하는거야! 넌 미쳤어!」
         ENDIF
-            CFLAG:7223 = 1
-            RETURN 0
+        CFLAG:7223 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -2976,7 +2976,7 @@ IF SELECTCOM == 100 && TEQUIP:50 == 1
             PRINTFORMW 미마는 낙담한 표정으로 %조사처리(CALLNAME:MASTER,"를")% 바라보았다
             CFLAG:7223 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3001,8 +3001,8 @@ IF SELECTCOM == 103 && TEQUIP:56 == 1
             SIF TEQUIP:41 == 0
                 PRINTFORMW 희미하게 뺨을 붉히면서, 미마는 %조사처리(CALLNAME:MASTER,"를")% 흘겨 보았다
         ENDIF
-            CFLAG:7224 = 1
-            RETURN 0
+        CFLAG:7224 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋노출버릇 Lv3 이상
@@ -3025,7 +3025,7 @@ IF SELECTCOM == 103 && TEQUIP:56 == 1
             PRINTFORMW 「으으……이런 부끄러운걸……」
             CFLAG:7224 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
@@ -3038,8 +3038,8 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
         ELSE
             PRINTFORMW 「하아……겨우……끝났다……」
         ENDIF
-            CFLAG:7225 = 1
-            RETURN 0
+        CFLAG:7225 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3057,7 +3057,7 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
             PRINTFORMW 「크읏……이 굴욕, 잊지 않겠어!」
             CFLAG:7225 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3076,8 +3076,8 @@ IF SELECTCOM == 104 && TEQUIP:52 == 1
         ELSE
             PRINTFORMW 「……알몸으로 밖에?　……너 정말 최악이야」
         ENDIF
-            CFLAG:7226 = 1
-            RETURN 0
+        CFLAG:7226 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋노출버릇 Lv3 이상
@@ -3102,7 +3102,7 @@ IF SELECTCOM == 104 && TEQUIP:52 == 1
             PRINTFORMW 목걸이를 채운 이후에도, 미마는 계속 저항해 왔다
             CFLAG:7226 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
@@ -3117,8 +3117,8 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
             PRINTFORMW 방으로 돌아오자, 미마는 하동안 굴욕감에 시달렸다
             PRINTFORMW (저런 놈한테 저항도 못하고, 본적도 없는 사람들에게 알몸이 보여지다니……크!)
         ENDIF
-            CFLAG:7227 = 1
-            RETURN 0
+        CFLAG:7227 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋노출버릇 Lv3 이상
@@ -3139,7 +3139,7 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
             PRINTFORMW 「하아……다른 사람에게 발각되면, 더는 살아갈 수가 없어……」
             CFLAG:7227 = 2
         ENDIF
-			RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3160,8 +3160,8 @@ IF SELECTCOM == 111
             PRINTFORMW 「앗, 싫, 싫어!」
             PRINTFORMW 미마의 넓적다리로부터 황금수가 떨어져며 점차 기세를 더해 갔다
         ENDIF
-            CFLAG:7228 = 1
-            RETURN 0
+        CFLAG:7228 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋오줌싸게 버릇＋야외 플레이
@@ -3193,7 +3193,7 @@ IF SELECTCOM == 111
             PRINTFORMW 「으윽……이 내가, 사람들 앞에서 이런……!」
             CFLAG:7228 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3213,8 +3213,8 @@ IF SELECTCOM == 174 && TEQUIP:25 == 7
             PRINTFORMW 「큿, 읏……핫……읏……」
             PRINTFORMW 「이……변태가……」
         ENDIF
-            CFLAG:7261 = 1
-            RETURN 0
+        CFLAG:7261 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋배설 중독 Lv3 이상
@@ -3238,7 +3238,7 @@ IF SELECTCOM == 174 && TEQUIP:25 == 7
             PRINTFORMW 필사적으로 호흡을 정돈하려고 해도, 미마의 호흡은 난폭해질 뿐이었다
             CFLAG:7261 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 174 && TEQUIP:25 == 0
@@ -3254,8 +3254,8 @@ ELSEIF SELECTCOM == 174 && TEQUIP:25 == 0
             SIF TEQUIP:40 == 0
                 PRINTFORMW 미마는 손으로 얼굴을 감싸며, 수치에 물든 얼굴을 숨겼다
         ENDIF
-            CFLAG:7262 = 1
-            RETURN 0
+        CFLAG:7262 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋배설 중독 Lv3 이상
@@ -3279,7 +3279,7 @@ ELSEIF SELECTCOM == 174 && TEQUIP:25 == 0
             PRINTFORMW 금방이라도 울듯한 얼굴로, 미마는 %CALLNAME:MASTER%에 간청했다
             CFLAG:7262 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3298,8 +3298,8 @@ IF SELECTCOM == 190
             PRINTFORMW 「앗, 크으……」
             PRINTFORMW 「젓꼭지가, 저렷……」
         ENDIF
-            CFLAG:7271 = 1
-            RETURN 0
+        CFLAG:7271 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3317,7 +3317,7 @@ IF SELECTCOM == 190
             PRINTFORMW 「읏……이……정도로……」
             CFLAG:7271 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3339,8 +3339,8 @@ IF SELECTCOM == 191 && TEQUIP:35 == 2
             PRINTFORMW 하지만, %조사처리(CALLNAME:MASTER,"는")% 대답하지 않고 히죽거릴 뿐이었다
             PRINTFORMW 「무, 뭘 할 생각이야?　그런……히잇!」
         ENDIF
-            CFLAG:7272 = 1
-            RETURN 0
+        CFLAG:7272 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋분유중독 Lv3 이상
@@ -3364,7 +3364,7 @@ IF SELECTCOM == 191 && TEQUIP:35 == 2
             PRINTFORMW 미마는 이빨을 이를 악물며, 굴욕을 견뎠다
             CFLAG:7272 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;탈착시
 ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
@@ -3378,8 +3378,8 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
         ELSE
             PRINTFORMW 「으윽……이런 부끄러운건, 두 번 다시 하고 싶지 않아」
         ENDIF
-            CFLAG:7273 = 1
-            RETURN 0
+        CFLAG:7273 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3398,7 +3398,7 @@ ELSEIF SELECTCOM == 191 && TEQUIP:35 == 0
             PRINTFORMW 「큿……이런 놈에게, 내 몸이 이용되다니……!」
             CFLAG:7273 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3416,8 +3416,8 @@ IF SELECTCOM == 200
         ELSE
             PRINTFORMW 「흥……빨리 그 손 치워줄래?」
         ENDIF
-            CFLAG:7274 = 1
-            RETURN 0
+        CFLAG:7274 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3436,7 +3436,7 @@ IF SELECTCOM == 200
             PRINTFORMW 「내 몸은, 당신 [따위]에겐 너무 비싸거든」
             CFLAG:7274 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3455,8 +3455,8 @@ IF SELECTCOM == 201
             PRINTFORMW 「그런 곳을 만지작거려서 어쩔 생각이야?」
             PRINTFORMW 「이런걸론, 느끼지 않으니까……」
         ENDIF
-            CFLAG:7275 = 1
-            RETURN 0
+        CFLAG:7275 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3474,7 +3474,7 @@ IF SELECTCOM == 201
             PRINTFORMW 미마는 미간에 주름을 잡고 노골적으로 혐오감을 보였다
             CFLAG:7275 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3493,8 +3493,8 @@ IF SELECTCOM == 202
             PRINTFORMW 「읏, 거긴 빨지 마!」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 유두에 달라붙자, 미마는 몸을 비틀며 뿌리쳤다
         ENDIF
-            CFLAG:7276 = 1
-            RETURN 0
+        CFLAG:7276 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3511,7 +3511,7 @@ IF SELECTCOM == 202
             PRINTFORMW 「……으윽, 더러워……」
             CFLAG:7276 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3530,8 +3530,8 @@ IF SELECTCOM == 203
             PRINTFORMW 「하긋! 갓난 아기도 아니고, 도대체 무슨 생각을 하는거야……」
             PRINTFORMW 「이런 일 해도, 나에게는 소용 없어」
         ENDIF
-            CFLAG:7277 = 1
-            RETURN 0
+        CFLAG:7277 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3550,7 +3550,7 @@ IF SELECTCOM == 203
             PRINTFORMW 「조금 느꼈지만, 별거 아니라고」
             CFLAG:7277 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3570,8 +3570,8 @@ IF SELECTCOM == 204
             SIF TEQUIP:40 == 0
                 PRINTFORMW 미마는 %조사처리(CALLNAME:MASTER,"를")% 떼어내곤 손으로 앞가슴을 가렸다.
         ENDIF
-            CFLAG:7278 = 1
-            RETURN 0
+        CFLAG:7278 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3591,7 +3591,7 @@ IF SELECTCOM == 204
                 PRINTFORMW 유두에 입을 가져가자 미마는 곧바로 %조사처리(CALLNAME:MASTER,"를")% 떨어뜨려 놓았다
             CFLAG:7278 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3610,8 +3610,8 @@ IF SELECTCOM == 205
             PRINTFORMW 「가슴으로 자위 하는걸 보여달라니……」
             PRINTFORMW 「도대체 이게 어디가 좋다는 거야……」
         ENDIF
-            CFLAG:7279 = 1
-            RETURN 0
+        CFLAG:7279 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3630,7 +3630,7 @@ IF SELECTCOM == 205
             PRINTFORMW 미마는 %CALLNAME:MASTER%의 모습을 엿보면서, 스스로를 위로했다
             CFLAG:7279 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3655,8 +3655,8 @@ IF SELECTCOM == 209
             PRINTFORMW 「큿……입으로 할건지 가슴으로 할건지」
             PRINTFORMW 「둘 중 확실하게 했으면 좋겠어」
         ENDIF
-            CFLAG:7280 = 1
-            RETURN 0
+        CFLAG:7280 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5 이상
@@ -3680,7 +3680,7 @@ IF SELECTCOM == 209
             PRINTFORMW (이런 굴욕적인 일을 시킬 줄은……)
             CFLAG:7280 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3698,8 +3698,8 @@ IF SELECTCOM == 220
         ELSE
             PRINTFORMW 「꺗! 갑자기 무슨……큿!」
         ENDIF
-            CFLAG:7291 = 1
-            RETURN 0
+        CFLAG:7291 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -3727,7 +3727,7 @@ IF SELECTCOM == 220
             PRINTFORMW 「아읏, 고통으로, 내 행동이 바뀔거라고, 큿, 생각하고 있는 거야?」
             CFLAG:7291 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3745,8 +3745,8 @@ IF SELECTCOM == 221
             PRINTFORMW 「큿, 으읏!　그만, 크아앗!」
             PRINTFORMW 채찍을 휘두를 때 마다 비명이 들려왔고, 어느덧 미마의 뺨으로부터는 눈물이 뚝뚝 떨어지고 있었다
         ENDIF
-            CFLAG:7292 = 1
-            RETURN 0
+        CFLAG:7292 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -3773,7 +3773,7 @@ IF SELECTCOM == 221
             PRINTFORMW 「언젠가, 반드시 후회하게……큿, 크아악!」
             CFLAG:7292 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3791,8 +3791,8 @@ IF SELECTCOM == 222
             PRINTFORMW 「그, 그만……큿!　아앗!」
             PRINTFORMW 강렬한 아픔이 온 몸에 퍼지자 미마는 견디지 못하고 소리를 질렀다
         ENDIF
-            CFLAG:7293 = 1
-            RETURN 0
+        CFLAG:7293 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -3819,7 +3819,7 @@ IF SELECTCOM == 222
             PRINTFORMW 「큿, 이런 일로, 나는!」
             CFLAG:7293 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3837,8 +3837,8 @@ IF SELECTCOM == 224 && TEQUIP:40 >= 1
         ELSE
             PRINTFORMW 「봉인되는 일에 비하면, 이런 일……」
         ENDIF
-            CFLAG:7294 = 1
-            RETURN 0
+        CFLAG:7294 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -3866,7 +3866,7 @@ IF SELECTCOM == 224 && TEQUIP:40 >= 1
             PRINTFORMW 미마는 기가 막히다는 표정을 지으며, %CALLNAME:MASTER%에 말했다
             CFLAG:7294 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
@@ -3879,8 +3879,8 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
         ELSE
             PRINTFORMW 「읏……밧줄 자국이 남잖아……」
         ENDIF
-            CFLAG:7295 = 1
-            RETURN 0
+        CFLAG:7295 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3896,7 +3896,7 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
             PRINTFORMW 「후우, 겨우 풀어 주는건가……」
             CFLAG:7295 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3916,8 +3916,8 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
             PRINTFORMW 「눈을 가려서, 뭘 할  생각이야?」
             PRINTFORMW 「이 정도론, 나는 기죽지 않아」
         ENDIF
-            CFLAG:7296 = 1
-            RETURN 0
+        CFLAG:7296 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -3943,7 +3943,7 @@ IF SELECTCOM == 225 && TEQUIP:41 == 1
             PRINTFORMW 「또 그거? 소용 없다고 생각하지 않아?」
             CFLAG:7296 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
@@ -3957,8 +3957,8 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
         ELSE
             PRINTFORMW 「응?, 이제 된거야?」
         ENDIF
-            CFLAG:7297 = 1
-            RETURN 0
+        CFLAG:7297 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -3975,7 +3975,7 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
             PRINTFORMW 「읏, 눈부셔……」
             CFLAG:7297 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -3995,8 +3995,8 @@ IF SELECTCOM == 226 && TEQUIP:42 == 1
             SIF TEQUIP:41 == 0
                 PRINTFORMW 날카로운 시선으로 %조사처리(CALLNAME:MASTER,"를")% 향하면서, 미마는 호흡을 정돈했다
         ENDIF
-            CFLAG:7298 = 1
-            RETURN 0
+        CFLAG:7298 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -4023,7 +4023,7 @@ IF SELECTCOM == 226 && TEQUIP:42 == 1
             PRINTFORMW 「므긋……흡……읏……」
             CFLAG:7298 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
@@ -4037,8 +4037,8 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
             PRINTFORMW 「후핫……앗, 하아……」
             PRINTFORMW 「이런 일, 두 번 다시 하고 싶지 않네」
         ENDIF
-            CFLAG:7299 = 1
-            RETURN 0
+        CFLAG:7299 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4057,7 +4057,7 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
                 PRINTFORMW 호흡을 정돈하고 있는 동안도, 미마는 %조사처리(CALLNAME:MASTER,"를")% 계속 흘겨 보았다
             CFLAG:7299 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4079,8 +4079,8 @@ IF SELECTCOM == 230
             PRINTFORMW 「흐급! 그만! 그만둿!　으긋!」
             PRINTFORMW 미마는 저항했지만, 손으로 짓눌린 상태에서는 아무것도 할 수 없었다
         ENDIF
-            CFLAG:7300 = 1
-            RETURN 0
+        CFLAG:7300 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -4101,7 +4101,7 @@ IF SELECTCOM == 230
             PRINTFORMW 「으긋! 켁, 콜록……이잇……!」
             CFLAG:7300 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4119,8 +4119,8 @@ IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
             PRINTFORMW 「무리 무리!　절대 무리라고!」
             PRINTFORMW 「그만둬! 웃, 큿, 우아앗!」
         ENDIF
-            CFLAG:7301 = 1
-            RETURN 0
+        CFLAG:7301 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋매저키스트기분 Lv5 이상
@@ -4144,7 +4144,7 @@ IF SELECTCOM == 231 || SELECTCOM == 232 || SELECTCOM == 233
             PRINTFORMW 「히잇!　그만, 앗, 큿!　부탁이야, 그만……앗, 힛, 꺄악!」
             CFLAG:7301 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4171,8 +4171,8 @@ IF SELECTCOM == 303
                 PRINTFORMW 『하앗, 하아……미마님……이거, 싫은거야……?』
                 PRINTFORMW 「……읏, 마리사, 반드시 구해줄게……」
             ENDIF
-                CFLAG:7331 = 1
-                RETURN 0
+        CFLAG:7331 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4196,7 +4196,7 @@ IF SELECTCOM == 303
                 PRINTFORMW 「마리사……, 넌 이런 일을 하면서, 아무 생각도 안하는거야?」
                 CFLAG:7331 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -4215,8 +4215,8 @@ IF SELECTCOM == 303
                 PRINTFORMW 『하, 츄릅, 으읍, 하앗……』
                 PRINTFORMW 「읏……넬름……어째서, 그렇게, 기쁜 건지……」
             ENDIF
-                CFLAG:7332 = 1
-                RETURN 0
+        CFLAG:7332 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4241,7 +4241,7 @@ IF SELECTCOM == 303
                 PRINTFORMW 「응……어째서……싫어하지 않는거야?」
                 CFLAG:7332 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -4268,8 +4268,8 @@ IF SELECTCOM == 305
                 PRINTFORMW 『하아, 하아……애태우지 말고, 빨리……』
                 PRINTFORMW 「마, 마리사! 너 도대체 무슨 말을!」
             ENDIF
-                CFLAG:7333 = 1
-                RETURN 0
+        CFLAG:7333 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4293,7 +4293,7 @@ IF SELECTCOM == 305
                 PRINTFORMW 「윽……이……마리사에게 넣으면, 용서 못 해……」
                 CFLAG:7333 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -4309,8 +4309,8 @@ IF SELECTCOM == 305
             ELSE
                 PRINTFORMW 「……나도 모자라서, %CALLNAME:ASSI%까지 범하다니……」
             ENDIF
-                CFLAG:7334 = 1
-                RETURN 0
+        CFLAG:7334 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4330,7 +4330,7 @@ IF SELECTCOM == 305
                 PRINTFORMW 「이런 일을 시키다니……」
                 CFLAG:7334 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -4356,8 +4356,8 @@ IF SELECTCOM == 306
                 PRINTFORMW 『아, 읏, 스치고 있어……』
                 PRINTFORMW 「큭……마리사, 왜 그렇게 기뻐하는 얼굴을 하는거야?」
             ENDIF
-                CFLAG:7335 = 1
-                RETURN 0
+        CFLAG:7335 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4381,7 +4381,7 @@ IF SELECTCOM == 306
                 PRINTFORMW 정중한 봉사를 하는 마리사와는 정반대로, 미마는 주저하며 봉사했다
                 CFLAG:7335 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -4401,8 +4401,8 @@ IF SELECTCOM == 306
                 SIF TEQUIP:41 == 0
                     PRINTFORMW 미마는 %조사처리(CALLNAME:MASTER,"를")% 흘겨 보면서, 마지못해 봉사했다
             ENDIF
-                CFLAG:7336 = 1
-                RETURN 0
+        CFLAG:7336 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -4426,7 +4426,7 @@ IF SELECTCOM == 306
                 PRINTFORMW 「나중에 후회하게 될거야……!」
                 CFLAG:7336 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -4448,8 +4448,8 @@ IF SELECTCOM == 350 && TEQUIP:53 == 1
             PRINTFORMW 「이런 곳에 와서, 도대체 뭘……」
             PRINTFORMW 「설마, 목욕을 하는거다, 라고 말하진 않겠지?」
         ENDIF
-            CFLAG:7351 = 1
-            RETURN 0
+        CFLAG:7351 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4463,7 +4463,7 @@ IF SELECTCOM == 350 && TEQUIP:53 == 1
             PRINTFORMW (저 녀석만 없다면, 더 좋겠지……)
             CFLAG:7351 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
@@ -4478,8 +4478,8 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
             PRINTFORMW 「하아……모처럼의 목욕이 엉망이 되었네……」
             PRINTFORMW 「다음에 들어갈 때는, 혼자 들어가게 해주지 않겠어?」
         ENDIF
-            CFLAG:7352 = 1
-            RETURN 0
+        CFLAG:7352 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4492,7 +4492,7 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
             PRINTFORMW 「당신만 없으면 최고겠지만 말이야……」
             CFLAG:7352 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4513,8 +4513,8 @@ IF SELECTCOM == 351 && TEQUIP:54 == 1
             PRINTFORMW 「이런걸 한다고 해도, 내 마음은 빼앗을 수 없을거야」
             PRINTFORMW 미마는 의심스러운 표정을 지으면서도, 샤워를 했다
         ENDIF
-            CFLAG:7353 = 1
-            RETURN 0
+        CFLAG:7353 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4528,7 +4528,7 @@ IF SELECTCOM == 351 && TEQUIP:54 == 1
             PRINTFORMW %CALLNAME:MASTER%의 모습을 엿보면서, 미마는 샤워를 했다
             CFLAG:7353 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 351 && TEQUIP:54 == 0
@@ -4542,8 +4542,8 @@ ELSEIF SELECTCOM == 351 && TEQUIP:54 == 0
             PRINTFORMW 「이제 끝난……엣, 아직 계속 하는거야?」
             PRINTFORMW 「이런이런, 적당히 해줬으면 좋겠는데」
         ENDIF
-            CFLAG:7354 = 1
-            RETURN 0
+        CFLAG:7354 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4555,7 +4555,7 @@ ELSEIF SELECTCOM == 351 && TEQUIP:54 == 0
             PRINTFORMW 「이대로 끝났으면 좋을텐데……」
             CFLAG:7354 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4577,8 +4577,8 @@ IF SELECTCOM == 352
             PRINTFORMW 「내 머리로는, 이런 일을 시키리라곤 상상도 못했어」
             PRINTFORMW 미마는 한숨을 쉬면서, %CALLNAME:MASTER%의 페니스에 가슴을 밀었다
         ENDIF
-            CFLAG:7355 = 1
-            RETURN 0
+        CFLAG:7355 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -4601,7 +4601,7 @@ IF SELECTCOM == 352
             PRINTFORMW (내 몸을 도대체 뭐라고 생각하는거야……)
             CFLAG:7355 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4624,8 +4624,8 @@ IF SELECTCOM == 500 && TEQUIP:90 == 1
             PRINTFORMW 「앗, 잠깐! 이거 놔!」
             PRINTFORMW 미마가 잠깐 눈을 뗀 순간, 점액을 뚝뚝 떨어뜨리는 촉수가 손발에 휘감겼다
         ENDIF
-            CFLAG:7371 = 1
-            RETURN 0
+        CFLAG:7371 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋촉수 중독 Lv3 이상
@@ -4641,7 +4641,7 @@ IF SELECTCOM == 500 && TEQUIP:90 == 1
             PRINTFORMW 「……부탁이니까 그만 하지 않겠어?」
             CFLAG:7371 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ;종료시
 ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
@@ -4659,8 +4659,8 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
         ELSE
             PRINTFORMW 「으학……하-앗, 반드시……후회하게 해주겠어……」
         ENDIF
-            CFLAG:7372 = 1
-            RETURN 0
+        CFLAG:7372 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋촉수 중독 Lv3 이상
@@ -4679,7 +4679,7 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
                 PRINTFORMW 미마는 잠시 가쁜 숨을 몰아쉬며, %조사처리(CALLNAME:MASTER,"를")% 흘겨 보고 있었다
             CFLAG:7372 = 1
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4696,8 +4696,8 @@ IF SELECTCOM == 600
         ELSE
             PRINTFORMW 「응, 앗……으, 손가락같은 걸로……느낄 리가……으읏!」
         ENDIF
-            CFLAG:7391 = 1
-            RETURN 0
+        CFLAG:7391 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4714,7 +4714,7 @@ IF SELECTCOM == 600
             PRINTFORMW 「으읏……이곳만 계속 노려도, 읏, 나에게는, 소용 없어……흐읏!」
             CFLAG:7391 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4736,8 +4736,8 @@ IF SELECTCOM == 602
             PRINTFORMW 「읏……응흣……」
             PRINTFORMW 미마는 소리도 내지 않으면서, 묵묵히 봉사를 계속했다
         ENDIF
-            CFLAG:7392 = 1
-            RETURN 0
+        CFLAG:7392 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5 이상
@@ -4759,7 +4759,7 @@ IF SELECTCOM == 602
             PRINTFORMW 느끼는 모습도 보이지 않으면서, 미마는 기계적으로 육봉을 빨았다.
             CFLAG:7392 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4778,8 +4778,8 @@ IF SELECTCOM == 605
             PRINTFORMW 「뭣, 그, 그만둬! 그런 곳!」
             PRINTFORMW 미마는 얼굴을 붉게 물들이면서, %CALLNAME:MASTER%로 향해 소리를 질렀다
         ENDIF
-            CFLAG:7393 = 1
-            RETURN 0
+        CFLAG:7393 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4792,7 +4792,7 @@ IF SELECTCOM == 605
             PRINTFORMW 「큿 읏……거역할 수 없다고 이런……!」
             CFLAG:7393 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4811,8 +4811,8 @@ IF SELECTCOM == 611
             PRINTFORMW 「큿……이런 일을 하다닛……!」
             PRINTFORMW 굴욕적인 행위에, 미마는 입술을 깨물었다
         ENDIF
-            CFLAG:7394 = 1
-            RETURN 0
+        CFLAG:7394 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋노출버릇 Lv3 이상＋C감각 Lv3 이상
@@ -4841,7 +4841,7 @@ IF SELECTCOM == 611
             PRINTFORMW 「응……이런 것, 나에게는 소용 없어」
             CFLAG:7394 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4861,8 +4861,8 @@ IF SELECTCOM == 612
             PRINTFORMW 「싫어, 보지 알아줘!」
             PRINTFORMW 「이런 모습, 부끄러웟……!」
         ENDIF
-            CFLAG:7395 = 1
-            RETURN 0
+        CFLAG:7395 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋노출버릇 Lv3 이상＋V감각 Lv3 이상
@@ -4895,7 +4895,7 @@ IF SELECTCOM == 612
             PRINTFORMW 「싫어, 보지 말아줫!」
             CFLAG:7395 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4914,8 +4914,8 @@ IF SELECTCOM == 613
             PRINTFORMW 「앗, 하면서, 라닛!」
             PRINTFORMW 「읏, 우응, 으으-읏!」
         ENDIF
-            CFLAG:7396 = 1
-            RETURN 0
+        CFLAG:7396 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -4939,7 +4939,7 @@ IF SELECTCOM == 613
             PRINTFORMW 「응, 우응! 정도로, 질 수는……!」
             CFLAG:7396 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -4980,8 +4980,8 @@ IF SELECTCOM == 616
                     PRINTFORMW (큰일이네……몸 안이 타오르는것 처럼, 뜨거워……)
                 ENDIF
             ENDIF
-                CFLAG:7397 = 1
-                RETURN 0
+        CFLAG:7397 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -5010,7 +5010,7 @@ IF SELECTCOM == 616
                 PRINTFORMW 미마는 몸을 비틀어 저항했지만, 페니스를 움직이자 곧바로 얌전해졌다
                 CFLAG:7397 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -5029,8 +5029,8 @@ IF SELECTCOM == 616
                 PRINTFORMW 미마는 %조사처리(CALLNAME:MASTER,"를")% 뿌리치듯이, 몸을 몇번이나 비틀었다
                 PRINTFORMW 하지만, 페니스로 연결된 상태론 빠져나갈 수 있을 리가 없었다
             ENDIF
-                CFLAG:7398 = 1
-                RETURN 0
+        CFLAG:7398 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -5058,7 +5058,7 @@ IF SELECTCOM == 616
                 PRINTFORMW 미마는 몸을 비틀어, %조사처리(CALLNAME:MASTER,"를")% 뿌리치려고 했다
                 CFLAG:7398 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -5080,8 +5080,8 @@ IF SELECTCOM == 620
             PRINTFORMW 「안됏, 안됀다니까! 그 이상 하면!」
             PRINTFORMW 「앗, 나왓, 앗, 아아-앗!」
         ENDIF
-            CFLAG:7399 = 1
-            RETURN 0
+        CFLAG:7399 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋오줌싸게 버릇＋야외 플레이
@@ -5113,7 +5113,7 @@ IF SELECTCOM == 620
             PRINTFORMW 미마는 부끄러움으로 얼굴을 붉게 물들이면서, 시키는 대로 했다
             CFLAG:7399 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5136,8 +5136,8 @@ IF SELECTCOM == 626
             PRINTFORMW 「그만! 그렇게 세게 하면!」
             PRINTFORMW 「앗! 핫, 가슴이, 아앗!」
         ENDIF
-            CFLAG:7400 = 1
-            RETURN 0
+        CFLAG:7400 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;음유＋연모
@@ -5167,7 +5167,7 @@ IF SELECTCOM == 626
             PRINTFORMW 「내 가슴은, 당신이 만져도 되는게 아니라고!」
             CFLAG:7400 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5186,8 +5186,8 @@ IF SELECTCOM == 627
             PRINTFORMW 「언제까지 빨거야……크읏!」
             PRINTFORMW 갑자기 유두를 깨물자, 미마는 몸을 활처럼 젖혔다
         ENDIF
-            CFLAG:7401 = 1
-            RETURN 0
+        CFLAG:7401 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5205,7 +5205,7 @@ IF SELECTCOM == 627
             PRINTFORMW 「큭……하아……이 정도론, 소용 없을거야……」
             CFLAG:7401 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5450,8 +5450,8 @@ IF TFLAG:9 > 0
             PRINTFORMW 미마가 소리를 질러도, %조사처리(CALLNAME:MASTER,"는")% 한층 더 안쪽에서 욕망을 폭발시켰다
             PRINTFORMW 「큭……이런 놈한테, 뒤를 범해지다니……」
         ENDIF
-            CFLAG:7610 = 1
-            RETURN 0
+        CFLAG:7610 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5470,7 +5470,7 @@ IF TFLAG:9 > 0
             PRINTFORMW 입술을 깨물면서, 미마는 굴욕을 견뎠다
             CFLAG:7610 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5491,8 +5491,8 @@ IF TFLAG:10 > 0
             PRINTFORMW 「싫, 싫엇! 범해지는것 따윈!」
             PRINTFORMW 「아, 아앗……윽! 크……」
         ENDIF
-            CFLAG:7611 = 1
-            RETURN 0
+        CFLAG:7611 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5509,7 +5509,7 @@ IF TFLAG:10 > 0
             PRINTFORMW 「으긋……이런……이런 일……」
             CFLAG:7611 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5531,8 +5531,8 @@ IF TFLAG:11 > 0
                 PRINTFORMW 「응!?　후왓, 하-앗……」
                 PRINTFORMW 「입에 싸다니 도대체 무엇을 생각하고 있는거야!」
             ENDIF
-                CFLAG:7612 = 1
-                RETURN 0
+        CFLAG:7612 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋정액 중독 Lv5
@@ -5558,7 +5558,7 @@ IF TFLAG:11 > 0
                 PRINTFORMW 「읏! 우웃! ……켁! 켁!」
                 CFLAG:7612 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -5573,8 +5573,8 @@ IF TFLAG:11 > 0
                 PRINTFORMW 「읏……가슴이 끈적끈적……. 거기에 이 냄새……」
                 PRINTFORMW 미마는 얼굴을 찡그리면서, 자신의 가슴을 바라보았다
             ENDIF
-                CFLAG:7613 = 1
-                RETURN 0
+        CFLAG:7613 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모＋봉사 정신 Lv5
@@ -5596,7 +5596,7 @@ IF TFLAG:11 > 0
                 PRINTFORMW 「윽……끈적거리잖아……」
                 CFLAG:7613 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -5616,8 +5616,8 @@ IF TFLAG:12 > 0
             PRINTFORMW 「우왓!　으윽, 더러워……」
             PRINTFORMW 「갑자기 싸다니 너무하잖아.」
         ENDIF
-            CFLAG:7614 = 1
-            RETURN 0
+        CFLAG:7614 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -5639,7 +5639,7 @@ IF TFLAG:12 > 0
             PRINTFORMW 「윽……이렇게 싸다니……」
             CFLAG:7614 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5658,8 +5658,8 @@ IF TFLAG:15 > 0
             PRINTFORMW 「응……몸이 끈적거려……」
             PRINTFORMW 「빨리 샤워하고 싶어…」
         ENDIF
-            CFLAG:7615 = 1
-            RETURN 0
+        CFLAG:7615 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모＋봉사 정신 Lv5
@@ -5682,7 +5682,7 @@ IF TFLAG:15 > 0
             PRINTFORMW 「윽……몸이 끈적거리잖아……」
             CFLAG:7615 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5703,8 +5703,8 @@ IF TFLAG:30 > 0
             PRINTFORMW 사정을 끝낸 미마는, 아무 말도 하지 못했다.
             PRINTFORMW 자신의 몸에서 무슨 일이 일어난건지, 아직 정리가 안되는 모양이다
         ENDIF
-            CFLAG:7616 = 1
-            RETURN 0
+        CFLAG:7616 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5717,7 +5717,7 @@ IF TFLAG:30 > 0
             PRINTFORMW 「거짓말! 내가, 이런……!」
             CFLAG:7616 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5743,8 +5743,8 @@ IF TFLAG:31 > 0
             SIF TEQUIP:41 == 0
                 PRINTFORMW 상황을 받아들이지 못하는 미마는 넋을 잃은 모습으로 자신의 가슴에서 뚝뚝 떨어지는 액체를 바라보았다.
         ENDIF
-            CFLAG:7617 = 1
-            RETURN 0
+        CFLAG:7617 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5760,7 +5760,7 @@ IF TFLAG:31 > 0
             PRINTFORMW 「으윽……이런게 나올 정도가 되다니……」
             CFLAG:7617 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5779,8 +5779,8 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
             PRINTFORMW 「히읏! 윽! 아앗!」
             PRINTFORMW 미마는 몇번이나 몸을 활처럼 젖히며 쾌락에 빠져 갔다
         ENDIF
-            CFLAG:7618 = 1
-            RETURN 0
+        CFLAG:7618 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5793,7 +5793,7 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
             PRINTFORMW 「핫, 히읏, 간다! 또 이렇게! 아앗~!」
             CFLAG:7618 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5810,8 +5810,8 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
         ELSE
             PRINTFORMW 「시……싫어……너무 좋아! 아앗!」
         ENDIF
-            CFLAG:7619 = 1
-            RETURN 0
+        CFLAG:7619 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5825,7 +5825,7 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
             PRINTFORMW 「앗! 간다! 가고 있어!」
             CFLAG:7619 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5843,8 +5843,8 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
         ELSE
             PRINTFORMW 「더는, 안됏, 너무 느껴섯! 응앗!」
         ENDIF
-            CFLAG:7620 = 1
-            RETURN 0
+        CFLAG:7620 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5859,7 +5859,7 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
             PRINTFORMW 「벌써 오다닛, 앗, 갓, 간닷!」
             CFLAG:7620 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -5877,8 +5877,8 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
         ELSE
             PRINTFORMW 「싫엇, 또, 유두로 느끼다닛, 아앗!」
         ENDIF
-            CFLAG:7621 = 1
-            RETURN 0
+        CFLAG:7621 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -5892,7 +5892,7 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
             PRINTFORMW 「아, 또, 간닷!」
             CFLAG:7621 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -6048,8 +6048,8 @@ IF TFLAG:200 == 140
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 눈을 뜨자, 미마는 일순간 이쪽에 눈을 돌렸다
             PRINTFORMW 그러나 별 관심 없다는듯 다시 페니스를 향해 시선을 돌리곤 펠라를 계속했다.
         ENDIF
-            CFLAG:7701 = 1
-            RETURN 0
+        CFLAG:7701 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -6068,7 +6068,7 @@ IF TFLAG:200 == 140
             PRINTFORMW 「응……어때?　이런 것도 나쁘지 않았겠지?」
             CFLAG:7701 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -6087,8 +6087,8 @@ IF TFLAG:200 == 150
             PRINTFORMW 「핫……읏, 아직, 부족해……」
             PRINTFORMW 「좀더 내 안에 정액을 싸지 않으면, %CSTR:90%는 여기서 못 나갈거야」
         ENDIF
-            CFLAG:7702 = 1
-            RETURN 0
+        CFLAG:7702 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;음란
@@ -6105,7 +6105,7 @@ IF TFLAG:200 == 150
             PRINTFORMW 「읏! 끝내지 말고 더 해줘……」
             CFLAG:7702 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -6124,8 +6124,8 @@ IF TFLAG:200 == 151
             PRINTFORMW 「큿…… 몸이 쑤시는게 진정이 안돼……」
             PRINTFORMW 「이런 일을 해도, 허무하다는건 알고 있는데……」
         ENDIF
-            CFLAG:7703 = 1
-            RETURN 0
+        CFLAG:7703 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;연모
@@ -6143,7 +6143,7 @@ IF TFLAG:200 == 151
             PRINTFORMW 「하아……뭘 하고 있는 거지……」
             CFLAG:7703 = 2
         ENDIF
-            RETURN 0
+        RETURN 0
     ENDIF
 ENDIF
 
@@ -6167,8 +6167,8 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
                 PRINTFORMW 『하아, 하아……그런 일이, 좋으니까……빨리……』
                 PRINTFORMW 『빨리 해 주지 않으면, 머리가 이상하게 될거 같아……』
             ENDIF
-                CFLAG:7704 = 1
-                RETURN 0
+        CFLAG:7704 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -6191,7 +6191,7 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
                 PRINTFORMW 적극적인 마리사에 비해, 미마는 주저하는 모습이었다
                 CFLAG:7704 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ;그 이외
     ELSE
@@ -6206,8 +6206,8 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
                 PRINTFORMW 「읏……여자끼리 하는거야?」
                 PRINTFORMW 「뭐, 이대로 아무것도 안하는거 보단 좋으려나……」
             ENDIF
-                CFLAG:7705 = 1
-                RETURN 0
+        CFLAG:7705 = 1
+        RETURN 0
         ;2회째 이후
         ELSE
             ;연모
@@ -6228,7 +6228,7 @@ IF (TFLAG:200 == 154 || TFLAG:200 == 155)
                 PRINTFORMW 「……참을 수 없어? 어쩔 수 없네……」
                 CFLAG:7705 = 2
             ENDIF
-                RETURN 0
+        RETURN 0
         ENDIF
     ENDIF
 ENDIF
@@ -6269,8 +6269,9 @@ IF TFLAG:200 == 158
             PRINTFORMW 「그렇지만, 나는 더는 참을 수가 없어!」
             PRINTFORMW 성기로 페니스를 깊숙이, 미마는 몇번이나 허리를 흔들었다
         ENDIF
-            CFLAG:7706 = 1
-            RETURN 0
+
+        CFLAG:7706 = 1
+        RETURN 0
     ;2회째 이후
     ELSE
         ;V감각 Lv5 이상
@@ -6350,7 +6351,8 @@ RETURN 0
                 GOTO INPUT_LOOP_4
             ENDIF
         ENDIF
-            RETURN 1
+
+        RETURN 1
     ENDIF
 
 ;-------------------------------------------------
@@ -6367,7 +6369,7 @@ PRINTFORMW 「그러니까, 뭐, 인생의 파트너라고 할까?」
 PRINTFORMW 「흐응, 미남은 아니네」
 PRINTFORMW
 PRINTFORML 환상향의 동쪽 구석에서 위치하는 하쿠레이 신사
-PRINTFORMW 그 툇마루에,레이무와 우카리,미마가 있었다.
+PRINTFORMW 그 툇마루에,레이무와 유카리,미마가 있었다.
 PRINTFORML 세 명은 차를 훌쩍거리면서 이야기가 계속된다.
 PRINTFORMW 지금의 화제는 %CALLNAME:MASTER%였다
 PRINTFORMW 「파트너……당신이 그런 말을 할거라 생각치도 못했는데」
