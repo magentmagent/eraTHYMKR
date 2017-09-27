@@ -1343,27 +1343,27 @@ INPUT
 IF RESULT == 100
     RETURN 1
 ELSEIF RESULT == 1
-    COM_TOOL_CALLNAME9 = 능력
+    TSTR:99 = 능력
 ELSEIF RESULT == 2
-    COM_TOOL_CALLNAME9 = 소질
+    TSTR:99 = 소질
 ELSEIF RESULT == 3
-    COM_TOOL_CALLNAME9 = 경험
+    TSTR:99 = 경험
 ELSEIF RESULT == 4
-    COM_TOOL_CALLNAME9 = 각인
+    TSTR:99 = 각인
 ELSEIF RESULT == 5
-    COM_TOOL_CALLNAME9 = 구슬
+    TSTR:99 = 구슬
 ELSEIF RESULT == 6
-    COM_TOOL_CALLNAME9 = 기념일
+    TSTR:99 = 기념일
 ELSEIF RESULT == 7
-    COM_TOOL_CALLNAME9 = 체력,기력
+    TSTR:99 = 체력,기력
 ELSEIF RESULT == 8
-    COM_TOOL_CALLNAME9 = 호감도,돈벌이,스트레스
+    TSTR:99 = 호감도,돈벌이,스트레스
 ELSEIF RESULT == 9
-    COM_TOOL_CALLNAME9 = 칭호,주인호칭
+    TSTR:99 = 칭호,주인호칭
 ELSEIF RESULT == 10 && TALENT:MASTER:998
-    COM_TOOL_CALLNAME9 = Debug용CFLAG
+    TSTR:99 = Debug용CFLAG
 ELSEIF RESULT == 11 && TALENT:MASTER:998
-    COM_TOOL_CALLNAME9 = Debug용CSTR
+    TSTR:99 = Debug용CSTR
 ELSE
     GOTO INPUT_LOOP
 ENDIF
@@ -1381,7 +1381,7 @@ SPLIT "생일,구입된 날,끌려온 날,결혼기념일,계약기념일,함락
 $PRINT_LIST
 LOCAL:2 = 0
 DRAWLINE
-PRINTFORML 검색할 %COM_TOOL_CALLNAME9%\@(TFLAG:0 == 10) ? (0~9999) # \@\@(TFLAG:0 == 11) ?  (0~99) # \@(을)를 선택해 주세요.  ＜page. {LOCAL:1}＞
+PRINTFORML 검색할 %TSTR:99%\@(TFLAG:0 == 10) ? (0~9999) # \@\@(TFLAG:0 == 11) ?  (0~99) # \@(을)를 선택해 주세요.  ＜page. {LOCAL:1}＞
 IF TFLAG:0 == 6
     REPEAT 6
         LOCAL:(COUNT + 100) = 0
