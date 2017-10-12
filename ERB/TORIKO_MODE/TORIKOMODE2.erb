@@ -1115,11 +1115,10 @@ IF RESULT == 0
             CFLAG:ARG:4 = 1
             LOCAL:3 = 1
         ENDIF
-        ;狂気脱走時の口上用
-        CALL SELF_KOJO, ARG, 180
+        TFLAG:200 = 180
     ELSE
         ;通常売却時の口上用
-        CALL SELF_KOJO, ARG, 130
+        TFLAG:200 = 130
     ENDIF
     LOCAL = MAX(LOCAL, 0)
     ;売却拒否パッチ追加
