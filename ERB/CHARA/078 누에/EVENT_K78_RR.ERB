@@ -2729,33 +2729,6 @@ IF SELECTCOM == 64 && TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;強精神薬    CFLAG:8264
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 65
-    ;初めて
-    IF CFLAG:8264 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8264= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8264 <= 2 || FLAG:11 == 2)
-            CFLAG:8264 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8264 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;排卵誘発剤    CFLAG:8265
 ;-------------------------------------------------
 [SKIPSTART]
@@ -2858,33 +2831,6 @@ IF SELECTCOM == 69
         ;その他の場合
         ELSE
             CFLAG:8268 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;興奮剤    CFLAG:8269
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;初めて
-    IF CFLAG:8269 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8269= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8269 <= 2 || FLAG:11 == 2)
-            CFLAG:8269 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8269 = 2
         ENDIF
         RETURN 0
     ENDIF

@@ -7266,44 +7266,6 @@ ENDIF
 IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 ;-------------------------------------------------
-;강정신약    CFLAG:8273
-;-------------------------------------------------
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8273 == 0
-        ;연모
-        IF TALENT:150 == 1
-            PRINTFORMW 「으엣, 지금 무슨 약이야? 능글거리지 말고 알려줘―」
-            PRINTFORMW 「지금은 아무 느낌도 없는데…, 불안해―」
-        ;그 외의 경우
-        ELSE
-            PRINTFORMW 「으윽, 끄으… 이상한 약을 먹이다니―」
-        ENDIF
-        CFLAG:8273 = 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;음란하다
-        IF TALENT:170 && (CFLAG:8273 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「이 약, 갈 때 정말 대단해~…」
-            PRINTFORMW 「눈앞이 뿌옇게 되면서, 몸이 덜덜거리는 게 멈추지 않고… 계속 가는데 끝도 없이 간다니까…」
-            PRINTFORMW 「하핫… 흥분된다. 이번엔 망가질지도 몰라♪」
-            CFLAG:8273 = 4
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8273 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「지금 가지 못하게 하는 약이지? 이거 정말로 이상해져버리니까 싫어…. 으~」
-            PRINTFORMW 「저기, 이거 사라질 때, 손, 잡아줘. 부탁이야…」
-            CFLAG:8273 = 3
-        ;그 외의 경우
-        ELSEIF CFLAG:8273 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「시, 싫엇! 이런 건!」
-            PRINTFORMW 리리카는 먹은 약을 토해내려 했지만 %조사처리(CALLNAME:MASTER,"는")% 그것을 허락하지 않았다….
-            CFLAG:8273 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
 ;배란유발제    CFLAG:8274
 ;-------------------------------------------------
 IF SELECTCOM == 66

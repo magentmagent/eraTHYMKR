@@ -3204,22 +3204,6 @@ IF SELECTCOM == 62
 ENDIF
 
 ;-------------------------------------------------
-;強精神薬
-;-------------------------------------------------
-IF SELECTCOM == 65
-    IF NO == 149
-        IF TALENT:150 == 1
-            PRINTFORML 「꿀꺽……」
-            PRINTFORMW 절정을 맞이할 수 없게 되는 약을 %CALLNAME:TARGET%에게 먹였다
-            PRINTFORMW 한꺼번에 절정을 맞이했을 때의 %CALLNAME:TARGET%의 얼굴이 벌써부터 기대된다…
-        ELSE
-            PRINTFORML 「%CALLNAME:TARGET%, 약 같은 건 먹기 싫은데…」
-            PRINTFORMW 어쩔 수 없이 약을 먹으면서 %조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:MASTER,"를")% 눈물젖은 눈으로 바라봤다
-        ENDIF
-    ENDIF
-ENDIF
-
-;-------------------------------------------------
 ;排卵
 ;-------------------------------------------------
 IF SELECTCOM == 66

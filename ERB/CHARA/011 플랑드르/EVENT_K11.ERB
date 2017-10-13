@@ -8735,25 +8735,6 @@ PRINTFORMW 「뜨것, 뜨거워어!」
 PRINTFORMW 「시, 싫어…이상한 곳에 흘리지 말아줘어!!」
 ENDIF
 ENDIF
-;-------------------------------------------------
-;강정신약CFLAG159 
-;-------------------------------------------------
-IF SELECTCOM == 65
-    IF CFLAG:5159 == 0
-    PRINTFORMW 「이거는 무슨 약?」
-    PRINTFORMW 「……응?」
-    CFLAG:5159 = 1
-    ELSE
-    IF TALENT:150 == 1
-    PRINTFORMW 「아, 이건……」
-    PRINTFORMW 「왠지 급하게 와버리는 거…… %K11CN()%, 무서우니깐 꾸욱 해줬으면 좋겠다아……」
-    ELSE
-    PRINTFORMW 「시, 그거 뭔가 싫어엇」
-    PRINTFORMW 「몸이 이상하게 되어버려엇!」
-    ENDIF
-    ENDIF
-CFLAG:5855 = 0
-ENDIF
 
 ;-------------------------------------------------
 ;콘돔 CFLAG160
