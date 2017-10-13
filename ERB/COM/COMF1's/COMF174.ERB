@@ -80,7 +80,7 @@ ELSEIF TFLAG:177 <= 0
     TFLAG:99 = 1
 ELSE
     VARSET LOCALS,""
-    SPLIT "노멀, 미약, 이뇨제, 흥분제, 감각증폭약, 정액",",", LOCALS
+    SPLIT "노멀, 미약, 이뇨제, 감각증폭약, 정액",",", LOCALS
 
     PRINTL 무엇을 관장액에 섞을까?
     PRINTLC [ 0] 아무것도 블렌드하지 않는다.
@@ -88,12 +88,10 @@ ELSE
         PRINTLC [ 1] 미약
     SIF TFLAG:177 & 2
         PRINTLC [ 2] 이뇨제
+    SIF TFLAG:177 & 4
+        PRINTLC [ 3] 감각증폭약
     SIF TFLAG:177 & 8
-        PRINTLC [ 3] 흥분제
-    SIF TFLAG:177 & 16
-        PRINTLC [ 4] 감각증폭약
-    SIF TALENT:PLAYER:149
-        PRINTLC [ 5] 정액
+        PRINTLC [ 4] 정액
     $INPUT_LOOP
     INPUT
     SIF RESULT < 0 || RESULT > 6
@@ -183,28 +181,8 @@ ELSEIF TFLAG:99 == 3
     CALL CALC_GAUGE4_SLAVE, TARGET, 1
     TCVAR:40 += 1
 
-;흥분제의 경우
-ELSEIF TFLAG:99 == 5
-    LOCAL:2 = 20
-    LOCAL:3 = 90
-
-    ;흥분제 소비
-    IF NOITEM == 0
-        ITEM:69 -= 1
-        SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:69
-            CALL FILL_PLURAL_ITEM, 69
-    ENDIF
-
-    ;흥분제 관련 소스 처리
-    SOURCE:26 = 3800
-    SOURCE:31 = 3200
-
-    ;흥분제 관련의 TEQUIP와 경험 처리
-    TEQUIP:14 = 10
-    TCVAR:40 += 5
-
 ;감각 증폭약의 경우
-ELSEIF TFLAG:99 == 6
+ELSEIF TFLAG:99 == 4
     LOCAL:2 = 20
     LOCAL:3 = 100
 
@@ -224,7 +202,7 @@ ELSEIF TFLAG:99 == 6
     TCVAR:40 += 4
 
 ;정액의 경우
-ELSEIF TFLAG:99 == 7
+ELSEIF TFLAG:99 == 5
     LOCAL:2 = 40
     LOCAL:3 = 150
 ;정액관련 소스 처리(정액중독 봄)
@@ -794,13 +772,9 @@ SIF TALENT:ARG:44 == 0 && (ITEM:61 || NOITEM) && TEQUIP:ARG:11 == 0 && EQUIP:ARG
     LOCAL |= 1
 SIF TALENT:ARG:44 == 0 && (ITEM:62 || NOITEM) && TEQUIP:ARG:12 == 0 && EQUIP:ARG:14 == 0 && TEQUIP:ARG:59 != 1
     LOCAL |= 2
-SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:66 || NOITEM) && TEQUIP:ARG:13 == 0 && TEQUIP:ARG:9 == 0 && EQUIP:ARG:14 == 0
-    LOCAL |= 4
-SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:69 || NOITEM) && TEQUIP:ARG:14 == 0 && TEQUIP:ARG:9 == 0 & EQUIP:ARG:14 == 0
-    LOCAL |= 8
 SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:70 || NOITEM) && TEQUIP:ARG:7 == 0 && TEQUIP:ARG:9 == 0 && EQUIP:ARG:14 == 0 && EXP:ARG:40 >= EXPLV:3
-    LOCAL |= 16
+    LOCAL |= 4
 SIF TALENT:PLAYER:149 && EQUIP:ARG:14 == 0
-    LOCAL |= 32
+    LOCAL |= 8
 
 RETURNF LOCAL

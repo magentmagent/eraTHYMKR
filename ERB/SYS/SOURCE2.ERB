@@ -633,7 +633,7 @@ ENDIF
 ;注意、パラメータカンスト処理のところにも奴隷称号取得処理でTFLAG:109変動あり。
 @NICK_SLAVE_CHECK
 ;ローションと媚薬と利尿剤と興奮剤を使わずにお風呂プレイやシャワーでなくて潤滑が250000を越えたとき
-SIF TEQUIP:10 == 0 && TEQUIP:11 == 0 && TEQUIP:12 == 0 && TEQUIP:14 == 0 && TEQUIP:53 == 0 && TEQUIP:54 == 0 && TEQUIP:55 == 0 && PALAM:10 > PALAMLV:9
+SIF TEQUIP:10 == 0 && TEQUIP:11 == 0 && TEQUIP:12 == 0 && TEQUIP:53 == 0 && TEQUIP:54 == 0 && TEQUIP:55 == 0 && PALAM:10 > PALAMLV:9
     TFLAG:109 |= 1
 ;利尿剤使わずに放尿20回以上
 SIF TEQUIP:12 == 0 && EX:12 >= 20
