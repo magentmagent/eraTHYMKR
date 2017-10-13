@@ -1009,7 +1009,7 @@ ENDIF
 @NOT_PRINT_ADDITIONAL_TEXT(ARG)
 #FUNCTION
 ;三角木馬乗馬中, 特殊風呂入浴中, 強精神薬反動中, 興奮剤反動中, 浣腸中, 極太氷柱or氷塊挿入中, 吊るし上げ中, 荊で緊縛中の場合
-IF TEQUIP:43 || TEQUIP:55 || TEQUIP:13 == 1 || (TEQUIP:14 > 0 && TEQUIP:14 < 5) || TEQUIP:25 == 7 || TEQUIP:26 >= 3 || TEQUIP:40 == 4 || TEQUIP:40 == 5
+IF TEQUIP:43 || TEQUIP:55 || (TEQUIP:14 > 0 && TEQUIP:14 < 5) || TEQUIP:25 == 7 || TEQUIP:26 >= 3 || TEQUIP:40 == 4 || TEQUIP:40 == 5
     ;苦痛と恐怖と不快と抑鬱と薬毒の上昇値の合計
     LOCAL = UP:16 + UP:17 + UP:21 + UP:22 + UP:30
     ;上の合計が一定以上ならば表示せずに帰る

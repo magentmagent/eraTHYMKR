@@ -62,7 +62,7 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 ;촉수 관장은 COMF500.ERB로부터 JUMP 해 온다.
-;TFLAG:99 = 말분기용(0=촉수 관장 1=통상의 관장 or관장 플러그 빼내기 2=미약관장 3=이뇨제 관장 4=현자의 피 관장 5=흥분제 관장 6=감각 증폭약관장)
+;TFLAG:99 = 말분기용(0=촉수 관장 1=통상의 관장 or관장 플러그 빼내기 2=미약관장 3=이뇨제 관장 5=흥분제 관장 6=감각 증폭약관장)
 @COM174
 SIF TEQUIP:90 == 0
     TFLAG:177 = KANTYO_BLEND_CHECK(TARGET)
@@ -80,7 +80,7 @@ ELSEIF TFLAG:177 <= 0
     TFLAG:99 = 1
 ELSE
     VARSET LOCALS,""
-    SPLIT "노멀, 미약, 이뇨제, 현자의 피, 흥분제, 감각증폭약, 정액",",", LOCALS
+    SPLIT "노멀, 미약, 이뇨제, 흥분제, 감각증폭약, 정액",",", LOCALS
 
     PRINTL 무엇을 관장액에 섞을까?
     PRINTLC [ 0] 아무것도 블렌드하지 않는다.
@@ -88,21 +88,19 @@ ELSE
         PRINTLC [ 1] 미약
     SIF TFLAG:177 & 2
         PRINTLC [ 2] 이뇨제
-    SIF TFLAG:177 & 4
-        PRINTLC [ 3] 현자의 피
     SIF TFLAG:177 & 8
-        PRINTLC [ 4] 흥분제
+        PRINTLC [ 3] 흥분제
     SIF TFLAG:177 & 16
-        PRINTLC [ 5] 감각증폭약
+        PRINTLC [ 4] 감각증폭약
     SIF TALENT:PLAYER:149
-        PRINTLC [ 6] 정액
+        PRINTLC [ 5] 정액
     $INPUT_LOOP
     INPUT
     SIF RESULT < 0 || RESULT > 6
         GOTO INPUT_LOOP
     
     ;이하 아이템 조건 등에 걸렸을 경우는 입력 다시 해
-    IF RESULT > 0 && RESULT < 6
+    IF RESULT > 0 && RESULT < 5
         SIF RESULT > 0  && GETBIT(TFLAG:177, RESULT - 1) == 0
             GOTO INPUT_LOOP
     ENDIF
@@ -184,26 +182,6 @@ ELSEIF TFLAG:99 == 3
     TEQUIP:12 = 1
     CALL CALC_GAUGE4_SLAVE, TARGET, 1
     TCVAR:40 += 1
-
-;현자의 피의 경우
-ELSEIF TFLAG:99 == 4
-    LOCAL:2 = 20
-    LOCAL:3 = 100
-
-    ;현자의 피 소비
-    IF NOITEM == 0
-        ITEM:66 -= 1
-        SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:66
-            CALL FILL_PLURAL_ITEM, 66
-    ENDIF
-
-    ;현자의 피 관련 소스 처리
-    SOURCE:26 = 2500
-    SOURCE:31 = 3000
-
-    ;현자의 피 관련의 TEQUIP와 경험 처리
-    TEQUIP:13 = 8
-    TCVAR:40 += 3
 
 ;흥분제의 경우
 ELSEIF TFLAG:99 == 5
@@ -709,8 +687,6 @@ IF FLAG:14 & 256
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 미약과 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 3
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 이뇨제와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 4
-                PRINTFORMW %CALLNAME:TARGET%의 애널에 현자의 피와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 5
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 흥분제와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 6
@@ -751,8 +727,6 @@ ELSE
                 PRINTFORMW %CALLNAME:TARGET%의 항문에 미약과 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 3
                 PRINTFORMW %CALLNAME:TARGET%의 항문에 이뇨제와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 4
-                PRINTFORMW %CALLNAME:TARGET%의 항문에 현자의 피와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 5
                 PRINTFORMW %CALLNAME:TARGET%의 항문에 흥분제와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 6
