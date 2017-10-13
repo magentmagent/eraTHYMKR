@@ -7844,43 +7844,6 @@ IF SELECTCOM == 85
     ENDIF
 ENDIF
 ;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8291
-;-------------------------------------------------
-IF SELECTCOM == 86
-    ;初めて
-    IF CFLAG:8291 == 0
-        ;効果[ボ―ルギャグ装着]
-        IF TEQUIP:42 == 1
-            PRINTFORMW 「응―읏! !」
-        ;조수가 調教
-        ELSEIF ASSIPLAY
-        ;その他の場合
-        ELSE
-            PRINTFORMW 「무…무슨짓을!」
-        ENDIF
-        CFLAG:8291= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;効果[ボ―ルギャグ装着]
-        IF TEQUIP:42 == 1 && (CFLAG:8291 <= 4|| FLAG:11 == 2)
-            PRINTFORMW 「응―읏! !」
-            CFLAG:8291 = 5
-        ;幼児状態
-        ELSEIF CFLAG:5104 == 1 || TALENT:159 == 1 && (CFLAG:8291 <= 3|| FLAG:11 == 2)
-            CFLAG:8291 = 4
-        ;조수가 調教
-        ELSEIF ASSIPLAY && (CFLAG:8291 <= 2|| FLAG:11 == 2)
-            CFLAG:8291 = 3
-        ;その他の場合
-        ELSEIF CFLAG:8291 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「응゛아゛아゛아゛아゛아゛앗――! ! !」
-            CFLAG:8291 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
 ;採血注射    CFLAG:8292
 ;-------------------------------------------------
 IF SELECTCOM == 88

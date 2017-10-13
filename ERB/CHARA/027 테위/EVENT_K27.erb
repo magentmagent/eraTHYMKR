@@ -10085,48 +10085,6 @@ IF SELECTCOM == 85
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8294
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;初めて
-    IF CFLAG:8294 == 0
-        ;助手が輝夜で助手が調教
-        IF ASSIPLAY && NO:ASSI == 30
-        ;助手が永琳で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 29
-        ;助手が鈴仙で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 28
-        ;助手が妹紅で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 31
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8294= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;助手が輝夜で助手が調教
-        IF ASSIPLAY && NO:ASSI == 30 && (CFLAG:8294 <= 5|| FLAG:11 == 2)
-            CFLAG:8294 = 6
-        ;助手が永琳で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 29 && (CFLAG:8294 <= 4|| FLAG:11 == 2)
-            CFLAG:8294 = 5
-        ;助手が鈴仙で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 28 && (CFLAG:8294 <= 3|| FLAG:11 == 2)
-            CFLAG:8294 = 4
-        ;助手が妹紅で助手が調教
-        ELSEIF ASSIPLAY && NO:ASSI == 31 && (CFLAG:8294 <= 2|| FLAG:11 == 2)
-            CFLAG:8294 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8294 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;採血注射    CFLAG:8295
 ;-------------------------------------------------
 [SKIPSTART]

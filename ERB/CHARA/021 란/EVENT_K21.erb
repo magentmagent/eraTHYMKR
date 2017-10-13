@@ -4110,38 +4110,6 @@ IF SELECTCOM == 85
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8291
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;初めて
-    IF CFLAG:8291 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8291= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8291 <= 3|| FLAG:11 == 2)
-            CFLAG:8291 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8291 <= 2|| FLAG:11 == 2)
-            CFLAG:8291 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8291 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;採血注射    CFLAG:8292
 ;-------------------------------------------------
 [SKIPSTART]
