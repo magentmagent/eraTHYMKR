@@ -5863,21 +5863,6 @@ IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;강정신약    CFLAG:8278
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8278 == 0
-        CFLAG:8278= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;배란유발제    CFLAG:8279
 ;-------------------------------------------------
 [SKIPSTART]
@@ -5930,21 +5915,6 @@ IF SELECTCOM == 69
     ;처음
     IF CFLAG:8282 == 0
         CFLAG:8282= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;흥분제    CFLAG:8283
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:8283 == 0
-        CFLAG:8283= 1
         RETURN 0
     ;2번째 이후
     ELSE
@@ -6050,21 +6020,6 @@ IF SELECTCOM == 85
     ;처음
     IF CFLAG:8290 == 0
         CFLAG:8290= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;C강정신약주사    CFLAG:8291
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;처음
-    IF CFLAG:8291 == 0
-        CFLAG:8291= 1
         RETURN 0
     ;2번째 이후
     ELSE

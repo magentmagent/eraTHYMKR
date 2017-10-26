@@ -3702,33 +3702,6 @@ IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;강정신약    CFLAG:8293
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8293 == 0
-        ;연모
-        IF TALENT:150 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8293= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;연모
-        IF TALENT:150 == 1 && (CFLAG:8293 <= 2|| FLAG:11 == 2)
-            CFLAG:8293 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8293 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;배란유발제    CFLAG:8294
 ;-------------------------------------------------
 [SKIPSTART]
@@ -3831,33 +3804,6 @@ IF SELECTCOM == 69
         ;그 외의 경우
         ELSE
             CFLAG:8297 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;흥분제    CFLAG:8298
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:8298 == 0
-        ;연모
-        IF TALENT:150 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8298= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;연모
-        IF TALENT:150 == 1 && (CFLAG:8298 <= 2|| FLAG:11 == 2)
-            CFLAG:8298 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8298 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -4047,33 +3993,6 @@ IF SELECTCOM == 85
         ;그 외의 경우
         ELSE
             CFLAG:8305 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;C강정신약주사    CFLAG:8306
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;처음
-    IF CFLAG:8306 == 0
-        ;연모
-        IF TALENT:150 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8306= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;연모
-        IF TALENT:150 == 1 && (CFLAG:8306 <= 2|| FLAG:11 == 2)
-            CFLAG:8306 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8306 = 2
         ENDIF
         RETURN 0
     ENDIF

@@ -3758,38 +3758,6 @@ IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;強精神薬    CFLAG:8278
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 65
-    ;初めて
-    IF CFLAG:8278 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8278= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8278 <= 3|| FLAG:11 == 2)
-            CFLAG:8278 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8278 <= 2|| FLAG:11 == 2)
-            CFLAG:8278 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8278 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;排卵誘発剤    CFLAG:8279
 ;-------------------------------------------------
 [SKIPSTART]
@@ -3912,38 +3880,6 @@ IF SELECTCOM == 69
         ;その他の場合
         ELSE
             CFLAG:8282 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;興奮剤    CFLAG:8283
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;初めて
-    IF CFLAG:8283 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8283= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8283 <= 3|| FLAG:11 == 2)
-            CFLAG:8283 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8283 <= 2|| FLAG:11 == 2)
-            CFLAG:8283 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8283 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -4168,38 +4104,6 @@ IF SELECTCOM == 85
         ;その他の場合
         ELSE
             CFLAG:8290 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8291
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;初めて
-    IF CFLAG:8291 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8291= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8291 <= 3|| FLAG:11 == 2)
-            CFLAG:8291 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8291 <= 2|| FLAG:11 == 2)
-            CFLAG:8291 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8291 = 2
         ENDIF
         RETURN 0
     ENDIF

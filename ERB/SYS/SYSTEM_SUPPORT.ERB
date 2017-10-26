@@ -636,11 +636,6 @@ ELSEIF FLAG:90 == 2 && FLAG:91 > 31
     FLAG:91 = 31
 ENDIF
 
-;フリスクのアイテム番号の入れ替え
-SIF FLAG:15 & 32
-    ITEM:70 += FLAG:370
-SWAP ITEM:70, ITEM:83
-
 ;集めた蒐集品の種類を初期化
 REPEAT 13
     FLAG:(COUNT+500) = 0

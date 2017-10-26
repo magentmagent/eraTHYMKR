@@ -3253,7 +3253,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 111 || SELECTCOM == 620
     ;強制放尿
-    IF SELECTCOM == 86 || SELECTCOM == 85 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:31 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:22 == 0))
+    IF SELECTCOM == 85 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:31 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:22 == 0))
         ;연모+おもらし癖+野外プレイ
         IF TALENT:150 && TALENT:45 && TEQUIP:52 && (CFLAG:9620 < 5 || FLAG:11 == 2)
             PRINTFORMW 「아앗, 와, 오줌 와앗!」

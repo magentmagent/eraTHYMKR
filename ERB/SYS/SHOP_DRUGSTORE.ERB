@@ -44,7 +44,6 @@ IF FLAG:13 & 1
     PRINTLC [32]〔노랑사탕〕(2만원)
     PRINTLC [33]〔초록사탕〕(18만원)
     PRINTLC [34]〔하양사탕〕(10만원)
-    PRINTLC [35]〔검정사탕〕(5만원)
     SIF FLAG:5 & 1 && TALENT:MASTER:55
         PRINTLC [36]〔잿빛사탕〕(5만원)
     SIF TALENT:MASTER:56
@@ -55,7 +54,6 @@ IF FLAG:13 & 1
     PRINTLC [40]〔비취색사탕〕(10만원)
     SIF FLAG:18 & 2
         PRINTLC [41]〔남색사탕〕(20만원)
-    PRINTLC [42]〔복숭아사탕〕(10만원)
     SIF TALENT:MASTER:56
         PRINTLC [43]〔쥐색사탕〕(10만원)
 ENDIF
@@ -165,11 +163,6 @@ ELSEIF RESULT == 34 && FLAG:13 & 1
     PRINTL 진주와 같은 광채를 지닌 사탕.
     PRINTL 소문에 따르면 원료에 【요정의 모유】랑 【요정의 비늘가루】, 【요정의 타액】이 사용되었다고.
     LOCAL:9 = 100000
-ELSEIF RESULT == 35 && FLAG:13 & 1
-    PRINTL 〔검은 사탕〕：그 아이가 ＜ＥＸ화＞합니다
-    PRINTL 밤의 색으로 물든 광택이 전혀 없는 사탕.
-    PRINTL 【요괴의 애액】을 결정화시킨 게 주원료인 모양이다.
-    LOCAL:9 = 50000
 ELSEIF RESULT == 36 && FLAG:13 & 1 && FLAG:5 & 1 && TALENT:MASTER:55
     PRINTL 〔잿빛 사탕〕：그 아이의 성격이 반전합니다
     PRINTL 정신에 강한 영향을 미치는 탁한 색의 사탕.
@@ -201,10 +194,6 @@ ELSEIF RESULT == 41 && FLAG:13 & 1 && FLAG:18 & 2
     PRINTL 상쾌한 푸른 하늘의 모습을 이미지한 약간 보라색에 가까운 청색의 사탕.
     PRINTL 재료에 자식을 끔찍이 아꼈던 【마녀의 애액】이 사용되었다는 소문이 있는 듯하다.
     LOCAL:9 = 200000
-ELSEIF RESULT == 42 && FLAG:13 & 1
-    PRINTL 〔복숭아 사탕〕：＜ＥＸ화＞를 되돌린다.
-    PRINTL 선명한 분홍색을 띄고있으며, 【인면어의 난소】를 사용했다는 소문이 있다.
-    LOCAL:9 = 100000
 ELSEIF RESULT == 43 && FLAG:13 & 1 && TALENT:MASTER:56
     PRINTL 〔쥐색 사탕〕：[소인체형]이 됩니다.
     PRINTL 은빛이라고도 잿빛이라고도 할 수 없는 신기한 색깔을 드러내는 사탕.
@@ -325,20 +314,6 @@ REPEAT CHARANUM
     ;白の飴玉は対象が妖精だと使えない
     ELSEIF LOCAL == 34 && TALENT:COUNT:200
         CONTINUE
-    ;黒の飴玉の場合
-    ELSEIF LOCAL == 35
-        ;[使い魔]には使えない
-        SIF TALENT:COUNT:164
-            CONTINUE
-        ;紳士(あなた)か既にＥＸ化させたキャラには使えない
-        SIF COUNT == 0 || CFLAG:COUNT:0
-            CONTINUE
-        ;YASAIモードでは霊夢さんには使用できない
-        SIF NO:COUNT == 1 && FLAG:570 & 1
-            CONTINUE
-        ;黒の飴玉によるEX化が可能なキャラでないと使用できない
-        SIF ABLE_EX_CHANGES(COUNT) == 0
-            CONTINUE
     ;灰の飴玉の場合
     ELSEIF LOCAL == 36
         ;劇物指定なので自分や体力・気力の低い者には使えない
@@ -387,17 +362,6 @@ REPEAT CHARANUM
             CONTINUE
         ;既に使っていると効果ない
         SIF EQUIP:COUNT:2
-            CONTINUE
-    ;桃の飴玉の場合
-    ELSEIF LOCAL == 42
-        ;主人には使えない
-        SIF COUNT == MASTER
-            CONTINUE
-        ;ＥＸ化していないと使えない
-        SIF CFLAG:COUNT:0 == 0
-            CONTINUE
-        ;既に使っていると効果ない
-        SIF EQUIP:COUNT:1
             CONTINUE
     ;鈍の飴玉の場合
     ELSEIF LOCAL == 43

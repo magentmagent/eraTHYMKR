@@ -90,7 +90,7 @@ CALL TRAIN_MESSAGE_COM240
 
 TFLAG:198 = 0
 ;미약등의 약을 사용하고 있으면(자) 역류
-IF TEQUIP:11 == 1 || TEQUIP:13 || TEQUIP:18 || TEQUIP:19
+IF TEQUIP:11 == 1 || TEQUIP:18
     TFLAG:201 = 1
     TFLAG:198 |= 1
 ENDIF
@@ -169,7 +169,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 배를, 강하게 짓밟아 주었다.
 ;미약등의 약을 사용하고 있으면(자) 역류
-IF TEQUIP:11 == 1 || TEQUIP:13 || TEQUIP:18 || TEQUIP:19
+IF TEQUIP:11 == 1 || TEQUIP:18
     IF TEQUIP:59 == 1
         PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 입고 있는 앞치마를 더럽혀 버렸다.
     ELSEIF TEQUIP:59 == 2

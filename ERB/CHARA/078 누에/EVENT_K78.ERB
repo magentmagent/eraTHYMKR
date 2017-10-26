@@ -3919,48 +3919,6 @@ ENDIF
 [SKIPEND]
 
 ;-------------------------------------------------
-;強精神薬 CFLAG:9065
-;-------------------------------------------------
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:9065 == 0
-        PRINTFORML 「응? 이 약 뭐야? 뭔가 찜찜하지만……」
-        PRINTFORMW 「엣…잠깐 뭘 먹였어…?」
-        CFLAG:9065 = 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;淫魔か薬物刻印Lv3이상で음란で媚薬
-        IF TALENT:180 || (MARK:3 >= 3 && TEQUIP:11 && TALENT:170)
-            PRINTFORML 「우웅……하앙, 가지 않을까, 너무 매워서……」
-            PRINTFORMW 「아, 그래도 망가지더라도……에헤헤♪ 얼른 시작하자?」
-            CFLAG:9065 = 6
-        ;복종
-;        ELSEIF TALENT:160
-;            PRINTFORML 
-;            PRINTFORMW 
-;            CFLAG:9065 = 5
-        ;연모
-        ELSEIF TALENT:150
-            PRINTFORML 「우웅―, 또 이상한 약을 쓰고……이제, 어떻게 되든 난 몰라?」
-            PRINTFORMW 「내가 망가지더라도, 그…책임져야 해?」
-            CFLAG:9065 = 4
-        ;굴복각인Lv3
-;        ELSEIF MARK:2 == 3
-;            PRINTFORML 
-;            PRINTFORMW 
-;            CFLAG:9065 = 3
-        ;그 외
-        ELSE
-            PRINTFORML 「이런 약물을 안 쓰고도……가는 건가」
-            PRINTFORMW 「뭐? 부작용이라고……어ﾞ. 진짜 더럽다고!!」
-            CFLAG:9065 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-
-;-------------------------------------------------
 ;배란유도제 CFLAG:9066
 ;CFLAG:3001　⇒　第何子まで生んだか
 ;-------------------------------------------------

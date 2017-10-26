@@ -847,7 +847,6 @@ RETURN 0
 ;    RESULT:2：Ｖ절정（1=절정, 2=강절정, 4=초강절정, 9=최강절정）
 ;    RESULT:3：Ａ절정（1=절정, 2=강절정, 4=초강절정, 9=최강절정）
 ;    RESULT:4：Ｂ절정（1=절정, 2=강절정, 4=초강절정, 9=최강절정）
-;    RESULT:5：현자의 피로 일어난 헛 절정(비트 연산：1=Ｃ, 2=Ｖ, 4=Ａ, 8=Ｂ절정 캔슬)
 ;--------------------------------------------------
 @ECST_LEVEL
 ;몇 중 절정인가 계산한다
@@ -869,12 +868,6 @@ IF LOCAL
     RESULT:4 = NOWEXCHECK(TARGET, "Ｂ절정") / POWER(2, LOCAL-1)
 ENDIF
 
-;현자의 피 판정
-IF ITEMCHECK("현자의 피")
-    RESULT:5 = 0
-    SIF DOWN:COUNT > 0 && NOWEX:COUNT == 0
-        SETBIT RESULT:5, COUNT
-ENDIF
 RETURN LOCAL
 
 ;-------------------------------------------------
