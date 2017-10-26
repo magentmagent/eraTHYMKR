@@ -217,42 +217,11 @@ ELSE
     PRINTW  
 ENDIF
 TFLAG:201 = 0
-;다음 처리에서 TFLAG:208에 1이 들어가 있으면 ＥＸ화 선택 처리가 회피된다
-TFLAG:208 = 0
+
 ;구입한 캐릭터의 대사에서의 특수 초기 설정 처리용 명령 호출
 CALL SET_CHARA_KOJO_EXTRA, TARGET
 ;구입된 직후의 이벤트 대사 호출
 CALL SELF_KOJO, TARGET, 198
-
-;처음부터 EX(SP) 캐릭터를 구입할 수 있는 경우 있음.
-IF (ARG == 2 || ARG == 14 || ARG == 129) && TFLAG:208 == 0
-    ;마리사의 경우
-    IF ARG == 2
-        PRINTFORML 처음부터 「구작 마리사」화 할 수 있다.
-        PRINTL [0] 구작 마리사화 한다
-    ;앨리스의 경우
-    ELSEIF ARG == 14
-        PRINTFORML 처음부터 「꼬마 앨리스」화 할 수 있다.
-        PRINTL [0] 꼬마 앨리스화 한다
-    ;히라노의 경우
-    ELSEIF ARG == 129
-        PRINTFORML 처음부터 「히라노(신 Ver.)」화 할 수 있다.
-        PRINTL [0] 히라노(신 Ver.)화 한다
-    ENDIF
-    PRINTFORML [1] %조사처리(ITEMNAME:(100+ARG),"는")% 유지한다.
-
-    DRAWLINE
-    $INPUT_LOOP
-    INPUT
-    IF RESULT != 0 && RESULT != 1
-        GOTO INPUT_LOOP
-    ELSEIF RESULT == 0
-        TFLAG:225 = 1
-        CALL EX_EVENT, TARGET
-        TFLAG:225 = 0
-    ENDIF
-ENDIF
-TFLAG:208 = 0
 
 FLAG:996 = -1
 IF TARGET >= 0

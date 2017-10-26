@@ -163,13 +163,6 @@ ELSEIF RESULT == 9
     FLAG:5 |= 1
     CALL START_CHARA_SELECT
     MONEY += 19000
-;「하쿠레이 레이무」(890016) 입력으로 SP 캐릭터로 시작할 수 있는 XEXTRA 모드(주인이 처음부터 SP 캐릭터를 쓸 수 있는 EXTRA 모드)
-ELSEIF RESULT == 890016
-    PRINTW “XEXTRA” 모드를 선택했습니다.
-    FLAG:4 = 2
-    FLAG:5 |= 1
-    CALL START_EXTRACHARA_SELECT
-    MONEY += 19000
 ;「野菜いっぱい」入力で特殊な素質が付いたYASAIモード(実際の扱いは特殊主人で始めるEXTRAモード)
 ELSEIF RESULT == 831181
     PRINTW “YASAI” 모드를 선택했습니다.
@@ -180,16 +173,10 @@ ELSEIF RESULT == 831181
     PRINTL 어느 항목에서 주인을 선택하겠습니까?
     PRINTL [0] 변경하지 않는다
     PRINTL [1] 통상 캐릭터
-    PRINTL [2] SPz캐릭터
-    PRINTL [3] IRC캐릭터
     $INPUT_LOOP_YASAI
     INPUT
     IF RESULT == 1
         CALL START_CHARA_SELECT
-    ELSEIF RESULT == 2
-        CALL START_EXTRACHARA_SELECT
-    ELSEIF RESULT == 3
-        CALL START_IRCCHARA_SELECT
     ELSEIF RESULT != 0
         GOTO INPUT_LOOP_YASAI
     ENDIF
@@ -316,10 +303,6 @@ IF RESULT == 31337
     MASTER = 0
     NO:MASTER = 0
     NICKNAME:MASTER = 『반칙신사』
-ELSEIF RESULT == 96996
-    CALL START_EXTRACHARA_SELECT
-    SIF TALENT:MASTER:120 && NO:MASTER == 0
-        NICKNAME:MASTER = 『GENTLEMAN』
 ELSEIF RESULT == 578370
     CALL START_CHARA_SELECT
     NICKNAME:MASTER = 『환상향 조정자』
@@ -653,145 +636,6 @@ FOR COUNT, 100, ARG
         LOCAL:1 += 1
 NEXT
 RETURN LOCAL:1
-
-;=============================================================================
-;XEXTRA 모드 관련의 처리
-;=============================================================================
-;実際は能力などを一旦リセットした後キャラを再生成する処理を行う
-;キャンセルした場合は一度0番のキャラを作り, その後前のキャラを消去してEXTRAモードへと移行
-;-------------------------------------------------
-;PCをSPキャラで始める処理
-;-------------------------------------------------
-@START_EXTRACHARA_SELECT
-TARGET = 0
-MAXBASE:0 = 0
-MAXBASE:1 = 0
-MAXBASE:2 = 0
-VARSET ABL:TARGET:0, 0, 0, 100
-VARSET EXP:TARGET:0, 0, 0, 100
-VARSET RELATION:TARGET:0, 0, 0, 200
-VARSET TALENT:TARGET:0, 0, 0, 1000
-DRAWLINE
-PRINTL ★★ 플레이어를 변경할 수 있습니다 ★★
-PRINTL ★★ 캐릭터를 선택해 주세요 ★★
-DRAWLINE
-PRINTLC [000] 캔슬
-PRINTLC [001] 츠미부쿠로
-PRINTLC [002] 카도케지 씨
-PRINTLC [003] 타카히로
-PRINTLC [004] 쟈미
-PRINTLC [012] 레이무 님
-PRINTLC [021] 구작 마리사
-PRINTLC [022] 초 마리사
-PRINTLC [031] ＥＸ루미아
-PRINTLC [041] ＥＸ대요정
-PRINTLC [042] Ｂ대요정
-PRINTLC [051] 어드벤트 치르노
-PRINTLC [052] 바이 치르노
-PRINTLC [141] 꼬마 앨리스
-PRINTLC [201] 생전 유유 님
-PRINTLC [272] 테위 사부님
-PRINTLC [381] 넨코
-PRINTLC [401] 그린다무
-PRINTLC [422] 사나에 님
-PRINTLC [612] 과묵 사토링
-PRINTLC [1562] 쥴리앙
-
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    ADDCHARA 0
-    DELCHARA 0
-    MASTER = 0
-    TARGET = -1
-    CALL START_CHARA_SELECT
-    RETURN 0
-ELSEIF RESULT == 1
-    CALL EXTRA_MASTER_00_1
-ELSEIF RESULT == 2
-    CALL EXTRA_MASTER_00_2
-ELSEIF RESULT == 3
-    CALL EXTRA_MASTER_00_3
-ELSEIF RESULT == 4
-    CALL EXTRA_MASTER_00_4
-ELSEIF RESULT == 12
-    CALL EXTRA_MASTER_01_2
-ELSEIF RESULT == 21
-    CALL EXTRA_MASTER_02_1
-ELSEIF RESULT == 22
-    CALL EXTRA_MASTER_02_2
-ELSEIF RESULT == 31
-    CALL EXTRA_MASTER_03_1
-ELSEIF RESULT == 41
-    CALL EXTRA_MASTER_04_1
-ELSEIF RESULT == 42
-    CALL EXTRA_MASTER_04_2
-ELSEIF RESULT == 51
-    CALL EXTRA_MASTER_05_1
-ELSEIF RESULT == 52
-    CALL EXTRA_MASTER_05_2
-ELSEIF RESULT == 141
-    CALL EXTRA_MASTER_14_1
-ELSEIF RESULT == 201
-    CALL EXTRA_MASTER_20_1
-ELSEIF RESULT == 272
-    CALL EXTRA_MASTER_27_2
-ELSEIF RESULT == 381
-    CALL EXTRA_MASTER_38_1
-ELSEIF RESULT == 401
-    CALL EXTRA_MASTER_40_1
-ELSEIF RESULT == 422
-    CALL EXTRA_MASTER_42_2
-ELSEIF RESULT == 612
-    CALL EXTRA_MASTER_61_2
-ELSEIF RESULT == 1562
-    CALL EXTRA_MASTER_156_2
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-
-BASE:0 = MAXBASE:0
-BASE:1 = MAXBASE:1
-CFLAG:0 = RESULT%10
-MASTER = 0
-TARGET = -1
-PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
-
-;=============================================================================
-;YASAI 모드 관련의 처리
-;=============================================================================
-;-------------------------------------------------
-;PCをIRCキャラで始める処理
-;-------------------------------------------------
-@START_IRCCHARA_SELECT
-CALLF CLEAR_LIST
-DRAWLINE
-PRINTL ★★ 플레이어를 변경할 수 있습니다 ★★
-PRINTL ★★ 캐릭터를 선택해 주세요 ★★
-PRINTLC [0] 캔슬
-REPEAT 100
-    ;레이무 님은 선택 불능
-    SIF COUNT == 4
-        CONTINUE
-    IF ITEMPRICE:(COUNT+500) > 0
-        PRINTFORMLC [{COUNT+400}] %ITEMNAME:(COUNT+500)%
-        CALLF SET_LIST, COUNT + 400, 1
-    ENDIF
-REND
-PRINTL 
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    RETURN 0
-ELSEIF RESULT < 400 || RESULT > 500 || GET_LIST(RESULT) == 0
-    GOTO INPUT_LOOP
-ENDIF
-ADDCHARA RESULT
-DELCHARA 0
-MASTER = 0
-
-TARGET = -1
-PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 설정합니다.
 
 ;=============================================================================
 ;챌린지 모드용의 처리
