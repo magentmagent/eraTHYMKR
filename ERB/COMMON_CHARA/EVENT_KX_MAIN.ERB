@@ -5898,9 +5898,6 @@ RETURN 0
 ;파라미터 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_PALAMCNG_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_MESSAGE_PALAMCNG_K0_MX
 ;자고 있다·기절중·개구기 중에는 돌아온다
 SIF EQUIP:14 || TFLAG:899 >= 1 || KX_MOUSE_CHECK(TARGET)
     RETURN 0
@@ -7799,9 +7796,6 @@ ENDIF
 ;각인 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_MARKCNG_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_MESSAGE_MARKCNG_K0_MX
 ;자고 있는·기절중·구가 다하고는 돌아온다
 SIF EQUIP:14 || TFLAG:899 >= 1 || KX_MOUSE_CHECK(TARGET)
     RETURN 0

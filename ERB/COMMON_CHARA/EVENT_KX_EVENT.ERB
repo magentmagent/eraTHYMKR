@@ -2,9 +2,6 @@
 ;이벤트 대사
 ;-------------------------------------------------
 @SELF_KOJO_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_SELF_KOJO_K0_MX
 ;범용 말미사용이라면 돌아온다
 SIF FLAG:22 == 1
     RETURN 0

@@ -35,9 +35,6 @@ SIF RESULT:0 == 2
     CALL GAMEOVER_NOMOREGLAZE_TORIKOMODE
 ;인계 처리 실행 중의 판정 OFF
 TFLAG:994 = 0
-;CHALLENGE 모드의 캐릭터 보충 처리
-SIF CHARANUM < 100 && FLAG:4 >= 50
-    CALL FILL_CHARA
 DRAWLINE
 PRINTFORM {DAY}일째
 CALL CALENDAR_PRINT, 1
@@ -1088,59 +1085,29 @@ PRINTFORM \@(MONEY:100 - MONEY > 0) ? (목표금액까지 {MONEY:100 - MONEY}원
 ;--------------------------------------------------
 @NAME_SHOPCOMMAND_100
 #FUNCTIONS
-;REVERSAL 모드 때 용(조교받는 게 최초로 고른 캐릭터가 아니어도 이쪽)
-IF FLAG:4 == 3
-    ;반발각인 3 이상
-    IF MARK:9 >= 3
-        RETURNF "반항한다"
-    ;상애 보유에다 확률(밑의 헌신한다도 내보내고 싶으므로)
-    ELSEIF TALENT:153 && RAND:3
-        RETURNF "사랑을 바친다"
-    ;친애 보유
-    ELSEIF TALENT:152
-        RETURNF "헌신한다"
-    ;괴조인격 보유
-    ELSEIF TALENT:169
-        RETURNF "조정받는다"
-    ;정신붕괴 or 괴뢰 보유
-    ELSEIF TALENT:167 || TALENT:168
-        RETURNF "귀여움받는다"
-    ;복종 or 낙인 or 예속 보유에다 확률
-    ELSEIF (TALENT:160 || TALENT:161 || TALENT:162) && RAND:3
-        RETURNF "훈육받는다"
-    ;음란 보유에다 확률
-    ELSEIF TALENT:170 && RAND:3
-        RETURNF "범해진다"
-    ELSE
-        RETURNF "조교받는다"
-    ENDIF
-;REVERSAL 모드가 아닌 게임 모드용
+
+;상애 보유
+IF TALENT:153
+    RETURNF "서로 사랑한다"
+;괴조인격 보유
+ELSEIF TALENT:169
+    RETURNF "조작한다"
+;정신붕괴 or 괴뢰 보유
+ELSEIF TALENT:167 || TALENT:168
+    RETURNF "귀여워한다"
+;반발각인 3 이상에다 확률
+ELSEIF MARK:9 >= 3 && RAND:3
+    RETURNF "벌을 준다"
+;복종 or 낙인 or 예속 or 반발각인 3 이상에다 확률
+ELSEIF (TALENT:160 || TALENT:161 || TALENT:162 || MARK:9 >= 3) && RAND:3
+    RETURNF "훈육한다"
+;음란 보유에다 확률
+ELSEIF TALENT:170 && RAND:3
+    RETURNF "육욕을 채운다"
+;그 외
 ELSE
-    ;상애 보유
-    IF TALENT:153
-        RETURNF "서로 사랑한다"
-    ;괴조인격 보유
-    ELSEIF TALENT:169
-        RETURNF "조작한다"
-    ;정신붕괴 or 괴뢰 보유
-    ELSEIF TALENT:167 || TALENT:168
-        RETURNF "귀여워한다"
-    ;반발각인 3 이상에다 확률
-    ELSEIF MARK:9 >= 3 && RAND:3
-        RETURNF "벌을 준다"
-    ;복종 or 낙인 or 예속 or 반발각인 3 이상에다 확률
-    ELSEIF (TALENT:160 || TALENT:161 || TALENT:162 || MARK:9 >= 3) && RAND:3
-        RETURNF "훈육한다"
-    ;음란 보유에다 확률
-    ELSEIF TALENT:170 && RAND:3
-        RETURNF "육욕을 채운다"
-    ;그 외
-    ELSE
-        RETURNF "조교한다"
-    ENDIF
+    RETURNF "조교한다"
 ENDIF
-;여기에 올 가능성은 없을 테지만 노파심에
-RETURNF "조교한다"
 
 ;=============================================================================
 ;[사역마] 관련의 처리

@@ -62,9 +62,6 @@ CALL START_CONFIGURATION
 ;강력 아이템 봉인 설정
 SIF FLAG:3 >= 3
     FLAG:13 |= 2
-;챌린지 모드
-SIF FLAG:4 >= 50
-    CALL START_CHALLENGEMODE
 ;주인의 캐릭터 카드 취득
 LOCAL = NO:MASTER + 100
 ;주인이 범용 캐릭터가 아니며 카드를 가지고 있지 않은가, 범용 캐릭터인가
@@ -113,8 +110,6 @@ PRINTL [0] eratohoYM
 PRINTL [1] ABNORMAL
 PRINTL [6] PROSTITUTE
 ;이하 부록 모드
-PRINTL [7] REVERSAL
-PRINTL [8] CHALLENGE
 PRINTL [9] EXTRA  
 PRINTL [100] HELP   (각 게임 모드의 간단한 설명)
 $INPUT_LOOP_GAMEMODE
@@ -144,18 +139,6 @@ ELSEIF RESULT == 6
     FLAG:13 = 1024
     FLAG:4 = 4
     MONEY += 200
-ELSEIF RESULT == 7
-    PRINTW “REVERSAL” 모드를 선택했습니다.
-    FLAG:4 = 3
-    CALL START_CHARA_SELECT
-    CALL RV_CHARA0
-    CALL MASTER_FUTA_SET
-    CALL MASTER_SAD_SET
-    MONEY += 19000
-ELSEIF RESULT == 8
-    PRINTW “CHALLENGE” 모드를 선택했습니다.
-    FLAG:5 |= 1
-    CALL SELECT_CHALLENGEMODE
 ELSEIF RESULT == 9
     PRINTW “EXTRA” 모드를 선택했습니다.
     FLAG:4 = 2
@@ -184,8 +167,6 @@ ELSEIF RESULT == 100
     PRINTL eratohoYM ：보통 플레이를 할 사람 지향. 기한 있음
     PRINTL PROSTITUTE：창관을 운영해나가는 모드입니다. 기한 있음
     PRINTL ABNORMAL　：여주인이나 쇼타로 해보고 싶은 사람 지향. 기한 있음
-    PRINTL REVERSAL　：동방 캐릭터에게 에로한 짓을 당하고 싶은 사람 지향. 기한 없음
-    PRINTL CHALLENGE ：무명 캐릭터를 엄청 좋아하는 사람 지향. 기한 없음
     PRINTL EXTRA 　　：백합과 장미의 세계로 어서 오십시오. 기한 없음
     DRAWLINE
     WAIT
@@ -286,7 +267,7 @@ LOCAL:2 = RESULT
 ;ページをめくったときなどはここから
 $PRINT_LIST
 DRAWLINE
-PRINTFORML ★★ \@(FLAG:4 == 3) ? 주인님을 # 플레이어를 \@ 변경할 수 있습니다 ★★
+PRINTFORML ★★ 플레이어를 변경할 수 있습니다 ★★
 PRINTFORML 캐릭터를 선택하십시오. ＜page.{LOCAL:1+1}＞
 DRAWLINE
 LOCAL:3 = 0
@@ -307,12 +288,12 @@ NEXT
 PRINTL 
 DRAWLINE
 PRINTFORMLC \@(LOCAL:1 <= 0) ? %" " * 16% # [1001] 앞페이지\@
-PRINTFORMLC \@(FLAG:4 == 3) ? %" " * 16% # [1000] 돌아가기\@
+PRINTFORMLC [1000] 돌아가기
 PRINTFORMLC \@(LOCAL:1 >= LOCAL:2) ? %" " * 16% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 ;変更しないを選んだ場合は"あなた"でここで終わり
-IF RESULT == 1000 && FLAG:4 != 3
+IF RESULT == 1000
     LOCAL = 0
 ELSEIF RESULT == 1001 && LOCAL:1 > 0
     LOCAL:1 -= 1
@@ -341,7 +322,7 @@ ELSE
     ITEM:(LOCAL+100) = 1
 ENDIF
 
-PRINTFORMW \@(FLAG:4 == 3) ? 마스터 # 플레이어\@를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
+PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
 IF NO:MASTER == 0 && FLAG:4 == 1
     CALL SET_MASTER_SEX
 ENDIF
@@ -370,213 +351,12 @@ FOR COUNT, 100, ARG
     SIF COUNT == 100 || COUNT == 248 || COUNT == 249 || COUNT == 500
         CONTINUE
 
-    ;REVERSALモード場合, 専用逆口上をサーチする
-    IF FLAG:4 == 3
-        RESULT = 0
-        TRYCALLFORM TRY_0_{COUNT-100}
-        CALLF SET_LIST, COUNT, RESULT
-    ENDIF
-
     ITEMSALES:COUNT = 1
     LOCAL:2 += 1
     SIF (LOCAL:2%30) == 1 && LOCAL:2 > 30
         LOCAL:1 += 1
 NEXT
 RETURN LOCAL:1
-
-;=============================================================================
-;챌린지 모드용의 처리
-;=============================================================================
-;--------------------------------------------------
-;챌린지 모드 선택시의 처리
-;--------------------------------------------------
-;
-@SELECT_CHALLENGEMODE
-;表示させるキャラを抽出
-CALLF CLEAR_LIST
-FOR COUNT, 250, 299
-    ;存在しないキャラは弾く
-    STRLENS ITEMNAME:COUNT
-    SIF RESULT < 1
-        CONTINUE
-    CALLF SET_LIST, COUNT, 1
-NEXT
-
-$PRINT_LIST
-DRAWLINE
-PRINTL 어떤 코스를 선택하겠습니까?
-PRINTLC [0] 랜덤
-PRINTLC [1] 요정난무
-PRINTLC [2] 지옥순회
-PRINTLC [3] 동물농장
-;PRINTLC  [4]
-;50以降は各名無しキャラオンリーの予定
-REPEAT 50
-    SIF GET_LIST(COUNT + 250) == 0
-        CONTINUE
-    PRINTFORMLC [{(COUNT + 50)}] %ITEMNAME:(COUNT + 250)%천국
-REND
-PRINTL [100] 설명
-DRAWLINE
-$INPUT_LOOP
-INPUT
-IF RESULT == 100
-    CALL CHALLENGEMODE_MANUAL
-    GOTO PRINT_LIST
-ELSEIF RESULT == 0
-    LOCALS = 랜덤
-    FLAG:4 = 100
-ELSEIF RESULT == 1
-    LOCALS = 요정난무
-    FLAG:4 = 101
-ELSEIF RESULT == 2
-    LOCALS = 지옥순회
-    FLAG:4 = 102
-ELSEIF RESULT == 3
-    LOCALS = 동물농장
-    FLAG:4 = 103
-;各名無しキャラオンリーモード
-ELSEIF RESULT >= 50 && RESULT < 100 && GET_LIST(RESULT + 200) == 1
-    LOCALS = %ITEMNAME:(RESULT + 200)%천국
-    FLAG:4 = RESULT
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-PRINTFORMW %LOCALS% 모드로 시작합니다.
-
-;--------------------------------------------------
-;챌린지 모드 내의 각 모드 설명
-;--------------------------------------------------
-@CHALLENGEMODE_MANUAL
-PRINTL 이하 각 코스의 대략적인 설명입니다.
-DRAWLINE
-PRINTL 00　　 랜덤　　：별 추가 없이 무명 캐릭터가 랜덤으로 추가됩니다.
-PRINTL 01　　 요정난무：요정 무명 캐릭터만 랜덤으로 추가됩니다.
-PRINTL 02　　 지옥순회：사신, 오니, 망령 등의 무명캐릭터가 추가됩니다.
-PRINTL 03　　 동물천국：토끼랑 까마귀 등 동물계 캐릭터가 랜덤으로 추가됩니다.
-PRINTL 04　　 느긋하게 있으라고!：윳쿠리 관련 캐릭터가 무작위로 추가됩니다. (미구현)
-PRINTL 50～99 ○○천국：표시되어 있는 무명 캐릭터만이 추가됩니다.
-DRAWLINE
-WAIT
-
-;--------------------------------------------------
-;챌린지 모드 개시시의 처리
-;--------------------------------------------------
-@START_CHALLENGEMODE
-PRINTL ＜무명 캐릭터 성별 랜덤＞기능을 유효로 하겠습니까?
-PRINTL ※나중에 컨피그에서 설정을 변경하는 것도 가능합니다.
-PRINTL [0] 예
-PRINTL [1] 아니오
-PRINTL [9] 설명 플리즈
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    FLAG:12 |= 2048
-    PRINTFORMW 구입 · 추가되는 무명 캐릭터 성별을 랜덤으로 설정합니다.
-ELSEIF RESULT == 1
-    SIF FLAG:12 & 2048
-        FLAG:12 -= 2048
-PRINTFORMW 구입 · 추가되는 무명 캐릭터의 성별을 모두 ♀만 있게 설정했습니다.
-ELSEIF RESULT == 9
-    PRINTL ＜무명 캐릭터 성별 랜덤＞ 기능을 유효로 한 지금, 
-    PRINTL 일부 캐릭터를 빼놓고 빠지거나 추가되는 무명 캐릭터의 성별이 랜덤으로 변합니다.
-    PRINTL 무효인 경우엔 추가되는 무명 캐릭터가 ♀만으로 고정됩니다.
-    PRINTW 남자 무명 캐릭터도 조교하고 싶어! ……라는 사람 지향.
-    PRINTL 
-    RESTART
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-
-FLAG:90 = 4
-FLAG:92 = 99
-FLAG:93 = 20
-FLAG:94 = 99
-SAVESTR:1 = 《숨겨진 마을》
-REPEAT 150
-    LOCAL = COUNT + 1000
-    LOCAL:1 = COUNT + 1500
-    FLAG:LOCAL = 0
-    FLAG:(LOCAL:1) = 1
-REND
-FLAG:565 = 2
-
-CALL FILL_CHARA
-TARGET = -1
-
-;--------------------------------------------------
-;무명 캐릭터 보충 처리
-;--------------------------------------------------
-@FILL_CHARA
-SIF CHARANUM >= 100 || FLAG:4 < 50
-    RETURN 0
-IF FLAG:4 < 100
-    ;各キャラオンリー
-    LOCAL = 100 + FLAG:4
-ELSEIF FLAG:4 == 100
-    ;ランダム
-    LOCAL = 150 + RAND:50
-    SIF !EXISTCSV(LOCAL, 0)
-        RESTART
-ELSEIF FLAG:4 == 101
-    ;妖精乱舞
-    LOCAL = 150 + RAND:20
-    SIF !EXISTCSV(LOCAL, 0)
-        RESTART
-ELSEIF FLAG:4 == 102
-    ;地獄巡り(ゾンビフェアリー, 黒呪精, 地獄鴉, 亡霊, 旧都鬼, 地獄鬼, 死神の中からランダムで追加される)
-    LOCAL = RAND:7
-    SELECTCASE LOCAL
-        CASE 0
-            LOCAL = 156
-        CASE 1
-            LOCAL = 166
-        CASE 2
-            LOCAL = 178
-        CASE 3
-            LOCAL = 179
-        CASE 4
-            LOCAL = 181
-        CASE 5
-            LOCAL = 182
-        CASE 6
-            LOCAL = 183
-    ENDSELECT
-ELSEIF FLAG:4 == 103
-    ;動物王国(地上の兎, 鴉天狗, 白狼天狗, 夜雀, 地獄鴉, 河童, 玉兎, 化け猫, 化け狐, 化け鼠の中からランダムで追加される)
-    LOCAL = RAND:10
-    SELECTCASE LOCAL
-        CASE 0
-            LOCAL = 170
-        CASE 1
-            LOCAL = 174
-        CASE 2
-            LOCAL = 175
-        CASE 3
-            LOCAL = 177
-        CASE 4
-            LOCAL = 178
-        CASE 5
-            LOCAL = 180
-        CASE 6
-            LOCAL = 184
-        CASE 7
-            LOCAL = 186
-        CASE 8
-            LOCAL = 187
-        CASE 9
-            LOCAL = 188
-    ENDSELECT
-ENDIF
-ADDCHARA LOCAL
-;キャラカード取得
-ITEM:(LOCAL + 100) += 1
-TARGET = CHARANUM - 1
-CALL CHARA_RANDOM_STATE
-CFLAG:3109 = CHARANUM
-CSTR:3 = %CALLNAME:MASTER%에게 조교 받기 위해 끌려왔다.
-SIF CHARANUM < 100
-    RESTART
 
 ;=============================================================================
 ;「당신」 설정 관련
@@ -878,19 +658,13 @@ BASE:MASTER:0 = MAXBASE:MASTER:0
 BASE:MASTER:1 = MAXBASE:MASTER:1
 
 ;趣味的素質付加をスキップするかどうか
-IF FLAG:4 == 3
-    PRINTL 남은 질문은 난이도에 따라 달라지지만……
-ELSE
-    PRINTL 다소 질문이 길어질 것 같은데, 하실래요?
-ENDIF
+PRINTL 다소 질문이 길어질 것 같은데, 하실래요?
 PRINTL [0] 어서 오쇼
 PRINTL [1] 그만둘래
 $INPUT_LOOP_6
 INPUT
 SIF RESULT != 0 && RESULT != 1
     GOTO INPUT_LOOP_6
-SIF RESULT == 1 && FLAG:4 == 3
-    GOTO TALENT_SET_END
 SIF RESULT == 1
     GOTO TALENT_SET_EX
 
@@ -1186,19 +960,17 @@ SIF RESULT != 0 && RESULT != 1
 TALENT:80 = RESULT
 
 $TALENT_SET_EX
-IF FLAG:4 != 3
-    ;ゲームバランスにかかわる素質をスキップするか
-    PRINTL 남은 질문은 잘못 대답하면 난이도 팍 무너지는데…….
-    PRINTL [0] 그냥 팍팍 혀.
-    PRINTL [1] 그만둘란다.
-    $INPUT_LOOP_31
-    INPUT
-    IF RESULT == 1
-        GOTO TALENT_SET_END
-    ELSEIF RESULT != 0
-        PRINTL 올바른 값을 입력해 주세요.
-        GOTO INPUT_LOOP_31
-    ENDIF
+;ゲームバランスにかかわる素質をスキップするか
+PRINTL 남은 질문은 잘못 대답하면 난이도 팍 무너지는데…….
+PRINTL [0] 그냥 팍팍 혀.
+PRINTL [1] 그만둘란다.
+$INPUT_LOOP_31
+INPUT
+IF RESULT == 1
+    GOTO TALENT_SET_END
+ELSEIF RESULT != 0
+    PRINTL 올바른 값을 입력해 주세요.
+    GOTO INPUT_LOOP_31
 ENDIF
 
 ;サド/小悪魔/マゾ

@@ -2076,9 +2076,6 @@ RETURN 0
 ;※인수が正だと汎用口上をすっ飛ばして喘ぎのみ出力するようになりました. また人形でも喋る. 
 ;--------------------------------------------------
 @TRAINVOICE(ARG)
-;REVERSALモードのときは汎用逆口上を呼び出す
-SIF FLAG:4 == 3 && !ARG
-    TRYCALL LES_MESSAGE_COM_K0_MX
 ;口枷中は喋らない
 SIF TEQUIP:42 && SELECTCOM != 226 && SELECTCOM != 506 && SELECTCOM != 229
     RETURN 0
