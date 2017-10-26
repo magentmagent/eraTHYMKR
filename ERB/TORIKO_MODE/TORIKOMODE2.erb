@@ -303,9 +303,6 @@ PRINTFORML [2]상품 납품 의뢰서를 본다.
 PRINTFORML [3]상품을 납품한다 / 포기한다.
 PRINTFORML [4]대출/상환
 PRINTFORML [5]카지노를 즐긴다.
-;오나마스 온리
-SIF FLAG:4 == 18
-    PRINTFORML [8]쾌락의 구슬을 판다.
 PRINTFORML [9]설명을 듣는다.
 PRINTFORML [999] 조교관으로 돌아간다
 
@@ -583,60 +580,6 @@ ELSEIF RESULT == 5
     ENDIF
     GOTO SELECT_CAZINO
 
-;오나마스 온리
-ELSEIF RESULT == 8 && FLAG:4 == 18
-    PRINTFORML "그래? 그럼 어떤 구슬을 가져왔는지 봅세"
-    $SELECT_JUEL
-    PRINTL
-    CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 3
-    PRINTFORML 쾌 C의 구슬 : {JUEL:MASTER:0}개 / 쾌 V의 구슬 : {JUEL:MASTER:1}개 / 쾌 A의 구슬 : {JUEL:MASTER:2}개  / 쾌 B의 구슬 : {JUEL:MASTER:3}개
-    RESETCOLOR
-    PRINTL
-    PRINTFORML 어떤 구슬을 팔까?
-    PRINTFORML [0]쾌 C의 구슬 100000 개  > 10000원
-    PRINTFORML [1]쾌 V의 구슬 100000 개  > 10000원
-    PRINTFORML [2]쾌 A의 구슬 100000 개  > 10000원
-    PRINTFORML [3]쾌 B의 구슬 100000 개  > 10000원
-    PRINTFORML [999] 그만둔다.
-    INPUT
-    IF RESULT == 0
-        IF JUEL:MASTER:0 < 100000
-            PRINTFORML 구슬이 모자란다.
-        ELSE
-            JUEL:MASTER:0 -= 100000
-            PRINTFORML 쾌C의 구슬을 팔았다. 자금 10000증가. (현재 잔고:{MONEY}원)
-            MONEY += 10000
-        ENDIF
-    ELSEIF RESULT == 1
-        IF JUEL:MASTER:1 < 100000
-            PRINTFORML 구슬이 모자란다.
-        ELSE
-            JUEL:MASTER:1 -= 100000
-            PRINTFORML 쾌V의 구슬을 팔았다. 자금 10000증가. (현재 잔고:{MONEY}원)
-            MONEY += 10000
-        ENDIF
-     ELSEIF RESULT == 2
-        IF JUEL:MASTER:2 < 100000
-            PRINTFORML 구슬이 모자란다.
-        ELSE
-            JUEL:MASTER:2 -= 100000
-            PRINTFORML 쾌A의 구슬을 팔았다. 자금 10000증가. (현재 잔고:{MONEY}원)
-            MONEY += 10000
-        ENDIF
-     ELSEIF RESULT == 3
-        IF JUEL:MASTER:3 < 100000
-            PRINTFORML 구슬이 모자란다.
-        ELSE
-            JUEL:MASTER:3 -= 100000
-            PRINTFORML 쾌B의 구슬을 팔았다. 자금 10000증가. (현재 잔고:{MONEY}원)
-            MONEY += 10000
-        ENDIF
-    ELSEIF RESULT == 999
-        GOTO LOOP_MISSION_SHOP
-    ELSE
-    ENDIF
-    WAIT
-    GOTO SELECT_JUEL
 ;설명을 듣는다.
 ELSEIF RESULT == 9
     PRINTL

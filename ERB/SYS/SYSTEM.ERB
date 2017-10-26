@@ -115,8 +115,7 @@ PRINTL [6] PROSTITUTE
 ;이하 부록 모드
 PRINTL [7] REVERSAL
 PRINTL [8] CHALLENGE
-PRINTL [9] EXTRA    
-;PRINTL [?] DEBUG    
+PRINTL [9] EXTRA  
 PRINTL [100] HELP   (각 게임 모드의 간단한 설명)
 $INPUT_LOOP_GAMEMODE
 INPUT
@@ -180,17 +179,6 @@ ELSEIF RESULT == 831181
     ELSEIF RESULT != 0
         GOTO INPUT_LOOP_YASAI
     ENDIF
-;「コ○コ○コミック」入力でデバッグモードへ(期限不明, 目標：全バグ潰し)
-;「31337」入力で捕鯨大好きな反則紳士に
-;「96996」入力でSPキャラを主人に選択可能(96996→黒心→ブラックハー(ry )
-;「99100101」入力でREVERSALの究極股間機が開発可能に(パイルバンカー波動砲は男の浪漫)
-;「↑↑↓↓←→←→」入力で主人がチ一夕一マンに(チーター乙)
-;「578370(こちやさなえ)」入力で東方キャラを主人に選択できるデバグモードに
-ELSEIF RESULT == 31337 || RESULT == 96996 || RESULT == 5656539 || RESULT == 578370 || RESULT == 46826482 || RESULT == 88224646 || RESULT == 99100101 || RESULT == 8888577
-    CALL SELECT_DEBUGMODE
-;오나마스 모드. 노예 구입 불가. 당신이 당신을 조교하는 괴랄한 모드.
-ELSEIF RESULT == 18
-    CALL SELECT_ONAMASMODE
 ELSEIF RESULT == 100
     DRAWLINE
     PRINTL eratohoYM ：보통 플레이를 할 사람 지향. 기한 있음
@@ -199,7 +187,6 @@ ELSEIF RESULT == 100
     PRINTL REVERSAL　：동방 캐릭터에게 에로한 짓을 당하고 싶은 사람 지향. 기한 없음
     PRINTL CHALLENGE ：무명 캐릭터를 엄청 좋아하는 사람 지향. 기한 없음
     PRINTL EXTRA 　　：백합과 장미의 세계로 어서 오십시오. 기한 없음
-;    PRINTL DEBUG 　 ：버그를 상대로 끝없는 싸움을 시작합니다. 프리―덤
     DRAWLINE
     WAIT
     DRAWLINE
@@ -210,246 +197,6 @@ ELSE
     GOTO INPUT_LOOP_GAMEMODE
 ENDIF
 
-;--------------------------------------------------
-;디버그 모드 선택
-;--------------------------------------------------
-@SELECT_DEBUGMODE
-IF RAND:10 == 0
-    PRINTL ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-    PRINTL WARNING:WARNING:WARNING:WARNING:WARNING:
-    PRINTL ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
-    PRINTL 　　　　　　　NAME
-    PRINTL 　　　　　　　　ジ　eratohoYM
-    PRINTL 　　　　　　　＿＿＿＿＿＿＿＿＿＿＿＿
-    PRINTL 　　　　　　／　　　　　STAGE INFINITY
-    PRINTW 
-ELSEIF RAND:9 == 0
-    PRINTL DESTROY ALL BUGS
-    PRINTL AND PICK UP LOGS
-    PRINTL TO MAKE THE VARIANT MORE BETTER■
-    PRINTL 
-    PRINTW 
-    PRINTL WARNING
-    PRINTL APPROACHING A HUGE ERROR■
-    PRINTL 
-    PRINTW 
-ELSEIF RAND:8 == 0
-    PRINTL ＷARNING　　　　　　　　　RADAR EHT NO　　　　
-    PRINTL 　CONFIRMED 　　　　―Φ― MARGORP KRAD EGUH　
-    PRINTL 　HUGE DARK PROGRAM 　　　　　　　 DEMRIFNOC　
-    PRINTW 　ON THE RADAR　　　　　　　　　　　　GNINRAＷ
-    PRINTL 
-    PRINTL 　　　　　　VARIANT IS APPROACHING
-    PRINTL 　　　　　　　　　CODE NAME
-    PRINTL 
-    PRINTW 　　　　　　　　　eratohoYM
-ELSEIF RAND:7 == 0
-    PRINTL ENCOUNTRED AN VARIANT
-    PRINTL eratohoYM
-    PRINTL ￣￣￣￣￣￣
-    PRINTL BE ATTITUDE FOR GAINS...
-    PRINTL 1:REINFORCED ERRORS
-    PRINTL 2:998 FOR OTHERS
-    PRINTW 3:BACKUP YOURFILES
-ELSEIF RAND:6 == 0
-    PRINTL 
-    PRINTL 　　　　　　　　　　　　　STAY COOL!
-    PRINTL 
-    PRINTL 　　　　　　　　-SOMEONE TAKES THE BUG OUT!-
-    PRINTW 
-ELSEIF RAND:5 == 0
-    PRINTL 　　　　　　　　 Received telegram from HYPERION.
-    PRINTL 　　　　　Enemy threat removed by your erotic train.
-    PRINTL 　　　The training pattern of the latest ERO unmaned macro
-    PRINTL 　　　　　　 has been completed according to the data.
-    PRINTL 　　　　　　　　　　 From your train record.
-    PRINTL 
-    PRINTL 　　　　　　　　　　For your meritorious deed,
-    PRINTL 　You `re honored to be selected as the debugger of the last YM test.
-    PRINTL 　　　　　　　　　　　　Congratulations.
-    PRINTL 　　　　　After you debug, you will advanced two classes
-    PRINTL 　　　　　　　and the awarded the sage decoration.
-    PRINTL 
-    PRINTW 　　　　 Glory with the eramaker. Mercy on the gentleman.
-ELSEIF RAND:4 == 0
-    PRINTL 　　　　　　　　　　WARNING
-    DRAWLINE
-    PRINTL 
-    PRINTL 　　　　The R-18 variant is approaching
-    PRINTL 　　　　　　　　at full throttle.
-    PRINTL 　　　　　According to the data. It is
-    PRINTL 　　　　　 identified as“eratohoYM”
-    PRINTL 
-    DRAWLINE
-    PRINTW 　　　　　　　　　NO REFUGE
-ELSEIF RAND:3 == 0
-    PRINTL 　　　　　　 How are you gentlemen !!
-    PRINTL 　　　　 All your bride are belong to us.
-    PRINTL 　　　　　 You are on the way to debug.
-    PRINTW 　 You have no chance to erection make your time.
-ELSEIF RAND:2 == 0
-    PRINTL 　　　　　　　　　　WARNING!
-    PRINTL 　　　　　　　 A HUGE BUGPROGRAM
-    PRINTL 　　　　　　　　 “eratoho YM”
-    PRINTW 　　　　　　　IS APPROACHING FAST!
-ELSE
-    PRINTL 　　　　 Approach your target and attack!
-    PRINTL 　　　　　　 Your Debug starts now!
-    PRINTW 　　　　　　　　Are you ready!?
-ENDIF
-IF RESULT == 31337
-    ADDCHARA 500
-    DELCHARA 0
-    MASTER = 0
-    NO:MASTER = 0
-    NICKNAME:MASTER = 『반칙신사』
-ELSEIF RESULT == 578370
-    CALL START_CHARA_SELECT
-    NICKNAME:MASTER = 『환상향 조정자』
-ELSEIF RESULT == 88224646
-    NAME:MASTER = 치터맨
-    CALLNAME:MASTER = 치터맨
-    NICKNAME:MASTER = 『치터』
-    TALENT:MASTER:54 = 1
-    TALENT:MASTER:116 = 1
-    TALENT:MASTER:133 = 1
-ELSEIF RESULT == 99100101
-    FLAG:4 = 3
-    CALL START_CHARA_SELECT
-    CALL RV_CHARA0
-    CALL MASTER_FUTA_SET
-    CALL MASTER_SAD_SET
-    SIF TALENT:120 && NO:TARGET == 0
-        NICKNAME:TARGET = 『GENTLEMAN』
-ELSE
-    NICKNAME:MASTER = 『DEBUGGER』
-ENDIF
-TALENT:MASTER:998 = 1
-FLAG:5 |= 1
-FLAG:4 = 9
-MONEY = 50000
-
-;--------------------------------------------------
-;오나마스 모드. 당신이 당신을 조교하는 괴랄한 모드
-;BY VANDIT KING. 130920~
-;--------------------------------------------------
-@SELECT_ONAMASMODE
-PRINTL ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-PRINTL WARNING:WARNING:WARNING:WARNING:WARNING:
-PRINTL ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
-PRINTL 　　   "러시아에서는 당신이 당신을 조교합니다!"
-PRINTL 　　　　　　　　　eratohoYM
-PRINTL 　　　　　　　＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-PRINT 　　　　　　／　　　　　STAGE : 
-SETCOLOR 255,100,100
-PRINTL <ONANI-MASTER>
-RESETCOLOR
-PRINTW 
-PRINTL
-$SELECT_CHARA
-PRINTL 플레이어를 선택하시겠습니까? (선택하지 않는 것을 추천합니다)
-PRINTFORML [0] 나는 나다!
-PRINTFORML [1] 가끔은 다른 것도 좋겠지….
-INPUT
-IF RESULT == 0
-    $SELECT_GENDER
-    PRINTL 성별을 선택해 주세요.
-    PRINTFORML [0] 사상이 울퉁불퉁한 사나이
-    PRINTFORML [1] 반전 있는 여자
-    PRINTFORML [2] 에이린 선생님. 후나타리가 되고 싶어요!
-    INPUT
-    IF RESULT == 0
-        ;
-    ELSEIF RESULT == 1
-        TALENT:MASTER:120 =0
-    ELSEIF RESULT == 2
-        TALENT:MASTER:120 =0
-        TALENT:MASTER:121 =1
-    ELSE
-        GOTO SELECT_GENDER
-    ENDIF
-    $SELECT_TALENT
-    PRINTL 당신은 성에 개방적입니까? (게임 난이도가 크게 달라집니다)
-    PRINTFORML [0] 예. (EASY)
-    PRINTFORML [1] 정조는 중요하지. (NORMAL)
-    PRINTFORML [2] 야… 야한 건 안된다고 생각합니다! (HARD)
-    PRINTFORML [3] 잘 모르겠는데…? (기본 소질만 가지고 시작)
-    INPUT
-    IF RESULT == 0
-        ;정조관 둔감
-        TALENT:MASTER:31 = 1
-        ;솔직함
-        TALENT:MASTER:13 = 1
-        ;습득빠름
-        TALENT:MASTER:50 = 1
-        ;젖기 쉬움
-        TALENT:MASTER:42 = 1
-        ;쾌감을 부정
-        TALENT:MASTER:70 = 1
-    ELSEIF RESULT == 1
-        ;반항적
-        TALENT:MASTER:11 = 1
-        ;꿋꿋함
-        TALENT:MASTER:12 = 1
-        ;정조관념
-        TALENT:MASTER:30 = 1
-    ELSEIF RESULT == 2
-        ;반항적
-        TALENT:MASTER:11 = 1
-        ;꿋꿋함
-        TALENT:MASTER:12 = 1
-        ;정조관념
-        TALENT:MASTER:30 = 1
-        ;부끄럼쟁이
-        TALENT:MASTER:35 = 1
-        ;부끄럼쟁이
-        TALENT:MASTER:35 = 1
-        ;습득느림
-        TALENT:MASTER:51 = 1
-        ;젖기 어려움
-        TALENT:MASTER:43 = 1
-        ;쾌감을 부정
-        TALENT:MASTER:71 = 1
-    ELSEIF RESULT == 3
-        ;호기심
-        TALENT:MASTER:23 = 1
-    ELSE
-        GOTO SELECT_TALENT
-    ENDIF
-ELSEIF RESULT == 1
-    CALL START_CHARA_SELECT
-ELSE
-    GOTO SELECT_CHARA
-ENDIF
-;기본 탈렌트 추가
-;조합지식
-TALENT:MASTER:55 = 1
-;금단의 지식
-TALENT:MASTER:56 = 1
-;치료
-TALENT:MASTER:59 = 1
-;회복빠름
-TALENT:MASTER:137 = 1
-;대범함
-TALENT:MASTER:98 = 1
-;자위하기 쉽다
-TALENT:MASTER:60 = 1
-;도착적
-TALENT:MASTER:80 = 1
-;자위중독 LV3
-ABL:MASTER:30 = 3
-;기본정보 세팅
-FLAG:4 = 18
-MONEY = 50000
-TARGET = 0
-;시작설명.
-SETCOLOR 0,255,255
-PRINTL
-PRINTL 이 시대 마지막 나르시스트가 쓰는 전설이
-PRINTL                 지금. 이곳에…
-PRINTL
-RESETCOLOR
-WAIT
 ;--------------------------------------------------
 ;난이도 선택
 ;--------------------------------------------------
