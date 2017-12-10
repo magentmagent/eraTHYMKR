@@ -386,62 +386,62 @@ ENDIF
 ;상애
 IF TALENT:상애
     IF RAND:3 == 0
-        PRINTFORMW 「ん…今日も元気そうね…」
-        PRINTFORMW 「こうして見るといい男よね、貴方」
-        PRINTFORMW 「だから貴方を受け入れたんだけど、さぁ貴方の鼓動聞かせて頂戴」
+        PRINTFORMW 「응..오늘도 건강한 것 같네…」
+        PRINTFORMW 「이렇게 보면 좋은 남자네, 당신」
+        PRINTFORMW 「그래서 당신을 받아들인거야. 자아, 당신의 고동을 들려 줘」
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「今日こそは貴方との子供、作るわよ」
-        PRINTFORMW 「ふふ、まぁ多くても困るわけじゃないしね…」
+        PRINTFORMW 「오늘이야말로 당신과의 아이, 만들자고요」
+        PRINTFORMW 「후훗..뭐 많아도 곤란하단 건 아니고..」
     ELSE
-        PRINTFORMW 「お帰りなさい、ご飯にします？」
-        PRINTFORMW 「それともお風呂に入りながらシちゃう？」
-        PRINTFORMW 「…人の営みってのがよくわかんないのよ、教えてくれない？」
+        PRINTFORMW 「다녀오셨어요, 밥으로 하시겠어요?」
+        PRINTFORMW 「아니면 목욕으로 하시겠어요?」
+        PRINTFORMW 「…사람의 일은 잘 모르겠어요, 가르쳐주시지 않을래요?」
     ENDIF
     RETURN 1
 ;상애2回目以降
 ELSEIF TALENT:상애
     IF RAND:2 == 0
-        PRINTFORMW 「ふふ、今日もいっぱいエッチするの？」
-        PRINTFORMW 「人間って浅ましいわね、そんなに女の体がいいの？」
-        PRINTFORMW 「いいわよ、いっぱい愛してあげる…」
+        PRINTFORMW 「후훗, 오늘도 잔뜩 섹스하자?」
+        PRINTFORMW 「인간들은 야비해요, 그렇게 여자의 몸이 좋은걸까?」
+        PRINTFORMW 「좋아요, 잔뜩 사랑해 줄게..」
     ELSE
-        PRINTFORMW 「人間の体って不便よね」
-        PRINTFORMW 「何にもしなくたってあなたのことを想うと火照ってきちゃう」
-        PRINTFORMW 「今日は何してくれるの？御主人様」
+        PRINTFORMW 「인간의 몸은 불편하지..」
+        PRINTFORMW 「아무것도 하지 않아도 당신을 생각하면 달아올라버려..」
+        PRINTFORMW 「오늘은 무엇을 해 주는거야? 주인님」
     ENDIF
     RETURN 1
 ;반발각인Lv3
 ELSEIF MARK:반발각인 == 3
     IF RAND:2 == 0
-        PRINTFORMW 「堀川の名は復讐の名」
-        PRINTFORMW 「こんなことしてただで済むと思ってないでしょうけど」
-        PRINTFORMW 「このまま私が九十九神だと甘く見ているのなら」
-        PRINTFORMW 「貴方が思う以上の神罰を与えてやる…」
+        PRINTFORMW 「호리카와의 이름은 복수의 이름」
+        PRINTFORMW 「이래놓고 그냥 넘길 수 있다고 생각하진 않겠지만」
+        PRINTFORMW 「이대로 내가 99신이라고 얕잡아보고 있다면」
+        PRINTFORMW 「당신이 생각하는 이상의 천벌을 내릴 거야...」
     ELSE
-        PRINTFORMW 「こっちに来るな！！」
-        PRINTFORMW 「誰がお前なんかの言いなりになるものか！」
-        PRINTFORMW 雷鼓は気丈に叫ぶが体は震えている
+        PRINTFORMW 「오지 마！！」
+        PRINTFORMW 「너같은 놈이 하라는 대로 할 까보냐！」
+        PRINTFORMW 라이코는 다부지게 외쳐보지만, 몸은 떨고 있다
     ENDIF
     RETURN 1
 ;굴복각인Lv3
 ELSEIF MARK:굴복각인 == 3
     IF RAND:2 == 0
-        PRINTFORMW 「もう…なんだってすればいいじゃない…」
-        PRINTFORMW すっかり屈服した様子でうなだれている
-        PRINTFORMW 「せめて…他の子たちの身代わりになれるのなら…」
+        PRINTFORMW 「어째서..하면 되잖아..」
+        PRINTFORMW 라이코는 완전히 굴복한 모습으로 떨고 있다
+        PRINTFORMW 「적어도..다른 아이들 대신이 된다면..」
     ELSE
-        PRINTFORMW 「おはよう、今日も元気ね」
-        PRINTFORMW 「私？」
-        PRINTFORMW 「そうね…諦めたほうが楽になれるもの」
+        PRINTFORMW 「안녕, 오늘도 건강하네」
+        PRINTFORMW 「나?」
+        PRINTFORMW 「정말.. 단념하는 쪽이 편해질수 있는거라고」
     ENDIF
     RETURN 1
 ;その他
 ELSE
     IF RAND:2 == 0
-        PRINTFORMW 「また、するの…？」
-        PRINTFORMW 「ほんと、人間って身勝手ね…」
+        PRINTFORMW 「또, 하는거야...?」
+        PRINTFORMW 「정말, 인간은 제멋대로구나..」
     ELSE
-        PRINTFORMW 「今日はなにするの？」
+        PRINTFORMW 「오늘은 뭘 할거야?」
     ENDIF
 ENDIF
 
@@ -477,54 +477,54 @@ TRYCALL K227_MESSAGE_END
     IF PREVCOM == -1
         ;상애
         IF TALENT:상애
-            PRINTFORMW 「飽きてくれた…のかしらね」
+            PRINTFORMW 「질려..버린걸까」
         ;その他
         ELSE
-            PRINTFORMW 「コレで終わり…？」
-            PRINTFORMW 「何考えてるのよ…不気味ね…」
+            PRINTFORMW 「이거로 끝이야..?」
+            PRINTFORMW 「무슨 생각하는거야..기분 나빠..」
         ENDIF
     ;상애
     ELSEIF TALENT:상애
             IF RAND:2 == 0
-                PRINTFORMW 「今日はこれでお終い？」
-                PRINTFORMW 「そう、お仕事あるものね…」
-                PRINTFORMW 「でもね、私は貴方のことを想っています」
-                PRINTFORMW 「だから…あまり別の女のところに行かないでください」
+                PRINTFORMW 「오늘은 이것으로 끝?」
+                PRINTFORMW 「그래, 일이 있는거구나」
+                PRINTFORMW 「하지만, 좋아하고 있으니까」
+                PRINTFORMW 「그러니까..다른 여자한테 가지 말아줘」
             ELSE
-                PRINTFORMW 「う～ん疲れたわね」
-                PRINTFORMW 「あ、でも貴方とならずっとしていられるわよ！？」
+                PRINTFORMW 「으응~ 지쳤다」
+                PRINTFORMW 「아, 그래도 너와 함께라면 쭉 할수 있다고?!」
             ENDIF
     ;상애
     ELSEIF TALENT:상애 == 1
             IF RAND:2 == 0
-                PRINTFORMW 「今日はコレで終わり？」
-                PRINTFORMW 「そう…もう少し私に構ってくれると思っていたのだけれど」
-                PRINTFORMW 「あまり浮気してると怒っちゃうぞ？」
+                PRINTFORMW 「오늘은 이것으로 끝?」
+                PRINTFORMW 「그래.. 좀 더 나한테 신경써 주고 있다고 생각하고 있었지만」
+                PRINTFORMW 「너무 바람피고 있으면 화내 버릴거야?」
             ELSE
-                PRINTFORMW 「こうしてあなたと過ごしている時間が楽しくて楽しくて」
-                PRINTFORMW 「ふふ、抱き合ったまま一日過ごすってのもいいかもしれないわね」
+                PRINTFORMW 「이렇게 당신과 보내는 시간이 즐거워, 즐거워서..」
+                PRINTFORMW 「후후, 서로 부둥켜안은 채로 하루를 보내는 것도 좋을지도 모르겠네」
             ENDIF
     ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
             IF RAND:2 == 0
-                PRINTFORMW 「八橋や弁々はどうしているのかしら」
-                PRINTFORMW 「もう会えないのだろうけど…」
+                PRINTFORMW 「벤벤이랑 야츠하시는 어떻게 지내고 있으려나」
+                PRINTFORMW 「이제는 만날 수 없겠지만..」
             ELSE
-                PRINTFORMW 「どうせするのなら優しくしてくれればいいのに」
-                PRINTFORMW 「激しいだけの演奏はダメよ」
-                PRINTFORMW 「と言っても分かってくれないんだろうなぁ」
+                PRINTFORMW 「어차피 한다면 상냥하게 해주는게 좋을텐데」
+                PRINTFORMW 「격렬한 연주는 안된다고」
+                PRINTFORMW 「..라고 해도 알아주지 않겠네」
             ENDIF
     ;반발각인Lv3
     ELSEIF MARK:반발각인 == 3
-        PRINTFORMW 「覚えて…いなさい…」
-        PRINTFORMW 「絶対に貴方なんかに心を許すもんですか…」
+        PRINTFORMW 「기억하고..있어..」
+        PRINTFORMW 「절대 너 따위에게 방심할까 보냐…」
     ;その他
     ELSE
         IF RAND:2 == 0
-            PRINTFORMW 「もう…ダメ…」
-            PRINTFORMW 「どうにかしてここから…」
+            PRINTFORMW 「이젠.. 안돼..」
+            PRINTFORMW 「어떻게서든 여기서…」
         ELSE
-            PRINTFORMW 「せっかく肉体を持っているっていうのにコレじゃ道具だわ…」
+            PRINTFORMW 「모처럼 가진 육체가 이런 도구라니…」
         ENDIF
     ENDIF
 ;========================================================
@@ -591,11 +591,11 @@ IF (PALAM:10 + UP:10) > PALAMLV:2 && CFLAG:5330 == 0
         RETURN 0
     ;前コマンドローション
     ELSEIF SELECTCOM == 60
-        PRINTFORMW 「ちょっと…こんなの使って…」
+        PRINTFORMW 「잠깐.. 이런거 쓰고..」
     ;その他の場合
     ELSE
-        PRINTFORMW 「なんでよ…」
-        PRINTFORMW （体が…勝手に…）
+        PRINTFORMW 「어째서야..」
+        PRINTFORMW （몸이..멋대로…）
     ENDIF
     CFLAG:5330 = 1
 ENDIF
@@ -610,12 +610,12 @@ IF (PALAM:13 + UP:13) > PALAMLV:2 && CFLAG:5333 == 0
         RETURN 0
     ;前コマンド媚薬
     ELSEIF SELECTCOM == 61
-        PRINTFORMW 「何よこれ！？ちょ…」
-        PRINTFORMW （飲まされた薬のせい…？）
+        PRINTFORMW 「이게 무슨? 잠깐..」
+        PRINTFORMW （먹은 약 때문인가..?）
     ;その他の場合
     ELSE
-        PRINTFORMW 「あ…あ…」
-        PRINTFORMW （やだ…濡れて来てる…？）
+        PRINTFORMW 「앗..아..」
+        PRINTFORMW （싫어..젖고 있어..?）
     ENDIF
     CFLAG:5333 = 1
 ENDIF
@@ -625,7 +625,7 @@ ENDIF
 ;-------------------------------------------------
 @K227_MESSAGE_OVERLV2_15
 IF (PALAM:15 + UP:15) > PALAMLV:2 && CFLAG:5335 == 0
-    PRINTFORMW 「こんなの…見られて興奮するだなんて…」
+    PRINTFORMW 「이런 거.. 보여져서 흥분한다니…」
     CFLAG:5335 = 1
 ENDIF
 
@@ -639,11 +639,11 @@ IF (PALAM:17 + UP:17) > PALAMLV:2 && CFLAG:5337 == 0
         RETURN 0
     ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「お願いだから…」
-        PRINTFORMW 「もう…抵抗しないから…言うこと聞くから…お願い…」
+        PRINTFORMW 「부탁이야..」
+        PRINTFORMW 「이제.. 저항하거나 하지 않으니까..말 잘 들으니까..부탁해..」
     ;その他の場合
     ELSE
-        PRINTFORMW 「やだ…お願いだから…優しくして…」
+        PRINTFORMW 「싫어.. 부탁이니까.. 상냥히 해줘..」
     ENDIF
     CFLAG:5337 = 1
 ENDIF
@@ -660,11 +660,11 @@ ENDIF
 IF CFLAG:5300 == 0
     ;굴복각인Lv3
     IF MARK:굴복각인 == 3
-        PRINTFORMW 「クリトリスに…来る…！？」
+        PRINTFORMW 「클리토리스에..온닷!?」
     ;その他の場合
     ELSE
-        PRINTFORMW 「そんなとこで！？」
-        PRINTFORMW 「イっちゃう！…あああ！！！」
+        PRINTFORMW 「그런 곳에!?」
+        PRINTFORMW 「가버렷!..아아앙!!!」
     ENDIF
     CFLAG:5300 = 1
 ;２回目以降
@@ -689,44 +689,44 @@ IF CFLAG:5301 == 0
         IF TFLAG:10 > 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28)
             ;절정경험 1以上
             IF EXP:절정경험 >= 1
-                PRINTFORMW 「膣内で出て…イクッ…イッちゃう…！」
-                PRINTFORMW 雷鼓は歓喜しながら腰を振り続けている
+                PRINTFORMW 「질내에서 나오고 있어.. 가버려..!」
+                PRINTFORMW 라이코는 환호하며 허리를 계속 흔들어 대고 있다..
             ;その他の場合
             ELSE
-                PRINTFORMW 「んあぁ！！…んっふぅ…イっちゃった…」
+                PRINTFORMW 「응앗!! 읏흥.. 가버렸어…」
             ENDIF
         ;コマンドが挿入系列
         ELSEIF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
             ;절정경험 1以上
             IF EXP:절정경험 >= 1
-                PRINTFORMW 「こんな…チンポなんかに…！？」
+                PRINTFORMW 「이런 자지 따위에..!?」
             ;その他の場合
             ELSE
-                PRINTFORMW 「やだ…おまんこで…イッちゃう…」
+                PRINTFORMW 「싫다..보지로 가버렸어..」
             ENDIF
         ;その他の場合
         ELSE
-            PRINTFORMW 「だめぇ…頭真っ白になって…イッちゃう…」
+            PRINTFORMW 「안되.. 머리가 새하얘져서 가버려…」
         ENDIF
     ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
         ;コマンドが挿入系列
         IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28
-            PRINTFORMW 「大人しくしとけば…こんな感じで気持ちよくなれる…のね…」
+            PRINTFORMW 「얌전히 있는다면..이렇게 기분 좋아질 수 있는..거겠지」
         ;その他の場合
         ELSE
-            PRINTFORMW 「こんなので…イクなんて…ダメ…なのに…」
-            PRINTFORMW 雷鼓はそう言いながら快楽を味わうように腰を振り続けている
+            PRINTFORMW 「이런 걸로.. 가버리면..안되..는데..」
+            PRINTFORMW 라이코는 그렇게 말하면서 쾌락을 맛보기 위해 허리를 흔들어대고 있다
         ENDIF
     ;その他の場合
     ELSE
         ;前コマンドが挿入系列
         IF SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28
-            PRINTFORMW 「やだ…中に入れられて…あああ！？」
-            PRINTFORMW 「イッちゃったの…私…？」
+            PRINTFORMW 「싫어.. 안에 넣어져서..아아아!?」
+            PRINTFORMW 「나.. 가버린 거야..?」
         ;その他の場合
         ELSE
-            PRINTFORMW 「ふぇ！？…ひゃう！？」
+            PRINTFORMW 「후에!?.. 햐웃!?」
         ENDIF
     ENDIF
     CFLAG:5301 = 1
@@ -750,38 +750,38 @@ IF CFLAG:5302 == 0
     IF TALENT:상애 == 1
         ;アナル中出し
         IF TFLAG:9 > 0 && (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38)
-            PRINTFORMW 「%CALLNAME:MASTER%にお尻の穴きもちよくされちゃううううぅぅぅ！！！」
-            PRINTFORMW 「もっと…お尻をめちゃくちゃにして…んああぁぁぁぁ！！！」
+            PRINTFORMW 「%CALLNAME:MASTER%에게 엉덩이 구멍 기분 좋아져버려어어어어어엇!!!」
+            PRINTFORMW 「더.. 엉덩이 엉망진창이 되버려서.. 응아아아아아앗！！！」
         ;アナル挿入系列
         ELSEIF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-            PRINTFORMW 「あ、ああああ！！」
-            PRINTFORMW 「お尻に入れられて…イッちゃううううう！！！」
+            PRINTFORMW 「앗, 아아아아！！」
+            PRINTFORMW 「엉덩이에 넣어져서 가버렷!!!」
         ;その他の場合
         ELSE
-            PRINTFORMW 「お尻に入れられてイクッ…！！！」
+            PRINTFORMW 「엉덩이에 넣어져서 가버려..!!!」
         ENDIF
     ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
         ;アナル挿入
         IF SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38
-            PRINTFORMW 「こんな…こんなお尻で…チンポ入れられて！？」
-            PRINTFORMW 「がぁああああ！？らめぇえぇえ！！！」
+            PRINTFORMW 「이런.. 이렇게 엉덩이에 자지 넣어져서!?」
+            PRINTFORMW 「가아아아아앗!? 안되에에엣!!」
         ;その他の場合
         ELSE
-            PRINTFORMW 「お…お尻が…おしりぃぃぃぃイッちゃううううう！！」
+            PRINTFORMW 「어..엉덩이가.. 엉덩이 가버려!!」
         ENDIF
     ;その他の場合
     ELSE
-        PRINTFORMW 「やだ…！なんでお尻で…！？」
+        PRINTFORMW 「시러.. 어째서 엉덩이에..!?」
     ENDIF
     CFLAG:5302 = 1
 ;２回目以降
 ELSE
     ;今回の調教でのＡ絶頂が50以上
     IF EX:2 >= 50
-        ;PRINTFORMW 「あ…あああぁお尻で…きもちひいいいぃぃぃ！！」
+        ;PRINTFORMW 「아아아아.. 엉덩이로 기분좋아져!!」
     ELSE
-        ;PRINTFORMW 「お尻でイッちゃう…！！！」
+        ;PRINTFORMW 「엉덩이로 가버려..!!!」
     ENDIF
 ENDIF
 
@@ -793,19 +793,19 @@ ENDIF
 IF CFLAG:5303 == 0
     ;굴복각인Lv3
     IF MARK:굴복각인 == 3
-        PRINTFORMW 「やらぁ…おっぱいが変な感じになっらうのぉぉ…」
+        PRINTFORMW 「싫어.. 가슴에 이상한 느낌이 나서..」
     ;その他の場合
     ELSE
-        PRINTFORMW 「んっ…おっぱいのむずむずが…おかしくなっちゃうっ！？」
+        PRINTFORMW 「응.. 가슴에 근질거림이.. 이상하게 되버려..」
     ENDIF
     CFLAG:5303 = 1
 ;２回目以降
 ELSE
     ;今回の調教でのＢ絶頂が50以上
     IF EX:3 >= 50
-        ;PRINTFORMW 「ひぁっ…おっぱい溶けちゃう…」
+        ;PRINTFORMW 「하앗.. 가슴 녹아버려..」
     ELSE
-        ;PRINTFORMW 「おっぱい…もうダメ…イッちゃうううぅぅ！！！」
+        ;PRINTFORMW 「가슴.. 이젠 안되.. 가버려!!」
     ENDIF
 ENDIF
 
@@ -817,12 +817,12 @@ ENDIF
 IF CFLAG:5304 == 0
     ;상애
     IF TALENT:상애 == 1
-        PRINTFORMW 「お、おっぱいでちゃった…」
-        PRINTFORMW 「ということはとうとう妊娠…？」
+        PRINTFORMW 「아, 젖이 나와버렸다..」
+        PRINTFORMW 「그렇담 드디어 임신..?」
     ;それ以外
     ELSE
-        PRINTFORMW 「やだ…もうやだ…」
-        PRINTFORMW 「なんでおっぱい出るのよ…」
+        PRINTFORMW 「싫어.. 이젠 싫어..」
+        PRINTFORMW 「왜 젖이 나오는 거야..」
     ENDIF
         CFLAG:5304 = 1
 ;２回目以降
@@ -830,22 +830,22 @@ ELSE
     ;상애
     IF TALENT:상애 == 1
         IF RAND:2 == 0
-            PRINTFORMW 「ん…ふぅ…」
+            PRINTFORMW 「응..후우..」
         ELSE
-            PRINTFORMW 「いっぱい…出てくる…」
+            PRINTFORMW 「가득.. 나와..」
         ENDIF
         CFLAG:5304 = 4
     ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
         IF RAND:2 == 0
-            PRINTFORMW 「こ、こんなにいっぱいでちゃうの…？」
+            PRINTFORMW 「이..이렇게 많이 나와버려..?」
         ELSE
-            PRINTFORMW 「どんどんでてきちゃう…」
+            PRINTFORMW 「점점 나와버린다..」
         ENDIF
         CFLAG:5304 = 3
     ;それ以外
     ELSE
-        PRINTFORMW 「なんでこんな…おっぱいでちゃうなんて…」
+        PRINTFORMW 「왜 이렇게.. 젖 나오는거야..」
         CFLAG:5304 = 2
     ENDIF
 ENDIF
@@ -1357,7 +1357,7 @@ RETURN 0
 ;-------------------------------------------------
 @SLAVE_ENDING_227
 DRAWLINE
-PRINTFORMW ―――奴隷エンド条件達成―――
+PRINTFORMW ―――노예 엔딩 조건 달성―――
 PRINTFORMW …………
 PRINTFORMW ………
 PRINTFORMW ……
