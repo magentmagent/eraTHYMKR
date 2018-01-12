@@ -263,28 +263,8 @@ ENDIF
 ;調?開始時 CFLAGなし
 ;-------------------------------------------------
 @K40_KOJO2
-;相愛である
-IF TALENT:153 == 1 && FLAG:11 == 2
-    ;난수 분기:3
-    ;IF RAND:3 == 0
-    ;난수 분기:2
-    ;ELSEIF RAND:2 == 0
-    ;그 외의 경우
-    ;ELSE
-    ;ENDIF
-    RETURN 1
-;親愛である
-ELSEIF TALENT:152 == 1 && FLAG:11 == 2
-    ;난수 분기:3
-    ;IF RAND:3 == 0
-    ;난수 분기:2
-    ;ELSEIF RAND:2 == 0
-    ;그 외의 경우
-    ;ELSE
-    ;ENDIF
-    RETURN 1
 ;연모에다 음란
-ELSEIF TALENT:150 == 1 && TALENT:170 == 1 && FLAG:11 == 2
+IF TALENT:150 == 1 && TALENT:170 == 1 && FLAG:11 == 2
     ;난수 분기:3
     IF RAND:3 == 0
         PRINTFORMW 철벅……츄욱……
@@ -365,7 +345,7 @@ ELSEIF TALENT:160 == 1 && FLAG:11 == 2
         PRINTFORMW 내가 모르는 니토리의 모습은, 도대체 어떨 때 볼 수 있으려나?
     ENDIF
     RETURN 1
-;反?刻印Lv3
+;반발각인Lv3
 ELSEIF MARK:9 == 3 && FLAG:11 == 2
     PRINTFORMW 「반드시, 복수해 줄 테니까.」
     PRINTFORMW 「이봐, 있고 듣고 있는 거야, 인간!」
