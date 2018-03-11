@@ -791,8 +791,12 @@ SIF CFLAG:71
 LOCAL:3 += (TFLAG:128 > 0) * 3
 
 ;一定以下のLOCAL:3なら産卵しない
-SIF LOCAL:3 < 1
+IF LOCAL:3 < 1
+    SIF TFLAG:128 > 0
+        PRINTW 산란촉진제의 효과가 없었던 듯하다.
+    TFLAG:128 = 0
     RETURN 0
+ENDIF
 
 ;産卵促進剤無しでの産卵は1個に限定
 LOCAL:4 = MAX(TFLAG:128 , 1)
@@ -887,6 +891,7 @@ IF FLAG:12 & 8
         CFLAG:77 = DAY + FLAG:601
         LOCAL = MASTER
         CFLAG:78 = NO:LOCAL
+        CFLAG:3004 = CFLAG:LOCAL:3109
         ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
         CFLAG:8 = 0
 
