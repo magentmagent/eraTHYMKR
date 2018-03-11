@@ -17,10 +17,6 @@ ELSEIF (EQUIP:14 || TFLAG:899 > 0 || TFLAG:198 & 16) && TEQUIP:90
 ;調教終了時に眠っているまたは失神している場合, 処理を飛ばす
 ELSEIF EQUIP:14 || TFLAG:899 > 0 || TFLAG:198 & 16
     TFLAG:128 = 0
-;強精神薬使用時は反動があるかを見る
-ELSEIF TEQUIP:13
-    CALL SELF_CHECK1
-    TFLAG:128 = 0
 ;触手を召喚したまま調教を終了した場合, 触手に襲われる
 ELSEIF TEQUIP:90
     CALL SELF_CHECK10
@@ -66,28 +62,6 @@ IF TFLAG:220 == 0 && TFLAG:107 <= 100
     SIF (FLAG:12 & 256) == 0
         CALL SELF_CHECK8
 ENDIF
-
-;-----------------------------------------------
-;強精神薬の反動処理
-;-----------------------------------------------
-;強精神薬による절정チェック
-@SELF_CHECK1
-;強精神薬の効果が残っていないと発生しない
-SIF TEQUIP:13 < 3
-    RETURN 0
-;強精神薬使用中に절정を迎えさせていない場合は発生しない
-SIF TFLAG:110 + TFLAG:111 + TFLAG:112 + TFLAG:113 <= 0
-    RETURN 0
-
-DRAWLINE
-PRINTL 
-PRINTFORMW 방 너머에서 %CALLNAME:TARGET%의 달콤한 비명이 들려왔다…….
-PRINTW 강정신제의 효과가 풀려서 강한 쾌락에 빠져 있는 것 같다.
-;強精神薬の調教後反動のイベント向上呼び出し
-CALL SELF_KOJO, TARGET, 3
-PRINTL 
-CALL REACT_DRUG_SELF
-WAIT
 
 ;-----------------------------------------------
 ;調教後の押し倒し処理

@@ -2,9 +2,6 @@
 ;이벤트 대사
 ;-------------------------------------------------
 @SELF_KOJO_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_SELF_KOJO_K0_MX
 ;범용 말미사용이라면 돌아온다
 SIF FLAG:22 == 1
     RETURN 0
@@ -9792,10 +9789,10 @@ IF TFLAG:200 == 412
             PRINTFORMW %CALLNAME:TARGET% 「아아, 아팟! 읏, …이, 이 쾌감, 참을 수 없어요!」
         ELSEIF CFLAG:3005 == 1
             PRINTFORM %CALLNAME:TARGET% 「아팟! 앙! …기분 좋아…  
-            IF TALENT:GET_CHARA_M():120
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 오빠앗!」
+            IF TALENT:GET_CHARA_G():120
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 오빠앗!」
             ELSE
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 여왕님!」
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 여왕님!」
             ENDIF
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW %CALLNAME:TARGET% 「앗, 아팟! …아아, 맞는 걸 그만둘 수 없어♪」
@@ -9805,10 +9802,10 @@ IF TFLAG:200 == 412
             PRINTFORMW %CALLNAME:TARGET% 「아아, 아팟! 아, 아앙! …이런 미천한 돼지를 흠씬 두들겨 패주세요♪」
         ELSEIF CFLAG:3005 == 4
             PRINTFORM %CALLNAME:TARGET% 「아팟! 아, 아응! …기분 좋아앗! 
-            IF TALENT:GET_CHARA_M():120
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 오빠앗!」
+            IF TALENT:GET_CHARA_G():120
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 오빠앗!」
             ELSE
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 여왕님!」
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 여왕님!」
             ENDIF
         ENDIF
     ENDIF

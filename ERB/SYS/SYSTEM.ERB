@@ -62,9 +62,6 @@ CALL START_CONFIGURATION
 ;강력 아이템 봉인 설정
 SIF FLAG:3 >= 3
     FLAG:13 |= 2
-;챌린지 모드
-SIF FLAG:4 >= 50
-    CALL START_CHALLENGEMODE
 ;주인의 캐릭터 카드 취득
 LOCAL = NO:MASTER + 100
 ;주인이 범용 캐릭터가 아니며 카드를 가지고 있지 않은가, 범용 캐릭터인가
@@ -113,10 +110,7 @@ PRINTL [0] eratohoYM
 PRINTL [1] ABNORMAL
 PRINTL [6] PROSTITUTE
 ;이하 부록 모드
-PRINTL [7] REVERSAL
-PRINTL [8] CHALLENGE
-PRINTL [9] EXTRA    
-;PRINTL [?] DEBUG    
+PRINTL [9] EXTRA  
 PRINTL [100] HELP   (각 게임 모드의 간단한 설명)
 $INPUT_LOOP_GAMEMODE
 INPUT
@@ -145,30 +139,11 @@ ELSEIF RESULT == 6
     FLAG:13 = 1024
     FLAG:4 = 4
     MONEY += 200
-ELSEIF RESULT == 7
-    PRINTW “REVERSAL” 모드를 선택했습니다.
-    FLAG:4 = 3
-    CALL START_CHARA_SELECT
-    CALL RV_CHARA0
-    CALL MASTER_FUTA_SET
-    CALL MASTER_SAD_SET
-    MONEY += 19000
-ELSEIF RESULT == 8
-    PRINTW “CHALLENGE” 모드를 선택했습니다.
-    FLAG:5 |= 1
-    CALL SELECT_CHALLENGEMODE
 ELSEIF RESULT == 9
     PRINTW “EXTRA” 모드를 선택했습니다.
     FLAG:4 = 2
     FLAG:5 |= 1
     CALL START_CHARA_SELECT
-    MONEY += 19000
-;「하쿠레이 레이무」(890016) 입력으로 SP 캐릭터로 시작할 수 있는 XEXTRA 모드(주인이 처음부터 SP 캐릭터를 쓸 수 있는 EXTRA 모드)
-ELSEIF RESULT == 890016
-    PRINTW “XEXTRA” 모드를 선택했습니다.
-    FLAG:4 = 2
-    FLAG:5 |= 1
-    CALL START_EXTRACHARA_SELECT
     MONEY += 19000
 ;「野菜いっぱい」入力で特殊な素質が付いたYASAIモード(実際の扱いは特殊主人で始めるEXTRAモード)
 ELSEIF RESULT == 831181
@@ -180,39 +155,19 @@ ELSEIF RESULT == 831181
     PRINTL 어느 항목에서 주인을 선택하겠습니까?
     PRINTL [0] 변경하지 않는다
     PRINTL [1] 통상 캐릭터
-    PRINTL [2] SPz캐릭터
-    PRINTL [3] IRC캐릭터
     $INPUT_LOOP_YASAI
     INPUT
     IF RESULT == 1
         CALL START_CHARA_SELECT
-    ELSEIF RESULT == 2
-        CALL START_EXTRACHARA_SELECT
-    ELSEIF RESULT == 3
-        CALL START_IRCCHARA_SELECT
     ELSEIF RESULT != 0
         GOTO INPUT_LOOP_YASAI
     ENDIF
-;「コ○コ○コミック」入力でデバッグモードへ(期限不明, 目標：全バグ潰し)
-;「31337」入力で捕鯨大好きな反則紳士に
-;「96996」入力でSPキャラを主人に選択可能(96996→黒心→ブラックハー(ry )
-;「99100101」入力でREVERSALの究極股間機が開発可能に(パイルバンカー波動砲は男の浪漫)
-;「↑↑↓↓←→←→」入力で主人がチ一夕一マンに(チーター乙)
-;「578370(こちやさなえ)」入力で東方キャラを主人に選択できるデバグモードに
-ELSEIF RESULT == 31337 || RESULT == 96996 || RESULT == 5656539 || RESULT == 578370 || RESULT == 46826482 || RESULT == 88224646 || RESULT == 99100101 || RESULT == 8888577
-    CALL SELECT_DEBUGMODE
-;오나마스 모드. 노예 구입 불가. 당신이 당신을 조교하는 괴랄한 모드.
-ELSEIF RESULT == 18
-    CALL SELECT_ONAMASMODE
 ELSEIF RESULT == 100
     DRAWLINE
     PRINTL eratohoYM ：보통 플레이를 할 사람 지향. 기한 있음
     PRINTL PROSTITUTE：창관을 운영해나가는 모드입니다. 기한 있음
     PRINTL ABNORMAL　：여주인이나 쇼타로 해보고 싶은 사람 지향. 기한 있음
-    PRINTL REVERSAL　：동방 캐릭터에게 에로한 짓을 당하고 싶은 사람 지향. 기한 없음
-    PRINTL CHALLENGE ：무명 캐릭터를 엄청 좋아하는 사람 지향. 기한 없음
     PRINTL EXTRA 　　：백합과 장미의 세계로 어서 오십시오. 기한 없음
-;    PRINTL DEBUG 　 ：버그를 상대로 끝없는 싸움을 시작합니다. 프리―덤
     DRAWLINE
     WAIT
     DRAWLINE
@@ -223,250 +178,6 @@ ELSE
     GOTO INPUT_LOOP_GAMEMODE
 ENDIF
 
-;--------------------------------------------------
-;디버그 모드 선택
-;--------------------------------------------------
-@SELECT_DEBUGMODE
-IF RAND:10 == 0
-    PRINTL ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-    PRINTL WARNING:WARNING:WARNING:WARNING:WARNING:
-    PRINTL ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
-    PRINTL 　　　　　　　NAME
-    PRINTL 　　　　　　　　ジ　eratohoYM
-    PRINTL 　　　　　　　＿＿＿＿＿＿＿＿＿＿＿＿
-    PRINTL 　　　　　　／　　　　　STAGE INFINITY
-    PRINTW 
-ELSEIF RAND:9 == 0
-    PRINTL DESTROY ALL BUGS
-    PRINTL AND PICK UP LOGS
-    PRINTL TO MAKE THE VARIANT MORE BETTER■
-    PRINTL 
-    PRINTW 
-    PRINTL WARNING
-    PRINTL APPROACHING A HUGE ERROR■
-    PRINTL 
-    PRINTW 
-ELSEIF RAND:8 == 0
-    PRINTL ＷARNING　　　　　　　　　RADAR EHT NO　　　　
-    PRINTL 　CONFIRMED 　　　　―Φ― MARGORP KRAD EGUH　
-    PRINTL 　HUGE DARK PROGRAM 　　　　　　　 DEMRIFNOC　
-    PRINTW 　ON THE RADAR　　　　　　　　　　　　GNINRAＷ
-    PRINTL 
-    PRINTL 　　　　　　VARIANT IS APPROACHING
-    PRINTL 　　　　　　　　　CODE NAME
-    PRINTL 
-    PRINTW 　　　　　　　　　eratohoYM
-ELSEIF RAND:7 == 0
-    PRINTL ENCOUNTRED AN VARIANT
-    PRINTL eratohoYM
-    PRINTL ￣￣￣￣￣￣
-    PRINTL BE ATTITUDE FOR GAINS...
-    PRINTL 1:REINFORCED ERRORS
-    PRINTL 2:998 FOR OTHERS
-    PRINTW 3:BACKUP YOURFILES
-ELSEIF RAND:6 == 0
-    PRINTL 
-    PRINTL 　　　　　　　　　　　　　STAY COOL!
-    PRINTL 
-    PRINTL 　　　　　　　　-SOMEONE TAKES THE BUG OUT!-
-    PRINTW 
-ELSEIF RAND:5 == 0
-    PRINTL 　　　　　　　　 Received telegram from HYPERION.
-    PRINTL 　　　　　Enemy threat removed by your erotic train.
-    PRINTL 　　　The training pattern of the latest ERO unmaned macro
-    PRINTL 　　　　　　 has been completed according to the data.
-    PRINTL 　　　　　　　　　　 From your train record.
-    PRINTL 
-    PRINTL 　　　　　　　　　　For your meritorious deed,
-    PRINTL 　You `re honored to be selected as the debugger of the last YM test.
-    PRINTL 　　　　　　　　　　　　Congratulations.
-    PRINTL 　　　　　After you debug, you will advanced two classes
-    PRINTL 　　　　　　　and the awarded the sage decoration.
-    PRINTL 
-    PRINTW 　　　　 Glory with the eramaker. Mercy on the gentleman.
-ELSEIF RAND:4 == 0
-    PRINTL 　　　　　　　　　　WARNING
-    DRAWLINE
-    PRINTL 
-    PRINTL 　　　　The R-18 variant is approaching
-    PRINTL 　　　　　　　　at full throttle.
-    PRINTL 　　　　　According to the data. It is
-    PRINTL 　　　　　 identified as“eratohoYM”
-    PRINTL 
-    DRAWLINE
-    PRINTW 　　　　　　　　　NO REFUGE
-ELSEIF RAND:3 == 0
-    PRINTL 　　　　　　 How are you gentlemen !!
-    PRINTL 　　　　 All your bride are belong to us.
-    PRINTL 　　　　　 You are on the way to debug.
-    PRINTW 　 You have no chance to erection make your time.
-ELSEIF RAND:2 == 0
-    PRINTL 　　　　　　　　　　WARNING!
-    PRINTL 　　　　　　　 A HUGE BUGPROGRAM
-    PRINTL 　　　　　　　　 “eratoho YM”
-    PRINTW 　　　　　　　IS APPROACHING FAST!
-ELSE
-    PRINTL 　　　　 Approach your target and attack!
-    PRINTL 　　　　　　 Your Debug starts now!
-    PRINTW 　　　　　　　　Are you ready!?
-ENDIF
-IF RESULT == 31337
-    ADDCHARA 500
-    DELCHARA 0
-    MASTER = 0
-    NO:MASTER = 0
-    NICKNAME:MASTER = 『반칙신사』
-ELSEIF RESULT == 96996
-    CALL START_EXTRACHARA_SELECT
-    SIF TALENT:MASTER:120 && NO:MASTER == 0
-        NICKNAME:MASTER = 『GENTLEMAN』
-ELSEIF RESULT == 578370
-    CALL START_CHARA_SELECT
-    NICKNAME:MASTER = 『환상향 조정자』
-ELSEIF RESULT == 88224646
-    NAME:MASTER = 치터맨
-    CALLNAME:MASTER = 치터맨
-    NICKNAME:MASTER = 『치터』
-    TALENT:MASTER:54 = 1
-    TALENT:MASTER:116 = 1
-    TALENT:MASTER:133 = 1
-ELSEIF RESULT == 99100101
-    FLAG:4 = 3
-    CALL START_CHARA_SELECT
-    CALL RV_CHARA0
-    CALL MASTER_FUTA_SET
-    CALL MASTER_SAD_SET
-    SIF TALENT:120 && NO:TARGET == 0
-        NICKNAME:TARGET = 『GENTLEMAN』
-ELSE
-    NICKNAME:MASTER = 『DEBUGGER』
-ENDIF
-TALENT:MASTER:998 = 1
-FLAG:5 |= 1
-FLAG:4 = 9
-MONEY = 50000
-
-;--------------------------------------------------
-;오나마스 모드. 당신이 당신을 조교하는 괴랄한 모드
-;BY VANDIT KING. 130920~
-;--------------------------------------------------
-@SELECT_ONAMASMODE
-PRINTL ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-PRINTL WARNING:WARNING:WARNING:WARNING:WARNING:
-PRINTL ￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣
-PRINTL 　　   "러시아에서는 당신이 당신을 조교합니다!"
-PRINTL 　　　　　　　　　eratohoYM
-PRINTL 　　　　　　　＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
-PRINT 　　　　　　／　　　　　STAGE : 
-SETCOLOR 255,100,100
-PRINTL <ONANI-MASTER>
-RESETCOLOR
-PRINTW 
-PRINTL
-$SELECT_CHARA
-PRINTL 플레이어를 선택하시겠습니까? (선택하지 않는 것을 추천합니다)
-PRINTFORML [0] 나는 나다!
-PRINTFORML [1] 가끔은 다른 것도 좋겠지….
-INPUT
-IF RESULT == 0
-    $SELECT_GENDER
-    PRINTL 성별을 선택해 주세요.
-    PRINTFORML [0] 사상이 울퉁불퉁한 사나이
-    PRINTFORML [1] 반전 있는 여자
-    PRINTFORML [2] 에이린 선생님. 후나타리가 되고 싶어요!
-    INPUT
-    IF RESULT == 0
-        ;
-    ELSEIF RESULT == 1
-        TALENT:MASTER:120 =0
-    ELSEIF RESULT == 2
-        TALENT:MASTER:120 =0
-        TALENT:MASTER:121 =1
-    ELSE
-        GOTO SELECT_GENDER
-    ENDIF
-    $SELECT_TALENT
-    PRINTL 당신은 성에 개방적입니까? (게임 난이도가 크게 달라집니다)
-    PRINTFORML [0] 예. (EASY)
-    PRINTFORML [1] 정조는 중요하지. (NORMAL)
-    PRINTFORML [2] 야… 야한 건 안된다고 생각합니다! (HARD)
-    PRINTFORML [3] 잘 모르겠는데…? (기본 소질만 가지고 시작)
-    INPUT
-    IF RESULT == 0
-        ;정조관 둔감
-        TALENT:MASTER:31 = 1
-        ;솔직함
-        TALENT:MASTER:13 = 1
-        ;습득빠름
-        TALENT:MASTER:50 = 1
-        ;젖기 쉬움
-        TALENT:MASTER:42 = 1
-        ;쾌감을 부정
-        TALENT:MASTER:70 = 1
-    ELSEIF RESULT == 1
-        ;반항적
-        TALENT:MASTER:11 = 1
-        ;꿋꿋함
-        TALENT:MASTER:12 = 1
-        ;정조관념
-        TALENT:MASTER:30 = 1
-    ELSEIF RESULT == 2
-        ;반항적
-        TALENT:MASTER:11 = 1
-        ;꿋꿋함
-        TALENT:MASTER:12 = 1
-        ;정조관념
-        TALENT:MASTER:30 = 1
-        ;부끄럼쟁이
-        TALENT:MASTER:35 = 1
-        ;부끄럼쟁이
-        TALENT:MASTER:35 = 1
-        ;습득느림
-        TALENT:MASTER:51 = 1
-        ;젖기 어려움
-        TALENT:MASTER:43 = 1
-        ;쾌감을 부정
-        TALENT:MASTER:71 = 1
-    ELSEIF RESULT == 3
-        ;호기심
-        TALENT:MASTER:23 = 1
-    ELSE
-        GOTO SELECT_TALENT
-    ENDIF
-ELSEIF RESULT == 1
-    CALL START_CHARA_SELECT
-ELSE
-    GOTO SELECT_CHARA
-ENDIF
-;기본 탈렌트 추가
-;조합지식
-TALENT:MASTER:55 = 1
-;금단의 지식
-TALENT:MASTER:56 = 1
-;치료
-TALENT:MASTER:59 = 1
-;회복빠름
-TALENT:MASTER:137 = 1
-;대범함
-TALENT:MASTER:98 = 1
-;자위하기 쉽다
-TALENT:MASTER:60 = 1
-;도착적
-TALENT:MASTER:80 = 1
-;자위중독 LV3
-ABL:MASTER:30 = 3
-;기본정보 세팅
-FLAG:4 = 18
-MONEY = 50000
-TARGET = 0
-;시작설명.
-SETCOLOR 0,255,255
-PRINTL
-PRINTL 이 시대 마지막 나르시스트가 쓰는 전설이
-PRINTL                 지금. 이곳에…
-PRINTL
-RESETCOLOR
-WAIT
 ;--------------------------------------------------
 ;난이도 선택
 ;--------------------------------------------------
@@ -556,7 +267,7 @@ LOCAL:2 = RESULT
 ;ページをめくったときなどはここから
 $PRINT_LIST
 DRAWLINE
-PRINTFORML ★★ \@(FLAG:4 == 3) ? 주인님을 # 플레이어를 \@ 변경할 수 있습니다 ★★
+PRINTFORML ★★ 플레이어를 변경할 수 있습니다 ★★
 PRINTFORML 캐릭터를 선택하십시오. ＜page.{LOCAL:1+1}＞
 DRAWLINE
 LOCAL:3 = 0
@@ -577,12 +288,12 @@ NEXT
 PRINTL 
 DRAWLINE
 PRINTFORMLC \@(LOCAL:1 <= 0) ? %" " * 16% # [1001] 앞페이지\@
-PRINTFORMLC \@(FLAG:4 == 3) ? %" " * 16% # [1000] 돌아가기\@
+PRINTFORMLC [1000] 돌아가기
 PRINTFORMLC \@(LOCAL:1 >= LOCAL:2) ? %" " * 16% # [1009] 다음페이지\@
 $INPUT_LOOP
 INPUT
 ;変更しないを選んだ場合は"あなた"でここで終わり
-IF RESULT == 1000 && FLAG:4 != 3
+IF RESULT == 1000
     LOCAL = 0
 ELSEIF RESULT == 1001 && LOCAL:1 > 0
     LOCAL:1 -= 1
@@ -611,7 +322,7 @@ ELSE
     ITEM:(LOCAL+100) = 1
 ENDIF
 
-PRINTFORMW \@(FLAG:4 == 3) ? 마스터 # 플레이어\@를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
+PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
 IF NO:MASTER == 0 && FLAG:4 == 1
     CALL SET_MASTER_SEX
 ENDIF
@@ -640,352 +351,12 @@ FOR COUNT, 100, ARG
     SIF COUNT == 100 || COUNT == 248 || COUNT == 249 || COUNT == 500
         CONTINUE
 
-    ;REVERSALモード場合, 専用逆口上をサーチする
-    IF FLAG:4 == 3
-        RESULT = 0
-        TRYCALLFORM TRY_0_{COUNT-100}
-        CALLF SET_LIST, COUNT, RESULT
-    ENDIF
-
     ITEMSALES:COUNT = 1
     LOCAL:2 += 1
     SIF (LOCAL:2%30) == 1 && LOCAL:2 > 30
         LOCAL:1 += 1
 NEXT
 RETURN LOCAL:1
-
-;=============================================================================
-;XEXTRA 모드 관련의 처리
-;=============================================================================
-;実際は能力などを一旦リセットした後キャラを再生成する処理を行う
-;キャンセルした場合は一度0番のキャラを作り, その後前のキャラを消去してEXTRAモードへと移行
-;-------------------------------------------------
-;PCをSPキャラで始める処理
-;-------------------------------------------------
-@START_EXTRACHARA_SELECT
-TARGET = 0
-MAXBASE:0 = 0
-MAXBASE:1 = 0
-MAXBASE:2 = 0
-VARSET ABL:TARGET:0, 0, 0, 100
-VARSET EXP:TARGET:0, 0, 0, 100
-VARSET RELATION:TARGET:0, 0, 0, 200
-VARSET TALENT:TARGET:0, 0, 0, 1000
-DRAWLINE
-PRINTL ★★ 플레이어를 변경할 수 있습니다 ★★
-PRINTL ★★ 캐릭터를 선택해 주세요 ★★
-DRAWLINE
-PRINTLC [000] 캔슬
-PRINTLC [001] 츠미부쿠로
-PRINTLC [002] 카도케지 씨
-PRINTLC [003] 타카히로
-PRINTLC [004] 쟈미
-PRINTLC [012] 레이무 님
-PRINTLC [021] 구작 마리사
-PRINTLC [022] 초 마리사
-PRINTLC [031] ＥＸ루미아
-PRINTLC [041] ＥＸ대요정
-PRINTLC [042] Ｂ대요정
-PRINTLC [051] 어드벤트 치르노
-PRINTLC [052] 바이 치르노
-PRINTLC [141] 꼬마 앨리스
-PRINTLC [201] 생전 유유 님
-PRINTLC [272] 테위 사부님
-PRINTLC [381] 넨코
-PRINTLC [401] 그린다무
-PRINTLC [422] 사나에 님
-PRINTLC [612] 과묵 사토링
-PRINTLC [1562] 쥴리앙
-
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    ADDCHARA 0
-    DELCHARA 0
-    MASTER = 0
-    TARGET = -1
-    CALL START_CHARA_SELECT
-    RETURN 0
-ELSEIF RESULT == 1
-    CALL EXTRA_MASTER_00_1
-ELSEIF RESULT == 2
-    CALL EXTRA_MASTER_00_2
-ELSEIF RESULT == 3
-    CALL EXTRA_MASTER_00_3
-ELSEIF RESULT == 4
-    CALL EXTRA_MASTER_00_4
-ELSEIF RESULT == 12
-    CALL EXTRA_MASTER_01_2
-ELSEIF RESULT == 21
-    CALL EXTRA_MASTER_02_1
-ELSEIF RESULT == 22
-    CALL EXTRA_MASTER_02_2
-ELSEIF RESULT == 31
-    CALL EXTRA_MASTER_03_1
-ELSEIF RESULT == 41
-    CALL EXTRA_MASTER_04_1
-ELSEIF RESULT == 42
-    CALL EXTRA_MASTER_04_2
-ELSEIF RESULT == 51
-    CALL EXTRA_MASTER_05_1
-ELSEIF RESULT == 52
-    CALL EXTRA_MASTER_05_2
-ELSEIF RESULT == 141
-    CALL EXTRA_MASTER_14_1
-ELSEIF RESULT == 201
-    CALL EXTRA_MASTER_20_1
-ELSEIF RESULT == 272
-    CALL EXTRA_MASTER_27_2
-ELSEIF RESULT == 381
-    CALL EXTRA_MASTER_38_1
-ELSEIF RESULT == 401
-    CALL EXTRA_MASTER_40_1
-ELSEIF RESULT == 422
-    CALL EXTRA_MASTER_42_2
-ELSEIF RESULT == 612
-    CALL EXTRA_MASTER_61_2
-ELSEIF RESULT == 1562
-    CALL EXTRA_MASTER_156_2
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-
-BASE:0 = MAXBASE:0
-BASE:1 = MAXBASE:1
-CFLAG:0 = RESULT%10
-MASTER = 0
-TARGET = -1
-PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 정했다.
-
-;=============================================================================
-;YASAI 모드 관련의 처리
-;=============================================================================
-;-------------------------------------------------
-;PCをIRCキャラで始める処理
-;-------------------------------------------------
-@START_IRCCHARA_SELECT
-CALLF CLEAR_LIST
-DRAWLINE
-PRINTL ★★ 플레이어를 변경할 수 있습니다 ★★
-PRINTL ★★ 캐릭터를 선택해 주세요 ★★
-PRINTLC [0] 캔슬
-REPEAT 100
-    ;레이무 님은 선택 불능
-    SIF COUNT == 4
-        CONTINUE
-    IF ITEMPRICE:(COUNT+500) > 0
-        PRINTFORMLC [{COUNT+400}] %ITEMNAME:(COUNT+500)%
-        CALLF SET_LIST, COUNT + 400, 1
-    ENDIF
-REND
-PRINTL 
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    RETURN 0
-ELSEIF RESULT < 400 || RESULT > 500 || GET_LIST(RESULT) == 0
-    GOTO INPUT_LOOP
-ENDIF
-ADDCHARA RESULT
-DELCHARA 0
-MASTER = 0
-
-TARGET = -1
-PRINTFORMW 플레이어를 「%NAME:MASTER%」%조사만처리(NAME:MASTER,"로")% 설정합니다.
-
-;=============================================================================
-;챌린지 모드용의 처리
-;=============================================================================
-;--------------------------------------------------
-;챌린지 모드 선택시의 처리
-;--------------------------------------------------
-;
-@SELECT_CHALLENGEMODE
-;表示させるキャラを抽出
-CALLF CLEAR_LIST
-FOR COUNT, 250, 299
-    ;存在しないキャラは弾く
-    STRLENS ITEMNAME:COUNT
-    SIF RESULT < 1
-        CONTINUE
-    CALLF SET_LIST, COUNT, 1
-NEXT
-
-$PRINT_LIST
-DRAWLINE
-PRINTL 어떤 코스를 선택하겠습니까?
-PRINTLC [0] 랜덤
-PRINTLC [1] 요정난무
-PRINTLC [2] 지옥순회
-PRINTLC [3] 동물농장
-;PRINTLC  [4]
-;50以降は各名無しキャラオンリーの予定
-REPEAT 50
-    SIF GET_LIST(COUNT + 250) == 0
-        CONTINUE
-    PRINTFORMLC [{(COUNT + 50)}] %ITEMNAME:(COUNT + 250)%천국
-REND
-PRINTL [100] 설명
-DRAWLINE
-$INPUT_LOOP
-INPUT
-IF RESULT == 100
-    CALL CHALLENGEMODE_MANUAL
-    GOTO PRINT_LIST
-ELSEIF RESULT == 0
-    LOCALS = 랜덤
-    FLAG:4 = 100
-ELSEIF RESULT == 1
-    LOCALS = 요정난무
-    FLAG:4 = 101
-ELSEIF RESULT == 2
-    LOCALS = 지옥순회
-    FLAG:4 = 102
-ELSEIF RESULT == 3
-    LOCALS = 동물농장
-    FLAG:4 = 103
-;各名無しキャラオンリーモード
-ELSEIF RESULT >= 50 && RESULT < 100 && GET_LIST(RESULT + 200) == 1
-    LOCALS = %ITEMNAME:(RESULT + 200)%천국
-    FLAG:4 = RESULT
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-PRINTFORMW %LOCALS% 모드로 시작합니다.
-
-;--------------------------------------------------
-;챌린지 모드 내의 각 모드 설명
-;--------------------------------------------------
-@CHALLENGEMODE_MANUAL
-PRINTL 이하 각 코스의 대략적인 설명입니다.
-DRAWLINE
-PRINTL 00　　 랜덤　　：별 추가 없이 무명 캐릭터가 랜덤으로 추가됩니다.
-PRINTL 01　　 요정난무：요정 무명 캐릭터만 랜덤으로 추가됩니다.
-PRINTL 02　　 지옥순회：사신, 오니, 망령 등의 무명캐릭터가 추가됩니다.
-PRINTL 03　　 동물천국：토끼랑 까마귀 등 동물계 캐릭터가 랜덤으로 추가됩니다.
-PRINTL 04　　 느긋하게 있으라고!：윳쿠리 관련 캐릭터가 무작위로 추가됩니다. (미구현)
-PRINTL 50～99 ○○천국：표시되어 있는 무명 캐릭터만이 추가됩니다.
-DRAWLINE
-WAIT
-
-;--------------------------------------------------
-;챌린지 모드 개시시의 처리
-;--------------------------------------------------
-@START_CHALLENGEMODE
-PRINTL ＜무명 캐릭터 성별 랜덤＞기능을 유효로 하겠습니까?
-PRINTL ※나중에 컨피그에서 설정을 변경하는 것도 가능합니다.
-PRINTL [0] 예
-PRINTL [1] 아니오
-PRINTL [9] 설명 플리즈
-$INPUT_LOOP
-INPUT
-IF RESULT == 0
-    FLAG:12 |= 2048
-    PRINTFORMW 구입 · 추가되는 무명 캐릭터 성별을 랜덤으로 설정합니다.
-ELSEIF RESULT == 1
-    SIF FLAG:12 & 2048
-        FLAG:12 -= 2048
-PRINTFORMW 구입 · 추가되는 무명 캐릭터의 성별을 모두 ♀만 있게 설정했습니다.
-ELSEIF RESULT == 9
-    PRINTL ＜무명 캐릭터 성별 랜덤＞ 기능을 유효로 한 지금, 
-    PRINTL 일부 캐릭터를 빼놓고 빠지거나 추가되는 무명 캐릭터의 성별이 랜덤으로 변합니다.
-    PRINTL 무효인 경우엔 추가되는 무명 캐릭터가 ♀만으로 고정됩니다.
-    PRINTW 남자 무명 캐릭터도 조교하고 싶어! ……라는 사람 지향.
-    PRINTL 
-    RESTART
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-
-FLAG:90 = 4
-FLAG:92 = 99
-FLAG:93 = 20
-FLAG:94 = 99
-SAVESTR:1 = 《숨겨진 마을》
-REPEAT 150
-    LOCAL = COUNT + 1000
-    LOCAL:1 = COUNT + 1500
-    FLAG:LOCAL = 0
-    FLAG:(LOCAL:1) = 1
-REND
-FLAG:565 = 2
-
-CALL FILL_CHARA
-TARGET = -1
-
-;--------------------------------------------------
-;무명 캐릭터 보충 처리
-;--------------------------------------------------
-@FILL_CHARA
-SIF CHARANUM >= 100 || FLAG:4 < 50
-    RETURN 0
-IF FLAG:4 < 100
-    ;各キャラオンリー
-    LOCAL = 100 + FLAG:4
-ELSEIF FLAG:4 == 100
-    ;ランダム
-    LOCAL = 150 + RAND:50
-    SIF !EXISTCSV(LOCAL, 0)
-        RESTART
-ELSEIF FLAG:4 == 101
-    ;妖精乱舞
-    LOCAL = 150 + RAND:20
-    SIF !EXISTCSV(LOCAL, 0)
-        RESTART
-ELSEIF FLAG:4 == 102
-    ;地獄巡り(ゾンビフェアリー, 黒呪精, 地獄鴉, 亡霊, 旧都鬼, 地獄鬼, 死神の中からランダムで追加される)
-    LOCAL = RAND:7
-    SELECTCASE LOCAL
-        CASE 0
-            LOCAL = 156
-        CASE 1
-            LOCAL = 166
-        CASE 2
-            LOCAL = 178
-        CASE 3
-            LOCAL = 179
-        CASE 4
-            LOCAL = 181
-        CASE 5
-            LOCAL = 182
-        CASE 6
-            LOCAL = 183
-    ENDSELECT
-ELSEIF FLAG:4 == 103
-    ;動物王国(地上の兎, 鴉天狗, 白狼天狗, 夜雀, 地獄鴉, 河童, 玉兎, 化け猫, 化け狐, 化け鼠の中からランダムで追加される)
-    LOCAL = RAND:10
-    SELECTCASE LOCAL
-        CASE 0
-            LOCAL = 170
-        CASE 1
-            LOCAL = 174
-        CASE 2
-            LOCAL = 175
-        CASE 3
-            LOCAL = 177
-        CASE 4
-            LOCAL = 178
-        CASE 5
-            LOCAL = 180
-        CASE 6
-            LOCAL = 184
-        CASE 7
-            LOCAL = 186
-        CASE 8
-            LOCAL = 187
-        CASE 9
-            LOCAL = 188
-    ENDSELECT
-ENDIF
-ADDCHARA LOCAL
-;キャラカード取得
-ITEM:(LOCAL + 100) += 1
-TARGET = CHARANUM - 1
-CALL CHARA_RANDOM_STATE
-CFLAG:3109 = CHARANUM
-CSTR:3 = %CALLNAME:MASTER%에게 조교 받기 위해 끌려왔다.
-SIF CHARANUM < 100
-    RESTART
 
 ;=============================================================================
 ;「당신」 설정 관련
@@ -1287,19 +658,13 @@ BASE:MASTER:0 = MAXBASE:MASTER:0
 BASE:MASTER:1 = MAXBASE:MASTER:1
 
 ;趣味的素質付加をスキップするかどうか
-IF FLAG:4 == 3
-    PRINTL 남은 질문은 난이도에 따라 달라지지만……
-ELSE
-    PRINTL 다소 질문이 길어질 것 같은데, 하실래요?
-ENDIF
+PRINTL 다소 질문이 길어질 것 같은데, 하실래요?
 PRINTL [0] 어서 오쇼
 PRINTL [1] 그만둘래
 $INPUT_LOOP_6
 INPUT
 SIF RESULT != 0 && RESULT != 1
     GOTO INPUT_LOOP_6
-SIF RESULT == 1 && FLAG:4 == 3
-    GOTO TALENT_SET_END
 SIF RESULT == 1
     GOTO TALENT_SET_EX
 
@@ -1595,19 +960,17 @@ SIF RESULT != 0 && RESULT != 1
 TALENT:80 = RESULT
 
 $TALENT_SET_EX
-IF FLAG:4 != 3
-    ;ゲームバランスにかかわる素質をスキップするか
-    PRINTL 남은 질문은 잘못 대답하면 난이도 팍 무너지는데…….
-    PRINTL [0] 그냥 팍팍 혀.
-    PRINTL [1] 그만둘란다.
-    $INPUT_LOOP_31
-    INPUT
-    IF RESULT == 1
-        GOTO TALENT_SET_END
-    ELSEIF RESULT != 0
-        PRINTL 올바른 값을 입력해 주세요.
-        GOTO INPUT_LOOP_31
-    ENDIF
+;ゲームバランスにかかわる素質をスキップするか
+PRINTL 남은 질문은 잘못 대답하면 난이도 팍 무너지는데…….
+PRINTL [0] 그냥 팍팍 혀.
+PRINTL [1] 그만둘란다.
+$INPUT_LOOP_31
+INPUT
+IF RESULT == 1
+    GOTO TALENT_SET_END
+ELSEIF RESULT != 0
+    PRINTL 올바른 값을 입력해 주세요.
+    GOTO INPUT_LOOP_31
 ENDIF
 
 ;サド/小悪魔/マゾ

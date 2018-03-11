@@ -12,11 +12,9 @@
 @EVENTTURNEND
 #LATER
 IF FLAG:5 == 0
-    IF FLAG:4 != 3
-        ;REVERSAL 모드 이외 때, 주인의 피강간 경험과 피윤간 경험의 합계가 일정 이상을 넘고 있어, 게다가 타락도가 256이상이라면 배드 엔딩 7에
-        SIF (EXP:MASTER:81 + EXP:MASTER:82) >= EXPLV:4 && CFLAG:MASTER:66 >= 256
-            CALL BADEND_4
-    ENDIF
+    ;주인의 피강간 경험과 피윤간 경험의 합계가 일정 이상을 넘고 있어, 게다가 타락도가 256이상이라면 배드 엔딩 7에
+    SIF (EXP:MASTER:81 + EXP:MASTER:82) >= EXPLV:4 && CFLAG:MASTER:66 >= 256
+        CALL BADEND_4
     IF (FLAG:4 == 0 || FLAG:4 == 1 || FLAG:4 == 4)
         CALL ENDING_TIMEUP
         SIF RESULT == 1

@@ -130,26 +130,34 @@ IF CFLAG:5201 == 0
     IF CFLAG:3005 <= 0
 
         ;딸의 소질을 설정한다. 각 부위에 민감이 뜰 확률은 1/3, 둔감이 뜰 확률도 1/3
-        IF RAND:100 > 30
-            TALENT:100 = 1
-        ELSEIF RAND:100 > 30
-            TALENT:101 = 1
+        IF TALENT:100 == 0 && TALENT:101 == 0
+            IF RAND:100 > 30
+                TALENT:100 = 1
+            ELSEIF RAND:100 > 30
+                TALENT:101 = 1
+            ENDIF
         ENDIF
-        IF RAND:100 > 30
-            TALENT:102 = 1
-        ELSEIF RAND:100 > 30
-            TALENT:103 = 1
+        IF TALENT:102 == 0 && TALENT:103 == 0
+            IF RAND:100 > 30
+                TALENT:102 = 1
+            ELSEIF RAND:100 > 30
+                TALENT:103 = 1
+            ENDIF
         ENDIF        
-        IF RAND:100 > 30
-            TALENT:104 = 1
-        ELSEIF RAND:100 > 30
-            TALENT:105 = 1
-        ENDIF    
-        IF RAND:100 > 30
-            TALENT:106 = 1
-        ELSEIF RAND:100 > 30
-            TALENT:107 = 1
-        ENDIF    
+        IF TALENT:104 == 0 && TALENT:105 == 0
+            IF RAND:100 > 30
+                TALENT:104 = 1
+            ELSEIF RAND:100 > 30
+                TALENT:105 = 1
+            ENDIF 
+        ENDIF
+        IF TALENT:106 == 0 && TALENT:107 == 0
+            IF RAND:100 > 30
+                TALENT:106 = 1
+            ELSEIF RAND:100 > 30
+                TALENT:107 = 1
+            ENDIF    
+        ENDIF
         ;만약 민감이 1개도 없다면, V민감이 된다.
         IF TALENT:100 == 0 && TALENT:102 == 0 && TALENT:104 == 0 && TALENT:106 == 0 
             TALENT:100 = 1
@@ -5898,9 +5906,6 @@ RETURN 0
 ;파라미터 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_PALAMCNG_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_MESSAGE_PALAMCNG_K0_MX
 ;자고 있다·기절중·개구기 중에는 돌아온다
 SIF EQUIP:14 || TFLAG:899 >= 1 || KX_MOUSE_CHECK(TARGET)
     RETURN 0
@@ -7799,9 +7804,6 @@ ENDIF
 ;각인 변동 후에 말을 발동합니다
 ;-------------------------------------------------
 @KOJO_MESSAGE_MARKCNG_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_MESSAGE_MARKCNG_K0_MX
 ;자고 있는·기절중·구가 다하고는 돌아온다
 SIF EQUIP:14 || TFLAG:899 >= 1 || KX_MOUSE_CHECK(TARGET)
     RETURN 0
@@ -14072,98 +14074,6 @@ IF SELECTCOM == 64
 ENDIF
 
 ;-------------------------------------------------
-;강정신약·흥분제·감각 증폭약(공용)
-;-------------------------------------------------
-IF SELECTCOM == 65 || SELECTCOM == 70
-    ;初回で対象が娘のとき
-    IF LOCAL:1 == 1 && CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
-        IF CFLAG:3005 == 3
-            PRINTFORML 「보통, 이런 약은 부모 쪽에서 막는 거 아닌가요?」
-            PRINTFORMW 「하긴, 우리 부모가 심상치 않다는 건 새삼스럽죠…」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORML 「%조사처리(STR:401,"가")% 그런 걸 딸에게 먹여서 어떻게 할 거야…」
-            PRINTFORMW 「하아, 뭐 마시겠지만 그, 뒤처리는 부모의 책임이야…」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「%STR:401%, 그런 건 평범한 부모라면 딸에게 먹이지 않는 것이라 생각해요…」
-            PRINTFORMW 「정말 이 집안은 어떻게 된 건지…」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORML 「%STR:401%, 뭐죠? 그 이상한 약은?」
-            PRINTFORMW 「아무리 %STR:401%의 명령이라도, 솔직히 마시고 싶지 않습니다만…」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORML 「%조사처리(STR:401,"가")% 그런 약을 줄 줄은…」
-            PRINTFORMW 「저기… %조사처리(STR:400,"가")% 이거에 빠져들어도 되는 건가요?」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORML 「%STR:401% 그게 뭐야? 약이야?」
-            PRINTFORMW 「잘은 모르겠지만, 일단 한번 마셔볼게…」
-        ENDIF
-    ;初回の場合
-    ELSEIF LOCAL:1 == 1
-        IF CFLAG:3005 == 3
-            PRINTFORML 「…뭔가요? 그 위험해보이는 약은?」
-            PRINTFORMW 「그만두세요! 그런 거 마시면, 이상해져버려요!」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORML 「아아, 결국 그런 위험한 약까지 먹이는 거네…」
-            PRINTFORMW 「가까운 시일에 %조사처리(STR:400,"는")% 살해당할지도 모르겠네…」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「그, 그건… 제발! 부탁이니까 그만해줘!」
-            PRINTFORMW 「좀 더 기분 좋게 해줄 테니까, 그것만은…」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORML 「뭔가요? 그 기분 나쁜 약은?」
-            PRINTFORMW 「%조사처리(STR:401,"는")% %조사처리(STR:400,"를")% 어떻게 하고 싶은 거죠?」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORML 「그런 약을 먹인다는 건, 그…」
-            PRINTFORMW 「%조사처리(STR:400,"를")% 망가뜨리면서 놀고 싶으신 건가요?」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORML 「뭐야뭐야? 약? 기분 좋게 돼?」
-            PRINTFORMW 「응, 뭐, 마셔볼게. 달면 좋겠다」
-        ENDIF
-    ;２回目以降で対象が娘のとき
-    ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
-        IF CFLAG:3005 == 3
-            PRINTFORML 「그 약은 습관이 되면 돌이킬 수 없을 것 같아요…」
-            PRINTFORMW 「%조사처리(STR:401,"는")%, %조사처리(STR:400,"가")% 그렇게 되기 전에 멈춰주세요…」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORML 「%STR:401%…, 혹시 %조사처리(STR:400,"를")% 폐인으로 만들 작정이야?」
-            PRINTFORMW 「그건 아무리 그래도 너무하잖아?」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「%조사처리(STR:401,"는")%, %조사처리(STR:400,"를")% 망가뜨리려는 것입니까?」
-            PRINTFORMW 「그렇게 되기 전에 그만두지 않겠어요? 아직 늦지 않았어요…」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORML 「%STR:401%, 이제 그만두지 않으면 좋지 않을 거라 생각해요…」
-            PRINTFORMW 「그렇지 않으면 여러가지로 힘든 일이 일어날 것 같으니까요…」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORML 「뭐, 너무 그런 걸 많이 쓰면 망가질 것 같지만…」
-            PRINTFORMW 「그렇다 해도, %조사처리(STR:401,"가")% 돌봐준다면 괜찮을지도요?」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORML 「%CALLNAME:TARGET%, 약 같은 건 먹기 싫은데…」
-            PRINTFORMW 어쩔 수 없이 약을 먹으면서 %조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:MASTER,"을")% 눈물젖은 눈으로 바라봤다.
-        ENDIF
-    ;２回目以降
-    ELSE
-        IF CFLAG:3005 == 3
-            PRINTFORML 「…또 그건가요? 슬슬 자중하시죠」
-            PRINTFORMW 「약에 미쳐버리면, 더는 원래대로 돌아올 수 없어요」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORML 「하아하아, %조사처리(STR:400,"는")% 제정신이야…」
-            PRINTFORMW 「하지만 얼마 안 가 %STR:401% 때문에 미쳐버릴지도 모르겠네…」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「그런 걸 계속 마시면, 언젠가 이상해져 버릴 게 틀림없다…」
-            PRINTFORMW 「아니, 차라리 망가져 버리는 게 나을지도 모르겠군」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORML 「그만둬 주세요, 이제 그런 약, 마시고 싶지 않아요」
-            PRINTFORMW 「이상해져 버린 뒤에는 이미 늦으니까요…」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORML 「별로, %조사처리(STR:400,"는")% 이런 것으로는 망가지고 싶지 않습니다만…」
-            PRINTFORMW 「선택의 여지는 없는 걸까요? 유감입니다…」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORML 「%CALLNAME:TARGET%, 약 같은 건 먹기 싫은데…」
-            PRINTFORMW 어쩔 수 없이 약을 먹으면서 %조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:MASTER, "을")% 눈물젖은 눈으로 바라봤다.
-        ENDIF
-    ENDIF
-    RETURN 1
-ENDIF
-
-;-------------------------------------------------
 ;배란유발제(난생·산란 체질 제외하다)·산란 촉진제(난생·산란 체질만)(공용)
 ;-------------------------------------------------
 IF SELECTCOM == 66 || SELECTCOM == 68
@@ -14370,7 +14280,7 @@ ENDIF
 ;-------------------------------------------------
 ;클리토리스 주사·보지 주사·어널 주사·버스트 주사·요도 주사·C강정신약주사(공용)
 ;-------------------------------------------------
-IF SELECTCOM == 80 || SELECTCOM == 81 || SELECTCOM == 82 || SELECTCOM == 83 || SELECTCOM == 84 || SELECTCOM == 86
+IF SELECTCOM == 80 || SELECTCOM == 81 || SELECTCOM == 82 || SELECTCOM == 83 || SELECTCOM == 84
     ;初回で対象が娘のとき
     IF LOCAL:1 == 1 && CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
         IF CFLAG:3005 == 3

@@ -239,12 +239,6 @@ IF TEQUIP:8 == 1
 ELSEIF TEQUIP:8 == 2
     CALL EQUIP_COM85
 ENDIF
-;흥분제
-SIF TEQUIP:14
-    CALL EQUIP_COM70
-;감각증폭약
-SIF TEQUIP:7
-    CALL EQUIP_COM72
 
 ;……………수치 플레이계＋α 장착구……………
 ;비디오 촬영 중
@@ -425,9 +419,6 @@ SIF TEQUIP:90
     CALL EQUIP_COM500
 
 ;……………………특수한 처리……………………
-;強精神薬の効果発揮中／強精神薬の反動処理
-SIF TEQUIP:13
-    CALL EQUIP_COM65
 ;媚薬風呂の残り効果発揮時間／媚薬風呂の反動処理
 SIF TEQUIP:11 > 1
     CALL EQUIP_COM364

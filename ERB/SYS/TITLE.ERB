@@ -48,8 +48,6 @@ DRAWLINE
 $TITLE_SELECT
 PRINTL [0] 힘세고 강한 시작
 PRINTL [1] 불러오기
-;현재, 어떻게 고쳐야할지 기술적인 부분이 딸려서 잠시 이용을 불가능하게 해놓겠습니다.
-PRINTL [2] 동방조교전
 IF PENIS(TARGET)
 ENDIF
 $TITLE_INPUT
@@ -69,11 +67,6 @@ ELSEIF RESULT == 1
     CALL LOADGAME_EX
     GOTO TITLE_SELECT
     ;LOADGAME_EX에서 LOAD를 실행하지 않고 돌아왔을 경우, 다시 한 번 도로 선택함.
-ELSEIF RESULT == 2
-    FLAG:3 = 8
-    FLAG:999 = 1
-    CALL DICTIONARY_MENU
-    GOTO TITLE_SELECT
 ELSE
     REUSELASTLINE 무효값입니다.
     GOTO TITLE_INPUT

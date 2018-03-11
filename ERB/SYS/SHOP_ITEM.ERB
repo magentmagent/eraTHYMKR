@@ -211,7 +211,7 @@ ENDIF
 ;붉은 개목걸이(노예 엔딩 조건은 여기서 처리)
 ITEMSALES:98 = 0
 ;渡したい相手が調教対象であり, ゲームモードがeratohoYMかABNORMALかREVERSALでまだエンディングを迎えておらず, エンゲージリングと赤い首輪を未所持であること
-IF TARGET >= 0 && (FLAG:4 < 2 || FLAG:4 == 3 || FLAG:4 == 9) && FLAG:5 == 0 && ITEM:98 == 0 && ITEM:99 == 0
+IF TARGET >= 0 && (FLAG:4 < 2 || FLAG:4 == 9) && FLAG:5 == 0 && ITEM:98 == 0 && ITEM:99 == 0
     IF TALENT:MASTER:998
         ;デバッグモードのときは動作チェック用に販売
         ITEMSALES:98 = 1
@@ -227,7 +227,7 @@ ENDIF
 ;약혼 반지(단독 엔딩 조건은 여기서 처리)
 ITEMSALES:99 = 0
 ;渡したい相手が調教対象であり, 助手がおらず, ゲームモードがeratohoYMかABNORMALかREVERSALでまだエンディングを迎えておらず, エンゲージリングと赤い首輪と青珊瑚の指輪を未所持であること.
-IF ASSI < 0 && TARGET >= 0 && (FLAG:4 < 2 || FLAG:4 == 3 || FLAG:4 == 9) && FLAG:5 == 0 && ITEM:96 == 0 && ITEM:98 == 0 && ITEM:99 == 0
+IF ASSI < 0 && TARGET >= 0 && (FLAG:4 < 2 || FLAG:4 == 9) && FLAG:5 == 0 && ITEM:96 == 0 && ITEM:98 == 0 && ITEM:99 == 0
     RESULT = 0
     ;口上呼び出し.口上側で単体エンディングが設定されておればその帰り値によってはエンゲージリングが購入可能になる.
     TRYCALLFORM EX_ENDING_{NO:TARGET}

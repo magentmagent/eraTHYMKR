@@ -663,13 +663,7 @@ RETURNF ((TALENT:ARG:151 || TALENT:ARG:152 || TALENT:ARG:153 || TALENT:ARG:162) 
 ;범용 대사나 범용 역대사의 판별
 ;--------------------------------------------------
 @DEFINE_JINKAKU_SELECT, ARG
-;REVERSAL 모드일 때는 역대사용 처리로 이동
-IF FLAG:4 == 3
-    CALL DEFINE_JINKAKU_REVERSE, ARG
-;그 외의 게임 모드 시는 통상의 처리로 이동
-ELSE
-    CALL DEFINE_JINKAKU_NORMAL, ARG
-ENDIF
+CALL DEFINE_JINKAKU_NORMAL, ARG
 
 ;--------------------------------------------------
 ;범용 대사의 인격 결정 처리

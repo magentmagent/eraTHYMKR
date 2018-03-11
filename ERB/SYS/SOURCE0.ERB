@@ -161,23 +161,13 @@ ENDIF
 ;토리코모드. 특별한 건 없고, 색만 살짝 칠해준다. (핑크)
 IF FLAG:5000 & 16
     CALL SETCOLOR_TORIKOMODE, "PINK", 5
-    IF TEQUIP:13 > 1
-        ;強精神薬の効果処理
-        CALL ECST_CANCEL
-    ELSE
-        CALL ORGASM_PROCESS
-    ENDIF
+    CALL ORGASM_PROCESS
     RESETCOLOR
 ELSE
 
 ;일반모드
     CALL SETCOLOR_TORIKOMODE, "PINK", 5
-    IF TEQUIP:13 > 1
-        ;強精神薬の効果処理
-        CALL ECST_CANCEL
-    ELSE
-        CALL ORGASM_PROCESS
-    ENDIF
+    CALL ORGASM_PROCESS
 
 ;모드분기 종료
 ENDIF
