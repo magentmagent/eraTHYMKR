@@ -7529,43 +7529,6 @@ IF SELECTCOM == 135
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;할례    CFLAG:8351
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 136
-    ;처음
-    IF CFLAG:8351 == 0
-        ;음란
-        IF TALENT:170 == 1
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;복종
-        ELSEIF TALENT:160 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8351= 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;음란
-        IF TALENT:170 == 1 && (CFLAG:8351 <= 4|| FLAG:11 == 2)
-            CFLAG:8351 = 5
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8351 <= 3|| FLAG:11 == 2)
-            CFLAG:8351 = 4
-        ;복종
-        ELSEIF TALENT:160 == 1 && (CFLAG:8351 <= 2|| FLAG:11 == 2)
-            CFLAG:8351 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8351 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;사정 기능 개발    CFLAG:8352
 ;-------------------------------------------------
 [SKIPSTART]

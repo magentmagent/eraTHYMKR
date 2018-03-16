@@ -7909,48 +7909,6 @@ IF SELECTCOM == 135
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;割礼    CFLAG:8350
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 136
-    ;처음
-    IF CFLAG:8350 == 0
-        ;반발각인Lv3
-        IF MARK:9 == 3
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8350= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;반발각인Lv3
-        IF MARK:9 == 3 && (CFLAG:8350 <= 5|| FLAG:11 == 2)
-            CFLAG:8350 = 6
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8350 <= 4|| FLAG:11 == 2)
-            CFLAG:8350 = 5
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8350 <= 3|| FLAG:11 == 2)
-            CFLAG:8350 = 4
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1 && (CFLAG:8350 <= 2|| FLAG:11 == 2)
-            CFLAG:8350 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8350 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
 ;射精機能開発    CFLAG:8351
 ;-------------------------------------------------
 [SKIPSTART]

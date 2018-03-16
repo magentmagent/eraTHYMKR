@@ -17688,44 +17688,6 @@ IF SELECTCOM == 135
 ENDIF
 
 ;-------------------------------------------------
-;할례(1회만 가능하겠지만 반복한다고 해도 같음)
-;-------------------------------------------------
-IF SELECTCOM == 136
-    ;딸의 경우
-    IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
-        IF CFLAG:3005 == 3
-            PRINTFORMW 「%STR:401%, 그 가능하다면…, 아프지 않게 해주세요…」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「%STR:401%, 가능한 아프게 하지 말아줘…」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「%STR:401%, 미신이라고 생각하지만, 뭐 될 수 있으면 청결하게 하고 아프지 않게 하길 바라요…」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「%STR:401%, 그다지 아프게 않게 부탁해요…」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORMW 「%STR:401%, 그건 별로 의미가 없는 행위라고 생각합니다만…」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「%STR:401%, 어째서 이런 일을 하시는지 모르겠지만, 아프게 하지마?」
-        ENDIF
-    ;그 외
-    ELSE
-        IF CFLAG:3005 == 3
-            PRINTFORMW 「어째서 이 %조사처리(STR:400,"가")% 이런 일을 당해야 하는 걸까?」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「잠깐, %STR:401%! 도대체 뭘 하려는 거야! 그만둬!」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「저기? 여자 할례는 아무 의미 없어! 잠깐, 그만둬!」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「으흑, 그만두어 주세요… 어, 어째서 그런 곳을 잘려야 하나요?」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORMW 「그건 별로 의미가 없는 행위라고는 생각합니다만…」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「아, 그만둬… 이런 일 하는 의미 없어! 아프고 더러워!」
-        ENDIF
-    ENDIF
-    RETURN 1
-ENDIF
-
-;-------------------------------------------------
 ;사정 기능 개발
 ;-------------------------------------------------
 IF SELECTCOM == 137

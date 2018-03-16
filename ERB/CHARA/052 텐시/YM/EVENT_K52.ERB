@@ -5120,30 +5120,6 @@ IF SELECTCOM == 135
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;割礼    CFLAG:8351
-;-------------------------------------------------
-IF SELECTCOM == 136
-    ;初めて
-    IF CFLAG:8351 == 0
-        ;연모or복종or음란
-        IF TALENT:연모 == 1 || TALENT:복종 == 1 || TALENT:음란 == 1
-            PRINTFORMW 「いたた…でもコレでもっとクリちゃんが気持よくなるのよね…？」
-            PRINTFORMW 顔を顰めながら%CALLNAME:TARGET%は痛みを堪えている。
-            PRINTFORMW 「じゃぁ…早速試してみよ？♪」
-        ELSE
-            PRINTFORMW 「もうやだあぁぁぁっ！！！痛いのイヤあっ！帰して！おうち帰してぇっ！
-            PRINTFORMW 　言うこと聞くからぁっ！わがままいわないからおうちかえしてぇっ！」
-            PRINTFORMW 施術が終わった後になっても%CALLNAME:TARGET%は泣き叫び続けている。
-            PRINTFORMW だが、助けなど誰も来る事はない…
-        ENDIF
-        CFLAG:8351= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
 ;射精機能開発    CFLAG:8352
 ;-------------------------------------------------
 [SKIPSTART]
