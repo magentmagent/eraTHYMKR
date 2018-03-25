@@ -10,7 +10,7 @@
 SIF EQUIP:14 || TEQUIP:42 == 1 || TEQUIP:42 == 2 || TFLAG:899 >= 1
     RETURN 0
 ;汎用口上不使用なら戻る
-SIF FLAG:22 == 0
+SIF FLAG:22 == 1
     RETURN 0
 
 IF ASSIPLAY
