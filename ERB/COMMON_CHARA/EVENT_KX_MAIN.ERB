@@ -757,7 +757,7 @@ ELSEIF CFLAG:5162 == 1
     CFLAG:5162 = 0
     RETURN 1
 
-;딸의 딸을 조교할 경우 CFLAG:7051
+;딸의 딸이 조수일 경우 + 조수가 비처녀 CFLAG:7050
 ELSEIF CFLAG:7050 == 0 && ASSI > 0 && (CFLAG:ASSI:3105 == CFLAG:3109 || CFLAG:ASSI:3106 == CFLAG:3109) && TALENT:150 == 1 && TALENT:ASSI:150 == 1 && TALENT:ASSI:0 == 0
     PRINTFORMW 「앗, %CALLNAME:ASSI%쨩～!」
     PRINTFORMW %CALLNAME:ASSI%의 얼굴을 본 %조사처리(CALLNAME:TARGET,"는")% 이내 와락 끌어안았다.
@@ -768,7 +768,7 @@ ELSEIF CFLAG:7050 == 0 && ASSI > 0 && (CFLAG:ASSI:3105 == CFLAG:3109 || CFLAG:AS
     PRINTFORMW %CALLNAME:MASTER%의 귀축 행보는 대체 언제 끝을 맺을는지….
     CFLAG:7050 = 1
     RETURN 1
-
+;오빠나 언니가 조수 경우 CFLAG:7051
 ELSEIF CFLAG:7051 == 0 && ASSI > 0 && TFLAG:500 == 1 && TALENT:150 == 1 && TALENT:ASSI:150 == 1
     IF TALENT:ASSI:0 == 0
         PRINTFORMW 「에, 언니다」
@@ -788,7 +788,7 @@ ELSEIF CFLAG:7051 == 0 && ASSI > 0 && TFLAG:500 == 1 && TALENT:150 == 1 && TALEN
         CFLAG:7051 = 1
         RETURN 1
     ENDIF
-
+;딸의 딸이 조수 경우 CFLAG:7052
 ELSEIF CFLAG:7052 == 0 && ASSI > 0 && (CFLAG:ASSI:3105 == CFLAG:3109 || CFLAG:ASSI:3106 == CFLAG:3109) && TALENT:150 == 1
     PRINTFORMW 「%CALLNAME:ASSI%쨩～!」
     PRINTFORMW %조사처리(CALLNAME:ASSI,"와")% %조사처리(CALLNAME:TARGET,"는")% 오랜만에 모녀끼리의 시간을 만끽했다.
@@ -6261,7 +6261,7 @@ ENDIF
 ;-------------------------------------------------
 ;절정
 ;-------------------------------------------------
-;사중절정?
+;사중절정+방뇨+분요+사정+관장
 IF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 && TFLAG:30 > 0 && TFLAG:31 > 0 && TFLAG:32 > 0 && SELECTCOM == 174 && TEQUIP:25 == 0 && TEQUIP:69 == 0
     PRINTFORMW      
     PRINTFORMW 
@@ -6274,10 +6274,11 @@ IF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 && TFLAG:30 > 0 
     PRINTFORMW 아쉽지만 여기까지 하는 수밖에 없겠다.
     CFLAG:7500 = 1
     TFLAG:107 = 999
-;첫절정
+;나머지 절정
 ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
-    ;初めて
-    IF CFLAG:5225 == 0
+    ;L2연모
+    IF TALENT:150
+        ;부위별 첫 절정
         IF NOWEX:0 >= 1 && CFLAG:5229 == 0
             PRINTFORML 「아, 아 아앗, 앗, 아, 아, 뭔가, 뭔가 와, 찌릿찌릿, 와아아아아아아앗!!」
             PRINTFORMW 태어나서 처음 맞는 절정의 감각에 %CALLNAME:TARGET%의 눈에서 눈물이 흘러나왔다… 
@@ -6311,29 +6312,9 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 최초로 느끼는 가슴으로의 쾌락 때문에 정신을 차리지 못하고 있다…     
             ENDIF
             CFLAG:5228 = 1
-        ENDIF
-        ;알수 없는 위치에 알 수 없는 변수라서 일단 숨김. (CFLAG:7006 인데, 여기서 나올 이유가 없음)
-        ;CFLAG:7006 = 0
-    ELSEIF CFLAG:5225 == 0
-        IF CFLAG:3005 == 3
-            PRINTFORML 「힉, 앗, 아, 아으아아앙!!」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORML 「싫어, 이거, 와버…려, 우으으응!!」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「힉, 앗, 아, 아으아아앙!!」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORML 「싫어, 이거, 와버…려, 우으으응!!」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORML 「이, 이건, 왔다…! 아, 으, 아앙♪」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORML 「뭐, 뭐야 이거, 무서워, 아, 아, 아, 앗아아아아앗!!」
-        ENDIF
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 꿰뚫는 쾌감에 부들부들 떨고 있다… 
-        CFLAG:5225 = 1
-    ;2번째 이후에 연모로 조수 플레이는 아니다
-    ELSEIF TALENT:150 && ASSIPLAY == 0
-        IF CFLAG:7005 == 1
-            IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+        ;연모 두번째 절정
+        ELSEIF CFLAG:7005 == 1 || NO != 149 ;L3 외출을 끝까지 봄. 딸이 아님
+            IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5 ;L4
                 IF NOWEX:0 >= 1 && NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0
                     IF TALENT:121 == 1
                         PRINTFORML 「고추, 고추가 징징거려서, %CALLNAME:TARGET% 안에서, 밀려나와, 좋아, 좋아아앗♪」
@@ -6482,6 +6463,7 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                     ENDIF
                 ENDIF
             ENDIF
+        ;L3 연모 보통대사.
         ELSEIF CFLAG:3005 == 3
             PRINTFORML 「큿, 응… 안 돼, %조사처리(STR:401,"를")% 위해 %STR:400%, 이제, 가버… 려엇~~!!」
         ELSEIF CFLAG:3005 == 1
@@ -6496,8 +6478,24 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
             PRINTFORML 「앗 아아, 아…%STR:400% 가, 아, 가버려어…♪」
         ENDIF
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 꿰뚫는 쾌감에 부들부들 떨고 있다…
+    ELSEIF CFLAG:5225 == 0 ;연모가 아님 & 첫 절정
+        IF CFLAG:3005 == 3
+            PRINTFORML 「힉, 앗, 아, 아으아아앙!!」
+        ELSEIF CFLAG:3005 == 1
+            PRINTFORML 「싫어, 이거, 와버…려, 우으으응!!」
+        ELSEIF CFLAG:3005 == 2
+            PRINTFORML 「힉, 앗, 아, 아으아아앙!!」
+        ELSEIF CFLAG:3005 == 5
+            PRINTFORML 「싫어, 이거, 와버…려, 우으으응!!」
+        ELSEIF CFLAG:3005 == 6
+            PRINTFORML 「이, 이건, 왔다…! 아, 으, 아앙♪」
+        ELSEIF CFLAG:3005 == 4
+            PRINTFORML 「뭐, 뭐야 이거, 무서워, 아, 아, 아, 앗아아아아앗!!」
+        ENDIF
+        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 꿰뚫는 쾌감에 부들부들 떨고 있다… 
+        CFLAG:5225 = 1
     ;２回目以降でその他
-    ELSE
+    ELSE ;연모가 아님, 2번째 절정
         IF CFLAG:3005 == 3
             PRINTFORML 「큿, 응… 안 돼, %STR:400%, 이젠, 오고있, 어엇~…!!」
         ELSEIF CFLAG:3005 == 1
@@ -7144,6 +7142,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
         ;딸
         IF NO == 149
             IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+                ;주인이 아빠
                 IF CFLAG:3107 == CFLAG:MASTER:3109 && ASSIPLAY == 0
                     IF SELECTCOM == 6
                         PRINTFORML 「하앗, 하악 하악…♪」
@@ -7155,6 +7154,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORML 「잔뜩 나왔어, 아빠…♪」
                         PRINTFORMW 「%CALLNAME:TARGET%의 몸, 그렇게 기분 좋은 거구나…♪」
                     ENDIF
+                ;조수가 엄마
                 ELSEIF ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                     IF TFLAG:36 > 0
                         IF SELECTCOM == 52
@@ -7165,7 +7165,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                             PRINTFORML 「꺄앗, 굉장해앳……!!」
                             PRINTFORMW 「엄청 많이 나왔어, 이제 얼굴도 머리칼도 전부 엄마랑 %STR:401% 투성이네♪」
                             PRINTFORMW 사정을 끝내고 꺼떡거리는 %조사처리(CALLNAME:MASTER,"와")% %CALLNAME:ASSI%의 페니스에 %조사처리(CALLNAME:TARGET,"는")% 번갈아가며 키스를 했다.
-                        ELSEIF SELECTCOM == 321 
+                        ELSEIF SELECTCOM == 40
                             PRINTFORML 「아핫, 엄마 엄청 기분 좋아하고 있구나♪」
                             PRINTFORMW 「그럼 좀 더 해줄게, 웃샤, 웃샤, 웃……꺄아, 나왔다♪」
                             PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 거친 숨을 몰아쉬는 것도 아랑곳없이 %조사처리(CALLNAME:TARGET,"는")% 계속해서 페니스를 비벼댔다.
@@ -7183,6 +7183,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORMW 「따뜻하고, 기분 좋아…」
                         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 어머니의 정액을 허옇게 뒤집어 쓴 채 여운에 잠겨 행복한 표정을 지었다.
                     ENDIF
+                 ;조수가 딸
                 ELSEIF ASSIPLAY && (CFLAG:ASSI:3105 == CFLAG:3109 || CFLAG:ASSI:3106 == CFLAG:3109)
                     IF TFLAG:36 > 0
                         IF SELECTCOM == 52
@@ -7193,7 +7194,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                             PRINTFORML 「꺄앗, 굉장해앳……!!」
                             PRINTFORMW 「엄청 많이 나왔어, 이제 얼굴도 머리칼도 전부 %CALLNAME:ASSI%쨩이랑 %STR:401% 투성이네♪」
                             PRINTFORMW 사정을 끝내고 꺼떡거리는 %조사처리(CALLNAME:MASTER,"와")% %CALLNAME:ASSI%의 페니스에 %조사처리(CALLNAME:TARGET,"는")% 번갈아가며 키스를 했다.
-                        ELSEIF SELECTCOM == 321 
+                        ELSEIF SELECTCOM == 40
                             PRINTFORML 「아핫, %CALLNAME:ASSI%쨩 엄청 기분 좋아하고 있구나♪」
                             PRINTFORMW 「그럼 좀 더 해줄게, 웃샤, 웃샤, 웃……꺄아, 나왔다♪」
                             PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 거친 숨을 몰아쉬는 것도 아랑곳없이 %조사처리(CALLNAME:TARGET,"는")% 계속해서 페니스를 비벼댔다.
@@ -7211,11 +7212,13 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORMW 「따뜻하고, 기분 좋아…」
                         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 딸의 정액을 허옇게 뒤집어 쓴 채 여운에 잠겨 행복한 표정을 지었다.
                     ENDIF
+                 ;기타 조수
                 ELSE
                     PRINTFORML 「여기, 이렇게? 아, 나온다? 아핫……♪」
                     PRINTFORMW 「잘 먹겠습니다아…낼름, 움, 꿀꺽…」
                 ENDIF
             ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+                ;주인이 아빠
                 IF CFLAG:3107 == CFLAG:MASTER:3109 && ASSIPLAY == 0
                     IF SELECTCOM == 6
                         PRINTFORML 「하앗, 하악 하악…♪」
@@ -7227,6 +7230,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORML 「잔뜩 나왔어, 아빠…♪」
                         PRINTFORMW 「내 몸이, 그렇게 기분 좋은 거구나…♪」
                     ENDIF
+                ;조수가 엄마
                 ELSEIF ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                     IF TFLAG:36 > 0
                         IF SELECTCOM == 52
@@ -7237,7 +7241,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                             PRINTFORML 「꺄앗, 굉장해앳……!!」
                             PRINTFORMW 「완전 분수같아, 이제 얼굴도 머리칼도 전부 엄마랑 %STR:401% 투성이가 되어버렸네…」
                             PRINTFORMW 사정을 끝내고 꺼떡거리는 %조사처리(CALLNAME:MASTER,"와")% %CALLNAME:ASSI%의 페니스에 %조사처리(CALLNAME:TARGET,"는")% 번갈아가며 키스를 했다.
-                        ELSEIF SELECTCOM == 321 
+                        ELSEIF SELECTCOM == 40
                             PRINTFORML 「킥킥, 엄마 엄청 기분 좋아하고 있구나♪」
                             PRINTFORMW 「그럼 좀 더 해줄게, 웃샤, 웃샤, 웃……나온다, 나온다.나온다♪」
                             PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 거친 숨을 몰아쉬는 것도 아랑곳없이 %조사처리(CALLNAME:TARGET,"는")% 계속해서 페니스를 비벼댔다.
@@ -7255,6 +7259,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORMW 「미끌미끌하지만, 따뜻해…」
                         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 어머니의 정액을 허옇게 뒤집어 쓴 채 여운에 잠겨 행복한 표정을 지었다.
                     ENDIF
+                ;조수가 딸
                 ELSEIF ASSIPLAY && (CFLAG:ASSI:3105 == CFLAG:3109 || CFLAG:ASSI:3106 == CFLAG:3109)
                     IF TFLAG:36 > 0
                         IF SELECTCOM == 52
@@ -7265,7 +7270,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                             PRINTFORML 「꺄앗, 굉장해앳……!!」
                             PRINTFORMW 「완전히 홍수네, 엄마랑 아빠랑 딸이 사이좋게…하아움♪」
                             PRINTFORMW 사정을 끝내고 꺼떡거리는 %조사처리(CALLNAME:MASTER,"와")% %CALLNAME:ASSI%의 페니스에 %조사처리(CALLNAME:TARGET,"는")% 번갈아가며 키스를 했다.
-                        ELSEIF SELECTCOM == 321 
+                        ELSEIF SELECTCOM == 40
                             PRINTFORML 「아핫, 너 지금 엄청 기분 좋아하고 있구나?」
                             PRINTFORMW 「그럼 좀 더 해줄게, 웃샤, 웃샤, 웃……이제 나온다♪」
                             PRINTFORMW %조사처리(CALLNAME:ASSI,"가")% 거친 숨을 몰아쉬는 것도 아랑곳없이 %조사처리(CALLNAME:TARGET,"는")% 계속해서 페니스를 비벼댔다.
@@ -7283,6 +7288,7 @@ IF TFLAG:8 || TFLAG:12 || TFLAG:13 || TFLAG:14 || TFLAG:15 || TFLAG:16 || TFLAG:
                         PRINTFORMW 「미끌미끌하지만, 따뜻해…」
                         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 딸의 정액을 허옇게 뒤집어 쓴 채 여운에 잠겨 행복한 표정을 지었다.
                     ENDIF
+                ;기타 조수
                 ELSE
                     PRINTFORML 「아푸웃!? 싼다면 싼다고 미리 말 좀 해…」
                     PRINTFORMW 「낼름…쮸웁, 움…꿀꺽」
@@ -8445,24 +8451,9 @@ RETURN LOCAL
 @KOJO_MESSAGE_COM_X2, ARG
 LOCAL:1 = ARG
 
-
-;친애, 망신, 예속, 서로 사랑함 상태의 것에는 별파일로 대처 (;매우 사랑할때, 우후후 대사로 빠진다. 그 외의 경우에는 X2로 진행)
-IF TALENT:152 || TALENT:151 || TALENT:162 || TALENT:153
-    CALL KOJO_MESSAGE_LOVELY_COM_X, LOCAL:1
-    RETURN RESULT
-;(수정)뭔가 이상해서 빼둔다. 아래공식대로라면 순애계가 아닌 쪽으로 함락되면 애가 벙어리가 되버리기 때문에
-;쓰는 수고의 관계상 친애·망신·예속·서로 사랑함 이외의 함락 요소 소유는 무시
-;ELSEIF TALENT:160 || TALENT:170 || TALENT:167 || TALENT:150 || TALENT:159 || TALENT:168
-    ; RETURN 0 
-ENDIF
-
-;말표시 빈도 MAX가 아닌 경우는 첫회 말 밖에 표시하지 않는다
-SIF FLAG:11 < 2 && LOCAL:1 == 0
-    RETURN 0
-
-
 ;-------------------------------------------------
 ;처녀상실
+;이 대사가 LOVELY호출 보다 앞에 있어야 함
 ;-------------------------------------------------
 IF !EXP:0 && TALENT:0 && TFLAG:1
     ;주인의 페니스
@@ -8791,6 +8782,20 @@ IF !EXP:0 && TALENT:0 && TFLAG:1
     CFLAG:7778 = 1
     RETURN 1
 ENDIF
+
+;친애, 망신, 예속, 서로 사랑함 상태의 것에는 별파일로 대처 (;매우 사랑할때, 우후후 대사로 빠진다. 그 외의 경우에는 X2로 진행)
+IF TALENT:152 || TALENT:151 || TALENT:162 || TALENT:153
+    CALL KOJO_MESSAGE_LOVELY_COM_X, LOCAL:1
+    RETURN RESULT
+;(수정)뭔가 이상해서 빼둔다. 아래공식대로라면 순애계가 아닌 쪽으로 함락되면 애가 벙어리가 되버리기 때문에
+;쓰는 수고의 관계상 친애·망신·예속·서로 사랑함 이외의 함락 요소 소유는 무시
+;ELSEIF TALENT:160 || TALENT:170 || TALENT:167 || TALENT:150 || TALENT:159 || TALENT:168
+    ; RETURN 0 
+ENDIF
+
+;말표시 빈도 MAX가 아닌 경우는 첫회 말 밖에 표시하지 않는다
+SIF FLAG:11 < 2 && LOCAL:1 == 0
+    RETURN 0
 
 ;-------------------------------------------------
 ;코스프레(연모 상태로 정신 붕괴가 아닐 때)
@@ -17724,43 +17729,7 @@ IF SELECTCOM == 135
     RETURN 1
 ENDIF
 
-;-------------------------------------------------
-;할례(1회만 가능하겠지만 반복한다고 해도 같음)
-;-------------------------------------------------
-IF SELECTCOM == 136
-    ;딸의 경우
-    IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
-        IF CFLAG:3005 == 3
-            PRINTFORMW 「%STR:401%, 그 가능하다면…, 아프지 않게 해주세요…」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「%STR:401%, 가능한 아프게 하지 말아줘…」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「%STR:401%, 미신이라고 생각하지만, 뭐 될 수 있으면 청결하게 하고 아프지 않게 하길 바라요…」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「%STR:401%, 그다지 아프게 않게 부탁해요…」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORMW 「%STR:401%, 그건 별로 의미가 없는 행위라고 생각합니다만…」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「%STR:401%, 어째서 이런 일을 하시는지 모르겠지만, 아프게 하지마?」
-        ENDIF
-    ;그 외
-    ELSE
-        IF CFLAG:3005 == 3
-            PRINTFORMW 「어째서 이 %조사처리(STR:400,"가")% 이런 일을 당해야 하는 걸까?」
-        ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「잠깐, %STR:401%! 도대체 뭘 하려는 거야! 그만둬!」
-        ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「저기? 여자 할례는 아무 의미 없어! 잠깐, 그만둬!」
-        ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「으흑, 그만두어 주세요… 어, 어째서 그런 곳을 잘려야 하나요?」
-        ELSEIF CFLAG:3005 == 6
-            PRINTFORMW 「그건 별로 의미가 없는 행위라고는 생각합니다만…」
-        ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「아, 그만둬… 이런 일 하는 의미 없어! 아프고 더러워!」
-        ENDIF
-    ENDIF
-    RETURN 1
-ENDIF
+
 
 ;-------------------------------------------------
 ;사정 기능 개발
