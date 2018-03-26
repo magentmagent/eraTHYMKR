@@ -500,7 +500,7 @@ SIF TFLAG:182 >= 72 && TFLAG:183 >= 72 && TFLAG:180 >= 72 && TFLAG:181 >= 72
     LOCAL = 5
 
 ;媚薬に漬けていると絶頂で欲望が上がらない上、不潔と反感追加のソースまで入る
-IF (TEQUIP:55 == 5 || TEQUIP:55 == 6) && LOCAL > 0
+IF TEQUIP:11 && LOCAL > 0
     LOCAL = (LOCAL + TFLAG:180 + TFLAG:181 + TFLAG:182 + TFLAG:183)*2 / LOCAL
     LOCAL = MAX(LOCAL, 1)
     SOURCE:30 += 1500 * LOCAL
