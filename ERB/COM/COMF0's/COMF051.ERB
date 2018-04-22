@@ -263,7 +263,7 @@ ENDIF
 
 ;射精に関係なく行われる処理はここから(汚れ部位追加の可能性も考慮して元となったらしき部分の処理だけは残すことに)
 ;노예의 Ａ⇔조교자의 Ｐ의 불결이 이동
-IF TALENT:PLAYER:121 || TALENT:PLAYER:122
+IF TALENT:PLAYER:120 || TALENT:PLAYER:121
     STAIN:4 |= STAIN:PLAYER:2
     STAIN:PLAYER:2 |= STAIN:4
 ;노예의 Ａ⇔조교자의 Ｖ의 불결이 이동
@@ -274,7 +274,7 @@ ENDIF
 
 IF TALENT:120 == 0 && TALENT:PLAYER:120 == 0
     TCVAR:12 += 4
-ELSEIF TALENT:122 == 1 && TALENT:PLAYER:122 == 1
+ELSEIF TALENT:120 && TALENT:PLAYER:120
     TCVAR:13 += 4
 ENDIF
 ;奉仕快楽経験入手判定
