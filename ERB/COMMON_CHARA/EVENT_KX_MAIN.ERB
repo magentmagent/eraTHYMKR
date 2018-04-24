@@ -8,9 +8,9 @@
 ;최초의 조교 개시시에 상성에 따로 별개 대사로 해봤음(2009/09/04)
 ;플래그 분석. 복구시도중. (밴디트킹 131008)
 ;CFLAG:3005 = CFLAG:3005
-;CFLAG:5151 = CFLAG:5151
-;CFLAG:5152 = CFLAG:5152
-;CFLAG:5153 = CFLAG:5153
+;CFLAG:5151 = CFLAG:5151 질내사정량 플래그
+;CFLAG:5152 = CFLAG:5152 애널사정량 플래그
+;CFLAG:5153 = CFLAG:5153 구내사정량 플래그
 ;CFLAG:5160 = CFLAG:5160
 ;CFLAG:5255 = CFLAG:5255
 ;CHECK_MASTERS_CHILD(TARGET) == 1 CHECK_MASTERS_CHILD(TARGET) == 1
@@ -177,7 +177,7 @@ IF CFLAG:5201 == 0
             PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 조교를 받게 된다는 것에 의문과 반항심을 가지고 있는 것 같다… (주인에게 금단의 지식이 없습니다)
             PRINTFORML 순종이 0이 되었다.
             PRINTFORML 반발각인 LV1 취득
-            PRINTFORMW 스트레스 +500
+            PRINTFORMW 스트레스 +300
             PRINTL
         ENDIF
 
@@ -4427,6 +4427,7 @@ ELSEIF CFLAG:7500 == 1
     RETURN 1
 
 ;온갖 기구를 끼운 채로 종료
+;바이브 + A바이브 + (클리캡, 오나홀, 전극오나홀) + (유두캡, 착유기) + 아이마스크 + 밧줄
 ELSEIF NO == 149 && TEQUIP:20 == 1 && TEQUIP:25 == 1 && (TEQUIP:30 == 1 || TEQUIP:30 == 2 || TEQUIP:30 == 6) && (TEQUIP:35 == 1 || TEQUIP:35 == 2) && TEQUIP:41 == 1 && (TEQUIP:40 == 1 || TEQUIP:40 == 2 || TEQUIP:40 == 3 || TEQUIP:40 == 4)
     PRINTFORMW 「……후욱, 후욱, 후욱…」
     PRINTFORMW 방 한가운데서 %조사처리(CALLNAME:TARGET,"가")% 거친 숨을 내쉬고 있다.
@@ -4456,89 +4457,117 @@ ELSEIF NO == 149 && TEQUIP:20 == 1 && TEQUIP:25 == 1 && (TEQUIP:30 == 1 || TEQUI
     RETURN 1
 
 ;질내사정 과다
-ELSEIF CFLAG:5151 >= 10
-    PRINTFORMW 「하앗, 하악, 아학, 하악, 앙, 아앙, 꺄앙, 하악, 앗! %STR:401%, 하웃, 앗, %STR:401%!」
-    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 절규에 가까운 신음을 내는 %CALLNAME:TARGET%의 안에 오늘의 마지막 정액을 주입시켰다.
-    PRINTFORMW 뜨겁고 진한 정액이 다시 한 번 몸속 가장 깊은 곳으로 치닫는 감각에 %조사처리(CALLNAME:TARGET,"는")% 탄성을 지르며 몸을 빳빳하게 경직시켰다.
-    PRINTFORMW 「아…아……아…하…아…아………」
-    PRINTFORMW 가벼운 전류가 통한듯 때때로 꿈틀거리는 %CALLNAME:TARGET%의 안에서 이제야 페니스를 뽑아내자 
-    PRINTFORMW 헤 벌어져 있는 %CALLNAME:TARGET%의 보지는 마치 살아있는 생물처럼 꾸역꾸역 진한 정액 덩어리를 연속해서 토해냈다.
-    PRINTFORMW 「아…빠……, 하아, 하아, 하아, 하아, 하아……………%STR:401%……」
-    PRINTFORMW 완전히 탈력해 있는 %CALLNAME:TARGET%의 질구는 계속해서 정액을 토하고 있었다… 
+ELSEIF CFLAG:5151 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(PREVCOM) & (1p5 - 1)
+    IF NO == 149 && TALENT:150 ;딸 and 연모
+        PRINTFORMW 「하앗, 하악, 아학, 하악, 앙, 아앙, 꺄앙, 하악, 앗! %STR:401%, 하웃, 앗, %STR:401%!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 절규에 가까운 신음을 내는 %CALLNAME:TARGET%의 안에 오늘의 마지막 정액을 주입시켰다.
+        PRINTFORMW 뜨겁고 진한 정액이 다시 한 번 몸속 가장 깊은 곳으로 치닫는 감각에 %조사처리(CALLNAME:TARGET,"는")% 탄성을 지르며 몸을 빳빳하게 경직시켰다.
+        PRINTFORMW 「아…아……아…하…아…아………」
+        PRINTFORMW 가벼운 전류가 통한듯 때때로 꿈틀거리는 %CALLNAME:TARGET%의 안에서 이제야 페니스를 뽑아내자 
+        PRINTFORMW 헤 벌어져 있는 %CALLNAME:TARGET%의 보지는 마치 살아있는 생물처럼 꾸역꾸역 진한 정액 덩어리를 연속해서 토해냈다.
+        PRINTFORMW 「아…빠……, 하아, 하아, 하아, 하아, 하아……………%STR:401%……」
+        PRINTFORMW 완전히 탈력해 있는 %CALLNAME:TARGET%의 질구는 계속해서 정액을 토하고 있었다… 
+    ELSEIF NO == 149 ;딸 and 연모 아님
+        PRINTFORMW (대사 없음)
+    ELSEIF TALENT:150  ;딸 아님 and 연모
+        PRINTFORMW (대사 없음)
+    ELSE ;딸 아님 연모 아님
+        PRINTFORMW (대사 없음)
+    ENDIF
     RETURN 1
 
 ;장내사정과다
-ELSEIF CFLAG:5152 >= 10
-    IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
-        PRINTFORMW %CALLNAME:TARGET%의 작은 엉덩이를 세게 움켜쥐고 가장 깊숙한 곳까지 페니스를 꽃아넣은 뒤 사정을 시작하자 
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 부르르 떨면서 탄성을 질렀다.
-        PRINTFORMW 「뜨거워………………%STR:401%…아…」
-        PRINTFORMW 침대에 엎어진 채 경련하는 %CALLNAME:TARGET%의 국문이 꾸물거리더니 안에서 꾸역꾸역하고 정액 덩어리가 밀려나왔다… 
-        PRINTFORMW 「%CALLNAME:TARGET%…엉덩이가 늘어난 것 같아……앗」
-        PRINTFORMW 힘없이 미소짓는 %CALLNAME:TARGET%의 엉덩이를 주무르자 미약한 신음이 대답으로 돌아왔다.
-        PRINTFORMW 오늘 더 이상의 조교를 하는 건 아무래도 무리일 것 같다… 
-    ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
-        PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
-        PRINTFORMW %CALLNAME:TARGET%의 작은 엉덩이를 세게 움켜쥐고 가장 깊숙한 곳까지 페니스를 꽃아넣은 뒤 사정을 시작하자 
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 부르르 떨면서 탄성을 질렀다.
-        PRINTFORMW 「뜨거워………………%STR:401%…아…」
-        PRINTFORMW 침대에 엎어진 채 경련하는 %CALLNAME:TARGET%의 국문이 꾸물거리더니 안에서 꾸역꾸역하고 정액 덩어리가 밀려나왔다… 
-        PRINTFORMW 「나…엉덩이가 늘어난 것 같아……어떻게 책임져 줄 거야…」
-        PRINTFORMW 힘없이 미소짓는 %CALLNAME:TARGET%의 엉덩이를 주무르자 미약한 신음이 대답으로 돌아왔다.
-        PRINTFORMW 오늘 더 이상의 조교를 하는 건 아무래도 무리일 것 같다…    오     
+ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ANAL(PREVCOM) & (1p0 + 1p1 + 1p2)
+    IF NO == 149 && TALENT:150 ;딸 and 연모
+        IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+            PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
+            PRINTFORMW %CALLNAME:TARGET%의 작은 엉덩이를 세게 움켜쥐고 가장 깊숙한 곳까지 페니스를 꽃아넣은 뒤 사정을 시작하자 
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 부르르 떨면서 탄성을 질렀다.
+            PRINTFORMW 「뜨거워………………%STR:401%…아…」
+            PRINTFORMW 침대에 엎어진 채 경련하는 %CALLNAME:TARGET%의 국문이 꾸물거리더니 안에서 꾸역꾸역하고 정액 덩어리가 밀려나왔다… 
+            PRINTFORMW 「%CALLNAME:TARGET%…엉덩이가 늘어난 것 같아……앗」
+            PRINTFORMW 힘없이 미소짓는 %CALLNAME:TARGET%의 엉덩이를 주무르자 미약한 신음이 대답으로 돌아왔다.
+            PRINTFORMW 오늘 더 이상의 조교를 하는 건 아무래도 무리일 것 같다… 
+        ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+            PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
+            PRINTFORMW %CALLNAME:TARGET%의 작은 엉덩이를 세게 움켜쥐고 가장 깊숙한 곳까지 페니스를 꽃아넣은 뒤 사정을 시작하자 
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 부르르 떨면서 탄성을 질렀다.
+            PRINTFORMW 「뜨거워………………%STR:401%…아…」
+            PRINTFORMW 침대에 엎어진 채 경련하는 %CALLNAME:TARGET%의 국문이 꾸물거리더니 안에서 꾸역꾸역하고 정액 덩어리가 밀려나왔다… 
+            PRINTFORMW 「나…엉덩이가 늘어난 것 같아……어떻게 책임져 줄 거야…」
+            PRINTFORMW 힘없이 미소짓는 %CALLNAME:TARGET%의 엉덩이를 주무르자 미약한 신음이 대답으로 돌아왔다.
+            PRINTFORMW 오늘 더 이상의 조교를 하는 건 아무래도 무리일 것 같다…
+        ENDIF
+    ELSEIF NO == 149 ;딸 and 연모 아님
+        PRINTFORMW (대사 없음)
+    ELSEIF TALENT:150  ;딸 아님 and 연모
+        PRINTFORMW (대사 없음)
+    ELSE ;딸 아님 연모 아님
+        PRINTFORMW (대사 없음)
     ENDIF
     RETURN 1
 
 ;구내사정 과다
-ELSEIF CFLAG:5153 >= 10 && (PREVCOM == 41 || PREVCOM == 230 || PREVCOM == 604 || PREVCOM == 602)
-    IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        PRINTFORMW 「……쮸우우우우우우우우웁」
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 %CALLNAME:PLAYER%의 페니스를 볼을 오므려 강하게 빨아들였다.
-        PRINTFORMW 엄청난 쾌감에 견디지 못하고 다시 한 번 사정하자 그것을 맛있게도 삼키며 %조사처리(CALLNAME:TARGET,"는")% 미소지었다… 
-        PRINTFORMW 「맛있어……♪」
-        PRINTFORMW %CALLNAME:TARGET%의 입안은 끈적하고 뭉글거리는 정액으로 가득 차 있다… 
-        PRINTFORMW 「오늘 %CALLNAME:TARGET%의 밥은……이거네♪」
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 혀를 낼름거려 입술에 묻은 것까지 남김없이 핥아 삼켜버렸다.
-        PRINTFORMW 그러고 나서 미소짓는 %CALLNAME:TARGET%의 모습은 너무나도 음란하면서 사랑스러웠다… 
-    ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
-        PRINTFORMW 「……쮸우우우우우우우우웁」
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 %CALLNAME:PLAYER%의 페니스를 볼을 오므려 강하게 빨아들였다.
-        PRINTFORMW 엄청난 쾌감에 견디지 못하고 다시 한 번 사정하자 그것을 맛있게도 삼키며 %조사처리(CALLNAME:TARGET,"는")% 미소지었다… 
-        PRINTFORMW 「쮸웁…이제 위장까지 아빠의 정액으로 가득…♪」
-        PRINTFORMW %CALLNAME:TARGET%의 입안은 끈적하고 뭉글거리는 정액으로 가득 차 있다… 
-        PRINTFORMW 「어쩌면 조금 맛있을지도 이거♪」
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 혀를 낼름거려 입술에 묻은 것까지 남김없이 핥아 삼켜버렸다.
-        PRINTFORMW 그러고 나서 미소짓는 %CALLNAME:TARGET%의 모습은 너무나도 음란하면서 사랑스러웠다… 
+ELSEIF CFLAG:5153 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ORAL(PREVCOM) & (1p0)
+    IF NO == 149 && TALENT:150 ;딸 and 연모
+        IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+            PRINTFORMW 「……쮸우우우우우우우우웁」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 %CALLNAME:PLAYER%의 페니스를 볼을 오므려 강하게 빨아들였다.
+            PRINTFORMW 엄청난 쾌감에 견디지 못하고 다시 한 번 사정하자 그것을 맛있게도 삼키며 %조사처리(CALLNAME:TARGET,"는")% 미소지었다… 
+            PRINTFORMW 「맛있어……♪」
+            PRINTFORMW %CALLNAME:TARGET%의 입안은 끈적하고 뭉글거리는 정액으로 가득 차 있다… 
+            PRINTFORMW 「오늘 %CALLNAME:TARGET%의 밥은……이거네♪」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 혀를 낼름거려 입술에 묻은 것까지 남김없이 핥아 삼켜버렸다.
+            PRINTFORMW 그러고 나서 미소짓는 %CALLNAME:TARGET%의 모습은 너무나도 음란하면서 사랑스러웠다… 
+        ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+            PRINTFORMW 「……쮸우우우우우우우우웁」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 %CALLNAME:PLAYER%의 페니스를 볼을 오므려 강하게 빨아들였다.
+            PRINTFORMW 엄청난 쾌감에 견디지 못하고 다시 한 번 사정하자 그것을 맛있게도 삼키며 %조사처리(CALLNAME:TARGET,"는")% 미소지었다… 
+            PRINTFORMW 「쮸웁…이제 위장까지 아빠의 정액으로 가득…♪」
+            PRINTFORMW %CALLNAME:TARGET%의 입안은 끈적하고 뭉글거리는 정액으로 가득 차 있다… 
+            PRINTFORMW 「어쩌면 조금 맛있을지도 이거♪」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 혀를 낼름거려 입술에 묻은 것까지 남김없이 핥아 삼켜버렸다.
+            PRINTFORMW 그러고 나서 미소짓는 %CALLNAME:TARGET%의 모습은 너무나도 음란하면서 사랑스러웠다… 
+        ENDIF
+    ELSEIF NO == 149 ;딸 and 연모 아님
+        PRINTFORMW (대사 없음)
+    ELSEIF TALENT:150  ;딸 아님 and 연모
+        PRINTFORMW (대사 없음)
+    ELSE ;딸 아님 연모 아님
+        PRINTFORMW (대사 없음)
     ENDIF
     RETURN 1
 
 ;여기저기 마구 사정 과다
-ELSEIF CFLAG:5151 >= 5 && CFLAG:5152 >= 5 && CFLAG:5153 >= 5 
-    IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        PRINTFORMW 「아……또…」
-        PRINTFORMW 침대에 힘이 빠져 늘어져 있는 %CALLNAME:TARGET%의 위에서 %조사처리(CALLNAME:PLAYER,"는")% 자신의 페니스를 손으로 움켜쥔 채 몇 번 왕복했다.
-        PRINTFORMW 곧 뜨거운 정액이 전신에 허옇게 정액을 뒤집어 쓰고 있는 %CALLNAME:TARGET%의 위에 새로 쏟아져 내렸다… 
-        PRINTFORMW 「뜨거워……아아앗」
-        PRINTFORMW %CALLNAME:TARGET%의 입, 가슴, 머리칼, 얼굴은 모두 다.정액을 뒤집어써 엉망이 되어 있고 
-        PRINTFORMW 마구 유린된 바기나와 애널에서도 진한 정액이 다른 액체와 섞여 흘러나와 시트를 흥건하게 적시고 있었다.
-        IF TALENT:150 == 1
-            PRINTFORMW 「너무 기운차잖아……%CALLNAME:TARGET%…부서지는 줄 알았어……♪」
-        ELSE
-            PRINTFORMW 「%STR:401%…%CALLNAME:TARGET%…부서…져………」
-        ENDIF
-    ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
-        PRINTFORMW 「꺄앗……뜨거워…」
-        PRINTFORMW 침대에 힘이 빠져 늘어져 있는 %CALLNAME:TARGET%의 위에서 %조사처리(CALLNAME:PLAYER,"는")% 자신의 페니스를 손으로 움켜쥔 채 몇 번 왕복했다.
-        PRINTFORMW 곧 뜨거운 정액이 전신에 허옇게 정액을 뒤집어 쓰고 있는 %CALLNAME:TARGET%의 위에 새로 쏟아져 내렸다… 
-        PRINTFORMW 「또……내게, 잔뜩」
-        PRINTFORMW %CALLNAME:TARGET%의 입, 가슴, 머리칼, 얼굴은 모두 다 정액을 뒤집어써 엉망이 되어 있고 
-        PRINTFORMW 마구 유린된 바기나와 애널에서도 진한 정액이 다른 액체와 섞여 흘러나와 시트를 흥건하게 적시고 있었다.
-        IF TALENT:150 == 1
-            PRINTFORMW 「정말……그 기운은 반칙이잖아…이러다 나 완전히 망가지겠다구……♪」
-        ELSE
-            PRINTFORMW 「변태…절대, 용서하지…않겠…어………」
-        ENDIF
+ELSEIF CFLAG:5151 >= 5 && CFLAG:5152 >= 5 && CFLAG:5153 >= 5 && ASSIPLAY == 0
+    IF NO == 149 ;딸
+        IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+            PRINTFORMW 「아……또…」
+            PRINTFORMW 침대에 힘이 빠져 늘어져 있는 %CALLNAME:TARGET%의 위에서 %조사처리(CALLNAME:PLAYER,"는")% 자신의 페니스를 손으로 움켜쥔 채 몇 번 왕복했다.
+            PRINTFORMW 곧 뜨거운 정액이 전신에 허옇게 정액을 뒤집어 쓰고 있는 %CALLNAME:TARGET%의 위에 새로 쏟아져 내렸다… 
+            PRINTFORMW 「뜨거워……아아앗」
+            PRINTFORMW %CALLNAME:TARGET%의 입, 가슴, 머리칼, 얼굴은 모두 다.정액을 뒤집어써 엉망이 되어 있고 
+            PRINTFORMW 마구 유린된 바기나와 애널에서도 진한 정액이 다른 액체와 섞여 흘러나와 시트를 흥건하게 적시고 있었다.
+            IF TALENT:150 == 1
+                PRINTFORMW 「너무 기운차잖아……%CALLNAME:TARGET%…부서지는 줄 알았어……♪」
+            ELSE
+                PRINTFORMW 「%STR:401%…%CALLNAME:TARGET%…부서…져………」
+            ENDIF
+        ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+            PRINTFORMW 「꺄앗……뜨거워…」
+            PRINTFORMW 침대에 힘이 빠져 늘어져 있는 %CALLNAME:TARGET%의 위에서 %조사처리(CALLNAME:PLAYER,"는")% 자신의 페니스를 손으로 움켜쥔 채 몇 번 왕복했다.
+            PRINTFORMW 곧 뜨거운 정액이 전신에 허옇게 정액을 뒤집어 쓰고 있는 %CALLNAME:TARGET%의 위에 새로 쏟아져 내렸다… 
+            PRINTFORMW 「또……내게, 잔뜩」
+            PRINTFORMW %CALLNAME:TARGET%의 입, 가슴, 머리칼, 얼굴은 모두 다 정액을 뒤집어써 엉망이 되어 있고 
+            PRINTFORMW 마구 유린된 바기나와 애널에서도 진한 정액이 다른 액체와 섞여 흘러나와 시트를 흥건하게 적시고 있었다.
+            IF TALENT:150 == 1
+                PRINTFORMW 「정말……그 기운은 반칙이잖아…이러다 나 완전히 망가지겠다구……♪」
+            ELSE
+                PRINTFORMW 「변태…절대, 용서하지…않겠…어………」
+            ENDIF
+          ENDIF
+    ELSE ;딸 아님
+        PRINTFORMW (대사 없음)
     ENDIF
     RETURN 1
 
@@ -6261,7 +6290,7 @@ ENDIF
 ;-------------------------------------------------
 ;절정
 ;-------------------------------------------------
-;사중절정+방뇨+분요+사정+관장
+;L1 사중절정+방뇨+분요+사정+관장
 IF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 && TFLAG:30 > 0 && TFLAG:31 > 0 && TFLAG:32 > 0 && SELECTCOM == 174 && TEQUIP:25 == 0 && TEQUIP:69 == 0
     PRINTFORMW      
     PRINTFORMW 
@@ -6274,11 +6303,11 @@ IF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 && TFLAG:30 > 0 
     PRINTFORMW 아쉽지만 여기까지 하는 수밖에 없겠다.
     CFLAG:7500 = 1
     TFLAG:107 = 999
-;나머지 절정
+;L1 나머지 절정
 ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
     ;L2연모
     IF TALENT:150
-        ;부위별 첫 절정
+        ;L3 부위별 첫 절정
         IF NOWEX:0 >= 1 && CFLAG:5229 == 0
             PRINTFORML 「아, 아 아앗, 앗, 아, 아, 뭔가, 뭔가 와, 찌릿찌릿, 와아아아아아아앗!!」
             PRINTFORMW 태어나서 처음 맞는 절정의 감각에 %CALLNAME:TARGET%의 눈에서 눈물이 흘러나왔다… 
@@ -6312,10 +6341,12 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 최초로 느끼는 가슴으로의 쾌락 때문에 정신을 차리지 못하고 있다…     
             ENDIF
             CFLAG:5228 = 1
-        ;연모 두번째 절정
-        ELSEIF CFLAG:7005 == 1 || NO != 149 ;L3 외출을 끝까지 봄. 딸이 아님
-            IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5 ;L4
-                IF NOWEX:0 >= 1 && NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0
+        ;L3 여기서 부터 두번째 이후 절정(연모)
+        ELSEIF CFLAG:7005 == 1 || NO != 149 ;L3 외출을 끝까지 봄 or 딸이 아님
+            ;L4 성격
+            IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+                ;L5 절정 조합
+                IF NOWEX:0 >= 1 && NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0 ;C절정
                     IF TALENT:121 == 1
                         PRINTFORML 「고추, 고추가 징징거려서, %CALLNAME:TARGET% 안에서, 밀려나와, 좋아, 좋아아앗♪」
                         PRINTFORMW 「아앗, 쌀 것, 싸, %STR:401%, 잔뜩, 나오겠어, 아앗, 앗 아앗 아아아아앗!」
@@ -6323,7 +6354,7 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「기분, 좋아, 콩알이 커져, 뜨거워, 하앗, 아앗 아아아아앗 꺄하아악♪」
                         PRINTFORMW 「%STR:401%, %CALLNAME:TARGET%, 너무 기분, 앗, 아읏, 읏, 하읏, 아앙, 아앗!」
                     ENDIF
-                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 0 && NOWEX:2 == 0 && NOWEX:3 == 0
+                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 0 && NOWEX:2 == 0 && NOWEX:3 == 0 ;V절정
                     IF SELECTCOM == 386
                         PRINTFORML 「아아아아아아아아아아아아아아아아아아아아아아아아악!!!!」
                         PRINTFORMW 말 중에서도 더욱 거대한 종류의 종마에게 찔리며 %CALLNAME:TARGET%의 여린 바기나는 무참하게 찢어져 피가 바닥을 적셨다             
@@ -6338,10 +6369,10 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「%CALLNAME:TARGET% 보지, 아핫, 찔러줘, 더 깊이, %STR:401%, 더 깊게, 앗, 앗 앗 아아앗♪」
                         PRINTFORMW 「후아…앗, 가버려, %STR:401%, 안아줘, %STR:401%, 가, 가버려어어어!!」             
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:3 == 0
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:3 == 0 ;A절정
                     PRINTFORML 「응, 응, 으응♪ 안 돼, 좋아, 엉덩이, 하앗, 아앗, 앗♪」
                     PRINTFORMW 「엉덩이, 구멍으로, %CALLNAME:TARGET%, 가버려, 가버려어어어어엇!」             
-                ELSEIF NOWEX:3 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:2 == 0
+                ELSEIF NOWEX:3 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:2 == 0 ;B절정
                     IF ASSI >= 0 && ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「가슴이, 너무 기분 좋아, 잔뜩 몰려와, 하앗, 핫, 아아아아아아아앙♪」
                         PRINTFORMW 「가슴, 저릿저릿, 멈추지 않아, 엄마, 하아아악, 아, 아, 앗, 앗, 앗!」     
@@ -6352,13 +6383,13 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「가슴이, 너무 기분 좋아, 잔뜩 몰려와, 하앗, 핫, 아아아아아아아앙♪」
                         PRINTFORMW 「가슴, 저릿저릿, 멈추지 않아, %STR:401%, 하아아악, 아, 아, 앗, 앗, 앗!」     
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:1 == 0
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:1 == 0 ;CAB절정
                     PRINTFORML 「왔어어엇! 몸이!!하아아아아아아악!!」
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 엉덩이를 중심으로 전신을 헤집는 쾌감에 몸부림쳤다.
-                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:3 == 0
+                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:2 == 0 ;C ;CVB절정
                     PRINTFORML 「꺄아아앗!! 가!!가버려어어어어어엇!!」
                     PRINTFORMW 「안에다가, 안에다, 잔뜩, 잔뜩 주세요오오옷 아아아아아앗!♪」
-                ELSEIF NOWEX:0 >= 1 && NOWEX:3 >= 1 && (NOWEX:1 == 0 || NOWEX:2 == 0)
+                ELSEIF NOWEX:0 >= 1 && NOWEX:3 >= 1 && (NOWEX:1 == 0 || NOWEX:2 == 0)  ;CB절정
                     IF ASSI >= 0 && ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「하아악!엄마,  가슴이랑, 콩알, 같이 하면!!」
                         PRINTFORMW 「기분 너무 좋아서, %CALLNAME:TARGET%, 이상해져…이상해져버려어엇!!」
@@ -6369,16 +6400,16 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「하아악! %STR:401%,  가슴이랑, 콩알, 같이 하면!!」
                         PRINTFORMW 「기분 너무 좋아서, %CALLNAME:TARGET%, 이상해져…이상해져버려어엇!!」
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && (NOWEX:1 == 0 || NOWEX:3 == 0)
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && (NOWEX:1 == 0 || NOWEX:3 == 0) ;CA절정
                     PRINTFORML 「꺄하아악! 아앗, 좋아, 찌릿찌릿대!!」
                     PRINTFORMW 「콩알, 계속 귀여워해주세…엉덩이도, 같이, 하니까, 나!흐아아아아앗!!」
-                ELSEIF NOWEX:2 >= 1 && NOWEX:3 >= 1 && (NOWEX:0 == 0 || NOWEX:1 == 0)
+                ELSEIF NOWEX:2 >= 1 && NOWEX:3 >= 1 && (NOWEX:0 == 0 || NOWEX:1 == 0) ;AB절정
                     PRINTFORML 「엉덩이, 앗, 아앗, 아앗, 앗, 앗 앗 앗 앗! 가슴이랑 같이…!」
                     PRINTFORMW 「싫어, 너무 기분 좋아서, 뇌가, 타버려…꺄하아아아악!!」         
-                ELSEIF NOWEX:1 >= 1 && NOWEX:2 >= 1 && (NOWEX:0 == 0 || NOWEX:3 == 0)
+                ELSEIF NOWEX:1 >= 1 && NOWEX:2 >= 1 && (NOWEX:0 == 0 || NOWEX:3 == 0) ;VA절정
                     PRINTFORMW 「앞이랑, 뒤랑, 다.기분 좋아!아앗!아아앙, 앙!꺄아아앗!」
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 앞과 뒤를 동시에 공략당하는 쾌감에 거의 이성을 잃고 있다… 
-                ELSEIF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 
+                ELSEIF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 ;CVAB절정
                     PRINTFORMW 「앗!! 가아앗!! 꺄아아악!까학, 아아앙!아아아앙!!꺄하앗…가, %STR:401% 나 가, 가버려어!!!꺄하아아아아아아앙!!」
                     IF RAND:2 == 0 && TALENT:170
                         PRINTFORMW %CALLNAME:MASTER%의 손에 의해 완전히 음란하게 개발된 %조사처리(CALLNAME:TARGET,"는")% 
@@ -6387,9 +6418,11 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                     ELSE
                         PRINTFORMW 「기분이, 너무 좋아서!! %CALLNAME:TARGET%, 더는, 무서워!꺄학!아ㅃ…아아아앗!!」
                     ENDIF
-                ENDIF
-            ELSEIF CFLAG:3005 == 1
-                IF NOWEX:0 >= 1 && NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0
+                ENDIF ;L5 닫음
+            ;L4 성격
+            ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+                ;L5 절정 조합
+                IF NOWEX:0 >= 1 && NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0 ;C절정
                     IF TALENT:121 == 1
                         PRINTFORML 「그, 그만, 그 이상 하면 나, 싸버려, 싸버린다구, 밀려나와아앗♪」
                         PRINTFORMW 「치, 치워, 안그러면 나, 안 돼, 아빠, 제발, 기분, 기분 좋아아아앗!」
@@ -6397,7 +6430,7 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「기분, 좋아, 콩알이 커져, 뜨거워, 하앗, 아앗 아아아아앗 꺄하아악♪」
                         PRINTFORMW 「%STR:401%, 나, 너무 기분, 앗, 아읏, 읏, 하읏, 아앙, 아앗!」
                     ENDIF
-                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 0 && NOWEX:2 == 0 && NOWEX:3 == 0
+                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 0 && NOWEX:2 == 0 && NOWEX:3 == 0 ;V절정
                     IF SELECTCOM == 386
                         PRINTFORML 「아아아아아아아아아아아아아아아아아아아아아아아아악!!!!」
                         PRINTFORMW 말 중에서도 더욱 거대한 종류의 종마에게 찔리며 %CALLNAME:TARGET%의 여린 바기나는 무참하게 찢어져 피가 바닥을 적셨다             
@@ -6412,10 +6445,10 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「내 음란한 보지, 꺄윽, 찔러줘, 더 깊이, %STR:401%, 다.잊을 수 있게, 더, 더엇♪」
                         PRINTFORMW 「후아…앗, 가버려, %STR:401%, 안아줘, %STR:401%, 가, 가버려어어어!!」             
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:3 == 0
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:3 == 0 ;A절정
                     PRINTFORML 「응, 응, 으응♪ 안 돼, 좋아, 엉덩이, 하앗, 아앗, 앗♪」
                     PRINTFORMW 「엉덩이, 구멍으로, 나, 가버려, 가버려어어어어엇!」
-                ELSEIF NOWEX:3 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:2 == 0
+                ELSEIF NOWEX:3 >= 1 && NOWEX:0 == 0 && NOWEX:1 == 0 && NOWEX:2 == 0 ;B절정
                     IF ASSI >= 0 && ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「가슴이, 너무 기분 좋아, 잔뜩 몰려와, 하앗, 핫, 아아아아아아아앙♪」
                         PRINTFORMW 「가슴, 저릿저릿, 멈추지 않아, 엄마, 하아아악, 아, 아, 앗, 앗, 앗!」     
@@ -6426,13 +6459,13 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「가슴이, 너무 기분 좋아, 잔뜩 몰려와, 하앗, 핫, 아아아아아아아앙♪」
                         PRINTFORMW 「가슴, 저릿저릿, 멈추지 않아, %STR:401%, 하아아악, 아, 아, 앗, 앗, 앗!」     
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:1 == 0
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:1 == 0 ;CAB절정
                     PRINTFORML 「왔어어엇! 몸이!!하아아아아아아악!!」
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 엉덩이를 중심으로 전신을 헤집는 쾌감에 몸부림쳤다.
-                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:3 == 0
+                ELSEIF NOWEX:1 >= 1 && NOWEX:0 >= 1 && NOWEX:3 >= 1 && NOWEX:2 == 0 ;CVB절정
                     PRINTFORML 「꺄아아앗!! 가!!가버려어어어어어엇!!」
                     PRINTFORMW 「안에다가, 안에다, 잔뜩, 잔뜩 싸줘어어어어어어어엇!♪」
-                ELSEIF NOWEX:0 >= 1 && NOWEX:3 >= 1 && (NOWEX:1 == 0 || NOWEX:2 == 0)
+                ELSEIF NOWEX:0 >= 1 && NOWEX:3 >= 1 && (NOWEX:1 == 0 || NOWEX:2 == 0) ;CB절정
                     IF ASSI >= 0 && ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「하아악!엄마,  가슴이랑, 콩알, 같이 하면!!」
                         PRINTFORMW 「기분 너무 좋아서, 나, 이상해져…이상해져버려어엇!!」
@@ -6443,16 +6476,16 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                         PRINTFORML 「하아악! %STR:401%,  가슴이랑, 콩알, 같이 하면!!」
                         PRINTFORMW 「기분 너무 좋아서, %CALLNAME:TARGET%, 이상해져…이상해져버려어엇!!」
                     ENDIF
-                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && (NOWEX:1 == 0 || NOWEX:3 == 0)
+                ELSEIF NOWEX:2 >= 1 && NOWEX:0 >= 1 && (NOWEX:1 == 0 || NOWEX:3 == 0) ;CA절정
                     PRINTFORML 「꺄하아악! 아앗, 좋아, 찌릿찌릿대!!」
                     PRINTFORMW 「콩알을, 계속 귀여워해 주면서…엉덩이도, 같이, 하니까, 나!흐아아아아앗!!」
-                ELSEIF NOWEX:2 >= 1 && NOWEX:3 >= 1 && (NOWEX:0 == 0 || NOWEX:1 == 0)
+                ELSEIF NOWEX:2 >= 1 && NOWEX:3 >= 1 && (NOWEX:0 == 0 || NOWEX:1 == 0) ;AB절정
                     PRINTFORML 「엉덩이, 앗, 아앗, 아앗, 앗, 앗 앗 앗 앗! 가슴이랑 같이…!」
                     PRINTFORMW 「싫어, 너무 기분 좋아서, 뇌가, 타버려…꺄하아아아악!!」         
-                ELSEIF NOWEX:1 >= 1 && NOWEX:2 >= 1 && (NOWEX:0 == 0 || NOWEX:3 == 0)
+                ELSEIF NOWEX:1 >= 1 && NOWEX:2 >= 1 && (NOWEX:0 == 0 || NOWEX:3 == 0) ;AV절정
                     PRINTFORMW 「앞이랑, 뒤랑, 다.기분 좋아!아앗!아아앙, 앙!꺄아아앗!」
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 앞과 뒤를 동시에 공략당하는 쾌감에 거의 이성을 잃고 있다… 
-                ELSEIF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1 
+                ELSEIF NOWEX:0 >= 1 && NOWEX:1 >= 1 && NOWEX:2 >= 1 && NOWEX:3 >= 1  ;CVAB절정
                     PRINTFORMW 「앗!! 가아앗!! 꺄아아악!까학, 아아앙!아아아앙!!꺄하앗…가, %STR:401% 나 가, 가버려어!!!꺄하아아아아아아앙!!」
                     IF RAND:2 == 0 && TALENT:170
                         PRINTFORMW %CALLNAME:MASTER%의 손에 의해 완전히 음란하게 개발된 %조사처리(CALLNAME:TARGET,"는")% 
@@ -6461,9 +6494,9 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
                     ELSE
                         PRINTFORMW 「기분이, 너무 좋아서!! %CALLNAME:TARGET%, 더는, 무서워!꺄학!아ㅃ…아아아앗!!」
                     ENDIF
-                ENDIF
-            ENDIF
-        ;L3 연모 보통대사.
+                ENDIF ;L5 닫음
+            ENDIF ;L4 닫음
+        ;L3 연모 보통대사().
         ELSEIF CFLAG:3005 == 3
             PRINTFORML 「큿, 응… 안 돼, %조사처리(STR:401,"를")% 위해 %STR:400%, 이제, 가버… 려엇~~!!」
         ELSEIF CFLAG:3005 == 1
@@ -6476,8 +6509,9 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
             PRINTFORML 「또, 와, 왔다…! %STR:401%, 기뻐♪ 아, 으, 아앗, 아아앙♪」
         ELSEIF CFLAG:3005 == 4
             PRINTFORML 「앗 아아, 아…%STR:400% 가, 아, 가버려어…♪」
-        ENDIF
+        ENDIF ;L3 닫음
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 꿰뚫는 쾌감에 부들부들 떨고 있다…
+    ;L2 연모 아님
     ELSEIF CFLAG:5225 == 0 ;연모가 아님 & 첫 절정
         IF CFLAG:3005 == 3
             PRINTFORML 「힉, 앗, 아, 아으아아앙!!」
@@ -6510,17 +6544,21 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3
             PRINTFORML 「앗 아아, 아…%STR:400% 가, 아, 가버려어…♪」
         ENDIF
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸을 꿰뚫는 쾌감에 부들부들 떨고 있다… 
-    ENDIF
-ENDIF
+    ENDIF ;L2 닫음
+ENDIF ;L1 닫음
 
 ;-------------------------------------------------
 ;어널 섹스로 사정했다
 ;-------------------------------------------------
 IF TFLAG:9
-    ;주인의 페니스
-    IF (ASSIPLAY == 0 && (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38 || SELECTCOM == 618 || SELECTCOM == 619 || SELECTCOM == 652)) || (SELECTCOM == 610 && TFLAG:130 == 2)
+    ;L0 주인의 페니스
+    IF (ASSIPLAY == 0 && IS_COM_INSERT_ANAL(SELECTCOM) & (1p0 + 1p1 + 1p2 + 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 2)
+    ;selectcom = (30, 31, 32, 33, 34, 37, 38, 618, 619, 652)
+        ;L1 친애
         IF TALENT:152
-            IF CFLAG:3005 == 3
+            ;L2 자녀
+            IF CHECK_MASTERS_CHILD(TARGET) == 1
+                ;L3 성격
                 IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
                     IF CFLAG:5152 == 5
                         PRINTFORML 「…뱃속이, 뜨거워…%조사처리(STR:401,"가")% 안에서 꿈틀꿈틀…♪」
@@ -6548,6 +6586,7 @@ IF TFLAG:9
                             PRINTFORMW 「머리가 멍―해서, 기분 좋아, 이거…」
                         ENDIF
                     ENDIF
+                 ;성격 L3
                 ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
                     IF CFLAG:5152 == 5
                         PRINTFORML 「…뱃속이, 뜨거워…%조사처리(STR:401,"가")% 안에서 꿈틀꿈틀…♪」
@@ -6575,7 +6614,8 @@ IF TFLAG:9
                             PRINTFORMW 「뜨거운 거, 기분, 좋아…♪」
                         ENDIF
                     ENDIF
-                ENDIF
+                ENDIF ;L3 닫음
+            ;L2 자녀 아님
             ELSEIF CFLAG:3005 == 3
                 PRINTFORML 「아, 앗, 엉덩이에 싸고있어… 뜨거워… 하지만 좀 더… 부탁해」
                 PRINTFORMW 「%조사처리(STR:401,"라")%면 엉덩이라도, 앞이라도 좋아하는 곳에 싸줘… 받고 싶어♪」
@@ -6594,8 +6634,8 @@ IF TFLAG:9
             ELSEIF CFLAG:3005 == 4
                 PRINTFORML 「…아, 왔어…엉덩이에, 퓻퓻―하고…♪」
                 PRINTFORMW 「머리가 멍―해서, 기분 좋아, 이거…」
-            ENDIF
-        CFLAG:5152 += 1
+            ENDIF ;L2 닫음
+        ;연모 L1
         ELSEIF TALENT:150
             IF CFLAG:3005 == 3
                 PRINTFORML 「아, 앗, 엉덩이에 나오고 있어… 우… 배…」
@@ -6616,6 +6656,7 @@ IF TFLAG:9
                 PRINTFORML 「…아, 왔어…엉덩이에, 퓻퓻―하고…♪」
                 PRINTFORMW 「머리가 멍―해서, 기분 좋아, 이거…」
             ENDIF
+         ;연모 아님 L1
         ELSE
             IF CFLAG:3005 == 3
                 PRINTFORML 「…아, 으읏… 우, 우, 나오고 있어요…」
@@ -6636,9 +6677,11 @@ IF TFLAG:9
                 PRINTFORML 「안이, 뜨거…아, 싸고 있다, 울컥울컥하고 있어…」
                 PRINTFORMW 「…%CALLNAME:TARGET%의 엉덩이가 기분 좋은 거구나…?」
             ENDIF
-        ENDIF
-    ;그 외
+        ENDIF ;L1닫음
+        CFLAG:5152 += 1 ;주인 애널가정량 계산
+    ;L0 그 외 (주인이 아님)
     ELSE
+        ;L1 연모
         IF TALENT:150
             IF CFLAG:3005 == 3
                 PRINTFORML 「하, 하아, 엉덩이에서 나오고 있어…흑…뱃속이…」
@@ -6669,6 +6712,7 @@ IF TFLAG:9
                     PRINTFORMW 「머리가 멍―해서, 기분 좋아, 이거…」
                 ENDIF
             ENDIF
+        ;L1 연모 아님
         ELSE
             IF CFLAG:3005 == 3
                 PRINTFORML 「…아, 응… 우, 우, 나오고 있어요…」
@@ -6699,18 +6743,23 @@ IF TFLAG:9
                     PRINTFORMW 「…%CALLNAME:TARGET%의 엉덩이가 기분 좋은 거구나…?」
                 ENDIF
             ENDIF
-        ENDIF
-    ENDIF
+        ENDIF ;L1 닫음
+    ENDIF ; L0 닫음
 ENDIF
 ;-------------------------------------------------
 ;섹스로 사정했다
 ;-------------------------------------------------
 IF TFLAG:10
-    ;주인의 페니스
-    IF (ASSIPLAY == 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28 || SELECTCOM == 430 || SELECTCOM == 612 || SELECTCOM == 613 || SELECTCOM == 614 || SELECTCOM == 615 || SELECTCOM == 616 || SELECTCOM == 617 || SELECTCOM == 630)) || (SELECTCOM == 610 && TFLAG:130 == 1)
+    ;L0 주인의 페니스
+    IF (ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(SELECTCOM) & (1p5 - 1)) || (SELECTCOM == 610 && TFLAG:130 == 1)
+    ;selectcom = (20, 21, 22, 23, 24, 27, 28, 430, 612, 613, 614, 615, 616, 617, 630)
+        ;L1 친애
         IF TALENT:152
+            ;L2 자녀임
             IF CHECK_MASTERS_CHILD(TARGET) == 1
+                ;L3 성격
                 IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+                    ;L4 임신
                     IF TALENT:140 == 1
                         IF CFLAG:5151 == 5
                             PRINTFORML 「아하악…아, 아기…가」
@@ -6729,6 +6778,7 @@ IF TFLAG:10
                             PRINTFORML 「안에 잔뜩…아기가, 빠져버려…♪」
                             PRINTFORMW 「태어나기 전부터 밀크를 맛볼 수 있다니, 부러워…」
                         ENDIF
+                    ;L4 임신 아님
                     ELSE
                         IF CFLAG:5151 == 5
                             PRINTFORML 「하아…아, 아아…뱃속이, 뜨거…%STR:401%…♪」
@@ -6761,8 +6811,10 @@ IF TFLAG:10
                             PRINTFORML 「…아, 들어온다…%STR:401%의 뜨거운 게 안으로, 퓨웃퓻―하고…♪」
                             PRINTFORMW 「머리가 멍―해져서, 기분 좋아, 좀 더 해줬음해…잔뜩…」
                         ENDIF
-                    ENDIF
+                    ENDIF ;L4 닫음
+                ;L3 성격
                 ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+                    ;L4 임신
                     IF TALENT:140 == 1
                         IF CFLAG:5151 == 5
                             PRINTFORML 「아하악…아, 아기…가」
@@ -6781,6 +6833,7 @@ IF TFLAG:10
                             PRINTFORML 「안에 잔뜩…내 안엔, 아기가 있단 말야…」
                             PRINTFORMW 「그러다가 혹시 잘못되기라도 하면, 어쩌려구…」
                         ENDIF
+                    ;L4 임신 아님
                     ELSE
                         IF CFLAG:5151 == 5
                             PRINTFORML 「하아…아, 아아…뱃속이, 뜨거…%STR:401%…♪」
@@ -6813,9 +6866,9 @@ IF TFLAG:10
                             PRINTFORML 「아, 아아…좋아…%STR:401% 게 잔뜩…엄마가, 되는걸까 나…」
                             PRINTFORMW 「뜨거운 거, 기분, 좋아…좀 더…♪」
                         ENDIF
-                    ENDIF
-                ENDIF
-            CFLAG:5151 += 1
+                    ENDIF ;L4 닫음
+                ENDIF ;L3 닫음
+            ;L2 자녀 아님
             ELSEIF CFLAG:3005 == 3
                 PRINTFORML 「아, 앗, 나와아…아… 뱃속에… 더… 해줘…」
                 PRINTFORMW 「%STR:401%의 아기가 갖고 싶어… 그러니 좀 더…」
@@ -6834,7 +6887,8 @@ IF TFLAG:10
             ELSEIF CFLAG:3005 == 4
                 PRINTFORML 「…아, 들어온다…%STR:401%의 뜨거운 게 안으로, 퓨웃퓻―하고…♪」
                 PRINTFORMW 「머리가 멍―해져서, 기분 좋아, 좀 더 해줬음해…잔뜩…」
-            ENDIF
+            ENDIF ;L2 닫음
+        ;L1 연모
         ELSEIF TALENT:150
             IF CFLAG:3005 == 3
                 PRINTFORML 「아, 앗, 들어온다…아… 뱃속에」
@@ -6860,6 +6914,7 @@ IF TFLAG:10
                     PRINTFORMW 「머리가 멍―해져서, 기분 좋아, 이거…」
                 ENDIF
             ENDIF
+        ;L1 연모 아님
         ELSE
             IF CFLAG:3005 == 3
                 PRINTFORML 「…아, 응…으, 우, 들어오고 있어…」
@@ -6885,10 +6940,13 @@ IF TFLAG:10
                     PRINTFORMW 「기분 많이 좋았구나…?」
                 ENDIF
             ENDIF
-        ENDIF
-    ;그 외
+        ENDIF ;L1 닫음
+       CFLAG:5151 += 1 ;주인 질내사정횟수 계산
+    ;L0 그 외 (주인 아님)
     ELSE
+        ;L1 연모
         IF TALENT:150
+            ;L2 딸
             IF NO == 149
                 IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
                     IF ASSI > 0 && ASSIPLAY && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109) && TALENT:140 == 1
@@ -6919,6 +6977,7 @@ IF TFLAG:10
                         PRINTFORMW 「이러다가 %조사처리(STR:401,"가")% 아닌 다른 사람의 아이라도 갖게 되면…」
                     ENDIF
                 ENDIF
+            ;L2 딸 아님
             ELSEIF CFLAG:3005 == 3
                 PRINTFORML 「아, 앗, 나온다…우…안에…」
                 PRINTFORMW 「후후…귀엽네요, 다음은 %STR:401%…」
@@ -6937,8 +6996,10 @@ IF TFLAG:10
             ELSEIF CFLAG:3005 == 4
                 PRINTFORML 「…아, 왔다…안에서, 퓻퓻―하고…♪」
                 PRINTFORMW 「기분 좋지만 아직 끝난 게 아니야♪」
-            ENDIF
+            ENDIF ;L2 닫음
+        ;L1 연모 아님
         ELSE
+            ;L2 딸
             IF NO == 149
                 IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
                     IF CFLAG:3107 == CFLAG:MASTER:3109 && TALENT:140 == 1
@@ -6963,6 +7024,7 @@ IF TFLAG:10
                         PRINTFORMW 「이러다가 잘못되어 아기라도 갖게 되면…」
                     ENDIF
                 ENDIF
+             ;L2 딸 아님
             ELSEIF CFLAG:3005 == 3
                 PRINTFORML 「…아, 응…우, 우, 들어오고 있어…」
                 PRINTFORMW 「뭐어 %STR:401%보다는 낫지만…」
@@ -6981,9 +7043,9 @@ IF TFLAG:10
             ELSEIF CFLAG:3005 == 4
                 PRINTFORML 「안이, 뜨거…아, 싸고 있다, 울컥울컥하고 있어…」
                 PRINTFORMW 「기분 많이 좋았구나…?」
-            ENDIF
-        ENDIF
-    ENDIF
+            ENDIF ;L2 닫음
+        ENDIF ;L1 닫음
+    ENDIF ;L0 닫음
 ENDIF
 
 ;-------------------------------------------------
@@ -7566,7 +7628,9 @@ IF TFLAG:11
             PRINTFORMW 「기분 좋았구나…?」
         ENDIF
     ENDIF
-CFLAG:5153 += 1
+    ;주인 구내사정횟수 계산
+    SIF (ASSIPLAY == 0 && IS_COM_INSERT_ORAL(SELECTCOM) & (1p0 + 1p1 + 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 3)
+        CFLAG:5153 += 1
 ENDIF
 
 ;-------------------------------------------------
@@ -7580,13 +7644,13 @@ IF NO == 149 && (NOWEX:3 > 0 || NOWEX:0 > 0 || NOWEX:1 > 0 || NOWEX:2 > 0) && TF
         PRINTFORMW 아무래도 굉장히 많은 양을 싼 것 같다… 
         PRINTFORMW 「미워하지, 마, %STR:401%…」
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 물기 어린 눈으로 올려다 보고 있다.
-    ELSEIF (SELECTCOM == 30 || SELECTCOM == 31 || SELECTCOM == 32 || SELECTCOM == 33 || SELECTCOM == 34 || SELECTCOM == 37 || SELECTCOM == 38) && TEQUIP:32 == 0
+    ELSEIF IS_COM_INSERT_ANAL(SELECTCOM) && TEQUIP:32 == 0
         PRINTFORMW 「꺄앗, 꺗, 아앗, 아학, 히이익♪」
         PRINTFORMW 절정에 쫓기고 있는 %CALLNAME:TARGET%의 요도구를 용서 없이 자극했다.
         PRINTFORMW 「엉덩이, 같이, 당하면서, 싸아…!」
         PRINTFORMW 입에서 침을 흘리며 %조사처리(CALLNAME:TARGET,"는")% 온 몸의 수분을 방출하는 기세로 오줌을 뿜었다.
         PRINTFORMW 「하아아아아아아아아아아악♪」
-    ELSEIF (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 24 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 27 || SELECTCOM == 28 || SELECTCOM == 612 || SELECTCOM == 614 || SELECTCOM == 615) && TEQUIP:32 == 0
+    ELSEIF IS_COM_INSERT_VAGINA(SELECTCOM) && TEQUIP:32 == 0
         PRINTFORMW 「앗, 아앗, 아앙, 아학, 아아앗♪」
         PRINTFORMW 절정에 쫓기고 있는 %CALLNAME:TARGET%의 요도구를 용서 없이 자극했다.
         PRINTFORMW 「!꺅, 그러지 마, 지금 하면 나…!」
@@ -8457,7 +8521,7 @@ LOCAL:1 = ARG
 ;-------------------------------------------------
 IF !EXP:0 && TALENT:0 && TFLAG:1
     ;주인의 페니스
-    IF (ASSIPLAY == 0 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 430 || SELECTCOM == 612 || SELECTCOM == 613 || SELECTCOM == 614 || SELECTCOM == 615 || SELECTCOM == 616 || SELECTCOM == 630)) || (SELECTCOM == 610 && TFLAG:130 == 1)
+    IF (ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(SELECTCOM)) || (SELECTCOM == 610 && TFLAG:130 == 1)
         ;연모
         IF TALENT:150
             ;딸
@@ -8567,11 +8631,11 @@ IF !EXP:0 && TALENT:0 && TFLAG:1
                             PRINTFORMW 빨간 피가 결합부에서 배어나와 주변을 물들이고 있다… 
                             PRINTFORMW 「마음껏, 움직여줘, 그렇게 해서 지금의 아픔을 나한테 새겨줘…!」
                         ENDIF
-                    ELSE
+                    ENDIF
+                ELSE
                         PRINTFORMW 「에헤헷…드디어, 받아 주는 거구나」
                         PRINTFORMW 「기뻐…%조사처리(STR:401,"가")% 아니면, 나 싫어」
                         PRINTFORMW 「아팟…아읏, 울고 있, 지만, 이거, 기쁨의 눈물…♪」
-                    ENDIF
                 ENDIF
             ;범용캐러
             ELSE
