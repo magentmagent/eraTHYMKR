@@ -558,9 +558,9 @@ RETURNF LOCALS
 ;조교 명령 삽입 부위 처리
 ;=============================================================================
 ;자주 쓰일 것 같은 코드를 상위에 배치 
-;사용예시) IS_COM_INSERT_VAGINA(PREVCOM) & (1p0 + 1p1 + 1p2 + 1p3 + 1p4)
+;사용예시) IS_COM_INSERT_VAGINA(PREVCOM) & (1p0 | 1p1 | 1p2 | 1p3 | 1p4)
 ;사용예시) IS_COM_INSERT_VAGINA(PREVCOM) & (1p5 - 1)
-;1p5 -1 = 1p0 + 1p1 + 1p2 + 1p3 + 1p4
+;1p5 -1 = 1p0 | 1p1 | 1p2 | 1p3 | 1p4
 @IS_COM_INSERT_VAGINA(ARG)
 #FUNCTION
 SELECTCASE ARG

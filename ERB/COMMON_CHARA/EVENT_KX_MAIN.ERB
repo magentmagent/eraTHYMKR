@@ -4477,7 +4477,7 @@ ELSEIF CFLAG:5151 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(PREVCOM) & (1p5
     RETURN 1
 
 ;장내사정과다
-ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ANAL(PREVCOM) & (1p0 + 1p1 + 1p2)
+ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ANAL(PREVCOM) & (1p0 | 1p1 | 1p2)
     IF NO == 149 && TALENT:150 ;딸 and 연모
         IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
             PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
@@ -6552,7 +6552,7 @@ ENDIF ;L1 닫음
 ;-------------------------------------------------
 IF TFLAG:9
     ;L0 주인의 페니스
-    IF (ASSIPLAY == 0 && IS_COM_INSERT_ANAL(SELECTCOM) & (1p0 + 1p1 + 1p2 + 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 2)
+    IF (ASSIPLAY == 0 && IS_COM_INSERT_ANAL(SELECTCOM) & (1p0 | 1p1 | 1p2 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 2)
     ;selectcom = (30, 31, 32, 33, 34, 37, 38, 618, 619, 652)
         ;L1 친애
         IF TALENT:152
@@ -7629,7 +7629,7 @@ IF TFLAG:11
         ENDIF
     ENDIF
     ;주인 구내사정횟수 계산
-    SIF (ASSIPLAY == 0 && IS_COM_INSERT_ORAL(SELECTCOM) & (1p0 + 1p1 + 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 3)
+    SIF (ASSIPLAY == 0 && IS_COM_INSERT_ORAL(SELECTCOM) & (1p0 | 1p1 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 3)
         CFLAG:5153 += 1
 ENDIF
 
