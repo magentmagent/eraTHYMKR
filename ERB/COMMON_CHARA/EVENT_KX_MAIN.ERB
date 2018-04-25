@@ -4457,7 +4457,7 @@ ELSEIF NO == 149 && TEQUIP:20 == 1 && TEQUIP:25 == 1 && (TEQUIP:30 == 1 || TEQUI
     RETURN 1
 
 ;질내사정 과다
-ELSEIF CFLAG:5151 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(PREVCOM) & (1p5 - 1)
+ELSEIF CFLAG:5151 >= 10 && ASSIPLAY == 0 && CHECK_COM_INSERT_VAGINA(PREVCOM) & (1p5 - 1)
     IF NO == 149 && TALENT:150 ;딸 and 연모
         PRINTFORMW 「하앗, 하악, 아학, 하악, 앙, 아앙, 꺄앙, 하악, 앗! %STR:401%, 하웃, 앗, %STR:401%!」
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 절규에 가까운 신음을 내는 %CALLNAME:TARGET%의 안에 오늘의 마지막 정액을 주입시켰다.
@@ -4477,7 +4477,7 @@ ELSEIF CFLAG:5151 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(PREVCOM) & (1p5
     RETURN 1
 
 ;장내사정과다
-ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ANAL(PREVCOM) & (1p0 | 1p1 | 1p2)
+ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && CHECK_COM_INSERT_ANAL(PREVCOM) & (1p0 | 1p1 | 1p2)
     IF NO == 149 && TALENT:150 ;딸 and 연모
         IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
             PRINTFORMW 「또 엉덩이, 앗, 꺄앗, 하앗, 아아아아아아아아아앗!!」
@@ -4508,7 +4508,7 @@ ELSEIF CFLAG:5152 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ANAL(PREVCOM) & (1p0 |
     RETURN 1
 
 ;구내사정 과다
-ELSEIF CFLAG:5153 >= 10 && ASSIPLAY == 0 && IS_COM_INSERT_ORAL(PREVCOM) & (1p0)
+ELSEIF CFLAG:5153 >= 10 && ASSIPLAY == 0 && CHECK_COM_INSERT_ORAL(PREVCOM) & (1p0)
     IF NO == 149 && TALENT:150 ;딸 and 연모
         IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
             PRINTFORMW 「……쮸우우우우우우우우웁」
@@ -6552,7 +6552,7 @@ ENDIF ;L1 닫음
 ;-------------------------------------------------
 IF TFLAG:9
     ;L0 주인의 페니스
-    IF (ASSIPLAY == 0 && IS_COM_INSERT_ANAL(SELECTCOM) & (1p0 | 1p1 | 1p2 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 2)
+    IF (ASSIPLAY == 0 && CHECK_COM_INSERT_ANAL(SELECTCOM) & (1p0 | 1p1 | 1p2 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 2)
     ;selectcom = (30, 31, 32, 33, 34, 37, 38, 618, 619, 652)
         ;L1 친애
         IF TALENT:152
@@ -6751,7 +6751,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:10
     ;L0 주인의 페니스
-    IF (ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(SELECTCOM) & (1p5 - 1)) || (SELECTCOM == 610 && TFLAG:130 == 1)
+    IF (ASSIPLAY == 0 && CHECK_COM_INSERT_VAGINA(SELECTCOM) & (1p5 - 1)) || (SELECTCOM == 610 && TFLAG:130 == 1)
     ;selectcom = (20, 21, 22, 23, 24, 27, 28, 430, 612, 613, 614, 615, 616, 617, 630)
         ;L1 친애
         IF TALENT:152
@@ -7629,7 +7629,7 @@ IF TFLAG:11
         ENDIF
     ENDIF
     ;주인 구내사정횟수 계산
-    SIF (ASSIPLAY == 0 && IS_COM_INSERT_ORAL(SELECTCOM) & (1p0 | 1p1 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 3)
+    SIF (ASSIPLAY == 0 && CHECK_COM_INSERT_ORAL(SELECTCOM) & (1p0 | 1p1 | 1p5)) || (SELECTCOM == 610 && TFLAG:130 == 3)
         CFLAG:5153 += 1
 ENDIF
 
@@ -7644,13 +7644,13 @@ IF NO == 149 && (NOWEX:3 > 0 || NOWEX:0 > 0 || NOWEX:1 > 0 || NOWEX:2 > 0) && TF
         PRINTFORMW 아무래도 굉장히 많은 양을 싼 것 같다… 
         PRINTFORMW 「미워하지, 마, %STR:401%…」
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 물기 어린 눈으로 올려다 보고 있다.
-    ELSEIF IS_COM_INSERT_ANAL(SELECTCOM) && TEQUIP:32 == 0
+    ELSEIF CHECK_COM_INSERT_ANAL(SELECTCOM) && TEQUIP:32 == 0
         PRINTFORMW 「꺄앗, 꺗, 아앗, 아학, 히이익♪」
         PRINTFORMW 절정에 쫓기고 있는 %CALLNAME:TARGET%의 요도구를 용서 없이 자극했다.
         PRINTFORMW 「엉덩이, 같이, 당하면서, 싸아…!」
         PRINTFORMW 입에서 침을 흘리며 %조사처리(CALLNAME:TARGET,"는")% 온 몸의 수분을 방출하는 기세로 오줌을 뿜었다.
         PRINTFORMW 「하아아아아아아아아아아악♪」
-    ELSEIF IS_COM_INSERT_VAGINA(SELECTCOM) && TEQUIP:32 == 0
+    ELSEIF CHECK_COM_INSERT_VAGINA(SELECTCOM) && TEQUIP:32 == 0
         PRINTFORMW 「앗, 아앗, 아앙, 아학, 아아앗♪」
         PRINTFORMW 절정에 쫓기고 있는 %CALLNAME:TARGET%의 요도구를 용서 없이 자극했다.
         PRINTFORMW 「!꺅, 그러지 마, 지금 하면 나…!」
@@ -8521,7 +8521,7 @@ LOCAL:1 = ARG
 ;-------------------------------------------------
 IF !EXP:0 && TALENT:0 && TFLAG:1
     ;주인의 페니스
-    IF (ASSIPLAY == 0 && IS_COM_INSERT_VAGINA(SELECTCOM)) || (SELECTCOM == 610 && TFLAG:130 == 1)
+    IF (ASSIPLAY == 0 && CHECK_COM_INSERT_VAGINA(SELECTCOM)) || (SELECTCOM == 610 && TFLAG:130 == 1)
         ;연모
         IF TALENT:150
             ;딸
