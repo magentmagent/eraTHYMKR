@@ -290,9 +290,9 @@ SIF EQUIP:ARG:14 > 0
 ;복숭아의 눈깔사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:0 > 0
     PRINTFORML 신비한 복숭아색 사탕의 영향을 받고 있다.
-;감색의 눈깔사탕의 영향을 받고 있다면 표시
+;남색 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:1 > 0
-    PRINTFORML 신비한 감색 사탕의 영향을 받고 있다.
+    PRINTFORML 신비한 남색 사탕의 영향을 받고 있다.
 
 CALL NEW_DRAWLINE
 
@@ -1519,7 +1519,7 @@ SIF CFLAG:ARG:42 & 8
 SIF CFLAG:ARG:42 & 16
     PRINT 《라비아피어스》 
 SIF CFLAG:ARG:42 & 32
-    PRINT 《유두피어스》 
+    PRINT 《니플피어스》 
 
 PRINTL 
 CALL NEW_DRAWLINE

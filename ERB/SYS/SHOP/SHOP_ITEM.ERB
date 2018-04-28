@@ -195,7 +195,7 @@ ELSEIF TALENT:MASTER:98 && CHARANUM > 1 && ITEM:99 == 0 && FLAG:15 & 2048
     REND
 ENDIF
 
-;예속의 증표
+;노예의 증표
 ITEMSALES:97 = 0
 IF TALENT:MASTER:998 && CHARANUM > 1
     ;デバッグモードのときは動作チェック用に販売
@@ -455,7 +455,7 @@ REPEAT CHARANUM
         ELSE
             CONTINUE
         ENDIF
-    ;예속의 증표
+    ;노예의 증표
     ELSEIF ARG == 97
         IF SALE_ITEM_97(COUNT)
             PRINT 
@@ -514,7 +514,7 @@ ENDIF
 
 MONEY -= ITEMPRICE:ARG
 ITEM:ARG += 1
-;공정석 목걸이(예속)・青珊瑚の指輪(친애)・예속의 증표(낙인)
+;공정석 목걸이(예속)・青珊瑚の指輪(친애)・노예의 증표(낙인)
 IF ARG == 95 || ARG == 96 || ARG == 97
     LOCAL:98 = TARGET
     TARGET = RESULT
@@ -637,7 +637,7 @@ SIF (TALENT:MASTER:120 && ((TALENT:ARG:83 && ABL:ARG:33 >= 5) || EXP:ARG:12 < 50
 RETURNF 0
 
 ;………………………………………………
-;예속의 증표
+;노예의 증표
 ;………………………………………………
 @SALE_ITEM_97, ARG
 #FUNCTION
@@ -848,7 +848,7 @@ ENDIF
 RETURN 1
 
 ;--------------------------------------------------
-;예속의 증표(낙인)
+;노예의 증표(낙인)
 ;--------------------------------------------------
 @USE_ITEM_97
 PRINTFORMW ※주의！　%CALLNAME:TARGET%에게 낙인을 찍으면 두 번 다시 매각할 수 없게 됩니다.

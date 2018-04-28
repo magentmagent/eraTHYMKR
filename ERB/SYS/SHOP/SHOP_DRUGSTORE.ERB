@@ -278,7 +278,7 @@ REPEAT CHARANUM
         ;対象がオトコかふたなりか雌雄可変であるかクリトリスリングをはめている場合, あるいは既に成長しきっている場合は使用できない
         SIF TALENT:COUNT:121 || TALENT:COUNT:120 || TALENT:COUNT:9 || CFLAG:COUNT:42 & 1 || BASE:COUNT:7 >= 250
             CONTINUE
-    ;根素勃乳の場合
+    ;뿌리생성약の場合
     ELSEIF LOCAL == 14
         ;主人には使えない
         SIF COUNT == MASTER

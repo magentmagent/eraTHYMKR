@@ -106,7 +106,7 @@ RETURN 1
 ;강함과 실행 판정이 존재하는 이외는 원의 시리코다마 빼기와 취급은 같아서 TFLAG:140을 사용. 이 근처의 참고는 흡혈
 ;내장 누락 설정을 살리기 (위해)때문에 첫회는 최대 체력과 기력이 저하하도록(듯이). 또 지문을 추가해, A확장 경험도 들어가는 것처럼
 @COM402
-PRINTL 엉덩이구슬(시리고다마) 뽑기
+PRINTL 엉덩이구슬(시리코다마) 뽑기
 
 ;-------------------------------------------------
 ;실행할 수 있을까의 판정
@@ -288,7 +288,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 PRINTL
-PRINTFORML %CALLNAME:TARGET%의 시리고다마를 빼려 했지만 거부당했다.
+PRINTFORML %CALLNAME:TARGET%의 시리코다마를 빼려 했지만 거부당했다.
 PRINTW 좀 더 조교가 필요할 것 같다.
 
 ;--------------------------------------------------
@@ -301,7 +301,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 
 PRINTL
 PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %조사선택(CALLNAME:TARGET, "를")% 네발로 엎드리게 해, 엉덩이를 높이 들어올리게 했다.
-PRINTFORML 그리고 %CALLNAME:TARGET%의 항문에 주먹을 찔러 넣어, 안쪽에 자리잡고 있던 시리고다마를 재빨리 빼냈다.
+PRINTFORML 그리고 %CALLNAME:TARGET%의 항문에 주먹을 찔러 넣어, 안쪽에 자리잡고 있던 시리코다마를 재빨리 빼냈다.
 PRINTFORM %CALLNAME:PLAYER%의 주먹이 뽑혀진 %CALLNAME:TARGET%의 항문은 
 IF ABL:2 <= 2
     PRINTL 뻐끔 입을 열고 있다.
@@ -311,7 +311,7 @@ ELSEIF ABL:2 == 4
     PRINTL 마치 동굴과 같이 큰 입을 열고 있다….
 ELSE
     PRINTL 최초부터 그랬던 것 처럼 넓게 열려있다….
-    PRINTFORML 시리고다마가 빼내진 쾌감 때문인지, 아니면 고통 때문인지 %조사선택(CALLNAME:TARGET, "가")% 가쁜 숨을 몰아 쉴 때 마다, 항문이 움찔 움찔 거린다….
+    PRINTFORML 시리코다마가 빼내진 쾌감 때문인지, 아니면 고통 때문인지 %조사선택(CALLNAME:TARGET, "가")% 가쁜 숨을 몰아 쉴 때 마다, 항문이 움찔 움찔 거린다….
 ENDIF
 
 ;--------------------------------------------------
@@ -327,13 +327,13 @@ IF ARG == 1
     PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 얼간이가 되어버렸다.
 ELSEIF ARG == 2
     PRINTFORML %CALLNAME:TARGET%의 찡그렸던 얼굴이 조금 편해졌다.
-    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리고다마를 빼는 감각을 받아들인 것 같다.
+    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리코다마를 빼는 감각을 받아들인 것 같다.
 ELSEIF ARG == 3
     PRINTFORML %CALLNAME:TARGET%의 눈이 촉촉히 젖어있다.
-    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리고다마를 빼는 행위에 눈을 뜬 것인지도 모른다….
+    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리코다마를 빼는 행위에 눈을 뜬 것인지도 모른다….
 ELSEIF ARG == 4
     PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 뺨을 상기시켜, 거친 숨을 내쉬고 있다.
-    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리고다마를 빼는 감촉에 푹 빠져버린 것 같다….
+    PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 시리코다마를 빼는 감촉에 푹 빠져버린 것 같다….
 ENDIF
 
 ;-------------------------------------------------
