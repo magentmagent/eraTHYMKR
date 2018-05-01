@@ -688,7 +688,7 @@ CALL SHOW_EQUIP_2
 ;PRINTFORML %CALLNAME:ARG%를 체크하는 중입니다...@LIFE_BAR_TORIKOMODE, ARG
 
 BASE:ARG:0 = LIMIT(BASE:ARG:0, 0, MAXBASE:ARG:0)
-PRINT 체력:
+PRINT 체력(
     IF (BASE:ARG:0 / MAXBASE:ARG:0) *100 >= 80 
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 건강
@@ -702,7 +702,7 @@ PRINT 체력:
         PRINT 지침
         RESETCOLOR
     ENDIF
-PRINTFORM (최대/{MAXBASE:ARG:0}) 
+PRINTFORM /{MAXBASE:ARG:0}) 
 
 
 ;-------------------------------------------------
@@ -715,7 +715,7 @@ PRINTFORM (최대/{MAXBASE:ARG:0})
 ;PRINTFORML %CALLNAME:ARG%를 체크하는 중입니다...@VITALITY_BAR_TORIKOMODE, ARG
 
 BASE:ARG:1 = LIMIT(BASE:ARG:1, 0, MAXBASE:ARG:1)
-PRINT 기력:
+PRINT 기력(
     IF (BASE:ARG:1 / MAXBASE:ARG:1) *100 >= 80
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 안정
@@ -729,7 +729,7 @@ PRINT 기력:
         PRINT 지침
         RESETCOLOR
     ENDIF
-PRINTFORM (최대/{MAXBASE:ARG:1}) 
+PRINTFORM /{MAXBASE:ARG:1}) 
 
 ;-------------------------------------------------
 ;토리코모드용 만복도 표시 함수
@@ -753,7 +753,7 @@ LOCAL:3 = (LOCAL:1 *100 / LOCAL:2)
 
 ;표시방식이 토리코식이면,
 IF FLAG:5000 & 1
-    PRINT 만복:
+    PRINT 만복(
     IF LOCAL:3 >= 95
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 폭식
@@ -775,7 +775,7 @@ IF FLAG:5000 & 1
         PRINT 텅빔
         RESETCOLOR
     ENDIF
-    PRINTFORM (최대/{CFLAG:ARG:4002}) 
+    PRINTFORM /{CFLAG:ARG:4002}) 
 ELSE
     PRINT 만복
     IF LOCAL:3 >= 95
@@ -830,7 +830,7 @@ LOCAL:3 = (LOCAL:1 *100 / LOCAL:2)
 ;표시방식이 토리코식이면,
 IF FLAG:5000 & 1
 ;계산, 출력
-    PRINT 영양:
+    PRINT 영양(
     IF LOCAL:3 >= 95
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 넘침
@@ -854,7 +854,7 @@ IF FLAG:5000 & 1
         FONTREGULAR
         RESETCOLOR
     ENDIF
-    PRINTFORM (최대/{CFLAG:ARG:4004}) 
+    PRINTFORM /{CFLAG:ARG:4004}) 
 ELSE
     PRINT 영양
     IF LOCAL:3 >= 95
