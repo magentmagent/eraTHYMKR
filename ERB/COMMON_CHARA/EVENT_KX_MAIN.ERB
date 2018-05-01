@@ -43,7 +43,7 @@
 ;CFLAG:6567 = CFLAG:6567
 ;CFLAG:7001 = CFLAG:7001 ;케이네 존재여부에 관한 플래그. 하지만 쓸모가 없다.
 ;CFLAG:7003 = CFLAG:7020 코드와 용도가 같아서 지움.
-;CFLAG:7003 = 바다를 만든다 플래그
+;CFLAG:7004 = 바다를 만든다 플래그
 ;CFLAG:7005 = 밖으로 나간다를 클리어
 ;CFLAG:7006 = 쓰이는 곳이 없음
 ;CFLAG:7007~7010 = 밖으로 나간다用 (개인당 공략플래그) 현재 없음
@@ -23949,7 +23949,7 @@ IF SELECTCOM == 346 && NO == 149
                 JUEL:TARGET:11 += 300
                 CFLAG:TARGET:2 += 100
                 EXP:TARGET:21 += 10
-            ELSE;IF CFLAG:7001 == 0
+            ELSE ;ELSEIF CFLAG:7001 == 0
                 PRINTFORMW 
                 PRINTFORMW 그래서 큰맘먹고 %조사처리(CALLNAME:TARGET,"를")% 데리고 인간 마을로 내려왔다.
                 PRINTFORMW 이곳에는 분명 서당이 있는 걸로 알고 있다, 서당의 훈장은 분명 아는 것도 많고 괴짜가 많은 이 근방에서도 상식인 축에 속한다고 들었다.
