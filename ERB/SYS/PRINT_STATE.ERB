@@ -120,7 +120,8 @@ PRINTFORML \@(LOCAL > 0) ? (최대 {LOCAL}명 노예구입가능) #  (노예의 
 ;-------------------------------------------------
 ;能力を見る選択のとき、各キャラの横で種族、体力、気力が表示されます.
 
-;일단 완성.
+;일단 완성. 현재 사용 안하는 코드 (사용시 [SKIPSTART],[SKIPEND] 코드를 제거)
+[SKIPSTART]
 @SHOW_RACE, ARG
 PRINT 　　종족:
 IF NO:ARG == 0 && TALENT:ARG:998 && TALENT:ARG:116
@@ -159,7 +160,7 @@ IF ARG == MASTER && FLAG:12 & 4
 ELSEIF FLAG:12 & 4
     CALL PRINT_SLAVE_STATUS, ARG
 ENDIF
-
+[SKIPEND]
 ;-------------------------------------------------
 ;주인용 스테이터스 표시 처리
 ;-------------------------------------------------
@@ -2461,20 +2462,27 @@ MONEY += MONEY:1
 ;토리코모드 대응용 개조. 
 ;130821 BY V.K
 ;-------------------------------------------------
-@ARRANGE_CHARALIFE, ARG
-
+@ARRANGE_CHARALIFE, ARG, ARG:1
+;ARG:1 : 1로 영양 상태를 켬, 2로 식단을 켠다, 4로 체력,기력을 끈다.
 ;토리코모드 플래그 체크.
 IF FLAG:5000 & 1
     ;토리코모드
-    CALL LIFE_BAR_TORIKOMODE , ARG
-    CALL VITALITY_BAR_TORIKOMODE, ARG
+    IF (ARG:1 & 4) == 0
+        CALL LIFE_BAR_TORIKOMODE , ARG
+        CALL VITALITY_BAR_TORIKOMODE, ARG
+    ENDIF
     ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ELSE
     ENDIF
 
@@ -2488,49 +2496,59 @@ IF FLAG:5000 & 1
     ;PRINTL
 
 ELSE
-;일반모드
-PRINTFORM 체력
-;60%까지는 초록
-IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
-RESETCOLOR
+    ;일반모드
+    IF (ARG:1 & 4) == 0
+        PRINTFORM 체력
+        ;60%까지는 초록
+        IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
+        RESETCOLOR
 
-PRINTFORM 기력
-;60%까지는 초록
-IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4})
-RESETCOLOR
-
-;만약 식사 시스템 사용중이라면
+        PRINTFORM 기력
+        ;60%까지는 초록
+        IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4}) 
+        RESETCOLOR
+    ENDIF
+    ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
 ;캐릭터 일람표시처리
 ;-------------------------------------------------
-@CHARADATA_LIST, ARG, ARG:2
+@CHARADATA_LIST, ARG, ARG:2, ARG:3
+;ARG:3 (비트연산) 일부 표시를 켠다. (1: 영양상태, 2: 식단, 4: 체력,기력(을 끈다), 8: 스케쥴,스트레스, 16: 한마디대사, 32: 소질(을 끈다))
+
+CALL CHARADATA_LIST_TORIKOMODE, ARG, ARG:2, ARG:3
+[SKIPSTART] ;토리코 모드 코드로도 충분해 보입니다. (코드가 완전 같음)
 LOCAL:3 = 0
 REPEAT 20
     LOCAL = GET_LIST(COUNT + ARG * 20)
@@ -2569,14 +2587,36 @@ REPEAT 20
         PRINT 　
     ENDIF
     CALL ARRANGE_CHARALIST, LOCAL
-    CALL ARRANGE_CHARALIFE, LOCAL
-    CALL ARRANGE_CHARATALENT, LOCAL
-    PRINTL 
-    ;한 마디 대사 호출
-    SIF FLAG:1200 & 4
+    ;스케쥴 모드 사용중일때
+    SIF FLAG:5000 & 1024 && ARG:3 & 8
+        CALL ARRANGE_SCHEDULE_TORIKOMODE, LOCAL
+    ;스트레스 모드 사용 중일때
+    IF FLAG:5000 & 64 && ARG:3 & 8
+        PRINT  ♨스트레스:
+        CALL PRINT_STRESS_LEVEL_TORIKOMODE, CFLAG:LOCAL:65
+    ENDIF
+    ;줄바꿈
+    SIF (FLAG:5000 & 1024 || FLAG:5000 & 64) && ARG:3 & 8
+        PRINTL 
+    
+    PRINT 　
+    CALL ARRANGE_CHARALIFE, LOCAL, ARG:3
+  
+    ;소질 호출    
+    IF (ARG:3 & 32) == 0
+        PRINT 　
+        CALL ARRANGE_CHARATALENT, LOCAL
+        PRINTL
+    ENDIF
+    ;한마디 호출
+    IF FLAG:1200 & 4 && ARG:3 & 16
         CALL IMPRESSION_MAIN, LOCAL
+    ENDIF
+    ;토리코모드로 1줄추가
+    ;DRAWLINE
 REND
 IF ARG:2 >= 1
+    DRAWLINE
     PRINT 　　　☆:조교중 ★:조수 ○:조수가능 ●:전 조수
     SIF FLAG:15 & 4096 && FLAG:75 & 32768 && LOCAL:3 & 1
         PRINT  ◆:촉수 유폐중
@@ -2588,7 +2628,7 @@ IF ARG:2 >= 1
         PRINT  ▽:허브 작업중
     PRINTL 　(을)를 나타내고 있습니다
 ENDIF
-
+[SKIPEND]
 ;-------------------------------------------------
 ;캐릭터의 소질 간이 표시의 보조 처리
 ;-------------------------------------------------
