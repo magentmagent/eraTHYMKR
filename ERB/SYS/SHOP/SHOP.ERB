@@ -133,7 +133,7 @@ ELSE
                 PRINT 　
                 PRINT 기생
                 BAR MAX(BASE:6, 0), MAXBASE:6, 32
-                PRINTFORML  ({BASE:6, 5}/{MAXBASE:6, 5})
+                PRINTFORML ({BASE:6, 5}/{MAXBASE:6, 5})
         ENDIF
 
         ;만복도모드
@@ -168,15 +168,15 @@ ELSE
         IF FLAG:5000 & 1
         ;일반모드
         ELSE
-            CALL CALC_GAUGE8, TARGET, 1
+            CALL CALC_GAUGE8, ASSI, 1
             PRINT 　
         ENDIF 　
         ;토리코모드 체력
         IF FLAG:5000 & 1
-            CALL LIFE_BAR_TORIKOMODE, TARGET
+            CALL LIFE_BAR_TORIKOMODE, ASSI
         ;일반모드　
         ELSE
-            CALL LIFE_BAR, TARGET
+            CALL LIFE_BAR, ASSI
             PRINT 　
         ENDIF
         PRINTL
