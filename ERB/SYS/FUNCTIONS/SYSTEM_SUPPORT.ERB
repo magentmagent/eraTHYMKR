@@ -17,6 +17,8 @@ SIF LASTLOAD_VERSION < GAMEBASE_VERSION
 ;--------------------------------------------------
 @SAVE_SUPPORT_OLDVERSION
 RESULT = 0
+;오래된 패치(1~2년 이상?)는 삭제하는 것을 추천
+;
 
 ;eratohoYM Mk-2 → eratohoYM Mk-2 rev.2のセーブ変換処理
 SIF LASTLOAD_VERSION < 2020
@@ -57,6 +59,10 @@ SIF LASTLOAD_VERSION < 2059
 ;Mk-2 rev.5改2 → Mk-2 rev.6セーブ変換処理
 SIF LASTLOAD_VERSION < 2065
     CALL SAVE_SUPPORT_VERSION_2065
+
+;2018년 5월 5일 패치
+SIF LASTLOAD_VERSION < 3162 
+    CALL SAVE_SUPPORT_VERSION_3162
 
 SIF MONEY:100 == 0
     MONEY:100 = 1000000
@@ -816,4 +822,16 @@ MONEY:100 = 1000000
 
 ;セーブバージョンフラグを廃止
 FLAG:999 = 0
+RETURN 1
+
+
+@SAVE_SUPPORT_VERSION_3162
+;딸, 밖으로 나간다 플래그 재정리
+;성격 2,4,5를 클리어하면 8502가 ON, 성격 1,3을 클리어하면 8503이 ON되는 것을 성격별로 ON되게 바꿈.
+;일단은 성격별로 다른 대사가 나오는 것이 목표임.
+SIF FLAG:8502 == 1
+    FLAG:8502 == 0
+SIF FLAG:8503 == 1
+    FLAG:8503 == 0
+
 RETURN 1
