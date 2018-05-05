@@ -1875,91 +1875,27 @@ SIF RESULT:1 == 1 || RESULT:0 == 1
 ;알아서 밥 먹는거 리스트 출력.
 ;-------------------------------------------------
 @SHOW_LIST_EATEN_TORIKOMODE
-;表示させるキャラを抽出（LOCAL:2に人数）
-VARSET LOCAL, 0
-;CHARADATA_LISTのために待避
-LOCAL:99 = GET_LIST(2)
-CALLF CLEAR_LIST
+#DIM EATEN_SUM
+
+EATEN_SUM = 0
+
+DRAWLINE
+
 REPEAT CHARANUM
-    MARK:COUNT:98 = 0
-    ;主人は除外
-    SIF COUNT == MASTER
-        CONTINUE
-    ;失踪中などこの場にいないなら除外
-    SIF CFLAG:COUNT:4 == 1
+
+    SIF COUNT == MASTER || CFLAG:COUNT:4 == 1
         CONTINUE
 
-    CALLF SET_LIST, LOCAL:2, COUNT
-    LOCAL:2 += 1
-    MARK:COUNT:98 = 1
+    CALL EATEN_TORIKOMODE(COUNT)
+    EATEN_SUM += RESULT
+    PRINT   
+    CALL ARRANGE_CHARALIFE(COUNT, 3)
+    DRAWLINE
 REND
-LOCAL:1 = (LOCAL:2 - 1) / 20
-MARK:MASTER:98 = 1
-
-$PRINT_LIST
-DRAWLINE
-PRINTFORML 오늘의 식사결과는 다음과 같습니다.＜page.{LOCAL+1}＞
-
-    ;식사결과 처리, 출력
-    CALL CALC_EATEN_TORIKOMODE, LOCAL, LOCAL:99
-    ;총 식비 출력
-    PRINTFORML {CHARANUM-1}명의 식비로 총 {RESULT:0}원이 지출되었습니다. 현재 잔고 {MONEY}원.
-
-DRAWLINE
-PRINTFORMLC \@(LOCAL <= 0) ? %" " * 16% # [1001] 앞페이지\@
-PRINTLC [1000] 확인 종료
-PRINTFORMLC \@(LOCAL >= LOCAL:2 / 20) ? %" " * 16% # [1009] 다음페이지\@
-PRINTL 
-$INPUT_LOOP_1
-INPUT
-IF RESULT == 1000
-    RETURN 0
-ELSEIF RESULT == 1001 && LOCAL > 0
-    LOCAL -= 1
-    GOTO PRINT_LIST
-ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-    LOCAL += 1
-    GOTO PRINT_LIST
-ELSEIF RESULT < 0 || RESULT >= CHARANUM || MARK:RESULT:98 == 0
-    GOTO INPUT_LOOP_1
-ELSE
-ENDIF
-
-RESTART
-
-
-;-------------------------------------------------
-; 자율식사 처리함수
-;-------------------------------------------------
-@CALC_EATEN_TORIKOMODE, ARG, ARG:2
-;총 소비 식비 저장, 출력.
-LOCAL:999 = 0
-LOCAL:3 = 0
-;반복자
-LOCAL:99 = 0
-
-DO
-    LOCAL = GET_LIST((LOCAL:99) + ARG * 20)
-    ;주인공은 제외
-    IF LOCAL == 0
-        ;
-    ELSE
-        CALL EATEN_TORIKOMODE, LOCAL
-
-        ;EATEN_TORIKOMODE 에서 각각이 소비한 식비를 받아온다.
-        LOCAL:999 += RESULT:0
-
-        ;먹인 후의 캐릭터들의 상태를 출력하는 것이므로, 여기에 놓임
-        PRINT   
-        CALL ARRANGE_CHARALIFE, LOCAL, 3
-
-        ;DRAWLINE
-    ENDIF
-    LOCAL:99+= 1
-LOOP LOCAL:99 <21
-
-;총 소비 식비 반환
-RETURN LOCAL:999
+    
+;총 식비 출력
+PRINTFORMW {CHARANUM-1}명의 식비로 총 {EATEN_SUM}원이 지출되었습니다. 현재 잔고 {MONEY}원.
+RETURN 0
 
 ;-------------------------------------------------
 ; 굶어죽기 엔딩 판정.
