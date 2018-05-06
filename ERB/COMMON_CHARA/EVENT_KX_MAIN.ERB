@@ -7,22 +7,20 @@
 ;친애일 때를 별개 대사로 해봤음(2009/08/28)
 ;최초의 조교 개시시에 상성에 따로 별개 대사로 해봤음(2009/09/04)
 ;플래그 분석. 복구시도중. (밴디트킹 131008)
-;CFLAG:3005 = CFLAG:3005
-;CFLAG:5151 = CFLAG:5151 질내사정량 플래그
-;CFLAG:5152 = CFLAG:5152 애널사정량 플래그
-;CFLAG:5153 = CFLAG:5153 구내사정량 플래그
-;CFLAG:5160 = CFLAG:5160
-;CFLAG:5255 = CFLAG:5255
+;CFLAG:3005 = 노예 성격
+;CFLAG:5151 = 질내사정량 플래그(매 조교 시작시 소멸)
+;CFLAG:5152 = 애널사정량 플래그(매 조교 시작시 소멸)
+;CFLAG:5153 = 구내사정량 플래그(매 조교 시작시 소멸)
+;CFLAG:5160 = 구타회수플래그(매 조교 시작시 소멸)
 ;CHECK_MASTERS_CHILD(TARGET) == 1 CHECK_MASTERS_CHILD(TARGET) == 1
-;CFLAG:5201 = CFLAG:5201 (첫조교~상애까지 각 단계별로 올라간다. 순애외의 루트는 없다!)
-;CFLAG:7000 = CFLAG:7000 (밖으로 나간다.등의 여러가지 이벤트의 진행정도)
-;CFLAG:5159 = CFLAG:5159
-;CFLAG:5155 = CFLAG:5155
-;CFLAG:5156 = CFLAG:5156
-;CFLAG:5157 = CFLAG:5157
-;CFLAG:5158 = CFLAG:5158
-;CFLAG:5161 = CFLAG:5161
-;CFLAG:5162 = CFLAG:5162
+;CFLAG:5201 = (첫조교~상애까지 각 단계별로 올라간다. 순애외의 루트는 없다!)
+;CFLAG:7000 = (밖으로 나간다.등의 여러가지 이벤트의 진행정도)
+;CFLAG:5155 = 현재 조교에서 딸에게 못된 짓(말)을 한 플래그. 조교종료시 구상 출력
+;CFLAG:5156 = 전 조교에서 딸에게 못된 짓을 한 플래그. 매 조교 시작시 전용 구상이 나온 후 0으로 소멸. (앞으로는 이런 짓 하지 말아야지~ 라는 식)
+;CFLAG:5158 = 현재 조교에서 딸에게 못된 짓(아이언메이든)을 한 플래그. 조교종료시 구상 출력
+;CFLAG:5159 = 전 조교에서 딸에게 못된 짓을 한 플래그. 매 조교 시작시 전용 구상이 나온 후 0으로 소멸.
+;CFLAG:5161 = 전 조교에서 딸에게 못된 짓(폭력 과다)을 한 플래그.-> 유산
+;CFLAG:5162 = 전 조교에서 딸에게 못된 짓(폭력 과다)을 한 플래그.
 ;CFLAG:5225 = CFLAG:5225
 ;CFLAG:5228 = CFLAG:5228
 ;CFLAG:5231 = CFLAG:5231
@@ -31,7 +29,10 @@
 ;CFLAG:5234 = CFLAG:5234
 ;CFLAG:5235 = CFLAG:5235
 ;CFLAG:5236 = CFLAG:5236
-;CFLAG:5154 = CFLAG:5154
+;CFLAG:5254 : 순결. 다른 캐릭터들도 같이 쓰는 듯. 
+;CFLAG:5157 = 아이언 메이든 최초 대사
+;CFLAG:5255 : 최초애널섹스플래그 (1회에 소멸)
+;CFLAG:5154 = 말 최초 대사
 ;CFLAG:5265 = CFLAG:5265
 ;CFLAG:5298 = CFLAG:5298
 ;CFLAG:5299 = CFLAG:5299
@@ -40,15 +41,18 @@
 ;CFLAG:5297 = CFLAG:5297
 ;CFLAG:5302 = CFLAG:5302
 ;CFLAG:6567 = CFLAG:6567
-;CFLAG:7001 = CFLAG:7001
-;CFLAG:7003 = CFLAG:7003
-;CFLAG:7004 = CFLAG:7004
-;CFLAG:7005 = CFLAG:7005
-;CFLAG:7006 = CFLAG:7006
-;CFLAG:7008 = ???
-;;CFLAG:7011~14 = 딸성격플래그. 부끄럼쟁이 성격 플래그가 딱히 없다는 것에 주의. 또한 이 플래그들도 하
-;는 일이 없어서 주석화 해버렸다.
-;CFLAG:7020 = CFLAG:7020
+;CFLAG:7004 = 바다를 만든다 플래그
+;CFLAG:7005 = 이 캐릭터가 밖으로 나간다를 클리어 함
+;CFLAG:7020 = 조수:유카리와 밖으로 나간다 최초 플래그
+;CFLAG:7022~7029 = 조수:유카리와 밖으로 나간다 플래그
+;CFLAG:7056~7063 : 조수:유카리와 밖으로 나간다 플래그
+;CFLAG:8000 = 청색 보옥플래그(밖으로 나간다에 관련)
+;CFLAG:8001 = 적색 보옥플래그(밖으로 나간다에 관련)
+;CFLAG:8002 = 황색 보옥플래그(밖으로 나간다에 관련)
+;CFLAG:8003 = 녹색 보옥플래그(밖으로 나간다에 관련)
+;CFLAG:8004 = 칠색의 보옥이벤트를 봤다
+;CFLAG:8006 = 딸이 가출함
+;CFLAG:8007 = 딸이 가출함 -> 딸이 심한 부상을 입음
 ;CFLAG:7032 = CFLAG:7032
 ;CFLAG:7033 = CFLAG:7033
 ;CFLAG:7034 = CFLAG:7034
@@ -61,20 +65,12 @@
 ;CFLAG:7500 = CFLAG:7500
 ;CFLAG:7777 = CFLAG:7777
 ;CFLAG:7778 = ???
-;CFLAG:8006 = CFLAG:8006
-;CFLAG:8007 = CFLAG:8007
 ;CFLAG:6666 = CFLAG:6666
 ;CFLAG:6566 = CFLAG:6566
-;FLAG:8501 = FLAG:8501
-;FLAG:8502 = FLAG:8502
-;FLAG:8503 = FLAG:8503
-;FLAG:8504 = FLAG:8504
-;FLAG:8505 = FLAG:8505
-;CFLAG:8000 = CFLAG:8000
-;CFLAG:8001 = CFLAG:8001
-;CFLAG:8002 = CFLAG:8002
-;CFLAG:8003 = CFLAG:8003
-;CFLAG:8004 = 보옥이벤트를 봤다
+;-------------------------------------
+;FLAG:8500 = TV를 샀다
+;FLAG:8501 = 딸을 공략중, 다른 딸을 공략 못하게 한다 (미구현)
+;FLAG:8502 = 딸 성격별 클리어를 기억 (비트 판정)
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;딸관련
 ;CFLAG:3005 :성격. 
@@ -203,7 +199,7 @@ IF CFLAG:5201 == 0
                 ELSE
                     STR:401 = 엄마
                 ENDIF
-                ;CFLAG:7013 = 1
+                
                 CFLAG:3005 = 1
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
@@ -220,7 +216,6 @@ IF CFLAG:5201 == 0
                 ELSE
                     STR:401 = 어머니
                 ENDIF
-                ;CFLAG:7014 = 1
                 CFLAG:3005 = 2
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
@@ -237,7 +232,6 @@ IF CFLAG:5201 == 0
                 ELSE
                     STR:401 = 어머님
                 ENDIF
-                ;CFLAG:7012 = 1
                 CFLAG:3005 = 3
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
@@ -256,7 +250,6 @@ IF CFLAG:5201 == 0
                 ELSE
                     STR:401 = 엄마
                 ENDIF
-                ;CFLAG:7011 = 1
                 CFLAG:3005 = 4
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
@@ -269,9 +262,6 @@ IF CFLAG:5201 == 0
                 ELSE
                     STR:401 = 어머니
                 ENDIF
-                ;CFLAG:3005 인데, 4번까지만 지정되어 있기에 비워둔다. (딱히 쓰이는 곳도 없는 것 같다)
-                ;CFLAG:7015는 딸조교중에 무언가의 판정에 쓰인다. 그래서 켜면 겹쳐버림!
-                ;CFLAG:7015 = x
                 ;성격
                 CFLAG:3005 = 5
                 PRINTFORML
@@ -2075,7 +2065,7 @@ ELSEIF NO == 149 && TALENT:142 == 1
                     PRINTFORML ― %CALLNAME:TARGET%의 몸은 모르는 사이에 어른스러워졌습니다.― 
                     TALENT:128 = 0
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% [작은체형]을 잃었습니다.
-                ELSEIF RESULT == 1
+                ELSE
                     PRINTFORML 아버지 앞에서 딸은 언제나 어린아이랍니다― 
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 언제나처럼 [작은체형]입니다.
                 ENDIF
@@ -2384,7 +2374,7 @@ ELSEIF NO == 149 && TALENT:142 == 1
                     PRINTFORML ― %CALLNAME:TARGET%의 몸은 모르는 사이에 어른스러워졌습니다.― 
                     TALENT:128 = 0
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% [작은체형]을 잃었습니다.
-                ELSEIF RESULT == 1
+                ELSE
                     PRINTFORML 아버지 앞에서 딸은 언제나 어린아이랍니다― 
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 언제나처럼 [작은체형]입니다.
                 ENDIF
@@ -4297,7 +4287,7 @@ ELSEIF CFLAG:7000 == 16
             PRINTFORMW …시간이 되면 돌아오겠지 
             PRINTFORMW 하지만 이것으로서 이 바보같은 연극의 막이 내렸다.
             PRINTFORMW %조사처리(CALLNAME:TARGET,"과")% 교감할 기회는 영원히 사라진 것이다… 
-            CFLAG:7000 = 0            
+            CFLAG:7000 = -1            
             FLAG:8501 = 0
         ELSE
             PRINTFORML 「나, 피곤해…잘래」
@@ -4329,7 +4319,7 @@ ELSEIF CFLAG:7000 == 19
             PRINTFORMW 정신이 들었을 때 과연 어떤 얼굴을 할까 
             PRINTFORMW 한가지 확실한 건, %조사처리(CALLNAME:TARGET,"와")%의 인연은 돌이킬 수 없는 곳으로 와 버렸다는 것이었다.
             MAXBASE:0 = 550
-            CFLAG:7000 = 0            
+            CFLAG:7000 = -1            
             FLAG:8501 = 0
         ELSE
             PRINTFORML 「……」
@@ -4371,7 +4361,7 @@ ELSEIF CFLAG:7000 == 22
 ;25회째? 조교 종료
 ELSEIF CFLAG:7000 == 25
     IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        IF CFLAG:7003 == 1
+        IF CFLAG:7020 == 1
             PRINTFORMW 『후후훗…완전히 잠들어 버렸어, 귀여운 아이』 
             PRINTFORMW 유카리는 침대에 곤히 잠들어 있는 %조사처리(CALLNAME:TARGET,"를")% 쓰다듬고 나서 %CALLNAME:MASTER%에게 다가왔다.
             PRINTFORMW 『자아 그럼…지금부터 내가 어떻게 할 것 같아?』 
@@ -8741,16 +8731,16 @@ IF !EXP:0 && TALENT:0 && TFLAG:1
                         PRINTFORMW 「%STR:401%, 잠깐, 나 안할래, 이상해, 아읏…아파, %CALLNAME:TARGET% 팔 너무 세게 잡았…꺄악」
                         PRINTFORMW %CALLNAME:MASTER%에 의해 바닥에 깔려버린 %CALLNAME:TARGET%에게 발정한 말은 씩씩거리며 다가왔다.
                         PRINTFORMW 「에에? 에? 자, 잠깐…이거, 뭐야? 으읏」
-                        PRINTFORMw 「이런 거, 싫어, 안 돼, %STR:401%, 그만…아, 아아아아!?」
+                        PRINTFORMW 「이런 거, 싫어, 안 돼, %STR:401%, 그만…아, 아아아아!?」
                         PRINTFORMW 「어째서? %CALLNAME:TARGET%, 아무것도 잘못한 거 없는데? 아…」
-                        PRINTFORMw 「싫어, 넣지마, 제발, 부타………아 아 아 아 아 아 아 아 악!!!! 아아아아아아악!!!」
-                        PRINTFORMw 말의 엄청난 힘에 의해 억지로 쑤셔박힌 페니스에 의해 순결의 증거는 물론 질 입구까지 찢어지며 선혈이 흩뿌려졌다.
+                        PRINTFORMW 「싫어, 넣지마, 제발, 부타………아 아 아 아 아 아 아 아 악!!!! 아아아아아아악!!!」
+                        PRINTFORMW 말의 엄청난 힘에 의해 억지로 쑤셔박힌 페니스에 의해 순결의 증거는 물론 질 입구까지 찢어지며 선혈이 흩뿌려졌다.
                     ELSEIF ASSIPLAY && NO == 149 && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「엄마, 나, 조금 무서워……」
                         PRINTFORMW 「…그치만 %조사처리(STR:401,"가")% 그게 좋다면, %CALLNAME:TARGET%, 참아볼래」
                         PRINTFORMW 「…아……아아, 아파, 끄으, 아아아아악!!」
                     ELSE
-                        PRINTFORMw 「아픈 건 싫지만서두…」
+                        PRINTFORMW 「아픈 건 싫지만서두…」
                         PRINTFORMW 「…더 기분 좋은 일을 할 수 있게 된다면, 참아볼래」
                         PRINTFORMW 「크…아, 아파파팟 아파아아아아아아악!!」
                     ENDIF
@@ -8775,10 +8765,10 @@ IF !EXP:0 && TALENT:0 && TFLAG:1
                         PRINTFORMW 「%조사처리(STR:401,"가")% 인간 이하의 존재란 건, 알았지만, 그래도, 친딸에게, 이런짓을, 놔아앗!!」
                         PRINTFORMW %CALLNAME:MASTER%에 의해 바닥에 깔려버린 %CALLNAME:TARGET%에게 발정한 말은 씩씩거리며 다가왔다.
                         PRINTFORMW 「꺄아아아아악!! 아아아아아악!!! 놔아앗!! 제발 이거 놔아아아앗!!!!」
-                        PRINTFORMw 「용서해줘, 농, 농담이지? 앞으로는 말도 조금 더 들어줄테니깐!!」
+                        PRINTFORMW 「용서해줘, 농, 농담이지? 앞으로는 말도 조금 더 들어줄테니깐!!」
                         PRINTFORMW 「제발!! 까아아악!! 아아아아아악!! 아아아아아아아악!!!」
-                        PRINTFORMw 「싫어, 넣으면, 안 돼, 나 처으………아…가……가가…아가………아아아가가각……끄…아아악……」
-                        PRINTFORMw 말의 엄청난 힘에 의해 억지로 쑤셔박힌 페니스에 의해 순결의 증거는 물론 질 입구까지 찢어지며 선혈이 흩뿌려졌다.
+                        PRINTFORMW 「싫어, 넣으면, 안 돼, 나 처으………아…가……가가…아가………아아아가가각……끄…아아악……」
+                        PRINTFORMW 말의 엄청난 힘에 의해 억지로 쑤셔박힌 페니스에 의해 순결의 증거는 물론 질 입구까지 찢어지며 선혈이 흩뿌려졌다.
                     ELSEIF ASSIPLAY && NO == 149 && (CFLAG:3105 == CFLAG:ASSI:3109 || CFLAG:3106 == CFLAG:ASSI:3109)
                         PRINTFORML 「이런 이상한 방법의 처녀상실도, 조금은, 업보일지도……」
                         PRINTFORMW 「…됐어, 엄마가 그걸 원한다면…난…」
@@ -22180,6 +22170,7 @@ IF SELECTCOM == 241
             PRINTFORMW 「우왓, 또 때리려고! 나쁜 놈!」
         ENDIF
     ENDIF
+    CFLAG:5160 += 1 ;구타 횟수를 계산
     RETURN 1
 ENDIF
 
@@ -22698,7 +22689,7 @@ IF SELECTCOM == 252
         ENDIF
     ENDIF
     ;아이언메이든 플래그(딸전용)을 세운다
-    CFLAG:5159 = 1
+    CFLAG:5158 = 1
     RETURN 1
 ENDIF
 
@@ -23884,7 +23875,13 @@ ENDIF
 ;딸조교의 메인이벤트라고 할 수 있다.
 ;--------------------------------------------------
 IF SELECTCOM == 346 && NO == 149
-    IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+    IF (FLAG:8502 & 1 && CFLAG:3005 == 1) || (FLAG:8502 & 2 && CFLAG:3005 == 2) || (FLAG:8502 & 4 && CFLAG:3005 == 3) || (FLAG:8502 & 8 && CFLAG:3005 == 4) || (FLAG:8502 & 16 && CFLAG:3005 == 5)
+        PRINTFORMW 
+        PRINTFORML 이미 이 성격의 딸아이를 공략하신 적이 있군요 
+        PRINTFORMW 같은 성격의 소녀를 다시 한 번 공략할 수는 없습니다, 양지해두세요 
+        PRINTFORMW 아직 공략이 안 된 타입을 노려보세요 
+        PRINTFORMW 
+    ELSEIF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
         IF CFLAG:7000 == 3 && EXP:98 > 1
             PRINTFORMW 
             PRINTFORML 「응! 당장 준비할게 %STR:401%!」
@@ -23917,7 +23914,7 @@ IF SELECTCOM == 346 && NO == 149
             PRINTFORMW …딱히 말미잘만에 국한된 얘기가 아니고, 전반적인 이것저것에 대한 얘기다.
             PRINTFORMW 사실 아는 게 많다는 게 조교에 있어서는 그렇게 유리한 건 아니다, 하지만… 
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 자기 자신을 알 수가 없다는 듯 쓴웃음을 지으며 고개를 가로저었다.
-            IF ITEM:126 == 1 && CFLAG:7001 == 0
+            IF ITEM:126 == 1
                 PRINTFORMW 
                 PRINTFORMW …하지만 잘 생각해 보면 이곳 환상향에서 교육기관이라고 간판을 걸 만한 곳은 단 한 곳, 마을의 서당 뿐이다.
                 PRINTFORMW 그리고 그 서당의 선생님인 케이네를 %조사처리(CALLNAME:MASTER,"는")% 납치 감금해 버렸던 것이다.
@@ -23948,7 +23945,7 @@ IF SELECTCOM == 346 && NO == 149
                 JUEL:TARGET:11 += 300
                 CFLAG:TARGET:2 += 100
                 EXP:TARGET:21 += 10
-            ELSEIF CFLAG:7001 == 0
+            ELSE
                 PRINTFORMW 
                 PRINTFORMW 그래서 큰맘먹고 %조사처리(CALLNAME:TARGET,"를")% 데리고 인간 마을로 내려왔다.
                 PRINTFORMW 이곳에는 분명 서당이 있는 걸로 알고 있다, 서당의 훈장은 분명 아는 것도 많고 괴짜가 많은 이 근방에서도 상식인 축에 속한다고 들었다.
@@ -23971,7 +23968,7 @@ IF SELECTCOM == 346 && NO == 149
                     PRINTFORMW
                     CFLAG:TARGET:2 += 100
                     EXP:TARGET:21 += 10
-                ELSEIF RESULT == 1
+                ELSE
                     PRINTFORML 
                     PRINTFORMW 「응!다녀올게요～!」
                     PRINTFORMW 대답을 듣고 %조사처리(CALLNAME:TARGET,"는")% 크게 손을 흔들며 서당으로 뛰어갔다.
@@ -24008,7 +24005,6 @@ IF SELECTCOM == 346 && NO == 149
                 JUEL:TARGET:11 += 2000
             ENDIF
             CFLAG:7000 = 7
-            CFLAG:7001 = 1
             TFLAG:107 = 999
         ELSEIF     CFLAG:7000 == 9 && EXP:98 > 3
             PRINTFORMW 
@@ -24078,7 +24074,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW
                 CFLAG:TARGET:2 += 200
                 EXP:TARGET:21 += 10
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORML 
                 PRINTFORMW 「아이아이서!」
                 PRINTFORMW …어디서 그런 말은 배운 거냐…라고 묻기도 전에 %조사처리(CALLNAME:TARGET,"는")% 쏜살같이 뛰어갔다.
@@ -24286,7 +24282,7 @@ IF SELECTCOM == 346 && NO == 149
                 TALENT:23 = 1
                 CFLAG:TARGET:2 += 300
                 EXP:TARGET:21 += 20
-            ELSEIF RESULT == 4
+            ELSE
                 PRINTFORML 
                 PRINTFORMW 이런 때는 자고로 빨간문을 선택해야 하는 법이다.
                 PRINTFORMW 그래…데×크림존과 같다, 그런 대사 하는 %CALLNAME:MASTER%의 옆엔 빨간문따위 없다.
@@ -24404,7 +24400,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 「힘으로는 열 수 없으니깐…주문! %CALLNAME:TARGET% 마법사가 될 거야!」
                 PRINTFORMW %CALLNAME:TARGET%의 원대한 결계파괴 계획을 들으면서 집으로 돌아갔다… 
                 PRINTFORMW …진짜로 부숴버릴 수 있을 정도로 강하게 되면, 그거대로 걱정이긴 하다… 
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORML 
                 PRINTFORMW 「%STR:401%…」
                 PRINTFORMW %CALLNAME:TARGET%의 얼굴이 붉다…하지만 그 붉음은 전의 것과는 확연히 달라 보인다.
@@ -24508,7 +24504,6 @@ IF SELECTCOM == 346 && NO == 149
                     RELATION:22 = 150
                     PRINTFORMW
                 ENDIF                    
-                CFLAG:7003 = 1 
                 CFLAG:7020 = 1 
             ELSE
                 PRINTFORMW 
@@ -24632,7 +24627,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 눈가에는 기쁨의 눈물이 태양빛을 받아 영롱하게 빛나고 있었다.
                 PRINTFORMW
                 PRINTFORMW 
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORML 
                 PRINTFORMW …인의도덕은 여기 오면서 오래전에 버렸다고 늘 생각했으면서 오히려 가장 소중한 것을 기다리게 해 버렸다.
                 PRINTFORMW 언제까지고 %조사처리(CALLNAME:TARGET,"가")% 먼저 말하게 할 수는 없다…가끔은 남자다운 모습을 보여주고 싶다.
@@ -24670,8 +24665,6 @@ IF SELECTCOM == 346 && NO == 149
             CFLAG:7000 = 28
             TFLAG:107 = 999
         ELSEIF CFLAG:7000 == 30 && EXP:98 > 10
-            CFLAG:5225 = 1
-            CFLAG:7007 = 1
             PRINTFORMW 
             PRINTFORML %조사처리(CALLNAME:TARGET,"과")% 같이 마을로 나갔다.
             PRINTFORMW 오늘도 %조사처리(CALLNAME:MASTER,"와")% 딱 붙어서, 머리를 쓰다듬어주면 기쁜 듯한 콧소리를 낸다.
@@ -24719,9 +24712,21 @@ IF SELECTCOM == 346 && NO == 149
             PRINTFORMW ※또한 같은 성격의 소녀는 뉴게임을 하기 전까지는 다시 공략할 수 없습니다.
             CFLAG:7000 = 0
             CFLAG:7005 = 1
-            CFLAG:7006 = 1
             FLAG:8501 = 0
-            FLAG:8502 = 1
+            SELECTCASE CFLAG:3005
+                CASE 1
+                    FLAG:8502 |= 1
+                CASE 2
+                    FLAG:8502 |= 2
+                CASE 3
+                    FLAG:8502 |= 4
+                CASE 4
+                    FLAG:8502 |= 8
+                CASE 5
+                    FLAG:8502 |= 16
+                CASEELSE
+                    FLAG:8502 |= 32
+            ENDSELECT
             TALENT:150 = 1
             TALENT:152 = 1
             CFLAG:TARGET:2 += 3000
@@ -24741,8 +24746,7 @@ IF SELECTCOM == 346 && NO == 149
 ;            PRINTFORMW ※다른 딸의 공략을 완료하시면 이 아이와의 다른 형태의 이벤트를 즐기실 수 있습니다.
 ;            PRINTFORMW 
 ;            ;EXP:98 -= 1 ; 필요없는 기능으로 삭제.
-        ELSE
-            IF CFLAG:7000 == 0 && EXP:98 > 0 
+        ELSEIF CFLAG:7000 == 0 && EXP:98 > 0 
                 PRINTFORMW 
                 PRINTFORML 「밖으로 나가??」
                 PRINTFORMW 순간 %조사처리(CALLNAME:TARGET,"는")% 의외라는 듯 고개를 갸우뚱거렸다.
@@ -24761,10 +24765,9 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW ※해당 커맨드를 택하면 딸과의 시간을 보낼 수 있습니다.
                 PRINTFORMW ※이벤트는 총 10번까지 있고, 숨겨진 조건을 만족하시면 그 뒤 다양한 랜덤 이벤트를 보실 수 있습니다.
                 PRINTFORMW 
-                FLAG:8501 = 1
+                FLAG:8501 = 1 ;캐릭터 공략 시작
                 CFLAG:7000 = 1
                 TFLAG:107 = 999
-            ENDIF
         ENDIF
     ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
         IF CFLAG:7000 == 3 && EXP:98 > 1
@@ -24787,7 +24790,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 「헤에, 버르장머리이? 댁한테 정말로 그런 말 할 자격이 있다고 생각한다면 뭐 괜찮지만…!」
                 PRINTFORMW 「헛소리 말라그랫!!!」
                 ;기교와 조교사레벨을 일종의 두뇌회전이나 상황파악에 대한 능력과 연관 지음. 어느정도는 연관성이 있겠지? 아마...도?
-                If ABL:MASTER:12 == 5 && ABL:MASTER:99 >= 4
+                IF ABL:MASTER:12 == 5 && ABL:MASTER:99 >= 4
                     PRINTFORMW 잠시 공에 불꽃이 감겨있는 듯한 착각이 들어 놀랐지만,
                     PRINTFORMW    이내 %조사처리(CALLNAME:MASTER,"는")% 여유롭게 한손으로 막아보이고, 공을 다시 되던졌다.
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 공을 받아내었고, %조사처리(CALLNAME:MASTER,"는")% 여유로운 미소를 지어보였다.
@@ -24803,7 +24806,7 @@ IF SELECTCOM == 346 && NO == 149
                     PRINTFORMW 잠시 공에 불꽃이 감겨있는 듯한 착각이 들었고 다음 순간엔 %CALLNAME:MASTER%에게 정확히 공이 꽃히고 있었다.
                     PRINTFORMW 「버릇을 고친다면서? 자아 나는 도망치지도 숨지도 않을 테니까 마음껏 고쳐봐!」
                 ENDIF
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORMW 그렇게 예쁘게 웃을 수도 있잖아 하고 말하자… 
                 PRINTFORMW 「바, 바보가!? 지금 무슨 같잖은 수작을 친딸에게 거는 거얏!!」
                 PRINTFORMW 엄청난 속도의 슛이 날아와 %CALLNAME:MASTER%의 면상에 보기 좋게 명중했다.
@@ -24843,7 +24846,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 응 하고 고개를 끄덕이자 %조사처리(CALLNAME:TARGET,"는")% 이마를 짚고 한숨을 쉬었다.
                 PRINTFORMW 「댁이란 인간이 굉장히 무신경하다는 건 알고 있었지만…이렇게까지 직구일줄은 몰랐어」
                 PRINTFORMW 「…그럼, 얘기할테니까 귓구멍 후비고 잘 들어」
-            ELSEIF     RESULT == 1
+            ELSE
                 PRINTFORMW 「…이봐, 댁 솔직히 지금 겁내고 있지」
                 PRINTFORMW …들켰다…
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 시큰둥한 표정으로 이쪽을 바라보다 퉁명스레 말했다.
@@ -24884,9 +24887,9 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 저 아이를 자기 것으로 만들기 위해서는 평범한 방법으로는 안된다는 것을 
                 PRINTFORMW 지금부터는 딸이 아니라 한 사람의 노예로서 예의를 가르치도록 하자 
                 PRINTFORMW …… 
-                CFLAG:7000 = 0
+                CFLAG:7000 = -1
                 FLAG:8501 = 0
-            ELSEIF     RESULT == 1
+            ELSE
                 PRINTFORMW 「왜? 내가 싫다고 했잖아」
                 PRINTFORMW …물론 진실을 알게 되면 정이 떨어질만도 하겠지만 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 어쨌건 %CALLNAME:MASTER%의 딸이다, 나 나름대로 소중하게 대해주고 싶다.
@@ -25003,7 +25006,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW
                 CFLAG:TARGET:2 += 50
                 EXP:TARGET:21 += 5
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORML 
                 PRINTFORMW 잠시 비겁한 생각이 %CALLNAME:MASTER%의 머릿속을 스쳐지나갔지만 곧바로 접었다.
                 PRINTFORMW 애초에 %조사처리(CALLNAME:TARGET,"과")% 마음이 통하고 싶은 것이다, 그런 짓을 했다가는 지금까지 했던 모든 일이 가짜가 되어버린다.
@@ -25152,7 +25155,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 「쓰레기………」
                 PRINTFORMW 그렇게 말하고 %조사처리(CALLNAME:TARGET,"는")% 달려나가 시야에서 사라져 버렸다… 
                 CFLAG:8006 = 1
-            ELSEIF RESULT == 2
+            ELSE
                 PRINTFORMW …솔직히 그 질문에는 대답하기 힘들다.
                 PRINTFORMW 물론 근본은 노예이지만, 지금에 와서는 그 경계도 희미하달까… 
                 PRINTFORMW 결국엔 어디까지가 진심인지, 거짓인지 %CALLNAME:MASTER% 자신도 모르게 되어버린 것이다.
@@ -25198,7 +25201,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 이제 %CALLNAME:MASTER%에게 할 수 있는 일은 아무것도 없다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 무사하길 바라며 쓸쓸히 집으로 돌아가기로 했다… 
                 CFLAG:8007 = 1
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORML 
                 PRINTFORMW …무슨 당연한 소리를 
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 확실히 인간으로서 마비된 자이긴 하다, 자기 자신도 자각하고는 있다.
@@ -25235,7 +25238,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW …딱 봐도 위험한 느낌이다.
                 PRINTFORMW 「아……빠」
                 PRINTFORMW 공포에 질려 눈물콧물을 질질 흘리고 있던 %조사처리(CALLNAME:TARGET,"과")% %CALLNAME:MASTER%의 눈이 마주쳤다.
-                    IF ABL:MASTER:12 == 5 && ABL:MASTER:99 == 5
+                IF ABL:MASTER:12 == 5 && ABL:MASTER:99 == 5
                     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:TARGET,"를")% 저 멀리 밀쳐내고
                     PRINTFORMW 달려오는 짐승 앞에 섰다.
                     PRINTFORMW 과연 이 능력이 맹수와 같은 것에도 통할까? 
@@ -25243,7 +25246,7 @@ IF SELECTCOM == 346 && NO == 149
                     PRINTFORMW 이와 같은 도박이 통할런지는 모르겠지만…
                     PRINTFORMW 그래도 시도는 해봐야…!
                     ;흡혈귀
-;                ELSEIF MASTER:TALENT:205 == 1    
+               ;ELSEIF MASTER:TALENT:205 == 1    
                 ELSE
                     PRINTFORMW …지니고 있는 능력이 진짜라면 저 요괴의 힘도 빼앗을 수 있을 것이다.
                     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 사이를 가로막고 서서 오른손을 앞에 착 펴보였다.
@@ -25298,7 +25301,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 옷을 찢어서 몇자락의 응급붕대를 만들더니 차례차례 응급치료를 했다.
                 PRINTFORMW …의외로 재주가 있구나, 그냥 왈패가 되지 않을까 걱정했는데 
                 IF TALENT:MASTER:49 == 1
-                PRINTFORMW 사실 무슨 일을 해도 죽지 않는 몸이긴 하지만…
+                    PRINTFORMW 사실 무슨 일을 해도 죽지 않는 몸이긴 하지만…
                 ELSE
                 ENDIF
                 PRINTFORMW 잠시간은 이대로 %CALLNAME:TARGET%의 치료를 받기로 했다.
@@ -25348,7 +25351,7 @@ IF SELECTCOM == 346 && NO == 149
                 WAIT
                 PRINTFORMW 「…%STR:401%……」
                 PRINTFORMW 
-                IF ITEM:131 == 1 || FLAG:8506 == 1 || FLAG:8507 == 1
+                IF ITEM:131 ;모코우를 구매했다
                     PRINTFORMW 희미해져가는 의식 속에서, 빛이 조금씩 가까워지는 느낌이 들었다.
                     PRINTFORMW 이상한 노릇이지…설마 천당에 가는 건가, 그러면 아마도 행정착오 때문일거야… 
                     PRINTFORMW 그런 시시껄렁한 생각을 하면서 %조사처리(CALLNAME:MASTER,"는")% 완전히 의식을 잃고 말았다.
@@ -25572,9 +25575,6 @@ IF SELECTCOM == 346 && NO == 149
             CFLAG:7000 = 28
             TFLAG:107 = 999
         ELSEIF CFLAG:7000 == 30 && EXP:98 > 10
-            CFLAG:5225 = 1
-            ;???사용하는데가 없어서 일단 꺼둠.
-            ;CFLAG:7008 = 1
             PRINTFORMW 
             PRINTFORML %CALLNAME:TARGET%의 상태가 아무래도 이상하다.
             PRINTFORMW 평소와 달리 욱해서 반박해 오는 것도 없고, 얼굴을 붉힌 채 %조사처리(CALLNAME:MASTER,"가")% 뭐라고 하기만 해도 쩔쩔 매고 있다.
@@ -25621,7 +25621,7 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW 「이렇게 누굴 좋아하게 될 필요는 전혀 없는데」
                 PRINTFORMW 「왜 하필…이렇게…」
                 PRINTFORMW 품에 안긴 채로 고개를 숙이고 있는 %CALLNAME:TARGET%의 어깨가 작게 떨리고 있다.
-            ELSEIF RESULT == 1
+            ELSE
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 나가지 말라고 하자 %조사처리(CALLNAME:TARGET,"는")% 황급히 뒤를 돌았다.
                 PRINTFORMW 「어, 어디 가서 나쁜 짓 하겠다는 것도 아니야, 그, 그냥 독립이지…」
                 PRINTFORMW 「난, 이제 애도 가질 수 있을 만큼 자랐단 말야, 독립하는 게 당연해…」
@@ -25688,9 +25688,21 @@ IF SELECTCOM == 346 && NO == 149
             PRINTFORMW ※또한 같은 성격의 소녀는 뉴게임을 하기 전까지는 다시 공략할 수 없습니다.
             CFLAG:7000 = 0
             CFLAG:7005 = 1
-            CFLAG:7006 = 1
             FLAG:8501 = 0
-            FLAG:8503 = 1
+            SELECTCASE CFLAG:3005
+                CASE 1
+                    FLAG:8502 |= 1
+                CASE 2
+                    FLAG:8502 |= 2
+                CASE 3
+                    FLAG:8502 |= 4
+                CASE 4
+                    FLAG:8502 |= 8
+                CASE 5
+                    FLAG:8502 |= 16
+                CASEELSE
+                    FLAG:8502 |= 32
+            ENDSELECT
             TALENT:150 = 1
             TALENT:152 = 1
             CFLAG:TARGET:2 += 3000
@@ -25728,17 +25740,11 @@ IF SELECTCOM == 346 && NO == 149
                 PRINTFORMW ※해당 커맨드를 택하면 딸과의 시간을 보낼 수 있습니다.
                 PRINTFORMW ※이벤트는 총 10번까지 있고, 숨겨진 조건을 만족하시면 그 뒤 다양한 랜덤 이벤트를 보실 수 있습니다.
                 PRINTFORMW 
-                FLAG:8501 = 1
+                FLAG:8501 = 1 ;캐릭터 공략 시작
                 CFLAG:7000 = 1
                 TFLAG:107 = 999
             ENDIF
         ENDIF
-    ELSEIF (FLAG:8502 == 1 && CFLAG:3005 == 4) || (FLAG:8503 == 1 && CFLAG:3005 == 1) || (FLAG:8504 == 1 && CFLAG:3005 == 2) || (FLAG:8505 == 1 && CFLAG:3005 == 3)
-        PRINTFORMW 
-        PRINTFORML 이미 이 성격의 딸아이를 공략하신 적이 있군요 
-        PRINTFORMW 같은 성격의 소녀를 다시 한 번 공략할 수는 없습니다, 양지해두세요 
-        PRINTFORMW 아직 공략이 안 된 타입을 노려보세요 
-        PRINTFORMW 
     ENDIF
 ENDIF
 
