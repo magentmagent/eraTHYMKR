@@ -597,6 +597,114 @@ ENDIF
 #FUNCTION
 RETURNF GROUPMATCH(ARG, 7, 124, 125, 127, 182, 205, 613, 628) ? 1 # 0
 
+;자주 쓰일 것 같은 코드를 상위에 배치 
+;사용예시) CHECK_COM_INSERT_VAGINA(PREVCOM) & (1p0 | 1p1 | 1p2 | 1p3 | 1p4)
+;사용예시) CHECK_COM_INSERT_VAGINA(PREVCOM) & (1p5 - 1)
+;1p5 -1 = 1p0 | 1p1 | 1p2 | 1p3 | 1p4
+@CHECK_COM_INSERT_VAGINA(ARG)
+#FUNCTION
+SELECTCASE ARG
+    ;대면 삽입 명령 (대면가슴애무)
+    CASE 20, 22, 27, 617
+        RETURNF 1p0
+    ;배면 삽입 명령 (미다레보탄, 후배위가슴애무, 후배위수음)
+    CASE 21, 23, 28, 612, 616, 630
+        RETURNF 1p1
+    ;기승위 삽입 명령  (수레바퀴, 기승유방자위)
+    CASE 24, 430, 613
+        RETURNF 1p2
+    ;기타 삽입 명령 (G스팟, 자궁구)
+    CASE 614, 615
+        RETURNF 1p3
+    ;목덜미 귀고문 (파생 명령 존재) 
+    CASE 328
+        IF PREVCOM >= 20 && PREVCOM <= 24 ;다음의 명령에서 삽입 명령임.
+            RETURNF 1p4
+        ELSE
+            RETURNF FALSE
+        ENDIF
+
+    ;자궁오나홀
+    CASE 161
+        RETURNF 1p7
+    ;3P
+    CASE 610
+        IF TFLAG:130 == 1 ;주인 페니스 위치
+            RETURNF 1p8
+        ELSEIF TFLAG:131 == 1 ;조수 페니스 위치
+            RETURNF 1p9
+        ELSE
+            RETURNF FALSE
+        ENDIF
+    CASEELSE
+        RETURNF FALSE
+ENDSELECT
+
+@CHECK_COM_INSERT_ANAL(ARG)
+#FUNCTION
+SELECTCASE ARG
+    ;대면 삽입 명령 (대면 A가슴애무)
+    CASE 30, 32, 37, 619
+        RETURNF 1p0
+    ;배면 삽입 명령 (후배위 A가슴애무)
+    CASE 31, 33, 38, 618
+        RETURNF 1p1
+    ;기승위 삽입 명령
+    CASE 34
+        RETURNF 1p2
+
+    ;포 오브 어 카인드2 (조수:플랑드르 기술)
+    CASE 652
+        RETURNF 1p5
+
+    ;3P
+    CASE 610
+        IF TFLAG:130 == 2 ;주인 페니스 위치
+            RETURNF 1p8
+        ELSEIF TFLAG:131 == 2 ;조수 페니스 위치
+            RETURNF 1p9
+        ELSE
+            RETURNF FALSE
+        ENDIF
+    CASEELSE
+        RETURNF FALSE
+ENDSELECT
+
+@CHECK_COM_INSERT_ORAL(ARG)
+#FUNCTION
+SELECTCASE ARG
+    ;펠라 명령 (펠라, 이라마치오, 잠만경, 69, 기러기 목)
+    CASE 41, 230, 601, 602, 604
+        RETURNF 1p0
+    ;파이즈리 계열 (파이즈리, 파이즈리 펠라) (사정 부위가 입으로 되어있음)
+    CASE 42, 209
+        RETURNF 1p1
+    ;더블 펠라, W 펠라, 더블 파이즈리 (조수 필요)
+    CASE 303, 304, 306
+        RETURNF 1p2
+    ;파이즈리 계열 (젖퍽, 세로파이즈리, 69파이즈리) (사정 부위가 입이 아님)
+    CASE 207, 208, 603
+        RETURNF 1p3
+    ;포 오브 어 카인드2 (조수:플랑드르 기술)
+    CASE 652
+        RETURNF 1p5
+    
+    ;이상한 조교 명령 (불알핥기, 부적딸) (사정 부위가 입으로 되어있음)
+    CASE 54, 454
+        RETURNF 1p7
+    ;3P
+    CASE 610
+        IF TFLAG:130 == 3 ;주인 페니스 위치
+            RETURNF 1p8
+        ELSEIF TFLAG:131 == 3 ;조수 페니스 위치
+            RETURNF 1p9
+        ELSE
+            RETURNF FALSE
+        ENDIF
+    CASEELSE
+        RETURNF FALSE
+ENDSELECT
+
 ;=============================================================================
 ;특정 소실에 대해서 판정하는 식중함수군
 ;=============================================================================

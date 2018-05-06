@@ -662,7 +662,7 @@ SIF CFLAG:5220 == 401 && TEQUIP:70
 SIF CFLAG:5220 == 440
     PRINT 반령강간
 SIF CFLAG:5220 == 402
-    PRINT 시리코다마뽑기
+    PRINT 시리코다마 뽑기
 SIF CFLAG:5220 == 403 && TEQUIP:20 == 9
     PRINT 군고구마공격
 SIF CFLAG:5220 == 403 && TEQUIP:20 == 0
@@ -1068,7 +1068,7 @@ SIF SELECTCOM == 401 && TEQUIP:70
 SIF SELECTCOM == 440
     PRINT 반령강간
 SIF SELECTCOM == 402
-    PRINT 시리코다마뽑기
+    PRINT 시리코다마 뽑기
 SIF SELECTCOM == 403 && TEQUIP:20 == 9
     PRINT 군고구마공격
 SIF SELECTCOM == 403 && TEQUIP:20 == 0
@@ -1495,7 +1495,7 @@ IF (TFLAG:91 >= 1 && ARG == 0 && LOCAL:4 == 1) || (TFLAG:91 >= 1 && ARG == 1)
             ;서포트 플레이で騎乗射精フラグ
             ;서포트 플레이でＶ射精フラグ
             CFLAG:5204 = (CFLAG:5220 == 23) ? (TFLAG:91 + 2) # TFLAG:91
-            ;射精箇所フラグを保存
+            ;射精箇所フラグを保存 ;사정 장소 플래그를 보존
             CFLAG:5230 = CFLAG:5106
         ENDIF
     ENDIF

@@ -13,6 +13,668 @@ SIF FLAG:11 < 2
 ;반발각인이나 조수조교중에는 출력하지 않는다.
 SIF MARK:9 || ASSIPLAY
     RETURN 0
+    
+;-------------------------------------------------
+;코스프레(연모 상태로 정신 붕괴가 아닐 때)
+;-------------------------------------------------
+IF SELECTCOM == 93 && TALENT:150 && TALENT:167 == 0
+    ;딸
+    IF NO == 149
+        IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
+            ;女教師(여교사)
+            IF TEQUIP:59 == 3
+                PRINTFORML 「%CALLNAME:TARGET%도 선생님이야, 지금부터 %조사처리(STR:401,"를")% 가르치는 거고♪」
+                PRINTFORMW 「으응―그치만 뭐부터 가르쳐야 할 지 모르겠어, 그니깐 %STR:401%한테 뭘 가르쳐야 하는지 배울래♪」
+            ;和服(와후쿠, 키모노)
+            ELSEIF TEQUIP:59 == 4
+                PRINTFORML 「조금…어울릴까? %CALLNAME:TARGET%, 몸이 작아서 옷맵시가 별로 안 나는데…」
+                PRINTFORMW 「…에헤헷, 그치만 %STR:401% 좋아하는 것 같으니까 좋아♪」
+            ;メイド服(메이드 복)
+            ELSEIF TEQUIP:59 == 5
+                PRINTFORML 「뭐든지 명령만 내려주세요, 주인님♪」
+                PRINTFORMW 「%조사처리(STR:401,"가")% %CALLNAME:TARGET%의 하나뿐인 주인님이니까, 뭐든 명령해줘♪」
+            ;体操服＋ブルマ(체조복 + 브루마)
+            ELSEIF TEQUIP:59 == 6
+                PRINTFORML 「왠지 움직이기 편한 게, 너무 좋아!」
+                PRINTFORMW 「…%CALLNAME:TARGET%, 이거 입고 밖에 나가면 안 돼?」
+            ;ナ―ス服(간호사 복)
+            ELSEIF TEQUIP:59 == 7
+                PRINTFORML 「%조사처리(STR:401,"가")% 몸이 안 좋으면 열～심히 간호할게!그치만 간호사인걸」
+                PRINTFORMW 「…응, 거기가 불편하구나? 잔뜩 기분 좋게 해서 낫게 할테니깐 맡겨줘♪」
+            ;チャイナ服(차이나 드레스)
+            ELSEIF TEQUIP:59 == 8
+                PRINTFORML 「에헤헷, 틈새로 다리가 훤히 드러나는 옷이다♪」
+                PRINTFORMW 「…어때? %CALLNAME:TARGET% 다리…예뻐?」
+            ;セ―ラ―服(세라복)
+            ELSEIF TEQUIP:59 == 9
+                PRINTFORML 「옷 한가운데에 큼직한 리본이 달려 있는 게 귀엽다♪」
+                PRINTFORMW 「치마도 예쁘고, %CALLNAME:TARGET% 이 옷 갖고 싶어!」
+            ;ネグリジェ(네글리제)
+            ELSEIF TEQUIP:59 == 10
+                PRINTFORML 「에헷, 왠지 팔랑팔랑한 느낌의 옷이다…」
+                PRINTFORMW 「잠옷같아, %조사처리(STR:401,"는")% %조사처리(CALLNAME:TARGET,"랑")% 자고 싶은가 보구나?」
+            ;裸Ｙシャツ(알몸 Y셔츠)
+            ELSEIF TEQUIP:59 == 11
+                PRINTFORML 「엄청 커.  내 몸에는 안 맞는 것 같아」
+                PRINTFORMW 「그치만 왠지 이상한 기분이 드는 게 싫진 않다…♪」
+            ;ビキニ(비키니)
+            ELSEIF TEQUIP:59 == 12
+                PRINTFORML 「속옷 같아…그치만 야한 거 하는 거니까 안 입어도 될 텐데」
+                PRINTFORMW 「…에? 너무 귀여워? 그럼 괜찮아……♪」
+            ;危ないレオタ―ド(아슬아슬한 레오타드)
+            ELSEIF TEQUIP:59 == 13
+                PRINTFORML 「거기가, 왠지 조이는 느낌…굉장한 느낌이야」
+                PRINTFORMW 「…우우…왠지 안 입은 것보다.더 부끄러운 것 같은 이상한 느낌」
+            ;バニ―ス―ツ(바니 슈츠)
+            ELSEIF TEQUIP:59 == 14
+                PRINTFORML 「귀여워? %CALLNAME:TARGET%, 많이 귀여워?」
+                PRINTFORMW 「에헷, 토끼씨가 되길 정말 잘 했다♪」
+            ;ボンデ―ジ(본디지)
+            ELSEIF TEQUIP:59 == 15
+                PRINTFORML 「짝짝 달라붙는 느낌이야, 게다가 거기랑 가슴이랑 자크 같은 것도 달렸구」
+                PRINTFORMW 「어디서든 야한 짓을 할 수 있게 된 옷이야? 왠지 굉장하다…」
+            ;園児服(유치원 복)
+            ELSEIF TEQUIP:59 == 16
+                PRINTFORML 「와～! 왠지 엄청 귀여운 옷이야!」
+                PRINTFORMW 「…어때? 어울려 %STR:401%?」
+            ;裸に褌(알몸에 훈도시)
+            ELSEIF TEQUIP:59 == 17
+                PRINTFORML 「꼭 기저귀같기도 하고, 선선한 느낌이기도 하구」
+                PRINTFORMW 「…%조사처리(STR:401,"가")% 좋다면, 난 뭐든 좋아」
+            ;軍服(군복)
+            ELSEIF TEQUIP:59 == 18
+                PRINTFORML 「왠지, 딱 조여지는 옷 같은 느낌이야」
+                PRINTFORMW 「…조금 멋있을지도, 어때?」
+            ;ウェディングドレス(相愛) (웨딩드레스, 상애)
+            ELSEIF TEQUIP:59 == 19 
+                IF TALENT:153
+                    PRINTFORML 「………」
+                    PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 아무 말도 없이, 넘쳐 흐를 것 같은 기쁨의 감정을 가까스로 억누르고 있다.
+                ELSE
+                    PRINTFORML 「에!? 결혼?? %조사처리(STR:401,"랑")% 내가 여기서!?」
+                    PRINTFORMW 「그, 그치만 마음의 준비가!? 아니 몸의 준비도!! 자, 잠깐만 몸단장 좀 하면…꺄앗」
+                ENDIF
+            ;ゴスロリ衣装(고스로리 의상)
+            ELSEIF TEQUIP:59 == 20
+                PRINTFORML 「%CALLNAME:TARGET%, 인형같이 예쁜 거구나……」
+                PRINTFORMW 「에헤헷, 기뻐♪ 표정도 관리해야겠다」
+            ;裸サスペンダ―(알몸 멜빵)
+            ELSEIF TEQUIP:59 == 21
+                PRINTFORML 「이거, 뗄 때는 약간 따끔따끔할 것 같아」
+                PRINTFORMW 「그치만 그것도 하다보면 기분 좋아질까나…?」
+            ;巫女衣装(무녀의상)
+            ELSEIF TEQUIP:59 == 22
+                PRINTFORML 「%CALLNAME:TARGET% 무녀 데뷔! 에헤헷, 멋지지?」
+                PRINTFORMW 「그치만 누구를 모시는 무녀인 거야? %STR:401%?」
+            ENDIF
+        ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
+            ;女教師
+            IF TEQUIP:59 == 3
+                PRINTFORML 「헤에…선생님이라, 그럼 지금부터 %STR:401%에게 인간의 도리를 가르치겠습니다, 엣헴♪」
+                PRINTFORMW 「…그런 말에 그렇게 흥분해버려도 여러모로 곤란한데, 하여간 %STR:401%란 사람은…♪」
+            ;和服
+            ELSEIF TEQUIP:59 == 4
+                PRINTFORML 「이, 이런 옷은…조, 조금 더 조신한 사람에게 어울리지 않으려나? 아무래도 나한텐 아니지, 아닐…거야」
+                PRINTFORMW 「…뭐, 뭘 그렇게 히히 거리고 있어! 안 어울리는 옷 보는 게 그렇게 재밌어?」
+            ;メイド服
+            ELSEIF TEQUIP:59 == 5
+                PRINTFORML 「옷을 바꾼다고 사람의 성격까지 변하진 않는다고, 히히힛♪」
+                PRINTFORMW 「그치만 모처럼 이런 옷도 입었으니 조금쯤은 %STR:401%의 요구도 들어줄게…말해봐♪」
+            ;体操服＋ブルマ
+            ELSEIF TEQUIP:59 == 6
+                PRINTFORML 「아예 이런 옷만 입고 있고 싶을지도, 나 말이지」
+                PRINTFORMW 「…별로 아빠에게 다리를 보여주고 싶어서 그런 거 아니거든? 그렇게 좋아하지 마셔! 킥킥♪」
+            ;ナ―ス服
+            ELSEIF TEQUIP:59 == 7
+                PRINTFORML 「일단 간호사의 상징품이라면～그래, 주사기는 어딨어? 내가 모처럼이니 특대형으로 하나 놔줄게」
+                PRINTFORMW 「…알아 알아, 그런 걸 원하는 게 아니지? 그럼 불편한 데가 어딘지 말해줘봐♪」
+            ;チャイナ服
+            ELSEIF TEQUIP:59 == 8
+                PRINTFORML 「에헷, 이 옷 느낌이 왠지 괜찮아, 아랫도리는 다소 선선한 느낌이긴 하지만」
+                PRINTFORMW 「…쨘～%CALLNAME:TARGET%의 다리…보고 매혹되었어?」
+            ;セ―ラ―服
+            ELSEIF TEQUIP:59 == 9
+                PRINTFORML 「왠지 모르게 딱 이나이에 입어야 할 옷이란 느낌이네」
+                PRINTFORMW 「치마란 건 입고 있으면 선선하긴 하지만, 알몸보다는 솔직히 나으니깐…」
+            ;ネグリジェ
+            ELSEIF TEQUIP:59 == 10
+                PRINTFORML 「혹시나, 시작하자마자 같이 자주려고?」
+                PRINTFORMW 「아, 으, 뭐어 솔직히 가끔은 그냥 %조사처리(STR:401,"가")% 같이 자줬으면 한 적도 있지만, 서두…」
+            ;裸Ｙシャツ
+            ELSEIF TEQUIP:59 == 11
+                PRINTFORML 「뭐야 이 취향도 이상한 복장은…팔이고 다리고 맞는데가 없네」
+                PRINTFORMW 「…아빠는 그걸 원해서 입힌 것 같긴 하지만 말야♪」
+            ;ビキニ
+            ELSEIF TEQUIP:59 == 12
+                PRINTFORML 「뭐…뭐야 이 옷, 왠지 모르게 홀딱 벗는 것보다.더 신경쓰인달까, 뭐랄까…」
+                PRINTFORMW 「…히이익, 아빠 지금 완전 흥분했구나? 하여간 변태…♪」
+            ;危ないレオタ―ド
+            ELSEIF TEQUIP:59 == 13
+                PRINTFORML 「으으, 딸에게 이런 걸 입히고 즐기다니…대단한 사람이야 하여간」
+                PRINTFORMW 「…그치만…나도 이상한 기분이 되는 것 같아서」
+            ;バニ―ス―ツ
+            ELSEIF TEQUIP:59 == 14
+                PRINTFORML 「쨔～안, 어때? 내 매력에 새삼 홀딱 빠질 것 같아?」
+                PRINTFORMW 「…나도 방금 그 포즈 민망했거든, 좀 반응해 달란 말야 이 바보!」
+            ;ボンデ―ジ
+            ELSEIF TEQUIP:59 == 15
+                PRINTFORML 「이런 옷은, 좀 아닌 것 같다…자크가 달린 걸 보니 용도도 너무 뻔하고」
+                PRINTFORMW 「…봐, 아빠도 벌써 그렇게 흥분했지」
+            ;園児服
+            ELSEIF TEQUIP:59 == 16
+                PRINTFORML 「이, 이거… 물론 내가 나이가 많은 건 아니지만 그래도 이건 너무했어!」
+                PRINTFORMW 「…에? 귀여워? 그, 그럼 아주 잠깐 정도는 못 입어줄 것도 없지만…」
+            ;裸に褌
+            ELSEIF TEQUIP:59 == 17
+                PRINTFORML 「애초에 이건 여자가 입는 종류의 옷은 아니잖아」
+                PRINTFORMW 「…그래도 %조사처리(STR:401,"가")% 꼭 입어야만 한다면, 입겠지만」
+            ;軍服
+            ELSEIF TEQUIP:59 == 18
+                PRINTFORML 「후후, 혹시 나한테 명령받고 싶은 거야? 아～빠」
+                PRINTFORMW 「가끔은 이런 옷도 괜찮을지도♪」
+            ;ウェディングドレス(相愛)
+            ELSEIF TEQUIP:59 == 19 
+                IF TALENT:153
+                    PRINTFORML 「아하……하핫…어떡하지, 웃음이…」
+                    PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 가만히 고개를 숙인 채, 약간 울음 섞인 목소리를 냈다.
+                ELSE
+                    PRINTFORML 「에에엑!? 하, 하지만, 엄마도 있고! 내가 이래버리면!?」
+                    PRINTFORMW 「하, 하여간 아빠 당신이란 사람은! 딸애를 놀리면 그렇게 재밌는 거얏…와왓」
+                ENDIF
+            ;ゴスロリ衣装
+            ELSEIF TEQUIP:59 == 20
+                PRINTFORML 「인형놀이를 할 나이는 한참 전에 지난 것 같은데……」
+                PRINTFORMW 「그렇지만 뭐…이런 옷도 입어보면 나름대로 괜찮을지도♪」
+            ;裸サスペンダ―
+            ELSEIF TEQUIP:59 == 21
+                PRINTFORML 「으으…정말 온갖 매니악한 건 다.섭렵하고 있구나…」
+                PRINTFORMW 「나 갈수록 내가 아빠의 어디에 반했는지 알기 힘들어지고 있어…」
+            ;巫女衣装
+            ELSEIF TEQUIP:59 == 22
+                PRINTFORML 「이런 옷 입었다가 우리 다.같이 천벌 받는 거 아니야?」
+                PRINTFORMW 「뭐어 그렇게 되더라도 %조사처리(STR:401,"는")% 내가 지켜줄게, 후후」
+            ENDIF
+        ENDIF
+    ;범용캐러
+    ELSE
+        ;여교사
+        IF TEQUIP:59 == 3
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…헤에, %조사처리(STR:400,"가")% 교사라」
+                PRINTFORMW 「후후후…, 그럼 어떤 과목을 가르쳐야 하는 건가요?」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「으~응, 별로 어울리지 않을지도 모르겠네…」
+                PRINTFORMW 「뭐, 그래도 비교적 정상적인 범위네?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「어? 확실히 선생님? 아니 그, 뭐 어울리는 것은 싫지 않지만」
+                PRINTFORMW 「좀 더 그… 사랑스러운 것도… 있고, 아니, 아무것도 아냐!」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「선생님입니까. 모습만이라고 해도 어딘지 모르게 기쁩니다」
+                PRINTFORMW 「…나쁜 일하면, 벌을 줄 거야?」
+            ELSEIF CFLAG:3005 ==6
+                PRINTFORML 「음란한 선생님이라면 대환영입니다. 어? 모양만 내는 건가요?」
+                PRINTFORMW 「…그럼, 어떤 음란한 벌을 드릴까요♪」
+            ELSEIF CFLAG:3005 == 4 && CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
+                PRINTFORML 「우와! %STR:400%, %STR:401%의 선생이 됐어!」
+                PRINTFORMW 「노…, 놀랐어! 뭘 가르치면 좋을까?」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「%조사처리(STR:400,"가")% 선생님? 그… 별로 어울리지 않아-…」
+                PRINTFORMW 「뭣…, 뭐야? 그 얼굴은! 부, 불쾌해!」
+            ENDIF
+        ;일본식 옷
+        ELSEIF TEQUIP:59 == 4
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…일본식 옷 정도는 맵시 있게 입을 수 있지만…」
+                PRINTFORMW 「여기서 이런 복장이라고 하는 것은…곤란하네요…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「뭐, 일본식 옷 정도는 입지만… 어울리지도 않고 뭐도 아니지%STR:403%…」
+                PRINTFORMW 「그래서, 뭐? 띠돌리기라도 하고 싶은 거야?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「흠, 어때? 어울릴까?」
+                PRINTFORMW 「뭐 적당하다고 하자면 적당하지만, 의외성이 없는 의상이네」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「으응, 옷을 입은 채로 하나요?」
+                PRINTFORMW 「…세탁의 수고를 생각하면, 벗는 것이 좋다고 생각해요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후후, %STR:400%의 이 목덜미도 또 자아내지 않습니까♪」
+                PRINTFORMW 「그런데, 어떻게 하지요? 띠돌리기라든지는 어떻습니까♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「돼지 목에 진주 목걸이! …가 아니고 옷이 날개!」
+                PRINTFORMW 「…%조사처리(STR:400,"라")%도 근사하지!」
+            ENDIF
+        ;메이드옷
+        ELSEIF TEQUIP:59 == 5
+            ;소야, 몽자, VIVIT, 메이드 요정
+            IF NO:TARGET == 9 || NO:TARGET == 118 || NO:TARGET == 128 || NO:TARGET == 151
+                PRINTFORML 「역시 이 복장이 제일 맞네요」
+                PRINTFORMW 「모처럼이니까, 프로의 봉사라고 하는 것을 보여 드릴게요」
+            ELSEIF CFLAG:3005 == 3
+                PRINTFORML 「…아, 예. %조사처리(STR:400,"는")% %STR:401%의 메이드예요」
+                PRINTFORMW 「어쨌든 뭐든지, 주문해주세요♪」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「헤에, 역시 이게 있었구나. 어쩔 수 없다니까…」
+                PRINTFORMW 「어때? 이것으로 %STR:400%도 가정부로 보이는 것일까?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「좀 더, 귀여운 아가씨에게 좋을 것 같은 옷이군%STR:403%…」
+                PRINTFORMW 「그, 그렇지만, %조사처리(STR:400,"라")%도 그, %STR:401%의 것이…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「네. %조사처리(STR:400,"는")% %조사처리(STR:401,"를")% 시중드는 것이에요」
+                PRINTFORMW 「뭐든지 주문 주세요♪ 후후♪」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후후, %조사처리(STR:401,"는")% %STR:400%에게 이런 것이 어울린다고 하고 싶은 거군요♪」
+                PRINTFORMW 「그러면, 어떤 봉사라도 할게요♪ 「주인님♪」」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「이러면, 홍마관에서도 일할 수 있겠다, 뭐, 어? 모습만으로는 안 돼?」
+                PRINTFORMW 「자, %조사처리(STR:401,"가")% 가르쳐줘…」
+            ENDIF
+        ;체육복＋부루마
+        ELSEIF TEQUIP:59 == 6
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…우와, 이건 좀 부끄러워요」
+                PRINTFORMW 「엉덩이의 형태가 드러나서… 어쩐지 굴욕이 느껴져요」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「움직이는 데는 상당히 편리한 의상이네. 그렇지만 이 가슴에 있는 명찰은 뭐야?」
+                PRINTFORMW 「어? 그게 중요하다고? 흥, 잘 모르겠네%STR:403%…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「어, 어쩐지 다리가 드러나서 부끄러워…」
+                PRINTFORMW 「거기에 그 뭐야, 신체의 라인도 드러내서 그…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「아아, 이런 부끄러운 모습을 하고 있으면, 시, 시집도 못 갈 텐데…」
+                PRINTFORMW 「하, 하다 못해 내복이라든지 무엇인가 입으면 안 되나요?」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이것은 또, 이상한 복장이군요… 그렇지만 뭐, 꽤 재미있을지도♪」
+                PRINTFORMW 「여기는 오직, 엉덩이도 고치는 것처럼 유혹해 볼까요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「왠지 움직이기 편해서, 마음에 들어」
+                PRINTFORMW 「…자, 거침없이 운동하자!」
+            ENDIF
+        ;널스옷
+        ELSEIF TEQUIP:59 == 7
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…네? 신성한 천사의 몸차림? 그나저나 영원정에 비슷한 게 있었던 것 같은데?」
+                PRINTFORMW 「뭐, 좋아요. %조사처리(STR:400,"과")% 같이 상냥한 천사는 다른 곳에 없을 거예요♪」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「후후후, 이것으로 내용이 갖추어지면 훌륭한 간호사군요♪」
+                PRINTFORMW 「당신의 병도 고쳐줄게요♪」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「뭐, 응급 처치 정도라면 가능하지만…」
+                PRINTFORMW 「어? 하반신의? 이것은…중증이다. 차분히 진찰하지 않으면…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「어때요? 어울려요? 왠지 %조사처리(STR:400,"는")% 이 옷이 상당히 좋아요」
+                PRINTFORMW 「그럼, 불쌍한 환자분의 처치를 할까요♪」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후후, %조사처리(STR:400,"는")% 사랑의 천사예요♪」
+                PRINTFORMW 「%STR:401%의 음탕한 고민을 해소해드릴게요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「에헤헤, 간호사야! 대단해!」
+                PRINTFORMW 「…근데, 간호사는 뭐하는 거야? 야한 거?」
+            ENDIF
+        ;차이나옷
+        ELSEIF TEQUIP:59 == 8
+            ;미령
+            IF NO:TARGET == 6
+                PRINTFORML 「평소의 복장이군요, 어쩐지 그…바뀐 보람이 없네요」
+                PRINTFORMW 「모처럼이니까, 좀 더 그, 바뀐 것을 부탁하고 싶습니다」
+            ELSEIF CFLAG:3005 == 3
+                PRINTFORML 「…작년의 문지기의 의상이군요. 그렇지만 %STR:400% 편이 섹시해요」
+                PRINTFORMW 「뭐, 소재가 다르네요, 역시…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「이, 이것은. 그렇지만 문지기는 하지 않을 거야! 어? 그것보다?」
+                PRINTFORMW 「아, 과연, %STR:400%의 각선미를 감상하고 싶구나」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「또다시 단골 의상이다. 그러면 즉시 입어 볼까…」
+                PRINTFORMW 「아니, 뭐 흥미가 있는 것이 아니지만 싫지도 않고」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「이것은 뭔가 바뀐 의상이네요…, 그다지 어울리지 않을 것 같지만요」
+                PRINTFORMW 「부탁이니까, 웃지 말아 주세요…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이것이라도, %조사처리(STR:400,"는")% 상당히 자신의 신체에 자신을 가지고 있습니다」
+                PRINTFORMW 「어떻습니까? 이 각선미♪ 무엇보다, 보여주는 것보다는 손대어지고 싶습니다♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「에헤헤, 섹시 다이너마이트! 어때♪」
+                PRINTFORMW 「…그렇지만 %STR:400% 상당히 인기있다구.」
+            ENDIF
+        ;세라복
+        ELSEIF TEQUIP:59 == 9
+            ;
+            IF NO:TARGET == 107
+                PRINTFORML 「평소의 복장이군. 뭔가 개성 없네%STR:403%」
+                PRINTFORMW 「뭐, 딱히 부끄러운 모습으로 당하는 것보다는 낫지%STR:403%」
+            ;무라사 선장
+            ELSEIF NO:TARGET == 75
+                PRINTFORML 「역시, 이 복장이 아니면…」
+                PRINTFORMW 「그러면, 임무로 돌아갑시다. 아직 부족하지요」
+            ELSEIF CFLAG:3005 == 3
+                PRINTFORML 「…이상한 의상이군요. 어? 나이보다 젊게 꾸미기? 흥!」
+                PRINTFORMW 「말 조심하는 게 좋겠네요. 서로…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「흐응, 이런 옷도 있네. 그렇지만 어디선가 본 것 같은데?」
+                PRINTFORMW 「모처럼이니까 입어 볼게…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「이것은 해병인지 뭔지의 의상이라고 들었던 적이 있는데%STR:403%」
+                PRINTFORMW 「그렇지만, 솔직히 %STR:400%에게는 어울리지 않는다는 생각이 드는데」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「잘 모릅니다만 우선 입어 볼게요」
+                PRINTFORMW 「그렇지만, 이것으로 무엇인가 하는 것은 귀찮지 않나요?」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이것도 이상한 복장이군요…」
+                PRINTFORMW 「어떻습니까? %STR:400%에게 어울립니까?」
+            ELSEIF CFLAG:3005 ==4 && CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0
+                PRINTFORML 「에헤헤, 이것으로 %STR:400%, 중학생이구나!」
+                PRINTFORMW 「…라고 말하고 싶은 생각이 들었어, 왠지 모르게」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「으응, 잘 모르지만, 귀여워?」
+                PRINTFORMW 「좀 더 재미있는 옷을 입고 싶다…」
+            ENDIF
+        ;네글리제
+        ELSEIF TEQUIP:59 == 10
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…잠옷으로 조교라니 또 부끄럽네요」
+                PRINTFORMW 「그렇지만 뭐 결혼해버리면 그렇게 될 테니, 연습은 필요하겠죠」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「이야, 노골적이네… 야해」
+                PRINTFORMW 「정말, 이래서 %조사처리(STR:401,"는")% 변태라는 소릴 듣는 거야♪」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「이, 이건 어디까지나, 잘 때 입는 옷이고…」
+                PRINTFORMW 「트, 특별히 허락했다든가 그런 게 아니니까, 아…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「잠옷으로 합니까…, 뭐 나쁘지는 않을지도 모르네요」
+                PRINTFORMW 「그렇지만 그, 뚫어지게 갈아입는 거 보는 건… 그만두세요…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이런 옷 입고 하는 것도, 특이한 것이예요♪」
+                PRINTFORMW 「자자♪ %STR:400%의 유두도 이렇게♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「우와, 비쳐 보이는 기분 나쁜 옷이다!」
+                PRINTFORMW 「이런 건 아줌마들이나 입는 거야!」
+            ENDIF
+        ;알몸 Y셔츠
+        ELSEIF TEQUIP:59 == 11
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…맨살 위의 Y셔츠 한 장이라니 참 좋은 취미예요」
+                PRINTFORMW 「이런 치라리즘을 견딜 수 없다든가 분명 변태네」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「우와, 진짜 변태. 곤란하네, %STR:401%같은 것은」
+                PRINTFORMW 「이 %조사처리(STR:400,"가")% 책임지고 돌볼 수밖에 없겠네!」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「%STR:401%의 욕망은 끝이 없네…」
+                PRINTFORMW 「뭐, 그와 교제하는 %조사처리(STR:400,"는")% 또 뭘까」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「이것도 어쩐지 굉장히 부끄럽습니다」
+                PRINTFORMW 「…하, 할 수 있으면, 너무 가까이서 보지 말아 주세요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이것도 굉장히 즐거운 의상입니다♪ %조사처리(STR:400,"를")% 위해서 있는 것 같아요♪」
+                PRINTFORMW 「셔츠 사이의 흰 피부에, 불끈불끈 반응이 오지 않나요? %STR:401%♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「이상해. 이런 건 추워」
+                PRINTFORMW 「…스커트나 바지를 입지 않으면 안 되는데」
+            ENDIF
+        ;비키니
+        ELSEIF TEQUIP:59 == 12
+            IF CFLAG:3005 == 3
+                PRINTFORML 「이런 수영복은 %조사처리(STR:400,"가")% 아니면 어울리지 않죠」
+                PRINTFORMW 「어때? 누나에게 모두 맡겨 볼래?」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「이것도 대담한 수영복이네. 그렇지만 모처럼이니까, 조금만」
+                PRINTFORMW 「너무 부끄럽기 때문에, %STR:401% 앞에서만 입는 거야」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「이것은 수영복인가. 뭐, 가슴이 가려져서 생각보단 낫네」
+                PRINTFORMW 「아무리 이런 관계가 되었다고는 해도, 수치심은 있으니까」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「배꼽이 드러나네요… 부, 부끄러워요…」
+                PRINTFORMW 「그, 그 뭔가 걸쳐도 되나요? 안되나요…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「생각했던 것보다…, 다양하게 가리네요. 좀 더 대담해도 좋을 텐데…」
+                PRINTFORMW 「뭐…, %조사처리(STR:401,"가")% 이게 좋다고 말한다면야…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「역시 %STR:401%답구나. 이런 것이 좋아?」
+                PRINTFORMW 「…확 벗겨버리는 주제에♪」
+            ENDIF
+        ;위험한 레오타드
+        ELSEIF TEQUIP:59 == 13
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…우와, 이, 이건 정말 이 %조사처리(STR:400,"를")% 놀라게 하네요」
+                PRINTFORMW 「우우, 이런 부끄러운 걸, 원망스럽네요…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「예? 이, 이것을 입어! 농담하지 마…」
+                PRINTFORMW 「어, 어쩐지 알몸보다 부끄러워, 이거…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「기, 기다려줘, 정말이지 그 뭐야, 음…」
+                PRINTFORMW 「지금은 일단, 알몸으로 하는 게 어때? 아, 안되나…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML %조사처리(CALLNAME:TARGET,"는")% 할 말을 잃고, 얼굴이 붉어진 채로 자리를 떠나려고 했다.
+                PRINTFORMW 그러나, %CALLNAME:MASTER% 쪽으로 돌아 들어왔다! 
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「꽤 좋은 취미의 복장이예요♪ 즉시 갈아입어요…」
+                PRINTFORMW 「갈아입으면서, 손을 대어도 괜찮어요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「우와, 대담♪ 그렇지만 %조사처리(STR:401,"가")% 준 거야!」
+                PRINTFORMW 「…어때? 어울려? 응? 즐기자♪」
+            ENDIF
+        ;바니 슈트
+        ELSEIF TEQUIP:59 == 14
+            ;
+            IF NO:TARGET == 28
+                PRINTFORMW 「…어쩐지 의외로 잘 맞는데, 이거 괜찮을지도 몰라」
+            ELSEIF CFLAG:3005 == 3
+                PRINTFORML 「…어른의 사교장에서의 귀부인의 전투복? 무슨 일일까?」
+                PRINTFORMW 「뭐, 그래도 의외로 가슴이 눈에 띄는 의상이네요, 이거」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「이것으로 %조사처리(STR:400,"는")% %STR:401%의 토끼?」
+                PRINTFORMW 「잘 모르지만, 뭐 좋아%STR:403%…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「흠, 토끼를 본뜬 의상인가. 이런 게 이 %STR:400%한테 어울린다고는…」
+                PRINTFORMW 「좀 더 나이가 어리다면…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「음 그, 연극이라도 하나요?」
+                PRINTFORMW 「…아니 그, 뭔가 보통은 안 입는 옷이고 해서」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이런 것도 좋아요…, 앞가슴도 각선미도 꽤♪」
+                PRINTFORMW 「어떨까? %조사처리(STR:400,"는")% 귀여운 토끼가 될 수 있을까요?」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「이런 건 토끼가 아니라구!」
+                PRINTFORMW 「진짜 토끼는 좀 더 귀여워!」
+            ENDIF
+        ;노예
+        ELSEIF TEQUIP:59 == 15
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…후후후, 그런 것이군요. 그렇다면 그렇게 해달라고 해요」
+                PRINTFORMW 「이 여왕 마마를 최대한 즐겁게 해봐요, 이 돼지♪」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「우와, 어딘가의 할머니한테 어울릴 듯한…, 그건 그렇고」
+                PRINTFORMW 「모처럼이니까 가끔씩은 %STR:400%에게 봉사한다든가 해보지 않을래?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「어울린다고? 그, 그럴 리가. %조사처리(STR:400,"는")% S는 아니다…」
+                PRINTFORMW 「대체로, 이런 복장을 보통으로 입을 것 같은 그런 정신은 없어」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「뭔가, 이것을 입으면 되돌릴 수 없게 될 것 같은 생각이 듭니다」
+                PRINTFORMW 「…그렇지만 왠지 즐거운 것 같네요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이 의상은… 물론, 그러한 취미에도 대응하겠습니다♪」
+                PRINTFORMW 「…이런 의상도 정말로 즐겁네요」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「우와! 여왕 마마! 여왕 마마!」
+                PRINTFORMW 「대단해!」
+            ENDIF
+        ;원아옷
+        ELSEIF TEQUIP:59 == 16
+            IF CFLAG:3005 == 3
+                PRINTFORML 역시 %CALLNAME:TARGET%도 할 말을 잃고, 망연자실한 것 같다.
+                PRINTFORMW 「…변태」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「이걸 %STR:400%에게? 맙소사, 환상향 사상 최악의 변태 No. 1 결정…」
+                PRINTFORMW 「이제 %STR:401%에게 듣는 약은 없겠네」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「역시 괴로워. 이건…」
+                PRINTFORMW 「좀 더 그, 어울릴 것 같은 것을 입히기를 원해%STR:403%」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「그, 그걸, %조사처리(STR:400,"가")% 이것을?」
+                PRINTFORMW 「…이런 건 소문이 되면 끝입니다」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「%조사처리(STR:400,"는")%…, 깜찍하고 귀여운 어린이야♪」
+                PRINTFORMW 「저기,\@(TALENT:MASTER:120) ? 「오빠」# 「언니」\@…, 이런 %STR:400%에게 재밌는 거 알려줘♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「응? 이거? 어쩐지 귀여운 옷이네.」
+                PRINTFORMW 「…어때? 입어 봤는데, 어울려?」
+            ENDIF
+        ;알몸에 곤
+        ELSEIF TEQUIP:59 == 17
+            IF CFLAG:3005 == 3
+                PRINTFORML 「……………………」
+                PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 갈아입었지만, 붉어진 얼굴을 숙였다.
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML %조사처리(CALLNAME:TARGET,"는")% 어쩐지 기가 막힌 것 같은 표정을 보였다.
+                PRINTFORMW 「정말이지 졌어%STR:403%, 이것은…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「아하하, 과연 굉장한데… 이 %STR:400%도 웃을 수 밖에 없네%STR:403%」
+                PRINTFORMW 「모처럼이니까, 훈도시 입는 법도 제대로 봐줘, %STR:401%」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「음, 그… 역시… %조사처리(STR:400,"가")%… 하는 … 그렇지… 그런데…?」
+                PRINTFORMW 그렇게 말한 채, %조사처리(CALLNAME:TARGET,"는")% 붉어진 얼굴을 숙여 버렸다.
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이것은! 알았습니다♪ 음란한 %조사처리(STR:401,"를")% 위해서 입어 줄게요♪」
+                PRINTFORMW 「어떻습니까? 훈도시를 휘감은 이 %조사처리(STR:400,"는")%…, 끌리지 않나요?」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「훈도시 하면, 향림당씨 같이 영리하게 될 수 있어?」
+                PRINTFORMW 「…응, 노력해 볼게」
+            ENDIF
+        ;군복
+        ELSEIF TEQUIP:59 == 18
+            IF CFLAG:3005 == 3
+                PRINTFORML 「…어머나, 이것은 의외로 좋은 옷이 아닐까?」
+                PRINTFORMW 「어느 쪽인가 하면 채찍이나 나이프 따위를 사용하고 싶어져요」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「무슨 이미지적으로 %STR:400%에게는 맞지 않을 것 같단 생각이 든다%STR:403%」
+                PRINTFORMW 「근데, 이거, 어디서 입는 옷이야?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「으음, 이것은 또 이상한 것이군%STR:403%…」
+                PRINTFORMW 「조금 유래를 알 수가 없어서 뭐가 좋은지도 모르겠네」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「음, 무슨 옷인가요?」
+                PRINTFORMW 「뭐, 특별히 불쾌하다고 느끼지 않아서 좋지만…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「이런 의상은 처음이지만… 꽤 흥미롭네요」
+                PRINTFORMW 「어떨까요? 어쩐지 채찍을 사용하는 것이 어울릴 것 같습니다만…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「으응, 어떤 옷이야?」
+                PRINTFORMW 「…잘 알지도 못해서, 어울릴지도 잘 모르겠어.」
+            ENDIF
+        ;웨딩 드레스(서로 사랑함)
+        ELSEIF TEQUIP:59 == 19 && TALENT:153
+            IF CFLAG:3005 == 3
+                PRINTFORML 「아, 생각나요. 결혼했을 때를…」
+                PRINTFORMW 「후후후, 그 때부터 %STR:401%, 이런 거 하려고 생각했어?」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「예? 이것으로 하는 거야? 완전히 이제, 짐승이네♪」
+                PRINTFORMW 「이런 놈을 만족시킬 수 있는 것은, 이 %STR:400%밖에 없지♪」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「과연, 식 때에 들떠 있었던 것은 이거 때문이었나」
+                PRINTFORMW 「뭐, 기대에는 보답을 해줘야지. 신부로서…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「어머나? 이 의상은? 그립네요」
+                PRINTFORMW 「…그럼, 이번은 이것으로 합니까. 완전히 곤란한 분이군요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후♪ 역시, 부부라면 이걸로 해야지♪」
+                PRINTFORMW 「바로, 즐겨요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「우와, 또 이걸 입었어!」
+                PRINTFORMW 「…응? 이걸로 하는 거야? 알았어!」
+            ENDIF
+        ;웨딩 드레스
+        ELSEIF TEQUIP:59 == 19
+            IF CFLAG:3005 == 3
+                PRINTFORML 「합당한 장소에서라면 굉장히 기쁜 의상이예요. 아가씨의 꿈이고」
+                PRINTFORMW 「그렇지만, 역시 이 장소에는 안 어울리지 않나요?」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「저기? 이제 정말로 이것을 입고 해야 하는 거,」
+                PRINTFORMW 「있지 않아?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「흠, 할 수 있으면 이것을 최초로 입는 곳은 식장이었으면 좋겠지만…」
+                PRINTFORMW 「%조사처리(STR:400,"는")% 변태라서 어쩔 수 없나…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「언젠가는, 그… 아, 아니요. 아무것도 아녜요!」
+                PRINTFORMW 「너무 깊게 생각하지 말고 가요. 예, 그러면 할게요!」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후후, 아가씨의 꿈이에요♪ 이런 것으로 하는 것도 기분이 좋습니다♪」
+                PRINTFORMW 「요리에, 세탁에, 요리에, 섹스… 언젠가 %조사처리(STR:400,"를")% 받아 주세요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「이 옷 뭐야? 응? 신부 의상이야?」
+                PRINTFORMW 「…좋지만, 언젠가 %STR:400%, 정말 신부가 될 수 있을까?」
+            ENDIF
+        ;고스로리 의상
+        ELSEIF TEQUIP:59 == 20
+            IF CFLAG:3005 == 3
+                PRINTFORML 「예, 예, %조사처리(STR:400,"는")% %STR:401%의 귀여운 인형이에요」
+                PRINTFORMW 「맘껏 귀여워해 주세요」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「어머나, 이 옷…, 그, 나쁘지 않네… 에헤헤♪」
+                PRINTFORMW 「평상복도 이것으로 할까…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「우와, 이런 건 %STR:400%에게는 어울리지 않을 텐데?」
+                PRINTFORMW 「어쩐지, %조사처리(STR:400,"가")% 불쌍해지네%STR:403%…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「후후, 뭔가 %STR:400%에게는 어울리지 않아요, 이런 것은」
+                PRINTFORMW 「…그렇지만 어쩐지, 몇 번 입어도 좋을 것 같아요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후, 인형같은 %조사처리(STR:400,"라")%고 하는 것도 나쁘지 않아요♪」
+                PRINTFORMW 「그리고, %조사처리(STR:401,"는")%, 인형에게 못된 장난하는 나쁜 사람이야♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「와, %STR:400% 굉장히 귀엽다!」
+                PRINTFORMW 「마치 인형같아!」
+            ENDIF
+        ;알몸 서스펜더
+        ELSEIF TEQUIP:59 == 21
+            IF CFLAG:3005 == 3
+                PRINTFORML 「어머, 거의 다 드러나보이는데…」
+                PRINTFORMW 「이런 걸 입고 밖에 다니면 변태예요…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「우와, 이것도 부끄러워%STR:403%…」
+                PRINTFORMW 「이봐? STR:400한테 이런 걸 입히고 뭐할 생각이야?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「음 뭐… 부끄러운 의상이네…」
+                PRINTFORMW 「역시, 안 입으면 안 돼? 하아…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「이, 이것도, 부끄럽습니다…」
+                PRINTFORMW 「너무 그렇게 보지 말아 주세요…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「후후♪ 음란한 %조사처리(STR:401,"를")% 위해서 입어줄게요♪」
+                PRINTFORMW 「어떻습니까? 이 튀어나온 유두를 만지작거리고 싶어지겠지요♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「굉장하다, 훤히 들여다보여! 젖가슴! 젖가슴!」
+                PRINTFORMW 「어? 유두는 숨기는 거야? 으응, 노력해 볼게…」
+            ENDIF
+        ;무녀 의상
+        ELSEIF TEQUIP:59 == 22
+            ;영몽
+            IF NO:TARGET == 1
+                PRINTFORML 「응? 겨드랑이가 열리지 않은 것도 있네…」
+                PRINTFORMW 「그렇지만 뭐, 대체로 평소 같은 느낌이군」
+            ;사나에
+            ELSEIF NO:TARGET == 42
+                PRINTFORML 「그렇습니까, 이것은 겨드랑이가 열려 있지 않아요」
+                PRINTFORMW 「그래도, 이것으로 하는 것은 꽤 재미있을 것 같을지도…」
+            ELSEIF CFLAG:3005 == 3
+                PRINTFORML 「작년의 무녀라면 몰라도, %STR:400%에게는 조금 안 어울리지 않을까요?」
+                PRINTFORMW 「뭐, 의상부터 들어가는 것도 있다고 하면 있지만…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORML 「어머나, 어딘가의 낙관적인 분의 의상을 닮아…」
+                PRINTFORMW 「그쪽에 덮어 씌우는 편이 재미있지 않나?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORML 「%STR:400%에게는 어울릴 것 같지 않을 건데…」
+                PRINTFORMW 「역시, 어쩐지 이상한 느낌이야…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORML 「무엇인가 이상하다고 생각 들더라니 이 의상은 겨드랑이가 열려 있지 않네요」
+                PRINTFORMW 「…덕분에 입어도 별로 부끄럽지 않네요」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORML 「%조사처리(STR:400,"는")% %조사처리(STR:401,"라")%고 하는 신을 시중드는 무녀예요♪」
+                PRINTFORMW 「신이 말하면, 반드시 따라야죠♪ 후후♪」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORML 「짜잔, 이걸로 %STR:400%, 근사한 무녀야!」
+                PRINTFORMW 「근데, 무녀는 도대체 어떻게 하면 좋은 거야?」
+            ENDIF
+        ENDIF
+    ENDIF
+    RETURN 1
+ENDIF
 
 ;-------------------------------------------------
 ;애무(촉수 플레이 때를 제외한다)

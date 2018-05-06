@@ -295,7 +295,7 @@ ENDIF
 
 ;토리코모드. 의뢰소가 켜져있을 때.
 IF FLAG:5010  == 4
-    PRINTFORML 채뇨기를 사용해서 %CALLNAME:TARGET%에게서 %STR:2%를 채집했다.
+    PRINTFORML 채뇨기를 사용해서 %CALLNAME:TARGET%에게서 %TSTR:2%를 채집했다.
     PRINTFORML %CALLNAME:TARGET%의 황금수에는 {LOCAL}원의 가격이 붙었다.
     PRINTW 어쩔까? 팔까? 병에 넣어서 가지고 있을까? 아니면 파기할까?
     DRAWLINE
@@ -340,7 +340,7 @@ ELSE
     ;聖水매각의 이벤트 대사 호출(金額はTFLAG:99で)
     CALL SELF_KOJO, TARGET, 134, LOCAL
     CALL NAME_SELL_GOLDWATER, NO:TARGET
-    PRINTFORML 채뇨기를 사용해서 %CALLNAME:TARGET%에게서 %STR:2%를 채집했다.
+    PRINTFORML 채뇨기를 사용해서 %CALLNAME:TARGET%에게서 %TSTR:2%를 채집했다.
     PRINTFORML %CALLNAME:TARGET%의 성수에는 {LOCAL}원의 가격이 붙었다.
     MONEY:1 = LOCAL
     CALL SHOW_MONEY_INCREACE

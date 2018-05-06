@@ -10,7 +10,7 @@
 SIF EQUIP:14 || TEQUIP:42 == 1 || TEQUIP:42 == 2 || TFLAG:899 >= 1
     RETURN 0
 ;汎用口上不使用なら戻る
-SIF FLAG:22 == 0
+SIF FLAG:22 == 1
     RETURN 0
 
 IF ASSIPLAY
@@ -975,21 +975,21 @@ ENDIF
 ;술쇼핑 이벤트
 ;-------------------------------------------------
 @SHOPPING_THE_SAKE, ARG
-PRINTFORMW 술을 좋아하는 %CALLNAME:ARG%에 있어, 임박하고 있던 것은 술이 결핍하고 있다고 하는 것이었다
+PRINTFORMW 술을 좋아하는 %CALLNAME:ARG%에 있어, 참기 힘들었던 것은 술이 부족하다는 것이었다
 PRINTW 그런데도, 당분간은 참고 있었지만, 끝내 인내를 할 수 없게 되어 버렸던 것이다
 PRINTFORMW 그것을 %CALLNAME:MASTER%에 호소했는데, 술을 사러 간다고 하는 흐름이 되어 버렸다…
 PRINTL
-PRINTFORMW 대망의 술이 손에 들어 온다고 되어, %조사처리(CALLNAME:ARG,"는")% 이제(벌써) 기분이 들떠, 당장 뛰쳐나와 갈 것 같다.
+PRINTFORMW 대망의 술이 손에 들어 온다고 생각만 해도, %조사처리(CALLNAME:ARG,"는")% 벌써 기분이 들떠 당장 뛰쳐나갈 것 같다.
 PRINTW 그 태도에 쓴웃음하면서도, 마을까지 쇼핑하러 가기로 했다
-PRINTFORMW \@(TIME == 0 && (TALENT:ARG:205 || TALENT:MASTER:205)) ?  해님 대책도 짭짤하게 해, # 술의 냄새에 이끌리도록(듯이),\@두 명은 구보로 가게까지 향했던 것이다…
+PRINTFORMW \@(TIME == 0 && (TALENT:ARG:205 || TALENT:MASTER:205)) ?  해님 대책도 철저하게 해, # 술 냄새에 이끌리 듯이,\@두 명은 도보로 가게까지 향했던 것이다…
 PRINTL
 LOCAL = MAX(MONEY / 500, 10)
 LOCAL:1 = RAND(600, 605)
-PRINTFORMW 결국, %조사처리(ITEMNAME:(LOCAL:1),"를")% {LOCAL}책 구입해, 돌아가기로 했다.
-PRINTFORMW 상당히 비싼 쇼핑이었지만, 다이마다리인%조사처리(CALLNAME:ARG,"를")% 보고 있으면(자), 이것으로 좋았다고 생각한 %CALLNAME:MASTER%에서 만났다…
+PRINTFORMW 결국, %조사처리(ITEMNAME:(LOCAL:1),"를")% {LOCAL}병 구입해, 돌아가기로 했다.
+PRINTFORMW 상당히 비싼 쇼핑이었지만, 기뻐하는 %조사처리(CALLNAME:ARG,"를")% 보고 있으면, 이것으로 좋다고 생각한 %CALLNAME:MASTER%이였다…
 MONEY -= LOCAL * 500
 ITEM:(LOCAL:1) += LOCAL
-;호감도(CFLAG:2) 상승,"쿄우준?  ??"(JUEL:12) 취득
+;호감도(CFLAG:2) 상승,"순종의 구슬"(JUEL:12) 취득
 IF FLAG:12 & 128 || ! FLAG:997
     CALL DAILY_LIFE_MOVE_CFLAG, ARG, 2, 150, 0
     CALL COMMON_DAILYJUEL, ARG, 12, 400 + ((ABL:ARG:10 + RAND:6) * 40), 1
@@ -1020,7 +1020,7 @@ ELSEIF TALENT:ARG:150 == 0 && TALENT:ARG:160 == 0 && TALENT:ARG:170 == 0 && (MAR
 ELSE
     PRINTFORMW 당분간, %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:ARG,"과")% 장식물을 바라보면서 수다를 즐긴 것에서 만났다…
 ENDIF
-;호감도(CFLAG:2), 스트레스(CFLAG:65), 애정 경험(EXP:21) 상승,"쿄우준?  ??"(JUEL:12) 취득
+;호감도(CFLAG:2), 스트레스(CFLAG:65), 애정 경험(EXP:21) 상승,"순종의 구슬"(JUEL:12) 취득
 IF FLAG:12 & 128 || ! FLAG:997
     IF TALENT:ARG:153 || TALENT:ARG:152
         CALL DAILY_LIFE_MOVE_CFLAG, ARG, 2, 150, 0

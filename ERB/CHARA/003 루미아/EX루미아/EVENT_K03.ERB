@@ -15409,7 +15409,7 @@ IF TFLAG:200 == 174 && CFLAG:6002 == 0
 ENDIF
 
 ;-------------------------------------------------
-;エンゲ―ジリングor青珊瑚の指輪使用時
+;약혼 반지or青珊瑚の指輪使用時
 ;-------------------------------------------------
 IF TFLAG:200 == 200 || TFLAG:200 == 205
     IF CFLAG:0 == 1 && TALENT:159 == 0
@@ -16151,7 +16151,7 @@ ELSE
 ;        CFLAG:8000 = 1
     ;連続イベントで料理苦手が消えているか料理技能Lv4이상
     IF TALENT:192 == 0 || ABL:70 >= 4
-        PRINTFORMW 인게이지링을 전했던 다음날. 
+        PRINTFORMW 약혼 반지를 전했던 다음날. 
         PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 눈을 뜨자, 집 안이 공연히 어두웠다. 
         PRINTFORMW 시곗바늘을 확인해도, 이미 아침이라고 부를만한 시각을 가리키고 있다. 
         PRINTFORMW 「신경쓰지 않아도 돼, %CALLNAME:MASTER%. 내 능력이야」
@@ -16174,7 +16174,7 @@ ELSE
         PRINTFORMW 인간마을은 또 모르겠지만, 요정이나 요괴 가운데선 위험인물이라고 알려져 있을지도 모른다. 
         PRINTFORMW %CALLNAME:MASTER%의 생각을 간파했는지, 당황해서 루미아는 고개를 저었다. 
         PRINTFORMW 「하지만, 나는 좋아. 나는 그런 %조사처리(CALLNAME:MASTER,"를")% 사랑하고……사랑받고 있으니까」
-        PRINTFORMW 루미아의 웃는얼굴. 소녀의 어둠 안에서 빛나는 것은, 흔들림 없는 인게이지 링. 
+        PRINTFORMW 루미아의 웃는얼굴. 소녀의 어둠 안에서 빛나는 것은, 흔들림 없는 약혼 반지. 
         PRINTFORMW 「그러니까……난, 분명 행복한걸」
         PRINTFORML 그 말에 %CALLNAME:MASTER%도 웃는얼굴로 답해, 그녀가 내민 손에, 자신의 손을 겹쳤다. 
         PRINTFORMW 그대로 둘이서 빵 나이프를 쥐어, 루미아가 만든 케이크를 둘이서 자른다. 
@@ -16333,7 +16333,7 @@ IF CFLAG:0 == 1 && TALENT:159 == 0
         PRINTFORMW 대강 준비가 끝난 %조사처리(CALLNAME:MASTER,"가")% 현관에서 생각에 빠져있자, 말을 걸어왔다. 
         PRINTFORMW 「우리들도 준비됐어, %CALLNAME:MASTER%」
         PRINTFORMW 어두운 곳에서 나타난 건 루미아다. 
-        PRINTFORMW 옷은 입고 있지만, 그녀의 목에는 충성의 증거인 붉은 목걸이가 지금도 채워져 있다. 
+        PRINTFORMW 옷은 입고 있지만, 그녀의 목에는 충성의 증거인 붉은 개목걸이가 지금도 채워져 있다. 
         PRINTFORMW 그 뒤에 있는건 악마의 여동생, 플랑드르・스칼렛과, 닫힌 눈, 코메이지 코이시. 
         PRINTFORMW 그녀들은 %CALLNAME:MASTER%에게 충성을 맹세하면서도, 셋이서 서로 사랑하고 있다. 
         PRINTFORMW 그리고 조금 뒤에는, %조사처리(CALLNAME:MASTER,"가")% 조교해온 소녀, 

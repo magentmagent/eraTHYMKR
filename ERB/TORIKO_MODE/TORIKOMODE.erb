@@ -688,7 +688,7 @@ CALL SHOW_EQUIP_2
 ;PRINTFORML %CALLNAME:ARG%를 체크하는 중입니다...@LIFE_BAR_TORIKOMODE, ARG
 
 BASE:ARG:0 = LIMIT(BASE:ARG:0, 0, MAXBASE:ARG:0)
-PRINT 체력:
+PRINT 체력(
     IF (BASE:ARG:0 / MAXBASE:ARG:0) *100 >= 80 
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 건강
@@ -702,7 +702,7 @@ PRINT 체력:
         PRINT 지침
         RESETCOLOR
     ENDIF
-PRINTFORM (최대/{MAXBASE:ARG:0}) 
+PRINTFORM /{MAXBASE:ARG:0}) 
 
 
 ;-------------------------------------------------
@@ -715,7 +715,7 @@ PRINTFORM (최대/{MAXBASE:ARG:0})
 ;PRINTFORML %CALLNAME:ARG%를 체크하는 중입니다...@VITALITY_BAR_TORIKOMODE, ARG
 
 BASE:ARG:1 = LIMIT(BASE:ARG:1, 0, MAXBASE:ARG:1)
-PRINT 기력:
+PRINT 기력(
     IF (BASE:ARG:1 / MAXBASE:ARG:1) *100 >= 80
         CALL SETCOLOR_TORIKOMODE, "GREEN", 4
         PRINT 안정
@@ -729,7 +729,7 @@ PRINT 기력:
         PRINT 지침
         RESETCOLOR
     ENDIF
-PRINTFORM (최대/{MAXBASE:ARG:1}) 
+PRINTFORM /{MAXBASE:ARG:1}) 
 
 ;-------------------------------------------------
 ;토리코모드용 만복도 표시 함수
@@ -753,31 +753,44 @@ LOCAL:3 = (LOCAL:1 *100 / LOCAL:2)
 
 ;표시방식이 토리코식이면,
 IF FLAG:5000 & 1
-    PRINT 만복:
-        IF LOCAL:3 >= 95
-            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-            PRINT 폭식
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 80
-            CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-            PRINT 과식 
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 40
-            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-            PRINT 보통
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 20
-            CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
-            PRINT 허기
-            RESETCOLOR
-        ELSE 
-            CALL SETCOLOR_TORIKOMODE, "RED", 5
-            PRINT 텅빔
-            RESETCOLOR
-        ENDIF
-    PRINTFORM (최대/{CFLAG:ARG:4002}) 
+    PRINT 만복(
+    IF LOCAL:3 >= 95
+        CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        PRINT 폭식
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 80
+        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+        PRINT 과식
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 40
+        CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        PRINT 보통
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 20
+        CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
+        PRINT 허기
+        RESETCOLOR
+    ELSE 
+        CALL SETCOLOR_TORIKOMODE, "RED", 5
+        PRINT 텅빔
+        RESETCOLOR
+    ENDIF
+    PRINTFORM /{CFLAG:ARG:4002}) 
 ELSE
-    PRINTFORM  만복:({CFLAG:ARG:4001}/{CFLAG:ARG:4002}) 
+    PRINT 만복
+    IF LOCAL:3 >= 95
+        CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+    ELSEIF LOCAL:3 >= 80
+        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+    ELSEIF LOCAL:3 >= 40
+        CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+    ELSEIF LOCAL:3 >= 20
+        CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
+    ELSE 
+        CALL SETCOLOR_TORIKOMODE, "RED", 5
+    ENDIF
+    PRINTFORM ({CFLAG:ARG:4001, 4}/{CFLAG:ARG:4002, 4}) 
+    RESETCOLOR
 ENDIF
 
 ;디버그
@@ -817,33 +830,46 @@ LOCAL:3 = (LOCAL:1 *100 / LOCAL:2)
 ;표시방식이 토리코식이면,
 IF FLAG:5000 & 1
 ;계산, 출력
-    PRINT 영양:
-        IF LOCAL:3 >= 95
-            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-            PRINT 넘침
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 80
-            CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-            PRINT 충분
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 40
-            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-            PRINT 보통
-            RESETCOLOR
-        ELSEIF LOCAL:3 >= 20
-            CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
-            PRINT 기아
-            RESETCOLOR
-        ELSE 
-            CALL SETCOLOR_TORIKOMODE, "RED", 5
-            FONTBOLD
-            PRINT 아사
-            FONTREGULAR
-            RESETCOLOR
-        ENDIF
-    PRINTFORM (최대/{CFLAG:ARG:4004}) 
+    PRINT 영양(
+    IF LOCAL:3 >= 95
+        CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        PRINT 넘침
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 80
+        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+        PRINT 충분
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 40
+        CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        PRINT 보통
+        RESETCOLOR
+    ELSEIF LOCAL:3 >= 20
+        CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
+        PRINT 기아
+        RESETCOLOR
+    ELSE 
+        CALL SETCOLOR_TORIKOMODE, "RED", 5
+        FONTBOLD
+        PRINT 아사
+        FONTREGULAR
+        RESETCOLOR
+    ENDIF
+    PRINTFORM /{CFLAG:ARG:4004}) 
 ELSE
-    PRINTFORM 영양/({CFLAG:ARG:4003}/{CFLAG:ARG:4002}) 
+    PRINT 영양
+    IF LOCAL:3 >= 95
+        CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+    ELSEIF LOCAL:3 >= 80
+        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+    ELSEIF LOCAL:3 >= 40
+        CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+    ELSEIF LOCAL:3 >= 20
+        CALL SETCOLOR_TORIKOMODE, "MAGENTA", 4
+    ELSE 
+        CALL SETCOLOR_TORIKOMODE, "RED", 5
+    ENDIF
+    PRINTFORM ({CFLAG:ARG:4003, 4}/{CFLAG:ARG:4002, 4}) 
+    RESETCOLOR
 ENDIF
 
 
@@ -919,9 +945,9 @@ ENDIF
 ;-------------------------------------------------
 ; 캐릭터 리스트 출력. 이래저래 기존 내용의 수정이 많아서 별도로 제작함.
 ;-------------------------------------------------
-@CHARADATA_LIST_TORIKOMODE, ARG, ARG:2
+@CHARADATA_LIST_TORIKOMODE, ARG, ARG:2, ARG:3
+;ARG:3 (비트연산) 일부 표시를 켠다. (1: 영양상태, 2: 식단, 4: 체력,기력(을 끈다), 8: 스케쥴,스트레스, 16: 한마디대사, 32: 소질(을 끈다))
 LOCAL:3 = 0
-
 REPEAT 20
     LOCAL = GET_LIST(COUNT + ARG * 20)
     SIF LOCAL == 0
@@ -959,43 +985,47 @@ REPEAT 20
         PRINT 　
     ENDIF
     CALL ARRANGE_CHARALIST, LOCAL
-    ;줄바꿈
-    ;PRINTL
     ;스케쥴 모드 사용중일때
-    SIF FLAG:5000 & 1024
+    SIF FLAG:5000 & 1024 && ARG:3 & 8
         CALL ARRANGE_SCHEDULE_TORIKOMODE, LOCAL
     ;스트레스 모드 사용 중일때
-    IF FLAG:5000 & 64
+    IF FLAG:5000 & 64 && ARG:3 & 8
         PRINT  ♨스트레스:
         CALL PRINT_STRESS_LEVEL_TORIKOMODE, CFLAG:LOCAL:65
     ENDIF
     ;줄바꿈
-    PRINTL 
+    SIF (FLAG:5000 & 1024 || FLAG:5000 & 64) && ARG:3 & 8
+        PRINTL 
+    
     PRINT 　
-    CALL ARRANGE_CHARALIFE, LOCAL
+    CALL ARRANGE_CHARALIFE, LOCAL, ARG:3
+  
+    ;소질 호출    
+    IF (ARG:3 & 32) == 0
         PRINT 　
-    ;토리코모드로 1줄추가
-    ;PRINTL
-    CALL ARRANGE_CHARATALENT, LOCAL
-    PRINTL 
+        CALL ARRANGE_CHARATALENT, LOCAL
+        PRINTL
+    ENDIF
     ;한마디 호출
-    ;SIF FLAG:1200 & 4
-    ;    CALL IMPRESSION_MAIN, LOCAL
+    IF FLAG:1200 & 4 && ARG:3 & 16
+        CALL IMPRESSION_MAIN, LOCAL
+    ENDIF
     ;토리코모드로 1줄추가
     ;DRAWLINE
 REND
-;IF ARG:2 >= 1
-;    PRINT 　　　☆:조교중 ★:조수 ○:조수가 ●:전 조수
-;    SIF FLAG:15 & 4096 && FLAG:75 & 32768 && LOCAL:3 & 1
-;        PRINT  ◆:촉수 유폐중
-;    SIF FLAG:73 & 1 && LOCAL:3 & 4
-;        PRINT  ■:뇌수감중
-;;    SIF FLAG:15 & 4096 && LOCAL:3 & 2
-;;        PRINT  ▲:우리 유폐중
-;    SIF FLAG:79 & 1 && LOCAL:3 & 8
-;        PRINT  ▽:허브 작업중
-;    PRINTL 　(을)를 나타내고 있습니다
-;ENDIF
+IF ARG:2 >= 1
+    DRAWLINE
+    PRINT 　　　☆:조교중 ★:조수 ○:조수가능 ●:전 조수
+    SIF FLAG:15 & 4096 && FLAG:75 & 32768 && LOCAL:3 & 1
+        PRINT  ◆:촉수 유폐중
+    SIF FLAG:73 & 1 && LOCAL:3 & 4
+        PRINT  ■:지하실 수감중
+;    SIF FLAG:15 & 4096 && LOCAL:3 & 2
+;        PRINT  ▲:우리 유폐중
+    SIF FLAG:79 & 1 && LOCAL:3 & 8
+        PRINT  ▽:허브 작업중
+    PRINTL 　(을)를 나타내고 있습니다
+ENDIF
 
 
 
@@ -1845,90 +1875,27 @@ SIF RESULT:1 == 1 || RESULT:0 == 1
 ;알아서 밥 먹는거 리스트 출력.
 ;-------------------------------------------------
 @SHOW_LIST_EATEN_TORIKOMODE
-;表示させるキャラを抽出（LOCAL:2に人数）
-VARSET LOCAL, 0
-;CHARADATA_LISTのために待避
-LOCAL:99 = GET_LIST(2)
-CALLF CLEAR_LIST
+#DIM EATEN_SUM
+
+EATEN_SUM = 0
+
+DRAWLINE
+
 REPEAT CHARANUM
-    MARK:COUNT:98 = 0
-    ;主人は除外
-    SIF COUNT == MASTER
-        CONTINUE
-    ;失踪中などこの場にいないなら除外
-    SIF CFLAG:COUNT:4 == 1
+
+    SIF COUNT == MASTER || CFLAG:COUNT:4 == 1
         CONTINUE
 
-    CALLF SET_LIST, LOCAL:2, COUNT
-    LOCAL:2 += 1
-    MARK:COUNT:98 = 1
+    CALL EATEN_TORIKOMODE(COUNT)
+    EATEN_SUM += RESULT
+    PRINT   
+    CALL ARRANGE_CHARALIFE(COUNT, 3)
+    DRAWLINE
 REND
-LOCAL:1 = (LOCAL:2 - 1) / 20
-MARK:MASTER:98 = 1
-
-$PRINT_LIST
-DRAWLINE
-PRINTFORML 오늘의 식사결과는 다음과 같습니다.＜page.{LOCAL+1}＞
-
-    ;식사결과 처리, 출력
-    CALL CALC_EATEN_TORIKOMODE, LOCAL, LOCAL:99
-    ;총 식비 출력
-    PRINTFORML {CHARANUM-1}명의 식비로 총 {RESULT:0}원이 지출되었습니다. 현재 잔고 {MONEY}원.
-
-DRAWLINE
-PRINTFORMLC \@(LOCAL <= 0) ? %" " * 16% # [1001] 앞페이지\@
-PRINTLC [1000] 확인 종료
-PRINTFORMLC \@(LOCAL >= LOCAL:2 / 20) ? %" " * 16% # [1009] 다음페이지\@
-PRINTL 
-$INPUT_LOOP_1
-INPUT
-IF RESULT == 1000
-    RETURN 0
-ELSEIF RESULT == 1001 && LOCAL > 0
-    LOCAL -= 1
-    GOTO PRINT_LIST
-ELSEIF RESULT == 1009 && LOCAL < LOCAL:1
-    LOCAL += 1
-    GOTO PRINT_LIST
-ELSEIF RESULT < 0 || RESULT >= CHARANUM || MARK:RESULT:98 == 0
-    GOTO INPUT_LOOP_1
-ELSE
-ENDIF
-
-RESTART
-
-
-;-------------------------------------------------
-; 자율식사 처리함수
-;-------------------------------------------------
-@CALC_EATEN_TORIKOMODE, ARG, ARG:2
-;총 소비 식비 저장, 출력.
-LOCAL:999 = 0
-LOCAL:3 = 0
-;반복자
-LOCAL:99 = 0
-
-DO
-    LOCAL = GET_LIST((LOCAL:99) + ARG * 20)
-    ;주인공은 제외
-    IF LOCAL == 0
-        ;
-    ELSE
-        CALL EATEN_TORIKOMODE, LOCAL
-
-        ;EATEN_TORIKOMODE 에서 각각이 소비한 식비를 받아온다.
-        LOCAL:999 += RESULT:0
-
-        ;먹인 후의 캐릭터들의 상태를 출력하는 것이므로, 여기에 놓임
-        CALL ARRANGE_CHARALIFE, LOCAL
-
-        DRAWLINE
-    ENDIF
-    LOCAL:99+= 1
-LOOP LOCAL:99 <21
-
-;총 소비 식비 반환
-RETURN LOCAL:999
+    
+;총 식비 출력
+PRINTFORMW {CHARANUM-1}명의 식비로 총 {EATEN_SUM}원이 지출되었습니다. 현재 잔고 {MONEY}원.
+RETURN 0
 
 ;-------------------------------------------------
 ; 굶어죽기 엔딩 판정.
@@ -2023,8 +1990,11 @@ IF FLAG:5000 & 32
 ELSE
 ENDIF
 
-PRINTFORML 예상 식비는 {LOCAL:0}원/하루 입니다. 현재 잔고 {MONEY}원.
-
+PRINTFORM 예상 식비는 
+CALL SETCOLOR_TORIKOMODE, "ORENGE", 3
+PRINTFORM {LOCAL:0}원/日
+RESETCOLOR
+PRINTFORML 입니다. 현재 잔고 : {MONEY}원.
 ;-------------------------------------------------
 ; 만복도 시스템 켜질 때, 정보 없는 캐릭터 초기값 부여 함수
 ;-------------------------------------------------
@@ -2247,8 +2217,9 @@ $PRINT_LIST
 DRAWLINE
 PRINTFORML 방침을 바꾸고 싶은 캐릭터를 선택해 주세요.＜page.{LOCAL+1}＞
 ;토리코모드
-CALL CHARADATA_LIST_TORIKOMODE, LOCAL, LOCAL:99
+CALL CHARADATA_LIST_TORIKOMODE, LOCAL, LOCAL:99, 35
 ;예상 식비를 계산, 출력한다.
+DRAWLINE
 CALL CALC_FEEN_UPKEEP_TORIKOMODE
 DRAWLINE
 PRINTFORMLC \@(LOCAL <= 0) ? %" " * 16% # [1001] 앞페이지\@

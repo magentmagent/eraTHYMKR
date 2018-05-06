@@ -116,51 +116,6 @@ LOCAL = CALC_SLAVE_CAPACITY() - CHARANUM
 PRINTFORML \@(LOCAL > 0) ? (최대 {LOCAL}명 노예구입가능) #  (노예의 수 최대치임) \@
 
 ;-------------------------------------------------
-;캐릭터 능력 표시(종족 외)
-;-------------------------------------------------
-;能力を見る選択のとき、各キャラの横で種族、体力、気力が表示されます.
-
-;일단 완성.
-@SHOW_RACE, ARG
-PRINT 　　종족:
-IF NO:ARG == 0 && TALENT:ARG:998 && TALENT:ARG:116
-    PRINT 치터
-ELSEIF TALENT:ARG:48
-    PRINTS STR:145
-ELSEIF TALENT:ARG:200 && CFLAG:ARG:5 == 1
-    PRINTS STR:103
-ELSEIF TALENT:ARG:205 && CFLAG:ARG:5 == 2
-    PRINTS STR:106
-ELSEIF TALENT:ARG:206 && CFLAG:ARG:5 == 3
-    PRINTS STR:146
-ELSEIF TALENT:ARG:207 && CFLAG:ARG:5 == 4
-    PRINTS STR:143
-ELSEIF TALENT:ARG:208 && CFLAG:ARG:5 == 5
-    PRINTS STR:121
-ELSEIF TALENT:ARG:209 && CFLAG:ARG:5 == 6
-    PRINTS STR:104
-ELSEIF TALENT:ARG:210 && CFLAG:ARG:5 == 7
-    PRINTS STR:127
-ELSEIF TALENT:ARG:211 && CFLAG:ARG:5 == 8
-    PRINTS STR:112
-ELSEIF TALENT:ARG:212 && CFLAG:ARG:5 == 9
-    PRINTS STR:116
-ELSE
-    PRINTS CSTR:ARG:33
-ENDIF
-SIF TALENT:MASTER:998
-    PRINTFORM 　캐릭터번호:{NO:ARG, 3}
-PRINTFORML 　체력:({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4})　기력:({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4})
-;한 마디 대사 호출
-SIF ARG != MASTER && FLAG:1200 & 4
-    CALL IMPRESSION_MAIN, ARG
-IF ARG == MASTER && FLAG:12 & 4
-    CALL PRINT_MASTER_STATUS, ARG
-ELSEIF FLAG:12 & 4
-    CALL PRINT_SLAVE_STATUS, ARG
-ENDIF
-
-;-------------------------------------------------
 ;주인용 스테이터스 표시 처리
 ;-------------------------------------------------
 @PRINT_MASTER_STATUS, ARG
@@ -290,9 +245,9 @@ SIF EQUIP:ARG:14 > 0
 ;복숭아의 눈깔사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:0 > 0
     PRINTFORML 신비한 복숭아색 사탕의 영향을 받고 있다.
-;감색의 눈깔사탕의 영향을 받고 있다면 표시
+;남색 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:1 > 0
-    PRINTFORML 신비한 감색 사탕의 영향을 받고 있다.
+    PRINTFORML 신비한 남색 사탕의 영향을 받고 있다.
 
 CALL NEW_DRAWLINE
 
@@ -1519,7 +1474,7 @@ SIF CFLAG:ARG:42 & 8
 SIF CFLAG:ARG:42 & 16
     PRINT 《라비아피어스》 
 SIF CFLAG:ARG:42 & 32
-    PRINT 《유두피어스》 
+    PRINT 《니플피어스》 
 
 PRINTL 
 CALL NEW_DRAWLINE
@@ -2461,20 +2416,27 @@ MONEY += MONEY:1
 ;토리코모드 대응용 개조. 
 ;130821 BY V.K
 ;-------------------------------------------------
-@ARRANGE_CHARALIFE, ARG
-
+@ARRANGE_CHARALIFE, ARG, ARG:1
+;ARG:1 : 1로 영양 상태를 켬, 2로 식단을 켠다, 4로 체력,기력을 끈다.
 ;토리코모드 플래그 체크.
 IF FLAG:5000 & 1
     ;토리코모드
-    CALL LIFE_BAR_TORIKOMODE , ARG
-    CALL VITALITY_BAR_TORIKOMODE, ARG
+    IF (ARG:1 & 4) == 0
+        CALL LIFE_BAR_TORIKOMODE , ARG
+        CALL VITALITY_BAR_TORIKOMODE, ARG
+    ENDIF
     ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ELSE
     ENDIF
 
@@ -2488,106 +2450,59 @@ IF FLAG:5000 & 1
     ;PRINTL
 
 ELSE
-;일반모드
-PRINTFORM 체력
-;60%까지는 초록
-IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
-RESETCOLOR
+    ;일반모드
+    IF (ARG:1 & 4) == 0
+        PRINTFORM 체력
+        ;60%까지는 초록
+        IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
+        RESETCOLOR
 
-PRINTFORM 기력
-;60%까지는 초록
-IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4})
-RESETCOLOR
-
-;만약 식사 시스템 사용중이라면
+        PRINTFORM 기력
+        ;60%까지는 초록
+        IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4}) 
+        RESETCOLOR
+    ENDIF
+    ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
 ;캐릭터 일람표시처리
 ;-------------------------------------------------
-@CHARADATA_LIST, ARG, ARG:2
-LOCAL:3 = 0
-REPEAT 20
-    LOCAL = GET_LIST(COUNT + ARG * 20)
-    SIF LOCAL == 0
-        CONTINUE
+@CHARADATA_LIST, ARG, ARG:2, ARG:3
+;ARG:3 (비트연산) 일부 표시를 켠다. (1: 영양상태, 2: 식단, 4: 체력,기력(을 끈다), 8: 스케쥴,스트레스, 16: 한마디대사, 32: 소질(을 끈다))
 
-    ;주인공과 조수 대상과 조교중 캐릭터는 배제
-    SIF LOCAL == 0
-        CONTINUE
-    SIF CFLAG:LOCAL:4 == 1
-        CONTINUE
-    IF LOCAL == TARGET
-        PRINT ☆
-    ELSEIF LOCAL == ASSI
-        PRINT ★
-    ELSEIF CFLAG:LOCAL:4 == 4
-        PRINT ◆
-        LOCAL:3 |= 1
-    ELSEIF CFLAG:LOCAL:4 == 8
-        PRINT ▲
-        LOCAL:3 |= 2
-    ELSEIF CFLAG:LOCAL:4 == 16
-        PRINT ■
-        LOCAL:3 |= 4
-    ELSEIF CFLAG:LOCAL:4 & 1024
-        PRINT ▼
-        LOCAL:3 |= 16
-    ELSEIF CFLAG:LOCAL:4 == 2048 || CFLAG:LOCAL:4 == 4096
-        PRINT ▽
-        LOCAL:3 |= 8
-    ELSEIF ISASSI:LOCAL == 1
-        PRINT ●
-    ELSEIF CFLAG:LOCAL:1 == 2
-        PRINT ○
-    ELSE
-        PRINT 　
-    ENDIF
-    CALL ARRANGE_CHARALIST, LOCAL
-    CALL ARRANGE_CHARALIFE, LOCAL
-    CALL ARRANGE_CHARATALENT, LOCAL
-    PRINTL 
-    ;한 마디 대사 호출
-    SIF FLAG:1200 & 4
-        CALL IMPRESSION_MAIN, LOCAL
-REND
-IF ARG:2 >= 1
-    PRINT 　　　☆:조교중 ★:조수 ○:조수가능 ●:전 조수
-    SIF FLAG:15 & 4096 && FLAG:75 & 32768 && LOCAL:3 & 1
-        PRINT  ◆:촉수 유폐중
-    SIF FLAG:73 & 1 && LOCAL:3 & 4
-        PRINT  ■:지하실 수감중
-;    SIF FLAG:15 & 4096 && LOCAL:3 & 2
-;        PRINT  ▲:우리 유폐중
-    SIF FLAG:79 & 1 && LOCAL:3 & 8
-        PRINT  ▽:허브 작업중
-    PRINTL 　(을)를 나타내고 있습니다
-ENDIF
+;토리코 모드 코드로도 충분해 보입니다. (코드가 완전 같았음)
+CALL CHARADATA_LIST_TORIKOMODE, ARG, ARG:2, ARG:3
 
 ;-------------------------------------------------
 ;캐릭터의 소질 간이 표시의 보조 처리

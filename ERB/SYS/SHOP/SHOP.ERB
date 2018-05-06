@@ -77,20 +77,23 @@ ELSE
     ;주인, 조수, 조교 대상 노예의 체력 표시
     PRINTFORM %CALLNAME:MASTER%(주인)　
 
-    ;취기가 있으면 취기 표시
+    ;취기 표시
+    
     ;토리코모드
     IF FLAG:5000 & 1
+    ;일반모드
     ELSE
-        ;일반모드
         CALL CALC_GAUGE8, MASTER, 1
         PRINT 　
     ENDIF
 
+    ;체력 표시
+    
     ;토리코모드
     IF FLAG:5000 & 1
         CALL LIFE_BAR_TORIKOMODE, MASTER
+    ;일반모드
     ELSE
-        ;일반모드
         CALL LIFE_BAR, MASTER
         PRINT 　
     ENDIF
@@ -100,7 +103,8 @@ ELSE
 
     IF TARGET >= 0
         PRINTFORM %CALLNAME:TARGET%(\@(ASSI < 0 && (TALENT:153 || TALENT:152)) ? 열애 # 조교\@중)　
-        ;취기가 있으면 취기 표시
+
+        ;취기 표시
 
         ;토리코모드
         IF FLAG:5000 & 1
@@ -109,6 +113,8 @@ ELSE
             CALL CALC_GAUGE8, TARGET, 1
             PRINT 　
         ENDIF
+
+        ;체력 표시
 
         ;토리코모드
         IF FLAG:5000 & 1
@@ -119,6 +125,8 @@ ELSE
             PRINT 　
         ENDIF
 
+        ;기력 표시
+
         ;토리코모드
         IF FLAG:5000 & 1
             CALL VITALITY_BAR_TORIKOMODE, TARGET
@@ -127,21 +135,29 @@ ELSE
             CALL VITALITY_BAR, TARGET
         ENDIF
 
+        ;촉수 게이지 표시, 토리코모드 아님
+        IF FLAG:15 & 4096 && TALENT:146 && (FLAG:5000 & 1) == 0
+                CALL CALC_TENTACLE_GAUGE
+                PRINT 　
+                PRINT 기생
+                BAR MAX(BASE:6, 0), MAXBASE:6, 32
+                PRINTFORML ({BASE:6, 5}/{MAXBASE:6, 5})
+        ENDIF
+
         ;만복도모드
         IF FLAG:5000 & 32
+            SIF (FLAG:5000 & 1) == 0
+                PRINT 　
             CALL HUNGER_BAR_TORIKOMODE, TARGET
+            SIF (FLAG:5000 & 1) == 0
+                PRINT 　　　 
             CALL NUTRITION_BAR_TORIKOMODE, TARGET
-        ELSE
         ENDIF
-        PRINT 
 
-        ;촉수 관련의 게이지도 표시한다
-        IF FLAG:15 & 4096 && TALENT:146
-            CALL CALC_TENTACLE_GAUGE
-            PRINT 　
-            PRINT 기생
-            BAR MAX(BASE:6, 0), MAXBASE:6, 32
-            PRINTFORML ({BASE:6, 5}/{MAXBASE:6, 5})
+        ;촉수 표시, 토리코모드
+        IF FLAG:15 & 4096 && TALENT:146 && FLAG:5000 & 1
+                PRINT 기생:
+                PRINTFORM ({BASE:6, 5}/{MAXBASE:6, 5})
         ENDIF
         ;대사 존재 여부를 플래그에 넣는다
         RESULT = -1
@@ -152,18 +168,31 @@ ELSE
 
     ;토리코모드용 한줄추가
     PRINTL
-
+    ;조수 정보
     IF ASSI >= 0
         PRINTFORM %CALLNAME:ASSI%(조수)　
-        ;취기가 있으면 취기 표시
-        CALL CALC_GAUGE8, ASSI, 1
-        PRINT 　
-        ;일반모드
-        CALL LIFE_BAR, ASSI
+        
+        ;취기 표시
+        
         ;토리코모드
-        ;CALL LIFE_BAR_TORIKOMODE, ASSI
-        ;PRINTL
-
+        IF FLAG:5000 & 1
+        ;일반모드
+        ELSE
+            CALL CALC_GAUGE8, ASSI, 1
+            PRINT 　
+        ENDIF 　
+        
+        ;체력 표시
+        
+        ;토리코모드
+        IF FLAG:5000 & 1
+            CALL LIFE_BAR_TORIKOMODE, ASSI
+        ;일반모드　
+        ELSE
+            CALL LIFE_BAR, ASSI
+            PRINT 　
+        ENDIF
+        PRINTL
     ENDIF
     ;SIF ASSI >= 0
     ;    PRINTFORM (조수\@(TALENT:ASSI:157) ? 열애중 #\@:%CALLNAME:ASSI%)　
@@ -923,10 +952,10 @@ DRAWLINE
 
 ;토리코모드
 IF FLAG:5000 & 1
-    CALL CHARADATA_LIST_TORIKOMODE, LOCAL, LOCAL:99
+    CALL CHARADATA_LIST_TORIKOMODE, LOCAL, LOCAL:99, 25
 ELSE
 ;일반모드
-CALL CHARADATA_LIST, LOCAL, LOCAL:99
+CALL CHARADATA_LIST, LOCAL, LOCAL:99, 25
 ENDIF
 
 DRAWLINE

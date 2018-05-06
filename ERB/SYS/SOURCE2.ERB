@@ -89,6 +89,9 @@ TFLAG:51 = TFLAG:180 + TFLAG:181 + TFLAG:182 + TFLAG:183
 SIF TFLAG:51 && TEQUIP:68
     TEQUIP:68 = 0
 
+;절정에 따른 욕망 LV UP 처리
+CALL YOKUBO_UP_EX
+
 ;絶頂補助処理
 SIF (TFLAG:180 +TFLAG:181 + TFLAG:182 + TFLAG:183) > 0
     CALL DISPLAY_SLAVE_ORGASM
@@ -166,11 +169,6 @@ IF TFLAG:183
     DOWNBASE:0 += (ABL:3 < 5) ? 20 # 10
     DOWNBASE:1 += (ABL:3 < 5) ? 10 # 5
 ENDIF
-
-;-------------------------------------------------
-;絶頂による欲望ＬＶアップ処理
-;-------------------------------------------------
-CALL YOKUBO_UP_EX
 
 ;-------------------------------------------------
 ;絶頂経験追加処理
@@ -457,40 +455,46 @@ SIF TFLAG:183
     TFLAG:183 *= LOCAL
 
 ;-------------------------------------------------
-;絶頂による欲望ＬＶアップ処理
+;절정에 따른 욕망 LV UP 처리
 ;-------------------------------------------------
 @YOKUBO_UP_EX
 LOCAL = 0
+;C절정 or B절정 -> 욕망 레벨 1
 SIF TFLAG:180 || TFLAG:183
     LOCAL = 1
+;V절정 or A절정 or (C절정 + B절정) -> 욕망 레벨 2
 SIF TFLAG:181 || TFLAG:182 || (TFLAG:180 && TFLAG:183)
     LOCAL = 2
 SIF TFLAG:181 && TFLAG:182
     LOCAL = 2
-SIF (TFLAG:180 >= 4 || TFLAG:183 >= 4) && (TFLAG:181 >= 4 || TFLAG:182 >= 4) && LOCAL < 3
+;(C초강 절정이나 B초강 절정) 과 (V초강 절정이나 A초강 절정) -> 욕망 레벨 3
+SIF (TFLAG:180 >= 4  || TFLAG:183 >= 4) && (TFLAG:181 >= 4 || TFLAG:182 >= 4) && LOCAL < 3
     LOCAL = 3
+ ;C초강 절정 + B초강 절정 + (V절정이나 A절정) -> 욕망 레벨  3
 SIF (TFLAG:180 >= 4 && TFLAG:183 >= 4) && (TFLAG:181 || TFLAG:182) && LOCAL < 3
     LOCAL = 3
+;V초강 절정 + A초강 절정 -> 욕망 레벨 3
 SIF TFLAG:181 >= 4 && TFLAG:182 >= 4 && LOCAL < 3
     LOCAL = 3
+;최강사중절정 -> 욕망 레벨 4
 SIF TFLAG:180 >= 8 && TFLAG:183 >= 8 && TFLAG:181 >= 8 && TFLAG:182 >= 8
     LOCAL = 4
-;[抑圧]があると1下がる
+;[억압]소질 : 1 감소
 SIF TALENT:32 && LOCAL
     LOCAL -= 1
-;[快楽の否定]があると1下がる
+;[쾌감을 부정] : 1 감소
 SIF TALENT:71 && LOCAL
     LOCAL -= 1
-;レベルアップ補正が3以上のとき[自制心]があると1下がる
+;욕망 3 이상과 [자제심] : 1 감소
 SIF TALENT:20 && LOCAL >= 3
     LOCAL -= 1
-;難易度HARDの場合はＡ絶頂しているとさらに1下がる(四重絶頂は除く)
+;난이도 HARD에서 Ａ절정 : 1 감소(사중절정 시 무시)
 IF FLAG:3 == 3 && TFLAG:182 && (TFLAG:183 == 0 || TFLAG:180 == 0 || TFLAG:181 == 0) && LOCAL
     LOCAL -= 1
-;難易度LUNATICは絶頂にＡ絶頂が含まれていると欲望LVが上がらなくなる(四重絶頂は除く)
+;난이도 LUNATIC에서 Ａ절정 : 욕망 레벨 0 (사중절정 시 무시)
 ELSEIF (FLAG:3 == 4 || FLAG:3 == 6) && TFLAG:182 && (TFLAG:183 == 0 || TFLAG:180 == 0 || TFLAG:181 == 0) && LOCAL
     LOCAL = 0
-;難易度PHANTASMは欲望LVが全く上がらなくなる(四重絶頂は除く)
+;난이도 PHANTASM이상에서 : 욕망 레벨 0 (사중절정 시 무시)
 ELSEIF FLAG:3 >= 5 && (TFLAG:182 == 0 || TFLAG:183 == 0 || TFLAG:180 == 0 || TFLAG:181 == 0) && LOCAL
     LOCAL = 0
 ENDIF
@@ -500,7 +504,7 @@ SIF TFLAG:182 >= 72 && TFLAG:183 >= 72 && TFLAG:180 >= 72 && TFLAG:181 >= 72
     LOCAL = 5
 
 ;媚薬に漬けていると絶頂で欲望が上がらない上、不潔と反感追加のソースまで入る
-IF (TEQUIP:55 == 5 || TEQUIP:55 == 6) && LOCAL > 0
+IF TEQUIP:11 && LOCAL > 0
     LOCAL = (LOCAL + TFLAG:180 + TFLAG:181 + TFLAG:182 + TFLAG:183)*2 / LOCAL
     LOCAL = MAX(LOCAL, 1)
     SOURCE:30 += 1500 * LOCAL

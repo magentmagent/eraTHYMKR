@@ -340,54 +340,51 @@ ENDIF
 ; 3,射精経験　　　 4,精液経験　　　 5,噴乳経験　　　 
 ; 6,放尿経験　　　 7,調教排泄経験　 8,精飲절정経験　 
 ;10,自慰経験　　　11,調教自慰経験　12,レズ経験(13,ＢＬ経験)　
-;14,露出快楽経験　20,奉仕快楽経験　21,愛情経験　　　
+;14,露出快楽経験　;20,奉仕快楽経験　21,愛情経験　　　
 ;22,フェラ経験　　23,キス経験　　　30,苦痛快楽経験　
 ;31,緊縛経験　　　32,Ｖ拡張経験　　33,Ａ拡張経験　　
-;34,Ｕ拡張経験　　39,ＳＭ教育経験　40,薬物経験　　　
+;34,Ｕ拡張経験         35,B확장경험　  　39,ＳＭ教育経験　40,薬物経験　　　
 ;41,Ｃ調律経験　　42,Ｖ調律経験　　43,Ａ快楽経験　　
-;44,Ｂ快楽経験　　45,乳腺開発経験　46,尿道開発経験　
-;50,異常経験　　　51,産卵経験　　　52,出産経験　　　
+;44,Ｂ快楽経験　　45,乳腺開発経験　46,尿道開発経験　47,자궁경험
+;50,이상경험　　　51,産卵経験　　　52,出産経験　　　
 ;53,触手経験　　　54,吸血経験　　　55,調教失神経験　
 ;56,動物性愛経験　70,調理経験　　　71,撮影経験　　　
 ;72,被写経験　　　73,歌唱経験　　　74,工作経験　　　
-;75,教育経験 78, 수영경험　　　80,強姦経験　　　81,被強姦経験　　←Ｓパッチ、ここに割り込むよー
+;75,教育経験             76.매춘경험             77,창관인기
+;78, 수영경험　　　80,強姦経験　　　81,被強姦経験　　←Ｓパッチ、ここに割り込むよー
 ;82,被輪姦経験　　83,被姦快楽経験　97,極楽절정経験　
 ;98,主人調教経験　99,助手経験　　　
 @PRINT_EXP_COMMON, ARG
 CALL STATUS_VIRGIN, ARG
 LOCAL:1 = 0
-REPEAT 53
+REPEAT 54 ;CSV에 존재하는 경험치 종류 = 56, 그중 이상경험과 레즈(또는 BL)제외
     LOCAL = -1
     SELECTCASE COUNT
-        CASE 0 TO 8
+        CASE 0 TO 8 ;EXP0~8
             LOCAL = COUNT
-        CASE 9, 10
+        CASE 9, 10 ;EXP10~11
             LOCAL = COUNT + 1
-        CASE 11
-            LOCAL = 12 + TALENT:ARG:120
-        CASE 12
+        CASE 11 ;EXP12~13
+            LOCAL = 12 + TALENT:ARG:120 ;(레즈orBL)경험 표시
+        CASE 12 ;EXP20~23
             LOCAL = 14
-        CASE 13 TO 16
+        CASE 13 TO 16 ;EXP20~23
             LOCAL = COUNT +7
-        CASE 17 TO 21
+        CASE 17 TO 22 ;EXP30~35
             LOCAL = COUNT + 13
-        CASE 22 TO 29
-            LOCAL = COUNT + 17
-        CASE 30 TO 35
-            LOCAL = COUNT + 20
-        CASE 36
-            SIF FLAG:15 & 8192
+        CASE 23 TO 31 ;EXP39~47
+            LOCAL = COUNT + 16
+        CASE 32 TO 36 ;EXP51~55
+            LOCAL = COUNT + 19
+        CASE 37 ;EXP:56
+            SIF FLAG:15 & 8192 ;수간 컨피그 켜졌을 때만 표시
                 LOCAL = 56
-        CASE 37 TO 42
+        CASE 38 TO 46  ;EXP70~78
+            LOCAL = COUNT + 32
+        CASE 47 TO 50 ;EXP80~83
             LOCAL = COUNT + 33
-        CASE 43, 44
-            LOCAL = COUNT + 33
-        CASE 45
-            LOCAL = COUNT + 33
-        CASE 46 TO 48
-            LOCAL = COUNT + 35
-        CASE 49 TO 51
-            LOCAL = COUNT + 48
+        CASE 51 TO 53 ;EXP97~99
+            LOCAL = COUNT + 46
     ENDSELECT
     IF LOCAL < 0
         CONTINUE
@@ -1408,7 +1405,7 @@ ENDIF
 LOCAL = 1000
 PRINT 정음
 BAR CFLAG:64,LOCAL,32
-PRINTFORML  ({CFLAG:64, 4}/{LOCAL, 4})
+PRINTFORML ({CFLAG:64, 4}/{LOCAL, 4})
 
 ;-------------------------------------------------
 ;SHOP画面での노예及び助手の特殊装備表示処理

@@ -1,3 +1,0 @@
-;COM_ABLE의 범용 판정 함수를 비활성화합니다
-;주석을 달면 다시 활성화
-#DEFINE ENABLE_COM_ABLE_CHECK
