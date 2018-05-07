@@ -398,7 +398,7 @@ CFLAG:75 = (ASSIPLAY) ? 2 # 1
 ;各コマンドへの影響を小さくするのが目的（関数を呼ぶ, もしくはオミットするだけで良い）
 ;TFLAG:10（中田氏）とTEQUIP:31（コンドーム）を条件に膣射を増やす処理を持つ
 SIF TALENT:MASTER:998
-    PRINTFORML 노예에게 질내사정 체크
+    PRINTFORML 노예, 조수에게 질내사정 체크
 ;まず, コンドームの有無で分岐
 LOCAL = (ASSIPLAY) ? ASSI # MASTER
 IF TEQUIP:LOCAL:31 == 1
@@ -459,7 +459,7 @@ IF TEQUIP:31 == 1
     CFLAG:75 = 3
     TEQUIP:31 = 0
 ;妊娠モードであり, コンドームをしてないかつセックス系コマンドなら中出し
-ELSEIF (FLAG:18 & 2) && ASSIPLAY && (SELECTCOM == 25 || SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324 || SELECTCOM == 325 || SELECTCOM == 651)
+ELSEIF (FLAG:18 & 2) && ASSIPLAY && (SELECTCOM == 307 || TFLAG:703 == 9)
     IF TFLAG:91
         IF TFLAG:91 == 2
             CALL SETCOLOR_TORIKOMODE, "PINK", 3
@@ -473,7 +473,7 @@ ELSEIF (FLAG:18 & 2) && ASSIPLAY && (SELECTCOM == 25 || SELECTCOM == 307 || SELE
         PRINTFORML 노예정액(조수)＋{TFLAG:91}
         CFLAG:ASSI:73 += TFLAG:91
     ENDIF
-ELSEIF (FLAG:18 & 2) && ASSIPLAY == 0 && (SELECTCOM == 25 || SELECTCOM == 323 || SELECTCOM == 324 || SELECTCOM == 325 || SELECTCOM == 651)
+ELSEIF (FLAG:18 & 2) && ASSIPLAY == 0 && TFLAG:703 == 9
     IF TFLAG:91
         IF TFLAG:91 == 2
             CALL SETCOLOR_TORIKOMODE, "PINK", 3
