@@ -348,7 +348,7 @@ SIF TALENT:(TFLAG:94):140 == 0 && TFLAG:94 == TARGET && FLAG:18 & 2
     CALL SAMEN_SHOOT_SOURCE
 
 ;………………………………………………
-;アナルセックスで射精
+;장내사정
 ;………………………………………………
 @SAMEN_SHOOT_OLD_SEX2
 ;공통 처리
@@ -578,7 +578,8 @@ TFLAG:36 = TFLAG:91
 ;공통 처리
 CALL SAMEN_SHOOT_CALC
 
-SIF TFLAG:94 != TARGET
+;역강간이므로 노예가 삽입당하면 버그
+SIF TFLAG:94 == TARGET
     RETURN 0
 
 LOCAL = 0
