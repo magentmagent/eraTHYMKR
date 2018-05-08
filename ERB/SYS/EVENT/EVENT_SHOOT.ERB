@@ -417,8 +417,8 @@ IF TFLAG:703 == 1
         CALL SETCOLOR_TORIKOMODE, "PINK", 3
         PRINTFORML \@(TFLAG:10 == 2) ? 질내대량 # 질내\@사정
         RESETCOLOR
-        PRINTFORML \@(ASSIPLAY) ? 조수 # 주인\@정액＋{TFLAG:10}
-        CFLAG:(71 + ASSIPLAY) += TFLAG:10
+        PRINTFORML \@(TFLAG:92 == ASSI) ? 조수 # 주인\@정액＋{TFLAG:10}
+        CFLAG:(71 + (TFLAG:92 == ASSI)) += TFLAG:10
     ENDIF
 ;助手を犯す
 ELSEIF TFLAG:703 == 6
