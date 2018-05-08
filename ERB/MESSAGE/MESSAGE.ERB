@@ -616,37 +616,6 @@ RETURNF 1
 #FUNCTION
 RETURNF TEQUIP:ARG:42
 
-;--------------------------------------------------
-;대상이 주인의 자식인지 아닌지를 판정하는 식중함수
-;--------------------------------------------------
-;ARG＝판정하는 캐릭터
-;0을 반환했을 경우＝주인의 자식이 아님, 1을 반환했을 경우＝주인의 딸, 2를 반환했을 경우＝주인의 아들
-@CHECK_MASTERS_CHILD(ARG)
-#FUNCTION
-IF (NO:ARG == 148 || NO:ARG == 149) && (CFLAG:ARG:3107 == CFLAG:MASTER:3109 || CFLAG:ARG:3105 == CFLAG:MASTER:3109 || CFLAG:ARG:3106 == CFLAG:MASTER:3109)
-    RETURNF (TALENT:ARG:120) ? 2 # 1
-ELSE
-    RETURNF 0
-ENDIF
-
-;--------------------------------------------------
-;대상에게 있어 주인이 아버지인가 어머니인가를 판정하는 식중함수
-;대상이 주인의 자식일 것이 필요 조건
-;--------------------------------------------------
-;ARG＝판정하는 캐릭터
-;0을 반환했을 경우＝주인의 자식이 아님, 1을 반환했을 경우＝주인의 딸, 2를 반환했을 경우＝주인의 아들
-@CHECK_MASTER_IS_DAD_OR_MOM(ARG)
-#FUNCTIONS
-;아버지
-IF (NO:ARG == 148 || NO:ARG == 149) && CFLAG:ARG:3107 == CFLAG:MASTER:3109
-    RETURNF CSTR:ARG:55
-;어머니
-ELSEIF (NO:ARG == 148 || NO:ARG == 149) && CFLAG:ARG:3105 == CFLAG:MASTER:3109 || CFLAG:ARG:3106 == CFLAG:MASTER:3109
-    RETURNF CSTR:ARG:54
-;필요 조건을 만족시키지 못했을 때
-ELSE
-    RETURNF CSTR:ARG:53
-ENDIF
 
 ;--------------------------------------------------
 ;러브러브 대사의 표시를 판정하는 식중함수
@@ -1623,6 +1592,8 @@ IF CHECK_MASTERS_CHILD(TARGET) == 1
     ELSEIF CFLAG:3005 == 4
         STR:401 = 파파
         STR:404 = 마마
+    SIF MOTHER(MASTER) ;주인이 엄마일 경우 호칭을 바꿈
+        SWAP STR:401, STR:404
     ENDIF
 ;범용 캐릭터일 경우
 ELSE
@@ -1855,3 +1826,86 @@ CSTR:15 = %STR:404%
 
 ;결정된 성격을 반환한다.
 RETURN CFLAG:3005
+
+;----------------------------------------------------------------------------------------------------------------------------------
+;노예가 주인을 어떻게 생각하는지 판정
+;----------------------------------------------------------------------------------------------------------------------------------
+@ORDER_FALLEN(ARG)
+#FUNCTION
+;예속이 있어도 복종 소질이 연모에게 대사 우선 순위를 빼앗기는 문제를 해결하기 위해 만듭니다.
+;ARG = TARGET, ASSI 등이 들어감
+;RETURN = 1 : 연모계, 2 : 복종계, 3 : 음란계
+
+;동급의 소질 복수 보유시 연모도, 복종도, 음란도 판정
+;(호감도처럼 복종도, 음란도를 만들면 더 좋겠지만....)
+;적당한 계산식을 모르겠다. 오르는 속도가 다 달라서
+
+;연모도 : 공포각인이 0이어야 함. 봉사쾌락경험, 순종의 구슬 (봉사를 좋아하면 연모?)
+LOCAL:1 = (EXP:ARG:20 + JUEL:ARG:12 / 1000) * (MARK:ARG:8 == 0)
+;복종도 : 고통쾌락경험, 굴복의 구슬 (복종은 마조?)
+LOCAL:2 = (EXP:ARG:30 + JUEL:ARG:14 / 1000)
+;음란도 : 노출쾌락경험, 치정의 구슬 (음란은 노출증?)
+LOCAL:3 = (EXP:ARG:14 + JUEL:ARG:15 / 1000)
+
+;상애 & 예속 동시 보유 
+;(음란 엔딩은 없다... 음마는 주차플레이가 전제조건이라 적용하기 애매함.)
+IF TALENT:ARG:153 && TALENT:ARG:162
+    IF LOCAL:1 >=  LOCAL:2
+        RETURNF 1
+    ELSEIF LOCAL:1 <=  LOCAL:2
+        RETURNF 2
+    ENDIF
+;상애
+ELSEIF TALENT:ARG:153
+    RETURNF 1
+;예속
+ELSEIF TALENT:ARG:162
+    RETURNF 2
+
+;친애 & 낙인 동시 보유
+;일단 친애와 낙인을 동급으로 본다.
+;(역시 음란계 소질은 없다. 부위계 소질은 호감도의 영향을 안 받아서 적용하기 애매함.)
+ELSEIF TALENT:ARG:153 && TALENT:ARG:162
+    IF LOCAL:1 >=  LOCAL:2
+        RETURNF 1
+    ELSEIF LOCAL:1 <=  LOCAL:2
+        RETURNF 2
+    ENDIF
+;친애
+ELSEIF TALENT:ARG:152
+    RETURNF 1
+;낙인
+ELSEIF TALENT:ARG:161
+    RETURNF 2
+    
+;연모, 복종, 음란 중 2개 이상 보유
+ELSEIF (TALENT:ARG:150 + TALENT:ARG:160 + TALENT:ARG:170) >= 2
+    ;값이 가장 크고 해당 소질 보유
+    IF LOCAL:1 >=  LOCAL:2 && LOCAL:1 >=  LOCAL:3 && TALENT:ARG:150
+        RETURNF 1
+    ELSEIF LOCAL:2 >=  LOCAL:1 && LOCAL:2 >=  LOCAL:3 && TALENT:ARG:160
+        RETURNF 2
+    ELSEIF LOCAL:3 >=  LOCAL:1 && LOCAL:3 >=  LOCAL:2 && TALENT:ARG:170
+        RETURNF 3
+    ;값이 2번째로 크고 해당 소질 보유
+    ELSEIF (LOCAL:1 >=  LOCAL:2 || LOCAL:1 >=  LOCAL:3) && TALENT:ARG:150
+        RETURNF 1
+    ELSEIF (LOCAL:2 >=  LOCAL:1 || LOCAL:2 >=  LOCAL:3) && TALENT:ARG:160
+        RETURNF 2
+    ELSEIF (LOCAL:3 >=  LOCAL:1 || LOCAL:3 >=  LOCAL:2) && TALENT:ARG:170
+        RETURNF 3
+    ENDIF
+;연모
+ELSEIF TALENT:ARG:150
+    RETURNF 1
+;복종
+ELSEIF TALENT:ARG:160
+    RETURNF 2
+;음란
+ELSEIF TALENT:ARG:170
+    RETURNF 3
+;소질 없음
+ELSE
+    RETURNF 0
+ENDIF    
+    
