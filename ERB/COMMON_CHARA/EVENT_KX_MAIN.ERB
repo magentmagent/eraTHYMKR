@@ -159,10 +159,6 @@ IF CFLAG:5201 == 0
             TALENT:100 = 1
             TALENT:101 = 0
         ENDIF
-        ;엄마의 신체적 특징을 물려받는다.
-        ;제작중
-        ;아빠의 신체적 특징을 물려받는다.
-        ;제작중.
 
         ;딸조교패치(토리코모드)가 켜져있고, 주인에게 금단의 지식이 없을 경우,
         IF FLAG:5005 == 1 && TALENT:MASTER:56 == 0
@@ -194,13 +190,8 @@ IF CFLAG:5201 == 0
             $INPUT_LOOP_1
             INPUT
             IF RESULT == 1
-                IF TALENT:MASTER:120
-                    STR:401 = 아빠
-                ELSE
-                    STR:401 = 엄마
-                ENDIF
-                
                 CFLAG:3005 = 1
+                CALL JINKAKU
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
                 PRINTFORML
@@ -211,12 +202,8 @@ IF CFLAG:5201 == 0
                 PRINTFORMW 「나 참, 뭐하잔 플레이야? 지금」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 왠지 화가 난 것 같다….
             ELSEIF RESULT == 2
-                IF TALENT:MASTER:120
-                    STR:401 = 아버지
-                ELSE
-                    STR:401 = 어머니
-                ENDIF
                 CFLAG:3005 = 2
+                CALL JINKAKU
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
                 PRINTFORML
@@ -227,12 +214,8 @@ IF CFLAG:5201 == 0
                 PRINTFORML 「왠지 굉장히 오랜만에 뵙는 것 같아요」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% %CALLNAME:MASTER%에게 가볍게 인사했다….
             ELSEIF RESULT == 3    
-                IF TALENT:MASTER:120
-                    STR:401 = 아버님
-                ELSE
-                    STR:401 = 어머님
-                ENDIF
                 CFLAG:3005 = 3
+                CALL JINKAKU
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
                 PRINTFORML
@@ -245,25 +228,17 @@ IF CFLAG:5201 == 0
                 PRINTFORML 「너무 짓궂게 하지 말아주셨으면 좋겠어요」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% %CALLNAME:MASTER%의 얼굴을 조금 곤혹스러운 듯 바라보고 있다….
             ELSEIF RESULT == 4
-                IF TALENT:MASTER:120
-                    STR:401 = 아빠
-                ELSE
-                    STR:401 = 엄마
-                ENDIF
                 CFLAG:3005 = 4
+                CALL JINKAKU
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다.
                 PRINTFORML
-                PRINTFORMW 「앗, 아빠다. 놀아주는 거야?」
+                PRINTFORMW 「앗, %STR:401%다. 놀아주는 거야?」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 조금 기쁜 듯한 모습이다….
             ELSEIF RESULT == 5
-                IF TALENT:MASTER:120
-                    STR:401 = 아버지
-                ELSE
-                    STR:401 = 어머니
-                ENDIF
                 ;성격
                 CFLAG:3005 = 5
+                CALL JINKAKU
                 PRINTFORML
                 PRINTFORMW ※딸의 소질이 그에 맞게 변경됩니다. 
                 PRINTFORML
@@ -1024,7 +999,7 @@ ELSEIF CFLAG:5201 < 5 && TALENT:150 == 1 && CHECK_MASTERS_CHILD(TARGET) == 1
             PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 조용히 몸을 기대온다… 
             PRINTFORML 「%조사처리(STR:401,"가")% 가장 바라고 있는 건 뭐야?」
             PRINTFORMW 「%CALLNAME:TARGET%, %조사처리(STR:401,"가")% 바라는 게 있으면 뭐든지 할테니까」
-        ELSEIF CFLAG:3005 == 1
+        ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
             PRINTFORMW %조사처리(CALLNAME:TARGET,"과")% 사랑을 나누기 전에 늘 하는 것이 있다.
             PRINTFORML 「…흐―으읍…남자 냄새…별로 좋은 냄새는 아니야 역시」
             PRINTFORMW 「…체온도 그냥저냥, 그렇게 따뜻하지도 않고」
@@ -1070,7 +1045,7 @@ ELSEIF CFLAG:5201 < 5 && TALENT:150 == 1 && CHECK_MASTERS_CHILD(TARGET) == 1
             PRINTFORMW 「좋아, 좋아해요. 정말 좋아해요, %STR:401%…!」
             PRINTFORMW 감정이 휘몰아쳐 눈물이 흐르는 %조사처리(CALLNAME:TARGET,"를")% 쓰다듬으면서, 부탁을 들어보았다.  
             PRINTFORMW 「부탁은… 저를, 앞으로도 계속, 평생 %STR:401%의 곁에 있게 해 줘요…!」
-        ELSEIF CFLAG:43 == 6
+        ELSEIF CFLAG:3005 == 6
             PRINTFORMW 「%STR:401%, %조사처리(STR:400,"는")% 계속 생각했습니다만…」
             PRINTFORMW 「이대로 계속해 가는 거라면, 이것은 이제 단순한 부모와 딸 관계의 연장은 아니라고 생각합니다」
             PRINTFORMW 「여기서, 「좋아합니다…」라고 말할 수 있다면 좋겠지요…」
