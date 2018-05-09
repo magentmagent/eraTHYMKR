@@ -1592,9 +1592,9 @@ IF CHECK_MASTERS_CHILD(TARGET) == 1
     ELSEIF CFLAG:3005 == 4
         STR:401 = 파파
         STR:404 = 마마
+    ENDIF
     SIF MOTHER(MASTER) ;주인이 엄마일 경우 호칭을 바꿈
         SWAP STR:401, STR:404
-    ENDIF
 ;범용 캐릭터일 경우
 ELSE
     IF CFLAG:43 == 0
