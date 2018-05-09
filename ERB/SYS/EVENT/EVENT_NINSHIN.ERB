@@ -8,7 +8,7 @@
 ;플래그 관리
 ;---------------------------------------------------------
 ;CFLAG
-;70→누가 임신시켰는가 (마스터 = 1, 조수 = 2, ㄶ예 = 3)
+;70→누가 임신시켰는가 (마스터 = 1, 조수 = 2, 노예 = 3)
 ;71→마스터가 싼 질내 사정 카운트용
 ;72→조수가 노예에게 싼 질내 사정 카운트용
 ;73→노예가 조수에게 싼 질내 사정 카운트용
@@ -34,22 +34,20 @@
 ;---------------------------------------------------------
 @IN_VAGINA_ALL
 ;판정 대상이 없다면 돌아간다
-SIF (TARGET == -1) && (ASSI == -1)
-    RETURN 0
 
 ;노예의 임신 체크
 IF TARGET > 0
     IF TALENT:120 == 0 && TALENT:135 == 0 && TALENT:136 == 0 && TALENT:140 == 0 && TALENT:145 == 0 && TEQUIP:17 == 0
         ;普段から初期化してるが念のため
         CFLAG:70 = 0
-        ;まず、主人との間で判定
-        ;中だしされているならチェックへ
+        ;주인의 정액으로 임신 체크 판정
+        ;질내사정 여부 체크
         SIF CFLAG:71 > 0
             CALL NAKADASHI_CHECK, TARGET, 1
 
-        ;助手がいれば助手との間で判定（主人との判定で임신確定していない場合）
+        ;조수가 있으면 조수의 정액으로 임신 체크 판정 (주인의 아이를 임신 하지 않았을 때 체크)
         IF ASSI > 0 && CFLAG:70 == 0
-            ;中だしされているならチェックへ
+            ;질내사정 여부 체크
             SIF CFLAG:72 > 0
                 CALL NAKADASHI_CHECK, TARGET, 2
         ENDIF
@@ -61,34 +59,65 @@ IF ASSI > 0
     IF TALENT:ASSI:120 == 0 && TALENT:ASSI:135 == 0 && TALENT:ASSI:136 == 0 && TALENT:ASSI:140 == 0 && TALENT:ASSI:145 == 0 && TEQUIP:ASSI:17 == 0
         ;普段から初期化してるが念のため
         CFLAG:ASSI:70 = 0
-        ;まず、主人との間で判定
-        ;中だしされているならチェックへ
+        ;주인의 정액으로 임신 체크 판정
+        ;질내사정 여부 체크
         SIF CFLAG:ASSI:71 > 0
             CALL NAKADASHI_CHECK, ASSI, 1
 
-        ;奴隷との間で判定（主人との判定で임신確定していない場合）
+        ;노예의 정액으로 임신 체크 판정（주인의 아이를 임신 하지 않았을 때 체크)
         IF TARGET > 0 && CFLAG:ASSI:70 == 0
-            ;中だしされているならチェックへ
+            ;질내사정 여부 체크
             SIF CFLAG:ASSI:73 > 0
                 CALL NAKADASHI_CHECK, ASSI, 3
         ENDIF
     ENDIF
 ENDIF
 
+;주인의 임신 체크
+IF TALENT:MASTER:120 == 0 && TALENT:MASTER:135 == 0 && TALENT:MASTER:136 == 0 && TALENT:MASTER:140 == 0 && TALENT:MASTER:145 == 0 && TEQUIP:MASTER:17 == 0
+    ;普段から初期化してるが念のため
+    CFLAG:MASTER:70 = 0
+    ;조수가 있으면 조수의 정액으로 임신 체크 판정
+    IF ASSI > 0
+        ;질내사정 여부 체크
+        SIF CFLAG:MASTER:72 > 0
+            CALL NAKADASHI_CHECK, MASTER, 2
+    ENDIF
+    ;노예의 정액으로 임신 체크 판정 (조수의 아이를 임신 하지 않았을 때 체크)
+    IF TARGET > 0 && CFLAG:MASTER:70 == 0
+        ;질내사정 여부 체크
+        SIF CFLAG:MASTER:73 > 0
+            CALL NAKADASHI_CHECK, MASTER, 3
+    ENDIF
+ENDIF
+
 @NAKADASHI_CHECK, ARG, ARG:1
 ;질내사정된 정자량에 대응해 확률 처리
 ;70 + ARG:1：체크하는 플래그 번호
-
+;디버그 모드
+IF TALENT:MASTER:998
+    PRINTFORM %CALLNAME:ARG%,
+    SIF ARG:1 == 1
+        PRINT 주인
+    SIF ARG:1 == 2
+        PRINT 조수
+    SIF ARG:1 == 3
+        PRINT 노예
+    PRINTFORML 의 아기 임신 체크
+    PRINTFORML 질내사정량 : {CFLAG:ARG:(70 + ARG:1)}
+ENDIF
 ;질내사정 양으로 분기하므로 그 사전 준비
-LOCAL = ((CFLAG:ARG:(70 + ARG:1) / 4) > 5) ? 5 # CFLAG:ARG:(70 + ARG:1) / 4
+LOCAL = MIN(5, CFLAG:ARG:(70 + ARG:1) / 4)
 
 ;임신하는가 판정
 SIF RAND:(RATE_PREGNANCY(LOCAL, ARG, ARG:1)) == 0 || FLAG:602
     CFLAG:ARG:70 = ARG:1
 
 ;임신 확률 계산
+;작을 수록 임신 확률이 높다
+;ARG = 정액량에 따른 확률, ARG:1 = 캐릭터, ARG:2 = 정자 주인
 ;(6 - ARG + MAX(2 - ARG, 0)：기본치 설정
-;(ARG:1 > 1) * MIN(LOCAL, 2)：부친이 주인 외일 때의 보정
+;(ARG:2 > 1) * MIN(ARG, 2)：부친이 주인 외일 때의 보정
 ;TALENT:ARG:128 * 2：작은체형의 보정
 ;((TEQUIP:ARG:16 > 0) ? 1 # 3)：배란유도제에 따른 보정
 @RATE_PREGNANCY(ARG, ARG:1, ARG:2)
@@ -96,10 +125,11 @@ SIF RAND:(RATE_PREGNANCY(LOCAL, ARG, ARG:1)) == 0 || FLAG:602
 ;기본치
 LOCAL = 6 - ARG + MAX(2 - ARG, 0) + (ARG:2 > 1) * MIN(ARG, 2)
 ;소질보정
-LOCAL += TALENT:(ARG:1):130 * 5
-LOCAL += (TALENT:(ARG:1):127 + TALENT:(ARG:1):128 + TALENT:(ARG:1):216) * 2
+LOCAL += TALENT:(ARG:1):130 * 5 ;소질[유아]
+LOCAL += (TALENT:(ARG:1):127 + TALENT:(ARG:1):128 + TALENT:(ARG:1):216) * 2 ;소질 [소인체형] [작은체형] [구문지]
+;소질 [기계] [영체] [인형] [폭발물] [신령] [반신]
 LOCAL += TALENT:(ARG:1):206 + TALENT:(ARG:1):207 + TALENT:(ARG:1):208 + TALENT:(ARG:1):220 + TALENT:(ARG:1):222 + TALENT:(ARG:1):223
-;[요정]만 특수처리
+;[요정]만 특수처리 (정자 주인이 요정지식이 없으면 +1)
 SIF TALENT:(ARG:1):200 && ((ARG:2 == 1 && !TALENT:MASTER:57) || (ARG:2 == 2 && !TALENT:ASSI:57) || (ARG:2 == 3 && !TALENT:57))
     LOCAL++
     
@@ -110,10 +140,8 @@ IF FLAG:5005 == 1
         LOCAL = 1
     ENDIF
 ENDIF
-;SIF FLAG:5005 == 1
-    ;LOCAL++
-    ;LOCAL *= 3
 
+;배란유도제가 있으면 확률 3배
 RETURNF (LOCAL * ((TEQUIP:(ARG:1):16 > 0) ? 1 # 3))
 
 ;---------------------------------------------------------
@@ -129,9 +157,9 @@ IF TARGET > 0
 
         CALL CHANGE_N_STATUS, TARGET
 
-        ;임신時の口上をイベント口上でやってみるのはいいとして分岐どうしよう…
-        ;基本的には口上側で分岐してもらう方向で
-        ;TFLAG:222 を口上分岐用父親関連＋グッドバッド判定用に使用
+        ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
+        ;기본적으로는 대사 측에서 분기해주는 방향으로
+        ;TFLAG:222를 말 분기용 아버지 관련+굿 배드 판정용으로 사용
         TFLAG:222 = (CFLAG:70 == 2) ? NO:ASSI + 1000 # NO:MASTER + 1000
         CALL SELF_KOJO, TARGET, 170
     ENDIF
@@ -153,6 +181,22 @@ IF ASSI > 0
     ENDIF
 ENDIF
 
+IF TALENT:MASTER:120 == 0
+    IF TALENT:MASTER:140 == 0 && CFLAG:MASTER:70 > 0
+        PRINTFORMW %CALLNAME:MASTER%의 상태가 이상하다….
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(CFLAG:MASTER:70 == 3) ? %CALLNAME:TARGET% # %CALLNAME:ASSI%\@의 아이를 임신한 모양이다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% [%TALENTNAME:140%]했다.
+        TALENT:MASTER:140 = 1
+
+        CALL CHANGE_N_STATUS, MASTER
+
+        ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
+        ;기본적으로는 대사 측에서 분기해주는 방향으로
+        
+        ;CALL SELF_KOJO 임신시켰을 때 나오는 대사 필요
+    ENDIF
+ENDIF
+
 CALL CLEAR_FLAG
 
 ;-------------------------------------------------
@@ -165,8 +209,13 @@ CALL CLEAR_FLAG
 MAXBASE:ARG:0 -= 500
 IF BASE:ARG:0 >= 501
     BASE:ARG:0 = 500
-    PRINTFORMW 심하게 지친 모양이다……. 쉬게 하는 편이 나으리라.
-    PRINTFORMW 　
+    IF ARG == MASTER
+        PRINTFORMW 몸이 무겁다…… 체력이 떨어진 것 같다.
+        PRINTFORMW 　
+    ELSE
+        PRINTFORMW 심하게 지친 모양이다……. 쉬게 하는 편이 나으리라.
+        PRINTFORMW 　
+    ENDIF
     IF CFLAG:ARG:1501
         PRINTW 매춘 상태가 해제되었습니다.
         CFLAG:ARG:4 = 0
@@ -197,10 +246,63 @@ LOCAL:1 = CFLAG:ARG:78 + 1000
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
-;父親主人なら恋慕、烙印、隷属、壊造人格
-;父親助手なら、助手と助手間の十分な調教경험
-;父親奴隷なら、助手と奴隷間の十分な調教경험
-IF ((TALENT:ARG:150 || TALENT:ARG:161 || TALENT:ARG:162 || TALENT:ARG:169) && CFLAG:ARG:70 == 1) || (CFLAG:ARG:70 == 2 && CFLAG:ARG:(LOCAL:1) >= 1000) || (CFLAG:ARG:70 == 3 && CFLAG:ARG:(LOCAL:1) >= 1000)
+;임산부가 주인
+IF ARG == MASTER
+    ;임신(굿) 플래그
+    CFLAG:ARG:76 = 1
+
+    ;임부의 가슴 크기를 플래그에 대입하는 처리
+    CFLAG:ARG:3006 = 0
+    ;절벽
+    IF TALENT:ARG:110 
+        CFLAG:ARG:3006 = 1
+    ;빈유
+    ELSEIF TALENT:ARG:111
+        CFLAG:ARG:3006 = 2
+    ;거유
+    ELSEIF TALENT:ARG:112
+        CFLAG:ARG:3006 = 4
+    ;폭유
+    ELSEIF TALENT:ARG:113
+        CFLAG:ARG:3006 = 5
+    ;보통
+    ELSE
+        CFLAG:ARG:3006 = 3
+    ENDIF
+
+    ;가슴이 한 단계 커진다.
+    ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
+    IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
+        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
+        IF TALENT:ARG:110 == 1
+            PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%] 정도는 되었다.
+            TALENT:ARG:110 = 0
+            TALENT:ARG:111 = 1
+        ELSEIF TALENT:ARG:111 == 1
+            PRINTFORMW [%TALENTNAME:111%]에서 보통 사이즈가 되었다.
+            TALENT:ARG:111 = 0
+        ELSE
+            PRINTFORMW [%TALENTNAME:112%]가 되었다.
+            TALENT:ARG:112 = 1
+        ENDIF
+        PRINTL 
+    ENDIF
+
+    ;모유 나오게 된다
+    IF TALENT:ARG:134 == 0
+        PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 모유가 나오게 되었다.
+        PRINTL 
+        TALENT:ARG:134 = 1
+        CALL CALC_GAUGE3_SLAVE, ARG, 1
+    ELSE
+        ;이미 모유체질인 경우에는 그 플래그를 가져둔다
+        MARK:ARG:89 = 1
+    ENDIF
+
+;친부가 주인이라면 연모, 낙인, 예속, 괴조인격
+;친부가 조수라면 조수와 노예 사이의 충분한 조교경험
+;친부가 노예라면 노예와 조수 사이의 충분한 조교경험
+ELSEIF ((TALENT:ARG:150 || TALENT:ARG:161 || TALENT:ARG:162 || TALENT:ARG:169) && CFLAG:ARG:70 == 1) || (CFLAG:ARG:70 == 2 && CFLAG:ARG:(LOCAL:1) >= 1000) || (CFLAG:ARG:70 == 3 && CFLAG:ARG:(LOCAL:1) >= 1000)
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 곤혹스러워하면서도 %CALLNAME:LOCAL%의 아이를 밴 기쁨에 표정이 환했다.
     PRINTL 
 
@@ -226,8 +328,8 @@ IF ((TALENT:ARG:150 || TALENT:ARG:161 || TALENT:ARG:162 || TALENT:ARG:169) && CF
         CFLAG:ARG:3006 = 3
     ENDIF
 
-    ;乳がワンランクパワーアップする
-    ;絶→貧　貧→普　普→巨　巨・爆→そのまま
+    ;가슴이 한 단계 커진다.
+    ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
     IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
         PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
         IF TALENT:ARG:110 == 1
@@ -270,7 +372,8 @@ IF ((TALENT:ARG:150 || TALENT:ARG:161 || TALENT:ARG:162 || TALENT:ARG:169) && CF
 
     SIF RESULT != 0
         PRINTFORMW 을(를) \@(RESULT == 2) ? 얻었다. # 잃었다.\@
-;強気な女たちのレアバッド임신(これは後からグッド条件を満たしても手遅れ)
+;특정 소질 소유 시 낮은 확률로 레어배드 임신(이것은 나중에 좋은 조건을 채워도 늦었습니다)
+;[반항적] [꿋꿋함] [건방짐] [프라이드가 높음] [새드]
 ELSEIF (TALENT:ARG:11 || TALENT:ARG:12 || TALENT:ARG:15 || TALENT:ARG:16 || TALENT:ARG:81) && RAND:100 > 91
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 본인이 애를 밴 사실에 강한 분노를 느끼고 있는 모양이다.
     PRINTFORMW %CALLNAME:ARG%의 마음속에 무슨 스위치가 켜져버린 모양이다.
@@ -393,17 +496,76 @@ CALL SELF_KOJO, ARG, 173
 ;출산
 ;-------------------------------------------------
 @CHILD_BIRTH, ARG
-LOCAL = CFLAG:ARG:78 + 100
+LOCAL = FINDCHARA(CFLAG:3109, CFLAG:ARG:3004, 0)
 LOCAL:1 = CFLAG:ARG:78 + 1000
+CFLAG:ARG:3000 = -1 ;변수 초기화
 
-PRINTFORML %조사처리(CALLNAME:ARG,"는")% %ITEMNAME:LOCAL%의 아이를 무사히 출산했습니다.
+PRINTFORML %조사처리(CALLNAME:ARG,"는")% %조사처리(CALLNAME:LOCAL,"의")% 아이를 무사히 출산했습니다.
 PRINTL 
 PRINTL 출산경험＋1
 EXP:ARG:52 += 1
 PRINTW  
+;산모가 주인
+IF ARG == MASTER
+    PRINTFORML 아이를 직접 기르시겠습니까?
+    PRINTL [0] 당연하지!
+    PRINTL [1] 유모에게 맡긴다.
+    $INPUT_LOOP_A
+    INPUT
+    ;직접 기른다.
+    IF RESULT == 0
+        PRINTFORML 아이를 직접 기릅니다.
+        CALL CHILD_CHECK_AND_NAME, ARG, 0
+        PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 갓 태어난 아기를 받아들더니 다정하게 안으며 모유를 먹이기 시작했다.
+        ;임신에서 육아로 이행
+        TALENT:ARG:140 = 0
+        TALENT:ARG:141 = 1
+        CFLAG:ARG:3000 = NO:ARG
+        CFLAG:ARG:3003 = CFLAG:ARG:3109
+        IF TALENT:ARG:142 == 0
+            PRINTFORMW %조사처리(CALLNAME:ARG,"는")% [%TALENTNAME:142%]에 눈을 떴다!
+            TALENT:ARG:142 = 1
+            IF TALENT:ARG:41 == 0
+                PRINTFORML %조사처리(CALLNAME:ARG,"는")% 출산의 고통을 경험함으로써 정신적으로 강해졌다.
+                PRINTFORM %조사처리(CALLNAME:ARG,"는")% 
+                IF TALENT:ARG:40 == 1
+                    PRINTFORM [%TALENTNAME:40%]을 극복해 
+                    TALENT:ARG:40 = 0
+                ENDIF
+                PRINTFORMW [%TALENTNAME:41%]을 얻었다.
+                TALENT:ARG:41 = 1
+            ENDIF
+        ELSE
+            PRINTW  
+        ENDIF
+    ;유모에게 맡긴다.
+    ELSEIF RESULT == 1
+        LOCAL:2 = 0
+        FOR LOCAL:3, 1, CHARANUM
+            SIF TALENT:(LOCAL:3):140 == 0 && TALENT:(LOCAL:3):141 == 0 && TALENT:(LOCAL:3):142
+                LOCAL:2 += 1
+        NEXT
+        IF LOCAL:2 > 0
+            CALL SELECT_NURSE, ARG
+        ELSE
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 부득이하게 아기를 입양 보냈습니다…….
+            ;この時点で産みの親のEQUIP:1(紺の飴玉)のフラグをクリアする.
+            EQUIP:ARG:1 = 0
+        ENDIF
+        TALENT:ARG:140 = 0
+        CFLAG:ARG:4 = 0
+        ;임신 시에 준 체력의 최대치가 회복
+        MAXBASE:ARG:0 += 500
+
+        CALL RESET_FLAG_N_FORCE, ARG
+    
+    ELSE
+        PRINTL 올바른 값을 입력해 주세요.
+        GOTO INPUT_LOOP_A
+    ENDIF
 
 ;임신(굿)의 경우
-IF CFLAG:ARG:76 == 1
+ELSEIF CFLAG:ARG:76 == 1
     CALL CHILD_CHECK_AND_NAME, ARG, 0
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 갓 태어난 아기를 받아들더니 다정하게 안으며 모유를 먹이기 시작했다.
     ;임신에서 육아로 이행
@@ -427,12 +589,13 @@ IF CFLAG:ARG:76 == 1
     ELSE
         PRINTW  
     ENDIF
+    
 ;レアバッドかバッドで임신後にグッドの条件を満たせず、[無関心]、[感情乏しい]がついている場合
 ELSEIF CFLAG:ARG:76 == 3 || (((CFLAG:ARG:78 == NO:MASTER && TALENT:ARG:150 == 0) || (CFLAG:ARG:78 != NO:MASTER && CFLAG:ARG:(LOCAL:1) < 1000)) && TALENT:ARG:21 && TALENT:ARG:22)
     IF CFLAG:ARG:76 == 3
         PRINTFORM 그러나 %조사처리(CALLNAME:ARG,"는")% 태어난 아기의 양육을 거부했다…….
     ELSE
-            PRINTFORM 그러나 %조사처리(CALLNAME:ARG,"는")% 태어난 아기에게 일절 관심을 보이지 않았다……
+        PRINTFORM 그러나 %조사처리(CALLNAME:ARG,"는")% 태어난 아기에게 일절 관심을 보이지 않았다……
     ENDIF
     LOCAL:2 = 0
     FOR LOCAL:3, 1, CHARANUM
@@ -475,8 +638,8 @@ PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 아기의 양육을 다른 노�
 PRINTW  
 PRINTL 누구에게 맡기겠습니까?
 FOR LOCAL, 1, CHARANUM
-    ;現在[임신][育児中]状態でなく、[母性]持ちのキャラを羅列
-    SIF TALENT:LOCAL:140 == 0 && TALENT:LOCAL:141 == 0 && TALENT:LOCAL:142
+    ;현재 [임신][육아 중] 상태 아니고 [모성]을 가진 여성 (젖은 먹여야 하니까)
+    SIF TALENT:LOCAL:140 == 0 && TALENT:LOCAL:141 == 0 && TALENT:LOCAL:142 && TALENT:LOCAL:120 == 0
         CALL ARRANGE_CHARALIST, LOCAL
 NEXT
 PRINTFORML  [0] 입양 보낸다.
@@ -543,6 +706,13 @@ ELSEIF RESULT < 0 || RESULT >= CHARANUM || CFLAG:RESULT:4 != 2
     GOTO INPUT_LOOP
 ENDIF
 
+LOCAL = ORDER_FALLEN(RESULT) ;노예의 함락 루트 결정
+
+;주인방에 방문 시 다른 반응 호출
+IF RESULT == 0 && CFLAG:MASTER:4 == 2
+    CALL MASTER_CAREROOM
+    RETURN 1
+ENDIF
 PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:RESULT,"가")% 있는 곳으로 갔다…….
 PRINTW  
 ;아직 출산 전인 경우
@@ -579,8 +749,8 @@ ELSEIF TALENT:RESULT:143
         PRINTFORMW %조사처리(CALLNAME:RESULT,"는")% %CALLNAME:MASTER%의 얼굴을 보자, 부끄러운 듯이 웃어보였다.
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 이제 곧 부화를 맞이할 알을 %조사처리(CALLNAME:RESULT,"과")% 함께 지켜보았다.
     ENDIF
-;[연모]이며 부친이 MASTER
-ELSEIF TALENT:RESULT:150 && CFLAG:RESULT:78 == NO:MASTER
+;[연모계]이며 부친이 MASTER
+ELSEIF LOCAL == 1 && CFLAG:RESULT:78 == NO:MASTER
     IF TIME == 0
         PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어온 것을 알아차리자 %조사처리(CALLNAME:RESULT,"는")% 함빡 웃으며 맞이했다.
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그 뒤로 당분간 부모자식만의 오붓한 시간을 즐겼다.
@@ -589,8 +759,18 @@ ELSEIF TALENT:RESULT:150 && CFLAG:RESULT:78 == NO:MASTER
         PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:RESULT,"과")% 둘이서 자고 있는 아이의 귀여운 얼굴을 들여다 봤다.
         PRINTW 그리고 누가 먼저랄 것 없이 얼굴을 마주 보고 절로 웃음을 띠었다.
     ENDIF
-;[음란]로 부친이 MASTER
-ELSEIF TALENT:RESULT:170 && CFLAG:RESULT:78 == NO:MASTER
+;[복종계]이며 부친이 MASTER
+ELSEIF LOCAL == 2 && CFLAG:RESULT:78 == NO:MASTER
+    IF TIME == 0
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어온 것을 알아차리자 %조사처리(CALLNAME:RESULT,"는")% 바로 %조사처리(CALLNAME:MASTER,"을")% 향해 무릎을 꿇고 인사를 했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:RESULT,"의")% 시중을 받으며 부모자식만의 오붓한 시간을 즐겼다.
+    ELSE
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어오니 아이가 막 잠이 든 참인지 %조사처리(CALLNAME:RESULT,"는")% 소리를 내지 않고 조용히 인사를 했다.
+        PRINTFORML %조사처리(CALLNAME:RESULT,"는")% %조사처리(CALLNAME:MASTER,"에게")% 아이의 성장 상황을 보고했다.
+        PRINTFORMW 아이가 잘 크고 있다는 말을 들은 %조사처리(CALLNAME:MASTER,"는")% %조사처리(CALLNAME:RESULT,"를")% 격려해주었다.
+    ENDIF
+;[음란계]로 부친이 MASTER
+ELSEIF LOCAL == 3 && CFLAG:RESULT:78 == NO:MASTER
     IF TIME == 0
         PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어온 것을 알아차리자 %조사처리(CALLNAME:RESULT,"는")% 음탕한 미소를 띠면서 맞이했다.
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그 뒤로 당분간 %CALLNAME:RESULT%에게 유혹을 받으면서도 부모자식만의 오붓한 시간을 즐겼다.
@@ -683,7 +863,15 @@ IF ASSI >= 0
     CFLAG:ASSI:75 = 0
     TEQUIP:ASSI:31 = 0
 ENDIF
-
+IF TALENT:MASTER:120 == 0
+    CFLAG:MASTER:70 = 0
+    CFLAG:MASTER:71 = 0
+    CFLAG:MASTER:72 = 0
+    CFLAG:MASTER:73 = 0
+    CFLAG:MASTER:74 = 0
+    CFLAG:MASTER:75 = 0
+    TEQUIP:MASTER:31 = 0
+ENDIF
 ;-------------------------------------------------
 ;親離れ・임신消滅等時のフラグリセット
 ;-------------------------------------------------
@@ -924,8 +1112,8 @@ IF FLAG:12 & 8
             CFLAG:3006 = 3
         ENDIF
 
-        ;乳がワンランクパワーアップする
-        ;絶→貧　貧→普　普→巨　巨・爆→そのまま
+        ;가슴이 한 단계 커진다.
+        ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
         IF TALENT:112 == 0 && TALENT:113 == 0
             PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 알을 돌보는 동안 가슴이 커졌다.
             IF TALENT:110 == 1
@@ -971,6 +1159,7 @@ PRINTL
 ;-------------------------------------------------
 @EGG_BIRTH, ARG
 LOCAL = CFLAG:ARG:78 + 100
+CFLAG:ARG:3000 = -1 ;변수초기화
 DRAWLINE
 ;부화 이벤트 대사
 CALL SELF_KOJO, ARG, 176
@@ -1013,3 +1202,115 @@ SIF ASSI == ARG
 SIF FLAG:17 == 0
     FLAG:17 = 1
 RETURN 0
+
+@MASTER_CAREROOM
+;MASTER의 육아방에 누가 찾아 오는지 체크
+
+;50% 확률로 친부가 방문
+IF RAND:2 == 0
+    LOCAL = FINDCHARA(CFLAG:3109, CFLAG:MASTER:3004, 0)
+ELSE
+    LOCAL = RAND:CHARANUM
+ENDIF
+LOCAL:1 = ORDER_FALLEN(LOCAL)
+;아직 출산 전인 경우
+IF TALENT:MASTER:140
+    IF TIME == 0 ;낮
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에서 운동을 하고 있는데,
+    ELSE
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에서 책을 읽고 있는데,
+    ENDIF
+;아직 부화 전인 경우
+ELSEIF TALENT:MASTER:143
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에서 알을 품고 있는데,
+ELSE
+    IF TIME == 0 ;낮
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 아이를 돌보고 있는데,
+    ELSE
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 아이를 재우고 있는데,
+    ENDIF
+ENDIF
+PRINTFORML %조사처리(CALLNAME:LOCAL,"가")% 당신의 방으로 찾아왔다…….
+PRINTW
+
+;아직 출산 전인 경우
+IF TALENT:MASTER:140
+    ;부친이 친애거나 상애 보유
+    IF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && (TALENT:LOCAL:152 || TALENT:LOCAL:153)
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% %조사처리(CALLNAME:MASTER,"의")% 배를 보며 행복한 표정을 짓고 있다.
+        PRINTFORMW 둘 사이에 생긴 사랑의 결실이 빨리 태어나길 기대하는 것 같다.
+    ;부친이 함락됨 (연모, 복종, 음란)
+    ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && (TALENT:LOCAL:150 || TALENT:LOCAL:160 || TALENT:LOCAL:170)
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% %조사처리(CALLNAME:MASTER,"의")% 배를 보며 긴장한 표정을 짓고 있다.
+        PRINTFORMW 아빠가 된다는 사실에 부담을 느끼는 것 같다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"을")% 돕기 위해 요즘 육아 서적을 많이 읽고 있다고 한다.
+    ;부친이 함락 안 됨.
+    ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% %조사처리(CALLNAME:MASTER,"의")% 배를 보며 복잡한 표정을 짓고 있다.
+        PRINTFORMW 원하지도 않은 아이의 아빠가 된다는 사실에 복잡한 감정을 느끼는 것 같다.
+    ;부친이 아님. 연모
+    ELSEIF TALENT:LOCAL:150
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% %조사처리(CALLNAME:MASTER,"의")% 배를 보며 미묘한 표정을 짓고 있다.
+        IF PENIS(LOCAL)
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 자신의 아이를 가져주길 원했던 것 같다.
+        ELSE
+            PRINTFORMW 이때 만큼은 자신이 여자인 것이 아쉬운 것 같다.
+        ENDIF
+    ;부친이 아님. 그 외
+    ELSE
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% %조사처리(CALLNAME:MASTER,"의")% 배를 보며 복잡한 표정을 짓고 있다.
+        PRINTFORMW 노예를 조교하는 조교사가 한 아이의 엄마가 된다는 것이 납득이 안가는 것 같다.
+    ENDIF
+;아직 부화 전인 경우
+ELSEIF TALENT:MASTER:143
+    PRINTFORMW MASTER 산란 구현 안 됨.
+    
+;[연모계]인 부친
+ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 1
+    IF TIME == 0 ;낮
+        PRINTFORMW 
+        PRINTFORMW 
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW
+    ENDIF
+;[복종계]인 부친
+ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 2
+    IF TIME == 0 ;낮
+        PRINTFORMW 
+        PRINTFORMW 
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW
+    ENDIF
+;[음란계]인 부친
+ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 3
+    IF TIME == 0 ;낮
+        PRINTFORMW 
+        PRINTFORMW 
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW
+    ENDIF
+;[연모]인 부친 아님
+ELSEIF TALENT:LOCAL:150
+    IF TIME == 0 ;낮
+        PRINTFORMW 
+        PRINTFORMW
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW
+    ENDIF
+;[연모]없음
+ELSE
+    IF TIME == 0 ;낮
+        PRINTFORMW 
+        PRINTFORMW
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW
+    ENDIF
+ENDIF
+;출산 후, 육아실에 온 것을 기록(자식의 호감도에 영향 있다)
+SIF TALENT:MASTER:140 == 0 && TALENT:MASTER:143 == 0
+    CFLAG:MASTER:3009 += RAND(1, 5)
