@@ -74,22 +74,20 @@ IF ASSI > 0
 ENDIF
 
 ;주인의 임신 체크
-IF MASTER == 0
-    IF TALENT:MASTER:120 == 0 && TALENT:MASTER:135 == 0 && TALENT:MASTER:136 == 0 && TALENT:MASTER:140 == 0 && TALENT:MASTER:145 == 0 && TEQUIP:MASTER:17 == 0
-        ;普段から初期化してるが念のため
-        CFLAG:MASTER:70 = 0
-        ;조수가 있으면 조수의 정액으로 임신 체크 판정
-        IF ASSI > 0
-            ;질내사정 여부 체크
-            SIF CFLAG:MASTER:72 > 0
-                CALL NAKADASHI_CHECK, MASTER, 2
-        ENDIF
-        ;노예의 정액으로 임신 체크 판정 (조수의 아이를 임신 하지 않았을 때 체크)
-        IF TARGET > 0 && CFLAG:MASTER:70 == 0
-            ;질내사정 여부 체크
-            SIF CFLAG:MASTER:73 > 0
-                CALL NAKADASHI_CHECK, MASTER, 3
-        ENDIF
+IF TALENT:MASTER:120 == 0 && TALENT:MASTER:135 == 0 && TALENT:MASTER:136 == 0 && TALENT:MASTER:140 == 0 && TALENT:MASTER:145 == 0 && TEQUIP:MASTER:17 == 0
+    ;普段から初期化してるが念のため
+    CFLAG:MASTER:70 = 0
+    ;조수가 있으면 조수의 정액으로 임신 체크 판정
+    IF ASSI > 0
+        ;질내사정 여부 체크
+        SIF CFLAG:MASTER:72 > 0
+            CALL NAKADASHI_CHECK, MASTER, 2
+    ENDIF
+    ;노예의 정액으로 임신 체크 판정 (조수의 아이를 임신 하지 않았을 때 체크)
+    IF TARGET > 0 && CFLAG:MASTER:70 == 0
+        ;질내사정 여부 체크
+        SIF CFLAG:MASTER:73 > 0
+            CALL NAKADASHI_CHECK, MASTER, 3
     ENDIF
 ENDIF
 
