@@ -254,6 +254,12 @@ CFLAG:3105 = CFLAG:(TFLAG:652):3109
 CFLAG:3106 = CFLAG:ARG:3109
 CFLAG:3107 = CFLAG:(TFLAG:652):3004
 CFLAG:3108 = CFLAG:(TFLAG:652):3108 + 1
+;아버지의 이름
+CSTR:37 = CSTR:ARG:40
+;친모의 이름
+CSTR:38 = CSTR:ARG:41
+;유모의 이름
+CSTR:39 = %CALLNAME:ARG%
 
 PRINTFORML %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %조사처리(CSTR:ARG:(21+ARG:1),"가")% 급격히 성장해 조교할 수 있을 정도가 되었습니다.
 PRINTFORMW %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %조사처리(CSTR:ARG:(21+ARG:1),"가")% 조교 가능해졌습니다.

@@ -243,6 +243,10 @@ ENDIF
 CFLAG:ARG:78 = NO:LOCAL
 CFLAG:ARG:3004 = CFLAG:LOCAL:3109
 LOCAL:1 = CFLAG:ARG:78 + 1000
+;임신 시킨 사람 이름
+CSTR:40 = %CALLNAME:LOCAL%
+;임산부의 이름
+CSTR:41 = %CALLNAME:ARG%
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
@@ -496,11 +500,11 @@ CALL SELF_KOJO, ARG, 173
 ;출산
 ;-------------------------------------------------
 @CHILD_BIRTH, ARG
-LOCAL = FINDCHARA(CFLAG:3109, CFLAG:ARG:3004, 0)
+
 LOCAL:1 = CFLAG:ARG:78 + 1000
 CFLAG:ARG:3000 = -1 ;변수 초기화
 
-PRINTFORML %조사처리(CALLNAME:ARG,"는")% %조사처리(CALLNAME:LOCAL,"의")% 아이를 무사히 출산했습니다.
+PRINTFORML %조사처리(CALLNAME:ARG,"는")% %조사처리(CSTR:ARG:40,"의")% 아이를 무사히 출산했습니다.
 PRINTL 
 PRINTL 출산경험＋1
 EXP:ARG:52 += 1
@@ -663,6 +667,8 @@ ELSE
     CFLAG:LOCAL:78 = CFLAG:ARG:78
     CFLAG:LOCAL:3000 = NO:ARG
     CFLAG:LOCAL:3003 = CFLAG:ARG:3109
+    CSTR:LOCAL:40 = CSTR:ARG:40 ;임신 시킨 사람 이름
+    CSTR:LOCAL:41 = CSTR:ARG:41 ;친모의 이름
     ;生みの親が持つ精子提供者の固有IDコピー
     CFLAG:LOCAL:3004 = CFLAG:ARG:3004
     ;EQUIP:1(紺の飴玉)のフラグを育ての親に譲渡する.
@@ -1080,6 +1086,10 @@ IF FLAG:12 & 8
         LOCAL = MASTER
         CFLAG:78 = NO:LOCAL
         CFLAG:3004 = CFLAG:LOCAL:3109
+        ;임신 시킨 사람 이름
+        CSTR:40 = %CALLNAME:LOCAL%
+        ;임산부 이름
+        CSTR:41 = %CALLNAME:TARGET%
         ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
         CFLAG:8 = 0
 
@@ -1207,10 +1217,13 @@ RETURN 0
 ;MASTER의 육아방에 누가 찾아 오는지 체크
 
 ;50% 확률로 친부가 방문
-IF RAND:2 == 0
+IF RAND:2 == 0  
+    LOCAL = -1
     LOCAL = FINDCHARA(CFLAG:3109, CFLAG:MASTER:3004, 0)
+    SIF LOCAL < 0 ;아버지 매각시 랜덤
+        LOCAL = RAND:(CHARANUM - 1) + 1 ;주인을 제외한 방문자
 ELSE
-    LOCAL = RAND:CHARANUM
+    LOCAL = RAND:(CHARANUM - 1) + 1 ;주인을 제외한 방문자
 ENDIF
 LOCAL:1 = ORDER_FALLEN(LOCAL)
 ;아직 출산 전인 경우
@@ -1268,7 +1281,7 @@ ELSEIF TALENT:MASTER:143
 ;[연모계]인 부친
 ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 1
     IF TIME == 0 ;낮
-        PRINTFORMW 
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% 아이에게 아빠가 얼마나 %조사처리(CALLNAME:MASTER,"를")% 사랑하는지 자랑했다.
         PRINTFORMW 
     ELSE
         PRINTFORMW 
