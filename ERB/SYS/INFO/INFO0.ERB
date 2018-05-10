@@ -842,8 +842,8 @@ ELSEIF TEQUIP:59 == 13
     PRINT [위험한 레오타드]
 ELSEIF TEQUIP:59 == 14
     PRINT [바니 슈트]
-ELSEIF TEQUIP:59 == 15
-    PRINT [노예]
+ELSEIF TEQUIP:59 == 15 ;정확히는 본디지 슈트 같다.
+    PRINT [본디지]
 ELSEIF TEQUIP:59 == 16
     PRINT [원아복]
 ELSEIF TEQUIP:59 == 17
@@ -863,7 +863,7 @@ IF ASSI >= 0
     IF TEQUIP:ASSI:59 == 2
         PRINT [조수가 학교수영복]
     ELSEIF TEQUIP:ASSI:59 == 3
-        PRINT [조수가 여교사 코스]
+        PRINT [조수가 여교사]
     ELSEIF TEQUIP:ASSI:59 == 4
         PRINT [조수가 일본식 옷]
     ELSEIF TEQUIP:ASSI:59 == 5
@@ -887,7 +887,7 @@ IF ASSI >= 0
     ELSEIF TEQUIP:ASSI:59 == 14
         PRINT [조수가 바니 슈트]
     ELSEIF TEQUIP:ASSI:59 == 15
-        PRINT [조수가 노예]
+        PRINT [조수가 본디지]
     ELSEIF TEQUIP:ASSI:59 == 16
         PRINT [조수가 원아복]
     ELSEIF TEQUIP:ASSI:59 == 17
