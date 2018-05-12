@@ -889,7 +889,7 @@ CFLAG:ARG:3004 = -1
 MARK:ARG:89 = 0
 ;育児室に通った回数をリセット
 CFLAG:ARG:3009 = 0
-FOR LOCAL, 1, CHARANUM
+FOR LOCAL, 0, CHARANUM
     ;他にも対象キャラがいれば、フラグを再設定
     SIF CFLAG:LOCAL:4 == 2
         FLAG:17 = 1
@@ -1282,9 +1282,9 @@ ELSEIF TALENT:MASTER:143
 ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 1
     IF TIME == 0 ;낮
         PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% 아이에게 아빠가 얼마나 %조사처리(CALLNAME:MASTER,"를")% 사랑하는지 자랑했다.
-        PRINTFORMW 
+        PRINTFORMW 아이는 엄마, 아빠 같은 배우자를 만나고 싶다고 한다.
     ELSE
-        PRINTFORMW 
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% 
         PRINTFORMW
     ENDIF
 ;[복종계]인 부친
