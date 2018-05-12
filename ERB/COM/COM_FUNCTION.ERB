@@ -714,6 +714,9 @@ ENDSELECT
 ;-------------------------------------------------
 @EXIST_PENIS(ARG)
 #FUNCTION
+IF ARG == ASSI && ASSI < 0
+    RETURNF 0
+ENDIF
 RETURNF TALENT:ARG:120 || TALENT:ARG:121
 
 ;-------------------------------------------------
