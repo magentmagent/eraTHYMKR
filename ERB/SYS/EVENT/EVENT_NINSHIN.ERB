@@ -244,9 +244,9 @@ CFLAG:ARG:78 = NO:LOCAL
 CFLAG:ARG:3004 = CFLAG:LOCAL:3109
 LOCAL:1 = CFLAG:ARG:78 + 1000
 ;임신 시킨 사람 이름
-CSTR:40 = %CALLNAME:LOCAL%
+CSTR:ARG:40 = %CALLNAME:LOCAL%
 ;임산부의 이름
-CSTR:41 = %CALLNAME:ARG%
+CSTR:ARG:41 = %CALLNAME:ARG%
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
@@ -667,8 +667,8 @@ ELSE
     CFLAG:LOCAL:78 = CFLAG:ARG:78
     CFLAG:LOCAL:3000 = NO:ARG
     CFLAG:LOCAL:3003 = CFLAG:ARG:3109
-    CSTR:LOCAL:40 = CSTR:ARG:40 ;임신 시킨 사람 이름
-    CSTR:LOCAL:41 = CSTR:ARG:41 ;친모의 이름
+    CSTR:LOCAL:40 = %CSTR:ARG:40% ;임신 시킨 사람 이름
+    CSTR:LOCAL:41 = %CSTR:ARG:41% ;친모의 이름
     ;生みの親が持つ精子提供者の固有IDコピー
     CFLAG:LOCAL:3004 = CFLAG:ARG:3004
     ;EQUIP:1(紺の飴玉)のフラグを育ての親に譲渡する.
@@ -1087,9 +1087,9 @@ IF FLAG:12 & 8
         CFLAG:78 = NO:LOCAL
         CFLAG:3004 = CFLAG:LOCAL:3109
         ;임신 시킨 사람 이름
-        CSTR:40 = %CALLNAME:LOCAL%
+        CSTR:ARG:40 = %CALLNAME:LOCAL%
         ;임산부 이름
-        CSTR:41 = %CALLNAME:TARGET%
+        CSTR:ARG:41 = %CALLNAME:TARGET%
         ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
         CFLAG:8 = 0
 
