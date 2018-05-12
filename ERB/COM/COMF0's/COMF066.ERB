@@ -17,9 +17,14 @@ SIF ITEM:64 == 0 && NOITEM == 0
 ;주인이 아니면 안 됨
 SIF ASSIPLAY
     RETURN 0
-;3명 중 최소 하나는 여자고 약을 먹지 않았어야 함
-SIF (ASSITALENT(120) || TEQUIP:ASSI:16) && (TALENT:MASTER:120 || TEQUIP:MASTER:16) && (TALENT:120 || TEQUIP:16)
-    RETURN 0
+;3명 중 최소 하나는 여자고 배란유도제, 긴급피임약을 먹지 않았어야 함
+IF ASSI > 0
+    SIF (ASSITALENT(120) || TEQUIP:ASSI:16 || TEQUIP:ASSI:17) && (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
+        RETURN 0
+ELSE
+    SIF (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
+        RETURN 0
+ENDIF
 ;촉수 조교 중에는 불가
 SIF TEQUIP:90
     RETURN 0
@@ -392,7 +397,7 @@ ELSEIF TFLAG:99 == 1
         PRINTW 다리 사이엔 물이 흐르기 시작했다.
     ;[연모계]조수
     ELSEIF LOCAL == 1
-        PRINTW 부끄러운 듯 몸을 꼬고 있다.
+        PRINTW %조사처리(CALLNAME:TARGET,"이")% 보고 있는 것이 부끄러운 듯 몸을 꼬고 있다.
     ;[복종계]조수
     ELSEIF LOCAL == 2
         PRINTW 다리를 벌린 뒤, 보지를 손가락으로 열고 당신의 것을 조르고 있다.
@@ -400,7 +405,7 @@ ELSEIF TFLAG:99 == 1
         PRINTFORMW %조사처리(CALLNAME:TARGET,"에게")% 좋은 모범이 될 것 이다.
     ;[음란계]조수
     ELSEIF LOCAL == 3
-        PRINTW 금방이라도 질내사정해 주었으면 하는 것처럼 보지를 손가락으로 열고 있다.
+        PRINTW 금방이라도 질내사정해 주었으면 하는 것처럼 황홀한 표정으로 보지를 손가락으로 열고 있다.
     ELSE
         PRINTW 명령을 충실히 따르고 있지만 긴장한 기색을 숨기지 못하고 있다.
     ENDIF
