@@ -377,11 +377,8 @@ REPEAT CHARANUM
         ;既に生えるようになったら効果ない
         SIF CFLAG:COUNT:36 == 2
             CONTINUE
-    ;紺の飴玉の場合
+    ;남색 사탕의 경우
     ELSEIF LOCAL == 41
-        ;主人には使えない
-        SIF COUNT == MASTER
-            CONTINUE
         ;[妊娠]か[抱卵中]じゃないと使えない
         SIF TALENT:COUNT:140 == 0 && TALENT:COUNT:143 == 0
             CONTINUE
