@@ -19,7 +19,7 @@ SIF ASSIPLAY
     RETURN 0
 ;3명 중 최소 하나는 여자고 배란유도제, 긴급피임약을 먹지 않았어야 함
 IF ASSI > 0
-    SIF (ASSITALENT(120) || TEQUIP:ASSI:16 || TEQUIP:ASSI:17) && (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
+    SIF (TALENT:ASSI:120 || TEQUIP:ASSI:16 || TEQUIP:ASSI:17) && (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
         RETURN 0
 ELSE
     SIF (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
@@ -269,7 +269,7 @@ IF TFLAG:99 == 0
         PRINTFORMW 다음에 무엇을 할지 이해한 듯, 가랑이를 열고 %CALLNAME:PLAYER%에게 범해지는 것을 기다리고 있다….
     ELSEIF TALENT:170
         ;【음란】
-        PRINTW 질 내 사정을 기다릴 수 없다는 듯이 몸을 배배 꼬고 있다.
+        PRINTW 질내사정을 기다릴 수 없다는 듯이 몸을 배배 꼬고 있다.
     ELSEIF ABL:10 >= 5 && MARK:2 == 3 && MARK:9 == 0
         ;종속 Lv5 또한 굴복 각인 Lv3 또한 반발 각인 Lv0
     	PRINTW 조금 안심한 표정을 지었다….
@@ -281,9 +281,43 @@ ELSEIF TFLAG:99 == 1
     PRINTL
     PRINTFORML %조사선택(CALLNAME:MASTER, "는")% %CALLNAME:ASSI%에게 긴급 피임약을 먹으라고 명령했다.
     PRINTFORM 그것을 들은 %조사선택(CALLNAME:ASSI, "는")% 
-    ;[연모],[친애],[상애] 중 최악이어도 1개를 가진다
-    IF TALENT:ASSI:150 || TALENT:ASSI:152 || TALENT:ASSI:153
-        PRINTW 조금 서운한 표정을 짓고 있다.
+    ;[연모계] [음란]조수
+    IF LOCAL == 1 && TALENT:ASSI:170
+        IF EXIST_PENIS(TARGET) && EXIST_PENIS(MASTER)
+            PRINTFORMW 두 사람의 페니스를 걱정없이 탐할 수 있어 기뻐하고 있다.
+        ELSEIF EXIST_PENIS(TARGET)
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"의")% 페니스를 걱정없이 탐할 수 있어 기뻐하고 있다.
+        ELSE
+            PRINTFORMW %CALLNAME:MASTER%의 아기를 가지길 기대한 듯
+            PRINTW 조금 서운한 표정을 짓고 있다.
+        ENDIF    
+    ;[복종계] [음란]조수
+    ELSEIF LOCAL == 2 && TALENT:ASSI:170
+        IF BASE:MASTER:2 < 1000
+            PRINTFORMW 다가와서 작아진 %CALLNAME:PLAYER%의 페니스를 핧아 크게 했다.
+            PRINT 그 다음 
+            BASE:MASTER:2 = 1000
+        ENDIF
+        PRINTW 다리를 벌린 뒤, 보지를 손가락으로 열고 당신의 것을 조르고 있다.
+        PRINTW 교육의 성과만은 아닌 건지, 가랑이 사이엔 애액이 흐르기 시작했다.
+    ;[연모계]조수
+    ELSEIF LOCAL == 1
+        IF EXIST_PENIS(TARGET) && EXIST_PENIS(MASTER)
+            PRINTFORMW 「설마 두 사람과 하는 건가?」라는 표정으로 난감해하고 있다.
+        ELSEIF EXIST_PENIS(TARGET)
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"의")% 앞에서 %조사처리(CALLNAME:TARGET,"과")% 섹스를 하려니 부끄러운 듯 몸을 꼬고 있다.
+        ELSE
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"의")% 앞에서 섹스를 하려니 부끄러운 듯 몸을 꼬고 있다.
+        ENDIF
+    ;[복종계]조수
+    ELSEIF LOCAL == 2
+        PRINTW 다리를 벌린 뒤, 보지를 손가락으로 열고 당신의 것을 조르고 있다.
+        PRINTL 시키지 않아도 척척 말하는 게 교육을 시킨 보람이 있다.
+        PRINTFORMW %조사처리(CALLNAME:TARGET,"에게")% 좋은 모범이 될 것 이다.
+    ;[음란계]조수
+    ELSEIF LOCAL == 3
+        PRINTW 금방이라도 질내사정해 주었으면 하는 것처럼 황홀한 표정으로 보지를 손가락으로 열고 있다.
+        PRINTW 
     ELSE
         PRINTW 명령을 충실히 따르고 있다….
     ENDIF
