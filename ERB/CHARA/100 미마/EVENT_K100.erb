@@ -8597,6 +8597,59 @@ ENDIF
     RETURN 0
 ENDIF
 
+;-------------------------------------------------
+;자식 독립
+;-------------------------------------------------
+IF TFLAG:200 == 172
+    DRAWLINE
+	;출산 경험 1회
+	IF EXP:52 == 1
+        PRINTFORMW 「………」
+        PRINTFORMW 미마는 성장한 아이를 상냥한 눈으로 응시하고 있었다.
+        PRINTFORMW 「%CSTR:90%. 나 말이야, 지금 뭔가가 이상하다고 생각하고 있어.」
+        PRINTFORMW 뭐가 이상한가? 라고 묻자 미마는 [후훗.]하고 웃으며 %조사처리(CALLNAME:MASTER,"를")% 바라보더니 고개를 가로저었다.
+        PRINTFORMW 「……아니, 아무것도 아니야. 이상하든 어쨌든 결과만 좋으면 되니까. 못 들은걸로 해줘.」		
+        PRINTFORMW 미마는 소악마마냥 웃으며 %조사처리(CALLNAME:MASTER,"를")%를 바라본뒤, 아이에게 시선을 돌렸다.
+        PRINTFORMW 「그럼…언제까지고 이렇게 있을 수는 없겠네. 잘 다녀오렴. 엄마는 언제든지 여기에 있을테니.」
+        PRINTFORMW 직후 아이는 다녀오겠습니다! 라는 말과 함께 밝게 웃으며 미마와 %조사처리(CALLNAME:MASTER,"의")% 곁에서 떠났다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"과")% 미마의 아이가 저택에서 독립해 나갔습니다.
+        PRINTFORMW ………
+        PRINTFORMW 「그럼… %CSTR:90%, 우리 동생 만들까?」
+        PRINTFORMW 이러다간 고간에 대 참사가 날지도 모르겠다…
+    ELSEIF EXP:52 == 2
+        PRINTFORMW 「………」
+        PRINTFORMW 미마는 성장한 아이를 상냥한 눈으로 응시하고 있었다.
+        PRINTFORMW 「%CSTR:90%. 나 말이야, 지금 뭔가가 이상하다고 생각하고 있어.」
+        PRINTFORMW 뭐가 이상한가? 라고 묻자 미마는 [후훗.]하고 웃으며 %조사처리(CALLNAME:MASTER,"를")% 바라보더니 고개를 가로저었다.
+        PRINTFORMW 「……아니, 아무것도 아니야. 이상하든 어쨌든 결과만 좋으면 되니까. 못 들은걸로 해줘.」		
+        PRINTFORMW 미마는 소악마마냥 웃으며 %조사처리(CALLNAME:MASTER,"를")%를 바라본뒤, 아이에게 시선을 돌렸다.
+        PRINTFORMW 「그럼…언제까지고 이렇게 있을 수는 없겠네. 잘 다녀오렴. 엄마는 언제든지 여기에 있을테니.」
+        PRINTFORMW 직후 아이는 다녀오겠습니다! 라는 말과 함께 밝게 웃으며 미마와 %조사처리(CALLNAME:MASTER,"의")% 곁에서 떠났다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"과")% 미마의 아이가 저택에서 독립해 나갔습니다.
+        PRINTFORMW ………
+        PRINTFORMW 「이렇게 됬으니까… %CSTR:90%, 우리 동생 또 만들까?」
+        PRINTFORMW 「저 아이도 독립했지만, %조사처리(CSTR:90,"가")% 원한다면 둘이고 셋이고 몇 명이고… %CSTR:90% 색골!♪」
+        PRINTFORMW 라며 혼자서 얼굴 빨갛게 물들이며 꺄꺄거리는 미마를 보며, %조사처리(CALLNAME:MASTER,"는")% 이렇게 생각했다.
+        PRINTFORMW 「(도대체 몇 명이나 낳을 셈인거지? 둘 셋 갖고는 택도 없을거 같고…)」
+        PRINTFORMW ……결국, %조사처리(CALLNAME:MASTER,"는")% 더 이상 생각하는걸 그만두었다…
+    ELSE
+        PRINTFORMW 「………」
+        PRINTFORMW 미마는 성장한 아이를 상냥한 눈으로 응시하고 있었다.
+        PRINTFORMW 「%CSTR:90%. 늘 그렇지만, 이렇게 보고 있자니 시간 참 빨리간다 싶어서.」
+        PRINTFORMW 「첫째 아이 동생도 한 둘이 아닌데 또 태어나고 독립하고…」
+        PRINTFORMW 「앞으로 몇 명이나 더 낳게 되는걸까? 후훗♪」
+        PRINTFORMW 미마는 소악마마냥 웃으며 %조사처리(CALLNAME:MASTER,"를")%를 바라본뒤, 아이에게 시선을 돌렸다.
+        PRINTFORMW 「그럼 잘 다녀오렴. 엄마는 언제든지 여기에 있을테니.」
+        PRINTFORMW 직후 아이는 다녀오겠습니다! 라는 말과 함께 밝게 웃으며 미마와 %조사처리(CALLNAME:MASTER,"의")% 곁에서 떠났다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"과")% 미마의 아이가 저택에서 독립해 나갔습니다.
+        PRINTFORMW ………
+        PRINTFORMW 「%CSTR:90%, 다음 자식 계획은 있어? 있으면 빨리 하자.」
+        PRINTFORMW 라는 말과 함께 미마가 착 달라붙어 말해왔으나 %조사처리(CALLNAME:MASTER,"는")% 슬그머니 미마의 시선을 피했다.
+        PRINTFORMW 아무래도 이 다음부터는 항상 생각하는걸 그만둬야 할지도 모르겠다고 여기는 %CALLNAME:MASTER%였다…
+    ENDIF
+    DRAWLINE
+ENDIF
+
 ;----------------------------------------------------------------
 ;육아방 입실
 ;----------------------------------------------------------------
