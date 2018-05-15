@@ -817,7 +817,7 @@ SIF TEQUIP:58
 IF TEQUIP:59 == 1
     PRINT [알몸 앞치마 중]
 ELSEIF TEQUIP:59 == 2
-    PRINT [학교수영복 플레이중]
+    PRINT [학교수영복]
 ELSEIF TEQUIP:59 == 3
     PRINT [여교사]
 ELSEIF TEQUIP:59 == 4
@@ -1108,7 +1108,7 @@ IF EQUIP:14 || TEQUIP:8 || TEQUIP:9 || TEQUIP:10 || TEQUIP:11 || TEQUIP:12 || TE
         ENDIF
     ENDIF
     SIF TEQUIP:31
-        PRINT 콘돔 장착
+        PRINT [콘돔]
     IF TEQUIP:32
         IF TEQUIP:90
             IF TEQUIP:32 == 2
@@ -1233,21 +1233,32 @@ IF EQUIP:14 || TEQUIP:8 || TEQUIP:9 || TEQUIP:10 || TEQUIP:11 || TEQUIP:12 || TE
     ELSEIF TEQUIP:96
         PRINT [촉수 해킹 실행중]
     ENDIF
-    RESETCOLOR
 
 ;여기부터↑에 TEQUIP에 등록한 것을 기입한다
     PRINTL 
 ENDIF
 
-IF ASSI >= 0 && TEQUIP:ASSI:17
+IF ASSI >= 0 && (TEQUIP:ASSI:17 || TEQUIP:ASSI:16)
     PRINTFORM 사용중(%CALLNAME:ASSI%) 
-
-    IF TEQUIP:ASSI:17 == 1
-        PRINT [조수 긴급피임약 준비완료]
-    ENDIF
+    SIF TEQUIP:ASSI:16 == 1
+        PRINT [배란유도제 효과 발휘 중]
+    SIF TEQUIP:ASSI:17 == 1
+        PRINT [긴급피임약 준비완료]
+    SIF TEQUIP:ASSI:31
+        PRINT [콘돔]
     PRINTL 
 ENDIF
-
+IF TEQUIP:MASTER:17 || TEQUIP:MASTER:16
+    PRINTFORM 사용중(%CALLNAME:MASTER%) 
+    SIF TEQUIP:MASTER:16 == 1
+        PRINT [배란유도제 효과 발휘 중]
+    SIF TEQUIP:MASTER:17 == 1
+        PRINT [긴급피임약 준비완료]
+    SIF TEQUIP:MASTER:31
+        PRINT [콘돔]
+    PRINTL 
+ENDIF
+RESETCOLOR
 ;=============================================================================
 ;각종 게이지 계산 · 표시 처리
 ;=============================================================================
