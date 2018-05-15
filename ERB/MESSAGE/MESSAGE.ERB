@@ -665,6 +665,7 @@ IF (TALENT:ARG:120 && CFLAG:ARG:4995 != 2) || CFLAG:ARG:4995 == 1
     ELSE
         CSTR:ARG:11 = 나
     ENDIF
+;원래 성별이 여자
 ELSE
     ;あたい
     IF NO:ARG == 5 || NO:ARG == 35 || NO:ARG == 62
@@ -731,36 +732,50 @@ IF (TALENT:ARG:120 && CFLAG:ARG:4995 != 2) || CFLAG:ARG:4995 == 1
     ;お主
     SIF CFLAG:ARG:5201 >= 5 && CFLAG:ARG:43 == 11
         CSTR:ARG:12 = 임자
-
+    
+    ;CSTR:12, 15.주인과 그 배우자의 호칭
+    ;CSTR:35, 36.아버지와 어머니의 호칭
     ;당신의 아들
-    IF CHECK_MASTERS_CHILD(ARG) == 1
-        SELECTCASE CFLAG:ARG:3005
+    IF CHECK_MASTERS_CHILD(ARG) == 2
+        ;아들 성격 플래그 존재 시 덮어 씌움
+        SIF CFLAG:ARG:3005 > 0
+            CFLAG:ARG:43 = CFLAG:ARG:3005
+        SELECTCASE CFLAG:ARG:43
             CASE 11
-                CSTR:ARG:12 = 어머니
-                CSTR:ARG:15 = 아버지
+                CSTR:ARG:12 = 아버님
+                CSTR:ARG:15 = 어머님
             CASE 12, 13
-                CSTR:ARG:12 = 어머니
-                CSTR:ARG:15 = 아버지
+                CSTR:ARG:12 = 아버지
+                CSTR:ARG:15 = 어머니
             CASE 14
-                CSTR:ARG:12 = 엄마
-                CSTR:ARG:15 = 아빠
+                CSTR:ARG:12 = 아빠
+                CSTR:ARG:15 = 엄마
         ENDSELECT
-        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 1 ;주인이 아빠일 경우 호칭을 바꿈
+        ;아버지와 어머니의 호칭 (즉, 친아들은 같음)
+        CSTR:ARG:35 = %CSTR:ARG:12%
+        CSTR:ARG:36 = %CSTR:ARG:15%
+        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2 ;주인이 엄마일 경우 호칭을 바꿈
             SWAP CSTR:ARG:12, CSTR:ARG:15
     ;친아들이 아님
     ELSEIF NO:ARG == 149 || NO:ARG == 148
-        SELECTCASE CFLAG:ARG:3005
+        SELECTCASE CFLAG:ARG:43
             CASE 11
-                CSTR:ARG:12 = 어머니
-                CSTR:ARG:15 = 아버지
+                CSTR:ARG:12 = 주인님
+                CSTR:ARG:15 = 사모님
+                CSTR:ARG:35 = 아버님
+                CSTR:ARG:36 = 어머님
             CASE 12, 13
-                CSTR:ARG:12 = 어머니
-                CSTR:ARG:15 = 아버지
+                CSTR:ARG:12 = 주인님
+                CSTR:ARG:15 = 사모님
+                CSTR:ARG:35 = 아버지
+                CSTR:ARG:36 = 어머니
             CASE 14
-                CSTR:ARG:12 = 엄마
-                CSTR:ARG:15 = 아빠
+                CSTR:ARG:12 = 주인님
+                CSTR:ARG:15 = 사모님
+                CSTR:ARG:35 = 아빠
+                CSTR:ARG:36 = 엄마
         ENDSELECT
-        SIF TALENT:MASTER:120 ;주인이 남자일 경우 호칭을 바꿈
+        SIF TALENT:MASTER:120 == 0 ;주인이 여자일 경우 호칭을 바꿈
             SWAP CSTR:ARG:12, CSTR:ARG:15
     ENDIF
 ;원래 성별이 여자
@@ -827,51 +842,71 @@ ELSE
         CSTR:ARG:12 = \@(CFLAG:ARG:5225) ? 사부 # 너\@
         CFLAG:ARG:43 = 4
     ENDIF
-
-    CSTR:ARG:15 = 
+    
+    ;CSTR:12, 15.주인과 그 배우자의 호칭
+    ;CSTR:35, 36.아버지와 어머니의 호칭
     ;당신의 딸
     IF CHECK_MASTERS_CHILD(ARG) == 1
-        IF CFLAG:ARG:3005 == 1
+        ;딸 성격 플래그 존재 시 덮어 씌움
+        SIF CFLAG:ARG:3005 > 0
+            CFLAG:ARG:43 = CFLAG:ARG:3005
+        IF CFLAG:ARG:43 == 1
             CSTR:ARG:12 = 아빠
             CSTR:ARG:15 = 엄마
-        ELSEIF CFLAG:ARG:3005 == 2
+        ELSEIF CFLAG:ARG:43 == 2
             CSTR:ARG:12 = 아버님
             CSTR:ARG:15 = 어머님
-        ELSEIF CFLAG:ARG:3005 == 3
+        ELSEIF CFLAG:ARG:43 == 3
             CSTR:ARG:12 = 아버님
             CSTR:ARG:15 = 어머님
-        ELSEIF CFLAG:ARG:3005 == 4
+        ELSEIF CFLAG:ARG:43 == 4
             CSTR:ARG:12 = 파파
             CSTR:ARG:15 = 마마
-        ELSEIF CFLAG:ARG:3005 == 5
+        ELSEIF CFLAG:ARG:43 == 5
             CSTR:ARG:12 = 아버지
             CSTR:ARG:15 = 어머니
-        ELSEIF CFLAG:ARG:3005 == 6
+        ELSEIF CFLAG:ARG:43 == 6
             CSTR:ARG:12 = 아빠
             CSTR:ARG:15 = 엄마
         ENDIF
+        ;아버지와 어머니의 호칭 (즉, 친딸은 같음)
+        CSTR:ARG:35 = %CSTR:ARG:12%
+        CSTR:ARG:36 = %CSTR:ARG:15%
         SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2 ;주인이 엄마일 경우 호칭을 바꿈
             SWAP CSTR:ARG:12, CSTR:ARG:15
     ;누군가의 자식, 부모가 「당신」이 아니어도 좋게 되었다
+    ;노예의 자식이므로 주인님으로 부른다고 치자....
     ELSEIF NO:ARG == 149 || NO:ARG == 148
-        IF CFLAG:ARG:3005 == 1
-            CSTR:ARG:12 = 아빠
-            CSTR:ARG:15 = 엄마
-        ELSEIF CFLAG:ARG:3005 == 2
-            CSTR:ARG:12 = 아버님
-            CSTR:ARG:15 = 어머님
-        ELSEIF CFLAG:ARG:3005 == 3
-            CSTR:ARG:12 = 아버님
-            CSTR:ARG:15 = 어머님
-        ELSEIF CFLAG:ARG:3005 == 4
-            CSTR:ARG:12 = 파파
-            CSTR:ARG:15 = 마마
-        ELSEIF CFLAG:ARG:3005 == 5
-            CSTR:ARG:12 = 아버지
-            CSTR:ARG:15 = 어머니
-        ELSEIF CFLAG:ARG:3005 == 6
-            CSTR:ARG:12 = 아빠
-            CSTR:ARG:15 = 엄마
+        IF CFLAG:ARG:43 == 1
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 아빠
+            CSTR:ARG:36 = 엄마
+        ELSEIF CFLAG:ARG:43 == 2
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 아버님
+            CSTR:ARG:36 = 어머님
+        ELSEIF CFLAG:ARG:43 == 3
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 아버님
+            CSTR:ARG:36 = 어머님
+        ELSEIF CFLAG:ARG:43 == 4
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 파파
+            CSTR:ARG:36 = 마마
+        ELSEIF CFLAG:ARG:43 == 5
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 아버지
+            CSTR:ARG:36 = 어머니
+        ELSEIF CFLAG:ARG:43 == 6
+            CSTR:ARG:12 = 주인님
+            CSTR:ARG:15 = 사모님
+            CSTR:ARG:35 = 아빠
+            CSTR:ARG:36 = 엄마
         ENDIF
         SIF TALENT:MASTER:120 == 0 ;주인이 여자일 경우 호칭을 바꿈
             SWAP CSTR:ARG:12, CSTR:ARG:15
@@ -1536,18 +1571,25 @@ RETURNF 0
 @JINKAKU
 ;친자식의 경우.
 IF CHECK_MASTERS_CHILD(TARGET) == 1
-    IF CFLAG:3005 > 0
-        CALL DEFINE_JINKAKU_NORMAL, TARGET
+    IF CFLAG:43 == 0 && CFLAG:3005 > 0
+        CALL DEFINE_JINKAKU_NORMAL, TARGET ;최초 한 번 정리
         STR:400 = %CSTR:11%
         STR:401 = %CSTR:12%
-        STR:402 = %CSTR:13%
-        STR:403 = %CSTR:14%
+        STR:404 = %CSTR:15%
+    ELSEIF CFLAG:3005 > 0
+        STR:400 = %CSTR:11%
+        STR:401 = %CSTR:12%
         STR:404 = %CSTR:15%
     ENDIF
 ;친자식이 아님
 ELSEIF NO:TARGET == 148 || NO:TARGET == 149
     IF CFLAG:43 == 0
-        CALL DEFINE_JINKAKU_NORMAL, TARGET
+        CALL DEFINE_JINKAKU_NORMAL, TARGET ;최초 한 번 정리
+        STR:400 = %CSTR:11%
+        STR:401 = %CSTR:12%
+        STR:402 = %CSTR:13%
+        STR:403 = %CSTR:14%
+        STR:404 = %CSTR:15%
         CFLAG:3005 = CFLAG:43
     ELSE
         STR:400 = %CSTR:11%
@@ -1560,7 +1602,7 @@ ELSEIF NO:TARGET == 148 || NO:TARGET == 149
 ;범용 캐릭터일 경우
 ELSE
     IF CFLAG:43 == 0
-        CALL DEFINE_JINKAKU_NORMAL, TARGET
+        CALL DEFINE_JINKAKU_NORMAL, TARGET ;최초 한 번 정리
         CFLAG:3005 = CFLAG:43
     ELSE
         STR:400 = %CSTR:11%
