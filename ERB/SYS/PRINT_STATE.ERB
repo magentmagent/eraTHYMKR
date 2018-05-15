@@ -152,7 +152,10 @@ IF FLAG:423 != CFLAG:MASTER:3109 && FLAG:423 != 0
     SIF LOCAL > 0
         PRINTFORML 마지막 조교에서 조수를 담당한 것은 %CALLNAME:LOCAL%입니다.
 ENDIF
-
+;남색 사탕의 영향을 받고 있다면 표시
+SIF EQUIP:ARG:1 > 0
+    PRINTFORML 신비한 남색 사탕의 영향을 받고 있다
+    
 ;칭호 · 엔딩 도달 표시
 STRLENS NICKNAME:MASTER
 SIF FLAG:9 || RESULT > 0
@@ -2532,7 +2535,7 @@ ELSE
     IF TALENT:ARG:121
         PRINT 후타나리.
     ELSEIF TALENT:ARG:1
-        PRINT 후타불알.
+        PRINT 비대음핵.
     ENDIF
 ENDIF
 IF TALENT:ARG:153
