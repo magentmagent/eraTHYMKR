@@ -383,7 +383,7 @@ REPEAT CHARANUM
         SIF TALENT:COUNT:140 == 0 && TALENT:COUNT:143 == 0
             CONTINUE
         ;既に使っていると効果ない
-        SIF EQUIP:COUNT:2
+        SIF EQUIP:COUNT:1
             CONTINUE
     ;桃の飴玉の場合
     ELSEIF LOCAL == 42
@@ -394,7 +394,7 @@ REPEAT CHARANUM
         SIF CFLAG:COUNT:0 == 0
             CONTINUE
         ;既に使っていると効果ない
-        SIF EQUIP:COUNT:1
+        SIF EQUIP:COUNT:0
             CONTINUE
     ;鈍の飴玉の場合
     ELSEIF LOCAL == 43
