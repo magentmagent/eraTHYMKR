@@ -278,6 +278,8 @@ IF TFLAG:99 == 0
     ENDIF
     
 ELSEIF TFLAG:99 == 1
+    ;조수가 주인을 사랑하는지 복종하는지 음란하는지 판정
+    LOCAL = ORDER_FALLEN(ASSI)
     PRINTL
     PRINTFORML %조사선택(CALLNAME:MASTER, "는")% %CALLNAME:ASSI%에게 긴급 피임약을 먹으라고 명령했다.
     PRINTFORM 그것을 들은 %조사선택(CALLNAME:ASSI, "는")% 
