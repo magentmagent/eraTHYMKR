@@ -48,7 +48,7 @@ ENDIF
 ;ARG＝판정하는 캐릭터
 ;0을 반환했을 경우＝주인의 자식이 아님, 1을 반환했을 경우＝아버지, 2를 반환했을 경우＝어머니
 @CHECK_MASTER_IS_DAD_OR_MOM(ARG)
-#FUNCTIONS
+#FUNCTION
 ;아버지
 IF (NO:ARG == 148 || NO:ARG == 149) && CFLAG:ARG:3107 == CFLAG:MASTER:3109
     RETURNF 1
