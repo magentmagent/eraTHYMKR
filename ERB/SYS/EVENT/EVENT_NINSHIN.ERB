@@ -667,8 +667,10 @@ ELSE
     CFLAG:LOCAL:78 = CFLAG:ARG:78
     CFLAG:LOCAL:3000 = NO:ARG
     CFLAG:LOCAL:3003 = CFLAG:ARG:3109
-    CSTR:LOCAL:40 = %CSTR:ARG:40% ;임신 시킨 사람 이름
-    CSTR:LOCAL:41 = %CSTR:ARG:41% ;친모의 이름
+     ;임신 시킨 사람 이름
+    CSTR:LOCAL:40 = %CSTR:ARG:40%
+     ;친모의 이름
+    CSTR:LOCAL:41 = %CSTR:ARG:41%
     ;生みの親が持つ精子提供者の固有IDコピー
     CFLAG:LOCAL:3004 = CFLAG:ARG:3004
     ;EQUIP:1(紺の飴玉)のフラグを育ての親に譲渡する.
@@ -822,8 +824,7 @@ CFLAG:ARG:4 = 0
 IF CFLAG:ARG:79 == 0
     MAXBASE:ARG:0 += 500
     PRINTFORML %CALLNAME:ARG%의 가슴은 모유를 수유하는 역할을 마쳤습니다.
-    IF TALENT:ARG:110 == 0 && TALENT:ARG:111 == 0
-        PRINTFORMW 아이에 대한 수유를 마쳤음으로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
+    IF CFLAG:ARG:3005
         ;임신 시에 커진 가슴 사이즈를 한 단계 작게 한다
         CALL REVERSE_B_SIZE, ARG
     ELSE
@@ -895,9 +896,9 @@ FOR LOCAL, 0, CHARANUM
         FLAG:17 = 1
 NEXT
 
-;子育て終了or임신強制終了時の胸サイズの縮小処理
+;육아 종료 or 임신 강제 종료시의 가슴 사이즈의 축소 처리
 @REVERSE_B_SIZE, ARG
-SIF TALENT:ARG:150 == 0 || CFLAG:ARG:78 != NO:MASTER || !CFLAG:ARG:3006
+SIF CFLAG:ARG:3006 == 0
     RETURN 0
 
 ;一旦胸の素質をリセット
@@ -906,20 +907,25 @@ TALENT:ARG:111 = 0
 TALENT:ARG:112 = 0
 TALENT:ARG:113 = 0
 
-;拡大前の状態に戻す
-;절벽だった
+;확대전의 상태로 돌아간다.
+;절벽이었다
 IF CFLAG:ARG:3006 == 1
-    TALENT:ARG:110 = 1
-;빈유だった
+    TALENT:ARG:111 = 1 ;절벽으로는 돌아가지 않는다
+;빈유였다
 ELSEIF CFLAG:ARG:3006 == 2
+    PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
     TALENT:ARG:111 = 1
-;거유だった
+;거유였다
 ELSEIF CFLAG:ARG:3006 == 4
-    TALENT:ARG:112 = 1
-;폭유だった
+    TALENT:ARG:112 = 1 ;거유는 커진 적이 없다
+;폭유였다
 ELSEIF CFLAG:ARG:3006 == 5
-    TALENT:ARG:113 = 1
+    TALENT:ARG:113 = 1 ;폭유는 커진 적이 없다
+;보통크기였다
+ELSE
+    PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
 ENDIF
+CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
