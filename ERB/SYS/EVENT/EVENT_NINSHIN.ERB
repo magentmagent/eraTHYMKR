@@ -148,6 +148,7 @@ RETURNF (LOCAL * ((TEQUIP:(ARG:1):16 > 0) ? 1 # 3))
 ;임신 처리 관련 함수군
 ;---------------------------------------------------------
 @GET_CHILD_ALL
+;노예가 임신했는 지 확인
 IF TARGET > 0
     IF TALENT:140 == 0 && CFLAG:70 > 0
         PRINTFORML %CALLNAME:TARGET%의 상태가 이상하다….
@@ -161,10 +162,14 @@ IF TARGET > 0
         ;기본적으로는 대사 측에서 분기해주는 방향으로
         ;TFLAG:222를 말 분기용 아버지 관련+굿 배드 판정용으로 사용
         TFLAG:222 = (CFLAG:70 == 2) ? NO:ASSI + 1000 # NO:MASTER + 1000
+        ;임산부의 임신 대사
         CALL SELF_KOJO, TARGET, 170
+        ;친부의 임신 대사
+        SIF CFLAG:TARGET:70 == 2
+            CALL SELF_KOJO, ASSI, 166, TARGET
     ENDIF
 ENDIF
-
+;조수가 임신했는 지 확인
 IF ASSI > 0
     IF TALENT:ASSI:140 == 0 && CFLAG:ASSI:70 > 0
         PRINTFORMW %CALLNAME:ASSI%의 상태가 이상하다….
@@ -177,10 +182,14 @@ IF ASSI > 0
         ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
         ;기본적으로는 대사 측에서 분기해주는 방향으로
         TFLAG:222 = (CFLAG:70 == 3) ? NO:TARGET + 1000 # NO:MASTER + 1000
+        ;임산부의 임신 대사
         CALL SELF_KOJO, ASSI, 170
+        ;친부의 임신 대사
+        SIF CFLAG:MASTER:70 == 3
+            CALL SELF_KOJO, TARGET, 166, ASSI
     ENDIF
 ENDIF
-
+;주인이 임신했는 지 확인
 IF TALENT:MASTER:120 == 0
     IF TALENT:MASTER:140 == 0 && CFLAG:MASTER:70 > 0
         PRINTFORMW %CALLNAME:MASTER%의 상태가 이상하다….
@@ -192,8 +201,12 @@ IF TALENT:MASTER:120 == 0
 
         ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
         ;기본적으로는 대사 측에서 분기해주는 방향으로
-        
-        ;CALL SELF_KOJO 임신시켰을 때 나오는 대사 필요
+        ;친부의 임신 대사
+        IF CFLAG:MASTER:70 == 2
+            CALL SELF_KOJO, ASSI, 166, MASTER
+        ELSEIF CFLAG:MASTER:70 == 3
+            CALL SELF_KOJO, TARGET, 166, MASTER
+        ENDIF
     ENDIF
 ENDIF
 
@@ -494,8 +507,11 @@ SIF ASSI == ARG
 SIF FLAG:17 == 0
     FLAG:17 = 1
 ;육아실 입실할 때의 이벤트 대사
+;엄마의 대사
 CALL SELF_KOJO, ARG, 173
-
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 169, ARG
 ;-------------------------------------------------
 ;출산
 ;-------------------------------------------------
@@ -632,8 +648,11 @@ ENDIF
 
 ;출산시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
 ;기본적으로는 대사 측에서 분기해주는 방향으로
+;산모의 대사
 CALL SELF_KOJO, ARG, 171
-
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 167, ARG
 ;-------------------------------------------------
 ;키우는 부모 지정
 ;-------------------------------------------------
@@ -689,7 +708,11 @@ ELSE
         CFLAG:LOCAL:79 = 1
     ENDIF
     ;유모가 되었을 때의 이벤트 대사
-    CALL SELF_KOJO, LOCAL, 174
+    IF ARG == MASTER ;산모가 주인
+        CALL SELF_KOJO, LOCAL, 174, 1
+    ELSE
+        CALL SELF_KOJO, LOCAL, 174
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -837,12 +860,18 @@ ELSE
     CFLAG:ARG:79 = 0
     CFLAG:ARG:4 = 0
 ENDIF
-CALL CHILD_CHECK, ARG
-CALL RESET_FLAG_N_FORCE, ARG
 
 ;독립 시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
 ;기본적으로는 대사 측에서 분기해주는 방향으로
+;엄마의 대사
 CALL SELF_KOJO, ARG, 172
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 168, ARG
+
+CALL CHILD_CHECK, ARG
+CALL RESET_FLAG_N_FORCE, ARG
+
 TFLAG:900 = ARG
 
 ;-------------------------------------------------
