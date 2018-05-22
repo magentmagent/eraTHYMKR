@@ -21,7 +21,7 @@ ERB 폴더의 FEATURES 폴더 안에있는 ERH 파일들을 열어보시면 ;#DE
 >* ENABLE_KOJO_EQUIP_MESSAGE  
 >캐릭터별 아이템 장착 구문 출력(현재 구현되어있는 캐릭터는 없음)
 >### TRANSLATOR_ENABLE.ERH
->* ENABLE_TRANS_13  
+>* ENABLE_DESCRIPTION_TRANS_13  
 >첸 번역기 구상 출력
 
 
