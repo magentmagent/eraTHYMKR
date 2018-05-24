@@ -754,7 +754,8 @@ IF (TALENT:ARG:120 && CFLAG:ARG:4995 != 2) || CFLAG:ARG:4995 == 1
         ;아버지와 어머니의 호칭 (즉, 친아들은 같음)
         CSTR:ARG:35 = %CSTR:ARG:12%
         CSTR:ARG:36 = %CSTR:ARG:15%
-        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2 ;주인이 엄마일 경우 호칭을 바꿈
+        ;주인이 엄마일 경우 호칭을 바꿈
+        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2
             SWAP CSTR:ARG:12, CSTR:ARG:15
     ;친아들이 아님
     ELSEIF NO:ARG == 149 || NO:ARG == 148
@@ -872,7 +873,8 @@ ELSE
         ;아버지와 어머니의 호칭 (즉, 친딸은 같음)
         CSTR:ARG:35 = %CSTR:ARG:12%
         CSTR:ARG:36 = %CSTR:ARG:15%
-        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2 ;주인이 엄마일 경우 호칭을 바꿈
+        ;주인이 엄마일 경우 호칭을 바꿈
+        SIF CHECK_MASTER_IS_DAD_OR_MOM(ARG) == 2
             SWAP CSTR:ARG:12, CSTR:ARG:15
     ;누군가의 자식, 부모가 「당신」이 아니어도 좋게 되었다
     ;노예의 자식이므로 주인님으로 부른다고 치자....
