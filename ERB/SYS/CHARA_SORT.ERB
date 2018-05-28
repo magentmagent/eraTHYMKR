@@ -19,7 +19,7 @@ CALLF CLEAR_LIST
 REPEAT CHARANUM
     MARK:COUNT:98 = 0
     ;주인공은 제외
-    SIF COUNT == 0
+    SIF COUNT == MASTER
         CONTINUE
     ;실종 중도 제외
     SIF CFLAG:COUNT:4
@@ -49,7 +49,7 @@ $CHARA_SORT_FIRST
 TFLAG:0 = 0
 PRINTFORML 누구를 어떻게 정렬하겠습니까? ＜page.{LOCAL + 1}＞
 DRAWLINE
-CALL SORT_LIST, TOSTR(LOCAL), -1
+CALL SORT_LIST, LOCAL, -1
 DRAWLINE
 PRINTL 아래 항목대로 자동 정렬한다.
 PRINTL [1102] 캐릭터 번호　 [1103] 능력　　　[1104] 경험
@@ -103,7 +103,7 @@ DRAWLINE
 $CHARA_SORT_SECOND
 PRINTFORML 누구의 순서를 바꾸겠습니까? (현재 {LOCAL:1}. %조사처리(CALLNAME:(LOCAL:1),"를")% 선택 중) ＜page.{LOCAL + 1}＞
 DRAWLINE
-CALL SORT_LIST, TOSTR(LOCAL), LOCAL:1
+CALL SORT_LIST, LOCAL, LOCAL:1
 DRAWLINE
 PRINTL 　　　☆:조교중 ★:조수 ○:조수가능 ●:원조수를 가리킵니다
 DRAWLINE
@@ -346,11 +346,11 @@ RETURN 0
 ;---------------------------------------------------------------------
 ;캐릭터 교체 · 정렬용 리스트
 ;---------------------------------------------------------------------
-@SORT_LIST, ARGS, ARG:1
+@SORT_LIST, ARG, ARG:1
 REPEAT 20
     LOCAL = GET_LIST(COUNT + ARG * 20)
     ;주인공과 실종 캐릭터는 배제
-    SIF LOCAL == 0
+    SIF LOCAL == MASTER
         CONTINUE
     SIF CFLAG:LOCAL:4
         CONTINUE
