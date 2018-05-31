@@ -1689,7 +1689,7 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 1 &&TEQUIP:16 == 0
     ENDIF
     RETURN 1
 
-;굴복각인Lv3+연모+排卵誘発剤
+;굴복각인Lv3+연모+배란유도제
 ELSEIF MARK:2 == 3 && TALENT:150 == 1 &&TEQUIP:16
     DRAWLINE
     PRINTFORML 「애 만들기 수고했어♪」
@@ -5705,7 +5705,7 @@ ELSEIF SELECTCOM == 615 && PREVCOM == 24
     ELSE
         ;연모
         IF TALENT:150
-            ;排卵誘発剤 or 目的が売り物 or 売り物宣言
+            ;배란유도제 or 目的が売り物 or 売り物宣言
             IF TEQUIP:16 || (CFLAG:5150 < 2 && CFLAG:5201 < 6) || (CFLAG:5201 >= 6 && TALENT:27)
                 ;V감각LV3+윤활LV2이상+전회의 커맨드가 정상위以外일 때 자동 신음성 함수
                 SIF ABL:1 >= 3 && PALAM:10 >= PALAMLV:2 && PREVCOM != 20
@@ -6590,7 +6590,7 @@ IF SELECTCOM == 26
 ;        CFLAG:5356 = 1
     ;2회째 이후
     ELSE
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORMW 「저기 말야아…. 오늘은 나하고 애 만드는 게 아니었어?」
         ;연모+주인が射精
@@ -7380,7 +7380,7 @@ ENDIF
 IF SELECTCOM == 110
     ;精液いっぱい入ってる（精液量2이상）
     IF CFLAG:5231 > 1
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORML 「아아…정액 나와버리면 안 돼……」
             PRINTFORMW 코이시는 비부에서 흘러나오는 정액을 아쉬운 듯 바라보고 있다
@@ -7404,7 +7404,7 @@ IF SELECTCOM == 110
             CFLAG:5231 = 0
     ;精液入ってる（精液量1）
     ELSEIF CFLAG:5231 == 1
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORML 「아아 안 돼…. 이 정도론 아기가 안 생겨」
             PRINTFORMW 「좀 더 섹스해서 자궁이 정액으로 가득할 정도로 하지 않으면」
@@ -9315,10 +9315,10 @@ IF SELECTCOM == 441
 ENDIF
 
 ;-------------------------------------------------
-;排卵誘発剤
+;배란유도제         CFLAG:필요 시 새로 확보해야함
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 185
+IF SELECTCOM == 66 && TFLAG:99 == 0
     ;연모
     IF TALENT:150
     ;굴복각인LV3
@@ -9327,14 +9327,40 @@ IF SELECTCOM == 185
     ELSE
     ENDIF
 ENDIF
+;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 [SKIPEND]
 
 ;-------------------------------------------------
-;緊急避妊薬
+;긴급피임약
 ;精液量はCFLAG:5231で確認
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 443
+IF SELECTCOM == 67 && TFLAG:99 == 0
     ;연모
     IF TALENT:150
     ;굴복각인LV3
@@ -9342,6 +9368,32 @@ IF SELECTCOM == 443
     ;그 외
     ELSE
     ENDIF
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 [SKIPEND]
 
@@ -9640,14 +9692,14 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
             ;子宮口責め
             IF A == 2 && SELECTCOM == 615
                 PRINTFORMW 「아…아…. 정액이 뱃속으로 점점 들어와……」
-                ;排卵誘発剤
+                ;배란유도제
                 SIF TEQUIP:16
                     PRINTFORMW 「직접 자궁에 넣었더라면 정말 생겨버렸을지도♪」
             ELSEIF A
                 PRINTFORMW 「아… 따뜻해……」
                 PRINTFORMW 「이 느낌… 좋아…. 더 정액 가져갈게―」
             ELSE
-                ;排卵誘発剤
+                ;배란유도제
                 IF TEQUIP:16
                     PRINTFORMW 「배 안이 따뜻해―……」
                     ;마스터가 인간

@@ -1,4 +1,4 @@
-;================================================
+﻿;================================================
 ;아들, 딸 전용 함수
 ;================================================
 @MOTHER(ARG)
@@ -46,16 +46,16 @@ ENDIF
 ;대상이 주인의 자식일 것이 필요 조건
 ;--------------------------------------------------
 ;ARG＝판정하는 캐릭터
-;0을 반환했을 경우＝주인의 자식이 아님, 1을 반환했을 경우＝주인의 딸, 2를 반환했을 경우＝주인의 아들
+;0을 반환했을 경우＝주인의 자식이 아님, 1을 반환했을 경우＝아버지, 2를 반환했을 경우＝어머니
 @CHECK_MASTER_IS_DAD_OR_MOM(ARG)
-#FUNCTIONS
+#FUNCTION
 ;아버지
 IF (NO:ARG == 148 || NO:ARG == 149) && CFLAG:ARG:3107 == CFLAG:MASTER:3109
-    RETURNF CSTR:ARG:55
+    RETURNF 1
 ;어머니
-ELSEIF (NO:ARG == 148 || NO:ARG == 149) && CFLAG:ARG:3105 == CFLAG:MASTER:3109 || CFLAG:ARG:3106 == CFLAG:MASTER:3109
-    RETURNF CSTR:ARG:54
+ELSEIF (NO:ARG == 148 || NO:ARG == 149) && (CFLAG:ARG:3105 == CFLAG:MASTER:3109 || CFLAG:ARG:3106 == CFLAG:MASTER:3109)
+    RETURNF 2
 ;필요 조건을 만족시키지 못했을 때
 ELSE
-    RETURNF CSTR:ARG:53
+    RETURNF 0
 ENDIF

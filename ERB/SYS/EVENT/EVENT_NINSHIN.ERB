@@ -148,6 +148,7 @@ RETURNF (LOCAL * ((TEQUIP:(ARG:1):16 > 0) ? 1 # 3))
 ;임신 처리 관련 함수군
 ;---------------------------------------------------------
 @GET_CHILD_ALL
+;노예가 임신했는 지 확인
 IF TARGET > 0
     IF TALENT:140 == 0 && CFLAG:70 > 0
         PRINTFORML %CALLNAME:TARGET%의 상태가 이상하다….
@@ -161,10 +162,14 @@ IF TARGET > 0
         ;기본적으로는 대사 측에서 분기해주는 방향으로
         ;TFLAG:222를 말 분기용 아버지 관련+굿 배드 판정용으로 사용
         TFLAG:222 = (CFLAG:70 == 2) ? NO:ASSI + 1000 # NO:MASTER + 1000
+        ;임산부의 임신 대사
         CALL SELF_KOJO, TARGET, 170
+        ;친부의 임신 대사
+        SIF CFLAG:TARGET:70 == 2
+            CALL SELF_KOJO, ASSI, 166, TARGET
     ENDIF
 ENDIF
-
+;조수가 임신했는 지 확인
 IF ASSI > 0
     IF TALENT:ASSI:140 == 0 && CFLAG:ASSI:70 > 0
         PRINTFORMW %CALLNAME:ASSI%의 상태가 이상하다….
@@ -177,10 +182,14 @@ IF ASSI > 0
         ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
         ;기본적으로는 대사 측에서 분기해주는 방향으로
         TFLAG:222 = (CFLAG:70 == 3) ? NO:TARGET + 1000 # NO:MASTER + 1000
+        ;임산부의 임신 대사
         CALL SELF_KOJO, ASSI, 170
+        ;친부의 임신 대사
+        SIF CFLAG:MASTER:70 == 3
+            CALL SELF_KOJO, TARGET, 166, ASSI
     ENDIF
 ENDIF
-
+;주인이 임신했는 지 확인
 IF TALENT:MASTER:120 == 0
     IF TALENT:MASTER:140 == 0 && CFLAG:MASTER:70 > 0
         PRINTFORMW %CALLNAME:MASTER%의 상태가 이상하다….
@@ -192,8 +201,12 @@ IF TALENT:MASTER:120 == 0
 
         ;임신시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
         ;기본적으로는 대사 측에서 분기해주는 방향으로
-        
-        ;CALL SELF_KOJO 임신시켰을 때 나오는 대사 필요
+        ;친부의 임신 대사
+        IF CFLAG:MASTER:70 == 2
+            CALL SELF_KOJO, ASSI, 166, MASTER
+        ELSEIF CFLAG:MASTER:70 == 3
+            CALL SELF_KOJO, TARGET, 166, MASTER
+        ENDIF
     ENDIF
 ENDIF
 
@@ -243,6 +256,10 @@ ENDIF
 CFLAG:ARG:78 = NO:LOCAL
 CFLAG:ARG:3004 = CFLAG:LOCAL:3109
 LOCAL:1 = CFLAG:ARG:78 + 1000
+;임신 시킨 사람 이름
+CSTR:ARG:40 = %CALLNAME:LOCAL%
+;임산부의 이름
+CSTR:ARG:41 = %CALLNAME:ARG%
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
@@ -490,17 +507,20 @@ SIF ASSI == ARG
 SIF FLAG:17 == 0
     FLAG:17 = 1
 ;육아실 입실할 때의 이벤트 대사
+;엄마의 대사
 CALL SELF_KOJO, ARG, 173
-
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 169, ARG
 ;-------------------------------------------------
 ;출산
 ;-------------------------------------------------
 @CHILD_BIRTH, ARG
-LOCAL = FINDCHARA(CFLAG:3109, CFLAG:ARG:3004, 0)
+
 LOCAL:1 = CFLAG:ARG:78 + 1000
 CFLAG:ARG:3000 = -1 ;변수 초기화
 
-PRINTFORML %조사처리(CALLNAME:ARG,"는")% %조사처리(CALLNAME:LOCAL,"의")% 아이를 무사히 출산했습니다.
+PRINTFORML %조사처리(CALLNAME:ARG,"는")% %조사처리(CSTR:ARG:40,"의")% 아이를 무사히 출산했습니다.
 PRINTL 
 PRINTL 출산경험＋1
 EXP:ARG:52 += 1
@@ -628,8 +648,11 @@ ENDIF
 
 ;출산시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
 ;기본적으로는 대사 측에서 분기해주는 방향으로
+;산모의 대사
 CALL SELF_KOJO, ARG, 171
-
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 167, ARG
 ;-------------------------------------------------
 ;키우는 부모 지정
 ;-------------------------------------------------
@@ -663,6 +686,10 @@ ELSE
     CFLAG:LOCAL:78 = CFLAG:ARG:78
     CFLAG:LOCAL:3000 = NO:ARG
     CFLAG:LOCAL:3003 = CFLAG:ARG:3109
+     ;임신 시킨 사람 이름
+    CSTR:LOCAL:40 = %CSTR:ARG:40%
+     ;친모의 이름
+    CSTR:LOCAL:41 = %CSTR:ARG:41%
     ;生みの親が持つ精子提供者の固有IDコピー
     CFLAG:LOCAL:3004 = CFLAG:ARG:3004
     ;EQUIP:1(紺の飴玉)のフラグを育ての親に譲渡する.
@@ -681,7 +708,11 @@ ELSE
         CFLAG:LOCAL:79 = 1
     ENDIF
     ;유모가 되었을 때의 이벤트 대사
-    CALL SELF_KOJO, LOCAL, 174
+    IF ARG == MASTER ;산모가 주인
+        CALL SELF_KOJO, LOCAL, 174, 1
+    ELSE
+        CALL SELF_KOJO, LOCAL, 174
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -816,8 +847,7 @@ CFLAG:ARG:4 = 0
 IF CFLAG:ARG:79 == 0
     MAXBASE:ARG:0 += 500
     PRINTFORML %CALLNAME:ARG%의 가슴은 모유를 수유하는 역할을 마쳤습니다.
-    IF TALENT:ARG:110 == 0 && TALENT:ARG:111 == 0
-        PRINTFORMW 아이에 대한 수유를 마쳤음으로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
+    IF CFLAG:ARG:3005
         ;임신 시에 커진 가슴 사이즈를 한 단계 작게 한다
         CALL REVERSE_B_SIZE, ARG
     ELSE
@@ -830,12 +860,18 @@ ELSE
     CFLAG:ARG:79 = 0
     CFLAG:ARG:4 = 0
 ENDIF
-CALL CHILD_CHECK, ARG
-CALL RESET_FLAG_N_FORCE, ARG
 
 ;독립 시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
 ;기본적으로는 대사 측에서 분기해주는 방향으로
+;엄마의 대사
 CALL SELF_KOJO, ARG, 172
+;친부의 대사
+SIF GETCHARA(CFLAG:ARG:78) >= 0
+    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 168, ARG
+
+CALL CHILD_CHECK, ARG
+CALL RESET_FLAG_N_FORCE, ARG
+
 TFLAG:900 = ARG
 
 ;-------------------------------------------------
@@ -883,15 +919,15 @@ CFLAG:ARG:3004 = -1
 MARK:ARG:89 = 0
 ;育児室に通った回数をリセット
 CFLAG:ARG:3009 = 0
-FOR LOCAL, 1, CHARANUM
+FOR LOCAL, 0, CHARANUM
     ;他にも対象キャラがいれば、フラグを再設定
     SIF CFLAG:LOCAL:4 == 2
         FLAG:17 = 1
 NEXT
 
-;子育て終了or임신強制終了時の胸サイズの縮小処理
+;육아 종료 or 임신 강제 종료시의 가슴 사이즈의 축소 처리
 @REVERSE_B_SIZE, ARG
-SIF TALENT:ARG:150 == 0 || CFLAG:ARG:78 != NO:MASTER || !CFLAG:ARG:3006
+SIF CFLAG:ARG:3006 == 0
     RETURN 0
 
 ;一旦胸の素質をリセット
@@ -900,20 +936,25 @@ TALENT:ARG:111 = 0
 TALENT:ARG:112 = 0
 TALENT:ARG:113 = 0
 
-;拡大前の状態に戻す
-;절벽だった
+;확대전의 상태로 돌아간다.
+;절벽이었다
 IF CFLAG:ARG:3006 == 1
-    TALENT:ARG:110 = 1
-;빈유だった
+    TALENT:ARG:111 = 1 ;절벽으로는 돌아가지 않는다
+;빈유였다
 ELSEIF CFLAG:ARG:3006 == 2
+    PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
     TALENT:ARG:111 = 1
-;거유だった
+;거유였다
 ELSEIF CFLAG:ARG:3006 == 4
-    TALENT:ARG:112 = 1
-;폭유だった
+    TALENT:ARG:112 = 1 ;거유는 커진 적이 없다
+;폭유였다
 ELSEIF CFLAG:ARG:3006 == 5
-    TALENT:ARG:113 = 1
+    TALENT:ARG:113 = 1 ;폭유는 커진 적이 없다
+;보통크기였다
+ELSE
+    PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
 ENDIF
+CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
@@ -1080,6 +1121,10 @@ IF FLAG:12 & 8
         LOCAL = MASTER
         CFLAG:78 = NO:LOCAL
         CFLAG:3004 = CFLAG:LOCAL:3109
+        ;임신 시킨 사람 이름
+        CSTR:ARG:40 = %CALLNAME:LOCAL%
+        ;임산부 이름
+        CSTR:ARG:41 = %CALLNAME:TARGET%
         ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
         CFLAG:8 = 0
 
@@ -1207,10 +1252,13 @@ RETURN 0
 ;MASTER의 육아방에 누가 찾아 오는지 체크
 
 ;50% 확률로 친부가 방문
-IF RAND:2 == 0
+IF RAND:2 == 0  
+    LOCAL = -1
     LOCAL = FINDCHARA(CFLAG:3109, CFLAG:MASTER:3004, 0)
+    SIF LOCAL < 0 ;아버지 매각시 랜덤
+        LOCAL = RAND:(CHARANUM - 1) + 1 ;주인을 제외한 방문자
 ELSE
-    LOCAL = RAND:CHARANUM
+    LOCAL = RAND:(CHARANUM - 1) + 1 ;주인을 제외한 방문자
 ENDIF
 LOCAL:1 = ORDER_FALLEN(LOCAL)
 ;아직 출산 전인 경우
@@ -1268,10 +1316,10 @@ ELSEIF TALENT:MASTER:143
 ;[연모계]인 부친
 ELSEIF CFLAG:MASTER:3004 == CFLAG:LOCAL:3109 && LOCAL:1 == 1
     IF TIME == 0 ;낮
-        PRINTFORMW 
-        PRINTFORMW 
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% 아이에게 아빠가 얼마나 %조사처리(CALLNAME:MASTER,"를")% 사랑하는지 자랑했다.
+        PRINTFORMW 아이는 엄마, 아빠 같은 배우자를 만나고 싶다고 한다.
     ELSE
-        PRINTFORMW 
+        PRINTFORMW %조사처리(CALLNAME:LOCAL,"는")% 
         PRINTFORMW
     ENDIF
 ;[복종계]인 부친
