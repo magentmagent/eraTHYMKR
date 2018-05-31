@@ -45,7 +45,7 @@ RETURNF LOCAL
 ;これまでの射精の処理をここに持たせ, 各コマンド内で使わないようにする.
 ;よってここでTFLAG:91を初期化し, 各COMFに処理を返す（TFLAG:91 == 0ならば各コマンド内で射精の処理は行われない）
 
-;射精した人物の設定
+;사정하는 사람 결정
 IF SELECTCOM == 303 || SELECTCOM == 305 || SELECTCOM == 306
     TFLAG:92 = MASTER
 ELSEIF SELECTCOM == 116 || SELECTCOM == 304 || SELECTCOM == 610
@@ -56,7 +56,7 @@ ELSE
     TFLAG:92 = PLAYER
 ENDIF
 
-;射精する対象の設定(獣姦逆レイプの場合はこの変数に意味はない)
+;사정받는 대상 결정(수간 역레이프의 경우, 이 플래그는 의미가 없다)
 IF SELECTCOM == 26 || SELECTCOM == 36 || TFLAG:703 == 6 || TFLAG:703 == 8 || TFLAG:703 == 15
     TFLAG:94 = ASSI
 ELSEIF TFLAG:703 == 9 || TFLAG:703 == 16 || TFLAG:703 == 17
@@ -65,7 +65,7 @@ ELSE
     TFLAG:94 = TARGET
 ENDIF
 
-;まず使うフラグを初期化
+;사정 장소 플래그를 초기화
 CFLAG:(TFLAG:94):74 = 0
 
 ;肉便器プレイではコンドームはなかったことにする
@@ -374,7 +374,7 @@ ENDIF
 
 ;中出しかどうかの確認（妊娠出産パッチでのみ使用）
 @CHECK_NAKADASHI
-SIF TFLAG:703 == 1 || TFLAG:703 == 6 || TFLAG:703 == 9 || TFLAG:703 == 20
+SIF TFLAG:703 == 1 || TFLAG:703 == 6 || TFLAG:703 == 20
     CALL IN_VAGINA_CHECK
 
 ;-------------------------------------------------
@@ -397,7 +397,8 @@ CFLAG:75 = (ASSIPLAY) ? 2 # 1
 ;プレイや及び助手の各コマンドでの中田氏チェック
 ;各コマンドへの影響を小さくするのが目的（関数を呼ぶ, もしくはオミットするだけで良い）
 ;TFLAG:10（中田氏）とTEQUIP:31（コンドーム）を条件に膣射を増やす処理を持つ
-
+SIF TALENT:MASTER:998
+    PRINTFORML 노예, 조수에게 질내사정 체크
 ;まず, コンドームの有無で分岐
 LOCAL = (ASSIPLAY) ? ASSI # MASTER
 IF TEQUIP:LOCAL:31 == 1
@@ -416,8 +417,8 @@ IF TFLAG:703 == 1
         CALL SETCOLOR_TORIKOMODE, "PINK", 3
         PRINTFORML \@(TFLAG:10 == 2) ? 질내대량 # 질내\@사정
         RESETCOLOR
-        PRINTFORML \@(ASSIPLAY) ? 조수 # 사정\@정액＋{TFLAG:10}
-        CFLAG:(71 + ASSIPLAY) += TFLAG:10
+        PRINTFORML \@(TFLAG:92 == ASSI) ? 조수 # 주인\@정액＋{TFLAG:10}
+        CFLAG:(71 + (TFLAG:92 == ASSI)) += TFLAG:10
     ENDIF
 ;助手を犯す
 ELSEIF TFLAG:703 == 6
@@ -425,7 +426,7 @@ ELSEIF TFLAG:703 == 6
         CALL SETCOLOR_TORIKOMODE, "PINK", 3
         PRINTFORML \@(TFLAG:17 == 2) ? 질내대량 # 질내\@사정
         RESETCOLOR
-        PRINTFORML 질사정액(조수)＋{TFLAG:17}
+        PRINTFORML 주인정액(조수)＋{TFLAG:17}
         CFLAG:ASSI:71 += TFLAG:17
     ENDIF
 ;肉便器プレイ（TFLAG:10を使わないので独立処理）
@@ -446,8 +447,8 @@ ENDIF
 ;各コマンドへの影響を小さくするのが目的（関数を呼ぶ, もしくはオミットするだけで良い）
 ;TFLAG:10（中田氏）とTEQUIP:31（コンドーム）を条件に膣射を増やす処理を持つ
 
-;디버그
-;PRINTFORML 노예에 의한 질내사정 체크
+SIF TALENT:MASTER:998
+    PRINTFORML 노예에 의한 질내사정 체크
 WAIT
 
 ;まずコンドームで分岐
@@ -458,17 +459,33 @@ IF TEQUIP:31 == 1
     CFLAG:75 = 3
     TEQUIP:31 = 0
 ;妊娠モードであり, コンドームをしてないかつセックス系コマンドなら中出し
-ELSEIF (FLAG:18 & 2) && ASSIPLAY && (SELECTCOM == 25 || SELECTCOM == 307 || SELECTCOM == 323 || SELECTCOM == 324 || SELECTCOM == 325 || SELECTCOM == 651)
+ELSEIF (FLAG:18 & 2) && ASSIPLAY && (SELECTCOM == 307 || TFLAG:703 == 9)
     IF TFLAG:91
         IF TFLAG:91 == 2
-            PRINTFORML 대량사정
+            CALL SETCOLOR_TORIKOMODE, "PINK", 3
+            PRINTFORML 질내대량사정
+            RESETCOLOR
         ELSE
             CALL SETCOLOR_TORIKOMODE, "PINK", 3
             PRINTFORML 질내사정
             RESETCOLOR
         ENDIF
-        PRINTFORML 노예정액＋＋{TFLAG:91}
+        PRINTFORML 노예정액(조수)＋{TFLAG:91}
         CFLAG:ASSI:73 += TFLAG:91
+    ENDIF
+ELSEIF (FLAG:18 & 2) && ASSIPLAY == 0 && TFLAG:703 == 9
+    IF TFLAG:91
+        IF TFLAG:91 == 2
+            CALL SETCOLOR_TORIKOMODE, "PINK", 3
+            PRINTFORML 질내대량사정
+            RESETCOLOR
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "PINK", 3
+            PRINTFORML 질내사정
+            RESETCOLOR
+        ENDIF
+        PRINTFORML 노예정액(주인)＋{TFLAG:91}
+        CFLAG:MASTER:73 += TFLAG:91
     ENDIF
 ENDIF
 

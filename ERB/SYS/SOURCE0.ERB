@@ -176,23 +176,18 @@ ENDIF
 ;-------------------------------------------------
 ;まだ射精していない場合に조교 대상の射精チェック(ふたなり・オトコ)
 ;-------------------------------------------------
-IF TFLAG:705 == 0 && (TALENT:120 || TALENT:121)
+IF (TALENT:120 || TALENT:121)
+    ;
+    SIF TFLAG:705 == 0
+        TFLAG:703 = -1
 
-    ;토리코 모드시 색 강조 (살색)
-    IF FLAG:5000 & 16
-        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-        CALL TARGET_EJAC_CHECK
-        RESETCOLOR
-    ;일반모드
-    ELSE
-        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-        CALL TARGET_EJAC_CHECK
-        RESETCOLOR
-    ;모드분기종료
-    ENDIF
+    CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+    CALL TARGET_EJAC_CHECK
+    RESETCOLOR
 
 ENDIF
 
+TFLAG:703 = -1
 TFLAG:705 = 0
 
 ;-------------------------------------------------
