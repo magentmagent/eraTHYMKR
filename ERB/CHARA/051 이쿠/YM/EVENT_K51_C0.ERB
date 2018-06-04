@@ -4889,93 +4889,110 @@ ENDIF
 ;排卵誘発剤
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_66
-;初回実行時
-IF RESULT:1 == 1
-    ;出産経験あり
-    IF EXP:출산경험 > 0
-        ;연모
-        IF TALENT:연모
-            PRINTFORMW 「はあ…こんな薬もあるのですね。感心してしまいます」
-            PRINTFORMW 「…つまり、また子供が欲しい…ということですよね、%CALLNAME:PLAYER%？」
-            PRINTFORMW あなたが頷くと、衣玖は満面の笑みを浮かべた…
-            PRINTFORMW 「今夜は頑張りましょうね？%CALLNAME:PLAYER%…♪」
-        ;その他の場合
-        ELSE
-            PRINTFORMW 「望まぬ子を産ませたあげく、さらにこんなものを使うのですか…」
-            PRINTFORMW 「……もう好きにして下さい」
-            PRINTFORML 
-            PRINTFORMW ――-衣玖の頬を涙が伝った…
-        ENDIF
-    ;出産経験なし
-    ELSE
-        ;연모
-        IF TALENT:연모
-            PRINTFORMW 「排卵…誘発剤？」
-            PRINTFORMW 「私は妖怪ですけど…妊娠できるのでしょうか…？」
-            PRINTFORMW 「ふふっ…でも、%CALLNAME:PLAYER%の赤ちゃんなら…ほ、欲しい、です…」
-            PRINTFORMW 顔を真っ赤にして希望を口にした衣玖に応えようと、あなたの興奮は高まった…
-        ;その他の場合
-        ELSE
-            PRINTFORMW 「ああ…そんな…」
-            PRINTFORMW 「あなたは恐ろしい人間です…」
-            PRINTFORMW 衣玖はこれからされることの恐怖に震えている…
-        ENDIF
-    ENDIF
-;2回目以降
-ELSE
-    ;연모
-    IF TALENT:연모 == 1
-        ;乱数分岐:6
-        IF RAND:6 == 0 && EXP:출산경험 >= 1
-            PRINTFORMW 「ああ…またあの時のように、激しく犯して頂けるんですね…」
-            PRINTFORMW 「私が泣いても、叫んでもきっと%CALLNAME:PLAYER%は止めないんでしょう…」
-            PRINTFORMW 「いいですよ…私を孕ませることしか考えない、子作りの為だけのセックス…始めましょう…♪」
-        ;乱数分岐:5
-        ELSEIF RAND:5 == 0 && EXP:출산경험 >= 1
-            PRINTFORMW 「また%CALLNAME:PLAYER%の子供を授かることを期待しただけで…」
-            PRINTFORMW 「やだ…濡れてきちゃいました…♪」
-            PRINTFORMW 「今日は衣玖の子宮、いっぱいになるまで離しませんからね…♪」
-        ;乱数分岐:4
-        ELSEIF RAND:4 == 0 && EXP:출산경험 >= 1
-            PRINTFORMW 「ふふっ、すごかったですよ？あの時の%CALLNAME:PLAYER%は」
-            PRINTFORMW 「わたしの膣に、何度も何度も溢れるほど注ぎ込んで…♪」
-            PRINTFORMW 「その後でしたね、妊娠したと分かったのは…」
-            PRINTFORMW 「それじゃあ、また子供を授かれるよう、頑張りましょう？%CALLNAME:PLAYER%…」
-        ;乱数分岐:3
-        ELSEIF RAND:3 == 0
-            PRINTFORMW 「すごく伝わってきます…私を孕ませたいという%CALLNAME:PLAYER%の気持ち」
-            PRINTFORMW 「嬉しいです…私も、%CALLNAME:PLAYER%との子供が欲しくてたまらないんです…」
-            PRINTFORMW 「今日は壊れるまで…衣玖を抱いて下さい…」
-        ;乱数分岐:2
-        ELSEIF RAND:2 == 0
-            PRINTFORMW 「んっ…飲みました…はい、大丈夫です…」
-            PRINTFORMW 「%CALLNAME:PLAYER%の好きなように何度でも抱いて下さい…めちゃめちゃにしてもらって構いません…」
-            PRINTFORMW 「思いっきり膣に出して、衣玖を孕ませてください…♪」
-        ;その他の場合
-        ELSE
-            PRINTFORMW 「私…頑張りますね」
-            PRINTFORMW 「子供が出来るよう、%CALLNAME:PLAYER%の精子…いっぱいいっぱい、衣玖の膣に、注ぎ込んでください…♪」
-        ENDIF
-    ;その他の場合
-    ELSE
+IF TFLAG:99 == 0 ;노예가 배란유도제 사용
+    ;初回実行時
+    IF RESULT:1 == 1
         ;出産経験あり
         IF EXP:출산경험 > 0
-            PRINTFORMW 衣玖は全くと言っていい程感情を見せぬまま、薬を飲み込んだ…
+            ;연모
+            IF TALENT:연모
+                PRINTFORMW 「はあ…こんな薬もあるのですね。感心してしまいます」
+                PRINTFORMW 「…つまり、また子供が欲しい…ということですよね、%CALLNAME:PLAYER%？」
+                PRINTFORMW あなたが頷くと、衣玖は満面の笑みを浮かべた…
+                PRINTFORMW 「今夜は頑張りましょうね？%CALLNAME:PLAYER%…♪」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「望まぬ子を産ませたあげく、さらにこんなものを使うのですか…」
+                PRINTFORMW 「……もう好きにして下さい」
+                PRINTFORML 
+                PRINTFORMW ――-衣玖の頬を涙が伝った…
+            ENDIF
+        ;出産経験なし
+        ELSE
+            ;연모
+            IF TALENT:연모
+                PRINTFORMW 「排卵…誘発剤？」
+                PRINTFORMW 「私は妖怪ですけど…妊娠できるのでしょうか…？」
+                PRINTFORMW 「ふふっ…でも、%CALLNAME:PLAYER%の赤ちゃんなら…ほ、欲しい、です…」
+                PRINTFORMW 顔を真っ赤にして希望を口にした衣玖に応えようと、あなたの興奮は高まった…
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「ああ…そんな…」
+                PRINTFORMW 「あなたは恐ろしい人間です…」
+                PRINTFORMW 衣玖はこれからされることの恐怖に震えている…
+            ENDIF
+        ENDIF
+    ;2回目以降
+    ELSE
+        ;연모
+        IF TALENT:연모 == 1
+            ;乱数分岐:6
+            IF RAND:6 == 0 && EXP:출산경험 >= 1
+                PRINTFORMW 「ああ…またあの時のように、激しく犯して頂けるんですね…」
+                PRINTFORMW 「私が泣いても、叫んでもきっと%CALLNAME:PLAYER%は止めないんでしょう…」
+                PRINTFORMW 「いいですよ…私を孕ませることしか考えない、子作りの為だけのセックス…始めましょう…♪」
+            ;乱数分岐:5
+            ELSEIF RAND:5 == 0 && EXP:출산경험 >= 1
+                PRINTFORMW 「また%CALLNAME:PLAYER%の子供を授かることを期待しただけで…」
+                PRINTFORMW 「やだ…濡れてきちゃいました…♪」
+                PRINTFORMW 「今日は衣玖の子宮、いっぱいになるまで離しませんからね…♪」
+            ;乱数分岐:4
+            ELSEIF RAND:4 == 0 && EXP:출산경험 >= 1
+                PRINTFORMW 「ふふっ、すごかったですよ？あの時の%CALLNAME:PLAYER%は」
+                PRINTFORMW 「わたしの膣に、何度も何度も溢れるほど注ぎ込んで…♪」
+                PRINTFORMW 「その後でしたね、妊娠したと分かったのは…」
+                PRINTFORMW 「それじゃあ、また子供を授かれるよう、頑張りましょう？%CALLNAME:PLAYER%…」
+            ;乱数分岐:3
+            ELSEIF RAND:3 == 0
+                PRINTFORMW 「すごく伝わってきます…私を孕ませたいという%CALLNAME:PLAYER%の気持ち」
+                PRINTFORMW 「嬉しいです…私も、%CALLNAME:PLAYER%との子供が欲しくてたまらないんです…」
+                PRINTFORMW 「今日は壊れるまで…衣玖を抱いて下さい…」
+            ;乱数分岐:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「んっ…飲みました…はい、大丈夫です…」
+                PRINTFORMW 「%CALLNAME:PLAYER%の好きなように何度でも抱いて下さい…めちゃめちゃにしてもらって構いません…」
+                PRINTFORMW 「思いっきり膣に出して、衣玖を孕ませてください…♪」
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「私…頑張りますね」
+                PRINTFORMW 「子供が出来るよう、%CALLNAME:PLAYER%の精子…いっぱいいっぱい、衣玖の膣に、注ぎ込んでください…♪」
+            ENDIF
         ;その他の場合
         ELSE
-            PRINTFORMW 「こんなものを使っても、妊娠するとは限りませんよ？」
-            PRINTFORMW 衣玖は強がるが、その体はかすかに震えている…
+            ;出産経験あり
+            IF EXP:출산경험 > 0
+                PRINTFORMW 衣玖は全くと言っていい程感情を見せぬまま、薬を飲み込んだ…
+            ;その他の場合
+            ELSE
+                PRINTFORMW 「こんなものを使っても、妊娠するとは限りませんよ？」
+                PRINTFORMW 衣玖は強がるが、その体はかすかに震えている…
+            ENDIF
         ENDIF
     ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 배란유도제 사용
+    ;PRINTFORMW 「조수 배란유도제 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 배란유도제 사용
+    ;PRINTFORMW 「주인 배란유도제 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
-;緊急避妊薬
+;긴급피임약
 ;-------------------------------------------------
 [SKIPSTART]
-;@KOJO_51_TRAIN_MESSAGE_S_COM_67
-;PRINTFORMW 
-
+@KOJO_51_TRAIN_MESSAGE_S_COM_67
+IF TFLAG:99 == 0 ;노예가 긴급피임약 사용
+    ;첫회일 경우
+    IF RESULT:1 == 1
+        ;PRINTFORMW 「첫회용 긴급피임약 대사입니다」
+    ;2회째 이후
+    ELSE
+        ;PRINTFORMW 「긴급피임약 대사입니다」
+    ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 긴급피임약 사용
+    ;PRINTFORMW 「조수 긴급피임약 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 긴급피임약 사용
+    ;PRINTFORMW 「주인 긴급피임약 대사입니다」
+ENDIF
 ;-------------------------------------------------
 ;産卵促進剤
 ;-------------------------------------------------

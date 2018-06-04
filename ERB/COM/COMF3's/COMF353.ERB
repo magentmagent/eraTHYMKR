@@ -201,50 +201,13 @@ SIF TALENT:174
 ;-------------------------------------------------
 ;사정 체크
 ;-------------------------------------------------
-TFLAG:91 = SAMEN_CHECK(TARGET)
-
-;사정시의 처리
-IF TFLAG:91 >= 1
-    ;커맨드 마다 고유의 처리는 이 아래에 쓴다
-    TIMES SOURCE:15 , 3.00
-
-    ;ABL:정액 중독을 본다
-    IF ABL:31 == 0
-        SOURCE:24 += 0
-        TIMES SOURCE:16 , 2.00
-        TIMES SOURCE:22, 2.00
-    ELSEIF ABL:31 == 1
-        SOURCE:24 += 200
-        TIMES SOURCE:16 , 2.50
-        TIMES SOURCE:22, 1.60
-    ELSEIF ABL:31 == 2
-        SOURCE:24 += 600
-        TIMES SOURCE:16 , 3.00
-        TIMES SOURCE:22, 1.00
-    ELSEIF ABL:31 == 3
-        SOURCE:24 += 1500
-        TIMES SOURCE:16 , 4.00
-        TIMES SOURCE:22, 0.70
-    ELSEIF ABL:31 == 4
-        SOURCE:24 += 3000
-        TIMES SOURCE:16 , 5.00
-        TIMES SOURCE:22, 0.40
-    ELSE
-        SOURCE:24 += 6000
-        TIMES SOURCE:16 , 6.00
-        TIMES SOURCE:22, 0.10
-    ENDIF
-
+;노예의 사정은 TRAIN_CHECK.ERB에서 관리
     ;사정처 타입의 설정
     TFLAG:703 = 17
     ;사정처 선택의 가능·불가
     TFLAG:704 = 0
-    ;노예 사정 판정이 끝난 플래그
+    ;노예 사정처 선정이 끝난 플래그
     TFLAG:705 = 1
-    ;범용적인 처리는 이 함수로 실시한다
-    ;(사정 게이지의 재계산이나 사정 경험의 상승과 공통 부분의 표시)
-    CALL SAMEN_SHOOT
-ENDIF
 
 IF TALENT:120 == 0 && TALENT:PLAYER:120 == 0
     TCVAR:12 += 7
