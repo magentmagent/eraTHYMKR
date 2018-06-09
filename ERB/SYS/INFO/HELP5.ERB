@@ -196,13 +196,13 @@ ELSEIF LOCAL == 15
     PRINTL [159] Q.SM교육 경험 플래그가 있는 조교 커맨드
 ELSEIF LOCAL == 16
     PRINTL [160] Q.창관기능에 대해
-    PRINTL [161] Q.창관에서 매춘시키기 위한 조건
-    PRINTL [162] Q.[창부] 취득 조건
-    PRINTL [163] Q.[구애의존] 취득 조건
-    PRINTL [164] Q.[매춘중독] 취득 조건
-;    PRINTL [165] Q. (미정의)
-;    PRINTL [166] Q. (미정의)
-;    PRINTL [167] Q. (미정의)
+    PRINTL [161] Q.창관의 증축
+    PRINTL [162] Q.창관의 날
+    PRINTL [163] Q.창관에서 매춘시키기 위한 조건
+    PRINTL [164] Q.커맨드 별 매춘시키기 위한 조건
+    PRINTL [165] Q.[창부] 취득 조건
+    PRINTL [166] Q.[구애의존] 취득 조건
+    PRINTL [167] Q.[매춘중독] 취득 조건
 ;    PRINTL [168] Q. (미정의)
 ;    PRINTL [169] Q. (미정의)
 ELSEIF LOCAL == 17
@@ -3293,26 +3293,74 @@ PRINTL
 PRINTL 매춘을 통해 수입을 얻거나 각종 경험을 쌓게할 수가 있는 이점을 가진다.
 PRINTW 반면, 부정의 구슬 외의 구슬은 입수하지 못하고, 체력이 줄어드는 디메리트도 있다.
 
-;창관에서 매춘시키기 위한 조건
+;창관의 확장
 @DICTIONARY_NETABARE_Q161
+PRINTL 【창관의 증축】
+PRINTL 돈을 들여 창관을 증축하고 추가 시설을 설치할 수 있습니다.
+PRINTL 증축에는 다음과 같은 효과가 있습니다.
+PRINTL 
+PRINTL ・매춘가능인원 증가 : 최대 30 명까지 매춘인원을 늘릴 수 있습니다.
+PRINTL ・대연회장 설치 : 집단시간과 난교 커맨드에 필요합니다.
+PRINTL ・여러가지 기구 비치 : S 플레이 커맨드에 필요합니다. 각 매춘 커맨드에 추가 이벤트가 등장합니다.
+PRINTL ・비디오 판매 코너 설치 : 추가 수입을 얻습니다.
+PRINTW ・촉수 방 설치 : 각 매춘 커맨드에 추가 이벤트가 등장합니다.
+
+;창관의 날
+@DICTIONARY_NETABARE_Q162
+PRINTL 【창관의 날】
+PRINTL 매주 일요일은 창관의 날이다. 할인을 제공해 더 많은 손님이 찾아온다.
+PRINTL 창관의 날에는 특별한 파티를 할 수 있다.
+PRINTL 
+PRINTL 각 파티를 하기 위한 조건은 이하와 같다.
+PRINTL ・처녀경매 :없음
+PRINTL ・입식파티 : 없음, 노예가 5 명 이상
+PRINTL ・S 플레이 : 여러가지 기구를 비치한다. 노예가 5 명 이상
+PRINTL ・난교 파티 : 창관의 평판이 50 이상이다. 노예가 5명 이상
+PRINTL ・일부다처제 : 창관의 평판이 100이다. 노예가 4명 이상
+PRINTL ・승천직전 SM투어 : 창관의 평판이 100이다. 노예가 4명 이상
+PRINTW ・정액 목욕탕 투어 : 창관의 평판이 100이다. 노예의 정액이 4인분 이상 ([조루]와 [지루]가 정액의 양을 바꿈)
+
+;창관에서 매춘시키기 위한 조건
+@DICTIONARY_NETABARE_Q163
 PRINTL 【창관에서 매춘시키기 위한 조건】
 PRINTL 매춘을 실행하기 위한 조건은 기본적으로는 이하와 같다.
 PRINTL 
 PRINTL ・체력이 500보다 많다
-PRINTL ・반발각인, [임신], [회란], [기생]이 없다
-PRINTL ・순종이 Lv3 이상
-PRINTW ・욕망, 기교, 봉사정신, 노출증의 합계 Lv가 7 이상
+PRINTL ・반발각인, [육아중], [회란], [기생]이 없다
+PRINTW ・순종, 욕망, 기교, 봉사정신, 노출증의 합계 Lv가 7 이상
+
+;커맨드 별 매춘시키기 위한 조건
+@DICTIONARY_NETABARE_Q164
+PRINTL 【커맨드 별 매춘시키기 위한 조건】
+PRINTL 노예가 각 매춘을 실행하기 위한 조건은 이하와 같다.
+PRINTL ・소프트 매춘 : 없음
+PRINTL ・ＣＢ매춘 : C감각과 B감각의 합이 5 이상이다.
+PRINTL ・Ａ매춘 : A감각이 3 이상이며 [소인체형]이 아니다.
+PRINTL ・Ｖ매춘 : V경험이 30 이상 또는 [창부]이며, 순종, 욕망, 봉사정신, 노출증이 각각 1 이상이며, [소인체형]이 아니고 [남자]가 아니다.
+PRINTL ・집단시간 : 순종이 1 이상이고 노출증이 3 이상이고 굴복각인이 2 이상이며 매춘경험이 30 이상이고 [소인체형]이 아니다.
+PRINTL ・난교 : 순종이 1이상이며 노출증이 3이상이다. V감각과 A감각의 합이 5 이상이다.
+PRINTL   V경험이 1 이상 또는 [창부]이다. 굴복각인이 3이상이고 매춘경험이 30 이상이고 창관인기가 40 이상이다. [소인체형]이 아니고 [남자]가 아니다.
+PRINTL ・세트 매춘 : [창부]이다.
+PRINTL 
+PRINTL 노예가 파티에 참가하기 위한 조건은 이하와 같다.
+PRINTL ・처녀경매 :[처녀]이고 [남자]가 아니다.
+PRINTL ・입식파티 : 봉사정신이 2 이상이다.
+PRINTL ・S 플레이 : [처녀]가 아니고 [남자]가 아니다. 순종이 4 이상이다.
+PRINTL ・난교 파티 : [남자]가 아니다. 순종이 4 이상이다.
+PRINTL ・일부다처제  :[처녀]가 아니고 [남자]가 아니다. 순종이 4 이상이다.
+PRINTL ・승천직전 SM투어 : [처녀]가 아니고 [남자]가 아니다. 새드끼가 4 이상이다.
+PRINTW ・정액 목욕탕 투어 : [후타나리]이다.
 
 ;[창녀] 취득 조건
-@DICTIONARY_NETABARE_Q162
-PRINTL 【[창녀] 취득 조건】
+@DICTIONARY_NETABARE_Q165
+PRINTL 【[창부] 취득 조건】
 PRINTL 1:매춘경험 100 이상
 PRINTL 2:반발각인 없음
 PRINTL 3:굴복각인의 LV가 3
 PRINTW 4:창관에서의 인기가 40 이상
 
 ;[구애의존] 취득 조건
-@DICTIONARY_NETABARE_Q163
+@DICTIONARY_NETABARE_Q166
 PRINTL 【[구애의존] 취득 조건】
 PRINTL [구애의존] 취득 조건은 2가지가 있다.
 PRINTL 그 1
@@ -3324,7 +3372,7 @@ PRINTL 그 2
 PRINTW [연모]를 가지고 [상애]을 가지고 있지 않을 때에 창관에서 임신한다. 이때 [연모]는 사라진다.
 
 ;[매춘중독] 취득 조건
-@DICTIONARY_NETABARE_Q164
+@DICTIONARY_NETABARE_Q167
 PRINTL 【[매춘중독] 취득 조건】
 PRINTL 1:창관에 있는 시간 쪽이 없는 시간보다 길다
 PRINTL 2:[간판소녀]이다
@@ -3333,46 +3381,6 @@ PRINTL 이 소질은 당분간 그 캐릭터가 창관에 가지 않으면 소�
 PRINTL 이 소질을 가지는 캐릭터를 창관으로부터 끌어오면  반발각인 3이 붙는다.
 PRINTL 또 창관에 빈 자리가 있으면 멋대로 매춘을 하러 갈 때가 있다.
 PRINTW 주인이 이 소질을 취득하면 조교를 실시할 수 없게 되므로 주의. (조교 이외는 가능)
-
-;
-@DICTIONARY_NETABARE_Q165
-PRINTL 【최종 평화 조교. 신사는, 이제(벌써), 되돌릴 수 없다】
-PRINTL 
-PRINTL 미약 2만개를 축으로 한 소녀들에게로의 대조교 작전 「메탈 화이트」
-PRINTL (the Masochistic Eros Training for All Ladies
-PRINTW : Wisdom, Hunger, Item, Technique: Enchant them)가 추진되었다
-
-;
-@DICTIONARY_NETABARE_Q166
-PRINTL 【조교에 사각 없음! 】
-FONTBOLD
-PRINTL 「霊夢」함락
-FONTREGULAR
-PRINTL  레이무
-PRINTL 
-PRINTL 
-PRINTW 환상향비함락 소녀···불명
-PRINTL 
-FONTBOLD
-PRINTL 경고
-FONTREGULAR
-PRINTL 
-PRINTL 
-PRINTL 소녀 급속 접근중,
-PRINTW 조교 몸의 자세를 유지해.
-PRINTL 
-PRINTL 
-PRINTL 
-PRINTL 
-PRINTW 전 욕구형 조교폭장무녀 「영몽개」
-
-;
-@DICTIONARY_NETABARE_Q167
-PRINTL 【함락 한 연고응에 전화를 걸었을 때】
-PRINTL 판티가 냄새를 맡으면
-PRINTL 짊어지겠어 같은 냄새가 났어!
-PRINTW 조금 쇼크군요―
-
 ;
 @DICTIONARY_NETABARE_Q168
 PRINTL 【카○님이 있기 어려운 말씀】
