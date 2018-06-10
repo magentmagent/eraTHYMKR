@@ -1413,6 +1413,8 @@ ELSEIF TFLAG:0 != 10 && TFLAG:0 != 11
                 CONTINUE
             COM_NAME = %PALAMNAME:COUNT%의 구슬
         ELSEIF TFLAG:0 == 7
+            SIF COUNT >= 100
+                CONTINUE
             SIF COUNT >= 2 && COUNT <= 9
                 CONTINUE
             SIF (FLAG:1500 & 1) == 0 && COUNT >= 10

@@ -847,7 +847,7 @@ CFLAG:ARG:4 = 0
 IF CFLAG:ARG:79 == 0
     MAXBASE:ARG:0 += 500
     PRINTFORML %CALLNAME:ARG%의 가슴은 모유를 수유하는 역할을 마쳤습니다.
-    IF CFLAG:ARG:3005
+    IF CFLAG:ARG:3006
         ;임신 시에 커진 가슴 사이즈를 한 단계 작게 한다
         CALL REVERSE_B_SIZE, ARG
     ELSE

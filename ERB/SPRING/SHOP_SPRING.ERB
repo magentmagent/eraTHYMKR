@@ -133,7 +133,7 @@ $SPRING
 
 DRAWLINE
 PRINTL 누구의 매춘 상황을 바꾸겠습니까?
-PRINTFORML 현재 매춘인원　{FLAG:3001}／{ITEM:90}    현재 인기 {FLAG:3005}
+PRINTFORML 현재 매춘인원　{FLAG:3001}／{ITEM:90}    현재 평판 {FLAG:3005}
 $PRINT_LIST
 CALL SPRING_3
 DRAWLINE
@@ -341,7 +341,7 @@ ELSEIF FLAG:3004 == 12 && TALENT:COUNT:0 == 0 && ABL:COUNT:10 >= 4 && TALENT:COU
     PRINTLC [8] S풀장 플레이
 ELSEIF FLAG:3004 == 20 && ABL:COUNT:10 >= 4 && TALENT:COUNT:120 == 0
     PRINTLC [8] 난교 파티
-ELSEIF FLAG:3004 == 30 && TALENT:COUNT:0 == 0 && ABL:COUNT:10 >= 4 && ABL:COUNT:20 >= 4 && TALENT:COUNT:120 == 0
+ELSEIF FLAG:3004 == 30 && TALENT:COUNT:0 == 0 && ABL:COUNT:10 >= 4 && TALENT:COUNT:120 == 0
     PRINTLC [8] 일부다처제 플레이
 ELSEIF FLAG:3004 == 31 && TALENT:COUNT:0 == 0 && ABL:COUNT:20 >= 4 && TALENT:COUNT:120 == 0
     PRINTLC [8] 승천직전 SM투어
@@ -558,7 +558,7 @@ IF FLAG:3000 & 2
 ;    PRINTC  [14] S전차치한플레이
 ENDIF
 ;20台は乱交系.ある程度の人気が必要
-IF EXP:MASTER:77 >= 50
+IF FLAG:3005 >= 50
     PRINTC  [20] 난교파티
 ;    PRINTC  [21] 야외난교파티
 ;    PRINTC  [22] 온천숙소파티
@@ -604,13 +604,13 @@ ELSEIF RESULT == 12 && FLAG:3000 & 2
 ;ELSEIF RESULT == 14 && FLAG:3000 & 2
 ;    PRINTL 전차에서 치한이 나왔다는 시추에이션으로 플레이를 행합니다.
 ;    FLAG:3004 = 14
-ELSEIF RESULT == 20 && EXP:MASTER:77 >= 50
+ELSEIF RESULT == 20 && FLAG:3005 >= 50
     PRINTL 난교 파티를 개최합니다.
     FLAG:3004 = 20
-;ELSEIF RESULT == 21 && EXP:MASTER:77 >= 50
+;ELSEIF RESULT == 21 && FLAG:3005 >= 50
 ;    PRINTL 야외 난교 파티를 개최합니다.
 ;    FLAG:3004 = 21
-;ELSEIF RESULT == 22 && EXP:MASTER:77 >= 50
+;ELSEIF RESULT == 22 && FLAG:3005 >= 50
 ;    PRINTL 온천숙소를 대절해서 난교 파티를 개최합니다.
 ;    FLAG:3004 = 22
 ELSEIF RESULT == 30 && FLAG:3000 & 16
