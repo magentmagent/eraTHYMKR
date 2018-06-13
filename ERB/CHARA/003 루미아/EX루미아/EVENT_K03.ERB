@@ -12950,7 +12950,7 @@ IF TFLAG:200 == 409
     IF GET_NIGHT_KOJO(0) == 0
         ;ＥＸ연모　ぱるぱるぱるぱる(ry　ＥＸは嫉妬しすぎ
         IF TALENT:150 && CFLAG:0 == 1 && TALENT:159 == 0
-            PRINTFORML 「%CALLNAME:MASTER%……%CALLNAME:G%와……읏……」
+            PRINTFORML 「%CALLNAME:MASTER%……%조사처리(CALLNAME:GET_CHARA_G(),"와")%……읏……」
             PRINTFORML 「흣……아, 하아……훌쩍, 어째서, 흐, 윽, 내가 아닌거야……?」
             IF TALENT:19 == 0 && CFLAG:7000 > 0 
                 PRINTFORML 루미아는 [질투하기 쉬움]을 얻었다

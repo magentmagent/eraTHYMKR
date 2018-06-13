@@ -24017,7 +24017,7 @@ IF TFLAG:200 == 452
                     PRINTFORMW 『두 사람 모두 기분 좋은 것 같아서 좋은데~. 이번엔 나도 불러 주지 않을까』
                 ;그 외
                 ELSE
-                    PRINTFORML 『으~윽, 또 %조사처리(CALLNAME:G,"과")%…. 나하고도 확실히 해줬으면 좋겠어』
+                    PRINTFORML 『으~윽, 또 %조사처리(CALLNAME:GET_CHARA_G(),"과")%…. 나하고도 확실히 해줬으면 좋겠어』
                     PRINTFORMW 『우선 이거, 어떡하지. 모처럼인데 봐 볼까』
                 ENDIF
             ENDIF
@@ -24025,7 +24025,7 @@ IF TFLAG:200 == 452
             ;도촬이 발각되고 있다
             IF ABL:MASTER:14 >= 3
                 PRINTFORML 『흐앗, 엄청 야해…, 이런 걸 보여주면…, 흐아앗!』
-                PRINTFORML 리리카는 얽히는 %조사처리(CALLNAME:MASTER,"과")% %CALLNAME:G%의 영상을 보면서 몇 번이나 자위에 빠진 것 같다.
+                PRINTFORML 리리카는 얽히는 %조사처리(CALLNAME:MASTER,"과")% %CALLNAME:GET_CHARA_G()%의 영상을 보면서 몇 번이나 자위에 빠진 것 같다.
                 PRINTFORMW 『아……, 끝나 버렸다…. 되감아서 다시 한 번……』
             ELSE
                 PRINTFORML 『무르군~, 언제라도 방심은 금물이야』
