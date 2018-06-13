@@ -505,6 +505,12 @@ ELSE
         ELSEIF BASE:MASTER:8 > MAXBASE:MASTER:8
             PRINTFORML 취한 탓인지 속이 좋지 않다.
             PRINTW 잠시 쉬는 편이 좋을 것 같다…….
+        ELSEIF CFLAG:MASTER:4 == 2 ;주인이 육아실
+            IF TALENT:MASTER:140
+                PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 만삭이라 조교를 할 수 없다.
+            ELSEIF TALENT:MASTER:141
+                PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 육아 중이라 조교를 할 수 없다.
+            ENDIF
         ELSEIF CFLAG:MASTER:1501 != 0
             PRINTW 매춘과 조교를 동시에 할 수 없다.
         ELSEIF TALENT:MASTER:262 != 0
