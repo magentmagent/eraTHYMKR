@@ -4351,29 +4351,34 @@ RETURN 0
 
 ;변수 선언 ABL_MARK : 랜덤으로 뽑아낸 숫자를 ABL과 MARK(+100)로 변환
 ;필요한 ABL, MARK의 번호를 추출한다. ABL 17개와 MARK 4개 총 21개
-#DIM ABL_MARK=0,1,2,3,10,11,12,13,14,20,21,22,23,30,31,32,33,100,101,102,104
-;변수 선언 CHECKED_BOOK : 해당 책을 체크했는지 여부 확인
-#DIM CHECKED_BOOK, 200
+#DIM CONST ABL_MARK=0,1,2,3,10,11,12,13,14,20,21,22,23,30,31,32,33,100,101,102,104
+#DIM SELECTABLE_BOOK_LIST, 21
+#DIM SELECTABE_BOOK_COUNT
+#DIM SELECTED_BOOK_COUNT
 
-;초기화
-VARSET LOCAL, 0
-VARSET CHECKED_BOOK, 0
+SELECTABE_BOOK_COUNT = 0
 ;LOCAL:0 이번에 던진 책의 수
-;LOCAL:1 무한루프 방지용
 
+LOCAL = VARSIZE("ABL_MARK")
+
+REPEAT LOCAL
+    CALL CHECK_BOOK(ABL_MARK:COUNT)
+    SIF RESULT
+        SELECTABLE_BOOK_LIST:(SELECTABE_BOOK_COUNT++) = ABL_MARK:COUNT
+REND
+
+;선택가능한 책이 없음
+SIF SELECTABE_BOOK_COUNT == 0
+    RETURN 0
+
+SELECTED_BOOK_COUNT = 0
 
 ;――――――――――――――↓루프――――――――――――――
-$BOOK_LOOP
-;――――――――――――――여기서부터 책 고르기――――――――――――――
-LOCAL:1 += 1 ;LOOP 횟수 계산
-R = RAND:VARSIZE("ABL_MARK")
-RESULT:0 = 0
-SIF CHECKED_BOOK:(ABL_MARK:R) == 0 ;이번 조교에 해당 ABL, MARK를 체크한 적 없다.
-    CALL CHECK_BOOK, ABL_MARK:R
-CHECKED_BOOK:(ABL_MARK:R) = 1 ;해당 책을 체크함.
-IF RESULT:0 == 1
-    LOCAL:0 += 1 ;던진 책의 수 계산
-    SELECTCASE ABL_MARK:R
+WHILE SELECTED_BOOK_COUNT < 3
+    ;――――――――――――――여기서부터 책 고르기――――――――――――――
+    LOCAL = RAND:SELECTABE_BOOK_COUNT
+    SELECTED_BOOK_COUNT += 1 ;던진 책의 수 계산
+    SELECTCASE SELECTABLE_BOOK_LIST:LOCAL
         ;C감각의 책
         CASE 0
             PRINTFORML 『클립 활용법』
@@ -4442,21 +4447,13 @@ IF RESULT:0 == 1
         CASE 104
             PRINTFORML 『부끄러운 일을 잊는 방법』
     ENDSELECT
-ENDIF
-;――――――――――――――↑루프시키기 위해 GOTO――――――――――――――
-    ;무한루프가 너무 심하면 강제 종료 0 (일단 25번 정도)
-    ;3권 얻으면 강제 종료 1
-    SIF LOCAL:1 >= 25
-        RETURN 0
-    SIF LOCAL:0 >= 3
-        RETURN 1
-;GOTO 루프
-GOTO BOOK_LOOP
+WEND
+
+RETURN 1
 
 
 @CHECK_BOOK, ARG
 ;ARG:0 = 책의 번호
-;ARG:1 = 해당 책의 체크 여부
 ;체크 성공하면 RETURN 1
 
 SELECTCASE ARG
