@@ -294,7 +294,7 @@ RETURN 1
 @TROPHY_200_3
 RESULTS:0 = 브론즈
 RESULTS:1 = 저금이 좋아
-RESULTS:2 = 소지금 $100000 이상 달성
+RESULTS:2 = 소지금 10만원 이상 달성
 ;달성 판정
 SIF MONEY >= 100000
     RETURN 1
@@ -302,7 +302,7 @@ SIF MONEY >= 100000
 @TROPHY_200_4
 RESULTS:0 = 브론즈
 RESULTS:1 = 밀리언 달러!
-RESULTS:2 = 소지금 $1000000 이상 달성
+RESULTS:2 = 소지금 100만원 이상 달성
 ;달성 판정
 SIF MONEY >= 1000000
     RETURN 1
@@ -310,7 +310,7 @@ SIF MONEY >= 1000000
 @TROPHY_200_5
 RESULTS:0 = 실버
 RESULTS:1 = 이 세상의 돈
-RESULTS:2 = 소지금 $10000000 이상 달성
+RESULTS:2 = 소지금 1000만원 이상 달성
 ;달성 판정
 SIF MONEY >= 10000000
     RETURN 1
@@ -318,7 +318,7 @@ SIF MONEY >= 10000000
 @TROPHY_200_6
 RESULTS:0 = 골드
 RESULTS:1 = 억만장자!
-RESULTS:2 = 소지금 $100000000 이상 달성
+RESULTS:2 = 소지금 1억원 이상 달성
 ;달성 판정
 SIF MONEY >= 100000000
     RETURN 1
@@ -1364,9 +1364,9 @@ SIF GLOBAL:202 & 1p27
     RETURN 1
 
 @TROPHY_FEAT_GET_초상계산
-;所持金$999999999999999999(最大値)達成
-CALL TROPHY_200_7
+;소지금 1억원 달성
+CALL TROPHY_200_6
 RESULTS:3 = 보통 사람은 측정하지 못하는 수치를 볼 수 있습니다.
-SIF GLOBAL:200 & 1p7
+SIF GLOBAL:200 & 1p6
     RETURN 1
 
