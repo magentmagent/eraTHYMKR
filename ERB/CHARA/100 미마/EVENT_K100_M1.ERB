@@ -124,7 +124,7 @@ IF SELECTCOM == 611 || (SELECTCOM == 1 && TEQUIP:56)
         ;음란+노출벽Lv3이상+C감각Lv3이상
         IF TALENT:170 == 1 && ABL:14 >= 3 && ABL:0 >= 3 && (CFLAG:5503 <= 5 || FLAG:11 == 2)
             PRINTFORMW 『질척해……읏、대홍수네』
-            PRINTFORMW 「핫、앗！　레이뭇、거기、기분 좋아！」
+            PRINTFORMW 「핫、앗！　레이무、거기、기분 좋아！」
             CFLAG:5503 = 6
         ;음란
         ELSEIF TALENT:170 == 1 && (CFLAG:5503 <= 4 || FLAG:11 == 2)    
@@ -166,7 +166,7 @@ IF SELECTCOM == 2
             ;그 외
             ELSE
                 PRINTFORMW 「레이무、거기는！」
-                PRINTFORMW 『모르는거야？　정말 기분 좋아』
+                PRINTFORMW 『모르는거야？ 정말 기분 좋아』
             ENDIF
         ;경험 있음
         ELSE

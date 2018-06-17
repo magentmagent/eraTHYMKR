@@ -1,4 +1,4 @@
-﻿;-------------------------------------------------
+;-------------------------------------------------
 ;미마 대사
 ;
 ;-------------------------------------------------
@@ -160,8 +160,8 @@ ELSEIF CFLAG:7003 < 5 && TALENT:150 == 1
     PRINTFORMW 「그렇지만 말이야, 난 깨달았어」
     PRINTFORMW 「당신에 대한 마음은 그런게 아니야」
     PRINTFORMW 「함께 있고 싶다. 단지 그것만으로 좋아」
-    PRINTFORMW 「그렇게 생각하게 되었어. 」
-    PRINTFORMW 점차 뺨을 붉게 물들이면서 미마는 %CALLNAME:MASTER%에게 으로 다가왔다
+    PRINTFORMW 「그렇게 생각하게 되었어.」
+    PRINTFORMW 점차 뺨을 붉게 물들이면서 미마는 %CALLNAME:MASTER%에게 다가왔다
     PRINTFORMW 「지금까지의 관계라도 상관없어」
     PRINTFORMW 「그렇지만 노예가 아니고 파트너로 대해주지 않겠어?」
     DRAWLINE
@@ -2006,7 +2006,7 @@ IF SELECTCOM == 21
             PRINTFORMW 「으앗!　안쪽까지!　닿고 있어!」
             PRINTFORMW 「%CSTR:90%로 하나가 되어있어!」
             ELSE
-            PRINTFORMW 「앗、크으！ 안쪽엣, 비벼져섯！ 응아앗！」
+            PRINTFORMW 「앗、크으！ 안쪽에, 비벼져서！ 응아앗！」
             ENDIF
             CFLAG:7162 = 5
         ;굴복 각인 Lv3＋V감각 Lv3 이상
@@ -2020,7 +2020,7 @@ IF SELECTCOM == 21
             CFLAG:7162 = 3
         ;그 이외
         ELSEIF CFLAG:7162 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「큿 이런 놈한테, 범해지다니……」
+            PRINTFORMW 「큿, 이런 놈한테, 범해지다니……」
             PRINTFORMW 때때로 신음 소리를 내면서, 미마는 %조사처리(CALLNAME:MASTER,"과")% 얽히었다
             CFLAG:7162 = 2
         ENDIF
@@ -2037,7 +2037,7 @@ IF SELECTCOM == 22
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「아, 읏! 안돼!　좀더 해줫!」
-            PRINTFORMW 키스를 주고 바으면서, 미마는 음란하게 허리를 흔들었다
+            PRINTFORMW 키스를 주고 받으면서, 미마는 음란하게 허리를 흔들었다
         ;그 이외
         ELSE
             PRINTFORMW 「앗, 그렇게, 격렬하게 하면!」
@@ -4531,7 +4531,7 @@ IF SELECTCOM == 230
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「으긋!?　읏, 읍, 큿, 흐앗!」
-            PRINTFORMW 「하앗, 하앗, 안쪽까지 들어가섯, 격렬하네……」
+            PRINTFORMW 「하앗, 하앗, 안쪽까지 들어가서, 격렬하네……」
         ;봉사 정신 Lv3 이상
         ELSEIF ABL:13 >= 3
             PRINTFORMW 「으웃……이것으로 만족한거야?」
@@ -4555,7 +4555,7 @@ IF SELECTCOM == 230
             CFLAG:7300 = 4
         ;봉사 정신 Lv3 이상
         ELSEIF ABL:13 >= 3 && (CFLAG:7300 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「하긋! 읏, 읍, 으긋, 하앗!」
+            PRINTFORMW 「하긋! 읏, 읍, 으긋, 하읍!」
             CFLAG:7300 = 3
         ;그 이외
         ELSEIF CFLAG:7300 <= 1 || FLAG:11 == 2
@@ -5941,7 +5941,7 @@ IF TFLAG:0 > 0 && CFLAG:7609 == 0
         IF LOCAL < 500
             PRINTFORMW 「아아……겨우 뺏어주는 거네……」
             PRINTFORMW 「……나는 정신 뿐인 몸이니까, 많이 못 느낄지도 모르지만」
-            PRINTFORMW 「%CSTR:90%가 가져가주니, 기뻐……」
+            PRINTFORMW 「%조사처리(CSTR:90,"가")% 가져가주니, 기뻐……」
         ;연모 또한 반발 각인 취득
         ELSE
             PRINTFORMW 「으긋……지금껀 조금 아팠어……」
