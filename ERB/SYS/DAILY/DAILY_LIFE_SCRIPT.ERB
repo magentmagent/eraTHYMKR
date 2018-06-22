@@ -553,7 +553,7 @@ RETURN 1
 SIF !TALENT:ARG:45
     RETURN 0
 
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"45"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"오줌싸개버릇"
 LOCAL = RESULT
 IF LOCAL > 0 && RAND:2 == 0
     PRINTFORMW 문득 창문으로 뜰을 내려다 보니 이불이 두 장 말려지고 있다.
@@ -1649,7 +1649,7 @@ SIF !TALENT:ARG:36
 PRINTFORMW 방에서 홍차를 마시며 쉬고 있는데 복도를 목욕 타월만 걸친 %조사처리(CALLNAME:ARG,"가")% 지나갔다……?
 PRINTFORMW 기분 탓인가…….
 PRINTFORMW ………….
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"수치 얇다"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"부끄럼없음"
 LOCAL = RESULT
 IF LOCAL > 0 && RAND:3 == 0
     PRINTFORMW 잠시 후 이번도 역시 목욕 타월만 걸친 %조사처리(CALLNAME:LOCAL,"가")% 지나갔다.
@@ -1773,7 +1773,7 @@ ELSE
 ;---------------------------------추가 부분(종)----------------------------
 
     ELSE
-        CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"보수적","정조 관념"
+        CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"보수적","정조관념"
         IF LOCAL > 0 && RAND:3 != 0
             PRINTFORMW 어안 벙벙한 기색으로 배웅해주자 %CALLNAME:LOCAL%의 화난 목소리가 들려왔다.
             PRINTFORMW 아무래도 알몸으로 우왕좌왕하고 있는 것을 설교 받고 있는 것 같습니다…….
@@ -1951,7 +1951,7 @@ RETURN 1
 SIF !(TALENT:ARG:50 && MARK:ARG:9 < 3)
     RETURN 0
 
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"습득 늦다"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"습득느림"
 LOCAL = RESULT
 IF LOCAL > 0 && MARK:LOCAL:9 < 3 && RAND:3 >= 1
     PRINTFORMW %CALLNAME:ARG%의 방에서 %조사처리(CALLNAME:ARG,"과")% %조사처리(CALLNAME:LOCAL,"가")% 무언가 하고 있는 것 같다.
@@ -2181,7 +2181,7 @@ ELSEIF TALENT:ARG:11 || TALENT:ARG:15 || TALENT:ARG:16 || TALENT:ARG:34
 ELSE
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 수긍하고 요리를 시작했다…….
 ENDIF
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"겁장이","얌전한","유치"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"겁쟁이","얌전함","유치"
 LOCAL = RESULT
 PRINTFORMW …………
 
@@ -4908,7 +4908,7 @@ ELSE
             CALL COMMON_DAILYJUEL,ARG,11,1000 + ((ABL:ARG:12 + RAND:6) * 100),1
         ELSE
             ;"소질:55"소유를 찾는다
-            CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"조제 지식"
+            CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"조합지식"
             LOCAL = RESULT
             IF LOCAL > 0 && MARK:LOCAL:8 < 1 && MARK:LOCAL:9 < 1 && (TALENT:LOCAL:153 ? RAND:4 >= 1 # TALENT:LOCAL:152 && RAND:2 == 0)
                 PRINTFORMW 다시 %CALLNAME:ARG%에게 조합지식을 사사받기 위해 %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:ARG%의 방을 방문했다
@@ -6567,7 +6567,7 @@ SIF !(((TALENT:ARG:153 && CFLAG:ARG:2 >= 7500) || (TALENT:ARG:152 && CFLAG:ARG:2
     RETURN 0
 
 ;"소질:63"소유를 찾는다
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"63"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"헌신적"
 LOCAL = RESULT
 IF LOCAL > 0 && TALENT:LOCAL:153 && MARK:LOCAL:8 < 1 && MARK:LOCAL:9 < 1 && RAND:4 >= 1
     PRINTFORMW 복도를 걷고 있는데 %CALLNAME:LOCAL%의 방에서 이야기 소리가 들려왔다

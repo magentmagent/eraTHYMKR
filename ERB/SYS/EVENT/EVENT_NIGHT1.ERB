@@ -444,7 +444,14 @@ ENDSELECT
 ;엿보기 오나니
 ;-----------------------------------------------
 @NIGHT_EVENT_10, ARG, ARG:1, ARG:2, ARG:3, ARG:4, ARG:5
+;ARG = 캐릭터1
+;ARG:1 = 캐릭터2
+;ARG:2 = 캐릭터3
+;ARG:3 = 욕정 참고 수치
+;ARG:4 = 정애 참고 수치
+;ARG:5 = 이벤트에 참가하는 캐릭터의 수
 TARGET = ARG:1
+;1/6의 확률, 3명 이상 , ARG:1 != ARG:2 && ARG:2 != ARG , 캐릭터2와 캐릭터3이 정조대를 착용하고 있지 않다., 캐릭터2와 캐릭터3이 여자이다
 IF RAND:6 == 0 && ARG:5 >= 3 && ARG:1 != ARG:2 && ARG:2 != ARG && (CFLAG:(ARG:1):42 & 2) == 0 && (CFLAG:(ARG:2):42 & 2) == 0 && TALENT:(ARG:1):120 == 0 && TALENT:(ARG:2):120 == 0
     PRINTL
     WAIT
@@ -490,7 +497,9 @@ ELSE
     WAIT
     ;직전의 행위가 자위계라면 플래그 세운다
     TFLAG:229 = (GROUPMATCH(GET_NIGHT_KOJO(0), 19, 119, 219, 319)) ? 1 # 0
-
+    ;캐릭터2가 주인일 때 캐릭터3을 사용
+    SIF ARG:1 == MASTER
+        SWAP ARG:1, ARG:2
     ;지문 컷
     SIF CFLAG:99 == 0
         PRINTFORML 몰래 \@(TFLAG:229 == 1) ? %조사처리(CALLNAME:ARG,"가")% %CALLNAME:MASTER% 앞에서 자위하는 것을 # %조사처리(CALLNAME:ARG,"와")% %CALLNAME:MASTER%의 정사를 \@ 엿보고 있던 %조사처리(CALLNAME:(ARG:1),"는")% 
