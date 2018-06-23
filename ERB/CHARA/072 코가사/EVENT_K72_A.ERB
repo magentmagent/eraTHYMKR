@@ -4962,7 +4962,7 @@ IF FLAG:5231 == 1 && CFLAG:9001 == 2
     SIF ASSI == GETCHARA(72)
         ASSI = -1
     DELCHARA GETCHARA(72)
-    NICKNAME:MASTER = 『낡은 우산의 소유자』
+    CALL GET_NICK, MASTER, "『낡은 우산의 소유자』"
 ;    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%%NICKNAME:MASTER%의 칭호를 얻었다.
 ENDIF
 RETURN 0
@@ -4973,7 +4973,7 @@ RETURN 0
 @SLAVE_ENDING_K72
 ;개변 허가가 있다면 칭호를 변경
 IF FLAG:5231 == 1
-    NICKNAME = 『우산 모양의 성처리 도구』
+    CALL GET_NICK, TARGET, "『우산 모양의 성처리 도구』"
 ;    PRINTFORMW %CALLNAME%는%NICKNAME%의 칭호를 얻었다.
 ENDIF
 RETURN 0

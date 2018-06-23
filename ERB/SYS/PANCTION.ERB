@@ -1579,3 +1579,47 @@ ELSEIF ARG:2 == 11
     INVERTBIT LOCAL:ARG, ARG:1
 ENDIF
 RETURNF LOCAL:ARG
+
+@GET_NICK(ARG,ARGS,ARG:1)
+;ARG = 칭호 변경 대상
+;ARGS = 새롭게 얻은 칭호
+;ARG:1 = 새로운 칭호의 등급
+;CFLAG:501 = 기존 칭호의 등급
+
+;칭호 변경을 더 이상 묻지 않음.
+SIF CFLAG:ARG:501 == 99
+    RETURN 0
+;새로운 칭호의 등급이 0일 때, 또는 새로운 칭호가 기존 칭호보다 등급이 높을 때
+IF ARG:1 == 0 || ARG:1 > CFLAG:ARG:501
+
+    PRINTFORML %조사처리(CALLNAME:ARG,"가")% 새로운 칭호를 얻을 수 있습니다.
+    PRINTFORML 새로운 칭호는 %ARGS%입니다.
+    STRLENS NICKNAME:ARG
+    IF RESULT > 0
+        PRINTFORML 현재 칭호는 %NICKNAME:ARG%입니다.
+    ELSE
+        PRINTL 현재 칭호가 없습니다.
+    ENDIF
+    PRINTFORML 칭호를 바꾸시겠습니까?
+    PRINTFORML (한 번 바꾸면 되돌릴 수 없습니다)
+    PRINTL [0] 현재의 칭호대로 놔둔다
+    PRINTL [1] 칭호를 변경한다
+    PRINTL [2] 귀찮으니 그만 물어봐라.
+    DRAWLINE
+    SIF ARG:1 == 0 ;등급이 없는 칭호에 기존 칭호와 같은 등급을 부여함
+        ARG:1 == CFLAG:ARG:501
+    $INPUT_LOOP
+    INPUT
+    IF RESULT == 0
+        PRINTFORMW %CALLNAME:ARG%의 칭호를 변경하지 않았습니다.
+    ELSEIF RESULT == 1
+        CFLAG:ARG:501 = ARG:1
+        NICKNAME:ARG = %ARGS%
+        PRINTFORMW %조사처리(CALLNAME:ARG,"는")% %NICKNAME:ARG%의 칭호를 얻었다.
+    ELSEIF RESULT == 2
+        CFLAG:ARG:501 = 99
+        PRINTFORMW %CALLNAME:ARG%의 칭호 변경을 더 이상 묻지 않습니다. (칭호 초기화 시 다시 물어봅니다.)
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
+ENDIF

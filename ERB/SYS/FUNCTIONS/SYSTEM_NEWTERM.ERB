@@ -1347,7 +1347,7 @@ IF RESULT == 0
     PRINTFORMW %조사처리(CALLNAME:ASSI,"는")% %CALLNAME:MASTER%에 의해 새로운 인격이 덧씌워졌습니다.
     PRINTFORMW %조사처리(CALLNAME:ASSI,"는")% [괴조인격]을 얻었다.
     TALENT:ASSI:169 = 1
-    NICKNAME:MASTER = 『귀축』
+    CALL GET_NICK, MASTER, "『귀축』"
     FLAG:37 += 1
     CFLAG:MASTER:157 |= 8
     ;主人との相性が500％に(解釈は各自ご自由に)

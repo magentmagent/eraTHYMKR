@@ -268,19 +268,19 @@ PRINTFORMW %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %조사처리(CST
 IF TFLAG:652 != 0 && TFLAG:654 == 0
     IF TALENT:(TFLAG:652):218 == 1
         PRINTFORML %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %CSTR:ARG:(21+ARG:1)%에게 %TALENTNAME:218%의 이름이 계승되었습니다.
-        NICKNAME:(TFLAG:652) = 선대 하쿠레이의 무녀
+        CALL GET_NICK, TFLAG:652, "선대 하쿠레이의 무녀"
         NICKNAME:TARGET = 하쿠레이의 무녀
         SIF TFLAG:652 != ARG
-            NICKNAME:ARG = 하쿠레이의 유모
+            CALL GET_NICK, ARG, "하쿠레이의 유모"
         TALENT:(TFLAG:652):218 = 0
         TALENT:218 = 1
     ENDIF
     IF TALENT:(TFLAG:652):219 == 1
         PRINTFORML %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %CSTR:ARG:(21+ARG:1)%에게 %TALENTNAME:219%의 이름이 계승되었습니다.
-        NICKNAME:(TFLAG:652) = 선대 카제하후리
+        CALL GET_NICK, TFLAG:652, "선대 카제하후리"
         NICKNAME:TARGET = 카제하후리
         SIF TFLAG:652 != ARG
-            NICKNAME:ARG = 카제하후리의 유모
+            CALL GET_NICK, ARG, "카제하후리의 유모"
         TALENT:(TFLAG:652):219 = 0
         TALENT:219 = 1
     ENDIF

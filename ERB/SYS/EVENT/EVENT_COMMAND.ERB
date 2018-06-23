@@ -800,7 +800,7 @@ ELSE
     ELSE
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 기어이 【인간】을 그만둬 버렸다
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 【항마경】의 칭호를 얻었다！
-        NICKNAME:MASTER = 항마경
+        CALL GET_NICK, MASTER, "항마경"
     ENDIF
 ENDIF
 ;調教者はcaved!!!!イベントを体験

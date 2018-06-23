@@ -721,9 +721,9 @@ CFLAG:3113 = DAY
 
 ;칭호 ＧＥＴ!
 IF TALENT:120
-    NICKNAME:TARGET = 『가장 사랑하는 남편』
+    CALL GET_NICK, TARGET, "『가장 사랑하는 남편』"
 ELSE
-    NICKNAME:TARGET = 『가장 사랑하는 아내』
+    CALL GET_NICK, TARGET, "『가장 사랑하는 아내』"
 ENDIF
 
 IF FLAG:5 == 0 && TFLAG:124 == 0
@@ -824,7 +824,7 @@ TFLAG:205 = 0
 CFLAG:3114 = DAY
 
 ;칭호 ＧＥＴ!
-NICKNAME:TARGET = 『최고의 종자』
+CALL GET_NICK, TARGET, "『최고의 종자』"
 
 IF FLAG:5 == 0 && TFLAG:124 == 0
     ;노예 엔딩 판별용
@@ -930,10 +930,11 @@ CFLAG:3 |= 2
 
 ;칭호 ＧＥＴ!
 IF RAND:2 == 0
-    NICKNAME:TARGET = 『%CALLNAME:MASTER%의 애완동물』
+    LOCALS = 『%CALLNAME:MASTER%의 애완동물』
 ELSE
-    NICKNAME:TARGET = 『%CALLNAME:MASTER%의 장난감』
+    LOCALS = 『%CALLNAME:MASTER%의 장난감』
 ENDIF
+CALL GET_NICK, TARGET, LOCALS
 
 PRINTFORMW ―――%조사처리(CALLNAME:TARGET,"는")% 몸도 마음도 %CALLNAME:MASTER%의 지배하에 놓였습니다―――
 PRINTW …………
@@ -999,21 +1000,21 @@ PRINTL
 ;칭호 ＧＥＴ!
 IF RAND:3 == 0
     IF TALENT:120
-        NICKNAME:TARGET = 『가장 사랑하는 남편』
+        CALL GET_NICK, TARGET, "『가장 사랑하는 남편』"
     ELSE
-        NICKNAME:TARGET = 『가장 사랑하는 아내』
+        CALL GET_NICK, TARGET, "『가장 사랑하는 아내』"
     ENDIF
 ELSEIF RAND:2 == 0
     IF TALENT:120
-        NICKNAME:TARGET = 『만점 파파』
+        CALL GET_NICK, TARGET, "『만점 파파』"
     ELSE
-        NICKNAME:TARGET = 『무적의 마마』
+        CALL GET_NICK, TARGET, "『무적의 마마』"
     ENDIF
 ELSE
     IF TALENT:120
-        NICKNAME:TARGET = 『운명의 남자』
+        CALL GET_NICK, TARGET, "『운명의 남자』"
     ELSE
-        NICKNAME:TARGET = 『운명의 여자』
+        CALL GET_NICK, TARGET, "『운명의 여자』"
     ENDIF
 ENDIF
 RETURN 1
@@ -1098,14 +1099,14 @@ PRINTL
 
 ;칭호 ＧＥＴ!
 IF RAND:3 == 0
-    NICKNAME:TARGET = 『최고의 종자』
+    CALL GET_NICK, TARGET, "『최고의 종자』"
 ELSEIF RAND:2 == 0
-    NICKNAME:TARGET = 『전용 성노예』
+    CALL GET_NICK, TARGET, "『전용 성노예』"
 ELSE
     IF TALENT:120
-        NICKNAME:TARGET = 『수퇘지』
+        CALL GET_NICK, TARGET, "『수퇘지』"
     ELSE
-        NICKNAME:TARGET = 『암퇘지』
+        CALL GET_NICK, TARGET, "『암퇘지』"
     ENDIF
 ENDIF
 RETURN 1
