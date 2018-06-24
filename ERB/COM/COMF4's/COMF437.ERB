@@ -45,7 +45,7 @@ IF TALENT:128
     SIF ABL:10 <= 3 || ABL:21 <= 3
         RETURN 0
 ENDIF
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인크기]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;일정의 Ｖ경험이 필요

@@ -41,14 +41,16 @@ ELSE
     LOCAL:10 = MAXBASE:(LOCAL:99):10
 ENDIF
 ;난수값＋성별에 따른 기초가 신장이다(mm)
-LOCAL:10 += (TALENT:(LOCAL:99):120) ? 1450 # 1300 
+LOCAL:10 += (TALENT:(LOCAL:99):120) ? 1450 # 1300
+
 ;체격 소질에 따른 수정
-;소인체형
-IF TALENT:(LOCAL:99):127
-    LOCAL:10 -= 1100
-    LOCAL:10 /= 2
+;[소인크기]
+SIF TALENT:(LOCAL:99):127
+    LOCAL:10 /= 10
+
+;신체 나이에 따른 수정
 ;소인이 아니라 작은 체형
-ELSEIF TALENT:(LOCAL:99):128
+IF TALENT:(LOCAL:99):128
     LOCAL:10 -= 400
 ;거구
 ELSEIF TALENT:(LOCAL:99):129
@@ -69,7 +71,7 @@ BASE:(LOCAL:99):13 = LOCAL:13
 LOCAL:12 = (((LOCAL:10 * 100) / 22) - ((LOCAL:10 * 100) / LOCAL:13)) / 10
 
 ;가슴계 소질로 기초값 변화    110:절벽 111:빈유 112:거유 113:폭유
-;소인체형인 경우, 이대로 더하면 수치가 완전히 파탄 나므로 보정
+;[소인크기]인 경우, 이대로 더하면 수치가 완전히 파탄 나므로 보정
 ;호출처의 장소에 따라 변화
 IF TALENT:(LOCAL:99):110
     LOCAL:12 += 0

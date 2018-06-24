@@ -33,7 +33,7 @@ ELSEIF NO:PLAYER == 57
 ELSE
     RETURN 0
 ENDIF
-;対象が작은 체형か소인체형でないとダメ
+;対象が작은 체형か[소인크기]でないとダメ
 SIF TALENT:127 == 0 && TALENT:128 == 0
     RETURN 0
 ;薬毒耐性だとダメ

@@ -1075,7 +1075,7 @@ FOR ASSI, 0, CHARANUM
     SIF ASSI == MASTER
         CONTINUE
     LOCAL:4 = 0
-    ;引き継ぎ操作の前に予め桃の飴玉を飲んでいるとＥＸ化の解除選択できるようになる
+    ;引き継ぎ操作の前に予めEX해제 사탕を飲んでいるとＥＸ化の解除選択できるようになる
     SIF EQUIP:ASSI:0 == 1
         CALL RESET_EX_ASSI
     ;조수가 즉각함락을 갖고 있지 않음＋(과거 주회 플레이를 포함해)지금까지 淫乱、淫核／淫茎、淫壷、淫尻、淫乳、尿道狂、キス魔、ドＳ、ドＭを全て([オトコ]の場合、[淫壷]は不要)취득、
@@ -1279,7 +1279,7 @@ ENDIF
 ;조수의 EX화 해제 선택 처리
 ;--------------------------------------------------
 @RESET_EX_ASSI
-PRINTFORMW ＜복숭아빛 사탕의 효과로 %CALLNAME:ASSI%의 EX화 상태를 해제할 수가 있습니다＞
+PRINTFORMW ＜EX해제 사탕의 효과로 %CALLNAME:ASSI%의 EX화 상태를 해제할 수가 있습니다＞
 PRINTFORML ＜%CALLNAME:ASSI%의 EX화 상태를 해제하겠습니까?＞
 PRINTLC [0] 예
 PRINTLC [1] 아니오
@@ -1294,7 +1294,7 @@ ELSEIF RESULT == 1
 ELSE
     GOTO INPUT_LOOP_RESET_EX_ASSI
 ENDIF
-;桃の飴玉の効果が切れる
+;EX해제 사탕の効果が切れる
 EQUIP:ASSI:0 = 0
 
 ;--------------------------------------------------

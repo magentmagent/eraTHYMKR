@@ -20,7 +20,7 @@ SIF TEQUIP:55 == 3
 ;ローションを30個이상持っているか, 아이템なし設定でないとダメ
 SIF ITEM:60 < 30 && NOITEM == 0
     RETURN 0
-;조교자가 소인체형のときは기교가 3이상 없으면 안 됨
+;조교자가 [소인크기]のときは기교가 3이상 없으면 안 됨
 IF TALENT:PLAYER:127
     SIF ABL:PLAYER:12 < 3
         RETURN 0

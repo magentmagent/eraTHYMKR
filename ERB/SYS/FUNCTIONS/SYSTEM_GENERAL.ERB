@@ -268,7 +268,7 @@ ENDSELECT
 ;조교자側が[禁断の知識]を持たない場合、体格比較判定へ
 IF TALENT:ARG:56 == 0
     ;互いの体格による体格差を求める
-    LOCAL = COMMON_BODYSIZE_CHECK2(ARG:0, ARG:1)
+    LOCAL = BODYSIZE(ARG) - BODYSIZE(ARG:1)
 
     ;조교자側と対象との体格差が二段階以上だとダメ
     SIF ABS(LOCAL) > 1
@@ -277,40 +277,32 @@ ENDIF
 RETURNF 1
 
 ;-------------------------------------------------
-;신체 사이즈에 따른 가부 그 ２
+;신체 사이즈 크기 값
 ;-------------------------------------------------
-;二人のキャラの身体サイズの差を数値として返す関数
-;[禁断の知識]などの有無や判定そのものの可否は呼び出し元でやるようにする.
-;ARG:0……조교자 측 캐릭터 위치
-;ARG:1……조교 대상 측 캐릭터 위치
-@COMMON_BODYSIZE_CHECK2(ARG:0, ARG:1)
+;키 130 cm를 기준
+;1 커질 때마다 1.3 배 키가 커지고
+;1 작아 질때마다 1.3배 키가 작아진다.
+;소인크기(-6)은 대략 27 cm
+@BODYSIZE(ARG)
 #FUNCTION
+;기본체격, 기본 성숙도
+LOCAL = 0
 
-;조교 대상 측의 [小人体型]
-IF TALENT:(ARG:1):127
-    LOCAL = -2
-;조교 대상 측의 [小柄体型]
-ELSEIF TALENT:(ARG:1):128
-    LOCAL = -1
-;조교 대상 측의 [巨躯]
-ELSEIF TALENT:(ARG:1):129
-    LOCAL = 1
-;조교 대상 측의 普通体型
-ELSE
-    LOCAL = 0
-ENDIF
-;조교자 측의 [小人体型]
-IF TALENT:ARG:127
-    LOCAL -= -2
-;조교자 측의 [小柄体型]
-ELSEIF TALENT:ARG:128
-    LOCAL -= -1
-;조교자 측의 [巨躯]
-ELSEIF TALENT:ARG:129
+;체격 소질에 따른 수정
+;[소인크기]
+SIF TALENT:(ARG):127
+    LOCAL = -6
+
+;신체 성숙도에 따른 수정
+;작은 체형
+IF TALENT:(ARG):128
     LOCAL -= 1
-;조교자 측의 普通体型
+;[성숙 체형]
+ELSEIF TALENT:(ARG):129
+    LOCAL += 1
+;보통 체형
 ELSE
-    LOCAL -= 0
+    LOCAL += 0
 ENDIF
 RETURNF LOCAL
 

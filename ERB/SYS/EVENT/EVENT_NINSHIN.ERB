@@ -126,7 +126,7 @@ SIF RAND:(RATE_PREGNANCY(LOCAL, ARG, ARG:1)) == 0 || FLAG:602
 LOCAL = 6 - ARG + MAX(2 - ARG, 0) + (ARG:2 > 1) * MIN(ARG, 2)
 ;소질보정
 LOCAL += TALENT:(ARG:1):130 * 5 ;소질[유아]
-LOCAL += (TALENT:(ARG:1):127 + TALENT:(ARG:1):128 + TALENT:(ARG:1):216) * 2 ;소질 [소인체형] [작은체형] [구문지]
+LOCAL += (TALENT:(ARG:1):127 + TALENT:(ARG:1):128 + TALENT:(ARG:1):216) * 2 ;소질 [소인크기] [작은체형] [구문지]
 ;소질 [기계] [영체] [인형] [폭발물] [신령] [반신]
 LOCAL += TALENT:(ARG:1):206 + TALENT:(ARG:1):207 + TALENT:(ARG:1):208 + TALENT:(ARG:1):220 + TALENT:(ARG:1):222 + TALENT:(ARG:1):223
 ;[요정]만 특수처리 (정자 주인이 요정지식이 없으면 +1)
@@ -569,7 +569,7 @@ IF ARG == MASTER
             CALL SELECT_NURSE, ARG
         ELSE
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 부득이하게 아기를 입양 보냈습니다…….
-            ;この時点で産みの親のEQUIP:1(紺の飴玉)のフラグをクリアする.
+            ;この時点で産みの親のEQUIP:1(성장촉진 사탕)のフラグをクリアする.
             EQUIP:ARG:1 = 0
         ENDIF
         TALENT:ARG:140 = 0
@@ -626,7 +626,7 @@ ELSEIF CFLAG:ARG:76 == 3 || (((CFLAG:ARG:78 == NO:MASTER && TALENT:ARG:150 == 0)
         CALL SELECT_NURSE, ARG
     ELSE
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 부득이하게 아기를 입양 보냈습니다…….
-        ;この時点で産みの親のEQUIP:1(紺の飴玉)のフラグをクリアする.
+        ;この時点で産みの親のEQUIP:1(성장촉진 사탕)のフラグをクリアする.
         EQUIP:ARG:1 = 0
     ENDIF
     TALENT:ARG:140 = 0
@@ -670,7 +670,7 @@ $INPUT_LOOP
 INPUT
 IF RESULT == 0
     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 부득이하게 아기를 입양 보냈습니다…….
-    ;この時点で産みの親のEQUIP:1(紺の飴玉)のフラグをクリアする.
+    ;この時点で産みの親のEQUIP:1(성장촉진 사탕)のフラグをクリアする.
     EQUIP:ARG:1 = 0
     RETURN
 ELSEIF RESULT < 0 || RESULT >= CHARANUM
@@ -692,7 +692,7 @@ ELSE
     CSTR:LOCAL:41 = %CSTR:ARG:41%
     ;生みの親が持つ精子提供者の固有IDコピー
     CFLAG:LOCAL:3004 = CFLAG:ARG:3004
-    ;EQUIP:1(紺の飴玉)のフラグを育ての親に譲渡する.
+    ;EQUIP:1(성장촉진 사탕)のフラグを育ての親に譲渡する.
     EQUIP:LOCAL:1 = EQUIP:ARG:1
     EQUIP:ARG:1 = 0
     IF TALENT:LOCAL:141 == 0

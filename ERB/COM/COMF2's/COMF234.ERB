@@ -17,13 +17,13 @@ SIF FLAG:2 & 1
 ;처녀には使えない
 SIF TALENT:0
     RETURN 0
-;조교자가 소인체형であることが前提
+;조교자가 [소인크기]であることが前提
 SIF TALENT:PLAYER:127 == 0
     RETURN 0
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 소인체형일 경우에는 ダメ
+;조교 대상이 [소인크기]일 경우에는 ダメ
 SIF TALENT:127
     RETURN 0
 ;主人調教の場合, 순종이 3미만かつ屈服刻印が1미만이면 불가

@@ -34,7 +34,7 @@ IF TALENT:ASSI:128
     SIF ABL:ASSI:10 < 4 || ABL:ASSI:21 < 4
         RETURN 0
 ENDIF
-;조교 대상か조수가 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상か조수가 [소인크기]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF (TALENT:127 || TALENT:ASSI:127) && TALENT:MASTER:56 == 0
     RETURN 0
 ;주인이 새드か狂気じゃないとできない。
