@@ -32,17 +32,6 @@ RETURNF LOCAL+ARG
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 
 ;-------------------------------------------------
-;페니스 판정 함수@PENIS
-;    인수：대상 캐릭터의 등록번호
-;페니스가 있을 경우 1를 반환합니다
-;-------------------------------------------------
-@PENIS(ARG)
-#FUNCTION
-SIF ARG < 0
-    RETURNF 0
-RETURNF TALENTCHECK(ARG, "オトコ") || TALENTCHECK(ARG, "ふたなり")
-
-;-------------------------------------------------
 ;주인 조교 판정 함수@MASTERONLY
 ;    인수：판정하고 싶은 소질명(문자열)
 ;TARGET이 인수의 素質を持っていて、かつ調教者が主人であれば1を返します
@@ -165,7 +154,7 @@ RETURNF LOCAL
 ;인수で渡された２キャラの胸の大きさを素質で比較します
 ;どちらかがオトコか不在なら0、인수0のキャラが大きいなら1、인수1のキャラが大きいなら2、同じなら3が返ります
 ;--------------------------------------------------
-@BUSTSIZE(ARG, ARG:1)
+@BUSTSIZE_DIFF(ARG, ARG:1)
 #FUNCTION
 SIF ARG < 0 || ARG:1 < 0
     RETURNF 0
@@ -232,7 +221,7 @@ IF TALENTCHECK(ARG, "Ｃ鈍感")
 ELSEIF TALENTCHECK(ARG, "Ｃ敏感")
     LOCAL += 15
 ENDIF
-SIF PENIS(ARG)
+SIF EXIST_PENIS(ARG)
     LOCAL += 10
 IF TALENTCHECK(ARG, "Ｖ鈍感")
     LOCAL:1 -= 15

@@ -305,6 +305,110 @@ SIF TALENT:(ARG):128
 RETURNF LOCAL
 
 ;-------------------------------------------------
+;가슴 크기 값
+;-------------------------------------------------
+;ARG = 캐릭터 번호
+@BUSTSIZE(ARG)
+#FUNCTION
+SIF ARG < 0
+    RETURNF 0
+;절벽
+IF TALENT:ARG:110 
+    LOCAL = 1
+;빈유
+ELSEIF TALENT:ARG:111
+    LOCAL = 2
+;큰 가슴
+ELSEIF TALENT:ARG:112
+    LOCAL = 4
+;폭유
+ELSEIF TALENT:ARG:113
+    LOCAL = 5
+;보통
+ELSE
+    LOCAL = 3
+ENDIF
+RETURNF LOCAL
+
+;-------------------------------------------------
+;가슴 크기를 변경한다
+;-------------------------------------------------
+;ARG = 캐릭터 번호
+;ARG:1 = 가슴 크기 숫자
+;ARG:2 = 비트 값, 1 = 이름을 말한다, 2 = 무슨 가슴이 됐는지 말한다.
+@NUM_TO_BUST(ARG,ARG:1,ARG:2)
+IF ARG:2 & 2
+    ;절벽
+    IF TALENT:ARG:110 
+        PRINTFORM [%TALENTNAME:110%]에서 
+    ;빈유
+    ELSEIF TALENT:ARG:111
+        PRINTFORM [%TALENTNAME:111%]에서 
+    ;큰 가슴
+    ELSEIF TALENT:ARG:112
+        PRINTFORM [%TALENTNAME:112%]에서 
+    ;폭유
+    ELSEIF TALENT:ARG:113
+        PRINTFORM [%TALENTNAME:113%]에서 
+    ;보통
+    ELSE
+        PRINTFORM [평유]에서 
+    ENDIF
+ENDIF
+TALENT:ARG:110 = 0
+TALENT:ARG:111 = 0
+TALENT:ARG:112 = 0
+TALENT:ARG:113 = 0
+SELECTCASE ARG:1
+    CASE 1
+        TALENT:ARG:110 = 1
+        SIF ARG:2 & 2
+            PRINTFORMW [%TALENTNAME:110%]로 바뀌었다.
+    CASE 2
+        TALENT:ARG:111 = 1
+        SIF ARG:2 & 2
+            PRINTFORMW [%TALENTNAME:111%]로 바뀌었다.
+    CASE 3
+        ;아무 소질도 켜지 않는다.
+        SIF ARG:2 & 2
+            PRINTFORMW [평유]로 바뀌었다.
+    CASE 4
+        TALENT:ARG:112 = 1
+        SIF ARG:2 & 2
+            PRINTFORMW [%TALENTNAME:112%]로 바뀌었다.
+    CASE 5
+        TALENT:ARG:113 = 1
+        SIF ARG:2 & 2
+            PRINTFORMW [%TALENTNAME:113%]로 바뀌었다.
+    CASEELSE
+        PRINTFORML 버그 발생!
+ENDSELECT
+;-------------------------------------------------
+;가슴 크기를 키운다
+;-------------------------------------------------
+;ARG = 캐릭터 번호
+;ARG:1 = 최댓값
+;ARG:2 = 비트 값, 1 = 이름을 말한다, 2 = 무슨 가슴이 됐는지 말한다.
+@BUSTSIZE_UP(ARG, ARG:1 = 5, ARG:2 = 3)
+LOCAL = BUSTSIZE(ARG) + 1
+LOCAL:1 = LIMIT(LOCAL, 1, ARG:1)
+SIF ARG:2 & 1
+    PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
+CALL NUM_TO_BUST(ARG, LOCAL:1, ARG:2)
+
+;-------------------------------------------------
+;가슴 크기를 줄인다.
+;-------------------------------------------------
+;ARG = 캐릭터 번호
+;ARG:1 = 최솟값
+;ARG:2 = 비트 값, 1 = 이름을 말한다, 2 = 무슨 가슴이 됐는지 말한다.
+@BUSTSIZE_DOWN(ARG, ARG:1 = 1, ARG:2 = 3)
+LOCAL = BUSTSIZE(ARG) - 1
+LOCAL:1 = LIMIT(LOCAL, ARG:1, 5)
+SIF ARG:2 & 1
+    PRINTFORMW %CALLNAME:ARG%의 가슴이 작아졌다.
+CALL NUM_TO_BUST(ARG, LOCAL:1)
+;-------------------------------------------------
 ;キャラIDのキャラを登録キャラから探す関数
 ;-------------------------------------------------
 ;いたらそのキャラの登録キャラ번호を返す、いなければ-1を返す

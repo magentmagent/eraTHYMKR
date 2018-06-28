@@ -5790,9 +5790,9 @@ IF CFLAG:ARG:1608 == 0
 ELSEIF CFLAG:ARG:1609 == 0
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 끊임없이 가슴을 신경쓰면서 운동을 계속하고 있다
     PRINTFORMW 이번은 바스트 업・엑서사이즈를 하고 있는 듯하다
-    IF TALENT:ARG:110 || TALENT:ARG:111
+    IF BUSTSIZE(ARG) < 3
         PRINTFORMW 소극적인 가슴의 %조사처리(CALLNAME:ARG,"는")% 조금이라도 가슴을 크게 하려고 매일 눈물겨운 노력을 하고 있기 때문일까
-    ELSEIF TALENT:ARG:112 || TALENT:ARG:113
+    ELSEIF BUSTSIZE(ARG) > 3
         PRINTFORMW 풍부한 가슴을 가진 %조사처리(CALLNAME:ARG,"였")%지만 보다 아름답게 보이게 하려고 노력하고 있는 것일까
     ELSE
         PRINTFORMW 가슴이 보통 수준의 크기인 %조사처리(CALLNAME:ARG,"는")% 보다 풍부한 가슴을 손에 넣고 싶다 생각하고 있는 걸까

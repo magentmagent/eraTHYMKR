@@ -1806,7 +1806,7 @@ ELSEIF ASSINO() == 34
 
 ;-------------------------------------------------
 ;가슴의 크기 비교(조수가 크다) 20%
-ELSEIF BUSTSIZE(TARGET, ASSI) == 2 && RAND:5 == 0
+ELSEIF BUSTSIZE_DIFF(TARGET, ASSI) == 2 && RAND:5 == 0
     DRAWLINE
     PRINTFORML 메디슨은, 방에 들어 온 %조사처리(CALLNAME:ASSI,"를")% 가만히 보고 있다
     PRINTFORMW 자신의 가슴에 찰싹찰싹 손을 대면서,%CALLNAME:ASSI%과의 가슴의 크기를 보고 비교하고 있는 것 같다

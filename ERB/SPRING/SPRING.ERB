@@ -1720,41 +1720,11 @@ ENDIF
     CFLAG:ARG:76 = 1
 
     ;임산부의 가슴의 크기를 플래그에 대입하는 처리
-    CFLAG:ARG:3006 = 0
-    ;절벽
-    IF TALENT:ARG:110 
-        CFLAG:ARG:3006 = 1
-    ;빈유
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:3006 = 2
-    ;큰 가슴
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:3006 = 4
-    ;폭유
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:3006 = 5
-    ;보통
-    ELSE
-        CFLAG:ARG:3006 = 3
-    ENDIF
+    CFLAG:ARG:3006 = BUSTSIZE(ARG)
 
     ;젖이 원 랭크 파워업 한다
-    ;절→빈빈→보보→거거·폭→그대로
-    IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
-        IF TALENT:ARG:110 == 1
-            PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%]로 바뀌었다.
-            TALENT:ARG:110 = 0
-            TALENT:ARG:111 = 1
-        ELSEIF TALENT:ARG:111 == 1
-            PRINTFORMW [%TALENTNAME:111%]에서 보통 크기로 변했다.
-            TALENT:ARG:111 = 0
-        ELSE
-            PRINTFORMW [%TALENTNAME:112%]가 되었다.
-            TALENT:ARG:112 = 1
-        ENDIF
-        PRINTL 
-    ENDIF
+    ;절→빈, 빈→보, 보→거, 거·폭→그대로
+    CALL BUSTSIZE_UP(ARG,4)
 
     ;모유 나오게 된다
     IF TALENT:ARG:134 == 0

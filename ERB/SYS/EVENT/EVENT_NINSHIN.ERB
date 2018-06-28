@@ -269,41 +269,11 @@ IF ARG == MASTER
     CFLAG:ARG:76 = 1
 
     ;임부의 가슴 크기를 플래그에 대입하는 처리
-    CFLAG:ARG:3006 = 0
-    ;절벽
-    IF TALENT:ARG:110 
-        CFLAG:ARG:3006 = 1
-    ;빈유
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:3006 = 2
-    ;거유
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:3006 = 4
-    ;폭유
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:3006 = 5
-    ;보통
-    ELSE
-        CFLAG:ARG:3006 = 3
-    ENDIF
+    CFLAG:ARG:3006 = BUSTSIZE(ARG)
 
     ;가슴이 한 단계 커진다.
     ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
-    IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
-        IF TALENT:ARG:110 == 1
-            PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%] 정도는 되었다.
-            TALENT:ARG:110 = 0
-            TALENT:ARG:111 = 1
-        ELSEIF TALENT:ARG:111 == 1
-            PRINTFORMW [%TALENTNAME:111%]에서 보통 사이즈가 되었다.
-            TALENT:ARG:111 = 0
-        ELSE
-            PRINTFORMW [%TALENTNAME:112%]가 되었다.
-            TALENT:ARG:112 = 1
-        ENDIF
-        PRINTL 
-    ENDIF
+    CALL BUSTSIZE_UP(ARG,4)
 
     ;모유 나오게 된다
     IF TALENT:ARG:134 == 0
@@ -327,41 +297,11 @@ ELSEIF ((TALENT:ARG:150 || TALENT:ARG:161 || TALENT:ARG:162 || TALENT:ARG:169) &
     CFLAG:ARG:76 = 1
 
     ;임부의 가슴 크기를 플래그에 대입하는 처리
-    CFLAG:ARG:3006 = 0
-    ;절벽
-    IF TALENT:ARG:110 
-        CFLAG:ARG:3006 = 1
-    ;빈유
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:3006 = 2
-    ;거유
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:3006 = 4
-    ;폭유
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:3006 = 5
-    ;보통
-    ELSE
-        CFLAG:ARG:3006 = 3
-    ENDIF
+    CFLAG:ARG:3006 = BUSTSIZE(ARG)
 
     ;가슴이 한 단계 커진다.
     ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
-    IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
-        IF TALENT:ARG:110 == 1
-            PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%] 정도는 되었다.
-            TALENT:ARG:110 = 0
-            TALENT:ARG:111 = 1
-        ELSEIF TALENT:ARG:111 == 1
-            PRINTFORMW [%TALENTNAME:111%]에서 보통 사이즈가 되었다.
-            TALENT:ARG:111 = 0
-        ELSE
-            PRINTFORMW [%TALENTNAME:112%]가 되었다.
-            TALENT:ARG:112 = 1
-        ENDIF
-        PRINTL 
-    ENDIF
+    CALL BUSTSIZE_UP(ARG,4)
 
     ;모유 나오게 된다
     IF TALENT:ARG:134 == 0
@@ -1299,7 +1239,7 @@ IF TALENT:MASTER:140
     ;부친이 아님. 연모
     ELSEIF TALENT:LOCAL:150
         PRINTFORMW %조사처리(CALLNAME:MASTER,"의")% 배를 보며 미묘한 표정을 짓고 있다.
-        IF PENIS(LOCAL)
+        IF EXIST_PENIS(LOCAL)
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 자신의 아이를 가져주길 원했던 것 같다.
         ELSE
             PRINTFORMW 이때 만큼은 자신이 여자인 것이 아쉬운 것 같다.

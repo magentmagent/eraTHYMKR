@@ -611,23 +611,7 @@ ENDIF
 
 ;[작은체형]に.低確率で[소인크기]に.もともと小柄, [소인크기]でなければ胸も１ランク減少
 IF TALENT:ARG:127 == 0 && TALENT:ARG:128 == 0
-    IF TALENT:ARG:110 == 0
-        IF TALENT:ARG:113
-            TALENT:ARG:113 = 0
-            TALENT:ARG:112 = 1
-        ELSEIF TALENT:ARG:112
-            TALENT:ARG:112 = 0
-        ELSEIF TALENT:ARG:111
-            TALENT:ARG:111 = 0
-            TALENT:ARG:110 = 1
-            IF TALENT:ARG:134
-                TALENT:ARG:134 = 0
-                MAXBASE:ARG:3 = 0
-            ENDIF
-        ELSE
-            TALENT:ARG:111 = 1
-        ENDIF
-    ENDIF
+    CALL BUSTSIZE_DOWN(ARG, 1, 0)
     SIF TALENT:ARG:129
         TALENT:ARG:129 = 0
     IF LOCAL:1 < 2

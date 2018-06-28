@@ -727,15 +727,15 @@ IF CFLAG:ARG:4995 == 0
         ;ただし, 小柄・[소인크기]はそこから1サイズ小さく, 巨躯は1サイズ大きくする
         LOCAL:1 = RAND:100
         IF LOCAL:1 < 5
-            CFLAG:ARG:4997 = 0
-        ELSEIF LOCAL:1 < 25
             CFLAG:ARG:4997 = 1
-        ELSEIF LOCAL:1 > 95
-            CFLAG:ARG:4997 = 4
-        ELSEIF LOCAL:1 > 75
-            CFLAG:ARG:4997 = 3
-        ELSE
+        ELSEIF LOCAL:1 < 25
             CFLAG:ARG:4997 = 2
+        ELSEIF LOCAL:1 >= 95
+            CFLAG:ARG:4997 = 5
+        ELSEIF LOCAL:1 >= 75
+            CFLAG:ARG:4997 = 4
+        ELSE
+            CFLAG:ARG:4997 = 3
         ENDIF
     ELSE
         CFLAG:ARG:4995 = 2
@@ -790,15 +790,8 @@ IF TALENT:ARG:120
     TALENT:ARG:134 = CFLAG:ARG:4999
     SIF TALENT:ARG:134
         CALL CALC_GAUGE3_SLAVE, ARG, 1
-    IF CFLAG:ARG:4997 == 0
-        TALENT:ARG:110 = 1
-    ELSEIF CFLAG:ARG:4997 == 1
-        TALENT:ARG:111 = 1
-    ELSEIF CFLAG:ARG:4997 == 3
-        TALENT:ARG:112 = 1
-    ELSEIF CFLAG:ARG:4997 == 4
-        TALENT:ARG:113 = 1
-    ENDIF
+    ;가슴 크기를 변경한다.
+    CALL NUM_TO_BUST(ARG, CFLAG:ARG:4997, 0)
 ELSE
     IF ARG != MASTER
         PRINTFORML %CALLNAME:ARG%의 가슴과 엉덩이가 작아지기 시작한다.
@@ -824,17 +817,8 @@ ELSE
     CFLAG:ARG:4996 = TALENT:ARG:0
     CFLAG:ARG:4998 = TALENT:ARG:121
     CFLAG:ARG:4999 = TALENT:ARG:134
-    IF TALENT:ARG:110
-        CFLAG:ARG:4997 = 0
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:4997 = 1
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:4997 = 3
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:4997 = 4
-    ELSE
-        CFLAG:ARG:4997 = 2
-    ENDIF
+    ;가슴 크기를 기억한다.
+    CFLAG:ARG:4997 = BUSTSIZE(ARG)
     TALENT:ARG:0 = 0
     TALENT:ARG:110 = 0
     TALENT:ARG:111 = 0

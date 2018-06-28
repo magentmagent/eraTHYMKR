@@ -1326,7 +1326,7 @@ ELSE
     TIMES LOCAL , 5.00
 ENDIF
 
-SIF PENIS(LOCAL:3)
+SIF EXIST_PENIS(LOCAL:3)
     BASE:(LOCAL:3):2 += LOCAL
 
 ;-------------------------------------------------
@@ -1630,7 +1630,7 @@ ELSE
     TIMES LOCAL , 5.00
 ENDIF
 
-SIF PENIS(LOCAL:3)
+SIF EXIST_PENIS(LOCAL:3)
     BASE:(LOCAL:3):2 += LOCAL
 
 ;-------------------------------------------------
@@ -1934,7 +1934,7 @@ ELSE
     TIMES LOCAL , 5.00
 ENDIF
 
-SIF PENIS(MASTER)
+SIF EXIST_PENIS(MASTER)
     BASE:MASTER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -1979,7 +1979,7 @@ IF TFLAG:91 >= 1
     ASSIPLAY = LOCAL:1
 ENDIF
 
-IF PENIS(MASTER)
+IF EXIST_PENIS(MASTER)
     ;주인의 Ｐ⇔조수의 ＶorＡの汚れが移動
     STAIN:MASTER:2 |= (ARG == 0) ? STAIN:ASSI:3 # STAIN:ASSI:4
     STAIN:ASSI:(3 + (ARG != 0)) |= STAIN:MASTER:2
@@ -2030,7 +2030,7 @@ REPEAT 4
             LOCAL = PLAYER
     ENDSELECT
     IF LOCAL >= 0
-        IF PENIS(LOCAL)
+        IF EXIST_PENIS(LOCAL)
             TSTR:(200 + COUNT * 10) = 페니스
             TSTR:(201 + COUNT * 10) = 자지
             TSTR:(202 + COUNT * 10) = 음경
@@ -3522,7 +3522,7 @@ ELSEIF ARG:1 == 3
     PRINTFORML 절정경험＋{ABL:30}
     EXP:2 += ABL:30
     ;ペニスがある場合
-    IF PENIS(TARGET)
+    IF EXIST_PENIS(TARGET)
         PRINTFORML %EXPNAME:3%＋{ABL:30}
         ;ふたなり初射精の処理
         IF EXP:3 == 0 && TALENT:120 == 0
@@ -3592,7 +3592,7 @@ ELSEIF ARG:1 == 5
     JUEL:15 += ABL:30*300
     PRINTL 　
     ;ペニスがある場合
-    IF PENIS(TARGET)
+    IF EXIST_PENIS(TARGET)
         ;-------------------------------------------------
         ;射精ゲージチェック
         ;-------------------------------------------------
@@ -3771,7 +3771,7 @@ ENDIF
 ;処女喪失の記録
 IF TALENT:0 && EXP:0 == 1
     ;정상위・후배위・기승위（ペニス使用）
-    IF (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 24) && PENIS(ASSI)
+    IF (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 24) && EXIST_PENIS(ASSI)
         SIF TALENT:150
             CFLAG:ASSI:5212 = 4
         SIF TALENT:150 == 0
