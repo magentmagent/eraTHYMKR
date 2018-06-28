@@ -39,7 +39,7 @@ ELSEIF TALENT:161 == 0 && TALENT:162 == 0 && TALENT:169 == 0
         RETURN 0
 ENDIF
 IF TALENT:128
-    ;작은 체형なら순종이 4이상かつ마조끼が4이상かつ확장경험10이상じゃないと実行できない
+    ;[작은체형]なら순종이 4이상かつ마조끼が4이상かつ확장경험10이상じゃないと実行できない
     SIF ABL:10 <= 3 || ABL:21 <= 3 || EXP:32 < 10 || EXP:33 < 10
         RETURN 0
 ELSEIF TALENT:127

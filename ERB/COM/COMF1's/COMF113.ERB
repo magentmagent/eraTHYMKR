@@ -14,7 +14,7 @@ SIF (FLAG:15 & 512) == 0
 ;[パイパン]だと不可, 生えそろっていないと無理
 SIF TALENT:65 || (CFLAG:36 && BASE:5 < 250)
     RETURN 0
-;テキストより[작은 체형]はデフォでツルツル。[소인크기]もそれに準じる
+;テキストより[작은체형]はデフォでツルツル。[소인크기]もそれに準じる
 SIF (TALENT:128 || TALENT:127) && CFLAG:36 == 0
     RETURN 0
 ;Ｖ계 장착구 사용 중에는 불가
@@ -118,7 +118,7 @@ SOURCE:24 += LOCAL:1
 SOURCE:18 += LOCAL:1
 SOURCE:12 += LOCAL:1
 
-;小柄体型、小人体型
+;[작은체형]、[소인크기]
 SIF TALENT:128 || TALENT:127
     TIMES SOURCE:12 , 2.50
 
