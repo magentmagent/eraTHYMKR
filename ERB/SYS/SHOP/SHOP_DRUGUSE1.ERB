@@ -517,21 +517,15 @@ ELSE
 ENDIF
 PRINTW  
 PRINTW  
-IF TALENT:ARG:129
-    PRINTFORML 비교적 큰 편이던 %CALLNAME:ARG%의 모습이 서서히 작아지기 시작하더니 
-    PRINTL 최종적으로는 표준적인 체구라 할 수 있을 만큼까지 작아졌다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 체격이 조금 줄어들었다＞
-    TALENT:ARG:129 = 0
-ELSE
-    SIF ARG != MASTER
-        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
-    PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
-    PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
-    TALENT:ARG:128 = 1
-ENDIF
+
+SIF ARG != MASTER
+    PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
+PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
+PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
+PRINTW  
+PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
+TALENT:ARG:128 = 1
+
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 333
 ;범용 대사용 플래그
@@ -627,34 +621,13 @@ ELSE
 ENDIF
 PRINTW  
 PRINTW  
-IF TALENT:ARG:127
-    PRINTFORML 손바닥 위에 들어올 만큼이나 작았던 %CALLNAME:ARG%의 몸이 쑥쑥 커지더니만 
-    PRINTL 다시 보자, 인간 어린아이 크기만큼이나 성장해 있었다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 커졌다＞
-    TALENT:ARG:127 = 0
-    TALENT:ARG:128 = 1
-ELSEIF TALENT:ARG:128
-    PRINTFORML %CALLNAME:ARG%의 어딜 봐도 어리단 느낌이었던 몸이 점점 더 자라나더니 
-    PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 몸은 성장했다＞
-    TALENT:ARG:128 = 0
-ELSE
-    SIF ARG != MASTER
-        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
-    PRINTFORML %CALLNAME:ARG%의 모습이 점점 커지기 시작하더니만, 
-    IF TALENT:MASTER:129
-        PRINTL 정신이 들고 보니, 자신과 어깨를 나란히 할 만큼이나 자라 있었다…….
-    ELSEIF TALENT:MASTER:128
-        PRINTFORML 문득 올려다보니, %CALLNAME:ARG%의 얼굴이 굉장히 높은 위치에 있는 듯이 느껴졌다…….
-    ELSE
-        PRINTFORML 어느새 올려다보지 않으면%CALLNAME:ARG%의 얼굴을 볼 수 없게 되어버렸다…….
-    ENDIF
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 거인이 되었다＞
-    TALENT:ARG:129 = 1
-ENDIF
+
+PRINTFORML %CALLNAME:ARG%의 어딜 봐도 어리단 느낌이었던 몸이 점점 더 자라나더니 
+PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
+PRINTW  
+PRINTFORMW ＜%CALLNAME:ARG%의 몸은 성장했다＞
+TALENT:ARG:128 = 0
+
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 337
 ;범용 대사용 플래그
@@ -751,7 +724,7 @@ IF CFLAG:ARG:4995 == 0
         ;男が初めてTSしたら処女に決まってんだろJK
         CFLAG:ARG:4996 = 1
         ;元が男の場合は胸のサイズをランダムで決定
-        ;ただし, 小柄・小人体型はそこから1サイズ小さく, 巨躯は1サイズ大きくする
+        ;ただし, 小柄・[소인크기]はそこから1サイズ小さく, 巨躯は1サイズ大きくする
         LOCAL:1 = RAND:100
         IF LOCAL:1 < 5
             CFLAG:ARG:4997 = 0
@@ -937,27 +910,81 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;소인화 사탕(ミニ化, ～30㎝あたり)
+;축소화 사탕
 ;-------------------------------------------------
 @USE_DRUG_43, ARG, ARG:1
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔소인화 사탕〕을 먹었다.
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔축소화 사탕〕을 먹었다.
 ELSE
-    PRINTFORML 〔소인화 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+    PRINTFORML 〔축소화 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
 ENDIF
 PRINTW  
 PRINTW  
 SIF ARG != MASTER
     PRINTFORM %CALLNAME:MASTER%의 시계가 이상하다.
-PRINTFORML %CALLNAME:ARG%의 모습이 작아지더니 
-PRINTL 원래 작았던 덩치가 더더욱 작아져 손바닥 위에 올려둘 정도로 줄었다.
-PRINTW  
-PRINTFORMW ＜%CALLNAME:ARG%의 몸이 줄어들었다＞
-TALENT:ARG:127 = 1
-;念のため[巨躯]は消去
-TALENT:ARG:129 = 0
+IF TALENT:ARG:129
+    PRINTFORML 비교적 큰 편이던 %CALLNAME:ARG%의 모습이 서서히 작아지기 시작하더니 
+    IF TALENT:ARG:128
+        PRINTL 다시 보자, 평범한 인간 어린아이 크기가 되었다.
+    ELSE
+        PRINTL 최종적으로는 표준적인 체구라 할 수 있을 만큼까지 작아졌다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 체격이 조금 줄어들었다＞
+    TALENT:ARG:129 = 0
+ELSE
+    PRINTFORML %CALLNAME:ARG%의 모습이 작아지더니 
+    PRINTL 원래 작았던 덩치가 더더욱 작아져 손바닥 위에 올려둘 정도로 줄었다.
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 줄어들었다＞
+    TALENT:ARG:127 = 1
+ENDIF
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 343
+;범용 대사용 플래그
+CFLAG:ARG:43 = 0
+;身体測定フラグを寝せる(次回身体測定を行うため)
+CFLAG:ARG:8 = 0
+;薬物経験
+CALL COMMON_UP_EXP, ARG, 40, 1, 1
+IF (CFLAG:ARG:20 & 65536) == 0
+    ;異常経験
+    CALL COMMON_UP_EXP, ARG, 50, 1, 0
+    CFLAG:ARG:20 |= 65536
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;거대화 사탕
+;-------------------------------------------------
+@USE_DRUG_44, ARG, ARG:1
+IF TALENT:ARG:127
+    PRINTFORML 손바닥 위에 들어올 만큼이나 작았던 %CALLNAME:ARG%의 몸이 쑥쑥 커지더니만 
+    IF TALENT:ARG:128
+        PRINTL 다시 보자, 인간 어린아이 크기만큼이나 성장해 있었다…….
+    ELSE
+        PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 커졌다＞
+    TALENT:ARG:127 = 0
+ELSE
+    SIF ARG != MASTER
+        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
+        PRINTFORML %CALLNAME:ARG%의 모습이 점점 커지기 시작하더니만, 
+    IF TALENT:MASTER:129
+        PRINTL 정신이 들고 보니, 자신과 어깨를 나란히 할 만큼이나 자라 있었다…….
+    ELSEIF TALENT:MASTER:128
+        PRINTFORML 문득 올려다보니, %CALLNAME:ARG%의 얼굴이 굉장히 높은 위치에 있는 듯이 느껴졌다…….
+    ELSE
+        PRINTFORML 어느새 올려다보지 않으면%CALLNAME:ARG%의 얼굴을 볼 수 없게 되어버렸다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 거인이 되었다＞
+    TALENT:ARG:129 = 1
+ENDIF
+SIF ARG != MASTER
+    CALL SELF_KOJO, ARG, 344
 ;범용 대사용 플래그
 CFLAG:ARG:43 = 0
 ;身体測定フラグを寝せる(次回身体測定を行うため)

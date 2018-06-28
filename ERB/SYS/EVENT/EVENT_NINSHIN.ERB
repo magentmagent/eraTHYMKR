@@ -1117,7 +1117,7 @@ IF FLAG:12 & 8
         TFLAG:128 = MAX(LOCAL:4 - 1, 0)
 
         ;출산계의 플래그 설정
-        CFLAG:77 = DAY + FLAG:601
+        CFLAG:77 = DAY + FLAG:600
         LOCAL = MASTER
         CFLAG:78 = NO:LOCAL
         CFLAG:3004 = CFLAG:LOCAL:3109

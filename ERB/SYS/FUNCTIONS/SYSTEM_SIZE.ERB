@@ -43,97 +43,122 @@ ENDIF
 ;난수값＋성별에 따른 기초가 신장이다(mm)
 LOCAL:10 += (TALENT:(LOCAL:99):120) ? 1450 # 1300
 
-;체격 소질에 따른 수정
-;[소인크기]
-SIF TALENT:(LOCAL:99):127
-    LOCAL:10 /= 10
-
-;신체 나이에 따른 수정
-;소인이 아니라 작은 체형
-IF TALENT:(LOCAL:99):128
-    LOCAL:10 -= 400
-;거구
-ELSEIF TALENT:(LOCAL:99):129
-    LOCAL:10 += 400
+;소질에 따른 키 보정
+IF  BODYSIZE(LOCAL:99)
+    ;소수점을 버리고 계산하는 프로그램 구조 상 정밀도를 위해 * 1000
+    LOCAL = LOCAL:10 * 1000
+    REPEAT ABS(BODYSIZE(LOCAL:99))
+        IF BODYSIZE(LOCAL:99) > 0
+            TIMES LOCAL, 1.1
+        ELSE
+            TIMES LOCAL, 0.9090909 ;= 10 / 11
+        ENDIF
+    REND
+    LOCAL:10 = LOCAL / 1000
 ENDIF
+
 ;신장 결정
 BASE:(LOCAL:99):10 = LOCAL:10
 
 
 ;===웨스트의 산출===
 ;웨스트의 기초값 산출
-LOCAL:13 = (LOCAL:10 * 38) / 100
-;웨스트 결정
+LOCAL:13 = (LOCAL:10 * 38) / 100 ;상위 25%
+SIF TALENT:(LOCAL:99):120
+    LOCAL:13 = (LOCAL:10 * 42) / 100
+
+;성숙도 소질에 따른 보정
+;[작은체형]
+SIF TALENT:(LOCAL:99):128
+    TIMES LOCAL:13, 1.05
+
+;웨스트 결정 (mm)
 BASE:(LOCAL:99):13 = LOCAL:13
 
 ;===바스트의 산출===
 ;언더 바스트 산출
-LOCAL:12 = (((LOCAL:10 * 100) / 22) - ((LOCAL:10 * 100) / LOCAL:13)) / 10
+LOCAL:15 = (1600 * 43) / 100 ;체중 계산시 사용하기 위해 160 cm로 계산
+SIF TALENT:(LOCAL:99):120
+    LOCAL:15 = (1600 * 55) / 100
+
+;[작은체형]
+SIF TALENT:(LOCAL:99):128
+    TIMES LOCAL:15, 1.05
 
 ;가슴계 소질로 기초값 변화    110:절벽 111:빈유 112:거유 113:폭유
-;[소인크기]인 경우, 이대로 더하면 수치가 완전히 파탄 나므로 보정
-;호출처의 장소에 따라 변화
 IF TALENT:(LOCAL:99):110
-    LOCAL:12 += 0
+    LOCAL:16 = 50
 ELSEIF TALENT:(LOCAL:99):111
-    LOCAL:12 += 100 / (TALENT:(LOCAL:99):127 * 3 + 1)
+    LOCAL:16 = 100
 ELSEIF TALENT:(LOCAL:99):112
-    LOCAL:12 += 200 / (TALENT:(LOCAL:99):127 * 3 + 1)
+    LOCAL:16 = 200
 ELSEIF TALENT:(LOCAL:99):113
-    LOCAL:12 += 250 / (TALENT:(LOCAL:99):127 * 3 + 1)
+    LOCAL:16 = 250
 ELSE
-    LOCAL:12 += 150 / (TALENT:(LOCAL:99):127 * 3 + 1)
+    LOCAL:16 = 150
 ENDIF
-;바스트 결정
-BASE:(LOCAL:99):12 = LOCAL:12
+;바스트 결정 
+;키 160 cm를 기준으로 키에 비례해서 계산
+BASE:(LOCAL:99):12 = (LOCAL:15 + LOCAL:16) * LOCAL:10 / 1600
 
 ;===힙의 산출===
 ;힙의 기초값 산출
-LOCAL:14 = (LOCAL:10 * 54) / 100
-;작은 체형과 소인 체형은 약간 작게 보정해봄
-SIF TALENT:(LOCAL:99):127 || TALENT:(LOCAL:99):128
+LOCAL:14 = (LOCAL:10 * 54) / 100 ;웨스트 / 힙 = 0.7 정도가 모델
+SIF TALENT:(LOCAL:99):120
+    LOCAL:14 = (LOCAL:10 * 52) / 100
+
+;성숙도 소질에 따른 보정
+;[작은체형]은 약간 작게 보정해봄
+SIF TALENT:(LOCAL:99):128
     TIMES LOCAL:14, 0.95
+
 ;힙 결정
 BASE:(LOCAL:99):14 = LOCAL:14
 
 ;===체중의 산출===
-;체중의 기초값 산출(남자만 별도 처리)
-LOCAL:11 = (TALENT:(LOCAL:99):120) ? (LOCAL:10 * 30) /100 # (LOCAL:10 * 28) /100
-;소인 체형에서의 보정
-IF TALENT:(LOCAL:99):127
-    TIMES LOCAL:11, 0.2
-;작은 체형에서의 보정
-ELSEIF TALENT:(LOCAL:99):128
-    TIMES LOCAL:11, 0.8
-;거구에서의 보정
-ELSEIF TALENT:(LOCAL:99):129
-    TIMES LOCAL:11, 1.25
-ENDIF
+;체중의 기초값 산출(남자 160 cm 에 48.0 kg(180 cm에 68 kg), 여자 47.0 kg 라고 치자.)
+LOCAL:17 = (TALENT:(LOCAL:99):120) ? 480000 # 470000 ;단위 0.1g
+
+;성숙도 소질에 따른 보정
+;[작은체형]
+SIF TALENT:(LOCAL:99):128
+    TIMES LOCAL:17, 1.05
+
 
 ;바스트에 따른 중량 가산
-LOCAL:12 = 4 * LOCAL:12 * LOCAL:12 * LOCAL:12 / 1000000
-LOCAL:12 *= 2
-LOCAL:12 /= 100
+;가슴의 부피(mL) = 0.000015113*B^3 - 0.0204363*B^2 + 12.9805393*B - 3602.6 (회귀분석으로 구한거라 공식이 더러움)
+;B (cm) = (밑가슴둘레 + 2*컵크기)
+LOCAL = LOCAL:15 + 2 * LOCAL:16
+LOCAL:1 = POWER(LOCAL, 3)
+TIMES LOCAL:1, 0.000015113689409
+LOCAL:2 = POWER(LOCAL, 2)
+TIMES LOCAL:2, -0.0204363749
+LOCAL:3 = LOCAL 
+TIMES LOCAL:3, 12.9805393
+LOCAL:18 = LOCAL:1 + LOCAL:2 + LOCAL:3 - 3603
+LOCAL:18 *= 2 ;가슴은 2개
+TIMES LOCAL:18, 0.9 ;가슴의 비중은 대략 0.9
 
 ;합계
-LOCAL:1 = LOCAL:11 + LOCAL:12
+LOCAL:11 = LOCAL:17 + LOCAL:18
 
 ;소질에 따른 보정
 ;기계(무거움)
 SIF TALENT:(LOCAL:99):206
-    TIMES LOCAL:1 , 1.50
+    TIMES LOCAL:11 , 1.50
 ;영체(극히 가벼움)
 SIF TALENT:(LOCAL:99):207
-    TIMES LOCAL:1 , 0.60
+    TIMES LOCAL:11 , 0.60
 ;오니(조금 무거움)
 SIF TALENT:(LOCAL:99):214
-    TIMES LOCAL:1, 1.10
+    TIMES LOCAL:11, 1.10
 ;신령(조금 가벼움)
 SIF TALENT:(LOCAL:99):222
-    TIMES LOCAL:1 , 0.90
+    TIMES LOCAL:11 , 0.90
 
 ;체중 결정
-BASE:(LOCAL:99):11 = LOCAL:1
+;체중은 키의 3제곱에 비례 (둘레가 키에 비례하므로)
+BASE:(LOCAL:99):11 = LOCAL:11 * LOCAL:10 / 1600 * LOCAL:10 / 1600 * LOCAL:10 / 1600
 
 ;신체측정 플래그를 켠다
 CFLAG:(LOCAL:99):8 = 1
@@ -145,19 +170,12 @@ CFLAG:(LOCAL:99):8 = 1
 ;LOCAL:1 ･･･ 난수 보존용 변수
 ;LOCAL:10 ･･･ 전회 계측 신장 보존
 @MAKE_BABY_SIZE, ARG
-LOCAL:10 = BASE:ARG:10
 CFLAG:ARG:8 = 0
 CALL MAKE_SIZE, 1, ARG
+LOCAL:11 = BASE:ARG:11 ;몸무게 획득
 
-IF CFLAG:ARG:3500
-    LOCAL:0 = (CFLAG:ARG:3500 * 100) / (LOCAL:10 / 15)
-    ;LOCAL:0 /= (20 - (CFLAG:ARG:77 - DAY) + 1)
-    LOCAL:0 = (20 - (CFLAG:ARG:77 - DAY) + 1)
-ENDIF
-
-LOCAL:1 = (13 + RAND:6)
-;임신 증가 사이즈가 과하게 감소하지 않도록 조정
-LOCAL:1 = MAX(LOCAL:0, LOCAL:1)
-CFLAG:ARG:3500 = LOCAL:1 * (20 - (CFLAG:ARG:77 - DAY))
-CFLAG:ARG:3500 *= (BASE:ARG:10 / 15)
-CFLAG:ARG:3500 /= 100
+;CFLAG:77 = 출산 예정일
+LOCAL:0 = (FLAG:600 - (CFLAG:ARG:77 - DAY) + 1) * 100 / FLAG:600 ;임신 진행도(%)
+LOCAL:0 = LIMIT(LOCAL:0,0,100)
+LOCAL:1 = 120000 * LOCAL:0 / 100 * LOCAL:11 / 470000 ;만삭 시 체중 = +12 kg ;체중에 비례
+CFLAG:ARG:3500 = LOCAL:1
