@@ -2459,7 +2459,7 @@ SIF TALENT:ARG:205
     PRINTFORMW 라고 해도 비치지는 않지만…… 버릇 같은걸까? 
 
 ;수정(추가) 조건 변경 "소질:113"(TALENT:113)을 조건문에 추가
-IF TALENT:ARG:112 || TALENT:ARG:113
+IF BUSTSIZE(ARG) > 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 풍부한 가슴을 확인하듯이 손대기 시작했다.
     IF TALENT:ARG:10 || TALENT:ARG:14 || TALENT:ARG:26
         PRINTFORMW 아무래도 자신의 가슴이 별로 마음에 들지 않아 우울한 얼굴을 하고 있다.
@@ -2468,7 +2468,7 @@ IF TALENT:ARG:112 || TALENT:ARG:113
     ENDIF
 
 ;수정(추가) 조건 변경 "소질:110"(TALENT:110)을 조건문에 추가
-ELSEIF TALENT:ARG:111 || TALENT:ARG:110
+ELSEIF BUSTSIZE(ARG) < 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 소극적인 가슴을 토닥토닥 손을 댄다.
     SIF TALENT:ARG:128
         PRINTFORMW 그러고나서 자신의 잘록한 부분도 확인하듯 만진다…….
