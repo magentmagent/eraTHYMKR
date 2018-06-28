@@ -198,7 +198,9 @@ ELSEIF CFLAG:7010 == 1
         PRINTFORMW 「ありがとう!これからはチェンとずっと一緒だね！！」
         PRINTFORMW 「チェン…%CALLNAME:MASTER%のこと好きになって良かった」
         TALENT:152 = 1
+        CFLAG:14 |= 4
         TALENT:153 = 1
+        CFLAG:14 |= 8
         CFLAG:7010 = 3
     ELSEIF CHARANUM >= 3
         PRINTFORMW 「………まだ、他の娘と別れてくれてないの？」

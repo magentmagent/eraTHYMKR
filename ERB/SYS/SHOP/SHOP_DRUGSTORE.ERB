@@ -42,14 +42,14 @@ PRINTLC [30]〔처녀막 사탕〕(2만원)
 PRINTLC [31]〔모유 사탕〕(2만원)
 IF FLAG:13 & 1
     PRINTLC [32]〔난생 사탕〕(2만원)
-    PRINTLC [33]〔젊음의 사탕〕(18만원)
+    PRINTLC [33]〔태생 사탕〕(12만원)    
     PRINTLC [34]〔요정화 사탕〕(10만원)
     PRINTLC [35]〔EX화 사탕〕(5만원)
     SIF FLAG:5 & 1 && TALENT:MASTER:55
         PRINTLC [36]〔성격반전 사탕〕(5만원)
     SIF TALENT:MASTER:56
         PRINTLC [37]〔성숙의 사탕〕(15만원)
-    PRINTLC [38]〔태생 사탕〕(12만원)
+    PRINTLC [38]〔젊음의 사탕〕(18만원)
     SIF LOCAL:8 & 1 && TALENT:MASTER:56
         PRINTLC [39]〔성전환 사탕〕(50만원)
     PRINTLC [40]〔발모 사탕〕(10만원)
@@ -158,10 +158,10 @@ ELSEIF RESULT == 32 && FLAG:13 & 1
     PRINTL 【흡혈귀(소녀)의 오줌】을 농축시킨 것이 사용되는 것 같다.
     LOCAL:9 = 20000
 ELSEIF RESULT == 33 && FLAG:13 & 1
-    PRINTL 〔젊음의 사탕〕：[작은체형]이 됩니다
-    PRINTL 몸이 일거에 젊음을 되찾는다는 녹색 사탕.
-    PRINTL 녹황색 야채가 원료인 듯하다. 그런 외견과 달리 맛은 단 편.
-    LOCAL:9 = 180000
+    PRINTL 〔태생 사탕〕：[난생] [산란체질]이 아니게 됩니다
+    PRINTL 생물을 지켜보는 만월을 이미지화한 사탕.어떤 요괴라도 태생으로 바뀌어 버린다.
+    PRINTL 【ＵＦＯ】가 내는 즙을 몇 십 번이고 증류해서 만들었다고 한다.
+    LOCAL:9 = 120000
 ELSEIF RESULT == 34 && FLAG:13 & 1
     PRINTL 〔요정화 사탕〕：그 아이가 ＜요정＞으로 전생합니다
     PRINTL 진주와 같은 광채를 지닌 사탕.
@@ -183,10 +183,10 @@ ELSEIF RESULT == 37 && FLAG:13 & 1 && TALENT:MASTER:56
     PRINTL 그 재료에 대해서는 아직도 수수께끼에 쌓인 채로라 한다……
     LOCAL:9 = 150000
 ELSEIF RESULT == 38 && FLAG:13 & 1
-    PRINTL 〔태생 사탕〕：[난생] [산란체질]이 아니게 됩니다
-    PRINTL 생물을 지켜보는 만월을 이미지화한 사탕.어떤 요괴라도 태생으로 바뀌어 버린다.
-    PRINTL 【ＵＦＯ】가 내는 즙을 몇 십 번이고 증류해서 만들었다고 한다.
-    LOCAL:9 = 120000
+    PRINTL 〔젊음의 사탕〕：[작은체형]이 됩니다
+    PRINTL 몸이 일거에 젊음을 되찾는다는 녹색 사탕.
+    PRINTL 녹황색 야채가 원료인 듯하다. 그런 외견과 달리 맛은 단 편.
+    LOCAL:9 = 180000
 ELSEIF RESULT == 39 && FLAG:13 & 1 && LOCAL:8 & 1 && TALENT:MASTER:56
     PRINTL 〔성전환 사탕〕：성별이 반전합니다
     PRINTL 모든 빛의 요소가 각기 보이는 무지개를 모티브로 한 모양의 사탕.
@@ -326,9 +326,14 @@ REPEAT CHARANUM
     ;난생 사탕は対象がオトコ, 卵生, 既に産卵体質である, 妊娠中, 懐卵中, 現在体力が1000未満だと使えない
     ELSEIF LOCAL == 32 && (TALENT:COUNT:120 || TALENT:COUNT:135 || TALENT:COUNT:136 || TALENT:COUNT:140 || TALENT:COUNT:145 || BASE:COUNT:0 < 1000)
         CONTINUE
-    ;젊음의 사탕은 대상이 [작은체형], 혹은 [유아]나 [유치] 소유시 못 쓴다.
-    ELSEIF LOCAL == 33 && (TALENT:COUNT:128 || TALENT:COUNT:130 || TALENT:COUNT:131)
-        CONTINUE
+    ;태생 사탕の場合
+    ELSEIF LOCAL == 33
+        ;対象が[オトコ], [妊娠], [抱卵中], [懐卵]のときは使えない（自分には使える）
+        SIF TALENT:COUNT:120 || TALENT:COUNT:140 || TALENT:COUNT:143 || TALENT:COUNT:145
+            CONTINUE
+        ;[卵生][産卵体質]どちらかがないと使えない
+        SIF TALENT:COUNT:135 == 0 && TALENT:COUNT:136 == 0
+            CONTINUE
     ;요정화 사탕は対象が妖精だと使えない
     ELSEIF LOCAL == 34 && TALENT:COUNT:200
         CONTINUE
@@ -357,14 +362,9 @@ REPEAT CHARANUM
     ;성숙의 사탕의 경우, 주인에게 금단의 지식이 필요하며 대상이 [작은체형]이 없으면 사용할 수 없다
     ELSEIF LOCAL == 37 && (TALENT:MASTER:56 == 0 || TALENT:COUNT:128 == 0)
         CONTINUE
-    ;태생 사탕の場合
-    ELSEIF LOCAL == 38
-        ;対象が[オトコ], [妊娠], [抱卵中], [懐卵]のときは使えない（自分には使える）
-        SIF TALENT:COUNT:120 || TALENT:COUNT:140 || TALENT:COUNT:143 || TALENT:COUNT:145
-            CONTINUE
-        ;[卵生][産卵体質]どちらかがないと使えない
-        SIF TALENT:COUNT:135 == 0 && TALENT:COUNT:136 == 0
-            CONTINUE
+    ;젊음의 사탕은 대상이 [작은체형], 혹은 [유아]나 [유치] 소유시 못 쓴다.
+    ELSEIF LOCAL == 38 && (TALENT:COUNT:128 || TALENT:COUNT:130 || TALENT:COUNT:131)
+        CONTINUE
     ;성전환 사탕の場合
     ELSEIF LOCAL == 39 
         ;主人に禁断の知識がないか, 主人も助手も調合知識がなければ使えない

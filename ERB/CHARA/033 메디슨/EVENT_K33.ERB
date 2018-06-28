@@ -5429,7 +5429,7 @@ IF CFLAG:9027 == 0
             PRINTFORMW 「네?　아, 꺄!　%TSTR:310%, %TSTR:309%……!」
             PRINTFORMW 「이나, 기다려, 돌연 서지 말아  ……응!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW 두 명의 체격차이로부터,%조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버린다
                 PRINTFORML 결합부에서 신체를 결리는 모습이 되어 버린 메디슨은,
                 PRINTFORMW %CALLNAME:MASTER%의 어깨에 손을 써, 필사적으로 해가 보고 붙으면서도
@@ -5442,7 +5442,7 @@ IF CFLAG:9027 == 0
         ELSE
             PRINTFORMW 「입는다!　(이)나, 나다……그런, 삽입서지 말고, ……!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW 두 명의 체격차이로부터,%조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버린다
                 PRINTFORML 결합부에서 신체를 결리는 모습이 되어 버린 메디슨은,
                 PRINTFORMW %CALLNAME:MASTER%의 어깨에 손을 써 필사적으로 해가 보고 붙어, 어떻게든 부담을 줄이려 하고 있다
@@ -5488,7 +5488,7 @@ ELSE
         ELSEIF RAND:4 == 0
             PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 삽입한 채로, 메디슨의 신체를 강하게 껴안았다
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORML 「꺄응……!　,%TSTR:300%기다려, 다리……닿지 않아 ……!」
                 PRINTFORMW 메디슨은 공중에 떠 버린 다리를 톡톡털고 있다
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨의 작은 신체를 안아 올린 채로,
@@ -5521,7 +5521,7 @@ ELSE
     ELSEIF TALENT:150 && (CFLAG:9027 < 5 || FLAG:11 == 2)
         PRINTFORMW 「응, 응, %TSTR:300%……이 몸의 자세는, 조금 괴롭지 않아……?」
         ;체격차이 있어(메디가 작다) 2분의 1의 확률
-        IF (((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)) && RAND:2 == 0
+        IF (BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3) && RAND:2 == 0
             PRINTFORMW 「신체의 크기가, 이렇게 다른데……아앙」
         ELSE
             PRINTFORMW 「선 채로는……, 지쳐버린다……」
@@ -5569,7 +5569,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 「네……?　아,%TSTR:300%, 어떻게 해……!」
             PRINTFORMW 「은 , 구……!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버렸다
                 PRINTFORMW 결합부에 지금까지 이상의 힘이 걸려, 메디슨의 질의 것보다 깊게  페니스가 꽉 눌린다
                 PRINTFORMW 「, 응!　안쪽까지, 오고 있는……!　응, 아」
@@ -5580,7 +5580,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 그 몸을 바치고 있다
             PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINT 안아 올리도록(듯이) 해
             ELSE
                 PRINT 배후로부터 껴안고
@@ -5592,7 +5592,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 「어, 나, 나다……조금 기다려!　, 서……!」
             PRINTFORMW 「이나, 나다……구」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버렸다
                 PRINTFORMW 결합부에 지금까지 이상의 힘이 걸려, 메디슨의 질의 것보다 깊게  페니스가 꽉 눌린다
                 PRINTFORMW 「응응, 구……!　(이)나, 내려, ……!」
@@ -5631,7 +5631,7 @@ ELSE
             PRINTFORMW 「는 해, 안쪽……가득 밀어 올려──!　♪」
         ELSEIF RAND:3 == 0
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을 안으면(자)
             ELSE
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을 껴안으면(자)

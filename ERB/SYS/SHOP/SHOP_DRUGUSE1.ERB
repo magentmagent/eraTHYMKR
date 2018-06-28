@@ -507,36 +507,68 @@ TFLAG:128 = 0
 RETURN 1
 
 ;-------------------------------------------------
-;젊음의 사탕(로리화)
+;태생 사탕(산란 체질 해제 · 난생 → 태생으로)
 ;-------------------------------------------------
 @USE_DRUG_33, ARG, ARG:1
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% [젊음의 사탕]을 먹었다.
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔태생 사탕〕을 먹었다…….
+    PRINTL 
+    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 속 깊은 데서 열기를 느끼다가, 
+    PRINTW 갑자기 하복부에 위화감을 느꼈다.
+    PRINTFORML 몸 속에서 무언가가 변해가는 기묘한 감각에 %조사처리(CALLNAME:MASTER,"는")% 다소 기분이 나빠졌지만, 
+    PRINTFORMW 그렇게 잠시 있으니 감각은 진정되었고, %조사처리(CALLNAME:MASTER,"는")% 자신의 암컷으로서의 기능이 사람의 그것으로 변했다는 것을 본능적으로 깨달았다.
 ELSE
-    PRINTFORML 〔젊음의 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+    PRINTFORML 〔태생 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+    PRINTL 
+    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸의 변화를 호소했지만, 
+    PRINTFORML 그 감각은 불쾌하거나 결코 격한 게 아니었고, 
+    PRINTFORMW 그렇게 잠시 있다 보니 파도가 물러나듯이 진정된 것 같다.
+    PRINTL 
+    ;消去対象素質が[卵生]か[産卵体質]かで分岐.
+    ;[卵生]なら無理矢理胎生にされたことへのショックを, 
+    ;でない場合は本来の妊娠形態にもどったことでそれぞれ反応を.
+    IF TALENT:ARG:136
+        ;卵をにんっしんっしても狂気が付着しない条件あたりを境に少しメッセージを変化.
+        ;具体的には異常経験5以上か[妄信][親愛][相愛]のいずれかがあれば, ヒトの子を孕めるようになったのを喜ぶ.というか期待する感じに
+        ;処理と分岐は[卵生]持ちでも同じ.
+        IF EXP:ARG:50 > 4 || (TALENT:ARG:151 || TALENT:ARG:152 || TALENT:ARG:153)
+            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 본래대로 돌아왔다는 걸 본능적으로 깨닫고는, 
+            PRINTFORMW 미소와 함께 가만히 복부를 쓰다듬으며, %CALLNAME:MASTER%의 아이를 밸 기대에 뺨을 붉게 물들였다…….
+        ELSE
+            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 본래의 그것으로 돌아왔다는 걸 본능적으로 깨닫고는, 
+            PRINTFORML %CALLNAME:MASTER%의 아이를 정말로 임신하게 되지 않을지, 암컷으로서의 본능적 쾌락과 이성 사이에서
+            PRINTFORMW 잠시 동안 떨고 있었다…….
+        ENDIF
+    ELSE
+        IF EXP:ARG:50 > 4 || (TALENT:ARG:151 || TALENT:ARG:152 || TALENT:ARG:153)
+            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 인간의 것이 되었다는 걸 본능적으로 깨달았지만 
+            PRINTFORMW 오히려 미소지으며 가만히 복부를 쓰다듬더니 %CALLNAME:MASTER%의 아이를 밸 기대에 뺨을 붉게 물들였다…….
+        ELSE
+            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 사람의 것으로 변했다는 걸 본능적으로 깨닫고는 
+            PRINTFORMW 본래 종으로서의 모습마저 범해진다는 것에 창백해졌다…….
+        ENDIF
+    ENDIF
 ENDIF
-PRINTW  
-PRINTW  
+
+;卵生・産卵体質別々に削除処理
+;元々卵生のキャラはCFLAG:20の1024を立てることで初回の異常経験入手処理の判別と〔난생 사탕〕で[卵生]に戻るかどうかを判別するのに使用
+IF TALENT:ARG:135
+    TALENT:ARG:135 = 0
+    PRINTW  
+    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% [난생]을 잃었다＞
+    IF (CFLAG:ARG:20 & 1024) == 0
+        CALL COMMON_UP_EXP, ARG, 50, 1, 0
+        CFLAG:ARG:20 |= 1024
+    ENDIF
+ELSE
+    TALENT:ARG:136 = 0
+    PRINTW  
+    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% [산란체질]을 잃었다＞
+ENDIF
 
 SIF ARG != MASTER
-    PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
-PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
-PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
-PRINTW  
-PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
-TALENT:ARG:128 = 1
+    CALL SELF_KOJO, ARG, 338
 
-SIF ARG != MASTER
-    CALL SELF_KOJO, ARG, 333
-;범용 대사용 플래그
-CFLAG:ARG:43 = 0
-CALL COMMON_UP_EXP, ARG, 40, 1, 0
-IF (CFLAG:ARG:12 & 8192) == 0
-    CALL COMMON_UP_EXP, ARG, 50, 1, 0
-    CFLAG:ARG:12 |= 8192
-ENDIF
-;身体測定フラグを寝せる(次回身体測定を行うため)
-CFLAG:ARG:8 = 0
 RETURN 1
 
 ;-------------------------------------------------
@@ -642,68 +674,36 @@ CFLAG:ARG:8 = 0
 RETURN 1
 
 ;-------------------------------------------------
-;태생 사탕(산란 체질 해제 · 난생 → 태생으로)
+;젊음의 사탕(로리화)
 ;-------------------------------------------------
 @USE_DRUG_38, ARG, ARG:1
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔태생 사탕〕을 먹었다…….
-    PRINTL 
-    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 속 깊은 데서 열기를 느끼다가, 
-    PRINTW 갑자기 하복부에 위화감을 느꼈다.
-    PRINTFORML 몸 속에서 무언가가 변해가는 기묘한 감각에 %조사처리(CALLNAME:MASTER,"는")% 다소 기분이 나빠졌지만, 
-    PRINTFORMW 그렇게 잠시 있으니 감각은 진정되었고, %조사처리(CALLNAME:MASTER,"는")% 자신의 암컷으로서의 기능이 사람의 그것으로 변했다는 것을 본능적으로 깨달았다.
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% [젊음의 사탕]을 먹었다.
 ELSE
-    PRINTFORML 〔태생 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
-    PRINTL 
-    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸의 변화를 호소했지만, 
-    PRINTFORML 그 감각은 불쾌하거나 결코 격한 게 아니었고, 
-    PRINTFORMW 그렇게 잠시 있다 보니 파도가 물러나듯이 진정된 것 같다.
-    PRINTL 
-    ;消去対象素質が[卵生]か[産卵体質]かで分岐.
-    ;[卵生]なら無理矢理胎生にされたことへのショックを, 
-    ;でない場合は本来の妊娠形態にもどったことでそれぞれ反応を.
-    IF TALENT:ARG:136
-        ;卵をにんっしんっしても狂気が付着しない条件あたりを境に少しメッセージを変化.
-        ;具体的には異常経験5以上か[妄信][親愛][相愛]のいずれかがあれば, ヒトの子を孕めるようになったのを喜ぶ.というか期待する感じに
-        ;処理と分岐は[卵生]持ちでも同じ.
-        IF EXP:ARG:50 > 4 || (TALENT:ARG:151 || TALENT:ARG:152 || TALENT:ARG:153)
-            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 본래대로 돌아왔다는 걸 본능적으로 깨닫고는, 
-            PRINTFORMW 미소와 함께 가만히 복부를 쓰다듬으며, %CALLNAME:MASTER%의 아이를 밸 기대에 뺨을 붉게 물들였다…….
-        ELSE
-            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 본래의 그것으로 돌아왔다는 걸 본능적으로 깨닫고는, 
-            PRINTFORML %CALLNAME:MASTER%의 아이를 정말로 임신하게 되지 않을지, 암컷으로서의 본능적 쾌락과 이성 사이에서
-            PRINTFORMW 잠시 동안 떨고 있었다…….
-        ENDIF
-    ELSE
-        IF EXP:ARG:50 > 4 || (TALENT:ARG:151 || TALENT:ARG:152 || TALENT:ARG:153)
-            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 인간의 것이 되었다는 걸 본능적으로 깨달았지만 
-            PRINTFORMW 오히려 미소지으며 가만히 복부를 쓰다듬더니 %CALLNAME:MASTER%의 아이를 밸 기대에 뺨을 붉게 물들였다…….
-        ELSE
-            PRINTFORML %조사처리(CALLNAME:ARG,"는")% 자신의 암컷으로서의 기능이 사람의 것으로 변했다는 걸 본능적으로 깨닫고는 
-            PRINTFORMW 본래 종으로서의 모습마저 범해진다는 것에 창백해졌다…….
-        ENDIF
-    ENDIF
+    PRINTFORML 〔젊음의 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
 ENDIF
-
-;卵生・産卵体質別々に削除処理
-;元々卵生のキャラはCFLAG:20の1024を立てることで初回の異常経験入手処理の判別と〔난생 사탕〕で[卵生]に戻るかどうかを判別するのに使用
-IF TALENT:ARG:135
-    TALENT:ARG:135 = 0
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% [난생]을 잃었다＞
-    IF (CFLAG:ARG:20 & 1024) == 0
-        CALL COMMON_UP_EXP, ARG, 50, 1, 0
-        CFLAG:ARG:20 |= 1024
-    ENDIF
-ELSE
-    TALENT:ARG:136 = 0
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% [산란체질]을 잃었다＞
-ENDIF
+PRINTW  
+PRINTW  
 
 SIF ARG != MASTER
-    CALL SELF_KOJO, ARG, 338
+    PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
+PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
+PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
+PRINTW  
+PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
+TALENT:ARG:128 = 1
 
+SIF ARG != MASTER
+    CALL SELF_KOJO, ARG, 333
+;범용 대사용 플래그
+CFLAG:ARG:43 = 0
+CALL COMMON_UP_EXP, ARG, 40, 1, 0
+IF (CFLAG:ARG:12 & 8192) == 0
+    CALL COMMON_UP_EXP, ARG, 50, 1, 0
+    CFLAG:ARG:12 |= 8192
+ENDIF
+;身体測定フラグを寝せる(次回身体測定を行うため)
+CFLAG:ARG:8 = 0
 RETURN 1
 
 ;-------------------------------------------------
@@ -730,14 +730,13 @@ IF CFLAG:ARG:4995 == 0
             CFLAG:ARG:4997 = 0
         ELSEIF LOCAL:1 < 25
             CFLAG:ARG:4997 = 1
-        ELSEIF LOCAL:1 > 95 - (TALENT:ARG:129 * 20 + (TALENT:ARG:127  + TALENT:ARG:128) * 5)
+        ELSEIF LOCAL:1 > 95
             CFLAG:ARG:4997 = 4
         ELSEIF LOCAL:1 > 75
             CFLAG:ARG:4997 = 3
         ELSE
             CFLAG:ARG:4997 = 2
         ENDIF
-        CFLAG:ARG:4997 = LIMIT(CFLAG:ARG:4997 + (TALENT:ARG:129 - TALENT:ARG:128 - TALENT:ARG:127), 0, 4)
     ELSE
         CFLAG:ARG:4995 = 2
     ENDIF

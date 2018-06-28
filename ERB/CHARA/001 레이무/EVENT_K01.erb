@@ -573,6 +573,7 @@ ELSEIF CFLAG:5001 < 4 && TALENT:150 == 1 && ( TALENT:27 == 0 || TALENT:152 == 1 
     ELSEIF TALENT:152 == 0
         PRINTFORMW -레이무는 「친애」를 얻었습니다-
          TALENT:152 = 1
+         CFLAG:14 |= 4
     ENDIF
     CFLAG:5001 = 4
     CALL RESET_1_CFLAG
@@ -13987,6 +13988,7 @@ IF TFLAG:0 > 0
                     ;盲信付与,依存イベント発生
                     PRINTFORMW -레이무는「상애」를 얻었다-
                     TALENT:153 = 1
+                    CFLAG:14 |= 8
                     CALL EVENT_FALLEN_SLAVE_DEPENDENCE
                 ;恋慕処女質問イベントで[1] 何となく または[2] … を選択
                 ELSEIF CFLAG:5030 == 2 || CFLAG:5030 == 3
