@@ -870,29 +870,11 @@ NEXT
 SIF CFLAG:ARG:3006 == 0
     RETURN 0
 
-;一旦胸の素質をリセット
-TALENT:ARG:110 = 0
-TALENT:ARG:111 = 0
-TALENT:ARG:112 = 0
-TALENT:ARG:113 = 0
-
 ;확대전의 상태로 돌아간다.
-;절벽이었다
-IF CFLAG:ARG:3006 == 1
-    TALENT:ARG:111 = 1 ;절벽으로는 돌아가지 않는다
-;빈유였다
-ELSEIF CFLAG:ARG:3006 == 2
+;절벽으로는 돌아가지 않는다
+IF CFLAG:ARG:3006 < BUSTSIZE(ARG) && CFLAG:ARG:3006 > 1
     PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
-    TALENT:ARG:111 = 1
-;거유였다
-ELSEIF CFLAG:ARG:3006 == 4
-    TALENT:ARG:112 = 1 ;거유는 커진 적이 없다
-;폭유였다
-ELSEIF CFLAG:ARG:3006 == 5
-    TALENT:ARG:113 = 1 ;폭유는 커진 적이 없다
-;보통크기였다
-ELSE
-    PRINTFORMW 아이에 대한 수유를 마쳤으므로 %CALLNAME:ARG%의 가슴이 작아졌습니다.
+    CALL BUSTSIZE_DOWN(ARG, 2, 6)
 ENDIF
 CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
@@ -1079,40 +1061,13 @@ IF FLAG:12 & 8
         ENDIF
 
         ;임부의 가슴 크기를 플래그에 대입하는 처리
-        CFLAG:3006 = 0
-        ;절벽
-        IF TALENT:110 
-            CFLAG:3006 = 1
-        ;빈유
-        ELSEIF TALENT:111
-            CFLAG:3006 = 2
-        ;거유
-        ELSEIF TALENT:112
-            CFLAG:3006 = 4
-        ;폭유
-        ELSEIF TALENT:113
-            CFLAG:3006 = 5
-        ;보통
-        ELSE
-            CFLAG:3006 = 3
-        ENDIF
+        CFLAG:ARG:3006 = BUSTSIZE(ARG)
 
         ;가슴이 한 단계 커진다.
         ;절벽→빈유, 빈유→보통, 보통→거유, 거유・폭유→변화 없음
-        IF TALENT:112 == 0 && TALENT:113 == 0
+        IF BUSTSIZE(ARG) < 4
             PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 알을 돌보는 동안 가슴이 커졌다.
-            IF TALENT:110 == 1
-                PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%] 정도로 커졌다.
-                TALENT:110 = 0
-                TALENT:111 = 1
-            ELSEIF TALENT:111 == 1
-                PRINTFORMW [%TALENTNAME:111%]에서 보통 사이즈가 되었다.
-                TALENT:111 = 0
-            ELSE
-                PRINTFORMW [%TALENTNAME:112%]가 되었다.
-                TALENT:112 = 1
-            ENDIF
-            PRINTL 
+            CALL BUSTSIZE_UP(ARG, 4, 6)
         ENDIF
         ;모유 나오게 된다
         IF TALENT:134 == 0

@@ -5854,7 +5854,7 @@ ELSE
         ELSEIF CFLAG:ARG:1609 >= 20 && TALENT:ARG:111 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 소극적이었던 가슴이 보통까지 성장했다
             TALENT:ARG:111 = 0
-        ELSEIF CFLAG:ARG:1609 >= 30 && TALENT:ARG:110 == 0 && TALENT:ARG:111 == 0 && TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0 && RAND:5 >= 2
+        ELSEIF CFLAG:ARG:1609 >= 30 && BUSTSIZE(ARG) == 3 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 보통이었는 가슴이 풍부한 가슴까지 성장했다
             TALENT:ARG:112 = 1
         ENDIF

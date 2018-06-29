@@ -1490,7 +1490,7 @@ PRINTW 을(를) 잃었다.
 ;胸の成長は1段階アップに変更.[爆乳]のときのみ変化なし
 IF LOCAL == 0 && RAND:10 == 0 && TALENT:ARG:113 == 0 && TALENT:ARG:120 == 0
     PRINT 가슴도 성장하여 
-    CALL BUSTSIZE_UP(ARG, 5, 2)
+    CALL BUSTSIZE_UP(ARG, 5, 6)
 ENDIF
 ;成長したことを示す
 MARK:ARG:81 = 1
