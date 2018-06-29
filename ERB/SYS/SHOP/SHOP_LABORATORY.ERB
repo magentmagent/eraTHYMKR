@@ -1934,7 +1934,7 @@ REPEAT CHARANUM
         ;[작은체형]は精液放出量強化必須(妊娠パッチの[작은체형]は妊娠しにくいの特性より)
         SIF TALENT:COUNT:128 && (FLAG:75 & 16384) == 0
             CONTINUE
-        ;[소인크기]は精液放出量強化と極細촉수両方を取得している必要がある
+        ;[소인]は精液放出量強化と極細촉수両方を取得している必要がある
         SIF TALENT:COUNT:127 && (FLAG:75 & 16384) == 0 && (FLAG:75 & 16) == 0
             CONTINUE
         ;薬毒耐性持ちは体内適応力強化必須
@@ -2042,7 +2042,7 @@ SIF TALENT:LOCAL:32
 ;抵抗
 SIF TALENT:LOCAL:34
     LOCAL:1 += 4000
-;[소인크기]
+;[소인]
 SIF TALENT:LOCAL:127
     LOCAL:1 += 500
 ;[작은체형]

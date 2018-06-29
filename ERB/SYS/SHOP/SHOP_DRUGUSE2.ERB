@@ -609,7 +609,7 @@ ELSE
     TALENT:ARG:137 = 1
 ENDIF
 
-;[작은체형]に.低確率で[소인크기]に.もともと小柄, [소인크기]でなければ胸も１ランク減少
+;[작은체형]に.低確率で[소인]に.もともと小柄, [소인]でなければ胸も１ランク減少
 IF TALENT:ARG:127 == 0 && TALENT:ARG:128 == 0
     CALL BUSTSIZE_DOWN(ARG, 1, 0)
     SIF TALENT:ARG:129

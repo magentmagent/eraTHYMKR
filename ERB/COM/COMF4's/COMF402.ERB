@@ -49,7 +49,7 @@ IF ASSIPLAY
     SIF ABL:ASSI:10 < 3 && TALENT:ASSI:81 == 0
         RETURN 0
 ENDIF
-;조교 대상이 [소인크기]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;[작은체형]なら순종이 3이상かつ마조끼が3이상じゃないと実行できない

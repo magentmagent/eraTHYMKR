@@ -138,7 +138,7 @@ SIF (TFLAG:98 == 1 && TALENT:PLAYER:58) || (TFLAG:98 == 2 && TALENT:58)
 ;도구계 커맨드 실행시에 실행자가 [츠쿠모가미]를 가지고 있다
 SIF (TFLAG:98 == 1 && TALENT:PLAYER:228) || (TFLAG:98 == 2 && TALENT:228)
     TIMES LOCAL , 1.30
-;[소인크기]
+;[소인]
 IF TALENT:127
     TIMES LOCAL , 0.80
     TIMES LOCAL:1 , 1.20
@@ -225,7 +225,7 @@ SIF (TFLAG:98 == 1 && TALENT:PLAYER:58) || (TFLAG:98 == 2 && TALENT:58)
 ;도구계 커맨드 실행시에 실행자가 [츠쿠모가미]를 가지고 있다
 SIF (TFLAG:98 == 1 && TALENT:PLAYER:228) || (TFLAG:98 == 2 && TALENT:228)
     TIMES LOCAL , 1.30
-;[소인크기]
+;[소인]
 IF TALENT:127
     TIMES LOCAL , 0.50
     TIMES LOCAL:1 , 1.50
@@ -304,7 +304,7 @@ SIF (TFLAG:98 == 1 && TALENT:PLAYER:58) || (TFLAG:98 == 2 && TALENT:58)
 SIF (TFLAG:98 == 1 && TALENT:PLAYER:228) || (TFLAG:98 == 2 && TALENT:228)
     TIMES LOCAL , 1.30
 
-;[소인크기]
+;[소인]
 IF TALENT:127
     TIMES LOCAL , 1.50
     TIMES LOCAL:1 , 1.20
@@ -882,7 +882,7 @@ UP:13 += LOCAL
 ;液体追加의 소스
 ;-------------------------------------------------
 @CALC_SOURCE19
-;[소인크기]
+;[소인]
 IF TALENT:127 && TALENT:PLAYER:127 == 0
     ;ローションとローションプレイでないときは
     SIF SELECTCOM != 60 && SELECTCOM != 625
@@ -972,7 +972,7 @@ SIF (TFLAG:98 == 1 && TALENT:PLAYER:58) || (TFLAG:98 == 2 && TALENT:58)
 SIF (TFLAG:98 == 1 && TALENT:PLAYER:228) || (TFLAG:98 == 2 && TALENT:228)
     TIMES LOCAL , 1.30
 
-;[소인크기]
+;[소인]
 IF TALENT:127
     TIMES LOCAL , 2.00
     TIMES LOCAL:1 , 1.20
@@ -1940,7 +1940,7 @@ ELSE
     TIMES LOCAL , 0.00
 ENDIF
 
-;パイパン([소인크기]もしくは[작은체형]は除く)
+;パイパン([소인]もしくは[작은체형]は除く)
 SIF TALENT:65 && TALENT:127 == 0 && TALENT:128 == 0
     TIMES LOCAL , 1.80
 ;マゾ

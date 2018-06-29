@@ -13,7 +13,7 @@ RETURN 0
 ;아이템을 가지고 있거나, 아이템 없음 설정이 아니면 불가
 SIF ITEM:60 == 0 && NOITEM == 0
     RETURN 0
-;조교자가 [소인크기]のときは기교가 3이상 없으면 안 됨
+;조교자가 [소인]のときは기교가 3이상 없으면 안 됨
 IF TALENT:PLAYER:127
     SIF ABL:PLAYER:12 < 3
         RETURN 0

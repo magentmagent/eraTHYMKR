@@ -70,7 +70,7 @@ ENDIF
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 [소인크기]のとき主人か조교자가 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]のとき主人か조교자가 금단의 지식 보유자가 아니면 불가
 IF TALENT:127 && TALENT:MASTER:56 == 0
     SIF TALENT:PLAYER:56 == 0
         RETURN 0

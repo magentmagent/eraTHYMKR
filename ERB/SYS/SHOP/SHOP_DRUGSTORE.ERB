@@ -193,7 +193,7 @@ ELSEIF RESULT == 39 && FLAG:13 & 1 && LOCAL:8 & 1 && TALENT:MASTER:56
     PRINTL 재료에는 호르몬이나, 무언가의 엑기스 등이 모두 들었다는 설이 있다.
     LOCAL:9 = 500000
 ELSEIF RESULT == 40 && FLAG:13 & 1
-    PRINTL 〔발모 사탕〕：[작은체형]이나 [소인크기]인 사람에게 음모가 나게 만듭니다
+    PRINTL 〔발모 사탕〕：[작은체형]이나 [소인]인 사람에게 음모가 나게 만듭니다
     PRINTL 어린 싹이 돋아나듯 털이 나는 것을 이미지화한 조금 청색에 가까운 녹색을 띈 사탕.
     PRINTL 재료로 식물에서 유래한 수액과 요정들의 애액이 사용되었다는 소문이 있는 듯하다.
     LOCAL:9 = 100000
@@ -378,7 +378,7 @@ REPEAT CHARANUM
         ;[機械]には使えない
         SIF TALENT:COUNT:206
             CONTINUE
-        ;[소인크기]もしくは[小型体型]でないとつかえない
+        ;[소인]もしくは[小型体型]でないとつかえない
         SIF TALENT:COUNT:127 == 0 && TALENT:COUNT:128 == 0
             CONTINUE
         ;既に生えるようになったら効果ない
@@ -405,10 +405,10 @@ REPEAT CHARANUM
             CONTINUE
     ;축소화 사탕の場合
     ELSEIF LOCAL == 43
-        ;주인은 [소인크기]가 될 수 없다.
+        ;주인은 [소인]가 될 수 없다.
         SIF COUNT == MASTER && TALENT:COUNT:129 == 0
             CONTINUE
-        ;[기계],[소인크기]에는 사용할 수 없다
+        ;[기계],[소인]에는 사용할 수 없다
         SIF TALENT:COUNT:206 || TALENT:COUNT:127
             CONTINUE
     ;거대화 사탕の場合

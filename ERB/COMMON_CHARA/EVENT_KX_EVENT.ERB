@@ -8972,7 +8972,7 @@ IF NO != 149 && TFLAG:200 == 405
             PRINTFORMW 「에에, 저기? 조금 몸을 녹이지 않을래?」
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「밤늦게 실례지만, 왠지 몸이 달아오르는 걸 위로해줬으면 하는군」
-        ;人格5で非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+        ;人格5で非処女でＶ感覚がLv2以上で[소인]ではない場合
         ELSEIF CFLAG:3005 == 5 && TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
             PRINTFORMW 「좋은 밤이에요. 저기, 하지 않겠어요?」
         ELSEIF CFLAG:3005 == 5
@@ -8988,7 +8988,7 @@ IF NO != 149 && TFLAG:200 == 405
     ELSEIF GET_NIGHT_KOJO() == 3 && LOCAL == 0
         IF CFLAG:3005 == 3
             PRINTFORMW 「…후후후, 방심은 금물이죠, 제대로 문단속하지 않으면 이렇게 기습을 당한다고요♪」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「반성할 때까지, 범하는 걸 계속하죠♪」
             ELSE
@@ -8996,7 +8996,7 @@ IF NO != 149 && TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「안녕하세요, 는 왜 벌써 자려고 드는거야! 이 녀석은!」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「당장 하기나 해!」
             ELSE
@@ -9004,7 +9004,7 @@ IF NO != 149 && TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「흠, 혼자인가? 어쩔 수 없군. %조사처리(STR:400,"가")% 함께 있어주지」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「어이? 왜 그래? 넣지 않을 건가? %조사처리(STR:400,"는")% 괜찮다고?」
             ELSE
@@ -9012,7 +9012,7 @@ IF NO != 149 && TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「저기, 잘 시간에 죄송합니다만, 참을 수 없게 됐어요」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「그러니, 안아 주세요♪」
             ELSE
@@ -9028,7 +9028,7 @@ IF NO != 149 && TFLAG:200 == 405
     ELSEIF GET_NIGHT_KOJO() == 3
         IF CFLAG:3005 == 3
             PRINTFORMW 「어머어머? 혼자인가요? 외롭겠어요」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「착한 %조사처리(STR:400,"가")% 안겨드리죠」
             ELSE
@@ -9036,7 +9036,7 @@ IF NO != 149 && TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「좋은 밤. 저기? 같이 있어도 돼? 왠지 몸이 뜨거워서」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「뭐, 대신 넣게 해줄게」
             ELSE
@@ -9047,7 +9047,7 @@ IF NO != 149 && TFLAG:200 == 405
             PRINTFORMW 「뭐 평소에 사랑해 주고 있었다면 문제 없었잖아」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「좋은 밤이에요. 저기, 조금 몸이 식은 것 같아서요」
-            ;非処女でＶ感覚がLv2以上で[소인크기]ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「%STR:401%의 사랑을 받고 싶은데, 괜찮을까요?」
             ELSE

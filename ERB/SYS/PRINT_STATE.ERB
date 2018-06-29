@@ -655,7 +655,7 @@ IF TALENT:ARG:120
     LOCAL += 2
     LOCAL:2 += 1
 ENDIF
-;[소인크기]
+;[소인]
 IF TALENT:ARG:127 && TALENT:MASTER:127 == 0 && TALENT:MASTER:56 == 0
     LOCAL += 2
     LOCAL:2 += 1
@@ -2098,7 +2098,7 @@ SIF CFLAG:ARG:20 & 16384
 SIF CFLAG:ARG:20 & 32768
     PRINTL 　지하실에서 교정이라는 이름의 고문을 받은 적이 있다.
 SIF CFLAG:ARG:20 & 65536
-    PRINTL 　약의 힘으로 강제로 [소인크기]가 된 적이 있다.
+    PRINTL 　약의 힘으로 강제로 [소인]가 된 적이 있다.
 SIF CFLAG:ARG:21 & 1
     PRINTL 　공개 자위 경험이 있다.
 SIF CFLAG:ARG:21 & 16
