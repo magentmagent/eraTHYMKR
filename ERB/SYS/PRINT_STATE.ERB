@@ -1464,7 +1464,7 @@ CALL NEW_DRAWLINE
 @PRINT_PUBIC_HAIR, ARG
 PRINTFORML \@(FLAG:12 & 2) ?  □ 음모 상태 # 음모 상태:\@
 
-;소인 체형이나 작은 몸집 체형의 경우는 데포라면 반들반들
+;[소인]이나 [작은체형]의 경우는 데포라면 반들반들
 IF (TALENT:ARG:127 || TALENT:ARG:128) && CFLAG:ARG:36 != 2
     PRINTFORML 음모는 나지 않았습니다. \@(CFLAG:ARG:36 == 1) ? 탈모 처리가 되었으므로, # 그리고\@ 날 낌새도 없습니다.
 ;소인이나 작은 몸집 이외로 데포라면 나 있다

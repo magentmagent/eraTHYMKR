@@ -44,7 +44,7 @@ ENDIF
 LOCAL:10 += (TALENT:(LOCAL:99):120) ? 1450 # 1300
 
 ;소질에 따른 키 보정
-IF  BODYSIZE(LOCAL:99)
+IF BODYSIZE(LOCAL:99)
     ;소수점을 버리고 계산하는 프로그램 구조 상 정밀도를 위해 * 1000
     LOCAL = LOCAL:10 * 1000
     REPEAT ABS(BODYSIZE(LOCAL:99))

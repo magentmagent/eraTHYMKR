@@ -1013,16 +1013,16 @@ ELSEIF ARG == 4
     ;[남자][후타나리]를 잃는다
     CALL LOST_TALENTS, TARGET, 120, 0
     CALL LOST_TALENTS, TARGET, 121, RESULT
-    ;체격 변경 처리가 있기 (위해)때문에,[작은 몸집 체형]을 소실
+    ;체격 변경 처리가 있기 (위해)때문에,[작은체형]을 소실
     CALL LOST_TALENTS, TARGET, 128, RESULT
-    ;[신령][반신]이면[소인 체형]을, 이 아니면[거구]를 잃는다
+    ;[신령][반신]이면[소인]을, 이 아니면[거구]를 잃는다
     SIF TALENT:222 || TALENT:223
         CALL LOST_TALENTS, TARGET, 127, RESULT
     SIF MAX(TALENT:222, TALENT:223) == 0
         CALL LOST_TALENTS, TARGET, 129, RESULT
     ;[인형]을 얻는다
     CALL GET_TALENTS, TARGET, 208, RESULT
-    ;[신령][반신]이면[거구]에, 가 아니면[소인 체형]이 된다
+    ;[신령][반신]이면[거구]에, 가 아니면[소인]이 된다
     SIF TALENT:222 || TALENT:223
         CALL GET_TALENTS, TARGET, 129, RESULT
     SIF MAX(TALENT:222, TALENT:223) == 0

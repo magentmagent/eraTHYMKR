@@ -147,7 +147,7 @@ SIF TALENT:206
     TIMES LOCAL:1 , 0.20
 
 LOCAL:4 = LOCAL:1 /4
-;조교자가 작은 몸집 체형·소인 체형이라면 소모가 크다
+;조교자가 [작은체형]·[소인]이라면 소모가 크다
 SIF TALENT:127 || TALENT:128
     TIMES LOCAL:4 , 1.20
 SIF LOCAL:4 >= BASE:PLAYER:0
@@ -291,7 +291,7 @@ SOURCE:32 += LOCAL:1 / 5
 TCVAR:40 += 1
 
 LOCAL:4 = LOCAL/5
-;조교자가 작은 몸집 체형·소인 체형이라면 소모가 크다
+;조교자가 [작은체형]·[소인]이라면 소모가 크다
 SIF TALENT:PLAYER:127 || TALENT:PLAYER:128
     TIMES LOCAL:4 , 1.20
 SIF LOCAL:4 >= BASE:PLAYER:0
