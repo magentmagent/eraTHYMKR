@@ -232,7 +232,7 @@ IF CFLAG:5220 == 0
     ELSE
         GOTO INPUT_EX_LOOP
     ENDIF
-    PRINTL 코이시쨩은 유아체형?
+    PRINTL 코이시쨩은 작은체형?
     PRINTL [0] 물론
     PRINTL [1] 그럴리가
     $INPUT_EX_LOOP2
@@ -242,7 +242,7 @@ IF CFLAG:5220 == 0
         TALENT:128 = 1
         PRINTFORMW ―이 로리콘 놈들!―
     ELSEIF RESULT == 1
-        PRINTFORMW ―유아체형 없이 진행합니다―
+        PRINTFORMW ―[작은체형] 없이 진행합니다―
     SIF TALENT:128
           TALENT:128 = 0
     ELSE

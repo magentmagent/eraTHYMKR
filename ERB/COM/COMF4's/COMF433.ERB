@@ -22,10 +22,10 @@ IF ASSIPLAY
     SIF ABL:ASSI:10 < 4
     RETURN 0
 ENDIF
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
-;소인체형または작은 체형なら순종이 4이상かつ마조끼が4이상 필요
+;[소인]または[작은체형]なら순종이 4이상かつ마조끼が4이상 필요
 ;また, Ａ경험이 20미만かつＡ확장경험이 5미만だと実行できない
 IF TALENT:127 || TALENT:128
     SIF ABL:10 < 4 || ABL:21 < 4
@@ -254,7 +254,7 @@ SIF TALENT:80
 ;중독 하기 쉽다
 SIF TALENT:84
     TIMES LOCAL:1, 1.50
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

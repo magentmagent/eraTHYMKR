@@ -38,7 +38,7 @@ SIF TALENT:0 == 1
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;윤활 부족이고, 순종4미만 · 레즈끼4미만의 ASSI일 경우, 조교 대상이 동성이라면 실행할 수 없다(새드거나 새드끼Lv3이상, 또는 망신이나 복종이 있다면 ＯＫ)
@@ -228,7 +228,7 @@ IF TALENT:80
     TIMES SOURCE:12 , 1.50
     TIMES SOURCE:31 , 1.20
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.50
 
@@ -443,7 +443,7 @@ IF TALENT:80
     TIMES LOCAL:1 , 1.50
     TIMES LOCAL:3 , 1.20
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 1.50
 

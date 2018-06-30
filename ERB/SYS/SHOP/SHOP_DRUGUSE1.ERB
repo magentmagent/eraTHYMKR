@@ -359,10 +359,10 @@ ELSE
 ENDIF
 RETURN 1
 ;-------------------------------------------------
-;赤の飴玉(処女膜再生)
+;처녀막 사탕(処女膜再生)
 ;-------------------------------------------------
 @USE_DRUG_30, ARG, ARG:1
-PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔빨간 사탕〕을 먹었다. # %CALLNAME:ARG%에게 [빨간 사탕]을 먹였다.\@
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔처녀막 사탕〕을 먹었다. # %CALLNAME:ARG%에게 [처녀막 사탕]을 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 330, 0
 PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 재생처녀가 되었다.＞
@@ -372,10 +372,10 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;青の飴玉(母乳体質)
+;모유 사탕(母乳体質)
 ;-------------------------------------------------
 @USE_DRUG_31, ARG, ARG:1
-PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔파란 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔파란 사탕]을 먹였다.\@
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔모유 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔모유 사탕〕을 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 331, 0
 PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 모유가 나오기 시작했다＞
@@ -386,7 +386,7 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;黄の飴玉(産卵体質)
+;난생 사탕(産卵体質)
 ;-------------------------------------------------
 @USE_DRUG_32, ARG, ARG:1
 ;ABL:1をみる
@@ -428,16 +428,16 @@ ELSE
     TIMES LOCAL:1 , 0.60
 ENDIF
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔노란 사탕〕을 먹었다.
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔난생 사탕〕을 먹었다.
     PRINTW  
-    PRINTFORMW 노란 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 안에서 열이 나는 걸 느꼈다.
+    PRINTFORMW 난생 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 안에서 열이 나는 걸 느꼈다.
     PRINTFORMW 갑자기 %CALLNAME:MASTER%의 배가 순식간에 임산부처럼 부풀어 올랐다.
     PRINTFORML 그 후 %조사처리(CALLNAME:MASTER,"는")% 괴로워 했지만 
     PRINTFORMW 잠시 뒤 질에서 알이 양수와 함께 나왔다.
 ELSE
-    PRINTFORML 〔노란 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@…….    
+    PRINTFORML 〔난생 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@…….    
     PRINTW  
-    PRINTFORMW 노란 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸이 이상하다고 호소했다.
+    PRINTFORMW 난생 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸이 이상하다고 호소했다.
     PRINTFORMW 잠시 뒤 %CALLNAME:ARG%의 배가 부풀어 올라서 임신한 것처럼 보였다.
     PRINTFORML %조사처리(CALLNAME:ARG,"는")% 고통스러운 표정을 짓다가 
     PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 다리를 M자로 펼치자 질에서 알이 양수와 함께 나왔다.
@@ -507,182 +507,20 @@ TFLAG:128 = 0
 RETURN 1
 
 ;-------------------------------------------------
-;녹색 사탕(로리화)
+;태생 사탕(산란 체질 해제 · 난생 → 태생으로)
 ;-------------------------------------------------
 @USE_DRUG_33, ARG, ARG:1
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% [녹색 사탕]을 먹었다.
-ELSE
-    PRINTFORML 〔녹색 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
-ENDIF
-PRINTW  
-PRINTW  
-IF TALENT:ARG:129
-    PRINTFORML 비교적 큰 편이던 %CALLNAME:ARG%의 모습이 서서히 작아지기 시작하더니 
-    PRINTL 최종적으로는 표준적인 체구라 할 수 있을 만큼까지 작아졌다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 체격이 조금 줄어들었다＞
-    TALENT:ARG:129 = 0
-ELSE
-    SIF ARG != MASTER
-        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
-    PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
-    PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
-    TALENT:ARG:128 = 1
-ENDIF
-SIF ARG != MASTER
-    CALL SELF_KOJO, ARG, 333
-;범용 대사용 플래그
-CFLAG:ARG:43 = 0
-CALL COMMON_UP_EXP, ARG, 40, 1, 0
-IF (CFLAG:ARG:12 & 8192) == 0
-    CALL COMMON_UP_EXP, ARG, 50, 1, 0
-    CFLAG:ARG:12 |= 8192
-ENDIF
-;身体測定フラグを寝せる(次回身体測定を行うため)
-CFLAG:ARG:8 = 0
-RETURN 1
-
-;-------------------------------------------------
-;白の飴玉(妖精化)
-;-------------------------------------------------
-@USE_DRUG_34, ARG, ARG:1
-IF ARG == MASTER
-    PRINTFORML ＜%조사처리(CALLNAME:ARG,"가")% 요정이 되겠습니까?＞
-ELSE
-    PRINTFORML ＜%조사처리(CALLNAME:ARG,"를")% 요정화시키겠습니까?＞
-ENDIF
-PRINTW ※다시 되돌릴 수 없으므로 신중하게 판단하세요!
-DRAWLINE
-PRINTL [0] - 그만둔다
-IF ARG == MASTER
-    PRINTL [1] - 요정이 된다
-ELSE
-    PRINTL [1] - 요정화시킨다
-ENDIF
-DRAWLINE
-$INPUT_LOOP
-INPUT
-IF RESULT == 1
-    CALL FAIRY_EVENT, ARG
-ELSEIF RESULT == 0
-    RETURN 0
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-RETURN 1
-
-;-------------------------------------------------
-;黒の飴玉(ＥＸ化)
-;-------------------------------------------------
-@USE_DRUG_35, ARG, ARG:1
-PRINTFORML ＜%조사처리(CALLNAME:ARG,"를")% EX화 시키겠습니까?＞
-PRINTW ※한 번 실행하면 돌아올 수 없습니다.
-DRAWLINE
-PRINTL [0] - 그만둔다
-PRINTL [1] - EX화시킨다
-DRAWLINE
-$INPUT_LOOP
-INPUT
-IF RESULT == 1
-    CALL EX_EVENT, ARG
-ELSEIF RESULT == 0
-    RETURN 0
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-RETURN 1
-
-;-------------------------------------------------
-;灰の飴玉(性格反転)
-;-------------------------------------------------
-@USE_DRUG_36, ARG, ARG:1
-PRINTFORML ＜%CALLNAME:ARG%의 성격을 반전시키겠습니까?＞
-PRINTW ※단 부작용으로 체력·기력의 최대치가 감소합니다
-DRAWLINE
-PRINTL [0] - 지금은 그만둔다
-PRINTL [1] - 반전시킨다
-DRAWLINE
-$INPUT_LOOP
-INPUT
-IF RESULT == 1
-    CALL REVERSE_CHARACTER, ARG
-ELSEIF RESULT == 0
-    RETURN 0
-ELSE
-    GOTO INPUT_LOOP
-ENDIF
-RETURN 1
-
-;-------------------------------------------------
-;금빛 사탕(강제 성장)
-;-------------------------------------------------
-@USE_DRUG_37, ARG, ARG:1
-IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔금빛 사탕〕을 먹었다.
-ELSE
-    PRINTFORML 〔금빛 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
-ENDIF
-PRINTW  
-PRINTW  
-IF TALENT:ARG:127
-    PRINTFORML 손바닥 위에 들어올 만큼이나 작았던 %CALLNAME:ARG%의 몸이 쑥쑥 커지더니만 
-    PRINTL 다시 보자, 인간 어린아이 크기만큼이나 성장해 있었다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 커졌다＞
-    TALENT:ARG:127 = 0
-    TALENT:ARG:128 = 1
-ELSEIF TALENT:ARG:128
-    PRINTFORML %CALLNAME:ARG%의 어딜 봐도 어리단 느낌이었던 몸이 점점 더 자라나더니 
-    PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
-    PRINTW  
-    PRINTFORMW ＜%CALLNAME:ARG%의 몸은 성장했다＞
-    TALENT:ARG:128 = 0
-ELSE
-    SIF ARG != MASTER
-        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
-    PRINTFORML %CALLNAME:ARG%의 모습이 점점 커지기 시작하더니만, 
-    IF TALENT:MASTER:129
-        PRINTL 정신이 들고 보니, 자신과 어깨를 나란히 할 만큼이나 자라 있었다…….
-    ELSEIF TALENT:MASTER:128
-        PRINTFORML 문득 올려다보니, %CALLNAME:ARG%의 얼굴이 굉장히 높은 위치에 있는 듯이 느껴졌다…….
-    ELSE
-        PRINTFORML 어느새 올려다보지 않으면%CALLNAME:ARG%의 얼굴을 볼 수 없게 되어버렸다…….
-    ENDIF
-    PRINTW  
-    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 거인이 되었다＞
-    TALENT:ARG:129 = 1
-ENDIF
-SIF ARG != MASTER
-    CALL SELF_KOJO, ARG, 337
-;범용 대사용 플래그
-CFLAG:ARG:43 = 0
-CALL COMMON_UP_EXP, ARG, 40, 1, 0
-IF (CFLAG:ARG:20 & 256) == 0
-    CALL COMMON_UP_EXP, ARG, 50, 1, 0
-    CFLAG:ARG:20 |= 256
-ENDIF
-;身体測定フラグを寝せる(次回身体測定を行うため)
-CFLAG:ARG:8 = 0
-RETURN 1
-
-;-------------------------------------------------
-;은빛 사탕(산란 체질 해제 · 난생 → 태생으로)
-;-------------------------------------------------
-@USE_DRUG_38, ARG, ARG:1
-IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔은빛 사탕〕을 먹었다…….
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔태생 사탕〕을 먹었다…….
     PRINTL 
-    PRINTFORML 은빛 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 속 깊은 데서 열기를 느끼다가, 
+    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:MASTER,"는")% 몸 속 깊은 데서 열기를 느끼다가, 
     PRINTW 갑자기 하복부에 위화감을 느꼈다.
     PRINTFORML 몸 속에서 무언가가 변해가는 기묘한 감각에 %조사처리(CALLNAME:MASTER,"는")% 다소 기분이 나빠졌지만, 
     PRINTFORMW 그렇게 잠시 있으니 감각은 진정되었고, %조사처리(CALLNAME:MASTER,"는")% 자신의 암컷으로서의 기능이 사람의 그것으로 변했다는 것을 본능적으로 깨달았다.
 ELSE
-    PRINTFORML 〔은빛 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+    PRINTFORML 〔태생 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
     PRINTL 
-    PRINTFORML 은빛 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸의 변화를 호소했지만, 
+    PRINTFORML 태생 사탕을 먹은 %조사처리(CALLNAME:ARG,"는")% 몸의 변화를 호소했지만, 
     PRINTFORML 그 감각은 불쾌하거나 결코 격한 게 아니었고, 
     PRINTFORMW 그렇게 잠시 있다 보니 파도가 물러나듯이 진정된 것 같다.
     PRINTL 
@@ -713,7 +551,7 @@ ELSE
 ENDIF
 
 ;卵生・産卵体質別々に削除処理
-;元々卵生のキャラはCFLAG:20の1024を立てることで初回の異常経験入手処理の判別と〔黄の飴玉〕で[卵生]に戻るかどうかを判別するのに使用
+;元々卵生のキャラはCFLAG:20の1024を立てることで初回の異常経験入手処理の判別と〔난생 사탕〕で[卵生]に戻るかどうかを判別するのに使用
 IF TALENT:ARG:135
     TALENT:ARG:135 = 0
     PRINTW  
@@ -729,12 +567,147 @@ ELSE
 ENDIF
 
 SIF ARG != MASTER
-    CALL SELF_KOJO, ARG, 338
+    CALL SELF_KOJO, ARG, 333
 
 RETURN 1
 
 ;-------------------------------------------------
-;무지개빛 사탕(성전환)
+;요정화 사탕(妖精化)
+;-------------------------------------------------
+@USE_DRUG_34, ARG, ARG:1
+IF ARG == MASTER
+    PRINTFORML ＜%조사처리(CALLNAME:ARG,"가")% 요정이 되겠습니까?＞
+ELSE
+    PRINTFORML ＜%조사처리(CALLNAME:ARG,"를")% 요정화시키겠습니까?＞
+ENDIF
+PRINTW ※다시 되돌릴 수 없으므로 신중하게 판단하세요!
+DRAWLINE
+PRINTL [0] - 그만둔다
+IF ARG == MASTER
+    PRINTL [1] - 요정이 된다
+ELSE
+    PRINTL [1] - 요정화시킨다
+ENDIF
+DRAWLINE
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+    CALL FAIRY_EVENT, ARG
+ELSEIF RESULT == 0
+    RETURN 0
+ELSE
+    GOTO INPUT_LOOP
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;EX화 사탕(ＥＸ化)
+;-------------------------------------------------
+@USE_DRUG_35, ARG, ARG:1
+PRINTFORML ＜%조사처리(CALLNAME:ARG,"를")% EX화 시키겠습니까?＞
+PRINTW ※한 번 실행하면 돌아올 수 없습니다.
+DRAWLINE
+PRINTL [0] - 그만둔다
+PRINTL [1] - EX화시킨다
+DRAWLINE
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+    CALL EX_EVENT, ARG
+ELSEIF RESULT == 0
+    RETURN 0
+ELSE
+    GOTO INPUT_LOOP
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;성격반전 사탕(性格反転)
+;-------------------------------------------------
+@USE_DRUG_36, ARG, ARG:1
+PRINTFORML ＜%CALLNAME:ARG%의 성격을 반전시키겠습니까?＞
+PRINTW ※단 부작용으로 체력·기력의 최대치가 감소합니다
+DRAWLINE
+PRINTL [0] - 지금은 그만둔다
+PRINTL [1] - 반전시킨다
+DRAWLINE
+$INPUT_LOOP
+INPUT
+IF RESULT == 1
+    CALL REVERSE_CHARACTER, ARG
+ELSEIF RESULT == 0
+    RETURN 0
+ELSE
+    GOTO INPUT_LOOP
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;성숙의 사탕(강제 성장)
+;-------------------------------------------------
+@USE_DRUG_37, ARG, ARG:1
+IF ARG == MASTER
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔성숙의 사탕〕을 먹었다.
+ELSE
+    PRINTFORML 〔성숙의 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+ENDIF
+PRINTW  
+PRINTW  
+
+PRINTFORML %CALLNAME:ARG%의 어딜 봐도 어리단 느낌이었던 몸이 점점 더 자라나더니 
+PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
+PRINTW  
+PRINTFORMW ＜%CALLNAME:ARG%의 몸은 성장했다＞
+TALENT:ARG:128 = 0
+
+SIF ARG != MASTER
+    CALL SELF_KOJO, ARG, 337
+;범용 대사용 플래그
+CFLAG:ARG:43 = 0
+CALL COMMON_UP_EXP, ARG, 40, 1, 0
+IF (CFLAG:ARG:20 & 256) == 0
+    CALL COMMON_UP_EXP, ARG, 50, 1, 0
+    CFLAG:ARG:20 |= 256
+ENDIF
+;身体測定フラグを寝せる(次回身体測定を行うため)
+CFLAG:ARG:8 = 0
+RETURN 1
+
+;-------------------------------------------------
+;젊음의 사탕(로리화)
+;-------------------------------------------------
+@USE_DRUG_38, ARG, ARG:1
+IF ARG == MASTER
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% [젊음의 사탕]을 먹었다.
+ELSE
+    PRINTFORML 〔젊음의 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+ENDIF
+PRINTW  
+PRINTW  
+
+SIF ARG != MASTER
+    PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
+PRINTFORML %CALLNAME:ARG%의 모습이 점점 더 작아지더니만, 
+PRINTL 최종적으론 아직 어린 모습이 남아있는 아이 정도 크기까지 줄어들었다…….
+PRINTW  
+PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 어린아이가 되었다＞
+TALENT:ARG:128 = 1
+
+SIF ARG != MASTER
+    CALL SELF_KOJO, ARG, 338
+;범용 대사용 플래그
+CFLAG:ARG:43 = 0
+CALL COMMON_UP_EXP, ARG, 40, 1, 0
+IF (CFLAG:ARG:12 & 8192) == 0
+    CALL COMMON_UP_EXP, ARG, 50, 1, 0
+    CFLAG:ARG:12 |= 8192
+ENDIF
+;身体測定フラグを寝せる(次回身体測定を行うため)
+CFLAG:ARG:8 = 0
+RETURN 1
+
+;-------------------------------------------------
+;성전환 사탕(성전환)
 ;-------------------------------------------------
 @USE_DRUG_39, ARG, ARG:1
 ;性別再反転時（元に戻る時）に必要な情報の保存
@@ -751,20 +724,19 @@ IF CFLAG:ARG:4995 == 0
         ;男が初めてTSしたら処女に決まってんだろJK
         CFLAG:ARG:4996 = 1
         ;元が男の場合は胸のサイズをランダムで決定
-        ;ただし, 小柄・小人体型はそこから1サイズ小さく, 巨躯は1サイズ大きくする
+        ;ただし, 小柄・[소인]はそこから1サイズ小さく, 巨躯は1サイズ大きくする
         LOCAL:1 = RAND:100
         IF LOCAL:1 < 5
-            CFLAG:ARG:4997 = 0
-        ELSEIF LOCAL:1 < 25
             CFLAG:ARG:4997 = 1
-        ELSEIF LOCAL:1 > 95 - (TALENT:ARG:129 * 20 + (TALENT:ARG:127  + TALENT:ARG:128) * 5)
-            CFLAG:ARG:4997 = 4
-        ELSEIF LOCAL:1 > 75
-            CFLAG:ARG:4997 = 3
-        ELSE
+        ELSEIF LOCAL:1 < 25
             CFLAG:ARG:4997 = 2
+        ELSEIF LOCAL:1 >= 95
+            CFLAG:ARG:4997 = 5
+        ELSEIF LOCAL:1 >= 75
+            CFLAG:ARG:4997 = 4
+        ELSE
+            CFLAG:ARG:4997 = 3
         ENDIF
-        CFLAG:ARG:4997 = LIMIT(CFLAG:ARG:4997 + (TALENT:ARG:129 - TALENT:ARG:128 - TALENT:ARG:127), 0, 4)
     ELSE
         CFLAG:ARG:4995 = 2
     ENDIF
@@ -772,9 +744,9 @@ ENDIF
 
 IF TFLAG:228 == 0
     IF ARG == MASTER
-        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔무지개빛 사탕〕을 먹었다.
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔성전환 사탕〕을 먹었다.
     ELSE
-        PRINTFORML 〔무지개빛 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+        PRINTFORML 〔성전환 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
     ENDIF
 ELSEIF TFLAG:228 >= 2
     PRINTFORML %CALLNAME:MASTER%의 몸이 변하기 시작한다.
@@ -818,15 +790,8 @@ IF TALENT:ARG:120
     TALENT:ARG:134 = CFLAG:ARG:4999
     SIF TALENT:ARG:134
         CALL CALC_GAUGE3_SLAVE, ARG, 1
-    IF CFLAG:ARG:4997 == 0
-        TALENT:ARG:110 = 1
-    ELSEIF CFLAG:ARG:4997 == 1
-        TALENT:ARG:111 = 1
-    ELSEIF CFLAG:ARG:4997 == 3
-        TALENT:ARG:112 = 1
-    ELSEIF CFLAG:ARG:4997 == 4
-        TALENT:ARG:113 = 1
-    ENDIF
+    ;가슴 크기를 변경한다.
+    CALL NUM_TO_BUST(ARG, CFLAG:ARG:4997, 0)
 ELSE
     IF ARG != MASTER
         PRINTFORML %CALLNAME:ARG%의 가슴과 엉덩이가 작아지기 시작한다.
@@ -852,17 +817,8 @@ ELSE
     CFLAG:ARG:4996 = TALENT:ARG:0
     CFLAG:ARG:4998 = TALENT:ARG:121
     CFLAG:ARG:4999 = TALENT:ARG:134
-    IF TALENT:ARG:110
-        CFLAG:ARG:4997 = 0
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:4997 = 1
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:4997 = 3
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:4997 = 4
-    ELSE
-        CFLAG:ARG:4997 = 2
-    ENDIF
+    ;가슴 크기를 기억한다.
+    CFLAG:ARG:4997 = BUSTSIZE(ARG)
     TALENT:ARG:0 = 0
     TALENT:ARG:110 = 0
     TALENT:ARG:111 = 0
@@ -895,10 +851,10 @@ ENDIF
 RETURN 1
 
 ;-------------------------------------------------
-;翠の飴玉(陰毛を生やす)
+;발모 사탕(陰毛を生やす)
 ;-------------------------------------------------
 @USE_DRUG_40, ARG, ARG:1
-PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔비취색 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔비취색 사탕]을 먹였다.\@
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔발모 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔발모 사탕]을 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 340, 0
 PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 음모가 나게 되었다＞
@@ -908,10 +864,10 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;紺の飴玉(赤子の成長促進)　有精卵にも使える.
+;성장촉진 사탕(赤子の成長促進)　有精卵にも使える.
 ;-------------------------------------------------
 @USE_DRUG_41, ARG, ARG:1
-PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔남색 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔남색 사탕]을 먹였다.\@
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔성장촉진 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔성장촉진 사탕]을 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 341, 0
 PRINTFORMW ＜%CALLNAME:ARG%의 뱃속이 뜨거워진 것 같다.
@@ -922,11 +878,11 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;桃の飴玉(助手引き継ぎ時にＥＸ化解除可能)
+;EX해제 사탕(助手引き継ぎ時にＥＸ化解除可能)
 ;-------------------------------------------------
 @USE_DRUG_42, ARG, ARG:1
 ;一応主人服用時の地の文も用意(主人の解除の仕様は出来ていないため使用できないようにしている)
-PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔복숭아색 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔복숭아색 사탕]을 먹였다.\@
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? 〔EX해제 사탕〕을 먹었다. # %CALLNAME:ARG%에게 〔EX해제 사탕]을 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 342, 0
 PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 말로 표현하기 힘든 이상한 느낌을 받는다＞
@@ -937,27 +893,81 @@ SIF ARG != MASTER
 RETURN 1
 
 ;-------------------------------------------------
-;鈍の飴玉(ミニ化, ～30㎝あたり)
+;축소화 사탕
 ;-------------------------------------------------
 @USE_DRUG_43, ARG, ARG:1
 IF ARG == MASTER
-    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔쥐색 사탕〕을 먹었다.
+    PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 〔축소화 사탕〕을 먹었다.
 ELSE
-    PRINTFORML 〔쥐색 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
+    PRINTFORML 〔축소화 사탕〕을 %CALLNAME:ARG%에게 \@(ABL:ARG:10 < 3) ? 억지로 먹였다 # 먹였다 \@.
 ENDIF
 PRINTW  
 PRINTW  
 SIF ARG != MASTER
     PRINTFORM %CALLNAME:MASTER%의 시계가 이상하다.
-PRINTFORML %CALLNAME:ARG%의 모습이 작아지더니 
-PRINTL 원래 작았던 덩치가 더더욱 작아져 손바닥 위에 올려둘 정도로 줄었다.
-PRINTW  
-PRINTFORMW ＜%CALLNAME:ARG%의 몸이 줄어들었다＞
-TALENT:ARG:127 = 1
-;念のため[巨躯]は消去
-TALENT:ARG:129 = 0
+IF TALENT:ARG:129
+    PRINTFORML 비교적 큰 편이던 %CALLNAME:ARG%의 모습이 서서히 작아지기 시작하더니 
+    IF TALENT:ARG:128
+        PRINTL 다시 보자, 평범한 인간 어린아이 크기가 되었다.
+    ELSE
+        PRINTL 최종적으로는 표준적인 체구라 할 수 있을 만큼까지 작아졌다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 체격이 조금 줄어들었다＞
+    TALENT:ARG:129 = 0
+ELSE
+    PRINTFORML %CALLNAME:ARG%의 모습이 작아지더니 
+    PRINTL 원래 작았던 덩치가 더더욱 작아져 손바닥 위에 올려둘 정도로 줄었다.
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 줄어들었다＞
+    TALENT:ARG:127 = 1
+ENDIF
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 343
+;범용 대사용 플래그
+CFLAG:ARG:43 = 0
+;身体測定フラグを寝せる(次回身体測定を行うため)
+CFLAG:ARG:8 = 0
+;薬物経験
+CALL COMMON_UP_EXP, ARG, 40, 1, 1
+IF (CFLAG:ARG:20 & 65536) == 0
+    ;異常経験
+    CALL COMMON_UP_EXP, ARG, 50, 1, 0
+    CFLAG:ARG:20 |= 65536
+ENDIF
+RETURN 1
+
+;-------------------------------------------------
+;거대화 사탕
+;-------------------------------------------------
+@USE_DRUG_44, ARG, ARG:1
+IF TALENT:ARG:127
+    PRINTFORML 손바닥 위에 들어올 만큼이나 작았던 %CALLNAME:ARG%의 몸이 쑥쑥 커지더니만 
+    IF TALENT:ARG:128
+        PRINTL 다시 보자, 인간 어린아이 크기만큼이나 성장해 있었다…….
+    ELSE
+        PRINTL 최종적으론 보통 어른 크기의 체격이 되어 있었다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%CALLNAME:ARG%의 몸이 커졌다＞
+    TALENT:ARG:127 = 0
+ELSE
+    SIF ARG != MASTER
+        PRINTFORM %CALLNAME:MASTER%의 눈에 비치는 
+        PRINTFORML %CALLNAME:ARG%의 모습이 점점 커지기 시작하더니만, 
+    IF TALENT:MASTER:129
+        PRINTL 정신이 들고 보니, 자신과 어깨를 나란히 할 만큼이나 자라 있었다…….
+    ELSEIF TALENT:MASTER:128
+        PRINTFORML 문득 올려다보니, %CALLNAME:ARG%의 얼굴이 굉장히 높은 위치에 있는 듯이 느껴졌다…….
+    ELSE
+        PRINTFORML 어느새 올려다보지 않으면%CALLNAME:ARG%의 얼굴을 볼 수 없게 되어버렸다…….
+    ENDIF
+    PRINTW  
+    PRINTFORMW ＜%조사처리(CALLNAME:ARG,"는")% 거인이 되었다＞
+    TALENT:ARG:129 = 1
+ENDIF
+SIF ARG != MASTER
+    CALL SELF_KOJO, ARG, 344
 ;범용 대사용 플래그
 CFLAG:ARG:43 = 0
 ;身体測定フラグを寝せる(次回身体測定を行うため)

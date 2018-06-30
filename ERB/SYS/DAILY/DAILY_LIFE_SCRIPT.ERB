@@ -2459,7 +2459,7 @@ SIF TALENT:ARG:205
     PRINTFORMW 라고 해도 비치지는 않지만…… 버릇 같은걸까? 
 
 ;수정(추가) 조건 변경 "소질:113"(TALENT:113)을 조건문에 추가
-IF TALENT:ARG:112 || TALENT:ARG:113
+IF BUSTSIZE(ARG) > 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 풍부한 가슴을 확인하듯이 손대기 시작했다.
     IF TALENT:ARG:10 || TALENT:ARG:14 || TALENT:ARG:26
         PRINTFORMW 아무래도 자신의 가슴이 별로 마음에 들지 않아 우울한 얼굴을 하고 있다.
@@ -2468,7 +2468,7 @@ IF TALENT:ARG:112 || TALENT:ARG:113
     ENDIF
 
 ;수정(추가) 조건 변경 "소질:110"(TALENT:110)을 조건문에 추가
-ELSEIF TALENT:ARG:111 || TALENT:ARG:110
+ELSEIF BUSTSIZE(ARG) < 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 소극적인 가슴을 토닥토닥 손을 댄다.
     SIF TALENT:ARG:128
         PRINTFORMW 그러고나서 자신의 잘록한 부분도 확인하듯 만진다…….
@@ -5790,9 +5790,9 @@ IF CFLAG:ARG:1608 == 0
 ELSEIF CFLAG:ARG:1609 == 0
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 끊임없이 가슴을 신경쓰면서 운동을 계속하고 있다
     PRINTFORMW 이번은 바스트 업・엑서사이즈를 하고 있는 듯하다
-    IF TALENT:ARG:110 || TALENT:ARG:111
+    IF BUSTSIZE(ARG) < 3
         PRINTFORMW 소극적인 가슴의 %조사처리(CALLNAME:ARG,"는")% 조금이라도 가슴을 크게 하려고 매일 눈물겨운 노력을 하고 있기 때문일까
-    ELSEIF TALENT:ARG:112 || TALENT:ARG:113
+    ELSEIF BUSTSIZE(ARG) > 3
         PRINTFORMW 풍부한 가슴을 가진 %조사처리(CALLNAME:ARG,"였")%지만 보다 아름답게 보이게 하려고 노력하고 있는 것일까
     ELSE
         PRINTFORMW 가슴이 보통 수준의 크기인 %조사처리(CALLNAME:ARG,"는")% 보다 풍부한 가슴을 손에 넣고 싶다 생각하고 있는 걸까
@@ -5854,7 +5854,7 @@ ELSE
         ELSEIF CFLAG:ARG:1609 >= 20 && TALENT:ARG:111 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 소극적이었던 가슴이 보통까지 성장했다
             TALENT:ARG:111 = 0
-        ELSEIF CFLAG:ARG:1609 >= 30 && TALENT:ARG:110 == 0 && TALENT:ARG:111 == 0 && TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0 && RAND:5 >= 2
+        ELSEIF CFLAG:ARG:1609 >= 30 && BUSTSIZE(ARG) == 3 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 보통이었는 가슴이 풍부한 가슴까지 성장했다
             TALENT:ARG:112 = 1
         ENDIF

@@ -152,9 +152,9 @@ IF FLAG:423 != CFLAG:MASTER:3109 && FLAG:423 != 0
     SIF LOCAL > 0
         PRINTFORML 마지막 조교에서 조수를 담당한 것은 %CALLNAME:LOCAL%입니다.
 ENDIF
-;남색 사탕의 영향을 받고 있다면 표시
+;성장촉진 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:1 > 0
-    PRINTFORML 신비한 남색 사탕의 영향을 받고 있다
+    PRINTFORML 신비한 성장촉진 사탕의 영향을 받고 있다
     
 ;칭호 · 엔딩 도달 표시
 STRLENS NICKNAME:MASTER
@@ -245,12 +245,12 @@ SIF CFLAG:ARG:4 == 4096
 ;수면제의 영향하에 있으면 표시
 SIF EQUIP:ARG:14 > 0
     PRINTFORML 수면제의 영향을 받아 \@(EQUIP:ARG:14 >= 10000) ? 곤히 자고 # 자고 \@ 있다.
-;복숭아의 눈깔사탕의 영향을 받고 있다면 표시
+;EX해제 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:0 > 0
-    PRINTFORML 신비한 복숭아색 사탕의 영향을 받고 있다.
-;남색 사탕의 영향을 받고 있다면 표시
+    PRINTFORML 신비한 EX해제 사탕의 영향을 받고 있다.
+;성장촉진 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:1 > 0
-    PRINTFORML 신비한 남색 사탕의 영향을 받고 있다.
+    PRINTFORML 신비한 성장촉진 사탕의 영향을 받고 있다.
 
 CALL NEW_DRAWLINE
 
@@ -655,7 +655,7 @@ IF TALENT:ARG:120
     LOCAL += 2
     LOCAL:2 += 1
 ENDIF
-;소인체형
+;[소인]
 IF TALENT:ARG:127 && TALENT:MASTER:127 == 0 && TALENT:MASTER:56 == 0
     LOCAL += 2
     LOCAL:2 += 1
@@ -866,38 +866,52 @@ CALL NEW_DRAWLINE
 CALL MAKE_SIZE, 1, ARG
 
 PRINTFORML \@(FLAG:12 & 2) ? □ 사이즈 # 사이즈:\@
-PRINTFORM  신장:{BASE:ARG:10 / 10}. {BASE:ARG:10 % 10}cm
+PRINTFORM  신장:{BASE:ARG:10 / 10}.{BASE:ARG:10 % 10} cm
 ;보테배상태의 경우 표시 수치 보정
 IF FLAG:1500 & 2 && (CFLAG:ARG:3502 % 1000000)
-    LOCAL:11 = BASE:ARG:11 + ((CFLAG:ARG:3502 % 1000000 ) * 10) / 34
-    PRINTFORM    체중:{LOCAL:11 / 10}. {LOCAL:11 % 10}kg
-    PRINTFORML  임신전({BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg)
+    LOCAL:11 = BASE:ARG:11 + ((CFLAG:ARG:3502 % 1000000 ) * 10000) / 34
+    IF BASE:ARG:11 > 10000
+        PRINTFORM    체중:{LOCAL:11 / 10000}. {LOCAL:11 % 10000 / 1000} kg
+        PRINTFORML  임신전({BASE:ARG:11 / 10000}. {BASE:ARG:11 % 10000 / 1000} kg)
+    ELSE
+        PRINTFORM    체중:{LOCAL:11 / 10}.{LOCAL:11 % 10} g
+        PRINTFORML  임신전({BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} kg)
+    ENDIF
 ;임신 소유의 경우 표시 수치 보정
 ELSEIF TALENT:ARG:140
-    LOCAL:11 = BASE:ARG:11 + (CFLAG:ARG:3500 * 10) / 34
-    PRINTFORM    체중:{LOCAL:11 / 10}. {LOCAL:11 % 10}kg
-    PRINTFORML  임신전({BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg)
+    LOCAL:11 = BASE:ARG:11 + CFLAG:ARG:3500
+    IF BASE:ARG:11 > 10000
+        PRINTFORM    체중:{LOCAL:11 / 10000}.{LOCAL:11 % 10000 / 1000} kg
+        PRINTFORML  임신전({BASE:ARG:11 / 10000}.{BASE:ARG:11 % 10000 / 1000} kg)
+    ELSE
+        PRINTFORM    체중:{LOCAL:11 / 10}.{LOCAL:11 % 10} g
+        PRINTFORML  임신전({BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} g)
+    ENDIF
 ELSE
-    PRINTFORML    체중:{BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg
+    IF BASE:ARG:11 > 10000
+        PRINTFORML    체중:{BASE:ARG:11 / 10000}.{BASE:ARG:11 % 10000 / 1000} kg
+    ELSE
+        PRINTFORML  체중:{BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} g
+    ENDIF
 ENDIF
 ;[남자]소유는 3 사이즈는 표시하지 않는다
 IF ! TALENT:ARG:120
-    PRINTFORM  B:{BASE:ARG:12 / 10}. {BASE:ARG:12 % 10}cm 
+    PRINTFORM  B:{BASE:ARG:12 / 10}.{BASE:ARG:12 % 10} cm 
     CALL PRINT_CUPSIZE , ARG
     ;보테배상태의 경우 표시 수치 보정
     IF FLAG:1500 & 2 && ( CFLAG:ARG:3502 % 1000000 )
         LOCAL:13 = BASE:ARG:13 + (CFLAG:ARG:3502 % 1000000)
-        PRINTFORM / W:{LOCAL:13 / 10}. {LOCAL:13 % 10}cm
-        PRINTFORM    임신전({BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm) /
+        PRINTFORM / W:{LOCAL:13 / 10}.{LOCAL:13 % 10} cm
+        PRINTFORM    임신전({BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm) /
     ;임신 소유의 경우 표시 수치 보정
     ELSEIF TALENT:ARG:140
-        LOCAL:13 = BASE:ARG:13 + CFLAG:ARG:3500
-        PRINTFORM / W:{LOCAL:13 / 10}. {LOCAL:13 % 10}cm
-        PRINTFORM  임신전({BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm) /
+        LOCAL:13 = BASE:ARG:13 + CFLAG:ARG:3500 * 3 / 1000 ;체중 1kg 에  30 mm 정도 허리둘레가 늘어난다고 치자
+        PRINTFORM / W:{LOCAL:13 / 10}.{LOCAL:13 % 10} cm
+        PRINTFORM  임신전({BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm) /
     ELSE
-        PRINTFORM / W:{BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm /
+        PRINTFORM / W:{BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm /
     ENDIF
-    PRINTFORML  H:{BASE:ARG:14 / 10}. {BASE:ARG:14 % 10}cm
+    PRINTFORML  H:{BASE:ARG:14 / 10}.{BASE:ARG:14 % 10} cm
 ENDIF
 CALL NEW_DRAWLINE
 
@@ -1450,7 +1464,7 @@ CALL NEW_DRAWLINE
 @PRINT_PUBIC_HAIR, ARG
 PRINTFORML \@(FLAG:12 & 2) ?  □ 음모 상태 # 음모 상태:\@
 
-;소인 체형이나 작은 몸집 체형의 경우는 데포라면 반들반들
+;[소인]이나 [작은체형]의 경우는 데포라면 반들반들
 IF (TALENT:ARG:127 || TALENT:ARG:128) && CFLAG:ARG:36 != 2
     PRINTFORML 음모는 나지 않았습니다. \@(CFLAG:ARG:36 == 1) ? 탈모 처리가 되었으므로, # 그리고\@ 날 낌새도 없습니다.
 ;소인이나 작은 몸집 이외로 데포라면 나 있다
@@ -1636,9 +1650,9 @@ SIF CFLAG:ARG:13 & 4096
 
 ;기타 MARK상의 이력
 IF MARK:ARG:80 == 1
-    PRINTL 현재 잿빛 사탕에 의해 성격이 반전되어 있다.
+    PRINTL 현재 성격반전 사탕에 의해 성격이 반전되어 있다.
 ELSEIF MARK:ARG:80 == 2
-    PRINTL 잿빛 사탕의 효과로 반전되었던 성격이 원래대로 돌아왔다.
+    PRINTL 성격반전 사탕의 효과로 반전되었던 성격이 원래대로 돌아왔다.
 ENDIF
 
 ;매각 가능한가?　조수화 가능한가?
@@ -2084,7 +2098,7 @@ SIF CFLAG:ARG:20 & 16384
 SIF CFLAG:ARG:20 & 32768
     PRINTL 　지하실에서 교정이라는 이름의 고문을 받은 적이 있다.
 SIF CFLAG:ARG:20 & 65536
-    PRINTL 　약의 힘으로 강제로 소인체형이 된 적이 있다.
+    PRINTL 　약의 힘으로 강제로 [소인]가 된 적이 있다.
 SIF CFLAG:ARG:21 & 1
     PRINTL 　공개 자위 경험이 있다.
 SIF CFLAG:ARG:21 & 16

@@ -29,7 +29,7 @@ SIF TALENT:120
 ;主人に금단의 지식か狂気がないとダメ
 SIF TALENT:MASTER:56 == 0 && TALENT:MASTER:158 == 0
     RETURN 0
-;소인체형だとダメ
+;[소인]だとダメ
 SIF TALENT:127
     RETURN 0
 ;Ｖ계 장착구 사용 중에는 불가
@@ -152,7 +152,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
