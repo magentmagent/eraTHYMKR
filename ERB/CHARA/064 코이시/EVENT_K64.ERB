@@ -1715,7 +1715,7 @@ ENDIF
 IF TALENT:140 && CFLAG:5202 == 2
     ;임신を消去
     TALENT:140 = 0
-    CALL RESET_FLAG_N_FORCE, ARG
+    CALL RESET_FLAG_N_FORCE, TARGET
     ;最大체력を元に戻す
     ;ただし現在の체력は戻さない
     MAXBASE:0 += 500
