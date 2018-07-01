@@ -1253,28 +1253,12 @@ CFLAG:ASSI:2 = LOCAL:1
 ;胸の素質が変化していないなら帰る
 SIF !CFLAG:ARG:3006
     RETURN 0
-
-;一旦胸の素質をリセット
-TALENT:ARG:110 = 0
-TALENT:ARG:111 = 0
-TALENT:ARG:112 = 0
-TALENT:ARG:113 = 0
-
-;拡大前の状態に戻す
-;절벽だった
-IF CFLAG:ARG:3006 == 1
-    TALENT:ARG:110 = 1
-;빈유だった
-ELSEIF CFLAG:ARG:3006 == 2
-    TALENT:ARG:111 = 1
-;거유だった
-ELSEIF CFLAG:ARG:3006 == 4
-    TALENT:ARG:112 = 1
-;폭유だった
-ELSEIF CFLAG:ARG:3006 == 5
-    TALENT:ARG:113 = 1
-ENDIF
-
+;확대전의 상태로 돌아간다.
+;출산 전이므로 절벽으로도 돌아간다.
+CALL NUM_TO_BUST(ARG, CFLAG:ARG:3006)
+CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
+;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
+CFLAG:ARG:8 = 0
 ;--------------------------------------------------
 ;조수의 EX화 해제 선택 처리
 ;--------------------------------------------------
