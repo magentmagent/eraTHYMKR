@@ -854,6 +854,8 @@ ENDIF
 @RESET_FLAG_N_FORCE, ARG
 FLAG:17 = 0
 CFLAG:ARG:76 = 0
+;출산예정일 초기화
+CFLAG:ARG:77 =  0
 CFLAG:ARG:78 = -1
 CFLAG:ARG:3004 = -1
 MARK:ARG:89 = 0
@@ -880,9 +882,10 @@ CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
 ;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
 CFLAG:ARG:8 = 0
 
-;子育て終了or임신強制終了時の母乳体質完了処理
+;육아 종료 or임신 강제 종료시의 모유 체질 완료 처리
 @LOST_MILK, ARG
-IF TALENT:ARG:134 && MARK:ARG:89 == 0
+;[확장유두]는 모유가 멈추지 않는다.
+IF TALENT:ARG:134 && MARK:ARG:89 == 0 && !TALENT:ARG:2
     TALENT:ARG:134 = 0
     MAXBASE:ARG:3 = 0
 ENDIF

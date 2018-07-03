@@ -1715,41 +1715,19 @@ ENDIF
 IF TALENT:140 && CFLAG:5202 == 2
     ;임신を消去
     TALENT:140 = 0
-    ;出産予定日を初期化
-    CFLAG:77 =  0
-    ;父親を初期化
-    CFLAG:78 = 0
+    CALL RESET_FLAG_N_FORCE, TARGET
     ;最大체력を元に戻す
     ;ただし現在の체력は戻さない
     MAXBASE:0 += 500
     PRINTFORMW 조교 종료 후, %조사처리(CALLNAME:TARGET,"는")% 유산했다.
-
-    ;バストサイズを一段階小さくする
-    ;元々爆乳？知るか
-    ;爆乳
-    IF TALENT:113
-        TALENT:113 = 0
-        TALENT:112 = 1
-    ;巨乳
-    ELSEIF TALENT:112
-        TALENT:112 = 0
-    ;貧乳
-    ELSEIF TALENT:111
-        TALENT:111 = 0
-        TALENT:110 = 1
-    ;絶壁
-    ELSEIF TALENT:110
-        ;サイズそのまま
-    ;並乳
-    ELSE
-        TALENT:111 = 1
+    IF CFLAG:ARG:3006
+        CALL RESET_ASSI_PREGNANT, TARGET
+        PRINTFORMW %CALLNAME:TARGET%의 가슴 사이즈가 원래대로 돌아왔다.
     ENDIF
-    PRINTFORMW %CALLNAME:TARGET%의 가슴 사이즈가 원래대로 돌아왔다.
+    
 
-    ;母乳体質を消す
-    ;青いキャンディ返せ? [幼稚]の助手を使え
-    SIF TALENT:134
-        TALENT:134 = 0
+    ;임신 시에 발생한 모유체질을 소실시킨다
+    CALL LOST_MILK, TARGET
 
     ;腹パン判定を元に戻す
     CFLAG:5201 = 1

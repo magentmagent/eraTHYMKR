@@ -116,31 +116,8 @@ IF TALENT:120 == 0
     PRINTL [4] 폭유! 폭유!
     $INPUT_LOOP_3
     INPUT
-    IF RESULT == 0
-        TALENT:110 = 1
-        TALENT:111 = 0
-        TALENT:112 = 0
-        TALENT:113 = 0
-    ELSEIF RESULT == 1
-        TALENT:110 = 0
-        TALENT:111 = 1
-        TALENT:112 = 0
-        TALENT:113 = 0
-    ELSEIF RESULT == 2
-        TALENT:110 = 0
-        TALENT:111 = 0
-        TALENT:112 = 0
-        TALENT:113 = 0
-    ELSEIF RESULT == 3
-        TALENT:110 = 0
-        TALENT:111 = 0
-        TALENT:112 = 1
-        TALENT:113 = 0
-    ELSEIF RESULT == 4
-        TALENT:110 = 0
-        TALENT:111 = 0
-        TALENT:112 = 0
-        TALENT:113 = 1
+    IF RESULT >= 0 && RESULT <= 4
+        CALL NUM_TO_BUST(TARGET, RESULT + 1, 0)
     ELSE
         GOTO INPUT_LOOP_3
     ENDIF

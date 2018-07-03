@@ -288,6 +288,13 @@ SELECTCASE ARG:1
         TALENT:ARG:110 = 1
         SIF ARG:2 & 4
             PRINTFORMW [%TALENTNAME:110%]로 바뀌었다.
+        ;절벽은 모유가 나오지 않는다. 그러나 [확장유두]는 모유가 멈추지 않는다.
+        IF TALENT:ARG:134 && !TALENT:ARG:2
+            TALENT:ARG:134 = 0 ;[모유체질]
+            MAXBASE:ARG:3 = 0 ;모유 게이지
+            SIF ARG:2 & 4
+                PRINTFORMW 가슴이 너무 작아 모유가 나오지 않게 되었다.
+        ENDIF
     CASE 2
         TALENT:ARG:111 = 1
         SIF ARG:2 & 4
@@ -317,8 +324,17 @@ ENDSELECT
 LOCAL = BUSTSIZE(ARG)
 LOCAL:1 = LIMIT(LOCAL + 1, 1, ARG:1)
 IF LOCAL:1 > LOCAL
-    SIF ARG:2 & 1
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
+    IF ARG:2 & 1
+        IF LOCAL == 1
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 약간 부풀어 올랐다.
+        ELSEIF LOCAL == 2
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
+        ELSEIF LOCAL == 3
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 아주 터질 것 같은 크기가 되었다.
+        ELSE
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 몸에 어울리지 않을 만큼 커졌다.
+        ENDIF
+    ENDIF
     CALL NUM_TO_BUST(ARG, LOCAL:1, ARG:2)
 ENDIF
 ;-------------------------------------------------
@@ -331,7 +347,20 @@ ENDIF
 LOCAL = BUSTSIZE(ARG)
 LOCAL:1 = LIMIT(LOCAL - 1, ARG:1, 5)
 IF LOCAL:1 < LOCAL
-    SIF ARG:2 & 1
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 작아졌다.
+    IF ARG:2 & 1
+        IF LOCAL == 5
+            PRINTFORMW %CALLNAME:ARG%의 너무나도 풍만하던 가슴이 한 단계 줄어들었다.
+            PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 약간이지만 아쉬운 표정을 지었다.
+        ELSEIF LOCAL == 4
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 남들만한 크기로 작아졌다.
+            PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 다소 쇼크를 받은 듯하다.
+        ELSEIF LOCAL == 3
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 작아졌다.
+            PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 쇼크를 받은 것 같다.
+        ELSE
+            PRINTFORMW %CALLNAME:ARG%의 가슴이 극단적으로 줄어들었다.
+            PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 아연해 하고 있다.
+        ENDIF
+    ENDIF
     CALL NUM_TO_BUST(ARG, LOCAL:1, ARG:2)
 ENDIF

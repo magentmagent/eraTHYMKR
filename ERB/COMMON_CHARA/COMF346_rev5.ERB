@@ -3058,46 +3058,31 @@ IF ASSI > 0 && NO == 149 && NO:ASSI == 22 && TALENT:ASSI:150 == 1 && CFLAG:7020 
                         PRINTFORMW 「우우…그런 게 좋단 말야? 그치만 %조사처리(STR:401,"가")% 바란다면…♪」
                         PRINTFORMW 
                         PRINTFORMW %CALLNAME:TARGET%의 사이즈는 [절벽]이 되었습니다
-                        TALENT:110 = 1
-                        TALENT:111 = 0
-                        TALENT:112 = 0
-                        TALENT:113 = 0
+                        CALL NUM_TO_BUST(TARGET, 1)
                         PRINTFORMW 
                     ELSEIF RESULT == 2
                         PRINTFORMW 「응♪ 그럼 귀여운 사이즈가 되면 되겠구나♪」
                         PRINTFORMW 
                         PRINTFORMW %CALLNAME:TARGET%의 사이즈는 [빈유]가 되었습니다
-                        TALENT:110 = 0
-                        TALENT:111 = 1
-                        TALENT:112 = 0
-                        TALENT:113 = 0
+                        CALL NUM_TO_BUST(TARGET, 2)
                         PRINTFORMW 
                     ELSEIF RESULT == 3
                         PRINTFORMW 「알겠어! 평범한 게 제일인 거지♪」
                         PRINTFORMW 
-                        PRINTFORMW %CALLNAME:TARGET%의 사이즈는 보통이 되었습니다
-                        TALENT:110 = 0
-                        TALENT:111 = 0
-                        TALENT:112 = 0
-                        TALENT:113 = 0
+                        PRINTFORMW %CALLNAME:TARGET%의 사이즈는 [평유]가 되었습니다
+                        CALL NUM_TO_BUST(TARGET, 3)
                         PRINTFORMW 
                     ELSEIF RESULT == 4
                         PRINTFORMW 「후후후! %조사처리(STR:401,"가")% 큰 걸 좋아할 줄 알았다구♪」
                         PRINTFORMW 
                         PRINTFORMW %CALLNAME:TARGET%의 사이즈는 [거유]가 되었습니다
-                        TALENT:110 = 0
-                        TALENT:111 = 0
-                        TALENT:112 = 1
-                        TALENT:113 = 0
+                        CALL NUM_TO_BUST(TARGET, 4)
                         PRINTFORMW 
                     ELSEIF RESULT == 5
                         PRINTFORMW 「우와……왠지 무거울 것 같아…그치만 %조사처리(STR:401,"가")% 바란다니깐♪」
                         PRINTFORMW 
                         PRINTFORMW %CALLNAME:TARGET%의 사이즈는 [폭유]가 되었습니다
-                        TALENT:110 = 0
-                        TALENT:111 = 0
-                        TALENT:112 = 0
-                        TALENT:113 = 1
+                        CALL NUM_TO_BUST(TARGET, 5)
                         PRINTFORMW 
                     ENDIF
                     PRINTFORMW 『만족했으려나?』

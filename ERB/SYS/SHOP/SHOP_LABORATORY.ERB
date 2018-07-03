@@ -325,7 +325,7 @@ LOCAL:1 = (ABL:MASTER:98 >= 3) ? TENTACLE_SEAL_OF_IMMORTAL() # 0
 IF TALENT:120 == 0 && TALENT:44 == 0
     SIF TALENT:134 == 0
         PRINTFORML  [ 0] 모유체질로 바꾼다    (필요 기생촉수성장LV:1200)
-    SIF TALENT:134
+    SIF TALENT:134 && !TALENT:ARG:2 ;[확장유두]는 모유가 멈추지 않는다.
         PRINTFORML  [ 1] 모유체질을 개선        (필요 기생촉수성장LV:1500)
     SIF LOCAL & 1
         PRINTFORML  [ 2] 가슴 사이즈를 크게    (필요 기생촉수성장LV: 200)
@@ -367,7 +367,7 @@ IF RESULT == 100
 ELSEIF RESULT == 0 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134 == 0
     PRINTFORML %조사처리(CALLNAME:TARGET,"를")% 모유체질로 만듭니다.
     LOCAL:2 = 1200
-ELSEIF RESULT == 1 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134
+ELSEIF RESULT == 1 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134 && !TALENT:ARG:2 ;[확장유두]는 모유가 멈추지 않는다.
     PRINTFORML %CALLNAME:TARGET%의 모유체질을 낫게 합니다.
     LOCAL:2 = 1500
 ELSEIF RESULT == 2 && TALENT:120 == 0 && TALENT:44 == 0 && LOCAL & 1
@@ -456,42 +456,11 @@ SELECTCASE LOCAL:3
     CASE 1
         PRINTFORMW %CALLNAME:TARGET%에게서 모유가 나오지 않게 되었다.
         TALENT:134 = 0
+        MAXBASE:ARG:3 = 0 ;모유 게이지
     CASE 2
-        IF TALENT:110
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 약간 부풀어 올랐다.
-            TALENT:110 = 0
-            TALENT:111 = 1
-        ELSEIF TALENT:111
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 커졌다.
-            TALENT:111 = 0
-        ELSEIF TALENT:112
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 몸에 어울리지 않을 만큼 커졌다.
-            TALENT:112 = 0
-            TALENT:113 = 1
-        ELSE
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 아주 터질 것 같은 크기가 되었다.
-            TALENT:112 = 1
-        ENDIF
+        CALL BUSTSIZE_UP(TARGET)
     CASE 3
-        IF TALENT:113
-            PRINTFORMW %CALLNAME:TARGET%의 너무나도 풍만하던 가슴이 한 단계 줄어들었다.
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 약간이지만 아쉬운 표정을 지었다.
-            TALENT:113 = 0
-            TALENT:112 = 1
-        ELSEIF TALENT:112
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 남들만한 크기로 작아졌다.
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 다소 쇼크를 받은 듯하다.
-            TALENT:112 = 0
-        ELSEIF TALENT:111
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 극단적으로 줄어들었다.
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 아연해 하고 있다.
-            TALENT:111 = 0
-            TALENT:110 = 1
-        ELSE
-            PRINTFORMW %CALLNAME:TARGET%의 가슴이 작아졌다.
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 쇼크를 받은 것 같다.
-            TALENT:111 = 1
-        ENDIF
+        CALL BUSTSIZE_DOWN(TARGET)
     CASE 4
         IF TALENT:43
             PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 보통으로 돌아왔다.

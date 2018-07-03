@@ -176,21 +176,7 @@ RETURN 1
 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? [풍유제]를 먹었다. # %CALLNAME:ARG%에게 [풍유제]를 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 320, 0
-IF TALENT:ARG:110
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 약간이지만 부풀었다＞
-    TALENT:ARG:110 = 0
-    TALENT:ARG:111 = 1
-ELSEIF TALENT:ARG:111
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 커졌다＞
-    TALENT:ARG:111 = 0
-ELSEIF TALENT:ARG:112
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 몸에 안 어울릴 만큼이나 커졌다＞
-    TALENT:ARG:112 = 0
-    TALENT:ARG:113 = 1
-ELSE
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 터질 것 같은 크기로 화했다＞
-    TALENT:ARG:112 = 1
-ENDIF
+CALL BUSTSIZE_UP(ARG)
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 320, 1
 ;身体測定フラグを寝せる(次回身体測定を行うため)
@@ -204,27 +190,7 @@ RETURN 1
 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% \@(ARG == MASTER) ? [축유제]를 먹었다. # %CALLNAME:ARG%에게 [축유제]를 먹였다.\@
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 321, 0
-IF TALENT:ARG:113
-    PRINTFORMW ＜%CALLNAME:ARG%의 실로 풍만하던 가슴이 한 단계 작아졌다＞
-    PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 약간 아쉽다는 듯한 얼굴을 했다.
-    TALENT:ARG:113 = 0
-    TALENT:ARG:112 = 1
-ELSEIF TALENT:ARG:112
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 보통 크기가 되었다＞
-    PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 조금 쇼크를 받은 것 같다.
-    TALENT:ARG:112 = 0
-ELSEIF TALENT:ARG:111
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 극단적으로 작아져버렸다＞
-    PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 아연해 하고 있다.
-    TALENT:ARG:111 = 0
-    TALENT:ARG:110 = 1
-    TALENT:ARG:134 = 0
-    MAXBASE:ARG:3 = 0
-ELSE
-    PRINTFORMW ＜%CALLNAME:ARG%의 가슴이 작아졌다＞
-    PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 쇼크를 받은 것 같다.
-    TALENT:ARG:111 = 1
-ENDIF
+CALL BUSTSIZE_DOWN(ARG)
 SIF ARG != MASTER
     CALL SELF_KOJO, ARG, 321, 1
 ;身体測定フラグを寝せる(次回身体測定を行うため)
