@@ -883,20 +883,21 @@ RETURN 0
 
 @SINGLE_ENDING_AFTER_SATOKO
 IF CFLAG:8900 == 9
-    NICKNAME = 『한 우산을 쓴 아내』
-    NICKNAME:MASTER = 『한 우산을 쓴 남편\@ TALENT:MASTER:120 ?  # ?  \@』
-    NICKNAME:(GETCHARA(72)) = 『 유쾌한 한 우산을 씀』
+    CALL GET_NICK, TARGET, "『한 우산을 쓴 아내』"
+    LOCALS = 『한 우산을 쓴 남편\@ TALENT:MASTER:120 ?  # ?  \@』
+    CALL GET_NICK, MASTER, LOCALS
+    CALL GET_NICK, GETCHARA(72), "『유쾌한 한 우산을 씀』"
     PRINTFORMW %조사처리(CALLNAME,"는")% %NICKNAME%의 칭호를 얻었다.
     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %NICKNAME:MASTER%의 칭호를 얻었다.
     PRINTFORMW %조사처리(CALLNAME:(GETCHARA(72)),"는")% %NICKNAME:(GETCHARA(72))%의 칭호를 얻었다.
 ELSEIF CFLAG:8900 == 7
-    NICKNAME = 『괴담이 붙잡힌 자』
+    CALL GET_NICK, TARGET, "『괴담이 붙잡힌 자』"
     PRINTFORMW %조사처리(CALLNAME,"는")% %NICKNAME%의 칭호를 얻었다.
 ENDIF
 
 @SLAVE_ENDING_AFTER_SATOKO
 IF CFLAG:8900 == 7
-    NICKNAME = 『괴담이 붙잡힌 자』
+    CALL GET_NICK, TARGET, "『괴담이 붙잡힌 자』"
     PRINTFORMW %조사처리(CALLNAME,"는")% %NICKNAME%의 칭호를 얻었다.
 ENDIF
 

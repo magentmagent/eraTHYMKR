@@ -14,7 +14,7 @@ SIF (FLAG:15 & 512) == 0
 ;[パイパン]だと不可, 生えそろっていないと無理
 SIF TALENT:65 || (CFLAG:36 && BASE:5 < 250)
     RETURN 0
-;テキストより[작은 체형]はデフォでツルツル。[소인체형]もそれに準じる
+;テキストより[작은체형]はデフォでツルツル。[소인]もそれに準じる
 SIF (TALENT:128 || TALENT:127) && CFLAG:36 == 0
     RETURN 0
 ;수면 중에는 불가
@@ -146,7 +146,7 @@ SOURCE:24 += LOCAL:1
 SOURCE:18 += LOCAL:1
 SOURCE:12 += LOCAL:1
 
-;작은 몸집 체형, 소인 체형
+;[작은체형], [소인]
 SIF TALENT:128 || TALENT:127
     TIMES SOURCE:12 , 2.50
 
@@ -279,7 +279,7 @@ IF TALENT:71
     TFLAG:240 -= LOCAL:99
     RESULTS = %RESULTS% %TALENTNAME:71%({LOCAL:99})
 ENDIF
-;소인 체형
+;[소인]
 IF TALENT:127
     SIF LOCAL:99
         RESULTS = %RESULTS% - 
@@ -287,7 +287,7 @@ IF TALENT:127
     TFLAG:240 -= LOCAL:99
     RESULTS = %RESULTS% %TALENTNAME:127%({LOCAL:99})
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     SIF LOCAL:99
         RESULTS = %RESULTS% - 

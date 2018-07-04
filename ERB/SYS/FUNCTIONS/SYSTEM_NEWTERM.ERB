@@ -1075,7 +1075,7 @@ FOR ASSI, 0, CHARANUM
     SIF ASSI == MASTER
         CONTINUE
     LOCAL:4 = 0
-    ;引き継ぎ操作の前に予め桃の飴玉を飲んでいるとＥＸ化の解除選択できるようになる
+    ;引き継ぎ操作の前に予めEX해제 사탕を飲んでいるとＥＸ化の解除選択できるようになる
     SIF EQUIP:ASSI:0 == 1
         CALL RESET_EX_ASSI
     ;조수가 즉각함락을 갖고 있지 않음＋(과거 주회 플레이를 포함해)지금까지 淫乱、淫核／淫茎、淫壷、淫尻、淫乳、尿道狂、キス魔、ドＳ、ドＭを全て([オトコ]の場合、[淫壷]は不要)취득、
@@ -1253,33 +1253,17 @@ CFLAG:ASSI:2 = LOCAL:1
 ;胸の素質が変化していないなら帰る
 SIF !CFLAG:ARG:3006
     RETURN 0
-
-;一旦胸の素質をリセット
-TALENT:ARG:110 = 0
-TALENT:ARG:111 = 0
-TALENT:ARG:112 = 0
-TALENT:ARG:113 = 0
-
-;拡大前の状態に戻す
-;절벽だった
-IF CFLAG:ARG:3006 == 1
-    TALENT:ARG:110 = 1
-;빈유だった
-ELSEIF CFLAG:ARG:3006 == 2
-    TALENT:ARG:111 = 1
-;거유だった
-ELSEIF CFLAG:ARG:3006 == 4
-    TALENT:ARG:112 = 1
-;폭유だった
-ELSEIF CFLAG:ARG:3006 == 5
-    TALENT:ARG:113 = 1
-ENDIF
-
+;확대전의 상태로 돌아간다.
+;출산 전이므로 절벽으로도 돌아간다.
+CALL NUM_TO_BUST(ARG, CFLAG:ARG:3006)
+CFLAG:ARG:3006 = 0 ;사용이 끝난 플래그 초기화
+;신체측정 플래그를 재운다(다음 번 신체측정을 행하기 위해)
+CFLAG:ARG:8 = 0
 ;--------------------------------------------------
 ;조수의 EX화 해제 선택 처리
 ;--------------------------------------------------
 @RESET_EX_ASSI
-PRINTFORMW ＜복숭아빛 사탕의 효과로 %CALLNAME:ASSI%의 EX화 상태를 해제할 수가 있습니다＞
+PRINTFORMW ＜EX해제 사탕의 효과로 %CALLNAME:ASSI%의 EX화 상태를 해제할 수가 있습니다＞
 PRINTFORML ＜%CALLNAME:ASSI%의 EX화 상태를 해제하겠습니까?＞
 PRINTLC [0] 예
 PRINTLC [1] 아니오
@@ -1294,7 +1278,7 @@ ELSEIF RESULT == 1
 ELSE
     GOTO INPUT_LOOP_RESET_EX_ASSI
 ENDIF
-;桃の飴玉の効果が切れる
+;EX해제 사탕の効果が切れる
 EQUIP:ASSI:0 = 0
 
 ;--------------------------------------------------
@@ -1347,7 +1331,7 @@ IF RESULT == 0
     PRINTFORMW %조사처리(CALLNAME:ASSI,"는")% %CALLNAME:MASTER%에 의해 새로운 인격이 덧씌워졌습니다.
     PRINTFORMW %조사처리(CALLNAME:ASSI,"는")% [괴조인격]을 얻었다.
     TALENT:ASSI:169 = 1
-    NICKNAME:MASTER = 『귀축』
+    CALL GET_NICK, MASTER, "『귀축』"
     FLAG:37 += 1
     CFLAG:MASTER:157 |= 8
     ;主人との相性が500％に(解釈は各自ご自由に)

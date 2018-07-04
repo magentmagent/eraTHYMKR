@@ -268,19 +268,19 @@ PRINTFORMW %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %조사처리(CST
 IF TFLAG:652 != 0 && TFLAG:654 == 0
     IF TALENT:(TFLAG:652):218 == 1
         PRINTFORML %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %CSTR:ARG:(21+ARG:1)%에게 %TALENTNAME:218%의 이름이 계승되었습니다.
-        NICKNAME:(TFLAG:652) = 선대 하쿠레이의 무녀
+        CALL GET_NICK, TFLAG:652, "선대 하쿠레이의 무녀"
         NICKNAME:TARGET = 하쿠레이의 무녀
         SIF TFLAG:652 != ARG
-            NICKNAME:ARG = 하쿠레이의 유모
+            CALL GET_NICK, ARG, "하쿠레이의 유모"
         TALENT:(TFLAG:652):218 = 0
         TALENT:218 = 1
     ENDIF
     IF TALENT:(TFLAG:652):219 == 1
         PRINTFORML %조사처리(CALLNAME:ARG,"가")% 기르고 있던 %CSTR:ARG:(21+ARG:1)%에게 %TALENTNAME:219%의 이름이 계승되었습니다.
-        NICKNAME:(TFLAG:652) = 선대 카제하후리
+        CALL GET_NICK, TFLAG:652, "선대 카제하후리"
         NICKNAME:TARGET = 카제하후리
         SIF TFLAG:652 != ARG
-            NICKNAME:ARG = 카제하후리의 유모
+            CALL GET_NICK, ARG, "카제하후리의 유모"
         TALENT:(TFLAG:652):219 = 0
         TALENT:219 = 1
     ENDIF
@@ -292,7 +292,9 @@ SIF STRLENS(NICKNAME:TARGET) == 0
 ;취기 게이지 설정
 CALL CALC_GAUGE8, TARGET, 0
 PRINTL 
-IF CFLAG:ARG:3009 == 0
+IF ARG == MASTER
+    PRINTFORMW \@(TFLAG:654 == 1) ? 아들 # 딸\@은 어머니인 %조사처리(CALLNAME:MASTER,"를")% 따르고 있는 모양이다….
+ELSEIF CFLAG:ARG:3009 == 0
     PRINTFORMW \@(TFLAG:654 == 1) ? 아들 # 딸\@은 %조사처리(CALLNAME:ARG,"과")% 떨어지기를 싫어하며, 처음으로 만나는 %CALLNAME:MASTER%에게 의심과 반감을 품고 있는 모양이다….
     MARK:9 = 1
 ELSE
@@ -329,12 +331,12 @@ PRINTFORMW 당신의 \@(LOCAL > 1) ? 아들들 # 아들\@에게서 송금액이 
 ;딸에게 유전하지 않는 소질 소거 처리
 ;-------------------------------------------------
 @CHILD_TALENT_SET
-;親が[巨躯]の場合、[小柄体型][小人体型]は打ち消される.また1/2の確率で[巨躯]が遺伝
+;親が[巨躯]の場合、[작은체형][소인]は打ち消される.また1/2の確率で[巨躯]が遺伝
 IF TALENT:(TFLAG:652):129
     TALENT:127 = 0
     TALENT:128 = 0
     TALENT:129 = RAND:2
-;小人体型の場合、小柄体型を消す
+;[소인]の場合、[작은체형]を消す
 ELSEIF TALENT:127
     TALENT:128 = 0
 ENDIF
@@ -457,18 +459,11 @@ ENDIF
 SIF TALENT:(TFLAG:652):222
     TALENT:223 = 1
 
-;娘の胸の大きさ(基本的1ランクダウン)
-TALENT:110 = 0
-TALENT:111 = 0
-TALENT:112 = 0
-TALENT:113 = 0
 IF TALENT:120 == 0
-    IF TALENT:(TFLAG:652):110 || TALENT:(TFLAG:652):111
-        TALENT:110 = 1
-    ELSEIF TALENT:(TFLAG:652):113
-        TALENT:112 = 1
-    ELSEIF TALENT:(TFLAG:652):112 == 0
-        TALENT:111 = 1
+    IF BUSTSIZE(TFLAG:652) <= 2
+        CALL NUM_TO_BUST(TARGET, 1, 0)
+    ELSE
+        CALL NUM_TO_BUST(TARGET, BUSTSIZE(TFLAG:652) - 1, 0)
     ENDIF
 ENDIF
 
@@ -525,7 +520,7 @@ IF TFLAG:653 < 0
 
     ;遺伝の処理
     ;↓最初からついているもの
-    ;処女(娘のみ),濡れにくい(娘のみ),習得遅い,小柄体型,オトコ(息子のみ),幼児,幼稚
+    ;処女(娘のみ),濡れにくい(娘のみ),習得遅い,[작은체형],オトコ(息子のみ),幼児,幼稚
     REPEAT 230
         SIF TALENT:(TFLAG:652):COUNT
             TALENT:COUNT = TALENT:(TFLAG:652):COUNT
@@ -619,7 +614,7 @@ ELSE
         TALENT:128 = 0
         ;似ている親が[巨躯]の場合、[巨躯]が遺伝.似ていない方が持っていた場合、1/2の確率で遺伝
         TALENT:129 = (TALENT:LOCAL:129) ? 1 # RAND:2
-    ;小人体型の場合、小柄体型を消す
+    ;[소인]の場合、[작은체형]を消す
     ELSEIF TALENT:127
         TALENT:128 = 0
     ENDIF
@@ -1476,7 +1471,7 @@ IF RAND:4 == 0
     LOCAL = 1
 ELSEIF TALENT:ARG:128
     TALENT:ARG:128 = 0
-    PRINT  및 [소인 체형]
+    PRINT  및 [소인]
 ENDIF
 IF RAND:5 == 0
     LOCAL = 1
@@ -1488,24 +1483,7 @@ PRINTW 을(를) 잃었다.
 ;胸の成長は1段階アップに変更.[爆乳]のときのみ変化なし
 IF LOCAL == 0 && RAND:10 == 0 && TALENT:ARG:113 == 0 && TALENT:ARG:120 == 0
     PRINT 가슴도 성장하여 
-    ;[絶壁]の場合
-    IF TALENT:ARG:110
-        TALENT:ARG:110 = 0
-        LOCAL = 111
-    ;[貧乳]の場合
-    ELSEIF TALENT:ARG:111
-        TALENT:ARG:111 = 0
-    ;[巨乳]の場合
-    ELSEIF TALENT:ARG:112
-        TALENT:ARG:112 = 0
-        LOCAL = 113
-    ;[普乳]の場合
-    ELSE
-        LOCAL = 112
-    ENDIF
-    PRINTFORMW [\@(LOCAL == 0) ? 평유 # %TALENTNAME:LOCAL%\@]가 되었다.
-    SIF LOCAL > 0
-        TALENT:ARG:LOCAL = 1
+    CALL BUSTSIZE_UP(ARG, 5, 6)
 ENDIF
 ;成長したことを示す
 MARK:ARG:81 = 1

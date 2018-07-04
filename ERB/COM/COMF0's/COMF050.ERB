@@ -9,7 +9,7 @@
 SIF DITEMTYPE:999:50 > 0
     RETURN 0
 ;조교 대상이 조교자의 체격보다 충분히 작지 않으면 안 됨(금단의 지식은 무관계해)
-SIF COMMON_BODYSIZE_CHECK2(PLAYER, TARGET) > -2
+SIF (BODYSIZE(PLAYER) - BODYSIZE(TARGET)) < 15
     RETURN 0
 ;조교자에게 페니스가 없으면 안 됨
 SIF EXIST_BAR(PLAYER) == 0

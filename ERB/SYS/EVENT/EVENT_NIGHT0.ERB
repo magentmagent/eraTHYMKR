@@ -73,7 +73,7 @@ LOCAL:1 = 0
 ;난교 확률용
 LOCAL:2 = 0
 
-;실행자가 4명 이상이라면, 그 중에서 4명 추출 (원래 2명 이상이었던 것을 4명 이상으로 수정. T)
+;실행자가 4명 이상이라면, 그 중에서 4명 추출
 IF LOCAL:20 >= 4
     $REPEAT_LOOP
     ;제일 아래의 변수, 즉 GETCHARA_G(0)가 메인 타겟이 된다
@@ -86,12 +86,12 @@ IF LOCAL:20 >= 4
             LOCAL:1 += 1
         ;PRINTFORML %CALLNAME:TARGET%
     REND
-    ;선택된 캐릭터 중 중복된 캐릭터가 있고 그 캐릭터가 플랑이 아닌 경우 $REPEAT_LOOP로 돌아가 캐릭터 선별을 다시 하도록 함. 상당히 비효율적인 방식이지만 일단 이렇게 함. T
-    SIF ((NO:(LOCAL:10) != 11 && (NO:(LOCAL:10) == NO:(LOCAL:11) || NO:(LOCAL:10) == NO:(LOCAL:12) || NO:(LOCAL:10) == NO:(LOCAL:13))) || (NO:(LOCAL:11) != 11 && (NO:(LOCAL:11) == NO:(LOCAL:12) || NO:(LOCAL:11) == NO:(LOCAL:13))) || (NO:(LOCAL:12) != 11 && (NO:(LOCAL:12) == NO:(LOCAL:13))))
+    ;선택된 캐릭터 중 중복된 캐릭터가 있고 그 캐릭터가 플랑이 아닌 경우 $REPEAT_LOOP로 돌아가 캐릭터 선별을 다시 하도록 함. 상당히 비효율적인 방식이지만 일단 이렇게 함.
+    SIF ((NO:(LOCAL:10) != 11 && (LOCAL:10 == LOCAL:11 || LOCAL:10 == LOCAL:12 || LOCAL:10 == LOCAL:13)) || (NO:(LOCAL:11) != 11 && (LOCAL:11 == LOCAL:12 || LOCAL:11 == LOCAL:13)) || (NO:(LOCAL:12) != 11 && (LOCAL:12 == LOCAL:13)))
         GOTO REPEAT_LOOP
     SIF NO:(LOCAL:10) != 11
         LOCAL:1 = 0
-    IF (TALENT:(LOCAL:10):120 || TALENT:(LOCAL:10):121) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
+    IF EXIST_PENIS(LOCAL:10) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
     
     ELSEIF TALENT:(LOCAL:10):150 == 0 && TALENT:(LOCAL:10):170 == 0
         LOCAL:1 = 0
@@ -100,14 +100,14 @@ IF LOCAL:20 >= 4
     SIF LOCAL:1 == 1
         LOCAL:1 = 0
     SIF LOCAL:1 >= 2
-        LOCAL:2 = ((TALENT:(LOCAL:10):120 || TALENT:(LOCAL:10):121) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0) ? 7 # RAND:3
+        LOCAL:2 = (EXIST_PENIS(LOCAL:10) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0) ? 7 # RAND:3
     ;전원 연모거나 음란으로 난교 플래그
     IF (TALENT:(LOCAL:10):150 || TALENT:(LOCAL:10):170) && (TALENT:(LOCAL:11):150 || TALENT:(LOCAL:11):170) && (TALENT:(LOCAL:12):150 || TALENT:(LOCAL:12):170) && (TALENT:(LOCAL:13):150 || TALENT:(LOCAL:13):170)
         ;전원 다르다면 보통의 난교 판정. 플랑드르 난교와의 분기를 실행한다
-        ;LOCAL:2は乱交の確率判定を行っています. 奴隷が11人以上いる場合は6分の1に. 10人以下なら3分の1の確率で発生
-        ;いっぱい乱交したいから確率弄った
+        ;LOCAL:2는 난교의 확률 판정을 실시하고 있습니다. 노예가 11명이 넘는 경우는 6분의 1에. 10명 이하면 3분의 1확률로 발생
+        ;많이 난교 하고 싶어서 확률 손댔다
         IF NOSAMES(LOCAL:10, LOCAL:11, LOCAL:12, LOCAL:13)
-            ;主人を含む(?)全員が貞操帯装備していたらダメ
+            ;주인을 포함한(?) 모두가 정조대를 장비하고 있으면 안 된다
             IF (CFLAG:MASTER:42 & 2) == 0 || (CFLAG:(LOCAL:10):42 & 2) == 0 || (CFLAG:(LOCAL:11):42 & 2) == 0 || (CFLAG:(LOCAL:12):42 & 2) == 0 || (CFLAG:(LOCAL:13):42 & 2) == 0
                 LOCAL:1 = 1
                 LOCAL:2 = 1
@@ -162,7 +162,7 @@ ELSE
         LOCAL:13 = LOCAL:10
         IF TALENT:(LOCAL:10):150 || TALENT:(LOCAL:10):170
             LOCAL:2 = RAND:5
-        ELSEIF (TALENT:(LOCAL:10):120 || TALENT:(LOCAL:10):121) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
+        ELSEIF EXIST_PENIS(LOCAL:10) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
             LOCAL:2 = 7
         ENDIF
     ENDIF
@@ -948,7 +948,7 @@ CALLF SET_AGG(TARGET, LOCAL)
 
 RETURN LOCAL
 
-;こちらは全奴隷を見て, その奴隷がどのくらい夜這いに来やすいか見る関数です
+;밤 이벤트를 일으키고 싶어하는 노예 체크
 @NIGHT_CHECK2, ARG
 #FUNCTION
 LOCAL:10 = 0
@@ -1103,7 +1103,7 @@ RETURNF LOCAL:10
 ;이미 여성이라면 꺼져
 SIF !TALENT:ARG:120
     RETURN 0
-;무지개 사탕에서 유용
+;성전환 사탕에서 유용
 IF CFLAG:ARG:4995 == 0
     CFLAG:ARG:4995 = 1
     ;男が初めてTSしたら処女に決まってんだろJK
@@ -1112,21 +1112,15 @@ IF CFLAG:ARG:4995 == 0
     ;ただし, 小柄・小人体系はそこから1サイズ小さく, 巨躯は1サイズ大きくする
     LOCAL:1 = RAND:100
     IF LOCAL:1 < 5
-        CFLAG:ARG:4997 = 0
-    ELSEIF LOCAL:1 < 25
         CFLAG:ARG:4997 = 1
-    ELSEIF LOCAL:1 > 95 - (TALENT:ARG:129 * 20 + (TALENT:ARG:127  + TALENT:ARG:128) * 5)
-        CFLAG:ARG:4997 = 4
-    ELSEIF LOCAL:1 > 75
-        CFLAG:ARG:4997 = 3
-    ELSE
+    ELSEIF LOCAL:1 < 25
         CFLAG:ARG:4997 = 2
-    ENDIF
-    CFLAG:ARG:4997 += (TALENT:ARG:129 - TALENT:ARG:128 - TALENT:ARG:127)
-    IF CFLAG:ARG:4997 < 0
-        CFLAG:ARG:4997 = 0
-    ELSEIF CFLAG:ARG:4997 > 4
+    ELSEIF LOCAL:1 >= 95
+        CFLAG:ARG:4997 = 5
+    ELSEIF LOCAL:1 >= 75
         CFLAG:ARG:4997 = 4
+    ELSE
+        CFLAG:ARG:4997 = 3
     ENDIF
 ENDIF
 TALENT:ARG:0 = CFLAG:ARG:4996
@@ -1142,15 +1136,7 @@ ENDIF
 TALENT:ARG:134 = CFLAG:ARG:4999
 SIF TALENT:ARG:134
     CALL CALC_GAUGE3_SLAVE, ARG, 1
-IF CFLAG:ARG:4997 == 0
-    TALENT:ARG:110 = 1
-ELSEIF CFLAG:ARG:4997 == 1
-    TALENT:ARG:111 = 1
-ELSEIF CFLAG:ARG:4997 == 3
-    TALENT:ARG:112 = 1
-ELSEIF CFLAG:ARG:4997 == 4
-    TALENT:ARG:113 = 1
-ENDIF
+CALL NUM_TO_BUST(ARG, CFLAG:ARG:4997, 0)
 ;40약물경험
 CALL COMMON_UP_EXP, ARG, 40, 1, 2
 IF (CFLAG:ARG:20 & 512) == 0

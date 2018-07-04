@@ -25,6 +25,10 @@ RESULT = 0
 SIF LASTLOAD_VERSION < 3162 
     CALL SAVE_SUPPORT_VERSION_3162
 
+;2018년 6월 28일 패치
+SIF LASTLOAD_VERSION < 3163 
+    CALL SAVE_SUPPORT_VERSION_3163
+
 SIF MONEY:100 == 0
     MONEY:100 = 1000000
 
@@ -32,7 +36,7 @@ SIF MONEY:100 == 0
 
 IF RESULT == 1
     PRINTFORML 세이브 데이터를 v{LASTLOAD_VERSION}에서 v{GAMEBASE_VERSION}으로 업데이트 했습니다
-    PRINTFORMW SHOP 메뉴가 표시되면 「[200] - 세이브」를 선택해주십시오.
+    PRINTFORMW 메뉴가 표시되면 「[200] - 세이브」를 선택해주십시오.
 ENDIF
 
 ;=============================================================================
@@ -62,5 +66,17 @@ ITEM:69 = 0
 ITEM:70 = 0
 
 PRINTL
+
+RETURN 1
+
+;--------------------------------------------------
+;2018년 6월 28일 패치
+;--------------------------------------------------
+@SAVE_SUPPORT_VERSION_3163
+;모든 캐릭터의 신체 사이즈 재갱신 필요
+REPEAT CHARANUM
+    CFLAG:COUNT:8 = 0
+    CFLAG:COUNT:4997 = LIMIT(CFLAG:COUNT:4997 + 1, 1, 5)
+REND
 
 RETURN 1

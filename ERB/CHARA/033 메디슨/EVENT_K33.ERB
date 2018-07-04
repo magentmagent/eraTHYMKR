@@ -1806,7 +1806,7 @@ ELSEIF ASSINO() == 34
 
 ;-------------------------------------------------
 ;가슴의 크기 비교(조수가 크다) 20%
-ELSEIF BUSTSIZE(TARGET, ASSI) == 2 && RAND:5 == 0
+ELSEIF BUSTSIZE_DIFF(TARGET, ASSI) == 2 && RAND:5 == 0
     DRAWLINE
     PRINTFORML 메디슨은, 방에 들어 온 %조사처리(CALLNAME:ASSI,"를")% 가만히 보고 있다
     PRINTFORMW 자신의 가슴에 찰싹찰싹 손을 대면서,%CALLNAME:ASSI%과의 가슴의 크기를 보고 비교하고 있는 것 같다
@@ -5429,7 +5429,7 @@ IF CFLAG:9027 == 0
             PRINTFORMW 「네?　아, 꺄!　%TSTR:310%, %TSTR:309%……!」
             PRINTFORMW 「이나, 기다려, 돌연 서지 말아  ……응!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW 두 명의 체격차이로부터,%조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버린다
                 PRINTFORML 결합부에서 신체를 결리는 모습이 되어 버린 메디슨은,
                 PRINTFORMW %CALLNAME:MASTER%의 어깨에 손을 써, 필사적으로 해가 보고 붙으면서도
@@ -5442,7 +5442,7 @@ IF CFLAG:9027 == 0
         ELSE
             PRINTFORMW 「입는다!　(이)나, 나다……그런, 삽입서지 말고, ……!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW 두 명의 체격차이로부터,%조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버린다
                 PRINTFORML 결합부에서 신체를 결리는 모습이 되어 버린 메디슨은,
                 PRINTFORMW %CALLNAME:MASTER%의 어깨에 손을 써 필사적으로 해가 보고 붙어, 어떻게든 부담을 줄이려 하고 있다
@@ -5488,7 +5488,7 @@ ELSE
         ELSEIF RAND:4 == 0
             PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 삽입한 채로, 메디슨의 신체를 강하게 껴안았다
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORML 「꺄응……!　,%TSTR:300%기다려, 다리……닿지 않아 ……!」
                 PRINTFORMW 메디슨은 공중에 떠 버린 다리를 톡톡털고 있다
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨의 작은 신체를 안아 올린 채로,
@@ -5521,7 +5521,7 @@ ELSE
     ELSEIF TALENT:150 && (CFLAG:9027 < 5 || FLAG:11 == 2)
         PRINTFORMW 「응, 응, %TSTR:300%……이 몸의 자세는, 조금 괴롭지 않아……?」
         ;체격차이 있어(메디가 작다) 2분의 1의 확률
-        IF (((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)) && RAND:2 == 0
+        IF (BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3) && RAND:2 == 0
             PRINTFORMW 「신체의 크기가, 이렇게 다른데……아앙」
         ELSE
             PRINTFORMW 「선 채로는……, 지쳐버린다……」
@@ -5569,7 +5569,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 「네……?　아,%TSTR:300%, 어떻게 해……!」
             PRINTFORMW 「은 , 구……!」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버렸다
                 PRINTFORMW 결합부에 지금까지 이상의 힘이 걸려, 메디슨의 질의 것보다 깊게  페니스가 꽉 눌린다
                 PRINTFORMW 「, 응!　안쪽까지, 오고 있는……!　응, 아」
@@ -5580,7 +5580,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 그 몸을 바치고 있다
             PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINT 안아 올리도록(듯이) 해
             ELSE
                 PRINT 배후로부터 껴안고
@@ -5592,7 +5592,7 @@ IF CFLAG:9028 == 0
             PRINTFORMW 「어, 나, 나다……조금 기다려!　, 서……!」
             PRINTFORMW 「이나, 나다……구」
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 일어서면(자) 메디슨의 신체는 완전하게 공중에 떠 버렸다
                 PRINTFORMW 결합부에 지금까지 이상의 힘이 걸려, 메디슨의 질의 것보다 깊게  페니스가 꽉 눌린다
                 PRINTFORMW 「응응, 구……!　(이)나, 내려, ……!」
@@ -5631,7 +5631,7 @@ ELSE
             PRINTFORMW 「는 해, 안쪽……가득 밀어 올려──!　♪」
         ELSEIF RAND:3 == 0
             ;체격차이 있어(메디가 작다)
-            IF ((TALENT:127 || (TALENT:128 && TALENT:MASTER:128 == 0)) && TALENT:MASTER:127 == 0) || (TALENT:129 == 0 && TALENT:MASTER:129)
+            IF BODYSIZE(MASTER) - BODYSIZE(TARGET) >= 3
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을 안으면(자)
             ELSE
                 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 메디슨을 껴안으면(자)
@@ -9746,7 +9746,7 @@ ENDIF
 
 ;-------------------------------------------------
 ;피스트계 커멘드 CFLAG9231
-;메디는 작은 몸집 체형이므로, 실행에 순종과 매저키스트기분이 4이상 필요(그 이외의 곳도 일단 썼지만)
+;메디는 [작은체형]이므로, 실행에 순종과 매저키스트기분이 4이상 필요(그 이외의 곳도 일단 썼지만)
 ;-------------------------------------------------
 @MEDI_K33_COM_231
 ;처음
@@ -15643,7 +15643,7 @@ IF (TFLAG:15 > 0 && CFLAG:74 == 0) || (CFLAG:74 == 7 && TALENT:120 == 0)
         ;그 이외
         ELSE
             PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 메디슨의\@(TALENT:121) ?  보지 # 클리토리스\@에 몇차례 귀두를 문질러 발라 정액을 토해냈다
-            ;작은 몸집 체형, 소인 체형
+            ;[작은체형], [소인]
             IF (TALENT:127 || TALENT:128) && BASE:5 <= 50
                 PRINTW 아직 배냇 머리조차 나 있지 않은 절의 부엌으로 한 균열에 정액이 달라붙어 붙어 있다
             ELSE
@@ -21749,7 +21749,7 @@ ENDIF
 
 ;-------------------------------------------------
 ;들여다 보고 자위 노예와 주인의 행위를 들여다 봐 두지 않고로 합니다. 연모가 붙어 있으면(자) 그 자리에서 질투 자위가 됩니다
-;일단%CALLNAME:G%로 상대의 이름을 참조할 수 있습니다만, 상대는 궁합이 좋은 노예에 한정되지 않기 때문에 추천은 할 수 없습니다
+;일단%CALLNAME:GET_CHARA_G()%로 상대의 이름을 참조할 수 있습니다만, 상대는 궁합이 좋은 노예에 한정되지 않기 때문에 추천은 할 수 없습니다
 ;-------------------------------------------------
 @MEDI_SELF_K33_409
 LOCAL = (TALENT:MASTER:120 || TALENT:MASTER:121) ?  1 # 0

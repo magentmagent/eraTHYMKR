@@ -325,7 +325,7 @@ LOCAL:1 = (ABL:MASTER:98 >= 3) ? TENTACLE_SEAL_OF_IMMORTAL() # 0
 IF TALENT:120 == 0 && TALENT:44 == 0
     SIF TALENT:134 == 0
         PRINTFORML  [ 0] 모유체질로 바꾼다    (필요 기생촉수성장LV:1200)
-    SIF TALENT:134
+    SIF TALENT:134 && !TALENT:ARG:2 ;[확장유두]는 모유가 멈추지 않는다.
         PRINTFORML  [ 1] 모유체질을 개선        (필요 기생촉수성장LV:1500)
     SIF LOCAL & 1
         PRINTFORML  [ 2] 가슴 사이즈를 크게    (필요 기생촉수성장LV: 200)
@@ -367,7 +367,7 @@ IF RESULT == 100
 ELSEIF RESULT == 0 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134 == 0
     PRINTFORML %조사처리(CALLNAME:TARGET,"를")% 모유체질로 만듭니다.
     LOCAL:2 = 1200
-ELSEIF RESULT == 1 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134
+ELSEIF RESULT == 1 && TALENT:120 == 0 && TALENT:44 == 0 && TALENT:134 && !TALENT:ARG:2 ;[확장유두]는 모유가 멈추지 않는다.
     PRINTFORML %CALLNAME:TARGET%의 모유체질을 낫게 합니다.
     LOCAL:2 = 1500
 ELSEIF RESULT == 2 && TALENT:120 == 0 && TALENT:44 == 0 && LOCAL & 1
@@ -456,58 +456,27 @@ SELECTCASE LOCAL:3
     CASE 1
         PRINTFORMW %CALLNAME:TARGET%에게서 모유가 나오지 않게 되었다.
         TALENT:134 = 0
+        MAXBASE:ARG:3 = 0 ;모유 게이지
     CASE 2
-        IF TALENT:110
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 약간 부풀어 올랐다.
-        TALENT:110 = 0
-        TALENT:111 = 1
-    ELSEIF TALENT:111
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 커졌다.
-        TALENT:111 = 0
-    ELSEIF TALENT:112
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 몸에 어울리지 않을 만큼 커졌다.
-        TALENT:112 = 0
-        TALENT:113 = 1
-    ELSE
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 아주 터질 것 같은 크기가 되었다.
-        TALENT:112 = 1
-        ENDIF
+        CALL BUSTSIZE_UP(TARGET)
     CASE 3
-        IF TALENT:113
-        PRINTFORMW %CALLNAME:TARGET%의 너무나도 풍만하던 가슴이 한 단계 줄어들었다.
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 약간이지만 아쉬운 표정을 지었다.
-        TALENT:113 = 0
-        TALENT:112 = 1
-    ELSEIF TALENT:112
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 남들만한 크기로 작아졌다.
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 다소 쇼크를 받은 듯하다.
-        TALENT:112 = 0
-    ELSEIF TALENT:111
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 극단적으로 줄어들었다.
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 아연해 하고 있다.
-        TALENT:111 = 0
-        TALENT:110 = 1
-    ELSE
-        PRINTFORMW %CALLNAME:TARGET%의 가슴이 작아졌다.
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 쇼크를 받은 것 같다.
-        TALENT:111 = 1
-        ENDIF
+        CALL BUSTSIZE_DOWN(TARGET)
     CASE 4
         IF TALENT:43
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 보통으로 돌아왔다.
-        TALENT:43 = 0
-    ELSE
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 굉장히 민감해졌다.
-        TALENT:42 = 1
-    ENDIF
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 보통으로 돌아왔다.
+            TALENT:43 = 0
+        ELSE
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 굉장히 민감해졌다.
+            TALENT:42 = 1
+        ENDIF
     CASE 5
         IF TALENT:42
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 보통이 되었다.
-        TALENT:42 = 0
-    ELSE
-        PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극에 둔해졌다.
-        TALENT:43 = 1
-    ENDIF
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극의 감도가 보통이 되었다.
+            TALENT:42 = 0
+        ELSE
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 성감대에 주어지는 자극에 둔해졌다.
+            TALENT:43 = 1
+        ENDIF
     CASE 6
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% [%TALENTNAME:121%]가 되었다.
         TALENT:121 = 1
@@ -1931,10 +1900,10 @@ REPEAT CHARANUM
         ;現在の体力が1000(촉수寄生中の場合は1500)未満の場合も奴隷を連れ込めない
         SIF BASE:COUNT:0 < LOCAL:3
             CONTINUE
-        ;小柄体型は精液放出量強化必須(妊娠パッチの小柄体型は妊娠しにくいの特性より)
+        ;[작은체형]は精液放出量強化必須(妊娠パッチの[작은체형]は妊娠しにくいの特性より)
         SIF TALENT:COUNT:128 && (FLAG:75 & 16384) == 0
             CONTINUE
-        ;小人体型は精液放出量強化と極細촉수両方を取得している必要がある
+        ;[소인]は精液放出量強化と極細촉수両方を取得している必要がある
         SIF TALENT:COUNT:127 && (FLAG:75 & 16384) == 0 && (FLAG:75 & 16) == 0
             CONTINUE
         ;薬毒耐性持ちは体内適応力強化必須
@@ -2042,10 +2011,10 @@ SIF TALENT:LOCAL:32
 ;抵抗
 SIF TALENT:LOCAL:34
     LOCAL:1 += 4000
-;小人体型
+;[소인]
 SIF TALENT:LOCAL:127
     LOCAL:1 += 500
-;小柄体型
+;[작은체형]
 SIF TALENT:LOCAL:128
     LOCAL:1 += 200
 ;薬毒耐性

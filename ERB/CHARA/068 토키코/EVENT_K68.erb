@@ -4339,194 +4339,138 @@ RETURN 0
 ;PRINTW 
 
 ;--------------------------------------------------------------
-;난수로 18종의 스테이터스를 랜덤으로 선택
+;난수로 스테이터스를 랜덤으로 선택
 ;@BOOKCHOICEBOOKCHECK에서 기출 체크
 ;3권 선정할 때까지
-;순종, 욕망, 기교, CVBA감각Lv3　노출,봉사,마조끼 각인3종 Lv2, 레즈끼자위정액레즈중독Lv1
-;
-
+;순종, 욕망, 기교, CVBA감각Lv3　노출,봉사,마조끼 각인3종 Lv2, 레즈끼, 자위정액레즈BL중독 Lv1 이상
 ;--------------------------------------------------------------
 @BOOKCHOICE
-;초기화
-REPEAT 22
-    A:COUNT = 0
+;변수 선언 ABL_MARK : 랜덤으로 뽑아낸 숫자를 ABL과 MARK(+100)로 변환
+;필요한 ABL, MARK의 번호를 추출한다. ABL 17개와 MARK 4개 총 21개
+#DIM CONST ABL_MARK=0,1,2,3,10,11,12,13,14,20,21,22,23,30,31,32,33,100,101,102,104
+#DIM SELECTABLE_BOOK_LIST, 21
+#DIM SELECTABLE_BOOK_COUNT
+#DIM SELECTED_BOOK_COUNT
+
+SELECTABLE_BOOK_COUNT = 0
+
+LOCAL = VARSIZE("ABL_MARK")
+
+REPEAT LOCAL
+    CALL CHECK_BOOK(ABL_MARK:COUNT)
+    SIF RESULT
+        SELECTABLE_BOOK_LIST:(SELECTABLE_BOOK_COUNT++) = ABL_MARK:COUNT
 REND
+
+;선택가능한 책이 없음
+SIF SELECTABLE_BOOK_COUNT == 0
+    RETURN 0
+
+SELECTED_BOOK_COUNT = 0
 
 ;――――――――――――――↓루프――――――――――――――
-$BOOK_LOOP
-;――――――――――――――여기서부터 책 고르기――――――――――――――
-    R = RAND:18
-
-;순종의 책
-    IF R == 0 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『강아지의 기분』
-
-;욕망의 책
-    ELSEIF R == 1 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『무녀의 비정상적인 욕망～또는 어떻게 새전을 걷었는지～』
-
-;기교의 책
-    ELSEIF R == 2 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『초절! 기절! 슈퍼 테크닉!!』
-
-;C의 책
-    ELSEIF R == 3 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『클립 활용법』
-
-;V의 책
-    ELSEIF R == 4 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『성감 개발 목록』
-
-;A의 책
-    ELSEIF R == 5 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『기분 좋은 것은 이상하지 않아』
-
-;봉사의 책
-    ELSEIF R == 6 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『메이드의 하면 안되는 관계』
-
-;노출의 책
-    ELSEIF R == 7 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『바디라인을 유지하는 비결』
-
-;마조의 책
-    ELSEIF R == 8 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『심두멸각』
-
-;레즈의 책
-    ELSEIF R == 9 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『여체의 신비』
-
-;자위 책
-    ELSEIF R == 10 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            IF RESULT == 1
-            ;자위중독을 달았을 경우
-                IF TALENT:60==1
-                    PRINTFORML 『이것이 나의 성감대』
-                ELSE
-                    PRINTFORML 『하늘 높게 나는 방법』
-                ENDIF
+WHILE SELECTED_BOOK_COUNT < 3
+    ;――――――――――――――여기서부터 책 고르기――――――――――――――
+    LOCAL = RAND:SELECTABLE_BOOK_COUNT
+    ;던진 책의 수 계산
+    SELECTED_BOOK_COUNT += 1
+    SELECTCASE SELECTABLE_BOOK_LIST:LOCAL
+        ;C감각의 책
+        CASE 0
+            PRINTFORML 『클립 활용법』
+        ;V감각의 책
+        CASE 1
+            PRINTFORML 『성감 개발 목록』
+        ;A감각의 책
+        CASE 2
+            PRINTFORML 『기분 좋은 것은 이상하지 않아』
+        ;B감각의 책
+        CASE 3
+            PRINTFORML 『빈유는 스테이터스다』
+        ;순종의 책
+        CASE 10
+            PRINTFORML 『강아지의 기분』
+        ;욕망의 책
+        CASE 11
+            PRINTFORML 『무녀의 비정상적인 욕망～또는 어떻게 새전을 걷었는지～』
+        ;기교의 책
+        CASE 12
+            PRINTFORML 『초절! 기절! 슈퍼 테크닉!!』
+        ;봉사정신의 책
+        CASE 13
+            PRINTFORML 『메이드의 하면 안되는 관계』
+        ;노출증의 책
+        CASE 14
+            PRINTFORML 『바디라인을 유지하는 비결』
+        ;마조끼의 책
+        CASE 21
+            PRINTFORML 『심두멸각』
+        ;레즈끼의 책
+        CASE 22
+            PRINTFORML 『여체의 신비』
+        ;자위중독의 책
+        CASE 30
+            ;[자위하기 쉬움] 소질을 소유 시
+            IF TALENT:60
+                PRINTFORML 『이것이 나의 성감대』
+            ELSE
+                PRINTFORML 『하늘 높게 나는 방법』
             ENDIF
-
-;정액의 책
-    ELSEIF R == 11 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            IF RESULT == 1
-                IF TALENT:150==0 || TALENT:152==0
-                    PRINTFORML 『올바른 피임 방법』
-                    ;연모, 친애 붙음
-                ELSE
-                    PRINTFORML 『쉬운 따오기의 번식 방법』
-                ENDIF
+        ;정액중독의 책
+        CASE 31
+            ;연모, 친애 붙음
+            IF TALENT:150 || TALENT:152
+                PRINTFORML 『쉬운 따오기의 번식 방법』
+            ELSE
+                PRINTFORML 『올바른 피임 방법』
             ENDIF
-;레즈 중독의 책
-    ELSEIF R == 12 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『사춘기의 처녀들』
-;BL의 책
-    ELSEIF R == 13 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『체육 교사의♂나쁜 방과후♂』
-                
-;B감각의 책
-    ELSEIF R == 14 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『빈유는 스테이터스다』
+        ;레즈 중독의 책
+        CASE 32
+            PRINTFORML 『사춘기의 처녀들』
+        ;BL중독의 책
+        CASE 33
+            PRINTFORML 『체육 교사의♂나쁜 방과후♂』
+        ;고통각인의 책
+        CASE 100
+            PRINTFORML 『그 아픔에 반역한다』
+        ;쾌락각인의 책
+        CASE 101
+            PRINTFORML 『「키모케네」는 기분이 나쁘군요』
+        ;굴복각인의 책
+        CASE 102
+            PRINTFORML 『끊어지는 거북이처럼』
+        ;치욕각인의 책
+        CASE 104
+            PRINTFORML 『부끄러운 일을 잊는 방법』
+    ENDSELECT
+WEND
 
-;고통의 책
-    ELSEIF R == 15 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『그 아픔에 반역한다』
-
-;쾌락의 책
-    ELSEIF R == 16 && A:R==0
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『「키모케네」는 기분이 안되어 있군요』
-
-;굴복의 책
-    ELSEIF A:R==0
-    ;        R == 17
-            CALL BOOKCHOICEBOOKCHECK
-            SIF RESULT == 1
-                PRINTFORML 『끊어지는 거북이처럼』
-
-ENDIF
-;――――――――――――――↑루프시키기 위해 GOTO――――――――――――――
-    ;18 전부 맞았으면 강제 종료 0
-    ;3권 얻으면 강제 종료 1
-    SIF A:22==18
-        RETURN 0
-    SIF A:21>=3
-        RETURN 1
-;GOTO 루프
-GOTO BOOK_LOOP
-
-;초기화
-REPEAT 22
-    A:COUNT = 0
-REND
+RETURN 1
 
 
-@BOOKCHOICEBOOKCHECK
+@CHECK_BOOK, ARG
+;ARG:0 = 책의 번호
 ;체크 성공하면 RETURN 1
-;15 이상은 각인
-IF R >=15
-    A:R = 1
-    A:22 = A:22 + 1
-    S = R-15
-    IF MARK:S>=1
-        A:21 = A:21+1
-        RETURN 1
-    ENDIF
-    RETURN 0
-;14는 B감각
-ELSEIF R>=14
-    A:R = 1
-    A:22 = A:22 + 1
-    IF ABL:14>=3
-        A:21 = A:21+1
-        RETURN 1
-    ENDIF
-    RETURN 0
-;그 외
-ELSE
 
-    A:R = 1
-    A:22 = A:22 + 1
-    IF ABL:R>=3
-        A:21 = A:21+1
-        RETURN 1
-    ENDIF
-
+SELECTCASE ARG
+    ;100 이상은 각인
+    CASE 100 TO 102, 104
+        LOCAL = ARG - 100
+        SIF MARK:LOCAL >= 2 ;다 읽은 책을 던진다
+            RETURN 1
+    
+    ;100 미만은 ABL
+    ;순종, 욕망, 기교, CVAB감각 Lv3 이상
+    CASE 0 TO 3, 10 TO 12
+        SIF ABL:ARG >= 3
+            RETURN 1
+    ;노출, 봉사, 마조끼 Lv2 이상
+    CASE 3, 13, 14, 21
+        SIF ABL:ARG >= 2
+            RETURN 1
+    ;레즈끼, 자위정액레즈BL중독 Lv1 이상
+    CASE 22, 30 TO 33
+        SIF ABL:ARG >= 1
+            RETURN 1
+ENDSELECT
 RETURN 0
-
-ENDIF
-
-;――――――――――――――여기까지 책 고르기――――――――――――――
-

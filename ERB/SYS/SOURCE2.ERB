@@ -636,50 +636,50 @@ ENDIF
 ;-------------------------------------------------
 ;注意、パラメータカンスト処理のところにも奴隷称号取得処理でTFLAG:109変動あり。
 @NICK_SLAVE_CHECK
-;ローションと媚薬と利尿剤と興奮剤を使わずにお風呂プレイやシャワーでなくて潤滑が250000を越えたとき
+;로션과 미약과 이뇨제를 사용하지 않고 욕실이나 샤워플레이가 아니고 윤활이 250000 이상이 되었을 때.
 SIF TEQUIP:10 == 0 && TEQUIP:11 == 0 && TEQUIP:12 == 0 && TEQUIP:53 == 0 && TEQUIP:54 == 0 && TEQUIP:55 == 0 && PALAM:10 > PALAMLV:9
     TFLAG:109 |= 1
-;利尿剤使わずに放尿20回以上
+;이뇨제를 사용하지 않고 방뇨를 20회 이상했을 때.
 SIF TEQUIP:12 == 0 && EX:12 >= 20
     TFLAG:109 |= 2
 
-;助手なしでくＣＶＡ絶頂がないままＢ絶頂だけ20回以上
+;조수 없이 ＣＶＡ절정이 없는 채 Ｂ절정만 20회 이상 있을 때.
 SIF ASSI < 0 && EX:0 + EX:1 + EX:2 == 0 && EX:3 >= 20
     TFLAG:109 |= 8
-;助手なしでＣＡＢ絶頂がないままＶ絶頂だけ20回以上
+;조수 없이 ＣＡＢ절정이 없는 채 Ｖ절정만 20회 이상 있을 때.
 SIF ASSI < 0 && EX:0 + EX:2 + EX:3 == 0 && EX:1 >= 20
     TFLAG:109 |= 16
-;助手なしでＣＶＢ絶頂がないままＡ絶頂だけ20回以上
+;조수 없이 ＣＶＡ절정이 없는 채 Ａ절정만 20회 이상 있을 때.
 SIF ASSI < 0 && EX:0 + EX:1 + EX:3 == 0 && EX:2 >= 20
     TFLAG:109 |= 32
-;ＣＶＡＢ絶頂＋精飲絶頂が全部で200回以上
+;ＣＶＡＢ절정＋정음절정의 합계가 그 조교로 200회 이상 있었을 때.
 SIF EX:0 + EX:1 + EX:2 + EX:3 + EX:13 >= 200
     TFLAG:109 |= 64
-;苦痛と恐怖が共に200000を越えて、なおかつ欲情と屈服が100000以下のとき
+;고통과 공포의 파라가 모두 200000을 넘었고, 거기에 욕정과 굴복의 파라가 모두 100000 이하일 때.
 SIF PALAM:16 > 200000 && PALAM:17 > 200000 && PALAM:13 <= PALAMLV:7 && PALAM:14 <= PALAMLV:7
     TFLAG:109 |= 128
-;オトコでなく処女（乙女可）で恥情が100000以上で
+;남자가 아니고 처녀 혹은 재생처녀로 치정의 파라미터가 100000 이상일 때.
 SIF TALENT:120 == 0 && TALENT:0 > 0 && PALAM:15 >= PALAMLV:7
     TFLAG:109 |= 256
-;先導と習得が共に60000以上で
+;선도와 습득의 파라미터가 모두 60000 이상일 때.
 SIF PALAM:32 >= PALAMLV:6 && PALAM:11 >= PALAMLV:6
     TFLAG:109 |= 512
-;媚薬なしで最強四重絶頂すれば
-SIF TEQUIP:11 == 0 && TFLAG:180 >= 8 && TFLAG:183 >= 8 && TFLAG:181 >= 8 && TFLAG:182 >= 8
+;미약 없이 최강 사중 절정 했을 때.
+SIF TEQUIP:11 == 0 && TFLAG:180 >= 32 && TFLAG:183 >= 32 && TFLAG:181 >= 32 && TFLAG:182 >= 32
     TFLAG:109 |= 1024
-;処女(乙女不可)で強以上のＶ絶頂すれば
+;처녀(재생처녀 불가)로 강 이상의 Ｖ절정을 했을 때.
 SIF TALENT:0 == 1 && TFLAG:181 >= 2
     TFLAG:109 |= 8192
-;相愛、親愛、恋慕持ちで、Ａ経験と異常経験が初期値から変動せず、即落ち、壊造人格、嫉妬、烙印、使い魔、媚薬中毒、寄生、産卵体質なしで、
-;記憶消去薬を飲ませていない、薬物刻印恐怖刻印反発刻印反発刻印取得履歴不死刻印ストレス嫉妬ポイントが全て0で
-;調教排泄経験、調教失神経験、動物性愛経験、売春経験、強姦経験、被強姦経験、被輪姦経験がなくて、
-;従順が5以上、奉仕精神が5以上、屈服刻印が3以上、好感度が80万以上で、調教を終わらせた場合
+;[상애] [친애] [연모] 소유로 A경험과 이상 경험이 초기치로부터 변동하고 있지 않고, [즉각함락] [괴조인격] [질투] [낙인] [사역마] [미약중독] [기생] [산란 체질]이 모두 없고, 
+;기억 소거약은 먹은 적이 없으며, 약물각인, 공포각인, 반발각인 취득 이력 불사각인 스트레스 질투 포인트가 모두 0이고,
+;조교 배설 경험, 조교 실신 경험, 수간 경험, 매춘경험, 강간 경험, 피강간 경험, 피윤간 경험이 없으면서, 
+;순종과 봉사정신 Lv 모두 5 이상이고, 굴복각인이 3 이상, 호감도가 80만 이상으로 조교를 끝냈을 때.
 SIF TALENT:153 && TALENT:152 && TALENT:150 && (CFLAG:11 & 2) == 0 && (CFLAG:11 & 4) == 0 && TALENT:179 == 0 && TALENT:169 == 0 && TALENT:157 == 0 && TALENT:161 == 0 && TALENT:164 == 0 && TALENT:46 == 0 && TALENT:146 == 0 && TALENT:136 == 0 && (CFLAG:17 & 16) == 0 && MARK:3 <= 0 && MARK:8 <= 0 && MARK:9 <= 0 && MARK:10 <= 0 && MARK:97 <= 0 && CFLAG:65 <= 0 && CFLAG:30 <= 0 && EXP:7 <= 0 && EXP:55 <= 0 && EXP:56 <= 0 && EXP:76 <= 0 && EXP:80 <= 0 && EXP:81 <= 0 && EXP:82 <= 0 && ABL:10 >= 5 && ABL:13 >= 5 && MARK:2 >= 3 && CFLAG:2 >= 800000
     TFLAG:109 |= 16384
-;助手がいて、助手調教で、対象の苦痛と恭順と屈服と欲情が全て100000以上にした場合に、助手に付く
+;조수 조교로, 대상의 고통, 순종, 굴복, 욕정의 파라를 모두 100000 이상으로 했을 때에 조수에게.
 SIF ASSI >= 0 && ASSIPLAY && PALAM:16 >= PALAMLV:7 && PALAM:12 >= PALAMLV:7 && PALAM:14 >= PALAMLV:7 && PALAM:13 >= PALAMLV:7
     TFLAG:109 |= 32768
-;助手なしで、対象の反感と不快と抑鬱と屈服と苦痛と恐怖が全て10000以下で、恭順が100000以上にした場合
+;조수없이, 반감, 불쾌, 억울, 굴복, 고통, 공포의 파라미터가 모두 10000 이하고, 순종의 파라미터가 100000 이상 시에.
 SIF ASSI < 0 && PALAM:20 <= PALAMLV:4 && PALAM:21 <= PALAMLV:4 && PALAM:22 <= PALAMLV:4 && PALAM:14 <= PALAMLV:4 && PALAM:16 <= PALAMLV:4 && PALAM:17 <= PALAMLV:4 && PALAM:12 >= PALAMLV:7
     TFLAG:109 |= 65536
 
@@ -689,52 +689,52 @@ SIF ASSI < 0 && PALAM:20 <= PALAMLV:4 && PALAM:21 <= PALAMLV:4 && PALAM:22 <= PA
 ;取得できたということは報告されない（あとでステータスで知る羽目になる）
 @NICK_SLAVE
 SIF TFLAG:109 & 1
-    NICKNAME:TARGET = \@(TALENT:120) ? 『촉촉한 상남자』 # 『가랑비 공주』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『촉촉한 상남자』 # 『가랑비 공주』\@, 1
 SIF TFLAG:109 & 2
-    NICKNAME:TARGET = \@(TALENT:120) ? 『쉬야 대왕』 # 『못된 실금소녀』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『쉬야 대왕』 # 『못된 실금소녀』\@, 5
 
 SIF TFLAG:109 & 8
-    NICKNAME:TARGET = \@(TALENT:120) ? 『가슴으로 느끼는 변태남』 # 『주인님 전용 가슴 공주』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『가슴으로 느끼는 변태남』 # 『주인님 전용 가슴 공주』\@, 3
 SIF TFLAG:109 & 16
-    NICKNAME:TARGET = \@(TALENT:120) ? 『말이 되냐 ㅋㅋㅋ』 # 『주인님 전용 꿀단지 공주』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『말이 되냐 ㅋㅋㅋ』 # 『주인님 전용 꿀단지 공주』\@, 3
 SIF TFLAG:109 & 32
-    NICKNAME:TARGET = \@(TALENT:120) ? 『주인님 전용 애널』 # 『주인님 전용 애널 공주』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『주인님 전용 애널』 # 『주인님 전용 애널 공주』\@, 3
 SIF TFLAG:109 & 64
-    NICKNAME:TARGET = \@(TALENT:120) ? 『성의 정점을 통달한 신사』 # 『성의 정점을 통달한 숙녀』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『성의 정점을 통달한 신사』 # 『성의 정점을 통달한 숙녀』\@, 4
 SIF TFLAG:109 & 128
-    NICKNAME:TARGET = \@(TALENT:120) ? 『불굴의 용사』 # 『불굴의 공주』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『불굴의 용사』 # 『불굴의 공주』\@, 5
 IF TFLAG:109 & 256
     IF TALENT:120
-        NICKNAME:TARGET = 『성전환하자구!』
+        CALL GET_NICK, TARGET, "『성전환하자구!』", 5
     ELSEIF TALENT:0 == 1
-        NICKNAME:TARGET = 『처녀니까 부끄럽지 않은걸!』
+        CALL GET_NICK, TARGET, "『처녀니까 부끄럽지 않은걸!』", 4
     ELSE
-        NICKNAME:TARGET = 『재생처녀니까 부끄럽지 않은걸!』
+        CALL GET_NICK, TARGET, "『재생처녀니까 부끄럽지 않은걸!』", 3
     ENDIF
 ENDIF
 SIF TFLAG:109 & 512
-    NICKNAME:TARGET = \@(TALENT:120) ? 『야한 짓을 탐구하는 선구자』 # 『야한 짓 연구를 사랑하는 여자』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『야한 짓을 탐구하는 선구자』 # 『야한 짓 연구를 사랑하는 여자』\@, 4
 SIF TFLAG:109 & 1024
-    NICKNAME:TARGET = \@(TALENT:120) ? 『천국을 보고 온 남자』 # 『헤븐 피버!』\@
-;快ＣＶＡＢもしくは欲情のパラもしくは入手珠が天元突破した場合
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『천국을 보고 온 남자』 # 『헤븐 피버!』\@, 9
+;쾌ＣＶＡＢ 혹은 욕정의 파라미터나 입수한 구슬이 상한에 도달했을 때.
 SIF TFLAG:109 & 2048
-    NICKNAME:TARGET = \@(TALENT:120) ? 『성욕을 주체 못하는』 # 『성욕을 주제 못하는』\@
-;否定系のパラもしくは入手珠が天元突破した場合
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『성욕을 주체 못하는』 # 『성욕을 주제 못하는』\@, 11
+;부정계(반감·불쾌·억울·부정)의 파라미터나 입수한 구슬이 상한에 도달했을 때.
 SIF TFLAG:109 & 4096
-    NICKNAME:TARGET = \@(TALENT:120) ? 『모든 것을 부정하는 남자』 # 『모든 것을 용서 못하는 여자』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『모든 것을 부정하는 남자』 # 『모든 것을 용서 못하는 여자』\@, 11
 SIF TFLAG:109 & 8192
-    NICKNAME:TARGET = \@(TALENT:120) ? 『성전환해야할진저』 # 『처녀라도 갈 수 있어!』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『성전환해야할진저』 # 『처녀라도 갈 수 있어!』\@, 7
 IF TFLAG:109 & 16384
     CFLAG:156 |= 1
-    NICKNAME:TARGET = \@(TALENT:120) ? 『운명과 정으로 맺어진 남편』 # 『정과 운명으로 맺어진 아내』\@
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『운명과 정으로 맺어진 남편』 # 『정과 운명으로 맺어진 아내』\@, 15
 ENDIF
 SIF TFLAG:109 & 32768
-    NICKNAME:ASSI = \@(TALENT:ASSI:120) ? 『멋진 SM 신사님』 # 『무적의 SM 여왕님』\@
+    CALL GET_NICK, ASSI, \@(TALENT:ASSI:120) ? 『멋진 SM 신사님』 # 『무적의 SM 여왕님』\@, 5
 SIF TFLAG:109 & 65536
-    NICKNAME:TARGET = \@(TALENT:120) ? 『사랑에 감싸인 왕자님』 # 『다정하게 사랑받은 공주님』\@
-;[精愛味覚]取得フラグ
+    CALL GET_NICK, TARGET, \@(TALENT:120) ? 『사랑에 감싸인 왕자님』 # 『다정하게 사랑받은 공주님』\@, 5
+;[정애미각]을 취득했을 때. 정액 소믈리에는 칭호등급이 없어도 된다
 SIF TFLAG:106 & 16
-    NICKNAME:TARGET = 『정액 소믈리에』
+    CALL GET_NICK, TARGET, "『정액 소믈리에』"
 
 ;デバッグモード専用取得報告(さすがにデバッグではこれがないと辛い)
 SIF TALENT:MASTER:998 && TFLAG:109

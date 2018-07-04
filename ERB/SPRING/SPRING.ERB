@@ -111,7 +111,7 @@ ELSEIF RAND:5 == 0 && ABL:COUNT:10 >= 3 && ABL:COUNT:14 >= 3
     CALL SELF_KOJO, COUNT, 1200
     PRINTFORMW %조사처리(CALLNAME:COUNT,"는")% 조금 부끄러운 차림을 하고 찌라시를 뿌리고 다녔다.
     IF RAND:10 == 0
-        PRINTFORMW 선전 덕분에 창관의 인기가 조금 오른 것 같다.
+        PRINTFORMW 선전 덕분에 창관의 평판이 조금 오른 것 같다.
         FLAG:3005 += 1
         SIF FLAG:3005 > 100 && (FLAG:3000 & 8388608) == 0
             FLAG:3005 = 100
@@ -186,9 +186,9 @@ REND
 SIF FLAG:3 != 3 || DAY >= 99
     RETURN 0
 
-;창관의 인기 자연 감소(H전용 처리)
+;창관의 평판 자연 감소(H전용 처리)
 SIF DAY / 30 > 0
-    PRINTFORM 【자연 감소】 창관인기 {FLAG:3005} →
+    PRINTFORM 【자연 감소】 창관의 평판 {FLAG:3005} →
 FLAG:3005 -= DAY / 30
 SIF DAY / 30 > 0
     PRINTFORMW  {FLAG:3005}
@@ -581,7 +581,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 >= 6 && FLAG:3000 & 8388608
     EXP:COUNT:77 += LOCAL@SPRING_DUMMY:10
     LOCAL /= 2
     SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-        PRINTFORML 창관인기 {FLAG:3005} + {LOCAL@SPRING_DUMMY:10}
+        PRINTFORML 창관의 평판 {FLAG:3005} + {LOCAL@SPRING_DUMMY:10}
     FLAG:3005 += LOCAL@SPRING_DUMMY:10
     IF TALENT:COUNT:265 < 100000 && (LOCAL@SPRING_DUMMY:2 == 0 || CFLAG:COUNT:1501 == 5 || CFLAG:COUNT:1501 == 6) && TALENT:COUNT:27 == 0
         PRINTFORML 손님 몇 명은 %조사처리(CALLNAME:COUNT,"를")% 매우 마음에 들어하는 듯하다.
@@ -609,7 +609,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 == 0
     SIF EXP:COUNT:77 <= 0
         EXP:COUNT:77 = 0
     SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-    PRINTFORML 창관인기 {FLAG:3005} - 3
+    PRINTFORML 창관의 평판 {FLAG:3005} - 3
     FLAG:3005 -= 3
     SIF FLAG:3005 <= 0
         FLAG:3005 = 0
@@ -625,7 +625,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 == 1
     SIF EXP:COUNT:77 <= 0
         EXP:COUNT:77 = 0
     SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-    PRINTFORML 창관인기 {FLAG:3005} - 1
+    PRINTFORML 창관의 평판 {FLAG:3005} - 1
     FLAG:3005 -= 1
     SIF FLAG:3005 <= 0
         FLAG:3005 = 0
@@ -652,7 +652,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 == 3
     SIF EXP:COUNT:77 >= 100 && (FLAG:3000 & 8388608) == 0
         EXP:COUNT:77 = 100
         SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-    PRINTFORML 창관인기 {FLAG:3005} + 1
+    PRINTFORML 창관의 평판 {FLAG:3005} + 1
     FLAG:3005 += 1
     SIF FLAG:3005 >= 100 && (FLAG:3000 & 8388608) == 0
         FLAG:3005 = 100
@@ -668,7 +668,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 == 4
     SIF EXP:COUNT:77 >= 100 && (FLAG:3000 & 8388608) == 0
         EXP:COUNT:77 = 100
         SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-    PRINTFORML 창관인기 {FLAG:3005} + 2
+    PRINTFORML 창관의 평판 {FLAG:3005} + 2
     FLAG:3005 += 2
     SIF FLAG:3005 >= 100 && (FLAG:3000 & 8388608) == 0
         FLAG:3005 = 100
@@ -684,7 +684,7 @@ ELSEIF LOCAL@SPRING_DUMMY:0 == 5
     SIF EXP:COUNT:77 >= 100 && (FLAG:3000 & 8388608) == 0
         EXP:COUNT:77 = 100
         SIF ((FLAG:3000 & 512) == 0 && ((FLAG:3000 & 16384) == 0) || (FLAG:3000 & 512 && (FLAG:3000 & 1048576) == 0))
-    PRINTFORML 창관인기 {FLAG:3005} + 3
+    PRINTFORML 창관의 평판 {FLAG:3005} + 3
     FLAG:3005 += 3
     SIF FLAG:3005 >= 100 && (FLAG:3000 & 8388608) == 0
         FLAG:3005 = 100
@@ -723,7 +723,7 @@ ELSEIF EXP:COUNT:77 < 70 && TALENT:COUNT:264 == 1
     TALENT:COUNT:264 = 0
 ENDIF
 IF FLAG:3005 >= 100 && (FLAG:3000 & 16) == 0
-    PRINTFORML 창관의 인기가 최고조에 달했다.
+    PRINTFORML 창관의 평판이 최고조에 달했다.
     PRINTFORML 이에 따라, %CALLNAME:MASTER%의 이름은 대부호나 귀족에게까지 널리 퍼졌다.
     PRINTFORML 일요일 밤의 파티 메뉴가 늘었습니다.
     FLAG:3000 |= 16
@@ -1697,7 +1697,7 @@ ENDIF
 MAXBASE:ARG:0 -= 500
 
 ;출산계의 플래그 설정
-CFLAG:ARG:77 = DAY + 20
+CFLAG:ARG:77 = DAY + FLAG:600
 LOCAL = ASSI
 
 CFLAG:ARG:78 = NO:LOCAL
@@ -1720,41 +1720,11 @@ ENDIF
     CFLAG:ARG:76 = 1
 
     ;임산부의 가슴의 크기를 플래그에 대입하는 처리
-    CFLAG:ARG:3006 = 0
-    ;절벽
-    IF TALENT:ARG:110 
-        CFLAG:ARG:3006 = 1
-    ;빈유
-    ELSEIF TALENT:ARG:111
-        CFLAG:ARG:3006 = 2
-    ;큰 가슴
-    ELSEIF TALENT:ARG:112
-        CFLAG:ARG:3006 = 4
-    ;폭유
-    ELSEIF TALENT:ARG:113
-        CFLAG:ARG:3006 = 5
-    ;보통
-    ELSE
-        CFLAG:ARG:3006 = 3
-    ENDIF
+    CFLAG:ARG:3006 = BUSTSIZE(ARG)
 
     ;젖이 원 랭크 파워업 한다
-    ;절→빈빈→보보→거거·폭→그대로
-    IF TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0
-        PRINTFORMW %CALLNAME:ARG%의 가슴이 커졌다.
-        IF TALENT:ARG:110 == 1
-            PRINTFORMW [%TALENTNAME:110%]에서 [%TALENTNAME:111%]로 바뀌었다.
-            TALENT:ARG:110 = 0
-            TALENT:ARG:111 = 1
-        ELSEIF TALENT:ARG:111 == 1
-            PRINTFORMW [%TALENTNAME:111%]에서 보통 크기로 변했다.
-            TALENT:ARG:111 = 0
-        ELSE
-            PRINTFORMW [%TALENTNAME:112%]가 되었다.
-            TALENT:ARG:112 = 1
-        ENDIF
-        PRINTL 
-    ENDIF
+    ;절→빈, 빈→보, 보→거, 거·폭→그대로
+    CALL BUSTSIZE_UP(ARG,4)
 
     ;모유 나오게 된다
     IF TALENT:ARG:134 == 0

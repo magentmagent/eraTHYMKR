@@ -553,7 +553,7 @@ RETURN 1
 SIF !TALENT:ARG:45
     RETURN 0
 
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"45"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"오줌싸개버릇"
 LOCAL = RESULT
 IF LOCAL > 0 && RAND:2 == 0
     PRINTFORMW 문득 창문으로 뜰을 내려다 보니 이불이 두 장 말려지고 있다.
@@ -1649,7 +1649,7 @@ SIF !TALENT:ARG:36
 PRINTFORMW 방에서 홍차를 마시며 쉬고 있는데 복도를 목욕 타월만 걸친 %조사처리(CALLNAME:ARG,"가")% 지나갔다……?
 PRINTFORMW 기분 탓인가…….
 PRINTFORMW ………….
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"수치 얇다"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"부끄럼없음"
 LOCAL = RESULT
 IF LOCAL > 0 && RAND:3 == 0
     PRINTFORMW 잠시 후 이번도 역시 목욕 타월만 걸친 %조사처리(CALLNAME:LOCAL,"가")% 지나갔다.
@@ -1773,7 +1773,7 @@ ELSE
 ;---------------------------------추가 부분(종)----------------------------
 
     ELSE
-        CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"보수적","정조 관념"
+        CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"보수적","정조관념"
         IF LOCAL > 0 && RAND:3 != 0
             PRINTFORMW 어안 벙벙한 기색으로 배웅해주자 %CALLNAME:LOCAL%의 화난 목소리가 들려왔다.
             PRINTFORMW 아무래도 알몸으로 우왕좌왕하고 있는 것을 설교 받고 있는 것 같습니다…….
@@ -1951,7 +1951,7 @@ RETURN 1
 SIF !(TALENT:ARG:50 && MARK:ARG:9 < 3)
     RETURN 0
 
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"습득 늦다"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"습득느림"
 LOCAL = RESULT
 IF LOCAL > 0 && MARK:LOCAL:9 < 3 && RAND:3 >= 1
     PRINTFORMW %CALLNAME:ARG%의 방에서 %조사처리(CALLNAME:ARG,"과")% %조사처리(CALLNAME:LOCAL,"가")% 무언가 하고 있는 것 같다.
@@ -2181,7 +2181,7 @@ ELSEIF TALENT:ARG:11 || TALENT:ARG:15 || TALENT:ARG:16 || TALENT:ARG:34
 ELSE
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 수긍하고 요리를 시작했다…….
 ENDIF
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"겁장이","얌전한","유치"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"겁쟁이","얌전함","유치"
 LOCAL = RESULT
 PRINTFORMW …………
 
@@ -2459,7 +2459,7 @@ SIF TALENT:ARG:205
     PRINTFORMW 라고 해도 비치지는 않지만…… 버릇 같은걸까? 
 
 ;수정(추가) 조건 변경 "소질:113"(TALENT:113)을 조건문에 추가
-IF TALENT:ARG:112 || TALENT:ARG:113
+IF BUSTSIZE(ARG) > 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 풍부한 가슴을 확인하듯이 손대기 시작했다.
     IF TALENT:ARG:10 || TALENT:ARG:14 || TALENT:ARG:26
         PRINTFORMW 아무래도 자신의 가슴이 별로 마음에 들지 않아 우울한 얼굴을 하고 있다.
@@ -2468,7 +2468,7 @@ IF TALENT:ARG:112 || TALENT:ARG:113
     ENDIF
 
 ;수정(추가) 조건 변경 "소질:110"(TALENT:110)을 조건문에 추가
-ELSEIF TALENT:ARG:111 || TALENT:ARG:110
+ELSEIF BUSTSIZE(ARG) < 3
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 자신의 소극적인 가슴을 토닥토닥 손을 댄다.
     SIF TALENT:ARG:128
         PRINTFORMW 그러고나서 자신의 잘록한 부분도 확인하듯 만진다…….
@@ -4908,7 +4908,7 @@ ELSE
             CALL COMMON_DAILYJUEL,ARG,11,1000 + ((ABL:ARG:12 + RAND:6) * 100),1
         ELSE
             ;"소질:55"소유를 찾는다
-            CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"조제 지식"
+            CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"조합지식"
             LOCAL = RESULT
             IF LOCAL > 0 && MARK:LOCAL:8 < 1 && MARK:LOCAL:9 < 1 && (TALENT:LOCAL:153 ? RAND:4 >= 1 # TALENT:LOCAL:152 && RAND:2 == 0)
                 PRINTFORMW 다시 %CALLNAME:ARG%에게 조합지식을 사사받기 위해 %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:ARG%의 방을 방문했다
@@ -5790,9 +5790,9 @@ IF CFLAG:ARG:1608 == 0
 ELSEIF CFLAG:ARG:1609 == 0
     PRINTFORMW %조사처리(CALLNAME:ARG,"는")% 끊임없이 가슴을 신경쓰면서 운동을 계속하고 있다
     PRINTFORMW 이번은 바스트 업・엑서사이즈를 하고 있는 듯하다
-    IF TALENT:ARG:110 || TALENT:ARG:111
+    IF BUSTSIZE(ARG) < 3
         PRINTFORMW 소극적인 가슴의 %조사처리(CALLNAME:ARG,"는")% 조금이라도 가슴을 크게 하려고 매일 눈물겨운 노력을 하고 있기 때문일까
-    ELSEIF TALENT:ARG:112 || TALENT:ARG:113
+    ELSEIF BUSTSIZE(ARG) > 3
         PRINTFORMW 풍부한 가슴을 가진 %조사처리(CALLNAME:ARG,"였")%지만 보다 아름답게 보이게 하려고 노력하고 있는 것일까
     ELSE
         PRINTFORMW 가슴이 보통 수준의 크기인 %조사처리(CALLNAME:ARG,"는")% 보다 풍부한 가슴을 손에 넣고 싶다 생각하고 있는 걸까
@@ -5854,7 +5854,7 @@ ELSE
         ELSEIF CFLAG:ARG:1609 >= 20 && TALENT:ARG:111 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 소극적이었던 가슴이 보통까지 성장했다
             TALENT:ARG:111 = 0
-        ELSEIF CFLAG:ARG:1609 >= 30 && TALENT:ARG:110 == 0 && TALENT:ARG:111 == 0 && TALENT:ARG:112 == 0 && TALENT:ARG:113 == 0 && RAND:5 >= 2
+        ELSEIF CFLAG:ARG:1609 >= 30 && BUSTSIZE(ARG) == 3 && RAND:5 >= 2
             PRINTFORMW %CALLNAME:ARG%의 노력이 맺어져 보통이었는 가슴이 풍부한 가슴까지 성장했다
             TALENT:ARG:112 = 1
         ENDIF
@@ -6567,7 +6567,7 @@ SIF !(((TALENT:ARG:153 && CFLAG:ARG:2 >= 7500) || (TALENT:ARG:152 && CFLAG:ARG:2
     RETURN 0
 
 ;"소질:63"소유를 찾는다
-CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"63"
+CALL DAILY_LIFE_PICKCHARA_TALENT,ARG,"헌신적"
 LOCAL = RESULT
 IF LOCAL > 0 && TALENT:LOCAL:153 && MARK:LOCAL:8 < 1 && MARK:LOCAL:9 < 1 && RAND:4 >= 1
     PRINTFORMW 복도를 걷고 있는데 %CALLNAME:LOCAL%의 방에서 이야기 소리가 들려왔다
@@ -10654,7 +10654,7 @@ IF TALENT:ARG:150 && MARK:ARG:8 < 1 && MARK:ARG:9 < 1 && RAND:8 >= 3
     PRINTFORMW 쭉 지켜보고 있었지만 춥게 자면 안되므로 살짝 이불을 덮허줬다.
     PRINTFORML 그렇다 치더라도 정말로 행복하게 자고 있다…….
     PRINTFORML 보고 있는 사람도 행복하게 해주는 순진하고 사랑스러운 얼굴이다.
-    PRINTFORMW %CALLNAME:ARG%의 잠자는 얼굴을 즐기며,자그마한 행복하게 잠긴%조사처리(CALLNAME:MASTER,"였")%다.
+    PRINTFORMW %CALLNAME:ARG%의 잠자는 얼굴을 즐기며, 자그마한 행복에 잠긴 %조사처리(CALLNAME:MASTER,"였")%다.
 
 ;수정(추가) 체력·기력 회복,호감도(CFLAG:2),애정 경험(EXP:21) 상승,스트레스치(CFLAG:65) 감소 "순종의 구슬"(JUEL:12) 취득
 

@@ -633,14 +633,14 @@ ELSEIF TFLAG:201 == 65
 ELSEIF TFLAG:201 == 66
     PRINTL 【상하이 인형】
     PRINTL 앨리스가 만든 반자율인형. 본래 멋대로 움직일 수는 없는 인형일 터인데…….
-    PRINTL 소인체형이기 때문에 일단 금단의 지식은 필수.
+    PRINTL [소인]이기 때문에 일단 금단의 지식은 필수.
     PRINTL 또한 약이 먹히지 않는 점도 주의하면 어떻게든 조교는 할 수 있을 것으로 보인다.
     PRINTL 앨리스의 사역마를 하던 경험 덕인지 조수로서의 소양도 있는 듯하다.
 
 ELSEIF TFLAG:201 == 67
     PRINTL 【호라이 인형】
     PRINTL 앨리스가 만든 반자율인형. 멋대로 움직일 수는….
-    PRINTL 소인체형이기 때문에 일단 금단의 지식은 필수. 당연히 약도 안 먹힌다.
+    PRINTL [소인]이기 때문에 일단 금단의 지식은 필수. 당연히 약도 안 먹힌다.
     PRINTL 이쪽은 마이너스 소양이 더 많기 때문에 난이도적으론 상하이보다 높다.
     PRINTL 앨리스랑 상하이와의 상성이 좋으므로 그녀들 먼저 함락시키는 수법도 있을 것이다.
     PRINTL 그 외에 마조 소질도 있으니 방치플레이라는 것도 나쁘진 않을지도 모른다.
@@ -985,7 +985,7 @@ ELSEIF TFLAG:201 == 122
     PRINTL Alice가 아니다.
     PRINTL 보라색 날개와 지팡이를 든 악마로 마계에 살고 있으며, 박쥐로 변신할 수도 있다.
     PRINTL 건방지지만 성에 흥미진진하며 스킬이든 경험이든 풍부하기 때문에,
-    PRINTL 작은 체형이라는 점에만 주의하면 비교적 편하게 조교할 수 있을 것이다.
+    PRINTL [작은체형]이라는 점에만 주의하면 비교적 편하게 조교할 수 있을 것이다.
 ELSEIF TFLAG:201 == 123
     PRINTL 【사리엘】
     PRINTL 죽음의 천사라 불리는 마계에 사는 존재.
@@ -997,7 +997,7 @@ ELSEIF TFLAG:201 == 124
     PRINTL 키쿠리히메노카미(菊理媛神)라는 어엿한 여신님이라고 여겨진다.
     PRINTL 키쿠리히메노카미는 연 맺기의 신님인 까닭인지 솔직하고 호기심 왕성하며
     PRINTL 낙관적이기에 조교가 매우 편하다.
-    PRINTL 작은 체형이라는 점 정도가 어려운 부분이겠지만.
+    PRINTL [작은체형]이라는 점 정도가 어려운 부분이겠지만.
 ELSEIF TFLAG:201 == 125
     PRINTL 【콘가라】
     PRINTL 붉은 눈과 이마에 돋은 뿔이 특징적인 지옥의 검사다. 별의 기사라는 이명도 있다.
@@ -1028,7 +1028,7 @@ ELSEIF TFLAG:201 == 129
     PRINTL 【사쿠라자키 히라노】
     PRINTL 서방 Pjoject에 등장하는 무녀님. 신비한 분위기가 맴도는 정통파 무녀.
     PRINTL 실력도 제법 있어 어딘가의 게으름뱅이 무녀 따위와는 격이 다를 터다.
-    PRINTL 단, 실수로라도 검은 사탕을 먹이면 안 된다……라고 일단 경고해두겠다.
+    PRINTL 단, 실수로라도 EX화 사탕을 먹이면 안 된다……라고 일단 경고해두겠다.
     PRINTL 기본적으로는 꿋꿋함이 있는 정도로 조교하기는 쉽다. 일선을 넘지 않음도 없고.
     PRINTL 그렇다고는 해도 매각가격을 고려하면 열화판 레이무일지도 모르겠지만…….
 ELSEIF TFLAG:201 == 130
@@ -1231,7 +1231,7 @@ ELSEIF TFLAG:201 == 208
     PRINTL 자신의 그림자를 안개의 스크린에 비추어 실체화시킨다는 능력을 지녔다.
     PRINTL 출전은 동방비상천칙에 등장할 예정이었지만, 퇴짜를 맞았다고 일컬어지는 환상의 캐릭터.
     PRINTL ……라는 명목의 낚시 캐릭터가 된다.
-    PRINTL 노예로서는 건방지고 자존심 세며, 정조관념이 있고 작은 체형이기 때문에
+    PRINTL 노예로서는 건방지고 자존심 세며, 정조관념이 있고 [작은체형]이기 때문에
     PRINTL 성깔이 있어 다소 벅차다. 하지만 눈에 띄고 싶어하는 점 또한 있으므로
     PRINTL 파고들 틈은 충분히 있을 거라 여겨진다.
 ELSEIF TFLAG:201 == 209
@@ -1951,7 +1951,7 @@ IF TALENT:(LOCAL:1):120
     LOCAL += 2
     LOCAL:2 += 1
 ENDIF
-;小人体型
+;[소인]
 IF TALENT:(LOCAL:1):127 && TALENT:MASTER:127 == 0 && TALENT:MASTER:56 == 0
     LOCAL += 2
     LOCAL:2 += 1
@@ -2081,13 +2081,13 @@ IF FLAG:5000 & 2
             CONTINUE
         SIF COUNT >= 24 && COUNT < 30
             CONTINUE
-        SIF COUNT >= 35 && COUNT < 39
+        SIF COUNT >= 36 && COUNT < 39
             CONTINUE
-        SIF COUNT >= 47 && COUNT < 50
+        SIF COUNT >= 48 && COUNT < 50
             CONTINUE
         SIF COUNT >= 57 && COUNT < 70
             CONTINUE
-        SIF COUNT >= 78 && COUNT < 80
+        SIF COUNT >= 79 && COUNT < 80
             CONTINUE
         SIF COUNT >= 84 && COUNT < 97
             CONTINUE
@@ -2099,7 +2099,7 @@ IF FLAG:5000 & 2
 ;    CFLAG:(LOCAL:1):164 = 1
 
     ;음란 소질 부여
-    TALENT:(LOCAL:1):170 =1
+    TALENT:(LOCAL:1):170 = 1
 
     ;전 스킬 5렙으로
     REPEAT 99

@@ -6271,9 +6271,9 @@ IF SELECTCOM == 5
                 PRINTFORMW 「읏……크흐…읏……으응……하…으……으응……」
                 PRINTFORMW 파츄리는 페니스에 주어지는 쾌감에 몸을 맡기고, 달콤한 한숨을 흘리고 있다.
             ELSE
-                IF NO:ASSI == 2
+                IF ASSI > 0 && NO:ASSI == 2
                     PRINTFORMW 「응……후아…읏……아… 마리…사…아…… 기분 조아…아아…」
-                ELSEIF NO:ASSI == 10
+                ELSEIF ASSI > 0 && NO:ASSI == 10
                     PRINTFORMW 「응……후아…읏……아… 레미…이…… 기분 조아…아아…」
                 ELSE
                     PRINTFORMW 「응……후아…읏……아…… 기분 조아…아아…」
@@ -6290,9 +6290,9 @@ IF SELECTCOM == 5
                 PRINTFORMW 「읏……크흐…읏……읏……크으…읏…」
                 PRINTFORMW 파츄리는 %CALLNAME:PLAYER%에서 시선을 돌리고, 주어지는 쾌락을 견디고 있다.
             ELSE
-                IF NO:ASSI == 2
+                IF ASSI > 0 && NO:ASSI == 2
                     PRINTFORMW 「응…크……흐으…읏……… 마리사…… 그만…둬…엇…」
-                ELSEIF NO:ASSI == 10
+                ELSEIF ASSI > 0 && NO:ASSI == 10
                     PRINTFORMW 「응…크……흐으…읏……… 레미…… 그만…둬…엇…」
                 ELSE
                     PRINTFORMW 「응…크……흐으…읏………… 그만…둬…엇…」
@@ -6434,9 +6434,9 @@ IF SELECTCOM == 331
             PRINTFORMW 「윽…… 크흐…읏…… 으응…… 하… 으…… 으으……」
             PRINTFORMW 파츄리는 페니스에 주어지는 쾌감에 몸을 맡기며 달콤한 숨결을 흘리고 있다.
         ELSE
-            IF NO:ASSI == 2
+            IF ASSI > 0 && NO:ASSI == 2
                 PRINTFORMW 「응……후아…읏……아… 마리…사…아…… 기분 조…아아…」
-            ELSEIF NO:ASSI == 10
+            ELSEIF ASSI > 0 && NO:ASSI == 10
                 PRINTFORMW 「응……후아…읏……아… 레미…이…… 기분 조…아아…」
             ELSE
                 PRINTFORMW 「응……후아…읏……아…… 기분 조…아아…」
@@ -6452,9 +6452,9 @@ IF SELECTCOM == 331
             PRINTFORMW 「윽…… 크흑…! ……윽…… 크으…윽…」
             PRINTFORMW 파츄리는 두 사람으로부터 시선을 돌리고, 주어지는 쾌락에 견디고 있다.
         ELSE
-            IF NO:ASSI == 2
+            IF ASSI > 0 && NO:ASSI == 2
                 PRINTFORMW 「응…크……후우…웃……… 마리사…… 그만…둬…엇…」
-            ELSEIF NO:ASSI == 10
+            ELSEIF ASSI > 0 && NO:ASSI == 10
                 PRINTFORMW 「응…크……후우…웃……… 레미…… 그만…둬…엇…」
             ELSE
                 PRINTFORMW 「응…크……흐으…읏………… 그만…둬…엇…」
@@ -7501,7 +7501,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
     ;처녀
     IF TALENT:0 == 1
         ;마리사
-        IF NO:ASSI == 2
+        IF ASSI > 0 && NO:ASSI == 2
             ;기승위(페니스 밴드로는 불가)
             IF SELECTCOM == 24
                 PRINTFORMW 「……나, 처음인데」
@@ -7559,7 +7559,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
             CFLAG:6021 = 1
             
         ;메이링
-        ELSEIF NO:ASSI == 6
+        ELSEIF ASSI > 0 && NO:ASSI == 6
             ;기승위(페니스 밴드로는 불가)
             IF SELECTCOM == 24
                 ;굴복각인Lv2 이하
@@ -7624,7 +7624,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
             CFLAG:6022 = 1
             
         ;소악마
-        ELSEIF NO:ASSI == 7
+        ELSEIF ASSI > 0 && NO:ASSI == 7
             ;기승위(페니스 밴드로는 불가)
             IF SELECTCOM == 24
                 ;순정
@@ -7679,7 +7679,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
             CFLAG:6023 = 1
             
         ;사쿠야
-        ELSEIF NO:ASSI == 9
+        ELSEIF ASSI > 0 && NO:ASSI == 9
             ;기승위(페니스 밴드로는 불가)
             IF SELECTCOM == 24
                 ;굴복각인Lv2 이하
@@ -7743,7 +7743,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
             CFLAG:6024 = 1
         
         ;레밀리아
-        ELSEIF NO:ASSI == 10
+        ELSEIF ASSI > 0 && NO:ASSI == 10
             ;기승위(페니스 밴드로는 불가)
             IF SELECTCOM == 24
                 ;굴복각인Lv2 이하
@@ -8521,7 +8521,7 @@ IF ASSIPLAY && TFLAG:133 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 
     RETURN 0 
     
     ;마리사
-    IF NO:ASSI == 2
+    IF ASSI > 0 && NO:ASSI == 2
         ;전회가 애널
         IF PREVCOM == 30 || PREVCOM == 31 || PREVCOM == 32 || PREVCOM == 33 || PREVCOM == 34 || PREVCOM == 37 || PREVCOM == 38
             PRINTFORMW 『후우…웃…파츄리의 애널 최고였다고…. 이번엔 이쪽 차례야……응… 흐크으으!』
@@ -8615,7 +8615,7 @@ IF ASSIPLAY && TFLAG:133 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 
         ENDIF
                 
     ;메이링
-    ELSEIF NO:ASSI == 6
+    ELSEIF ASSI > 0 && NO:ASSI == 6
         ;전회가 애널
         IF PREVCOM == 30 || PREVCOM == 31 || PREVCOM == 32 || PREVCOM == 33 || PREVCOM == 34 || PREVCOM == 37 || PREVCOM == 38
             PRINTFORMW 『후우…웃… 파츄리 님의 엉덩이 최고였어요…. 이번엔 이리로 부탁드릴게요…… 응… 흐크으으!』
@@ -8709,7 +8709,7 @@ IF ASSIPLAY && TFLAG:133 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 
         ENDIF
             
     ;소악마
-    ELSEIF NO:ASSI == 7
+    ELSEIF ASSI > 0 && NO:ASSI == 7
         ;전회가 애널
         IF PREVCOM == 30 || PREVCOM == 31 || PREVCOM == 32 || PREVCOM == 33 || PREVCOM == 34 || PREVCOM == 37 || PREVCOM == 38
             PRINTFORMW 『후우…웃… 파츄리 님의 애널 좋았어요…. 이번엔 이쪽이네요……. 응… 흐크으으!』
@@ -8803,7 +8803,7 @@ IF ASSIPLAY && TFLAG:133 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 
         ENDIF
         
     ;사쿠야
-    ELSEIF NO:ASSI == 9
+    ELSEIF ASSI > 0 && NO:ASSI == 9
         ;전회가 애널
         IF PREVCOM == 30 || PREVCOM == 31 || PREVCOM == 32 || PREVCOM == 33 || PREVCOM == 34 || PREVCOM == 37 || PREVCOM == 38
             PRINTFORMW 『후우…웃… 파츄리 님의 엉덩이 최고였습니다…. 이번엔 이쪽으로 부탁드릴게요……. 응… 흐크으으!』
@@ -8897,7 +8897,7 @@ IF ASSIPLAY && TFLAG:133 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 
         ENDIF
         
     ;레밀리아
-    ELSEIF NO:ASSI == 10
+    ELSEIF ASSI > 0 && NO:ASSI == 10
         ;전회가 애널
         IF PREVCOM == 30 || PREVCOM == 31 || PREVCOM == 32 || PREVCOM == 33 || PREVCOM == 34 || PREVCOM == 37 || PREVCOM == 38
             PRINTFORMW 『후우…웃… 파체의 애널 최고였어…. 이번엔 이쪽으로……. 응… 흐크으으!』
@@ -10727,7 +10727,7 @@ IF SELECTCOM == 614
     ;조수 조교시
     IF ASSI > 0 && ASSIPLAY
         ;마리사
-        IF NO:ASSI == 2
+        IF ASSI > 0 && NO:ASSI == 2
             ;V감각Lv3 이상
             IF ABL:1 >= 3
                 ;전회가 기승위
@@ -10742,7 +10742,7 @@ IF SELECTCOM == 614
                 PRINTFORMW 『아직도 아프냐. 그렇다면… 이런 건 어때?』
             ENDIF
         ;메이링
-        ELSEIF NO:ASSI == 6
+        ELSEIF ASSI > 0 && NO:ASSI == 6
             ;V감각Lv3 이상
             IF ABL:1 >= 3
                 ;전회가 기승위
@@ -10757,7 +10757,7 @@ IF SELECTCOM == 614
                 PRINTFORMW 『아직 기분이 좋아지진 않는군요. 그렇다면… 이건 또 어떠세요?』
             ENDIF
         ;소악마
-        ELSEIF NO:ASSI == 7
+        ELSEIF ASSI > 0 && NO:ASSI == 7
             ;V감각Lv3 이상
             IF ABL:1 >= 3
                 ;전회가 기승위
@@ -10772,7 +10772,7 @@ IF SELECTCOM == 614
                 PRINTFORMW 『자아, 자. 굉장한 거 갑니다―♪』
             ENDIF
         ;사쿠야
-        ELSEIF NO:ASSI == 9
+        ELSEIF ASSI > 0 && NO:ASSI == 9
             ;V감각Lv3 이상
             IF ABL:1 >= 3
                 ;전회가 기승위
@@ -10787,7 +10787,7 @@ IF SELECTCOM == 614
                 PRINTFORMW 『아직 쾌감을 얻지 못하시나요…. 별수 없군요. 이러면 어떨까요?』
             ENDIF
         ;레밀리아
-        ELSEIF NO:ASSI == 10
+        ELSEIF ASSI > 0 && NO:ASSI == 10
             ;V감각Lv3 이상
             IF ABL:1 >= 3
                 ;전회가 기승위
@@ -10836,7 +10836,7 @@ IF SELECTCOM == 615
     ;조수 조교시
     IF ASSIPLAY
         ;마리사
-        IF NO:ASSI == 2
+        IF ASSI > 0 && NO:ASSI == 2
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 PRINTFORMW 『하하핫! 벌써 완전히 머릿속이 녹아내린거야?』
@@ -10850,7 +10850,7 @@ IF SELECTCOM == 615
                 PRINTFORMW 『처음엔 아플 수도 있지만 인내해, 자궁을 통해 기분 좋아지지 않으면 아깝잖아?』
             ENDIF
         ;메이링
-        ELSEIF NO:ASSI == 6
+        ELSEIF ASSI > 0 && NO:ASSI == 6
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 PRINTFORMW 『우후훗, 이제 완전히 머릿속이 녹아버렸나봐요♪』
@@ -10864,7 +10864,7 @@ IF SELECTCOM == 615
                 PRINTFORMW 『처음엔 아플지도 모르지만, 뱃속에 의식을 집중해주세요』
             ENDIF
         ;소악마
-        ELSEIF NO:ASSI == 7
+        ELSEIF ASSI > 0 && NO:ASSI == 7
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 PRINTFORMW 『파츄리 님, 이제 가버리기만 하는군요―♪』
@@ -10879,7 +10879,7 @@ IF SELECTCOM == 615
                 PRINTFORMW 『그래도 통증을 즐길 수 있는 것도 지금 뿐이에요―, 어차피 곧 미치도록 좋아하게 될테니까♪』
             ENDIF
         ;사쿠야
-        ELSEIF NO:ASSI == 9
+        ELSEIF ASSI > 0 && NO:ASSI == 9
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 PRINTFORMW 『이제 완전히 여기도 가버리게 되었군요』
@@ -10894,7 +10894,7 @@ IF SELECTCOM == 615
                 PRINTFORMW 『그것이 최고의 쾌락으로 자라나게 될 거니까』
             ENDIF
         ;레밀리아
-        ELSEIF NO:ASSI == 10
+        ELSEIF ASSI > 0 && NO:ASSI == 10
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 PRINTFORMW 『아하하핫! 이제 완전히 머릿속이 녹아 버렸잖아!』
@@ -20490,7 +20490,7 @@ IF TFLAG:10 > 0
     ;조수가 사정했을 경우
     IF TFLAG:36 > 0 && ASSI > 0 && ASSIPLAY
         ;마리사
-        IF NO:ASSI == 2
+        IF ASSI > 0 && NO:ASSI == 2
             ;굴복각인Lv3+V감각Lv3 이상
             IF MARK:2 == 3 && ABL:1 >= 3
                 IF RAND:2 == 0
@@ -20506,7 +20506,7 @@ IF TFLAG:10 > 0
                 ENDIF
             ENDIF
         ;메이링
-        ELSEIF NO:ASSI == 6
+        ELSEIF ASSI > 0 && NO:ASSI == 6
             ;굴복각인Lv3+V감각Lv3 이상
             IF MARK:2 == 3 && ABL:1 >= 3
                 IF RAND:2 == 0
@@ -20522,7 +20522,7 @@ IF TFLAG:10 > 0
                 ENDIF
             ENDIF
         ;소악마
-        ELSEIF NO:ASSI == 7
+        ELSEIF ASSI > 0 && NO:ASSI == 7
             ;굴복각인Lv3+V감각Lv3 이상
             IF MARK:2 == 3 && ABL:1 >= 3
                 IF RAND:3 == 0
@@ -20544,7 +20544,7 @@ IF TFLAG:10 > 0
                 ENDIF
             ENDIF
         ;사쿠야
-        ELSEIF NO:ASSI == 9
+        ELSEIF ASSI > 0 && NO:ASSI == 9
             ;굴복각인Lv3+V감각Lv3 이상
             IF MARK:2 == 3 && ABL:1 >= 3
                 IF RAND:2 == 0
@@ -20560,7 +20560,7 @@ IF TFLAG:10 > 0
                 ENDIF
             ENDIF
         ;레밀리아
-        ELSEIF NO:ASSI == 10
+        ELSEIF ASSI > 0 && NO:ASSI == 10
             ;굴복각인Lv3+V감각Lv3 이상
             IF MARK:2 == 3 && ABL:1 >= 3
                 IF RAND:2 == 0
@@ -20609,7 +20609,7 @@ IF TFLAG:10 > 0
                 ;통상의 사정
                 ELSE
                     IF RAND:13 == 0 && TALENT:170 == 1
-                        IF NO:ASSI == 10
+                        IF ASSI > 0 && NO:ASSI == 10
                             PRINTFORMW 「나와아…앗! 레미의 정액 보지에 퓨웃퓨웃 나와아아아앗!」
                         ELSE
                             PRINTFORMW 「나와아…앗! %CALLNAME:PLAYER%의 정액 보지에 퓨웃퓨웃 나와아아아앗!!」
@@ -20636,13 +20636,13 @@ IF TFLAG:10 > 0
                     ELSEIF RAND:7 == 0
                         PRINTFORMW 「잔뜩 내버린 것 같네…기분 좋았어? ……으응…아직도 나오네…」
                     ELSEIF RAND:6 == 0
-                        IF NO:ASSI == 10
+                        IF ASSI > 0 && NO:ASSI == 10
                             PRINTFORMW 「응…크!! …으응…기분 좋았어? …레미의 정액…따뜻해…」
                         ELSE
                             PRINTFORMW 「응…크!! …으응…기분 좋았어? …%CALLNAME:PLAYER%의 정액…따뜻해…」
                         ENDIF
                     ELSEIF RAND:5 == 0
-                        IF NO:ASSI == 10
+                        IF ASSI > 0 && NO:ASSI == 10
                             PRINTFORMW 「하크…읏!! …레미의 정액…! 가장 안쪽…자궁까지 들어와앗!!」
                         ELSE
                             PRINTFORMW 「하크…읏!! …%CALLNAME:PLAYER%의 정액…! 가장 안쪽…자궁까지 들어와앗!!」
@@ -20650,7 +20650,7 @@ IF TFLAG:10 > 0
                     ELSEIF RAND:4 == 0
                         PRINTFORMW 「응…잔뜩 내버렸네…내 보지로 끝까지 짜줄테니까 말이야」
                     ELSEIF RAND:3 == 0
-                        IF NO:ASSI == 10
+                        IF ASSI > 0 && NO:ASSI == 10
                             PRINTFORMW 「응…읏!! 그아아…앗!! 레미의 뜨거운게엣! 흘러들어오고 있어엇!!」
                         ELSE
                             PRINTFORMW 「응…읏!! 그아아…앗!! %CALLNAME:PLAYER%의 뜨거운게엣! 흘러들어오고 있어엇!!」
@@ -20680,7 +20680,7 @@ IF TFLAG:10 > 0
                         PRINTFORMW 「―――윽!!!!! 그아아아아아앗!!!」
                         PRINTFORMW 「……하아… 하아…. 세상에 무슨 사정이 이래…. 의식이 날아가버리는 줄 알았잖아…」
                     ELSEIF RAND:3 == 0
-                        IF NO:ASSI == 10
+                        IF ASSI > 0 && NO:ASSI == 10
                             PRINTFORMW 「아아아…앗!! 레미의 뜨거운 게엣! 흘러들어오고 있어엇!!」
                         ELSE
                             PRINTFORMW 「아아아…앗!! %CALLNAME:PLAYER%의 뜨거운 게엣! 흘러들어오고 있어엇!!」
@@ -20707,7 +20707,7 @@ IF TFLAG:10 > 0
                         IF RAND:4 == 0
                             PRINTFORMW 「으아…아…아아아아아……하…빨리 빼내지 않으면……으으으……」
                         ELSEIF RAND:3 == 0
-                            IF NO:ASSI == 10
+                            IF ASSI > 0 && NO:ASSI == 10
                                 PRINTFORMW 「그만둬 레미…잇!! 윽――!! 아아앗!!! 아기 생겨버려엇!!」
                             ELSE
                                 PRINTFORMW 「그만둬어…엇!! 윽――!! 아아앗!!! 아기 생겨버려엇!!」
@@ -20732,7 +20732,7 @@ IF TFLAG:10 > 0
                         IF RAND:4 == 0
                             PRINTFORMW 「응… 대단한 양……… 정말이지… 도대체… 얼마나 싸야 직성이 풀리는 거야……」
                         ELSEIF RAND:3 == 0
-                            IF NO:ASSI == 10
+                            IF ASSI > 0 && NO:ASSI == 10
                                 PRINTFORMW 「레미…… 정말로 질내에 싸버리다니…」
                             ELSE
                                 PRINTFORMW 「……정말로 질내에 싸버리다니…」
@@ -21006,7 +21006,7 @@ IF TFLAG:9 > 0
     ;조수가 사정했을 경우
     IF TFLAG:36 > 0 && ASSI > 0 && ASSIPLAY
         ;마리사
-        IF NO:ASSI == 2
+        IF ASSI > 0 && NO:ASSI == 2
             ;굴복각인Lv3+Ａ감각Lv4 이상
             IF MARK:2 == 3 && ABL:2 >= 4
                 IF RAND:2 == 0
@@ -21022,7 +21022,7 @@ IF TFLAG:9 > 0
                 ENDIF
             ENDIF
         ;메이링
-        ELSEIF NO:ASSI == 6
+        ELSEIF ASSI > 0 && NO:ASSI == 6
             ;굴복각인Lv3+Ａ감각Lv4 이상
             IF MARK:2 == 3 && ABL:2 >= 4
                 IF RAND:2 == 0
@@ -21038,7 +21038,7 @@ IF TFLAG:9 > 0
                 ENDIF
             ENDIF
         ;소악마
-        ELSEIF NO:ASSI == 7
+        ELSEIF ASSI > 0 && NO:ASSI == 7
             ;굴복각인Lv3+Ａ감각Lv4 이상
             IF MARK:2 == 3 && ABL:2 >= 4
                 IF RAND:2 == 0
@@ -21054,7 +21054,7 @@ IF TFLAG:9 > 0
                 ENDIF
             ENDIF
         ;사쿠야
-        ELSEIF NO:ASSI == 9
+        ELSEIF ASSI > 0 && NO:ASSI == 9
             ;굴복각인Lv3+Ａ감각Lv4 이상
             IF MARK:2 == 3 && ABL:2 >= 4
                 IF RAND:2 == 0
@@ -21070,7 +21070,7 @@ IF TFLAG:9 > 0
                 ENDIF
             ENDIF
         ;레밀리아
-        ELSEIF NO:ASSI == 10
+        ELSEIF ASSI > 0 && NO:ASSI == 10
             ;굴복각인Lv3+Ａ감각Lv4 이상
             IF MARK:2 == 3 && ABL:2 >= 4
                 IF RAND:2 == 0
@@ -21120,7 +21120,7 @@ IF TFLAG:9 > 0
             ;통상의 사정
             ELSE
                 IF RAND:13 == 0 && TALENT:170 == 1
-                    IF NO:ASSI == 10
+                    IF ASSI > 0 && NO:ASSI == 10
                         PRINTFORMW 「나와…앗! 레미의 정액 엉덩이에 퓨웃퓨웃 나오고 있어어어엇!!」
                     ELSE
                         PRINTFORMW 「나와…앗! %CALLNAME:PLAYER%의 정액 엉덩이에 퓨웃퓨웃 나오고 있어어어엇!!」
@@ -21142,13 +21142,13 @@ IF TFLAG:9 > 0
                 ELSEIF RAND:7 == 0
                     PRINTFORMW 「윽――!? …아゛가아아아아앗!! ……잔뜩 나오고 있어어어어어어엇!!!」
                 ELSEIF RAND:6 == 0
-                    IF NO:ASSI == 10
+                    IF ASSI > 0 && NO:ASSI == 10
                         PRINTFORMW 「응…크!! …으응…기분 좋았어? …레미의 정액…따뜻해…」
                     ELSE
                         PRINTFORMW 「응…크!! …으응…기분 좋았어? …%CALLNAME:PLAYER%의 정액…따뜻해…」
                     ENDIF
                 ELSEIF RAND:5 == 0
-                    IF NO:ASSI == 10
+                    IF ASSI > 0 && NO:ASSI == 10
                         PRINTFORMW 「하크으…읏!! …레미의 정애액…! 안쪽까지 닿고 있어엇!!」
                     ELSE
                         PRINTFORMW 「하크으…읏!! …%CALLNAME:PLAYER%의 정애액…! 안쪽까지 닿고 있어엇!!」
@@ -21156,7 +21156,7 @@ IF TFLAG:9 > 0
                 ELSEIF RAND:4 == 0
                     PRINTFORMW 「하그으읏! …이거 좋은거어어얼! 좀 더어! 좀 더 사정해줘어어어어어어!!!」
                 ELSEIF RAND:3 == 0
-                    IF NO:ASSI == 10
+                    IF ASSI > 0 && NO:ASSI == 10
                         PRINTFORMW 「응…읏!! 그아아…앗!! 레미의 뜨거운 것이! 흘러들어오고 있어!!」
                     ELSE
                         PRINTFORMW 「응…읏!! 그아아…앗!! %CALLNAME:PLAYER%의 뜨거운게엣! 흘러들어오고 있어엇!!」
@@ -21329,7 +21329,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
         ;펠라인 경우
         IF SELECTCOM == 41 || SELECTCOM == 209 || SELECTCOM == 230 || SELECTCOM == 304 || SELECTCOM == 604
             ;마리사
-            IF NO:ASSI == 2
+            IF ASSI > 0 && NO:ASSI == 2
                 ;굴복각인Lv3
                 IF MARK:2 == 3
                     IF RAND:5 == 0
@@ -21358,7 +21358,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                     ENDIF
                 ENDIF
             ;메이링
-            ELSEIF NO:ASSI == 6
+            ELSEIF ASSI > 0 && NO:ASSI == 6
                 IF RAND:5 == 0
                     PRINTFORMW 『윽――! 파츄리 님! 이제 나옵니다!!』
                 ELSEIF RAND:4 == 0
@@ -21371,7 +21371,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                     PRINTFORMW 『으…읏! 으…읏!! 나옵니다! 전부드세요!!』
                 ENDIF
             ;소악마
-            ELSEIF NO:ASSI == 7
+            ELSEIF ASSI > 0 && NO:ASSI == 7
                 IF RAND:5 == 0
                     PRINTFORMW 『으…읏!! 나옵니다! 먹어요! 전부먹어요♪』
                 ELSEIF RAND:4 == 0
@@ -21384,7 +21384,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                     PRINTFORMW 『ん으…읏♪앗, 앗…잔뜩 나오네요…한 방울도 흘리면 안 됩니다♪』
                 ENDIF
             ;사쿠야
-            ELSEIF NO:ASSI == 9
+            ELSEIF ASSI > 0 && NO:ASSI == 9
                 ;굴복각인Lv3
                 IF MARK:2 == 3
                     IF RAND:5 == 0
@@ -21415,7 +21415,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                     ENDIF
                 ENDIF
             ;레밀리아
-            ELSEIF NO:ASSI == 10
+            ELSEIF ASSI > 0 && NO:ASSI == 10
                 ;굴복각인Lv3
                 IF MARK:2 == 3
                     IF RAND:5 == 0
@@ -21494,7 +21494,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
         ;파이즈리인 경우
         ELSEIF SELECTCOM == 42 || SELECTCOM == 208
             ;마리사
-            IF NO:ASSI == 2
+            IF ASSI > 0 && NO:ASSI == 2
                 ;정액중독Lv3 이상
                 IF ABL:31 >= 3
                 
@@ -21506,7 +21506,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                 
                 ENDIF
             ;메이링
-            ELSEIF NO:ASSI == 6
+            ELSEIF ASSI > 0 && NO:ASSI == 6
                 ;정액중독Lv3 이상
                 IF ABL:31 >= 3
                 
@@ -21518,7 +21518,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                 
                 ENDIF
             ;소악마
-            ELSEIF NO:ASSI == 7
+            ELSEIF ASSI > 0 && NO:ASSI == 7
                 ;정액중독Lv3 이상
                 IF ABL:31 >= 3
                 
@@ -21530,7 +21530,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                 
                 ENDIF
             ;사쿠야
-            ELSEIF NO:ASSI == 9
+            ELSEIF ASSI > 0 && NO:ASSI == 9
                 ;정액중독Lv3 이상
                 IF ABL:31 >= 3
                 
@@ -21542,7 +21542,7 @@ IF TFLAG:11 > 0 || TFLAG:29 > 0
                 
                 ENDIF
             ;레밀리아
-            ELSEIF NO:ASSI == 10
+            ELSEIF ASSI > 0 && NO:ASSI == 10
                 ;정액중독Lv3 이상
                 IF ABL:31 >= 3
                 
