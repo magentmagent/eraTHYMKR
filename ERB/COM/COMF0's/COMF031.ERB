@@ -286,7 +286,7 @@ SIF EXP:1 >= EXPLV:3
     TIMES SOURCE:2 , 1.50
 
 TCVAR:1 += 3
-SIF ASSIPLAY == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1)
+SIF ASSIPLAY == 0 && EXIST_BAR(MASTER)
     CFLAG:174 += 3
 
 ;-------------------------------------------------

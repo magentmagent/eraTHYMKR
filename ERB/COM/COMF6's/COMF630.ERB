@@ -326,7 +326,7 @@ ENDIF
 TCVAR:0 += 1
 IF PLAYER == MASTER
     TCVAR:42 += 1
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+    SIF EXIST_BAR(MASTER)
         CFLAG:173 += 1
 ENDIF
 
@@ -405,7 +405,7 @@ ELSE
         PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 계속해, %CALLNAME:TARGET%의 페니스를 천천히 훑으면서
         PRINTFORMW 허리를 느슨하게 움직여, %CALLNAME:TARGET%의 질을 자극했다….
     ;조교자가 남자나 후타나리이다
-    ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+    ELSEIF EXIST_BAR(PLAYER)
         PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 계속해, %CALLNAME:TARGET%의 페니스를 손으로 훑으면서
         PRINTW 질 안을 페니스로 계속 자극했다….
     ;페니스 밴드를 사용하고 있는 경우

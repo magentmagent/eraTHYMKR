@@ -146,7 +146,7 @@ LOCAL:101 = 1
 SIF (CFLAG:(ARG:0):42 & 2) == 0 && TALENT:(ARG:1):62 == 0 || TALENT:(ARG:1):170
     LOCAL:102 = 1
 ;以下襲い側にペニスか肥大陰核が必要(貞操帯つけてるとダメ)
-IF (CFLAG:(ARG:1):42 & 2) == 0 && (TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || TALENT:(ARG:1):1)
+IF (CFLAG:(ARG:1):42 & 2) == 0 && EXIST_BAR(ARG:1)
     ;パイズリ：襲われ側にバストサイズに応じた技巧があれば可能
     SIF (TALENT:(ARG:0):111 && ABL:(ARG:0):12 > 4) || (TALENT:(ARG:0):112 && ABL:(ARG:0):12 > 1) || (TALENT:(ARG:0):113 && ABL:(ARG:0):12 > 0) || (TALENT:(ARG:0):110 == 0 && TALENT:(ARG:0):111 == 0 && TALENT:(ARG:0):112 == 0 && TALENT:(ARG:0):113 == 0 && ABL:(ARG:0):12 > 2)
         LOCAL:103 = 1
@@ -165,7 +165,7 @@ IF (CFLAG:(ARG:1):42 & 2) == 0 && (TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || T
     ENDIF
 ENDIF
 ;以下襲われ側にペニスか肥大陰核が必要(貞操帯つけてるとダメ)
-IF (CFLAG:(ARG:0):42 & 2) == 0 && (TALENT:(ARG:0):120 || TALENT:(ARG:0):121 || TALENT:(ARG:0):1)
+IF (CFLAG:(ARG:0):42 & 2) == 0 && EXIST_BAR(ARG:0)
     ;パイズリ：襲い側にバストサイズに応じた技巧があれば可能
     SIF (TALENT:(ARG:1):111 && ABL:(ARG:1):12 > 4) || (TALENT:(ARG:1):112 && ABL:(ARG:1):12 > 1) || (TALENT:(ARG:1):113 && ABL:(ARG:1):12 > 0) || (TALENT:(ARG:1):110 == 0 && TALENT:(ARG:1):111 == 0 && TALENT:(ARG:1):112 == 0 && TALENT:(ARG:1):113 == 0 && ABL:(ARG:1):12 > 2)
         LOCAL:107 = 1
@@ -466,7 +466,7 @@ ENDIF
 LOCAL@VALUE_WORKSHOP_EXP_02:(ARG:1) += LOCAL
 ;口を使う(犯される)側のフェラ経験もしゃぶられる(しゃぶらせる)側の絶頂回数だけ増加
 ;しゃぶられる(しゃぶらせる)側にペニスがあるか肥大陰核の場合、しゃぶられる(しゃぶらせる)側の絶頂回数に応じて口を使う(犯される)側の習得の珠としゃぶられる(しゃぶらせる)側の快Ｃの珠が増加
-SIF TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || TALENT:(ARG:1):1
+SIF EXIST_BAR(ARG:1)
     LOCAL@VALUE_WORKSHOP_EXP_22:(ARG:0) += LOCAL
 SELECTCASE LOCAL
     CASE 0

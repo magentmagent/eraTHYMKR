@@ -343,7 +343,7 @@ IF TALENT:150
 ENDIF
 
 TCVAR:1 += 1
-SIF ASSIPLAY == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1)
+SIF ASSIPLAY == 0 && EXIST_BAR(MASTER)
     CFLAG:174 += 1
 
 ;-------------------------------------------------

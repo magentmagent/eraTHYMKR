@@ -215,7 +215,7 @@ IF TALENT:ASSI:0
     STAIN:ASSI:3 |= 32
 ENDIF
 TCVAR:ASSI:0 += 1
-SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+SIF EXIST_BAR(MASTER)
     CFLAG:ASSI:173 += 1
 
 ;-------------------------------------------------
