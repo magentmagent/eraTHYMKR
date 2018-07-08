@@ -89,7 +89,7 @@ ENDIF
 ;Ｃ感覚で陰核自慰／陰茎自慰率増
 LOCAL:12 += ABL:ARG:0 * 2
 ;オトコかふたなりなら射精中毒で陰茎自慰率増(肥大陰核では射精できないので変化無し)
-SIF TALENT:ARG:120 || TALENT:ARG:121
+SIF EXIST_PENIS(ARG)
     LOCAL:12 += ABL:ARG:37
 ;淫核／淫茎で胸自慰率倍
 SIF TALENT:ARG:171
@@ -323,7 +323,7 @@ FOR LOCAL:3, 0, LOCAL:0
                     SIF TALENT:ARG:171
                         TIMES LOCAL:8, 1.50
                     ;オトコかふたなりなら射精する(肥大陰核対応)
-                    IF TALENT:ARG:120 || TALENT:ARG:121
+                    IF EXIST_PENIS(ARG)
                         LOCAL@VALUE_WORKSHOP_EXP_03:ARG += LOCAL:21
                         IF ABL:ARG:37 > 4
                             TIMES LOCAL:8, 1.60

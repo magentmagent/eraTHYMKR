@@ -4056,7 +4056,7 @@ ENDIF
 ;-------------------------------------------------
 IF SELECTCOM == 602
     ;조교자가 남자나 후타이든지
-    IF TALENT:PLAYER:120 == 1 || TALENT:PLAYER:121 == 1
+    IF EXIST_PENIS(PLAYER)
         ;처음
         IF CFLAG:5387 == 0
             ;바인 이벤트 2 후

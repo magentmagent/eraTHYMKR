@@ -6377,13 +6377,13 @@ ELSEIF SELECTCOM == 151
     ;음란か親愛か相愛で처녀でない
     IF (TALENT:170 || TALENT:152 == 1 || TALENT:153 == 1) && TALENT:0 == 0 && (CFLAG:8816 < 3 || FLAG:11 == 2)
         PRINTFORMW 「아, 빠졌다……」
-        SIF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「그럼, 다음은……%CALLNAME:MASTER%게, 갖고 싶어……♪」
         CFLAG:8816 = 3
     ;연모
     ELSEIF TALENT:150 && (CFLAG:8816 < 2 || FLAG:11 == 2)
         PRINTFORMW 「아, 빠졌다……」
-        SIF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「다음은……그……으응, 아무것도 아냐……」
         CFLAG:8816 = 2
     ;그 외

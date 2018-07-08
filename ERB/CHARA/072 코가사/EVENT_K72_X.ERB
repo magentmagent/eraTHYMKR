@@ -468,7 +468,7 @@ IF A == 0
             PRINTFORMW 이쪽의 대사다.
             PRINTFORMW 「곤약으로도 안되면, 나는 무엇을 믿으면 좋은 거야. 훌쩍훌쩍」
             ;주인에게 페니스가 있는 경우만
-            IF TALENT:MASTER:120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW 「스승, 이 곤약을 사용하는거야. 그거 집어넣고 읍 」
                 PRINTFORMW 코가사의 입에 곤약을 집어넣어 입다물게 해 조교를 시작하기로 했다.
             ENDIF
@@ -887,7 +887,7 @@ ELSEIF A == 1
         ELSEIF A == 3
             GOTO KOGASA_LOOP
         ;Lv5 리메이크·노예에 빈 곳이 있는, 납치한 딸(아가씨)가 수중에 없는, 주인에 페니스가 있는, 요점 아이마스크
-        ELSEIF A == 4 && B && C == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121) &&(ITEM:30 || NOITEM)
+        ELSEIF A == 4 && B && C == 0 && EXIST_PENIS(MASTER) &&(ITEM:30 || NOITEM)
             LOCAL = FLAG:4
             FLAG:4 = 50
             LOCAL:1 = 0

@@ -749,7 +749,7 @@ SELECTCASE TFLAG:99
     ;調教者のみ着脱可または奴隷のみ着脱可の場合
     CASE 2
         ;調教者が着脱
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             GOTO COM290_K28_0
         ;奴隷が着脱
         ELSE

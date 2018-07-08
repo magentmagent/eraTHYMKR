@@ -95,7 +95,7 @@ ENDIF
 ;주인의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_2(MASTER, LOCAL)
 
-SIF TALENT:MASTER:120 || TALENT:MASTER:121
+SIF EXIST_PENIS(MASTER)
     BASE:MASTER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -121,7 +121,7 @@ ENDIF
 ;조수의 C감각을 본다
 LOCAL:1 = EJACULATIONCHECK_ABL_0_2(ASSI, LOCAL:1)
 
-SIF TALENT:ASSI:120 || TALENT:ASSI:121
+SIF EXIST_PENIS(ASSI)
     BASE:ASSI:2 += LOCAL:1
 
 ;-------------------------------------------------
@@ -227,7 +227,7 @@ ENDIF
 
 ;사정에 관계없이 행해지는 처리는 여기로부터
 ;주인의 손가락⇔주인의 P의 불결이 이동
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     STAIN:MASTER:1 |= STAIN:MASTER:2
     STAIN:MASTER:2 |= STAIN:MASTER:1
 ;주인의 손가락⇔주인의 V의 불결이 이동
@@ -278,7 +278,7 @@ IF TFLAG:91 >= 1
 ENDIF
 
 ;조수의 손가락⇔조수의 P의 불결이 이동
-IF TALENT:ASSI:120 || TALENT:ASSI:121
+IF EXIST_PENIS(ASSI)
     STAIN:ASSI:1 |= STAIN:ASSI:2
     STAIN:ASSI:2 |= STAIN:ASSI:1
 ;조수의 손가락⇔조수의 V의 불결이 이동

@@ -128,10 +128,10 @@ SIF COMMON_BODYSIZE_CHECK(MASTER, TARGET) == 0
 SIF (ITEM:44 == 0 && NOITEM == 0)
     RETURN 0
 ;주인に棒がある場合は, 処女もしくはＶ경험がない場合もだめ（再生処女でも許さない）
-SIF (TALENT:MASTER:120 || TALENT:MASTER:121) && (TALENT:0 || EXP:0 <= 0)
+SIF EXIST_PENIS(MASTER) && (TALENT:0 || EXP:0 <= 0)
     RETURN 0
 ;주인に棒がある場合は, 貞操帯を装着している場合, 不可能
-SIF (TALENT:MASTER:120 || TALENT:MASTER:121) && CFLAG:42 & 2
+SIF EXIST_PENIS(MASTER) && CFLAG:42 & 2
     RETURN 0
 ;育児室に居て出産前なら不可能
 SIF CFLAG:4 == 2 && (TALENT:140 == 1 || TALENT:143 == 1)
@@ -155,10 +155,10 @@ SIF TALENT:63
 SIF TALENT:70
     LOCAL += 1
 ;Ｖ敏感(相手が棒持ち)
-IF TALENT:102 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+IF TALENT:102 && EXIST_PENIS(MASTER)
     LOCAL += 1
 ;Ｖ鈍感(相手が棒持ち)
-ELSEIF TALENT:103 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+ELSEIF TALENT:103 && EXIST_PENIS(MASTER)
     LOCAL -= 1
 ENDIF
 ;Ｂ敏感(相手が棒なし)
@@ -190,7 +190,7 @@ ENDIF
 CALL SELF_KOJO, TARGET, 145, LOCAL
 
 ;주인に棒がないとＶは攻撃できんぜ
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     ;Ｖ경험
     CALL COMMON_UP_EXP,TARGET, 0, LOCAL , 0, 1
     ;정액경험
@@ -217,7 +217,7 @@ ENDIF
 CALL COMMON_UP_EXP,TARGET, 2, LOCAL , 0
 
 ;주인に棒がないとＶは攻撃できんぜ
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     ;快Ｖの珠
     CALL COMMON_UP_JUEL, TARGET, 1, (LOCAL * 50), 0, 1
 ;棒ないときはおっぱい鷲づかみさせておきます
@@ -789,7 +789,7 @@ IF CFLAG:99 == 0
     PRINTFORML 다리 사이에 위화감을 느끼며 잠에서 깨자 %조사처리(CALLNAME:TARGET,"가")% 자기 발로 
     PRINTFORM %CALLNAME:MASTER%의 
     ;竿の有無で分岐
-    IF TALENT:MASTER:120 || TALENT:MASTER:121
+    IF EXIST_PENIS(MASTER)
         PRINTL 우뚝 솟은 물건을 부비고 있었다.
     ELSE
         PRINTL 보지를 찌걱뿌걱 소리를 내며 희롱하고 있었다.
@@ -800,7 +800,7 @@ ENDIF
 CALL SELF_KOJO, TARGET, 148, LOCAL
 
 ;射精処理/竿が無ければ飛ばす.
-IF LOCAL / 2 > 0 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+IF LOCAL / 2 > 0 && EXIST_PENIS(MASTER)
     ;정액경험
     CALL COMMON_UP_EXP,TARGET, 4, (LOCAL / 2), 0, 1
     ;사정경험(주인)
@@ -928,7 +928,7 @@ CFLAG:MASTER:154 |= 512
 
 ;LOCAL:1=주인が受ける정액경험, LOCAL:2=조교 대상が受ける정액경험, LOCAL:3=조수が受ける정액경험
 ;주인의 사정 처리/주인에게 좆대가 없으면 넘어갑니다.
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     LOCAL:2 += LOCAL:50 / 2
     LOCAL:3 += LOCAL:50 / 2
 ENDIF
@@ -940,7 +940,7 @@ IF TALENT:120 || TALENT:121
 ENDIF
 
 ;조수의 사정 처리/조수에게 좆대가 없으면 넘어갑니다.
-IF TALENT:ASSI:120 || TALENT:ASSI:121
+IF EXIST_PENIS(ASSI)
     LOCAL:1 += LOCAL:50 / 2
     LOCAL:2 += LOCAL:50 / 2
 ENDIF
@@ -958,7 +958,7 @@ FOR LOCAL:99 , 0 , 3
     SIF LOCAL:(LOCAL:99 + 1) > 0
         CALL COMMON_UP_EXP , LOCAL, 4, (LOCAL:(LOCAL:99 + 1)), 0
     ;범용 사정 처리/보고 있는 대상에게 좆대가 없으면 넘어갑니다.
-    IF TALENT:LOCAL:120 || TALENT:LOCAL:121
+    IF EXIST_PENIS(LOCAL)
         ;사정경험(범용)
         CALL COMMON_UP_EXP ,LOCAL , 3, LOCAL:50, 0
 

@@ -596,7 +596,7 @@ SIF (EXP:ARG:0+EXP:ARG:1 < 200) || EXP:ARG:11 < 150 || EXP:ARG:22 < 150
 ;SIF MARK:ARG:2 < 3 || MARK:ARG:9 || (ABL:ARG:10 + ABL:ARG:11 + ABL:ARG:13 < 15) || (ABL:ARG:12 + ABL:ARG:21 + ABL:ARG:31 < 13)
 
 ;굴복각인이 3, 반발각인이 0, 순종＋욕망＋봉사정신의 합계가 15이상, 기교＋マゾっ気＋精液中毒의 합계가 13이상, 마스터가 남자도 후타나리도 아닐 시 8 이상
-SIF MARK:ARG:2 < 3 || MARK:ARG:9 || (ABL:ARG:10 + ABL:ARG:11 + ABL:ARG:13 < 15) || ((TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1) && (ABL:ARG:12 + ABL:ARG:21 + ABL:ARG:31 < 13)) || (ABL:ARG:12 + ABL:ARG:21 + ABL:ARG:31 < 8)
+SIF MARK:ARG:2 < 3 || MARK:ARG:9 || (ABL:ARG:10 + ABL:ARG:11 + ABL:ARG:13 < 15) || (EXIST_PENIS(MASTER) && (ABL:ARG:12 + ABL:ARG:21 + ABL:ARG:31 < 13)) || (ABL:ARG:12 + ABL:ARG:21 + ABL:ARG:31 < 8)
     RETURNF 0
 ;男主人なら対象のレズ経験が, 女主人なら対象のＢＬ経験が500未満じゃないとダメ
 ;ただしこのプレイが5周目이상, 引き継ぎキャラであった場合はレズ経験, ＢＬ経験の判定は免除
@@ -655,7 +655,7 @@ SIF MARK:ARG:2 < 3 || MARK:ARG:9 || (EXP:ARG:0 + EXP:ARG:1 < 100) || EXP:ARG:11 
 ;SIF (ABL:ARG:10 + ABL:ARG:11 < 8) || (ABL:ARG:12 + ABL:ARG:13 < 7) || ABL:ARG:21 < 2 || ABL:ARG:30 < 2 || ABL:ARG:31 < 2
 
 ;순종＋욕망의 합계가 8이상, 기교＋봉사정신의 합계가 7이상, マゾっ気と自慰中毒と精液中毒が全て2이상必要 (남자가 아니고 후타나리가 아닌 여주인의 경우 정액중독 조건은 무시)
-SIF (ABL:ARG:10 + ABL:ARG:11 < 8) || (ABL:ARG:12 + ABL:ARG:13 < 7) || ABL:ARG:21 < 2 || ABL:ARG:30 < 2 || ((TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1) && ABL:ARG:31 < 2)
+SIF (ABL:ARG:10 + ABL:ARG:11 < 8) || (ABL:ARG:12 + ABL:ARG:13 < 7) || ABL:ARG:21 < 2 || ABL:ARG:30 < 2 || (EXIST_PENIS(MASTER) && ABL:ARG:31 < 2)
     RETURNF 0
 ;男主人なら対象のレズ経験が, 女主人なら対象のＢＬ経験が1500未満じゃないとダメ
 ;ただし主人が[大甲斐性]持ちで, このプレイが5周目이상, 引き継ぎキャラであった場合はレズ経験, ＢＬ経験の判定は免除

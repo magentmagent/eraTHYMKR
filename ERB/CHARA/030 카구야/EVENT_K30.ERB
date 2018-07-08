@@ -17871,7 +17871,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                 PRINTFORML 「안되에, 나르을, 앗♪　두고 가지말아아……」
                 PRINTFORMW 카구야는 그 자리에서 기절했다
             ;輝夜の精液中毒がLv3以上＆主人がオトコかふたなり
-            ELSEIF !RAND:2 && ABL:31 >= 3 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+            ELSEIF !RAND:2 && ABL:31 >= 3 && EXIST_PENIS(MASTER)
                 ;変態度が40以上＆輝夜がふたなり
                 IF CFLAG:5111 >= 40 && TALENT:121 == 1
                     PRINTFORMW 요리의 완성이 매우 늦기 때문에, %CALLNAME:MASTER%는 카구야의 곁에 갔다
@@ -20549,7 +20549,7 @@ ELSEIF CFLAG:4900 & 1 && TALENT:200 && TALENT:150 && (CFLAG:5112 == 2 || CFLAG:5
     PRINTFORMW 그 요정은 온 몸이 굳은 정액으로 덮혀, 마치 옷을 입고있는 것 같다
     PRINTFORMW 눈은 텅 비고, 항상 황홀한 표정을 짓고 있는 요정――카구야는격자 앞에 온 %CALLNAME:MASTER%를 올려다보고 있다
     ;主人がふたなりorオトコ
-    IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+    IF EXIST_PENIS(MASTER)
         PRINTFORMW 매일의 일과를 하러 온 %CALLNAME:MASTER%는, 즉시 육봉을 꺼내 카구야에게 봉사 받았다……
         PRINTFORMW 「읏……으으우……」
         PRINTFORMW 능숙한 혀놀림으로 육봉을 자극하여, %CALLNAME:MASTER%의 육봉은 순식간에 커졌다

@@ -448,7 +448,7 @@ IF FLAG:15 & 1 && TFLAG:104 & 1
 ENDIF
 ;Ｖ系拡張コマンド有効時にＶ感覚4以上, Ｖ経験400以上, Ｖ調律経験250以上, 主人がオトコかふたなりかつ調教対象がオトコではない, 今回調教中にＶ절정30回以上で淫壷
 IF FLAG:15 & 2 && TFLAG:104 & 2
-    SIF ABL:1 >= 4 && EXP:0 >= 400 && EXP:42 >= 250 && (TALENT:MASTER:120 || TALENT:MASTER:121) && TALENT:120 == 0 && TALENT:172 == 0
+    SIF ABL:1 >= 4 && EXP:0 >= 400 && EXP:42 >= 250 && EXIST_PENIS(MASTER) && TALENT:120 == 0 && TALENT:172 == 0
         LOCAL |= 2
 ENDIF
 ;Ａ系拡張コマンド有効時にＡ感覚4以上, Ａ経験450以上, Ａ快楽経験300以上, 今回調教中にＡ절정30回以上で淫尻
@@ -1175,7 +1175,7 @@ ENDIF
 ;薬等での竿の有無の変更に関する[早漏]等についての共通処理
 ;--------------------------------------------------
 @CHANGE_SORO_COMMON, ARG
-IF TALENT:ARG:120 || TALENT:ARG:121
+IF EXIST_PENIS(ARG)
     IF CFLAG:ARG:158 & 1
         TALENT:ARG:132 = 1
     ELSEIF CFLAG:ARG:158 & 2
