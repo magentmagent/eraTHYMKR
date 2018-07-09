@@ -142,7 +142,7 @@ ENDIF
 
 IF TEQUIP:90
     ;노예의 PＶＢに触手의 더러움がつく
-    IF TALENT:120 || TALENT:121 || TALENT:1
+    IF EXIST_BAR(TARGET)
         STAIN:2 |= 2
         STAIN:2 |= 4
     ENDIF

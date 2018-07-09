@@ -1283,7 +1283,7 @@ ENDIF
 ;おちんちん関連素質設定(노예 전용)
 ;-----------------------------------------------
 @RANDOM_CHARA_TALENT_SET_26, ARG
-IF TALENT:ARG:120 || TALENT:ARG:121
+IF EXIST_PENIS(ARG)
     LOCAL = RAND:16
     IF LOCAL <= 2
         TALENT:ARG:132 = 1

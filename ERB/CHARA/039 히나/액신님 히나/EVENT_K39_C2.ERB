@@ -672,7 +672,7 @@ SELECTCASE TFLAG:99
     ;조교자만 착탈 가능 또는 노예만 착탈 가능할 경우
     CASE 2
         ;조교자가 착탈
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             GOTO COM290_K39_0
         ;노예가 착탈
         ELSE

@@ -11371,7 +11371,7 @@ IF SELECTCOM == 16
     ;첫회만
     ELSEIF LOCAL:1 == 1
         ;딸에게 지식이 있든가 호기심이 있어, 조교자가 남자나 뚜껑이든지
-        IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:23 || TALENT:58) && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:23 || TALENT:58) && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORMW 「…오나홀이군요, %조사처리(STR:401,"는")% 이미 사용한 적이 있지 않습니까?」
             ELSEIF CFLAG:3005 == 1
@@ -11401,7 +11401,7 @@ IF SELECTCOM == 16
                 PRINTFORMW 「우와아! 오나홀이다! %STR:401%, 이거, 써도 돼?」
             ENDIF
         ;딸(아가씨)가 상대로, 조교자가 남자나 뚜껑이든지의 경우
-        ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORMW 「이상한 형태를 하고 있는 것 같습니다만, %STR:401%의 물건인가요?」
             ELSEIF CFLAG:3005 == 1
@@ -11431,7 +11431,7 @@ IF SELECTCOM == 16
                 PRINTFORMW 「%조사처리(STR:400,"는")% 원래 크잖아! 그러니까 불필요한 걱정은 필요 없어!」
             ENDIF
         ;지식이 있든가 호기심이 있어, 조교자가 남자이거나 후타나리
-        ELSEIF (TALENT:23 || TALENT:58) && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        ELSEIF (TALENT:23 || TALENT:58) && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…오나홀이네요, 고간에 쓰면 기분 좋죠」
                 PRINTFORMW 「그나저나, %STR:401% 자신을 위해 쓰는 게 어떻겠어요?」
@@ -11463,7 +11463,7 @@ IF SELECTCOM == 16
                 PRINTFORMW 「우와아! 오나홀이다! 이거 기분 좋아!」
             ENDIF
         ;조교자가 남자나 후타나리인 경우
-        ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        ELSEIF EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…뭐, 존재 자체는 알고 있습니다만, 그 일부러 사용할 정도의 것도 아니네요」
                 PRINTFORMW 「그나저나, %STR:401% 자신을 위해 쓰는 게 어떻겠어요?」
@@ -11599,7 +11599,7 @@ IF SELECTCOM == 17
     ;첫회만
     ELSEIF LOCAL:1 == 1
         ;딸에게 지식이 있든가 호기심이 있어, 조교자가 남자나 후타나리이든지
-        IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:23 || TALENT:58) && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        IF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:23 || TALENT:58) && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…오나홀에 전극? %조사처리(STR:401,"는")% 고문이라도 하실 생각인가요?」
                 PRINTFORMW 「말도 안 된다고 생각하면 직접 시험해보시죠? 다분히 변변한 일이 아니라고요」
@@ -11631,7 +11631,7 @@ IF SELECTCOM == 17
                 PRINTFORMW 「우, 이거 싫어… 찌릿찌릿하는 거 싫어!」
             ENDIF
         ;딸(아가씨)가 상대로, 조교자가 남자나 후타나리이든지의 경우
-        ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1 && ASSIPLAY == 0 && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…뭐죠? 이건? 전극이라뇨? 그건 고문이잖아요」
                 PRINTFORMW 「%STR:401% 자신은 가능하다 해도, 딸도 할 수 있는 건 아니잖아요?」
@@ -11663,7 +11663,7 @@ IF SELECTCOM == 17
                 PRINTFORMW 「전기? 찌릿찌릿한 게 싫어서 안 쓸래, 그러니까 필요 없어」
             ENDIF
         ;지식이 있든가 호기심이 있어, 조교자가 남자나 후타나리이든지
-        ELSEIF (TALENT:23 || TALENT:58) && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+        ELSEIF (TALENT:23 || TALENT:58) && EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…오나홀에 전극? 고문이라도 할 생각인가요?」
                 PRINTFORMW 「말도 안된다고 생각하면 직접 시험해보시죠?」
@@ -11695,7 +11695,7 @@ IF SELECTCOM == 17
                 PRINTFORMW 「우엑, 이건 싫어… 찌릿찌릿하는 거 싫어」
             ENDIF
         ;조교자가 남자나 후타나리이든지의 경우
-        ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        ELSEIF EXIST_PENIS(PLAYER)
             IF CFLAG:3005 == 3
                 PRINTFORML 「…뭔가요? 이건? 전극? 그런 거 고문이잖아요」
                 PRINTFORMW 「그런 건 %STR:401% 혼자서 쓰시지 그래요?」
@@ -16773,7 +16773,7 @@ IF SELECTCOM == 121 && TEQUIP:69
         IF CFLAG:3005 == 3
             PRINTFORMW 「또 그것…, %조사처리(STR:401,"는")% %STR:400%의 자지가 어떻게 되어도 좋은 것일까?」
         ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「또 그것…, 이런\@(TALENT:MASTER:120 || TALENT:MASTER:121) ? 건 %STR:401%한테 해… # 괴로움을 %STR:401%도 느껴봐야 해…\@」
+            PRINTFORMW 「또 그것…, 이런\@EXIST_PENIS(MASTER) ? 건 %STR:401%한테 해… # 괴로움을 %STR:401%도 느껴봐야 해…\@」
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「%STR:401%, 그걸 너무 계속하면 위험합니다만…」
         ELSEIF CFLAG:3005 == 5

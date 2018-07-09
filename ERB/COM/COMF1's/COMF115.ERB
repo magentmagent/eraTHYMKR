@@ -72,7 +72,7 @@ LOCAL = EJACULATIONCHECK_ABL_0_2(PLAYER, LOCAL)
 SIF ASSIPLAY == 0 && TALENT:PLAYER:120
     TIMES LOCAL , 2.00
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -176,7 +176,7 @@ ENDIF
 
 ;사정에 관계없이 행해지는 처리는 여기로부터
 ;조교자의 손가락⇔조교자의 P의 불결이 이동
-IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+IF EXIST_PENIS(PLAYER)
     STAIN:PLAYER:1 |= STAIN:PLAYER:2
     STAIN:PLAYER:2 |= STAIN:PLAYER:1
 ;조교자의 손가락⇔조교자의 V의 불결이 이동

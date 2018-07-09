@@ -1022,7 +1022,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
                 PRINTFORMW 「그것은 바이브레이터야•••, 상담이지만
                 PRINTFORMW 실은 나처녀야•••이니까 , 그것, 기다려 주지 않는가?」
             ;남자나 뚜껑이든지라면 주인님의 물건을 조른다
-                IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+                IF EXIST_PENIS(MASTER)
                     PRINTFORMW 「할 수 있으면 주인님의 녀석으로 부탁하고 싶지만•••
                     PRINTFORMW 알고 있는. 주인님의 명령은 절대인 거야•••」
             ;남자, 뚜껑이든지로 없는 경우 페니반? 몰라요
@@ -1056,7 +1056,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
     ELSE
         ;연모
         IF TALENT:150 == 1 && (CFLAG:9012 <= 3 || FLAG:11 == 2)
-            IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1 
+            IF EXIST_PENIS(MASTER) 
                 PRINTFORMW 「이런 건보다 주인님의 녀석을 넣어∼」
                 PRINTFORMW 불평을 늘어뜨린 것의 보지에 기세 좋게 바이브를 들어가게 할 수 있다.
                 PRINTFORMW 「아 아! , 도 기분 있고 히입니다∼！！！」

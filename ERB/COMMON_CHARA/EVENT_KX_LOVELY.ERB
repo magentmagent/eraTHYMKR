@@ -4530,9 +4530,9 @@ IF SELECTCOM == 110
     ;初回のみで対象が娘の場合
     ELSEIF LOCAL:1 == 1 && CHECK_MASTERS_CHILD(TARGET) == 1
         IF CFLAG:3005 == 3
-            PRINTFORMW 「%STR:401%, 구경하고 있는 건 알고 있지만, \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 슬슬 그 물건을 넣는 건 어떨까요 # 그것만으론 재미 없지 않을까요\@♪」
+            PRINTFORMW 「%STR:401%, 구경하고 있는 건 알고 있지만, \@EXIST_BAR(MASTER) ? 슬슬 그 물건을 넣는 건 어떨까요 # 그것만으론 재미 없지 않을까요\@♪」
         ELSEIF CFLAG:3005 == 1
-            PRINTFORMW 「어때? 깨끗해? %STR:400%의 그곳은, %조사처리(STR:401,"를")% \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 기다리고 있어 # 위해 깨끗이 하고 있어\@?」
+            PRINTFORMW 「어때? 깨끗해? %STR:400%의 그곳은, %조사처리(STR:401,"를")% \@EXIST_BAR(MASTER) ? 기다리고 있어 # 위해 깨끗이 하고 있어\@?」
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「%STR:400%의 그곳이 좋다면 얼마든지 감상하세요. 물론 써도 돼요♪」
         ELSEIF CFLAG:3005 == 5
@@ -4549,7 +4549,7 @@ IF SELECTCOM == 110
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「알았어, 보여줄게… 그래도 보는 것만으로 끝내거나 하면 화낼 거야♪」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「흠, 어떤가? \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 이제 여기에 %STR:401%의 물건이 들어왔으면 좋겠는데 # 보는 걸로 부족하면 만져도 좋아\@」
+            PRINTFORMW 「흠, 어떤가? \@EXIST_BAR(MASTER) ? 이제 여기에 %STR:401%의 물건이 들어왔으면 좋겠는데 # 보는 걸로 부족하면 만져도 좋아\@」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「어떤가요? 보이나요? 더 가까이에서 봐도 돼요? 저기, 만져도 돼요…」
         ELSEIF CFLAG:3005 == 6
@@ -4570,7 +4570,7 @@ IF SELECTCOM == 110
         ELSEIF CFLAG:3005 == 6
             PRINTFORMW 「%조사처리(STR:401,"가")% 만져 달라고, 거기가 침을 흘리면서 기다리고 있어요♪」
         ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「에헤헤, \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 여기에 %STR:401%의 고추를 넣는 # 여길 만지면 기분 좋아지는\@ 거야? 알았지?」
+            PRINTFORMW 「에헤헤, \@EXIST_BAR(MASTER) ? 여기에 %STR:401%의 고추를 넣는 # 여길 만지면 기분 좋아지는\@ 거야? 알았지?」
         ENDIF
     ;２回目以降で対象が娘の場合
     ELSEIF CHECK_MASTERS_CHILD(TARGET) == 1
@@ -4579,9 +4579,9 @@ IF SELECTCOM == 110
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「다음에 목욕탕에 갔을 때, %STR:401%에게 여길 씻게 해달라 해도 좋을까♪」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「%STR:401%, 보는 것도 좋지만, 슬슬 만지고 핥거나 \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 넣거나 #\@ 하지 않겠어요?」
+            PRINTFORMW 「%STR:401%, 보는 것도 좋지만, 슬슬 만지고 핥거나 \@EXIST_BAR(MASTER) ? 넣거나 #\@ 하지 않겠어요?」
         ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「에에, 저기 \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 이제 여기에 %STR:401%의 그것을 넣었으면 해 # 너무 자세히 보면 부끄러워\@요♪」
+            PRINTFORMW 「에에, 저기 \@EXIST_BAR(MASTER) ? 이제 여기에 %STR:401%의 그것을 넣었으면 해 # 너무 자세히 보면 부끄러워\@요♪」
         ELSEIF CFLAG:3005 == 6
             PRINTFORMW 「%조사처리(STR:401,"가")% 보는 것만으로도 %STR:400% 또한 흥분돼요♪」
         ELSEIF CFLAG:3005 == 4
@@ -4596,20 +4596,20 @@ IF SELECTCOM == 110
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「%STR:401%의 숨결이 %STR:400%의 그곳에 닿는군♪ 보는 것만으로도 흥분하다니 곤란하지♪」
         ELSEIF CFLAG:3005 == 5
-            PRINTFORMW 「%조사처리(STR:401,"는")% 여기에 \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 슬슬 %STR:401%의 물건을 넣고 싶어질 거예요! 틀림없어요 # 푹 빠지셨군요♪ 굉장히 기뻐요\@♪」
+            PRINTFORMW 「%조사처리(STR:401,"는")% 여기에 \@EXIST_BAR(MASTER) ? 슬슬 %STR:401%의 물건을 넣고 싶어질 거예요! 틀림없어요 # 푹 빠지셨군요♪ 굉장히 기뻐요\@♪」
         ELSEIF CFLAG:3005 == 6
             PRINTFORMW 「%조사처리(STR:401,"가")% 만져 달라고, 거기가 침을 흘리면서 기다리고 있어요♪」
         ELSEIF CFLAG:3005 == 4
-            PRINTFORMW 「좀 더 좀 더 여기에 %STR:401%\@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 의 %STR:401%의 고추를 많이 넣었으면 # 에게 만져졌으면\@ 해♪ 좋아하니까!」
+            PRINTFORMW 「좀 더 좀 더 여기에 %STR:401%\@EXIST_BAR(MASTER) ? 의 %STR:401%의 고추를 많이 넣었으면 # 에게 만져졌으면\@ 해♪ 좋아하니까!」
         ENDIF
     ;２回目以降で対象がその他の場合
     ELSE
         IF CFLAG:3005 == 3
-            PRINTFORMW 「자, 언제까지 볼 건가요? 슬슬 \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 음경의 차례가 # 만질 시간이\@ 아닌가요?」
+            PRINTFORMW 「자, 언제까지 볼 건가요? 슬슬 \@EXIST_BAR(MASTER) ? 음경의 차례가 # 만질 시간이\@ 아닌가요?」
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「이렇게 %조사처리(STR:401,"가")% 좋아하면, 이쪽도 하는 보람이 있지♪」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「어때, \@(TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1) ? 슬슬 %STR:401%의 물건을 넣지 않겠나 # 상당히 야릇해서 구미가 당기지 않나\@♪」
+            PRINTFORMW 「어때, \@EXIST_BAR(MASTER) ? 슬슬 %STR:401%의 물건을 넣지 않겠나 # 상당히 야릇해서 구미가 당기지 않나\@♪」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「그렇게 자세히 봐주면, %STR:400%도 참으로 기뻐요♪」
         ELSEIF CFLAG:3005 == 6

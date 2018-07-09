@@ -854,7 +854,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
         ;연모
         IF TALENT:150 == 1
             ;조교자가 남자 또는 후타나리
-            IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW 「으, 응……. 확실히, 좋지만, 저어……」
                 PRINTFORMW 「역시 나는, 댁의 물건, 쪽이……」
             ;그 외의 경우
@@ -882,7 +882,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 0
     ;연모
     IF TALENT:150 == 1
         ;조교자가 남자 또는 후타나리
-        IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「아앙, 뽑아버리는 건가……」
             PRINTFORMW 「다음엔, 그 사타구니에 달려 있는 녀석을 받고 싶은데……」
         ;그 외의 경우

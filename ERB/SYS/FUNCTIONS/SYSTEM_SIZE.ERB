@@ -100,6 +100,8 @@ ENDIF
 ;바스트 결정 
 ;키 160 cm를 기준으로 키에 비례해서 계산
 BASE:(LOCAL:99):12 = (LOCAL:15 + LOCAL:16) * LOCAL:10 / 1600
+;언더 바스트 저장
+MAXBASE:(LOCAL:99):12 = LOCAL:15 * LOCAL:10 / 1600
 
 ;===힙의 산출===
 ;힙의 기초값 산출

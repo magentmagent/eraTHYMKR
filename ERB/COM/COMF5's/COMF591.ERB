@@ -24,7 +24,7 @@ SIF TEQUIP:90 == 0
 SIF TEQUIP:30 == 8
     RETURN 1
 ;조교 대상에게 페니스가 없으면 불가
-SIF TALENT:1 == 0 && TALENT:120 == 0 && TALENT:121 == 0
+SIF EXIST_BAR(TARGET) == 0
     RETURN 0
 ;조교자는 촉수사역LV3이상 필요
 SIF ABL:PLAYER:98 < 3
