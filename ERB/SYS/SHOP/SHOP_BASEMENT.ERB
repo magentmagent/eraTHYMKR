@@ -1435,7 +1435,7 @@ REPEAT CHARANUM
     ELSEIF LOCAL == 4 && (TALENT:COUNT:45 || ABL:COUNT:14 < 4)
         CONTINUE
 ;수상한 뿌리 - 남자가 아니고 수상한 뿌리나 구현, 훝타나리가 없을 것
-    ELSEIF LOCAL == 5 && ( TALENT:COUNT:120 || TALENT:COUNT:121 || TALENT:COUNT:122 || TALENT:COUNT:123 )
+    ELSEIF LOCAL == 5 && ( EXIST_PENIS(COUNT) || TALENT:COUNT:122 || TALENT:COUNT:123 )
         CONTINUE
 ;일광욕 - 이미 [회복빠름] 이나 [일광욕] [월광욕]이 없을 것. [흡혈귀] [강시]에게는 사용불가
     ELSEIF LOCAL == 6 && ( TALENT:COUNT:137 || TALENT:COUNT:114 || TALENT:COUNT:115 || TALENT:COUNT:205 || TALENT:COUNT:226 )

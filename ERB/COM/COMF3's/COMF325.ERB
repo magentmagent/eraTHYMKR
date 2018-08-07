@@ -217,7 +217,7 @@ IF TALENT:PLAYER:0
     STAIN:PLAYER:3 |= 32
 ENDIF
 TCVAR:PLAYER:0 += 1
-SIF ASSIPLAY == 0 && (TALENT:120 || TALENT:121 || TALENT:1)
+SIF ASSIPLAY == 0 && EXIST_BAR(TARGET)
     CFLAG:175 += 1
 
 ;-------------------------------------------------

@@ -84,7 +84,7 @@ SIF BASE:0 < 500
 SIF TFLAG:107 > 100
     RETURN 0
 ;ここでタイプ分け
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     ;タイプ1
     IF TALENT:120 == 0
         ;非処女じゃないとダメ

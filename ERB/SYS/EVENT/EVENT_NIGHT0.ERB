@@ -738,10 +738,10 @@ SIF ARG != MASTER && (RELATION:ARG:(NO:(ARG:1)) >= 150 || (ABL:(ARG:1):12 > ABL:
 SIF (CFLAG:ARG:42 & 2) == 0 && (CFLAG:(ARG:1):42 & 2) == 0
     LOCAL += 4
 ;被害者に棒があり, 襲撃者に穴があり非処女
-SIF (TALENT:ARG:120 || TALENT:ARG:121) && (TALENT:(ARG:1):120 == 0 && TALENT:(ARG:1):0 == 0)
+SIF EXIST_PENIS(ARG) && (TALENT:(ARG:1):120 == 0 && TALENT:(ARG:1):0 == 0)
     LOCAL += 2
 ;襲撃者に棒があるか禁断or調合持ちで, 被害者に穴があり非処女
-SIF ((TALENT:(ARG:1):120 || TALENT:(ARG:1):121) || (TALENT:(ARG:1):55 || TALENT:(ARG:1):56)) && (TALENT:ARG:120 == 0 && TALENT:ARG:0 == 0)
+SIF (EXIST_PENIS(ARG:1) || (TALENT:(ARG:1):55 || TALENT:(ARG:1):56)) && (TALENT:ARG:120 == 0 && TALENT:ARG:0 == 0)
     LOCAL += 1
 
 ;NTRはまんま寝取られ. Mは棒付きを寝取る. Fなら棒なしを寝取る
@@ -762,7 +762,7 @@ IF ARG:3 > 6
     SIF TALENT:ARG:120 == 0
         LOCAL += 1
     ;襲撃者は全員棒つきか
-    SIF (TALENT:(ARG:1):120 || TALENT:(ARG:1):121) && (TALENT:(GET_CHARA_G(1)):120 || TALENT:(GET_CHARA_G(1)):121) && (TALENT:(GET_CHARA_G(2)):120 || TALENT:(GET_CHARA_G(2)):121) && (TALENT:(GET_CHARA_G(3)):120 || TALENT:(GET_CHARA_G(3)):121)
+    SIF EXIST_PENIS(ARG:1) && (TALENT:(GET_CHARA_G(1)):120 || TALENT:(GET_CHARA_G(1)):121) && (TALENT:(GET_CHARA_G(2)):120 || TALENT:(GET_CHARA_G(2)):121) && (TALENT:(GET_CHARA_G(3)):120 || TALENT:(GET_CHARA_G(3)):121)
         LOCAL += 1
     ;関係者は全員貞操帯をつけていないか？
     SIF (CFLAG:ARG:42 & 2) == 0 && (CFLAG:(ARG:1):42 & 2) == 0 && (CFLAG:(GET_CHARA_G(1)):42 & 2) == 0 && (CFLAG:(GET_CHARA_G(2)):42 & 2) == 0 && (CFLAG:(GET_CHARA_G(3)):42 & 2) == 0
@@ -787,7 +787,7 @@ ELSE
         SIF TALENT:ARG:120 == 0
             LOCAL += 1
         ;襲撃者が棒を持っている
-        SIF (TALENT:(ARG:1):120 || TALENT:(ARG:1):121)
+        SIF EXIST_PENIS(ARG:1)
             LOCAL += 1
         ;対象が主人で, 襲撃者が調合or禁断持ちだ
         SIF ARG == MASTER && (TALENT:(ARG:1):55 || TALENT:(ARG:1):56)

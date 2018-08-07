@@ -700,7 +700,7 @@ ENDIF
 ;절정경험
 CALL COMMON_UP_EXP,ARG, 2, ((LOCAL:1+LOCAL:2)/2), 0
 ;사정경험
-SIF TALENT:ARG:120 || TALENT:ARG:121
+SIF EXIST_PENIS(ARG)
     CALL COMMON_UP_EXP,ARG, 3, LOCAL:4, 0
 ;정액경험
 CALL COMMON_UP_EXP,ARG, 4, (TFLAG:230/2), 0
@@ -919,13 +919,13 @@ IF CFLAG:ARG:99 == 0
     ENDIF
     IF LOCAL:14 & 4
         IF LOCAL:14 & 8
-            PRINTFORM 유두와\@(TALENT:ARG:120 || TALENT:ARG:121) ? 페니스를 # 클리토리스를\@ 
+            PRINTFORM 유두와\@EXIST_PENIS(ARG) ? 페니스를 # 클리토리스를\@ 
         ELSE
             PRINT 유두를 
         ENDIF
         PRINTL 자극하고 있다.
     ELSEIF LOCAL:14 & 8
-        PRINTFORML \@(TALENT:ARG:120 || TALENT:ARG:121) ? 자지를 # 클리토리스를\@ 계속 자극하고 있다.
+        PRINTFORML \@EXIST_PENIS(ARG) ? 자지를 # 클리토리스를\@ 계속 자극하고 있다.
     ENDIF
     IF LOCAL:14 & 64
         PRINTFORM %CALLNAME:ARG%의 몸은 촉수가 후려친 상처가, 

@@ -1043,7 +1043,7 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
             RETURN 1
         ENDIF
     ;口上主が비후타나리＋주인がオトコか후타나리＋口上主の精液経験1이상
-    ELSEIF TALENT:121 == 0 && (TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1) && EXP:4 >= 1
+    ELSEIF TALENT:121 == 0 && EXIST_PENIS(MASTER) && EXP:4 >= 1
         PRINTFORMW 「오늘은 뭘 질투하고 있었냐고?」
         PRINTFORML 「당신의 자지」
         PRINTFORMW 「기분 좋을것 같아. 질투나」

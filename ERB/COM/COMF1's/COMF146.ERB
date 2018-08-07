@@ -122,7 +122,7 @@ LOCAL = EJACULATIONCHECK_PALAM_10_1(TARGET, LOCAL)
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -344,13 +344,13 @@ IF TEQUIP:68
     SIF EX:20
         PRINT 펄떡펄떡 경련하는 
     PRINT 허리를 억눌러 요도에 
-    IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+    IF EXIST_PENIS(PLAYER)
         PRINTW 페니스를 삽입한 채로 작게 비볐다….
     ELSE
         PRINTW 페니스 밴드의 끄트머리를 가볍게 삽입했다….
     ENDIF
 ;조교자가[남자]나[후타나리]이다
-ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+ELSEIF EXIST_PENIS(PLAYER)
     PRINTFORMW %CALLNAME:TARGET%의 요도내의 감촉을 맛보면서, 안쪽 깊이 페니스를 찔러 넣었다….
 ;페니스 밴드를 사용하고 있는 경우
 ELSE

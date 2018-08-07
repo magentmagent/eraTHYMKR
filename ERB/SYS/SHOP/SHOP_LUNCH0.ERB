@@ -3344,7 +3344,7 @@ ELSEIF RESULT == 1
         LOCAL += 2
     TFLAG:201 = LOCAL
     ;타입 나누고(봉 있어 V가1,봉 있어 V없음이2,봉없음이3)
-    IF TALENT:MASTER:120 || TALENT:MASTER:121
+    IF EXIST_PENIS(MASTER)
         IF TALENT:120 == 0
             PRINTFORMW 둘은 후끈 달아오른 몸으로 침대에 기어들어가 {LOCAL}번 몸을 섞었다….
             ;무척 멋진 식후의 운동(TFLAG:99==1으로V성교)

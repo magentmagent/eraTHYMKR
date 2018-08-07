@@ -199,7 +199,7 @@ IF CFLAG:5001 == 0
     PRINTFORMW 「그리고 그 소지품과 당신의 분위기. 이른 바 납치 감금 능욕이라는 그건가 봐요」
     PRINTFORMW 「안다면 옷을 벗으라고요? 네네, 알겠습니다. 도망은 칠 수 없는 모양이네요」
     ;주인이 [남자] 또는 [후타나리]
-    IF TALENT:MASTER:120 || TALENT:MASTER:121
+    IF EXIST_PENIS(MASTER)
         PRINTFORMW 「하다못해 피임쯤은 제대로 해줬으면 좋겠는데요」
         PRINTFORMW 소악마는 그렇게 말하며 얌전히 옷을 벗기 시작한다.
         PRINTFORMW ……그러나 이쪽의 값어치를 재는 듯한 시선을 보아하니, 순종적인 노예는 아닌 것 같다.
@@ -820,7 +820,7 @@ ELSEIF SELECTCOM == 0 || SELECTCOM == 6
                 BASE:PLAYER:0 = 10
         ENDIF
         ;키스로 사정 촉진
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             IF MAXBASE:PLAYER:2 - BASE:PLAYER:2 > 1000
                 BASE:PLAYER:2 += 1000
             ELSE
@@ -853,7 +853,7 @@ ELSEIF SELECTCOM == 0 || SELECTCOM == 6
                 BASE:PLAYER:0 = 10
         ENDIF
         ;키스로 사정 촉진
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             IF MAXBASE:PLAYER:2 - BASE:PLAYER:2 > 1000
                 BASE:PLAYER:2 += 1000
             ELSE
@@ -998,14 +998,14 @@ IF SELECTCOM == 4
     ;처음
     IF CFLAG:9004 == 0
         PRINTFORMW 「응……어떻습니까? 제 안쪽, 꾹꾹 조여 오죠……?」
-        SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        SIF EXIST_PENIS(PLAYER)
             PRINTFORMW 소악마는 %CALLNAME:PLAYER%의 고간을 응시하면서, 시험하는 미소를 띠고 있다……
         CFLAG:9004 = 1
         RETURN 0
     ;2회째 이후
     ELSE
         ;조교자에게 장대 있어
-        IF (TALENT:PLAYER:120 || TALENT:PLAYER:121) && (CFLAG:9004 <= 2 || FLAG:11 == 2)
+        IF EXIST_PENIS(PLAYER) && (CFLAG:9004 <= 2 || FLAG:11 == 2)
             PRINTFORMW 「이것만으론 만족할수 없을거에요……저도, %CSTR:90%도?」
             CFLAG:9004 = 3
         ;그 이외
@@ -1246,7 +1246,7 @@ IF SELECTCOM == 12 && TEQUIP:20
     ;처음
     IF CFLAG:9012 == 0
         PRINTFORMW 「바이브네요. 엄청 좋아하기는 하지만 진짜 쪽이 더 좋아요♪」
-        SIF TALENT:MASTER:120 || TALENT:MASTER:121
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 분명하게 소악마는 이쪽의 고간을 응시하고 있다……
         CFLAG:9012 = 1
         ;음구지식 습득 이벤트용 플래그
@@ -1268,7 +1268,7 @@ IF SELECTCOM == 12 && TEQUIP:20
 ;탈착시
 ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
     ;PLAYER가 장대 소유
-    IF (TALENT:PLAYER:120 || TALENT:PLAYER:121) && (CFLAG:8811 < 2 || FLAG:11 == 2)
+    IF EXIST_PENIS(PLAYER) && (CFLAG:8811 < 2 || FLAG:11 == 2)
         PRINTFORMW 「다음은 %CSTR:90%의 것 주는 건가요……?」
         CFLAG:8811 = 2
     ;그 이외
@@ -2239,7 +2239,7 @@ ENDIF
 ;긴급 피임약(주인이 사정할 수 있는 경우만) CFLAG:9067
 ;지문과의 차이는 이제(벌써) 결론짓는다
 ;-------------------------------------------------
-IF (SELECTCOM == 67 && TFLAG:99 == 0) && (TALENT:MASTER:120 || TALENT:MASTER:121)
+IF (SELECTCOM == 67 && TFLAG:99 == 0) && EXIST_PENIS(MASTER)
     ;상애
     IF TALENT:153 && (CFLAG:9067 < 4 || FLAG:11 == 2)
         PRINTFORMW 「이제 와서, 피임은 하지 않아도 괜찮지 않나요……?」
@@ -3027,7 +3027,7 @@ ENDIF
 ;콘돔(조교자가 장착 CFLAG:9290
 ;-------------------------------------------------
 ;조교자가 장대 소유로
-IF SELECTCOM == 290 && (TALENT:PLAYER:120 || TALENT:PLAYER:121) && TEQUIP:PLAYER:31
+IF SELECTCOM == 290 && EXIST_PENIS(PLAYER) && TEQUIP:PLAYER:31
     ;소악마가 콘돔을 붙이고 제외하는 경우를 굽바이 시킨다
     ;아마 rev6에서도 이것으로 좋을 것……
     SIF LOCAL & 2 && RESULT == 1
@@ -4559,7 +4559,7 @@ ENDIF
 IF TFLAG:200 == 150
     ;대개의 사람은 어느 쪽인지를 채우겠지요……반드시
     ;주인에게 봉이 있어 소악마에 V 있어
-    IF (TALENT:MASTER:120 || TALENT:MASTER:121) && TALENT:120 == 0 && (CFLAG:8250 < 2 || FLAG:11 == 2)
+    IF EXIST_PENIS(MASTER) && TALENT:120 == 0 && (CFLAG:8250 < 2 || FLAG:11 == 2)
         PRINTFORMW 「아하앗, 대…단해요…」
         PRINTFORMW 「%CSTR:90%의 정액, 제 질에서 넘쳐 흐르고 있어요……♪」
         CFLAG:8250 = 2

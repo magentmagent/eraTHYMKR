@@ -62,7 +62,7 @@ IF TALENT:120 || TALENT:121
         LOCAL |= 1
 ENDIF
 ;조교자가 봉을 가지고 있다
-IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+IF EXIST_PENIS(PLAYER)
     ;조수 조교중이 아니면 OK
     IF ASSIPLAY == 0
         LOCAL |= 2
@@ -208,7 +208,7 @@ SELECTCASE TFLAG:99
         ENDIF
     CASE 2
         PRINTL
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             IF TEQUIP:PLAYER:31
                 PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% 스스로 콘돔을 벗겼다.
             ELSE

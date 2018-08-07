@@ -14479,14 +14479,14 @@ IF TFLAG:200 == 406
     ;連れてきた상대도연모, 음란付いていた場合の純粋な３Ｐ. シチュは全て口上側に一任
     IF GET_NIGHT_KOJO(0) == 1
         IF NO:GET_CHARA_M() == 10
-            IF RAND:2 == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+            IF RAND:2 == 0 && EXIST_PENIS(MASTER)
                 PRINTFORML 「아하핫, 이것 봐봐 언니, %K11CO()%의 거 벌써 이렇게 커다랗게 됐어」
                 PRINTFORMW 『우와아… 이렇게 빳빳해선. 너무 기대하고 있다니깐, 호색한 자지』
                 PRINTFORML 「있지 있지─, %K11CO()%, 빨리, 빨리이♪」
                 PRINTFORMW 『후훗 우리들 두 명 다, %CALLNAME:MASTER%의 좋아하는 대로 해도 좋아♪』
             ELSE
                 ;결국, これがやりたかっただけじゃないのか俺は？
-                IF TALENT:MASTER:120 || TALENT:MASTER:121
+                IF EXIST_PENIS(MASTER)
                     IF (TALENT:GET_CHARA_M():0 >= 1 && TALENT:0 == 0) || (TALENT:0 >= 1 && TALENT:GET_CHARA_M():0 == 0)
                         IF TALENT:GET_CHARA_M():0 >= 1 && TALENT:0 == 0
                             PRINTFORMW 「응, 쥬, 쥬르, 쮸쥬……후훗, 준비 다 됐다아♪ 언니 봐줘엇」

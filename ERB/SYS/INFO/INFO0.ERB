@@ -236,7 +236,7 @@ SELECTCASE COUNT
         LOCAL = COUNT + 19
     CASE 18
     ;女でふたなりでないなら射精中毒は無いよね？
-        SIF TALENT:ARG:120 || TALENT:ARG:121
+        SIF EXIST_PENIS(ARG)
             LOCAL = 37
     CASE 19 TO 22
         LOCAL = COUNT + 51
@@ -292,7 +292,7 @@ ELSEIF (COUNT >= 160 && COUNT <= 162) || COUNT == 164
 ELSEIF COUNT >= 170 && COUNT <= 180
     CALL SETCOLOR_TORIKOMODE, "PINK", 2
     IF COUNT == 171
-        PRINTFORM [\@(TALENT:ARG:120 || TALENT:ARG:121) ? 음경 # 음핵\@] 
+        PRINTFORM [\@EXIST_PENIS(ARG) ? 음경 # 음핵\@] 
     ELSE
         PRINTFORM [%TALENTNAME:COUNT%] 
     ENDIF
@@ -495,7 +495,7 @@ ENDIF
 IF FLAG:5000 & 1
 ;토리코 모드용
     ;주인 사정게이지 연산&표시
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121
+    SIF EXIST_PENIS(MASTER)
         CALL CALC_GAUGE2_MASTER
     ;조교중인 상태 표시
     CALL PRINT_PALAM_TORIKOMODE
@@ -574,10 +574,10 @@ ENDIF
     ENDIF
 
     ;주인의 사정 게이지를 표시
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121
+    SIF EXIST_PENIS(MASTER)
         CALL CALC_GAUGE2_MASTER
     ;조수의 사정 게이지를 표시
-    SIF ASSI >= 0 && (TALENT:ASSI:120 || TALENT:ASSI:121)
+    SIF ASSI >= 0 && EXIST_PENIS(ASSI)
         CALL CALC_GAUGE2_ASSI
     ;その他キャラの射精ゲージ
     ;イベントや機能によりゲージの最大値が変化することもありうるので表示と定義は各装着具毎に設定
