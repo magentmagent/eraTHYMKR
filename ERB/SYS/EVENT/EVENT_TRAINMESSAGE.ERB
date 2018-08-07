@@ -301,21 +301,24 @@ ELSE
         PRINTL 고 있다….
     ENDIF
 ENDIF
-;胸で射精
+;가슴에 사정
 IF TFLAG:29 == 1
     IF TALENT:150 || PALAM:13 >= PALAMLV:5
         PRINTFORM %조사처리(CALLNAME:TARGET,"는")% 자신의 가슴이 
         SIF TEQUIP:59 > 2 && TEQUIP:59 != 17
             PRINT 입은 옷째로 
-        PRINT 허옇고 탁한 액체 투성이가 되는 것을 
+		IF TALENT:2 == 1 && SELECTCOM == 207
+			PRINT 유두에서 새어나온 모유와 백택의 혼합물로 더럽혀지는 것을
+		ELSE
+			PRINT 허옇고 탁한 액체 투성이가 되는 것을 
+		ENDIF
         SIF TALENT:150 || ABL:31 >= 3
             PRINT 황홀한 듯한 표정을 하면서 
         SIF PALAM:13 >= PALAMLV:5
             PRINT 욕정에 탁해진 눈동자로 
         PRINTFORML 바라보고 있다….
     ELSE
-        PRINTFORML 정액이 %CALLNAME:TARGET%의 가슴을 하얗게 물들였다….
-        PRINTFORM 정액이 %CALLNAME:TARGET%의 가슴을 
+        PRINTFORM 정액이 %CALLNAME:TARGET%의 \@(TALENT:2) ? 가슴구멍을 # 가슴을\@ 
         SIF TEQUIP:59 > 2 && TEQUIP:59 != 17
             PRINT 입은 옷째로 
         PRINTL 하얗게 물들여갔다….
@@ -325,16 +328,20 @@ IF TFLAG:29 == 1
         IF TEQUIP:59 > 2 && TEQUIP:59 != 17
             PRINT 옷에 
         ELSE
-            PRINT 가슴에 
+            PRINT 가슴
         ENDIF
-        PRINT 묻은 정액을 
+		IF TALENT:2 == 1 && SELECTCOM == 207
+			PRINT 에 묻은 정액을 
+		ELSE
+			PRINT 구멍에서 고여 흘러내리는 정액과 모유를
+		ENDIF
         SIF ABL:3 >= 4
             PRINT 쾌감에 몸을 떨면서 
         PRINTL 핥아서 깨끗히 하고 있다….
     ELSE
         PRINTL 
     ENDIF
-;胸で大量射精
+;가슴에 대량사정
 ELSEIF TFLAG:29 == 2
     IF TALENT:150 || PALAM:13 >= PALAMLV:5
         PRINTFORM %조사처리(CALLNAME:TARGET,"는")% 
@@ -344,9 +351,17 @@ ELSEIF TFLAG:29 == 2
             PRINT 욕정에 탁해진 눈동자로 
         SIF PALAM:13 <= PALAMLV:4
             PRINTL 
-        PRINTFORML 대량의 정액이 자신의 가슴만이 아니라 상반신 전체를 더럽혀가는 걸 보고 있다….
+		IF TALENT:2 == 1 && SELECTCOM == 207
+			PRINTFORML 대량의 정액이 자신의 가슴구멍에서부터 상반신 전체를 더럽혀가는 걸 보고 있다….
+		ELSE
+			PRINTFORML 대량의 정액이 자신의 가슴만이 아니라 상반신 전체를 더럽혀가는 걸 보고 있다….
+		ENDIF
     ELSE
-        PRINTFORML 정액이 %CALLNAME:TARGET%의 상반신을 하얗게 뒤덮었다….
+		IF TALENT:2 == 1 && SELECTCOM == 207
+			PRINTFORML %CALLNAME:TARGET%의 가슴구멍에서 넘쳐흐른 정액이 %CALLNAME:TARGET%의 상반신을 하얗게 뒤덮었다….
+		ELSE
+			PRINTFORML 정액이 %CALLNAME:TARGET%의 상반신을 하얗게 뒤덮었다….
+		ENDIF
     ENDIF
 ENDIF
 ;セックスで射精
