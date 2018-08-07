@@ -98,222 +98,222 @@
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE400
 ;처음
 IF CFLAG:7101 == 0
-	;조수가 텐시
-	IF ASSI >= 0 && NO:ASSI == 52
-		;연모
-		IF TALENT:연모
-			PRINTFORMW 『에, 이쿠는 주인님께 밥을 해준 적이 없는거야？』
-			PRINTFORMW 「윽…부끄럽지만, 그 말대로에요…」
-			PRINTFORML 이쿠에게 처음으로 식사를 만들게 하려고 주방에 부른 것은 좋았지만, 
-			PRINTFORMW 돌연 나타난 텐시가 끼어들어, 상황이 이상하게 돌아갔다…
-			PRINTFORML 
-			PRINTFORMW 『뭐 하는 거야…주인님을 좋아한다면, 그 정도쯤은 해주는게 좋잖아』
-			PRINTFORMW 『어차피 귀찮으니까 게으름 피우고 있던거지？그래서 식사는 제쳐두고 야한 일에만 푹빠져 있고…』
-			PRINTFORMW 『정말이지, 이쿠는 진짜로 색골이네.설마 이 정도일 줄은 상상도 못했는걸』
-			PRINTFORMW 「그, 그런 말은 하지 마세요…！우으으」
-			PRINTFORML 
-			PRINTFORMW …당신은 우쭐대고있는 텐시는 나중에 혼내주기로 마음 먹고, 
-			PRINTFORMW 완전히 시무룩해진 이쿠를 격려해, 어떻게든 식사를 대접받을 수 있었다…
-			PRINTFORML
-		;그 이외
-		ELSE
-			PRINTFORMW 『저기 이쿠ー, 배고파.뭐라도 만들어줘』
-			PRINTFORMW 왠지 모르게 이쿠의 방에서 시간을 때우던 텐시가 뜬금없이 말했다.
-			PRINTFORMW 종종 천계에서 이쿠를 괴롭히던 광경이 지상에서도 재현되고 있다…
-			PRINTFORMW 「…저는 텐시의 보호자가 아닙니다만」
-			PRINTFORMW 『아 맞아.게으름뱅이 이쿠씨는 요리에 약했었지？후흥』
-			PRINTFORMW 「…텐시도 비슷하지 않습니까」
-			;조수의 요리기능Lv2이상
-			IF ABL:ASSI:70 >= 2
-				PRINTFORML 
-				PRINTFORMW 텐시가 히죽 웃었다.
-				PRINTFORMW …아무래도 자랑을 좋아하는 텐시의 스위치가 켜진 모양이다…！
-				PRINTFORMW 『그렇게 생각하지？나는 다르다고ー』
-				PRINTFORMW 『난 주인님을 위해 꽤나 진심으로 요리를 공부하고 있어.이쿠, 믿을 수 없겠지？』
-				PRINTFORMW 『처음엔 처참했지만, 주인님은 상냥하니까 뭐든지 전부 먹어 주었어』
-				PRINTFORMW 『실패해도 몇번이나 챌린지 시켜주고, 거기에 요리를 만든다는 것은 기분 전환에도 좋은데다』
-				PRINTFORMW 『…독같은 것을 넣어도 금방 간파하니까.역시네, 응』
-				PRINTFORMW 「…엣？」
-				PRINTFORML 『그래서, 천인인 나의 끝없는 노력과, 정확한 눈을 가진 주인님 덕분에, 』
-				PRINTFORMW 『내 요리 실력은 점점 능숙해지고 있다고.알겠어？이쿠』
-				PRINTFORMW 「………그런가요」
-				PRINTFORMW 마음 속으로 아무래도 좋아, 라고 말하는 듯한 표정의 이쿠.
-				PRINTFORMW 그럼에도 이야기에 반응해 주는 것은 공기를 읽기 때문에 생긴 상냥함 때문인가….
-				PRINTFORMW 이미 이것저것 생각하는 것도 귀찮아진 이쿠는 어쩔 수 없이 요리를 만들기 시작했다…
-				PRINTFORML
-			;그 이외
-			ELSE
-				PRINTFORML 
-				PRINTFORMW 『시끄럽네.…어쩔 수 없잖아』
-				PRINTFORMW 이쿠의 반격에 발끈한 텐시지만, 곧바로 회복하고는 말을 이어간다.
-				PRINTFORMW 『뭐어 그렇지만, 요리 솜씨를 갈고 닦아서 손해는 없잖아？』
-				PRINTFORMW 『요리를 잘하는 여자를 싫어하는 남자는 없다고.…아마』
-				PRINTFORML 
-				PRINTFORMW 이쿠는 당신의 마음에 들기 위해서 요리에 힘을 쓰는 것은 내키지 않지만, 
-				PRINTFORMW 텐시의 강한 요망도 있기에, 결국 식사를 만들기로 했다…
-				PRINTFORML
-			ENDIF
-		ENDIF
-	;그 이외
-	ELSE
-		;연모
-		IF TALENT:연모
-			PRINTFORMW 「！」
-			PRINTFORMW 「그 말은…식사를 만들어줬으면 한다, 라는 건가요…？」
-			PRINTFORMW 「…준비할게요.시간을 주세요…」
-			PRINTFORMW 이쿠에게 식사를 만들어 달라고 부탁한 순간, 공기에 긴장이 흐른다…
-			PRINTFORML 
-			PRINTFORML 지금까지의 식사는 어쩐지 각자 먹던 일도 있어서, 
-			PRINTFORMW 당신은 이쿠가 만든 요리 자체를 전혀라고 해도 좋을 정도로 본 적이 없었다.
-			PRINTFORMW 서로에게 마음이 있다는 것을 안 지금이야말로, 
-			PRINTFORMW 당신은 이쿠의 수제 요리를 먹을 수 있는 찬스를 벼르고 있었지만…
-			PRINTFORML 
-			PRINTFORMW 「저…솔직하게 말하자면, 요리는 자신이 없어요…」
-			PRINTFORMW 「어쨌든 귀찮ㅇ…아니, 저는 그다지 식사를 할 필요가 없고,」
-			PRINTFORMW 「최근까지는, 타인과 엮일 일도 적었기에…제대로 된 요리도 잘 모릅니다」
-			PRINTFORMW 「아아, 이럴 줄 알았으면 좀 더 연습했으면 좋았을 텐데…！」
-			PRINTFORML 
-			PRINTFORMW 이쿠는 진심으로 분해하고 있는…듯 하지만, 배우는 것도 빠르고, 성실한 그녀이다.
-			PRINTFORMW 당신은 진지하게 임하면 금방 능숙해질 것이라고 낙관하고 있다.
-			PRINTFORMW 우선 지금은, 신중하게 조리를 하고 있는 이쿠의 모습을 느긋하게 지켜보도록 하자…
-			PRINTFORML
-		;굴복각인Lv3
-		ELSEIF MARK:굴복각인 == 3
-			PRINTFORMW 「…요리 경험은, 그다지 없습니다만」
-			PRINTFORMW 「간단한 것으로도 좋다면, 어떻게든 만들어 보겠습니다만…기대는 하지 말아 주세요」
-		;그 이외
-		ELSE
-			PRINTFORMW 「말씀하신 대로, 식사를 준비했습니다」
-			PRINTFORMW 「…대체 뭘 꾸미고 있는거죠？감금한 상대에게 이런 일을 시켜서는…」
-		ENDIF
-	ENDIF
-	CFLAG:7101= 1
+    ;조수가 텐시
+    IF ASSI >= 0 && NO:ASSI == 52
+        ;연모
+        IF TALENT:연모
+            PRINTFORMW 『에, 이쿠는 주인님께 밥을 해준 적이 없는거야？』
+            PRINTFORMW 「윽…부끄럽지만, 그 말대로에요…」
+            PRINTFORML 이쿠에게 처음으로 식사를 만들게 하려고 주방에 부른 것은 좋았지만, 
+            PRINTFORMW 돌연 나타난 텐시가 끼어들어, 상황이 이상하게 돌아갔다…
+            PRINTFORML 
+            PRINTFORMW 『뭐 하는 거야…주인님을 좋아한다면, 그 정도쯤은 해주는게 좋잖아』
+            PRINTFORMW 『어차피 귀찮으니까 게으름 피우고 있던거지？그래서 식사는 제쳐두고 야한 일에만 푹빠져 있고…』
+            PRINTFORMW 『정말이지, 이쿠는 진짜로 색골이네.설마 이 정도일 줄은 상상도 못했는걸』
+            PRINTFORMW 「그, 그런 말은 하지 마세요…！우으으」
+            PRINTFORML 
+            PRINTFORMW …당신은 우쭐대고있는 텐시는 나중에 혼내주기로 마음 먹고, 
+            PRINTFORMW 완전히 시무룩해진 이쿠를 격려해, 어떻게든 식사를 대접받을 수 있었다…
+            PRINTFORML
+        ;그 이외
+        ELSE
+            PRINTFORMW 『저기 이쿠ー, 배고파.뭐라도 만들어줘』
+            PRINTFORMW 왠지 모르게 이쿠의 방에서 시간을 때우던 텐시가 뜬금없이 말했다.
+            PRINTFORMW 종종 천계에서 이쿠를 괴롭히던 광경이 지상에서도 재현되고 있다…
+            PRINTFORMW 「…저는 텐시의 보호자가 아닙니다만」
+            PRINTFORMW 『아 맞아.게으름뱅이 이쿠씨는 요리에 약했었지？후흥』
+            PRINTFORMW 「…텐시도 비슷하지 않습니까」
+            ;조수의 요리기능Lv2이상
+            IF ABL:ASSI:70 >= 2
+                PRINTFORML 
+                PRINTFORMW 텐시가 히죽 웃었다.
+                PRINTFORMW …아무래도 자랑을 좋아하는 텐시의 스위치가 켜진 모양이다…！
+                PRINTFORMW 『그렇게 생각하지？나는 다르다고ー』
+                PRINTFORMW 『난 주인님을 위해 꽤나 진심으로 요리를 공부하고 있어.이쿠, 믿을 수 없겠지？』
+                PRINTFORMW 『처음엔 처참했지만, 주인님은 상냥하니까 뭐든지 전부 먹어 주었어』
+                PRINTFORMW 『실패해도 몇번이나 챌린지 시켜주고, 거기에 요리를 만든다는 것은 기분 전환에도 좋은데다』
+                PRINTFORMW 『…독같은 것을 넣어도 금방 간파하니까.역시네, 응』
+                PRINTFORMW 「…엣？」
+                PRINTFORML 『그래서, 천인인 나의 끝없는 노력과, 정확한 눈을 가진 주인님 덕분에, 』
+                PRINTFORMW 『내 요리 실력은 점점 능숙해지고 있다고.알겠어？이쿠』
+                PRINTFORMW 「………그런가요」
+                PRINTFORMW 마음 속으로 아무래도 좋아, 라고 말하는 듯한 표정의 이쿠.
+                PRINTFORMW 그럼에도 이야기에 반응해 주는 것은 공기를 읽기 때문에 생긴 상냥함 때문인가….
+                PRINTFORMW 이미 이것저것 생각하는 것도 귀찮아진 이쿠는 어쩔 수 없이 요리를 만들기 시작했다…
+                PRINTFORML
+            ;그 이외
+            ELSE
+                PRINTFORML 
+                PRINTFORMW 『시끄럽네.…어쩔 수 없잖아』
+                PRINTFORMW 이쿠의 반격에 발끈한 텐시지만, 곧바로 회복하고는 말을 이어간다.
+                PRINTFORMW 『뭐어 그렇지만, 요리 솜씨를 갈고 닦아서 손해는 없잖아？』
+                PRINTFORMW 『요리를 잘하는 여자를 싫어하는 남자는 없다고.…아마』
+                PRINTFORML 
+                PRINTFORMW 이쿠는 당신의 마음에 들기 위해서 요리에 힘을 쓰는 것은 내키지 않지만, 
+                PRINTFORMW 텐시의 강한 요망도 있기에, 결국 식사를 만들기로 했다…
+                PRINTFORML
+            ENDIF
+        ENDIF
+    ;그 이외
+    ELSE
+        ;연모
+        IF TALENT:연모
+            PRINTFORMW 「！」
+            PRINTFORMW 「그 말은…식사를 만들어줬으면 한다, 라는 건가요…？」
+            PRINTFORMW 「…준비할게요.시간을 주세요…」
+            PRINTFORMW 이쿠에게 식사를 만들어 달라고 부탁한 순간, 공기에 긴장이 흐른다…
+            PRINTFORML 
+            PRINTFORML 지금까지의 식사는 어쩐지 각자 먹던 일도 있어서, 
+            PRINTFORMW 당신은 이쿠가 만든 요리 자체를 전혀라고 해도 좋을 정도로 본 적이 없었다.
+            PRINTFORMW 서로에게 마음이 있다는 것을 안 지금이야말로, 
+            PRINTFORMW 당신은 이쿠의 수제 요리를 먹을 수 있는 찬스를 벼르고 있었지만…
+            PRINTFORML 
+            PRINTFORMW 「저…솔직하게 말하자면, 요리는 자신이 없어요…」
+            PRINTFORMW 「어쨌든 귀찮ㅇ…아니, 저는 그다지 식사를 할 필요가 없고,」
+            PRINTFORMW 「최근까지는, 타인과 엮일 일도 적었기에…제대로 된 요리도 잘 모릅니다」
+            PRINTFORMW 「아아, 이럴 줄 알았으면 좀 더 연습했으면 좋았을 텐데…！」
+            PRINTFORML 
+            PRINTFORMW 이쿠는 진심으로 분해하고 있는…듯 하지만, 배우는 것도 빠르고, 성실한 그녀이다.
+            PRINTFORMW 당신은 진지하게 임하면 금방 능숙해질 것이라고 낙관하고 있다.
+            PRINTFORMW 우선 지금은, 신중하게 조리를 하고 있는 이쿠의 모습을 느긋하게 지켜보도록 하자…
+            PRINTFORML
+        ;굴복각인Lv3
+        ELSEIF MARK:굴복각인 == 3
+            PRINTFORMW 「…요리 경험은, 그다지 없습니다만」
+            PRINTFORMW 「간단한 것으로도 좋다면, 어떻게든 만들어 보겠습니다만…기대는 하지 말아 주세요」
+        ;그 이외
+        ELSE
+            PRINTFORMW 「말씀하신 대로, 식사를 준비했습니다」
+            PRINTFORMW 「…대체 뭘 꾸미고 있는거죠？감금한 상대에게 이런 일을 시켜서는…」
+        ENDIF
+    ENDIF
+    CFLAG:7101= 1
 ;자신있는 요리
 ELSEIF TFLAG:99 == 0
-	PRINTFORMW 「오늘은 특별합니다.분명 놀랄거라 생각한다고요？후훗」
+    PRINTFORMW 「오늘은 특별합니다.분명 놀랄거라 생각한다고요？후훗」
 ;2회째 이후
 ELSE
-	;조수가 텐시
-	IF ASSI >= 0 && NO:ASSI == 52
-		;연모
-		IF TALENT:연모
-			;요리기능Lv3이상
-			IF ABL:요리기능 >= 3
-				;난수 분기:4
-				IF RAND:4 == 0
-					PRINTFORMW 「이번엔 텐시의 요리도 먹게 해주세요？」
-					PRINTFORMW 『윽, 내가 만든 건 주인님께만…이랄 건 없지.지지 않을거라고？』
-				;난수 분기:3
-				ELSEIF RAND:3 == 0
-					PRINTFORMW 『이쿠도 완전히 능숙해졌네…내 신부로 삼고 싶을 정도야, 정말』
-					PRINTFORMW 「후훗, 그렇다는데요？%CALLNAME:MASTER%…조심해 주세요」
-				;난수 분기:2
-				ELSEIF RAND:2 == 0
-					PRINTFORMW 「오래 기다리셨습니다, %CALLNAME:MASTER%…♪그리고 일단 텐시도」
-					PRINTFORMW 『정말이지, 나를 노골적으로 방해자 취급하는 건 그만둬』
-				;그 이외
-				ELSE
-					PRINTFORMW 『뭐야 이거！엄청나게 맛있어 보이잖아…내 몫도 있는거지？』
-					PRINTFORMW 「엣」
-					PRINTFORMW 『엣』
-				ENDIF
-			;요리기능Lv2이상
-			ELSEIF ABL:요리기능 >= 2
-				;난수 분기:2
-				IF RAND:2 == 0
-					PRINTFORMW 『군것질 너무 했나보다. 난 나중에 먹을테니까 남겨둬』
-					PRINTFORMW 「…맛있게 만들었다고 해석할게요」
-				;그 이외
-				ELSE
-					PRINTFORMW 「텐시도 도와줬고, 분명 잘 만들었을 거라고 생각해요」
-					PRINTFORMW 『뭐어, 이거라면 남들 앞에 내도 부끄럽지 않을 수준이야』
-				ENDIF
-			;그 이외
-			ELSE
-				;난수 분기:2
-				IF RAND:2 == 0
-					PRINTFORMW 『이거 괜찮은거야？뭐랄까 그…우웅』
-					PRINTFORMW 「…묻지 말아 주세요」
-				;그 이외
-				ELSE
-					PRINTFORMW 『후흥, 꽤나 고생했네.뭐 처음은 다들 그런 법이야』
-					PRINTFORMW 「아, 격려해 주지 않아도…후훗, 다음엔 힘내볼게요？」
-				ENDIF
-			ENDIF
-		;그 이외
-		ELSE
-			;난수 분기:3
-			IF RAND:3 == 0
-				PRINTFORMW 「…그럼 저는 이만」
-				PRINTFORMW 『뭘 사양하고 있어…됐으니까 같이 먹자고？』
-			;난수 분기:2
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 『늦어.기다리다 지쳤다고』
-				PRINTFORMW 「어째서 당연하다는 듯이 텐시가 있는건가요…」
-			;그 이외
-			ELSE
-				PRINTFORMW 『…뭔가 이상한게 들어있진 않겠지』
-				PRINTFORMW 「그럼, 확인해보면 어떨까요？」
-			ENDIF
-		ENDIF
-	;그 이외
-	ELSE
-		;연모
-		IF TALENT:연모
-			;요리기능Lv3이상
-			IF ABL:요리기능 >= 3
-				;난수 분기:4
-				IF RAND:4 == 0
-					PRINTFORMW 「조금 연구해서 만들어 봤어요.맛있었으면 좋겠는데요…」
-				;난수 분기:3
-				ELSEIF RAND:3 == 0
-					PRINTFORMW 「%CALLNAME:MASTER%도 도와줬고…후훗, 기뻤어요」
-				;난수 분기:2
-				ELSEIF RAND:2 == 0
-					PRINTFORMW 「…조금 많았나요.남겨도 괜찮으니까요？」
-				;그 이외
-				ELSE
-					PRINTFORMW 「후훗, 오늘은 꽤나 잘 만들었다 생각한다고요？」
-				ENDIF
-			;요리기능Lv2이상
-			ELSEIF ABL:요리기능 >= 2
-				;난수 분기:2
-				IF RAND:2 == 0
-					PRINTFORMW 「조금 시간이 걸렸지만, 어떻게든 만들었어요」
-				;그 이외
-				ELSE
-					PRINTFORMW 「제대로 책에 나온 대로 만들었으니까, 괜찮아요, 분명…！」
-				ENDIF
-			;그 이외
-			ELSE
-				;난수 분기:2
-				IF RAND:2 == 0
-					PRINTFORMW 「이게 지금 저의 최선이에요…」
-				;그 이외
-				ELSE
-					PRINTFORMW 「…보기보단 맛있을거라 생각해요」
-				ENDIF
-			ENDIF
-		;그 이외
-		ELSE
-			;난수 분기:5
-			IF RAND:5 && MARK:반발각인 == 3
-				PRINTFORMW 「…전부 숯덩이로 만들고 싶은 기분입니다.벼락 한발이라도 떨어뜨릴 수 있다면」
-			;난수 분기:4
-			ELSEIF RAND:4 == 0
-				PRINTFORMW 「하계의 식재는 무척이나 다양해서…매력적이네요」
-			;난수 분기:3
-			ELSEIF RAND:3 == 0
-				PRINTFORMW 「귀찮습니다…대충 해도…라고 말할 수도 없겠지요, 하아」
-			;난수 분기:2
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「어째서 성실하게 요리 따윌 하고 있는걸까요…」
-			;그 이외
-			ELSE
-				PRINTFORMW 「…이런 걸로 충분할까요？」
-			ENDIF
-		ENDIF
-	ENDIF
+    ;조수가 텐시
+    IF ASSI >= 0 && NO:ASSI == 52
+        ;연모
+        IF TALENT:연모
+            ;요리기능Lv3이상
+            IF ABL:요리기능 >= 3
+                ;난수 분기:4
+                IF RAND:4 == 0
+                    PRINTFORMW 「이번엔 텐시의 요리도 먹게 해주세요？」
+                    PRINTFORMW 『윽, 내가 만든 건 주인님께만…이랄 건 없지.지지 않을거라고？』
+                ;난수 분기:3
+                ELSEIF RAND:3 == 0
+                    PRINTFORMW 『이쿠도 완전히 능숙해졌네…내 신부로 삼고 싶을 정도야, 정말』
+                    PRINTFORMW 「후훗, 그렇다는데요？%CALLNAME:MASTER%…조심해 주세요」
+                ;난수 분기:2
+                ELSEIF RAND:2 == 0
+                    PRINTFORMW 「오래 기다리셨습니다, %CALLNAME:MASTER%…♪그리고 일단 텐시도」
+                    PRINTFORMW 『정말이지, 나를 노골적으로 방해자 취급하는 건 그만둬』
+                ;그 이외
+                ELSE
+                    PRINTFORMW 『뭐야 이거！엄청나게 맛있어 보이잖아…내 몫도 있는거지？』
+                    PRINTFORMW 「엣」
+                    PRINTFORMW 『엣』
+                ENDIF
+            ;요리기능Lv2이상
+            ELSEIF ABL:요리기능 >= 2
+                ;난수 분기:2
+                IF RAND:2 == 0
+                    PRINTFORMW 『군것질 너무 했나보다. 난 나중에 먹을테니까 남겨둬』
+                    PRINTFORMW 「…맛있게 만들었다고 해석할게요」
+                ;그 이외
+                ELSE
+                    PRINTFORMW 「텐시도 도와줬고, 분명 잘 만들었을 거라고 생각해요」
+                    PRINTFORMW 『뭐어, 이거라면 남들 앞에 내도 부끄럽지 않을 수준이야』
+                ENDIF
+            ;그 이외
+            ELSE
+                ;난수 분기:2
+                IF RAND:2 == 0
+                    PRINTFORMW 『이거 괜찮은거야？뭐랄까 그…우웅』
+                    PRINTFORMW 「…묻지 말아 주세요」
+                ;그 이외
+                ELSE
+                    PRINTFORMW 『후흥, 꽤나 고생했네.뭐 처음은 다들 그런 법이야』
+                    PRINTFORMW 「아, 격려해 주지 않아도…후훗, 다음엔 힘내볼게요？」
+                ENDIF
+            ENDIF
+        ;그 이외
+        ELSE
+            ;난수 분기:3
+            IF RAND:3 == 0
+                PRINTFORMW 「…그럼 저는 이만」
+                PRINTFORMW 『뭘 사양하고 있어…됐으니까 같이 먹자고？』
+            ;난수 분기:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 『늦어.기다리다 지쳤다고』
+                PRINTFORMW 「어째서 당연하다는 듯이 텐시가 있는건가요…」
+            ;그 이외
+            ELSE
+                PRINTFORMW 『…뭔가 이상한게 들어있진 않겠지』
+                PRINTFORMW 「그럼, 확인해보면 어떨까요？」
+            ENDIF
+        ENDIF
+    ;그 이외
+    ELSE
+        ;연모
+        IF TALENT:연모
+            ;요리기능Lv3이상
+            IF ABL:요리기능 >= 3
+                ;난수 분기:4
+                IF RAND:4 == 0
+                    PRINTFORMW 「조금 연구해서 만들어 봤어요.맛있었으면 좋겠는데요…」
+                ;난수 분기:3
+                ELSEIF RAND:3 == 0
+                    PRINTFORMW 「%CALLNAME:MASTER%도 도와줬고…후훗, 기뻤어요」
+                ;난수 분기:2
+                ELSEIF RAND:2 == 0
+                    PRINTFORMW 「…조금 많았나요.남겨도 괜찮으니까요？」
+                ;그 이외
+                ELSE
+                    PRINTFORMW 「후훗, 오늘은 꽤나 잘 만들었다 생각한다고요？」
+                ENDIF
+            ;요리기능Lv2이상
+            ELSEIF ABL:요리기능 >= 2
+                ;난수 분기:2
+                IF RAND:2 == 0
+                    PRINTFORMW 「조금 시간이 걸렸지만, 어떻게든 만들었어요」
+                ;그 이외
+                ELSE
+                    PRINTFORMW 「제대로 책에 나온 대로 만들었으니까, 괜찮아요, 분명…！」
+                ENDIF
+            ;그 이외
+            ELSE
+                ;난수 분기:2
+                IF RAND:2 == 0
+                    PRINTFORMW 「이게 지금 저의 최선이에요…」
+                ;그 이외
+                ELSE
+                    PRINTFORMW 「…보기보단 맛있을거라 생각해요」
+                ENDIF
+            ENDIF
+        ;그 이외
+        ELSE
+            ;난수 분기:5
+            IF RAND:5 && MARK:반발각인 == 3
+                PRINTFORMW 「…전부 숯덩이로 만들고 싶은 기분입니다.벼락 한발이라도 떨어뜨릴 수 있다면」
+            ;난수 분기:4
+            ELSEIF RAND:4 == 0
+                PRINTFORMW 「하계의 식재는 무척이나 다양해서…매력적이네요」
+            ;난수 분기:3
+            ELSEIF RAND:3 == 0
+                PRINTFORMW 「귀찮습니다…대충 해도…라고 말할 수도 없겠지요, 하아」
+            ;난수 분기:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「어째서 성실하게 요리 따윌 하고 있는걸까요…」
+            ;그 이외
+            ELSE
+                PRINTFORMW 「…이런 걸로 충분할까요？」
+            ENDIF
+        ENDIF
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -572,13 +572,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE601
 IF TFLAG:99 <= 7
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 14
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 22
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -588,13 +588,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE602
 IF TFLAG:99 <= 9
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -604,13 +604,13 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE603
 IF TFLAG:99 <= 9
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 13
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 20
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -620,11 +620,11 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_MESSAGE_SUB_EVENT_SCENE604
 IF TFLAG:99 <= 25
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSEIF TFLAG:99 <= 29
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;========================================================

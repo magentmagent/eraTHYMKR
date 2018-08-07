@@ -3517,7 +3517,7 @@ IF SELECTCOM == 3
     ELSEIF TALENT:113 == 1 || TALENT:112 == 1
         ;처음
         IF CFLAG:7115 == 0
-			;연모+반발각인Lv3（복종없음)
+            ;연모+반발각인Lv3（복종없음)
             IF CFLAG:7051 == 3
                 PRINTFORMW 풍만한 가슴을 덥석 잡으니, 사나에의 몸이 요동쳤다
                 PRINTFORMW 「으구읏……약하게 해주세요……」
@@ -13629,76 +13629,76 @@ ENDIF
 IF SELECTCOM == 87
     ;이 커맨드는 통상으론 한번만 가능
     IF CFLAG:7306 == 0
-		IF CFLAG:7305 >= 1
-			PRINTFORMW 「또 가슴에 주사인가요……」
-			PRINTFORML 사나에는 아직 이 주사의 정체를 모르는 모양이다
-			PRINTFORMW 그런 사나에에게 이번에 놓을 주사에 대해서 알려주었다
-		ENDIF
+        IF CFLAG:7305 >= 1
+            PRINTFORMW 「또 가슴에 주사인가요……」
+            PRINTFORML 사나에는 아직 이 주사의 정체를 모르는 모양이다
+            PRINTFORMW 그런 사나에에게 이번에 놓을 주사에 대해서 알려주었다
+        ENDIF
         ;연모＋반발각인Lv3（복종없음）
         IF CFLAG:7051 == 3
             PRINTFORMW 「네? 가슴을 키운다고요?」
-			IF TALENT:111
+            IF TALENT:111
             PRINTFORMW 「확실히 지금보다 더 커졌으면 하긴 하지만요…… 아픈 방법으론 조금……」
-			ENDIF
-			PRINTFORMW 「에? 유방이 아니라 유두가 커지는……?」
-			PRINTFORMW 「뭐예요 그거, 너무 이상하잖아요!」
-			IF TALENT:174
-				PRINTFORMW 「……어차피 하실거죠?」
-				PRINTFORMW 「그럼 최소한 살살 해주세요……」
-			ELSE
-				PRINTFORMW 「상식에 사로잡히지 않는 것도 정도가 있어야 한다는 거네요……」
-			ENDIF
+            ENDIF
+            PRINTFORMW 「에? 유방이 아니라 유두가 커지는……?」
+            PRINTFORMW 「뭐예요 그거, 너무 이상하잖아요!」
+            IF TALENT:174
+                PRINTFORMW 「……어차피 하실거죠?」
+                PRINTFORMW 「그럼 최소한 살살 해주세요……」
+            ELSE
+                PRINTFORMW 「상식에 사로잡히지 않는 것도 정도가 있어야 한다는 거네요……」
+            ENDIF
         ;반발각인Lv3（복종없음）
         ELSEIF CFLAG:7051 == 2
             PRINTFORMW 「뭐예요 그게, 유두를 넓힌다니……!」
             PRINTFORMW 사나에는 기겁을 하며 가슴을 감싸고는 뒤로 물러나려 했다
-			PRINTFORMW 그런 사나에의 가슴을 억지로 쥐어 유두에 특별한 주사를 놓아주었다
+            PRINTFORMW 그런 사나에의 가슴을 억지로 쥐어 유두에 특별한 주사를 놓아주었다
         ;연모or복종
         ELSEIF CFLAG:7051 == 1
             PRINTFORMW 「그런…… 유두를 넓힌다니……」
-			IF TALENT:174 == 1
-			PRINTFORMW 「그런……, 그런……」
-			PRINTFORMW 「그런 멋진 일이……!」
-			PRINTFORMW 사나에는 황홀한 표정으로 기뻐하고 있다. 하긴 지금의 사나에라면 그럴 만도 하다
-			PRINTFORMW 「아아, 가슴으로 지금보다 저 굉장한 일을 당할 수 있다니, 상상만 해도 가버릴 것 같아요……!」
-			PRINTFORMW 「그, 그럼, 유두는 얼마만큼 넓어지는 거죠? 에? 자지가 들어갈 만큼?」
-			PRINTFORMW 「뭐야 그거, 초 흥분되잖아!」
-			PRINTFORMW 「쭈욱 생각해온 게 있었어요…… 어째서 가슴은 페니스를 넣을 수 없는가…… 이렇게나 멋진 성기인데……」
-			PRINTFORMW 「그런데 이제 가슴으로도 잔뜩 넣어질 수 있다니……!」
-			PRINTFORMW 「상식이란 건, 사로잡히지 않는 것만이 아니라 뛰어넘어야 하는 거였군요!」
-			PRINTFORMW 그렇게 말하곤, 사나에는 더없이 황홀한 표정으로 자신의 가슴을 뽐내며, 딱딱하게 발기한 유두를 %CALLNAME:MASTER%에게 내밀었다
-			PRINTFORMW 「자아, 사나에는 언제든지 OK랍니다? 부디 제 가슴을 고깃구멍으로 바꿔주세요……!」
-			ELSEIF TALENT:170 == 1
-			PRINTFORMW 「하지만…… 지금껏 들어본 적 없는 야한 일이라니, 왠지 기대되네요」
-			PRINTFORMW 사나에는 양손으로 가슴을 받쳐 %CALLNAME:MASTER%에게 내밀었다
-			PRINTFORMW 「부디 저에게 새로운 쾌감을 알려주세요……」
-			ELSE
-			PRINTFORMW 사나에는 이 상식을 무시한 행위에 대해 다소 당황한 듯한 표정을 지었다
-			PRINTFORMW 하지만 이내 받아들였는지, 온화한 미소로 %CALLNAME:MASTER%에게 다가가 가슴을 내밀었다
-			PRINTFORMW 「제 몸은 어디든 %CSTR:90%의 것…… 부디 절 당신 취향의 여자로 만들어주세요」
-			ENDIF
+            IF TALENT:174 == 1
+            PRINTFORMW 「그런……, 그런……」
+            PRINTFORMW 「그런 멋진 일이……!」
+            PRINTFORMW 사나에는 황홀한 표정으로 기뻐하고 있다. 하긴 지금의 사나에라면 그럴 만도 하다
+            PRINTFORMW 「아아, 가슴으로 지금보다 저 굉장한 일을 당할 수 있다니, 상상만 해도 가버릴 것 같아요……!」
+            PRINTFORMW 「그, 그럼, 유두는 얼마만큼 넓어지는 거죠? 에? 자지가 들어갈 만큼?」
+            PRINTFORMW 「뭐야 그거, 초 흥분되잖아!」
+            PRINTFORMW 「쭈욱 생각해온 게 있었어요…… 어째서 가슴은 페니스를 넣을 수 없는가…… 이렇게나 멋진 성기인데……」
+            PRINTFORMW 「그런데 이제 가슴으로도 잔뜩 넣어질 수 있다니……!」
+            PRINTFORMW 「상식이란 건, 사로잡히지 않는 것만이 아니라 뛰어넘어야 하는 거였군요!」
+            PRINTFORMW 그렇게 말하곤, 사나에는 더없이 황홀한 표정으로 자신의 가슴을 뽐내며, 딱딱하게 발기한 유두를 %CALLNAME:MASTER%에게 내밀었다
+            PRINTFORMW 「자아, 사나에는 언제든지 OK랍니다? 부디 제 가슴을 고깃구멍으로 바꿔주세요……!」
+            ELSEIF TALENT:170 == 1
+            PRINTFORMW 「하지만…… 지금껏 들어본 적 없는 야한 일이라니, 왠지 기대되네요」
+            PRINTFORMW 사나에는 양손으로 가슴을 받쳐 %CALLNAME:MASTER%에게 내밀었다
+            PRINTFORMW 「부디 저에게 새로운 쾌감을 알려주세요……」
+            ELSE
+            PRINTFORMW 사나에는 이 상식을 무시한 행위에 대해 다소 당황한 듯한 표정을 지었다
+            PRINTFORMW 하지만 이내 받아들였는지, 온화한 미소로 %CALLNAME:MASTER%에게 다가가 가슴을 내밀었다
+            PRINTFORMW 「제 몸은 어디든 %CSTR:90%의 것…… 부디 절 당신 취향의 여자로 만들어주세요」
+            ENDIF
         ;그외
         ELSE
             PRINTFORMW 「…………에?」
             PRINTFORMW 너무나도 비현실적인 말에, 사나에는 순간 이해가 따라가지 못한 듯하다
             PRINTFORMW 그런 사나에에게 지금부터 할 짓을 다시금 설명해 이해시켰다
-			PRINTFORMW 그제서야 사나에의 표정이 점점 창백해지기 시작했다
-			IF MARK:8 == 3
-			PRINTFORMW 사나에는 너무나도 커다란 공포에 질린 나머지 당장이라도 쓰러질 듯 힘을 잃었다
-			PRINTFORMW 「무…… 무서워요…… 하지 말아주세요……」
-			PRINTFORMW 사나에는 제대로 된 저항조차 할 힘도 없이 떨리는 목소리로만 거부해올 뿐이었다
-			ELSEIF MARK:2 == 3
-			PRINTFORMW 사나에는 완전히 공포에 질렸지만, 저항해봐야 무의미함을 깨닫고는 순순히 가슴을 내밀었다
-			PRINTFORMW 「……아프게만 하지 말아주세요」
-			ELSE
-			PRINTFORMW 「농담이라고 해주세요…… 제발」
-			PRINTFORMW 「당신은 대체 뭐죠……? 대체 얼마나 무시무시한 일들을 더 숨기고 있는거죠……?」
-			PRINTFORMW 양팔로 가슴을 감싸며 도망치려는 사나에의 가슴을 힘으로 움켜쥐고 그 선홍빛 유두에 주사를 놓아주었다
-			PRINTFORMW 이때 사나에의 표정이 어떠했는가를, %조사처리(CALLNAME:MASTER,"는")% 기억하지 않는다
-			ENDIF
+            PRINTFORMW 그제서야 사나에의 표정이 점점 창백해지기 시작했다
+            IF MARK:8 == 3
+            PRINTFORMW 사나에는 너무나도 커다란 공포에 질린 나머지 당장이라도 쓰러질 듯 힘을 잃었다
+            PRINTFORMW 「무…… 무서워요…… 하지 말아주세요……」
+            PRINTFORMW 사나에는 제대로 된 저항조차 할 힘도 없이 떨리는 목소리로만 거부해올 뿐이었다
+            ELSEIF MARK:2 == 3
+            PRINTFORMW 사나에는 완전히 공포에 질렸지만, 저항해봐야 무의미함을 깨닫고는 순순히 가슴을 내밀었다
+            PRINTFORMW 「……아프게만 하지 말아주세요」
+            ELSE
+            PRINTFORMW 「농담이라고 해주세요…… 제발」
+            PRINTFORMW 「당신은 대체 뭐죠……? 대체 얼마나 무시무시한 일들을 더 숨기고 있는거죠……?」
+            PRINTFORMW 양팔로 가슴을 감싸며 도망치려는 사나에의 가슴을 힘으로 움켜쥐고 그 선홍빛 유두에 주사를 놓아주었다
+            PRINTFORMW 이때 사나에의 표정이 어떠했는가를, %조사처리(CALLNAME:MASTER,"는")% 기억하지 않는다
+            ENDIF
         ENDIF
-	CFLAG:7306 = 1
-	RETURN 0
+    CFLAG:7306 = 1
+    RETURN 0
     ENDIF
 ENDIF
 
@@ -18264,119 +18264,119 @@ ENDIF
 ;젖퍽 CFLAG:7470
 ;-------------------------------------------------
 IF SELECTCOM == 207
-	;처음
-	IF CFLAG:7470 == 0
-		;확장유두로 인한 니플퍽
-		IF TALENT:2 == 1
-			;연모+음유
-			IF TALENT:150 == 1 && TALENT:174 == 1
-				PRINTFORMW 「예? 제 가슴에다가…… 페니스를?」
-				PRINTFORMW 사나에는 흥분으로 잔뜩 상기된 얼굴로, 스스로 유두를 벌리면서 애원했다
-				PRINTFORMW 「아아…… 이런 걸 할 수 있게 되다니 꿈만 같아요……」
-				PRINTFORMW 「사나에의 가슴보지, 마음껏 맛보아 주세요」
-			;연모
-			ELSEIF TALENT:150 == 1
-				PRINTFORMW 「예? 제 가슴에다가…… 페니스를?」
-				PRINTFORMW 사나에는 살짝 망설이는 기색을 보였지만, 이내 기쁜듯한 얼굴로 대답했다
-				PRINTFORMW 「네, 제 몸은 어느 곳이든 %CSTR:90%의 것」
-				PRINTFORMW 「제 가슴의 구멍도…… 원하시는 만큼 사용해주세요」
-			;음유
-			ELSEIF TALENT:174 == 1
-				PRINTFORMW 「가, 가슴에다가…… 이걸……」
-				PRINTFORMW 사나에는 다소 당황한 듯 했지만, 이내 고조되는 흥분을 가라앉히지 못하고 스스로 유두를 별려왔다
-				PRINTFORMW 「사, 사나에의 가슴…… 기분좋게 사용해주세요……」
-			;그외
-			ELSE
-				PRINTFORMW 「지금…… 뭐라고……」
-				PRINTFORMW 사나에가 못알아들은 것 같지는 않지만, %조사처리(CALLNAME:MASTER,"는")% 다시금 확실하게 사나에에게 명령했다
-				PRINTFORMW 넓어진 지금의 유두에 페니스를 넣으라고 말이다
-				;굴복각인이 LV3
-				IF MARK:2 == 3
-					PRINTFORMW 사나에는 부당하고도 기괴한 명령에 공포에 질렸지만
-					PRINTFORMW 어쩔 도리가 없음을 깨닫고는 이내 그 명령에 따랐다
-					PRINTFORMW 「……사나에의 가슴, 좋을대로 사용해주세요……」
-				ELSE
-					PRINTFORMW 「아니 아니, 무리라고요 그런거!」
-					PRINTFORMW 상식을 초월한 명령에 대해 사나에는 공포에 질린 채 완강히 거부했다.
-					PRINTFORMW 결국 %조사처리(CALLNAME:MASTER,"가")% 직접 사나에의 가슴을 붙잡고 페니스를 집어넣었다
-					PRINTFORMW 「시, 싫어…… 무서운거 하지 말아주세요……! 싫어어어어어!」
-				ENDIF
-			ENDIF
-		;통상의 젖퍽
-		ELSE
-			;연모
-			IF TALENT:150 == 1
-				PRINTFORMW 「제 가슴에다 찌르고 싶다고요?」
-				PRINTFORMW 「네, 좋아요. 제 가슴, 마음껏 범해주세요」
-			;그외
-			ELSE
-				PRINTFORMW 「저, 정말로 이런 걸로 기분이 좋아지시나요……」
-			ENDIF
-		ENDIF
-	CFLAG:7470 = 1
-	RETURN 0
-	;2회 이후
-	ELSE
-		;확장유두로 인한 니플퍽
-		IF TALENT:2 == 1
-			;연모+음유
-			IF TALENT:150 == 1 && TALENT:174 == 1 && CFLAG:7470 <= 6
-				IF RAND:3 == 0
-				PRINTFORMW 「가슴이란 게 이렇게나 멋진 성기였을 줄은 생각도 못했어요」
-				PRINTFORMW 「역시나 환상향! 상식에 사로잡혀선 안되는 거였네요!」
-				ELSEIF RAND:2 == 0
-				PRINTFORMW 「사나에의 젖보지, 기분 좋으신가요?」
-				PRINTFORMW 「저는 지금 유선이 통째로 녹아내리는 것 같아서 머릿속이 하얘지고 있어요……」
-				ELSE
-				PRINTFORMW 「하앙…… %CSTR:90%의 쿠퍼액이 모유랑 섞이고 있어……!」
-				PRINTFORMW 「사나에의 가슴보지에 잔뜩 싸주세요! 젖보지로 임신하고 싶어!」
-				ENDIF
-			CFLAG:7470 = 7
-			;연모
-			ELSEIF TALENT:150 == 1 && CFLAG:7470 <= 5
-				IF RAND:2 == 0
-				PRINTFORMW 「그거 아세요? %CSTR:90%의 자지를 이렇게 가슴에 넣고 있으면」
-				PRINTFORMW 「그 고동이 제 가슴을 통해서 온몸으로 전해져 오는거」
-				PRINTFORMW 「후훗, 상식적인 행위로는 느낄 수 없는 기쁨이네요」
-				ELSE
-				PRINTFORMW 「가슴에 직접 콩콩, 심장까지 범해지는 것 같아……」
-				PRINTFORMW 「%CSTR:90%, 제 가슴은 기분 좋으신가요?」
-				ENDIF
-			CFLAG:7470 = 6
-			;음유
-			ELSEIF TALENT:174 == 1 && CFLAG:7470 <= 4
-				PRINTFORMW 「이런 거 분명 이상한데…… 왜 이렇게 기분이 좋은거지……」
-				PRINTFORMW 「제 몸, 이상해져 버린거네요…… 그런데도 기분 좋아서…… 아앙……!」
-			CFLAG:7470 = 5
-			;그외
-			ELSEIF CFLAG:7470 <= 3
-				;굴복각인이 LV3
-				IF MARK:2 == 3
-					PRINTFORMW 「제 몸…… 정말로 이상해져 버린 거네요……」
-				;공포각인이 LV3
-				ELSEIF MARK:8 == 3
-					PRINTFORMW 「싫어…… 이런 거 이상해…… 싫어…… 싫어……」
-					PRINTFORMW 사나에는 몸을 부들부들 떨면서 싫다는 말만 중얼거리고 있다
-				ELSE
-					PRINTFORMW 「대체 어떻게 이런 일이…… 이런 거 이상해……」
-				ENDIF
-			CFLAG:7470 = 4
-			ENDIF
-		;통상의 젖퍽
-		ELSE
-			;연모
-			IF TALENT:150 == 1 && CFLAG:7470 <= 2
-				PRINTFORMW 「으응…… 기분 좋아요……」
-				PRINTFORMW 「꼭 가슴을 범해지는 것 같아서 두근거려요」
-				CFLAG:7470 = 3
-			;그외
-			ELSEIF CFLAG:7470 <= 1
-				PRINTFORMW 「그, 그렇게 세게 찌르셔도……, 가슴에는 구멍이 없다구요……?」
-				CFLAG:7470 = 2
-			ENDIF
-		ENDIF
-	RETURN 0
-	ENDIF
+    ;처음
+    IF CFLAG:7470 == 0
+        ;확장유두로 인한 니플퍽
+        IF TALENT:2 == 1
+            ;연모+음유
+            IF TALENT:150 == 1 && TALENT:174 == 1
+                PRINTFORMW 「예? 제 가슴에다가…… 페니스를?」
+                PRINTFORMW 사나에는 흥분으로 잔뜩 상기된 얼굴로, 스스로 유두를 벌리면서 애원했다
+                PRINTFORMW 「아아…… 이런 걸 할 수 있게 되다니 꿈만 같아요……」
+                PRINTFORMW 「사나에의 가슴보지, 마음껏 맛보아 주세요」
+            ;연모
+            ELSEIF TALENT:150 == 1
+                PRINTFORMW 「예? 제 가슴에다가…… 페니스를?」
+                PRINTFORMW 사나에는 살짝 망설이는 기색을 보였지만, 이내 기쁜듯한 얼굴로 대답했다
+                PRINTFORMW 「네, 제 몸은 어느 곳이든 %CSTR:90%의 것」
+                PRINTFORMW 「제 가슴의 구멍도…… 원하시는 만큼 사용해주세요」
+            ;음유
+            ELSEIF TALENT:174 == 1
+                PRINTFORMW 「가, 가슴에다가…… 이걸……」
+                PRINTFORMW 사나에는 다소 당황한 듯 했지만, 이내 고조되는 흥분을 가라앉히지 못하고 스스로 유두를 별려왔다
+                PRINTFORMW 「사, 사나에의 가슴…… 기분좋게 사용해주세요……」
+            ;그외
+            ELSE
+                PRINTFORMW 「지금…… 뭐라고……」
+                PRINTFORMW 사나에가 못알아들은 것 같지는 않지만, %조사처리(CALLNAME:MASTER,"는")% 다시금 확실하게 사나에에게 명령했다
+                PRINTFORMW 넓어진 지금의 유두에 페니스를 넣으라고 말이다
+                ;굴복각인이 LV3
+                IF MARK:2 == 3
+                    PRINTFORMW 사나에는 부당하고도 기괴한 명령에 공포에 질렸지만
+                    PRINTFORMW 어쩔 도리가 없음을 깨닫고는 이내 그 명령에 따랐다
+                    PRINTFORMW 「……사나에의 가슴, 좋을대로 사용해주세요……」
+                ELSE
+                    PRINTFORMW 「아니 아니, 무리라고요 그런거!」
+                    PRINTFORMW 상식을 초월한 명령에 대해 사나에는 공포에 질린 채 완강히 거부했다.
+                    PRINTFORMW 결국 %조사처리(CALLNAME:MASTER,"가")% 직접 사나에의 가슴을 붙잡고 페니스를 집어넣었다
+                    PRINTFORMW 「시, 싫어…… 무서운거 하지 말아주세요……! 싫어어어어어!」
+                ENDIF
+            ENDIF
+        ;통상의 젖퍽
+        ELSE
+            ;연모
+            IF TALENT:150 == 1
+                PRINTFORMW 「제 가슴에다 찌르고 싶다고요?」
+                PRINTFORMW 「네, 좋아요. 제 가슴, 마음껏 범해주세요」
+            ;그외
+            ELSE
+                PRINTFORMW 「저, 정말로 이런 걸로 기분이 좋아지시나요……」
+            ENDIF
+        ENDIF
+    CFLAG:7470 = 1
+    RETURN 0
+    ;2회 이후
+    ELSE
+        ;확장유두로 인한 니플퍽
+        IF TALENT:2 == 1
+            ;연모+음유
+            IF TALENT:150 == 1 && TALENT:174 == 1 && CFLAG:7470 <= 6
+                IF RAND:3 == 0
+                PRINTFORMW 「가슴이란 게 이렇게나 멋진 성기였을 줄은 생각도 못했어요」
+                PRINTFORMW 「역시나 환상향! 상식에 사로잡혀선 안되는 거였네요!」
+                ELSEIF RAND:2 == 0
+                PRINTFORMW 「사나에의 젖보지, 기분 좋으신가요?」
+                PRINTFORMW 「저는 지금 유선이 통째로 녹아내리는 것 같아서 머릿속이 하얘지고 있어요……」
+                ELSE
+                PRINTFORMW 「하앙…… %CSTR:90%의 쿠퍼액이 모유랑 섞이고 있어……!」
+                PRINTFORMW 「사나에의 가슴보지에 잔뜩 싸주세요! 젖보지로 임신하고 싶어!」
+                ENDIF
+            CFLAG:7470 = 7
+            ;연모
+            ELSEIF TALENT:150 == 1 && CFLAG:7470 <= 5
+                IF RAND:2 == 0
+                PRINTFORMW 「그거 아세요? %CSTR:90%의 자지를 이렇게 가슴에 넣고 있으면」
+                PRINTFORMW 「그 고동이 제 가슴을 통해서 온몸으로 전해져 오는거」
+                PRINTFORMW 「후훗, 상식적인 행위로는 느낄 수 없는 기쁨이네요」
+                ELSE
+                PRINTFORMW 「가슴에 직접 콩콩, 심장까지 범해지는 것 같아……」
+                PRINTFORMW 「%CSTR:90%, 제 가슴은 기분 좋으신가요?」
+                ENDIF
+            CFLAG:7470 = 6
+            ;음유
+            ELSEIF TALENT:174 == 1 && CFLAG:7470 <= 4
+                PRINTFORMW 「이런 거 분명 이상한데…… 왜 이렇게 기분이 좋은거지……」
+                PRINTFORMW 「제 몸, 이상해져 버린거네요…… 그런데도 기분 좋아서…… 아앙……!」
+            CFLAG:7470 = 5
+            ;그외
+            ELSEIF CFLAG:7470 <= 3
+                ;굴복각인이 LV3
+                IF MARK:2 == 3
+                    PRINTFORMW 「제 몸…… 정말로 이상해져 버린 거네요……」
+                ;공포각인이 LV3
+                ELSEIF MARK:8 == 3
+                    PRINTFORMW 「싫어…… 이런 거 이상해…… 싫어…… 싫어……」
+                    PRINTFORMW 사나에는 몸을 부들부들 떨면서 싫다는 말만 중얼거리고 있다
+                ELSE
+                    PRINTFORMW 「대체 어떻게 이런 일이…… 이런 거 이상해……」
+                ENDIF
+            CFLAG:7470 = 4
+            ENDIF
+        ;통상의 젖퍽
+        ELSE
+            ;연모
+            IF TALENT:150 == 1 && CFLAG:7470 <= 2
+                PRINTFORMW 「으응…… 기분 좋아요……」
+                PRINTFORMW 「꼭 가슴을 범해지는 것 같아서 두근거려요」
+                CFLAG:7470 = 3
+            ;그외
+            ELSEIF CFLAG:7470 <= 1
+                PRINTFORMW 「그, 그렇게 세게 찌르셔도……, 가슴에는 구멍이 없다구요……?」
+                CFLAG:7470 = 2
+            ENDIF
+        ENDIF
+    RETURN 0
+    ENDIF
 ENDIF
 
 
@@ -34937,67 +34937,67 @@ ENDIF
 ;유두확장약 사용
 ;----------------------------------------------------------------
 IF TFLAG:200 == 327
-	PRINTFORMW 사나에에게 조금 특별한 약을 주었다
-	;연모 또는 복종
-	IF CFLAG:7051 == 1
-	PRINTFORMW 사나에는 아무런 의심도 하지 않고 약을 덥썩 받아먹었다
-		IF TALENT:170 == 1
-		PRINTFORMW 오히려 이 약으로 무슨 쾌감을 얻게될 지 기대하는 듯하다
-		ELSE
-		PRINTFORMW 사나에는 꺼림칙하다는 얼굴로 조심스럽게 약을 받아먹었다
-		ENDIF
-	ENDIF
-	PRINTFORMW 시간이 좀 지나, 이윽고 약효가 나타나기 시작하자, 사나에는 고통스러운 듯 가슴을 움켜쥐었다
-	PRINTFORMW 「하윽…… 가슴이 뜨거워……」
-	PRINTFORMW 「제, 제게 뭘 먹이신 거예요?」
-	PRINTFORMW 굳이 대답해주지 않아도 사나에는 곧 답을 얻을 수 있을 것이다
-	PRINTFORMW 고열로 달아오르던 사나에의 유두가 점점 발기하더니, 이윽고 대량의 모유를 뿜어댔다
-	PRINTFORMW 사나에는 유두의 터질듯한 통증에 신음소리를 울리며 가슴을 더욱 움켜쥐었고, 그 압력에 사나에의 모유가 더욱 뿜어져 나왔다
-	PRINTFORMW 겨우 통증이 가라앉자 사나에는 조심스럽게 자신의 가슴을 살펴보았다
-	PRINTFORMW 사나에의 유두는 손가락이 들어갈 정도로 늘어날 수 있게 되었다
-	IF TALENT:174 == 1
-		PRINTFORMW 「뭐야…… 이거……」
-		PRINTFORMW 사나에는 자신의 변해버린 가슴을 더듬어 보았다
-		PRINTFORMW 사나에의 유두는 전보다 커지고, 구멍은 넓어져 모유가 새고 손가락 정도는 가볍게 드나들 수 있게 되었다
-		PRINTFORMW 상식적으로 말도 안되는 변화를 경험한 사나에는……
-		PRINTFORMW 「괴, 굉장해~!」
-		PRINTFORMW 기뻐하고 있다
-		PRINTFORMW 「하아……, 굉장해요 이거, 유두가 커져서 손가락이 들어가다니」
-		PRINTFORMW 사나에는 양쪽 유두에 하나씩 손가락을 찔러넣어 자위를 하기 시작했다
-		PRINTFORMW 지금까지와는 전혀 다른 쾌감에 전율하면서 자위에 전념하고 있다
-		PRINTFORMW 「하아…… 하아…… 안돼, 중독되어 버리겠어…… 이런 걸 알아버리고 참으라니 불가능해요……」
-		PRINTFORMW 「여기, 페니스도 들어갈 수 있는거죠?」
-		PRINTFORMW 「아핫, 이 젖보지에 %CSTR:90%의 페니스가 들어와서 잔뜩 아기씨를 뿌려준다면……」
-		PRINTFORMW 「제 모유와 %CSTR:90%의 정액이 잔뜩 섞여서 훌륭한 음란 칵테일이 완성되겠죠」
-		PRINTFORMW 「사나에의 젖보지, 꼭 엉망진창으로 해주셔야 해요?」
-	ELSEIF TALENT:170 == 1
-		PRINTFORMW 사나에는 자신의 변해버린 가슴을 더듬어 보았다
-		PRINTFORMW 단지 모유를 낼 수 있게 된 것만이 아니라, 유두까지 넓어지게 되었다
-		PRINTFORMW 「신기해……」
-		PRINTFORMW 「가슴이란거, 이렇게도 될 수 있구나……」
-		PRINTFORMW 신기하다는 듯 자신의 유두를 만져보던 사나에는 조심스럽게 유두 안쪽으로 검지손가락을 넣어보았다
-		PRINTFORMW 「아응……」
-		PRINTFORMW 「처음 느껴보는 쾌감이예요…… 이상한 기분……」
-		PRINTFORMW 「이제부터 여기 구멍의 기쁨도 잔뜩 가르쳐 주세요」
-	ELSEIF TALENT:150 == 1 || TALENT:160 == 1
-		PRINTFORMW 「뭐야…… 이거……」
-		PRINTFORMW 사나에는 변해버린 가슴에 당황한 듯 하다
-		PRINTFORMW 사나에에게 먹인 약에 대해서 설명해줬다
-		PRINTFORMW 「유두가 늘어나는 약, 이요? 그렇…… 구나……」
-		PRINTFORMW 「아뇨…… 조금 놀란 것 뿐이예요」
-		PRINTFORMW 「그럼, 이제 이 가슴으로 기쁘게 해드리면 되는거죠?」
-		PRINTFORMW 「처음이라 서투르겠지만, 열심히 해보겠습니다, %CSTR:90%」
-	ELSE
-		PRINTFORMW 「뭐야…… 이거……」
-		PRINTFORMW 「무슨 짓을…… 하신 거예요……? 제 가슴에……」
-		PRINTFORMW 사나에는 새하얗게 질린 얼굴로 변해버린 자신의 가슴을 더듬었다
-		PRINTFORMW 이윽고 자신의 몸에 벌어진 터무니 없는 일에 비명을 질렀다
-		PRINTFORMW ………………
-		PRINTFORMW …………
-		PRINTFORMW ……
-		PRINTFORMW [사나에의 공포각인이 3이 되었습니다]
-		MARK:8 = 3
-	ENDIF
+    PRINTFORMW 사나에에게 조금 특별한 약을 주었다
+    ;연모 또는 복종
+    IF CFLAG:7051 == 1
+    PRINTFORMW 사나에는 아무런 의심도 하지 않고 약을 덥썩 받아먹었다
+        IF TALENT:170 == 1
+        PRINTFORMW 오히려 이 약으로 무슨 쾌감을 얻게될 지 기대하는 듯하다
+        ELSE
+        PRINTFORMW 사나에는 꺼림칙하다는 얼굴로 조심스럽게 약을 받아먹었다
+        ENDIF
+    ENDIF
+    PRINTFORMW 시간이 좀 지나, 이윽고 약효가 나타나기 시작하자, 사나에는 고통스러운 듯 가슴을 움켜쥐었다
+    PRINTFORMW 「하윽…… 가슴이 뜨거워……」
+    PRINTFORMW 「제, 제게 뭘 먹이신 거예요?」
+    PRINTFORMW 굳이 대답해주지 않아도 사나에는 곧 답을 얻을 수 있을 것이다
+    PRINTFORMW 고열로 달아오르던 사나에의 유두가 점점 발기하더니, 이윽고 대량의 모유를 뿜어댔다
+    PRINTFORMW 사나에는 유두의 터질듯한 통증에 신음소리를 울리며 가슴을 더욱 움켜쥐었고, 그 압력에 사나에의 모유가 더욱 뿜어져 나왔다
+    PRINTFORMW 겨우 통증이 가라앉자 사나에는 조심스럽게 자신의 가슴을 살펴보았다
+    PRINTFORMW 사나에의 유두는 손가락이 들어갈 정도로 늘어날 수 있게 되었다
+    IF TALENT:174 == 1
+        PRINTFORMW 「뭐야…… 이거……」
+        PRINTFORMW 사나에는 자신의 변해버린 가슴을 더듬어 보았다
+        PRINTFORMW 사나에의 유두는 전보다 커지고, 구멍은 넓어져 모유가 새고 손가락 정도는 가볍게 드나들 수 있게 되었다
+        PRINTFORMW 상식적으로 말도 안되는 변화를 경험한 사나에는……
+        PRINTFORMW 「괴, 굉장해~!」
+        PRINTFORMW 기뻐하고 있다
+        PRINTFORMW 「하아……, 굉장해요 이거, 유두가 커져서 손가락이 들어가다니」
+        PRINTFORMW 사나에는 양쪽 유두에 하나씩 손가락을 찔러넣어 자위를 하기 시작했다
+        PRINTFORMW 지금까지와는 전혀 다른 쾌감에 전율하면서 자위에 전념하고 있다
+        PRINTFORMW 「하아…… 하아…… 안돼, 중독되어 버리겠어…… 이런 걸 알아버리고 참으라니 불가능해요……」
+        PRINTFORMW 「여기, 페니스도 들어갈 수 있는거죠?」
+        PRINTFORMW 「아핫, 이 젖보지에 %CSTR:90%의 페니스가 들어와서 잔뜩 아기씨를 뿌려준다면……」
+        PRINTFORMW 「제 모유와 %CSTR:90%의 정액이 잔뜩 섞여서 훌륭한 음란 칵테일이 완성되겠죠」
+        PRINTFORMW 「사나에의 젖보지, 꼭 엉망진창으로 해주셔야 해요?」
+    ELSEIF TALENT:170 == 1
+        PRINTFORMW 사나에는 자신의 변해버린 가슴을 더듬어 보았다
+        PRINTFORMW 단지 모유를 낼 수 있게 된 것만이 아니라, 유두까지 넓어지게 되었다
+        PRINTFORMW 「신기해……」
+        PRINTFORMW 「가슴이란거, 이렇게도 될 수 있구나……」
+        PRINTFORMW 신기하다는 듯 자신의 유두를 만져보던 사나에는 조심스럽게 유두 안쪽으로 검지손가락을 넣어보았다
+        PRINTFORMW 「아응……」
+        PRINTFORMW 「처음 느껴보는 쾌감이예요…… 이상한 기분……」
+        PRINTFORMW 「이제부터 여기 구멍의 기쁨도 잔뜩 가르쳐 주세요」
+    ELSEIF TALENT:150 == 1 || TALENT:160 == 1
+        PRINTFORMW 「뭐야…… 이거……」
+        PRINTFORMW 사나에는 변해버린 가슴에 당황한 듯 하다
+        PRINTFORMW 사나에에게 먹인 약에 대해서 설명해줬다
+        PRINTFORMW 「유두가 늘어나는 약, 이요? 그렇…… 구나……」
+        PRINTFORMW 「아뇨…… 조금 놀란 것 뿐이예요」
+        PRINTFORMW 「그럼, 이제 이 가슴으로 기쁘게 해드리면 되는거죠?」
+        PRINTFORMW 「처음이라 서투르겠지만, 열심히 해보겠습니다, %CSTR:90%」
+    ELSE
+        PRINTFORMW 「뭐야…… 이거……」
+        PRINTFORMW 「무슨 짓을…… 하신 거예요……? 제 가슴에……」
+        PRINTFORMW 사나에는 새하얗게 질린 얼굴로 변해버린 자신의 가슴을 더듬었다
+        PRINTFORMW 이윽고 자신의 몸에 벌어진 터무니 없는 일에 비명을 질렀다
+        PRINTFORMW ………………
+        PRINTFORMW …………
+        PRINTFORMW ……
+        PRINTFORMW [사나에의 공포각인이 3이 되었습니다]
+        MARK:8 = 3
+    ENDIF
 ENDIF
 
 TFLAG:200 = 0
