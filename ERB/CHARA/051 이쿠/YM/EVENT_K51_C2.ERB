@@ -1,469 +1,585 @@
 ﻿;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;eratohoYM Mk-3用 口上テンプレート
-;51をキャラ番号に置換して使用してください(霊夢なら1、蓮子なら49、魅魔なら100)。
+;51をキャラ番号に置換して使用してください(霊夢なら1, 蓮子なら49, 魅魔なら100).
 ;
-;このファイルでは200～299番のコマンドの口上用関数が置いてあります。
+;このファイルでは200～299番のコマンドの口上用関数が置いてあります.
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;==============================================================
 ;○○口上
 ;==============================================================
 ;========================================================
 ;コマンド口上
-;CFLAG:9000～9099までの100個を使用して、
+;CFLAG:9000～9099までの100個を使用して, 
 ;選んだコマンドを対象に初めて使ったかどうかを判別できる
-;「IF RESULT:1 == 1」で初回か2回目以降なのかで表示内容を変えることが出来る
+;「IF RESULT:1 == 1」で初回か2회째 이후なのかで表示内容を変えることが出来る
 ;========================================================
 ;-------------------------------------------------
-;胸揉み
+;가슴주무르기
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_200
-;初回実行時
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「今更改まって…ふふ、どうしたんですか？」
-        PRINTFORMW 「あん…気持ちいいですよ……%CALLNAME:MASTER%のしたいように…触って下さいね」
-    ;屈服刻印2以上
+        PRINTFORMW 「이제 와서 새삼스레…후후, 무슨 일 인가요？」
+        PRINTFORMW 「앙…기분 좋아요……%조사처리(CALLNAME:MASTER,"이")% 하고 싶은 대로…만져 주세요」
+    ;굴복각인2이상
     ELSEIF MARK:굴복각인 >= 2
-        PRINTFORMW 「んっ…ん…胸、は…優しく……」
-    ;その他
+        PRINTFORMW 「읏…응…가슴, 은…상냥하게……」
+    ;그 이외
     ELSE
-        PRINTFORMW 「いやらしい……くっ、そんなに力、いれないで…」
+        PRINTFORMW 「음란해……큭, 힘을 그렇게, 주지 마세요…」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;Ｂ感覚5以上または淫乱
+        ;B감각5이상 또는 음란
         IF (ABL:B감각 >= 5 || TALENT:음란) && RAND:2 == 0
-            ;続けてもみもみ
+            ;계속 주물주물
             IF PREVCOM == 200
-                PRINTFORMW %CALLNAME:MASTER%は引き続き衣玖の豊満な乳房に指を食い込ませ、揉みしだいている…
-                PRINTFORMW 「ああっ、ああっ…！いいっひっ…いくっ、いいっ、ですぅ…！」
-                PRINTFORMW 「強くぅ…ぎゅってして、ぎゅうって…ああ！いっぎぃっ、ああぁーーー！」
+                PRINTFORMW %조사처리(CALLNAME:MASTER,"은")% 이쿠의 풍만한 유방에 손가락이 먹히며, 계속해서 주무르고 있다…
+                PRINTFORMW 「아앗, 아읏…！히야앗…간닷, 좋, 아요…！」
+                PRINTFORMW 「강하게…꽉, 꽈악…아아！아그읏, 아아아ーーー！」
             ELSE
-                PRINTFORMW 「揉まれてる、だけなのに…いっ、うっんんっ！んああっ！」
-                PRINTFORMW 「ああぁ～～…はーっ、はーっ、はぁぁ…！あぁもっと…強く…してぇ…！」
+                PRINTFORMW 「주무를, 뿐인데…읏, 우으응！응아앗！」
+                PRINTFORMW 「아아아～～…하ー앗, 하ー앗, 하아아…！아아 좀 더…강하게엣…！」
             ENDIF
-        ;その他
+        ;그 이외
         ELSE
-            ;連続もみもみ
+            ;연속 주물주물
             IF PREVCOM == 200
-                PRINTFORMW %CALLNAME:MASTER%は引き続き衣玖の豊満な乳房に指を食い込ませ、揉みしだいている…
-                PRINTFORMW 「あっ、ん…ふふ、そんなに…好きですものね、私のおっぱい…」
-                PRINTFORMW 「たっぷり…可愛がって下さいね？」
+                PRINTFORMW %조사처리(CALLNAME:MASTER,"은")% 이쿠의 풍만한 유방에 손가락이 먹히며, 계속해서 주무르고 있다…
+                PRINTFORMW 「앗, 응…후후, 그렇게나…좋은가보네요, 제 가슴…」
+                PRINTFORMW 「충분히…귀여워해 주세요？」
             ELSE
-                PRINTFORMW 「んぁ、ふあっ…ぁ」
-                PRINTFORMW 「%CALLNAME:MASTER%の手で、包まれてます…あったかい、ですよ…」
+                PRINTFORMW 「아응, 후앗…아」
+                PRINTFORMW 「%CALLNAME:MASTER%의 손으로, 감싸여서…따뜻, 해요…」
             ENDIF
         ENDIF
-    ;その他
+    ;그 이외
     ELSE
-        ;Ｂ感覚4以上
+        ;B감각4이상
         IF ABL:B감각 >= 4
-            PRINTFORMW 「あぅ…！ふぅっ…・ふっ、ふーー、っくうう…！」
-            PRINTFORML 胸を揉まれるだけで激しく感じてしまうことに羞恥を感じているようだが、
-            PRINTFORMW 絶え間なく漏れ続ける吐息はかえって%CALLNAME:MASTER%の劣情を煽るだけだ…
-        ;屈服刻印2以上
+            PRINTFORMW 「아우…！후읏…후앗, 후ーー, 크우으…！」
+            PRINTFORML 가슴이 문질러지는 것만으로도 격렬하게 느껴 버리는 일에 수치를 느끼고 있는 것 같지만, 
+            PRINTFORMW 끊임없이 새어나오는 한숨은 오히려 %CALLNAME:MASTER%의 정욕을 부추길 뿐이다…
+        ;굴복각인2이상
         ELSEIF MARK:굴복각인 >= 2
-            PRINTFORMW （私の、胸…こんなに掴まれてしまって、大丈夫なのでしょうか…）
-        ;その他
+            PRINTFORMW （제, 가슴…이렇게 잡혀져서, 괜찮을까요…）
+        ;그 이외
         ELSE
-            PRINTFORMW 「そろそろ…十分でしょう、もう…！」
+            PRINTFORMW 「이젠…충분하죠, 정말이지…！」
         ENDIF
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;乳首責め
+;유두집중자극
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_201
-;初回実行時
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        ;Ｂ感覚5以上または淫乱
+        ;B감각5이상 또는 음란
         IF (ABL:B감각 >= 5 || TALENT:음란)
-            PRINTFORMW 「い゛っ…！？いだっ、いですっ……」
-            PRINTFORMW 予想以上の衣玖の反応に、思わずあなたは指を乳首から離してしまう。
-            PRINTFORMW 「あっ…違うんです、その、ちょっと、痛かったですけど…」
-            PRINTFORMW 「大丈夫ですから…ゆっくり、もう一度……お願いします…♪」
-        ;その他
+            PRINTFORMW 「읏…！？아파, 요……」
+            PRINTFORMW 예상 이상의 이쿠의 반응에, 당신은 무심코 유두에서 손가락을 떼어 버렸다.
+            PRINTFORMW 「앗…달라요, 그게, 조금은, 아팠지만…」
+            PRINTFORMW 「괜찮으니까…천천히, 한번 더……부탁드려요…♪」
+        ;그 이외
         ELSE
-            PRINTFORMW 「あっ…んっ、んぁ…！」
-            PRINTFORMW 「きゅってされると…感じてしまいますよ…ふふっ」
+            PRINTFORMW 「앗…응, 읏아…！」
+            PRINTFORMW 「꾸욱 집히면…느껴 버려요…후훗」
         ENDIF
-    ;Ｂ感覚3以上
+    ;B감각3이상
     ELSEIF ABL:B감각 >= 3
-        PRINTFORMW 「っつ…うっ、やめっ…！」
-        PRINTFORMW 「いくら…敏感だからって、うっ、こんな…！」
-    ;その他
+        PRINTFORMW 「읏…우으, 그만…！」
+        PRINTFORMW 「아무리…민감하다고 해도, 읏, 이런…！」
+    ;그 이외
     ELSE
-        PRINTFORMW 「いっ、嫌っ！痛く…するのは…だめ…」
+        PRINTFORMW 「시, 싫어！아프게…하는 건…안돼요…」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;Ｂ感覚5以上または淫乱
+        ;B감각5이상 또는 음란
         ;乳首服従すき
         IF (ABL:B감각 >= 5 || TALENT:음란)
             IF RAND:2 == 0
-                PRINTFORMW 「はっ、はひっ、ひぐっ、ああ、ああぁ～…！」
-                PRINTFORMW あまりの快楽の強さに耐えられず衣玖は頭を振り乱し、涙を流して喘いでいる…
-                PRINTFORMW 「ちくびっ…壊れちゃい、ます……でも、もっと、もっとぉ…！」
-                PRINTFORMW 「ああああぁっ！ああっ！あっ、はっ……うっ、うあぁ、いいですっ、うぅ…」
+                PRINTFORMW 「핫, 하힛, 히극, 아아, 아아아～…！」
+                PRINTFORMW 지나치게 강한 쾌락에 견딜 수 없는 이쿠는 머리를 휘저으며, 눈물을 흘리며 헐떡이고 있다…
+                PRINTFORMW 「젖꼭지…망가져, 버려요……그래도, 좀 더, 좀 더어…！」
+                PRINTFORMW 「아아아아앗！아앗！앗, 하앗……읏, 흐아아, 좋아요, 우으…」
             ELSE
-                PRINTFORML 可愛らしい先端を摘み、絞り、指で弾き…思う存分、責め立てる。
-                PRINTFORMW 特に爪で擦るように弾くと、好みなのか衣玖は体全体を震わせて反応してくれる…
-                PRINTFORMW 「はっ…はあ、それ…もう一回…強いの、下さい…きてっ、きてえ…！」
-                PRINTFORMW 「ひっ！いっ……～～～～～～っ！！…～～～～～～～！！」
-                PRINTFORMW 「はひっ…ひい、いっひぃ、ひあぁ……はああっ、ちくびいじめて…もっと…♪」
+                PRINTFORML 사랑스러운 끝 부분을 뜯고, 짜고, 손가락으로 튕기며…마음껏, 괴롭힌다.
+                PRINTFORMW 손톱으로 문지르듯 튕기는 것을, 특히나 좋아하는지 이쿠는 전신을 떨며 반응한다…
+                PRINTFORMW 「핫…하아, 그거…다시 한번…강한거, 해주세요…온다, 온다앗…！」
+                PRINTFORMW 「힉！으으……～～～～～～읏！！…～～～～～～～！！」
+                PRINTFORMW 「하힛…히이, 히으응, 아으응……하아앗, 젖꼭지 괴롭혀 주세요…좀 더어어…♪」
             ENDIF
-        ;その他
+        ;그 이외
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「あっ…っくう！んっ…感じ、ちゃいます…」
-            PRINTFORMW 「痛くないですよ…ふふっ…ほんとに、器用なんですから…」
+            PRINTFORMW 「앗…크응！읏…느껴, 버려요…」
+            PRINTFORMW 「아프지 않아요…후훗…정말이지, 요령이 좋다니까요…」
         ELSE
-            PRINTFORMW 「やっ…うっ、こんなに…乳首、大きくなって…」
-            PRINTFORMW 「そんな、あっあっ…擦られたらっ…恥ずかしいですっ、あっ！」
+            PRINTFORMW 「꺗…읏, 이렇게나…유두가, 커져서는…」
+            PRINTFORMW 「그런, 읏앗…문지르면…부끄러워요, 앗！」
         ENDIF
-    ;Ｂ感覚3以上
+    ;B감각3이상
     ELSEIF ABL:B감각 >= 3
-        PRINTFORMW 「いっ、強いっ、強いです…！」
-        PRINTFORMW 「これ以上は…だっ、だめ、です…」
-    ;その他
+        PRINTFORMW 「읏, 강해, 강해요…！」
+        PRINTFORMW 「이 이상은…아, 안돼, 요…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「つ…爪はどうか…立てないで…！」
+        PRINTFORMW 「소…손톱은 부디…세우지 마세요…！」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;乳首舐め
+;유두핥기
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_202
-;初回実行時
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あっ…ふふ、舐め方…やらしいですっ」
-    ;屈服刻印2以上
+        PRINTFORMW 「앗…후후, 핥는 방법이…음란하네요」
+    ;굴복각인2이상
     ELSEIF MARK:굴복각인 >= 2
-        PRINTFORMW 「ひうっ、うぅ…」
-        PRINTFORMW 「あまり、汚さないで下さい…」
-    ;その他
+        PRINTFORMW 「히윽, 우으…」
+        PRINTFORMW 「너무, 더럽히지 말아 주세요…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「やめっ…やだ、うぅ…！気持ち悪いっ…」
+        PRINTFORMW 「그만…싫어, 우으…！기분 나빠아…」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;Ｂ感覚5以上または淫乱
+        ;B감각5이상 또는 음란
         IF (ABL:B감각 >= 5 || TALENT:음란) && RAND:2 == 0
             ;모유체질
             IF TALENT:134 == 1
-                PRINTFORMW 「舐める…だけじゃ…！」
-                PRINTFORMW 刺激に反応し、溢れ出る母乳を掬うように舐め上げる…
-                PRINTFORMW 「お願い、です…おっぱい吸って下さい…思いっきり…んうう！はううっ！」
-            ;その他
+                PRINTFORMW 「핥는…것만으론…！」
+                PRINTFORMW 자극에 반응해, 흘러나오는 모유를 퍼내듯이 핥아댄다…
+                PRINTFORMW 「부탁, 이에요…젖을 마셔 주세요…마음껏…우으읏！하으읏！」
+            ;그 이외
             ELSE
-                PRINTFORMW 舌先を使い、硬くなった乳首を乳房へと押し込むように舌を押し付ける…
-                PRINTFORMW 「はあ、はっ…そこっ、もっとぉ…いぃ、やあぁ…♪」
-                PRINTFORMW 「%CALLNAME:MASTER%の…舌がっ…おっぱいに入ってくるう…♪」
+                PRINTFORMW 혀 끝을 사용해, 딱딱해진 유두를 유방으로 밀어넣듯이 혀를 눌러댄다…
+                PRINTFORMW 「하아, 핫…거기, 좀 더어…좋아앗, 꺄으읏…♪」
+                PRINTFORMW 「%CALLNAME:MASTER%의…혀가…가슴에 들어 오고 있어요…♪」
             ENDIF
         ;모유체질
         ELSEIF TALENT:134 == 1
-            PRINTFORMW 「も、もう…そんなことしたら…」
-            PRINTFORMW 「おっぱいと%CALLNAME:MASTER%ので…ベタベタになっちゃいます…」
-        ;その他
+            PRINTFORMW 「저, 정말…그런 짓을 했다간…」
+            PRINTFORMW 「젖과 %CALLNAME:MASTER%의 것으로…끈적끈적해져요…」
+        ;그 이외
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「ひう、ひゃっ…！んっ、それ…だ、だめ…んぁ！」
-            PRINTFORMW 「乳首…熱くなってきて…ひりひり、しちゃいます…！」
+            PRINTFORMW 「히읏, 햣…！읏, 그거…아, 안돼…응앗！」
+            PRINTFORMW 「유두…뜨거워져서…얼얼, 해요…！」
         ELSE
-            PRINTFORMW さらに、盛り上がった乳輪の縁に沿うように舌を這わせる…
-            PRINTFORMW 「あっあっ！そこっ、恥ずかしい、です…ぅあ、んっ！」
-            PRINTFORMW 「私の…にゅう、りん…その…大きく、ないですか…？」
+            PRINTFORMW 더욱, 부풀어오른 유륜의 가장자리를 따르듯이 혀를 움직였다…
+            PRINTFORMW 「아읏！거기, 부끄, 러워요…아우, 읏！」
+            PRINTFORMW 「제…유, 륜…그게…크지, 않나요…？」
         ENDIF
-    ;Ｂ感覚3以上
+    ;B감각3이상
     ELSEIF ABL:B감각 >= 3
-        PRINTFORMW （なんだか…焦らされてる、みたい…）
-        PRINTFORMW （強くして欲しいだなんて…言え、ない…！）
-    ;屈服刻印2以上
+        PRINTFORMW （왠지…애태우는, 것 같아…）
+        PRINTFORMW （강하게 해줬으면 해요라니…말할 수, 없어…！）
+    ;굴복각인2이상
     ELSEIF MARK:굴복각인 >= 2
-        PRINTFORMW 「あの…私の方はどうか、見ないで下さい…」
-    ;その他
+        PRINTFORMW 「저기…부디 제 쪽은, 보지 말아 주세요…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「何が…楽しいんですか、こんなの…」
+        PRINTFORMW 「뭐가…즐거운가요, 이런 게…」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;乳首吸い
+;유두빨기
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_203
-;初回実行時
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あん…ふっ、ん……」
-        PRINTFORMW 「もう…子供みたい、ですよ…？ふふっ」
-    ;屈服刻印2以上
+        PRINTFORMW 「아응…후읏, 응……」
+        PRINTFORMW 「정말…아이 같다고요…？후훗」
+    ;굴복각인2이상
     ELSEIF MARK:굴복각인 >= 2
-        PRINTFORMW 「いっ…痛く、しないで下さいね…」
-        PRINTFORMW 「後で腫れたりしたら、困りますから…」
-    ;その他
+        PRINTFORMW 「아…아프지 않게, 해주세요…」
+        PRINTFORMW 「나중에 붓거나 하면, 곤란하니까…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「こ…子供じゃあるまいし、こんな…」
+        PRINTFORMW 「아…아이도 아니면서, 이런…」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;出産経験あり
+        ;출산경험 있음
         IF EXP:출산경험 > 0 && RAND:4 == 0
-            PRINTFORMW 「吸っても…今はおっぱい、出ませんよ？もう…」    
-            PRINTFORMW 「また、出るように…して頂いても、いいのですけど…ふふっ♪」
-        ;Ｂ感覚5以上または淫乱
+            PRINTFORMW 「빨아도…지금은, 젖이 나오지 않는다고요？정말…」    
+            PRINTFORMW 「또, 나오게…해버려도, 괜찮지만…후훗♪」
+        ;B감각5이상 또는 음란
         ELSEIF (ABL:B감각 >= 5 || TALENT:음란) && RAND:2 == 0
             IF RAND:2 == 0
-                PRINTFORMW 「ああぁ！いい…ひぃんっ、そんな乱暴に…吸ったら、あはあぁぁっ…♪」
-                PRINTFORMW 「ううんっ…んあぁ！…ちくび、とれちゃい、ますよぉ…♪」
+                PRINTFORMW 「아아아！좋아…히읏, 그렇게 난폭하게…빨았다간, 아하아아앗…♪」
+                PRINTFORMW 「우으응…응아아！…젖꼭지, 떨어져, 버려요…♪」
             ELSE
-                PRINTFORMW 「ひあっ！あっ、あっあっ…それ、だめええぇ…♪」
-                PRINTFORMW 乳首に吸い付きながら舌で膨らんだ先端を転がし、衣玖の味を存分に味わう…
-                PRINTFORMW 「わたしのっ…おっぱい、美味しい、ですか…♪もっともっと強く、んうぅぅ…♪」
+                PRINTFORMW 「히얏！앗, 아읏…그거, 안돼애애…♪」
+                PRINTFORMW 유두 달라붙어 혀로 부풀어 오른 끝 부분을 굴리며, 이쿠의 맛을 만끽하다…
+                PRINTFORMW 「제…가슴, 맛있, 나요…♪좀 더 좀 더 강하게, 우으읏…♪」
             ENDIF
-        ;その他
+        ;그 이외
         ELSEIF RAND:10 == 0 && EXP:출산경험 == 0
-            PRINTFORMW 「甘えたいんですか？ふふ…♪おお、よしよし…」
-            PRINTFORMW %CALLNAME:MASTER%の頭が優しく衣玖に抱き抱えられる…
-            PRINTFORMW 「ほら…ま、ママの…おっぱい、ですよー…？」
+            PRINTFORMW 「어리광부리고 싶나요？후후…♪어머, 착하지 착해…」
+            PRINTFORMW 이쿠는 %CALLNAME:MASTER%의 머리를 부드럽게 안았다…
+            PRINTFORMW 「자아…어, 엄마의…젖, 이에요ー…？」
             PRINTFORMW 「……」
             PRINTFORMW 「…」
-            PRINTFORMW 「あの…経験もないのにこういうのは、いけません、でしたか…？」
-;            PRINTFORMW 衣玖さん絶対孕ます…あなたの決心は固まった
+            PRINTFORMW 「저기…경험도 없는데 이러는 건, 안된다, 였나요…？」
+;            PRINTFORMW 이쿠씨 절대로 임신시킨다…당신은 결심을 굳혔다
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「あっ、やっ…夢中になってますね…ふふっ」
-            PRINTFORMW 「あ…ああん、あぁ…♪…へ、変な気持ちに…なってしまいます…」
+            PRINTFORMW 「앗, 꺄앗…열중하고 있네요…후훗」
+            PRINTFORMW 「아…아응, 아아…♪…이, 이상한 기분이…들어요…」
         ELSE
-            PRINTFORMW 「ふぁ、はうん…いやらしい、音…♪」
-            PRINTFORMW 「ほら、もっとお行儀よくしないとだめですよ…？ふふっ」
+            PRINTFORMW 「후아, 하응…음란한, 소리…♪」
+            PRINTFORMW 「자아, 좀 더 예의있게 하지 않으면 안된다고요…？후훗」
         ENDIF
-    ;Ｂ感覚3以上
+    ;B감각3이상
     ELSEIF ABL:B감각 >= 3
-        PRINTFORMW 「んっ！んっ！いっ、ひぃ…やっ、だめ…」
-        PRINTFORMW 「そんな、吸われたら…！わからなく、なるうっ、んいぃ！」
-    ;屈服刻印2以上
+        PRINTFORMW 「읏！응！앗, 히이…꺄앗, 안돼…」
+        PRINTFORMW 「그렇게, 빨았다간…！바보처럼, 돼버려요, 아으응！」
+    ;굴복각인2이상
     ELSEIF MARK:굴복각인 >= 2
-        PRINTFORMW （甘えたい…のでしょうか…？）
-        PRINTFORMW （だからって、私がこんなことする筋合いは…うぅ…）
-    ;その他
+        PRINTFORMW （응석부리고…싶은 걸까요…？）
+        PRINTFORMW （그렇다고 해도, 제가 이런 일을 해줄 이유는…우으…）
+    ;그 이외
     ELSE
-        PRINTFORMW 「変な、人ですね…くっ
+        PRINTFORMW 「이상한, 사람이네요…큭」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;母乳飲み
+;모유마시기
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_204
-;初回実行時
+;처음
 IF RESULT:1 == 1
+    ;텐시가 조수 조수가 조교
+    IF ASSIPLAY && NO:ASSI == 52
+        ;연모+음란
+        IF TALENT:연모 && TALENT:음란
+            PRINTFORMW 『에, 괜찮아…？그, 젖…마셔 봐도』
+            PRINTFORMW 「후후, 괜찮아요…제 가슴은, 텐시의 것이기도 하니까요…♪」
+            PRINTFORMW 이쿠는 유두를 손가락으로 만지작거리며, 텐시를 도발한다…
+            PRINTFORMW 「읏…자아…유륜이…부풀어 오르고 있어요…%UNICODE(0x2665)%」
+            PRINTFORMW 「이러면 당장이라도…젖이, 나올 것 같다고요？후후, 텐시…어서, 와 주세요…%UNICODE(0x2665)%」
+            PRINTFORMW 당장이라도 모유가 흘러나올 것 같은 유방에 이끌리듯이, 텐시의 입술이 살며시 이쿠의 유두에 달라붙었다…
+        ;연모
+        ELSEIF TALENT:연모
+            PRINTFORMW 『저기 이쿠…이거, 지금…모유, 나오는 거지…？』
+            PRINTFORMW 「사람의 가슴을 이거라니, 정말이지…」
+            PRINTFORMW 「…후훗, 신경 쓰이나요？괜찮다면 마셔 보세요, 라니…」
+            PRINTFORMW 『조금…시험해 볼, 까나』
+            PRINTFORMW 「엣」
+            PRINTFORMW 『움직이지 마』
+            PRINTFORMW 『자, 자아…아프게 해버리면 미안, 하니까…응, 그대로…움직이지 마…』
+            PRINTFORMW 텐시가 긴장한 얼굴로 천천히 이쿠의 유방에 가까워져…살며시 들이마셨다.
+        ;굴복각인3
+        ELSEIF MARK:굴복각인 == 3
+            PRINTFORMW 『이, 이쿠의 모유, 인가아…』
+            PRINTFORMW 「…싫다면 딱히 상관 없습니다만」
+            PRINTFORMW 『싫다고 할까, 그게 말이지…나 분명히, 져 버릴 것 같은 느낌이 드니까』
+            PRINTFORMW 「？」
+            PRINTFORMW 『아ー그게…참지 못하게 된달까…뭐어 이미 참지 못할 것 같지만 말이야』
+            PRINTFORMW 『…그러면 이쿠, 가슴 빌려 줘』
+            PRINTFORMW 「결국 이렇게 되는 거네요…」
+        ;그 이외
+        ELSE
+        ENDIF
+        CFLAG:7314 = 1
+    ;여기부턴 주인
     ;연모
-    IF TALENT:연모
+    ELSEIF TALENT:연모
         ;임신
         IF TALENT:임신
-            PRINTFORMW 「あ…飲みたくなっちゃったんですね？もう…わかりますよ？」
-            PRINTFORMW 「本当は赤ちゃんのものですけど、特別ですからね？」
-        ;出産経験あり
+            PRINTFORMW 「아…마시고 싶나 보네요？정말이지…안다고요？」
+            PRINTFORMW 「사실은 아기의 것이지만, 특별히니까요？」
+        ;출산경험 있음
         ELSEIF EXP:출산경험 > 0
-            PRINTFORMW 「あらあら…欲しくなっちゃったんですね」
-            PRINTFORMW 「子供に嫉妬でもしちゃいましたか？ふふっ」
-        ;その他
+            PRINTFORMW 「어머어머…모유가 갖고 싶어져 버렸나요」
+            PRINTFORMW 「아이에게 질투라도 해버렸나요？후훗」
+        ;그 이외
         ELSE
-            PRINTFORMW 「あの…これでも私、妖怪なんですけど…」
-            PRINTFORMW 「…妖怪のお乳なんて…やっぱり、飲みたい……みたいですね、ふふ…♪」
+            PRINTFORMW 「저기…이래뵈도 전, 요괴입니다만…」
+            PRINTFORMW 「…요괴의 젖은…역시, 마시고 싶……은가 보네요, 후후…♪」
         ENDIF
-    ;屈服刻印3
+    ;굴복각인3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「怖くないんですか…？」
-        PRINTFORMW 「こんな、得体の知れない…はあ…」
-    ;その他
+        PRINTFORMW 「무섭지 않나요…？」
+        PRINTFORMW 「이런, 정체를 모르는…하아…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「毒…でも入っているかもしれませんよ…知りませんが」
+        PRINTFORMW 「독…이라도 들어 있을지 몰라요…모릅니다만」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
+    ;텐시가 조수 조수가 조교
+    IF ASSIPLAY && NO:ASSI == 52
+        ;텐시가 모유마시기 처음
+        IF CFLAG:7314 == 0
+            ;연모+음란
+            IF TALENT:연모 && TALENT:음란
+                PRINTFORMW 『에, 괜찮아…？그, 젖…마셔 봐도』
+                PRINTFORMW 「후후, 괜찮아요…제 가슴은, 텐시의 것이기도 하니까요…♪」
+                PRINTFORMW 이쿠는 유두를 손가락으로 만지작거리며, 텐시를 도발한다…
+                PRINTFORMW 「읏…자아…유륜이…부풀어 오르고 있어요…%UNICODE(0x2665)%」
+                PRINTFORMW 「이러면 당장이라도…젖이, 나올 것 같다고요？후후, 텐시…어서, 와 주세요…%UNICODE(0x2665)%」
+                PRINTFORMW 당장이라도 모유가 흘러나올 것 같은 유방에 이끌리듯이, 텐시의 입술이 살며시 이쿠의 유두에 달라붙었다…
+            ;연모
+            ELSEIF TALENT:연모
+                PRINTFORMW 『저기 이쿠…이거, 지금…모유, 나오는 거지…？』
+                PRINTFORMW 「사람의 가슴을 이거라니, 정말이지…」
+                PRINTFORMW 「…후훗, 신경 쓰이나요？괜찮다면 마셔 보세요, 라니…」
+                PRINTFORMW 『조금…시험해 볼, 까나』
+                PRINTFORMW 「엣」
+                PRINTFORMW 『움직이지 마』
+                PRINTFORMW 『자, 자아…아프게 해버리면 미안, 하니까…응, 그대로…움직이지 마…』
+                PRINTFORMW 텐시가 긴장한 얼굴로 천천히 이쿠의 유방에 가까워져…살며시 들이마셨다.
+            ;굴복각인3
+            ELSEIF MARK:굴복각인 == 3
+                PRINTFORMW 『이, 이쿠의 모유, 인가아…』
+                PRINTFORMW 「…싫다면 딱히 상관 없습니다만」
+                PRINTFORMW 『싫다고 할까, 그게 말이지…나 분명히, 져 버릴 것 같은 느낌이 드니까』
+                PRINTFORMW 「？」
+                PRINTFORMW 『아ー그게…참지 못하게 된달까…뭐어 이미 참지 못할 것 같지만 말이야』
+                PRINTFORMW 『…그러면 이쿠, 가슴 빌려 줘』
+                PRINTFORMW 「결국 이렇게 되는 거네요…」
+            ;그 이외
+            ELSE
+            ENDIF
+            CFLAG:7314 = 1
+        ;텐시 2회째 이후
+        ELSE
+            ;연모+음란
+            IF TALENT:연모 && TALENT:음란
+                IF RAND:4 == 0
+                    PRINTFORMW 「필사적으로 빨아대서는…후후, 귀여워요…텐시…」
+                    PRINTFORMW 「유두가…읏, 앙…불어 버릴 것, 같아요…%UNICODE(0x2665)%」
+                    PRINTFORMW 「젖은…양쪽, 모두 있으니까요…정말 텐시도 참, 듣고 있나요？후후…」
+                ELSEIF RAND:3 == 0
+                    PRINTFORMW 『우으…안돼애, 이런 건…』
+                    PRINTFORMW 「어라라, 왜 그러시나요？후훗」
+                    PRINTFORML 『츄웁…아움, 계속…이쿠의 가슴에, 응석부리고 싶어지는걸…』
+                    PRINTFORMW 『나느은…주인님의, 조수인데에…아아 하지만…밀크, 좋아…이쿠의 가슴 좋아아…！』
+                    PRINTFORMW 쓴 웃음을 지으며 유방에 달라붙은 텐시를 지켜보는 이쿠였지만, 꼭 그렇지만도 않은 것 같다…
+                ELSEIF RAND:2 == 0
+                    PRINTFORMW 『쿠응…아…이쿠의 젖…맛있어…』
+                    PRINTFORMW 「아…하앙, 아…%UNICODE(0x2665)%계속…이대로, 상관 없으니까…」
+                    PRINTFORMW 「아응！아아아…그래요…앞 쪽을 혀로, 굴리고, 핥고, 빨면서…응앗, 아하아앗…%UNICODE(0x2665)%」
+                ELSE
+                    PRINTFORMW 「하아아아…아앗, 아앗…좋아요, 텐시…좀 더, 빨아 주세요…」
+                    PRINTFORMW 『하웁, 푸핫, 잠깐…괴로워, 무우읏！』
+                    PRINTFORMW 「텐시의 입이 무척이나 기분 좋으니까…젖이 잔뜩, 나와 버려요…%UNICODE(0x2665)%」
+                ENDIF
+            ;연모
+            ELSEIF TALENT:연모
+                IF RAND:2 == 0
+                    PRINTFORMW 『츄우, 응…하웁, 아…맛있는, 지도』
+                    PRINTFORMW 『젖이란건…누구의 것이든 이런 맛일까나？』
+                    PRINTFORMW 「테, 텐시…입 주변에, 잔뜩 묻힌 채로 말하는 건 그, 상스러워요…」
+                    PRINTFORMW 『됐어ー, 그야 원래는 이쿠한테서 나온 것이고？후흥』
+                ELSE
+                    PRINTFORMW 『도망치면 안된다고ー？후흥, 유두를 이렇게나 볼록하게 하고선…』
+                    PRINTFORMW 「그, 그치만…그렇게, 빨아대면…아아응！앗！」
+                    PRINTFORMW 『푸하앗…정말, 사랑스럽다니까…조금 더, 잘ー먹겠습니다…♪』
+                ENDIF
+            ;굴복각인3
+            ELSEIF MARK:굴복각인 == 3
+                IF RAND:2 == 0
+                    PRINTFORMW 「너, 너무 웃지 말아 주세요…읏, 응…부끄러, 우니까…」
+                ELSE
+                    PRINTFORMW 『응응？저기 이쿠…눈을 피하지 마』
+                    PRINTFORMW 『제대로 귀여워해 줄래？…아이처럼 말이지』
+                ENDIF
+            ;그 이외
+            ELSE
+            ENDIF
+        ENDIF
     ;연모
-    IF TALENT:연모
+    ELSEIF TALENT:연모
         ;임신
         IF TALENT:임신 && RAND:2 == 0
-            PRINTFORMW 「いっぱい飲んで…元気出して下さいね、お父さん？」
-            PRINTFORMW 「たくさん抱いて貰えると…私もその分幸せですから…ふふっ」
-        ;噴乳中毒3以上または淫乱
+            PRINTFORMW 「잔뜩 마셔서…힘내 주세요, 아버지？」
+            PRINTFORMW 「잔뜩 안아 준다면…저도 그 만큼 행복하니까…후훗」
+        ;분유중독3이상 또는 음란
         ELSEIF (ABL:분유중독 >= 3 || TALENT:음란) && RAND:2 == 0
             IF RAND:2 == 0
-                PRINTFORMW 「ああっ♪ごくごくっ、飲まれてますうっ…竜宮の遣いの…特製ミルク…♪」
-                PRINTFORML 衣玖の乳房をぎゅっと握ると、無尽蔵に母乳が溢れ出て来る…
-                PRINTFORMW 母性の象徴である乳房を存分に蹂躙する背徳感に、%CALLNAME:MASTER%の興奮は高まるばかりだ…
-                PRINTFORMW 「飲んで、搾ってえ…！おっぱいもっと激しく、してっ、ああいい！いいっ、んいいぁぁぁ…♪」
+                PRINTFORMW 「아앗♪꿀꺽꿀꺽, 마셔지고 있어요…용궁의 사자의…특제 밀크…♪」
+                PRINTFORML 이쿠의 유방을 꽉 움켜쥐자, 모유가 무진장 흘러나왔다…
+                PRINTFORMW 모성의 상징인 유방을 마음껏 유린하는 배덕감에, %CALLNAME:MASTER%의 흥분이 고조될 뿐이다…
+                PRINTFORMW 「짜서, 마셔 주세요…！좀 더 가슴을 격렬하게, 하응, 좋아！좋아앗, 하으으읏…♪」
             ELSE
-                PRINTFORMW 「たっぷり…いいですよ…気持ち良くなると…おっぱい、どんどん溢れて…」
-                PRINTFORMW 「%CALLNAME:MASTER%のも、こんなに…♪ミルク飲んで、興奮してますか…？」
-                PRINTFORMW 衣玖に痛いほど勃起をしたペニスを握られ、不意打ちに思わず体が反応する…
-                PRINTFORMW 「今度は、%CALLNAME:MASTER%のを…ふふ」
-                PRINTFORMW 「衣玖のおまんこが…%CALLNAME:MASTER%の子種ミルクを欲しがって、きゅうってしてます…ふふ、ね…♪」
+                PRINTFORMW 「충분히…좋아요…기분 좋아지면…젖이, 점점 흘러나와서…」
+                PRINTFORMW 「%CALLNAME:MASTER%의 것도, 이렇게나…♪밀크 마셔서, 흥분해 버렸나요…？」
+                PRINTFORMW 이쿠가 아플 정도로 발기한 페니스를 기습적으로 쥐는 바람에 무심코 몸이 반응했다…
+                PRINTFORMW 「이번엔, %CALLNAME:MASTER%의 것을…후후」
+                PRINTFORMW 「이쿠의 보지가…%CALLNAME:MASTER%의 정자 밀크를 갖고 싶어서, 욱신거려요…후후…♪」
             ENDIF
-        ;出産経験あり
+        ;출산경험 있음
         ELSEIF EXP:출산경험 > 0 && RAND:4 == 0
-            PRINTFORMW 「子供にお乳をあげるときは…気持ちいいのか、ですか…？」
-            PRINTFORMW 「あらあら、なかなか失礼な質問ですね」
-            PRINTFORMW 「でも……幸せなのは確かですよ？ふふ…」
-        ;その他
+            PRINTFORMW 「아이에게 젖을 물릴 때…기분이 좋은가, 인가요…？」
+            PRINTFORMW 「어머머, 꽤나 실례인 질문이네요」
+            PRINTFORMW 「하지만……지금처럼 행복한 건 확실하다고요？후후…」
+        ;그 이외
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「んっ、くあぁ…もう、強く絞りすぎですよ？、%CALLNAME:MASTER%…」
-            PRINTFORMW 「もっと優しくしてくれた方が、私もいっぱいミルク出ますから、ね？」
+            PRINTFORMW 「읏, 크으응…정말, 너무 강하게 짠다고요？ %CALLNAME:MASTER%…」
+            PRINTFORMW 「좀 더 상냥하게 해주는 편이, 저도 잔뜩 밀크를 낼 수 있으니까요, 네？」
         ELSE
-            PRINTFORMW 「んん…ほんとに…乳首吸うの、上手いんですから…」
-            PRINTFORMW 「そんなに一生懸命吸っちゃって…まるで赤ちゃんですね…♪」
+            PRINTFORMW 「으응…정말이지…유두를 빠는 게, 능숙하다니까요…」
+            PRINTFORMW 「그렇게 열심히 빨아서는…마치 아기같네요…♪」
         ENDIF
-    ;屈服刻印Lv3
+    ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「どうぞ…衣玖の母乳、召し上がってください…」
-        PRINTFORMW 衣玖は逆らうことなく、黙ってあなたに母乳を吸われている…
-    ;反発刻印Lv3
+        PRINTFORMW 「부디…이쿠의 모유를, 드셔 주세요…」
+        PRINTFORMW 이쿠는 저항없이, 입을 다물고 당신에게 모유를 먹이고 있다…
+    ;반발각인Lv3
     ELSEIF MARK:반발각인 == 3
-        PRINTFORMW 「%CALLNAME:MASTER%なんかに、飲ませたくないのに…！くううっ…」
-        PRINTFORMW 衣玖は怒りのこもった眼差しであなたを睨んでいる…
-    ;その他の場合
+        PRINTFORMW 「%CALLNAME:MASTER% 따위에게, 먹이고 싶지 않은데…！크우으으…」
+        PRINTFORMW 이쿠는 분노에 가득 찬 시선으로 당신을 노려보고 있다…
+    ;그 이외
     ELSE
-        PRINTFORMW 「そんなに、吸いつかないで下さい…腫れちゃいますから…！」
+        PRINTFORMW 「그렇게, 빨지 마세요…부어 버리니까…！」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;胸自慰
+;가슴자위
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_205
-;初めて
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        ;自慰中毒3以上または淫乱
+        ;자위중독3이상 또는 음란
         IF ABL:자위중독 >= 3 || TALENT:음란
-            PRINTFORMW 「胸だけ…ですか？」
-            PRINTFORMW 「ふふ、おっぱい好きですものね…でも、すぐに気持ち良くなれると思いますよ？」
-            PRINTFORMW 「…じゃあ、私がおっぱいでイくところ…見てて下さいね…♪」
-        ;その他
+            PRINTFORMW 「가슴만…인가요？」
+            PRINTFORMW 「후후, 가슴 좋아하네요…하지만, 금방 기분 좋아질거라 생각한다고요？」
+            PRINTFORMW 「…그럼, 제가 가슴으로 가버리는 모습…보고 계세요…♪」
+        ;그 이외
         ELSE
-            PRINTFORMW 「んっ、んぁ、ん…」
-            PRINTFORMW 「胸、だけだと…こういう感じ…ですか…？」
+            PRINTFORMW 「읏, 하앗, 응…」
+            PRINTFORMW 「가슴, 만으로…이런 느낌…인가요…？」
         ENDIF
-    ;屈服刻印3
+    ;굴복각인3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「じ、時間がかかっても…悪く思わないで、下さいね…ん、ぁ…」
-    ;その他
+        PRINTFORMW 「시, 시간이 걸려도…나쁘게 생각하지, 말아 주세요…응, 아…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「……触りたければ触ればいいでしょうに…嫌なやり方です」
+        PRINTFORMW 「……만지고 싶으면 만지면 될 것을…싫은 방식이네요」
     ENDIF
-;2回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;Ｂ感覚5以上または淫乱
+        ;B감각5이상 또는 음란
         IF (ABL:B감각 >= 5 || TALENT:음란) && RAND:2 == 0
             ;모유체질
             IF RAND:2 == 0 && TALENT:모유체질
-                PRINTFORMW 「おっぱい出るの、止まらないですうっ…ふあああっ…♪」
-                PRINTFORMW 衣玖は激しく乳房を揉みしだきながら、乳首の先端を絞り上げ、母乳を撒き散らしている…
-                PRINTFORMW 「ほらあっ…見て下さいっ、ミルク出しながらイくところ、見て下さいっ…」
-            ;その他の場合
+                PRINTFORMW 「젖이 나오는 게, 멈추질 않아요…후아아앗…♪」
+                PRINTFORMW 이쿠는 격렬하게 유방을 주무르면서, 유두의 끝 부분을 짜내, 모유를 흩뿌리고 있다…
+                PRINTFORMW 「자아…봐 주세요, 밀크를 내면서 가는 모습, 봐 주세요…」
+            ;그 이외
             ELSE
-                PRINTFORMW 衣玖は両方の乳首を執拗に擦り続けている…
-                PRINTFORMW 「ふあっ…ここ、弄ってると…じんじんしてたまらないんですっ…！」
-                PRINTFORMW 「うううああぁっ…乳首擦ってイキますうっ、衣玖っ、乳首でイッちゃいますううぅ…！」
-                PRINTFORMW 衣玖は仰け反って愛液を垂れ流しながら、絶頂に向かって自慰を続けた…
+                PRINTFORMW 이쿠는 양쪽의 유두를 집요하게 비비고 있다…
+                PRINTFORMW 「후앗…여기, 만지작거리면…지릿지릿해서 참을 수 없어요…！」
+                PRINTFORMW 「아으아앗…유두 비비면서 가버려요, 이쿠, 유두로 가버려요오…！」
+                PRINTFORMW 이쿠는 뒤로 젖혀진 채로 애액을 흘리며, 절정을 향해 자위를 계속했다…
             ENDIF
-        ;その他の場合
+        ;그 이외
         ELSE
-            PRINTFORMW 「あっ…はあっ、ああっ…自分で乳首弄るの、気持ちいい…」
-            PRINTFORMW 衣玖はその豊満な胸をあなたに見せ付けるように、自慰を続けている…
+            PRINTFORMW 「앗…하앗, 아앗…스스로 유두 만지는 거, 기분 좋아…」
+            PRINTFORMW 이쿠는 그 풍만한 가슴을 당신에게 과시하듯이, 자위를 계속하고 있다…
         ENDIF
-    ;Ｂ感覚4以上
+    ;B감각4이상
     ELSEIF ABL:B감각 >= 4
-        PRINTFORMW 「いやっ、ああはっ、嫌あ、こんなの…」
-        PRINTFORMW 「いっ、うぁ、あはぁ…！どうしてこんな、気持ちいいの…」
-    ;屈服刻印3
+        PRINTFORMW 「꺄윽, 아아핫, 싫어어, 이런 건…」
+        PRINTFORMW 「읏, 으앗, 아하아…！어째서 이렇게, 기분 좋은거야…」
+    ;굴복각인3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「あの…まだ、んっ…続けますか…？」
-    ;その他
+        PRINTFORMW 「저기…아직, 읏…계속해요…？」
+    ;그 이외
     ELSE
-        PRINTFORMW 「…いつまで、こんなこと…」
+        PRINTFORMW 「…언제까지, 이런 짓을…」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;乳スパンキング
+;젖스팽킹
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_206
-;初めて
+;처음
 IF RESULT:1 == 1
-    ;助手が天子で助手が調教
+    ;텐시가 조수 조수가 조교
     IF ASSIPLAY && NO:ASSI == 52
         ;연모
         IF TALENT:연모 == 1
-            PRINTFORMW 『ぺち、ぺちと…ふふん、よく動いて面白いわね、これ』
-            PRINTFORMW 「…はっ、んっ…なんだか刺激がちょうど、いいかも…」
-            PRINTFORMW 『……えっ、衣玖ひょっとして感じてるの？うわあ』
-        ;その他の場合
+            PRINTFORMW 『찰싹, 찰싹하고…후흥, 잘 움직여서 재밌네, 이거』
+            PRINTFORMW 「…핫, 읏…왠지 자극이 꽤나, 괜찮을지도…」
+            PRINTFORMW 『……엣, 이쿠 혹시 느끼고 있는거야？우와아』
+        ;그 이외
         ELSE
-            PRINTFORMW 「いっ！…やっ！痛いっ…天子、どうしたんですか…？」
-            PRINTFORMW 『おっきいのに柔らかいものよね…よく動くなーって』
+            PRINTFORMW 「읏！…꺄앗！아팟…텐시, 무슨 일인가요…？」
+            PRINTFORMW 『큰데도 부드럽구나…잘도 움직이네ー』
         ENDIF
-    ;その他の場合
+    ;그 이외
     ELSE
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
-    ;助手が天子で助手が調教
+    ;텐시가 조수 조수가 조교
     IF ASSIPLAY && NO:ASSI == 52
         ;연모
         IF TALENT:연모
-            ;マゾっ気Lv3以上
+            ;마조끼Lv3이상
             IF ABL:마조끼 >= 3
-                ;乱数分岐:2
+                ;난수 분기:2
                 IF RAND:2 == 0
-                    PRINTFORMW 「あいっ！ひっ…♪こんなに叩かれたら、もっと大きくなってしまうかも…」
-                    PRINTFORMW 「あっ…やめないで下さい、天子…もう少し、続けて…あぐうっ！ああっ…♪」
-                    PRINTFORMW 『本気で叩くわよそのうち…』
-                ;その他の場合
+                    PRINTFORMW 「아읏！힉…♪이렇게나 얻어맞으면, 좀 더 커질지도…」
+                    PRINTFORMW 「앗…그만 두지 마세요, 텐시…조금만 더, 계속…으그윽！아앗…♪」
+                    PRINTFORMW 『조만간 진심으로 때릴거야…』
+                ;그 이외
                 ELSE
-                    PRINTFORMW 『ちょっと、こんなことしてるのに乳首立たせ過ぎなのよ…さすがに引くかも』
-                    PRINTFORMW 「はひっ、ひっ…ごめんなさい…でも…まだ、痺れてっ…いい、ですぅ…」
-                    PRINTFORMW 『でしょ？私がしてるんだもの…優しくおっぱい苛めてあげるから、覚悟しなさいね』
+                    PRINTFORMW 『잠깐, 이런 일을 하고 있는데도 유두가 너무 서있잖아…역시 걸릴지도』
+                    PRINTFORMW 「하힛, 힉…죄송해요…하지만…아직, 저려서…좋, 아요…」
+                    PRINTFORMW 『그치？내가 해주고 있는걸…상냥하게 가슴을 괴롭혀 줄테니, 각오해』
                 ENDIF
-            ;その他の場合
+            ;그 이외
             ELSE
-                PRINTFORMW 「痛いですけど…天子の手が、気持ち良くて…おかしい、ですか？」
-                PRINTFORMW 『おかしい…けど、まあ私達のしてる事も大体おかしいから』
-                PRINTFORMW 『気にすること無いわよ、まあ私も…ちょっと叩くのが面白くなっちゃたし』
+                PRINTFORMW 「아프지만…텐시의 손이, 기분 좋아서…이상한, 가요？」
+                PRINTFORMW 『이상하…지만, 뭐 우리들이 하고 있는 일도 대체로 이상하니까』
+                PRINTFORMW 『신경쓰이지 않는다고, 뭐어 나도…때리는 게 조금은 재밌어졌고』
             ENDIF
-        ;その他の場合
+        ;그 이외
         ELSE
-            ;Ｂ感覚Lv4以上
+            ;B감각Lv4이상
             IF ABL:B감각 >= 4
-                PRINTFORMW 「ひんっ…！ひっ、あっ…！もう、勘弁…してっ」
-                PRINTFORMW 『ああやっぱり…感じてるんじゃない。ほら、胸隠しちゃだめよ？』
-                PRINTFORMW 「いやですっ…こんなことでっ…感じたくなんて、ない…」
-            ;その他の場合
+                PRINTFORMW 「히읏…！힉, 앗…！이젠, 용서해…주세요」
+                PRINTFORMW 『아아 역시…느끼고 있잖아.자아, 가슴을 가리면 안되지？』
+                PRINTFORMW 「싫어요…이런 일로…느낄 리가, 없어…」
+            ;그 이외
             ELSE
-                PRINTFORMW 「やめてください…腫れてしまいますっ！」
-                PRINTFORMW 『ん～…後でちゃんと冷やしてあげるから、もう少し…』
-                PRINTFORMW 「それもだめですっ！」
+                PRINTFORMW 「그만해 주세요…부어 버려요！」
+                PRINTFORMW 『웅～…나중에 제대로 식혀 줄테니, 조금만 더…』
+                PRINTFORMW 「그것도 안돼요！」
             ENDIF
         ENDIF
-    ;その他の場合
+    ;그 이외
     ELSE
     ENDIF
 ENDIF
@@ -471,129 +587,129 @@ ENDIF
 ;-------------------------------------------------
 ;乳ファック
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_207
+@KOJO_51_TRAIN_MESSAGE_S_COM_207
 ;PRINTFORMW 
 
 ;-------------------------------------------------
 ;縦パイズリ
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_208
+@KOJO_51_TRAIN_MESSAGE_S_COM_208
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;パイズリフェラ
+;파이즈리펠라
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_209
-;初めて
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「…ああよかった、感じて下さってるみたいですね…」
-        PRINTFORMW 「反応を見れば分かります…♪それじゃあ、私にお任せ下さいね…」
-    ;屈服刻印Lv3
+        PRINTFORMW 「…아 다행이다, 느끼고 있는 것 같네요…」
+        PRINTFORMW 「반응을 보면 알아요…♪그러면, 제게 맡겨 주세요…」
+    ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
-        PRINTFORMW 「少し、難しいですけど……んっ、あむっ、ちゅう…」
-        PRINTFORMW 「やって、みますね…そのままゆっくり、していて下さい…」
-    ;その他の場合
+        PRINTFORMW 「조금, 어렵지만……읏, 하웁, 츄우…」
+        PRINTFORMW 「해, 볼게요…그대로 느긋하게, 계세요…」
+    ;그 이외
     ELSE
-        PRINTFORMW 「胸も口も使えって…くっ、わかりましたから…動かないでください…」
+        PRINTFORMW 「가슴도 입도 쓰면서…큭, 알겠으니까…움직이지 마세요…」
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
         ;음란
         IF TALENT:음란
-            ;乱数分岐:3
+            ;난수 분기:3
             IF RAND:3 == 0
-                PRINTFORMW 「はっ…あむっ、はふっ…気持ちいい、でしょう…腰が、浮いてますよ？」
-                PRINTFORMW 「私の…おっぱいとお口…おまんこだと思ってくれていいですから…」
-                PRINTFORMW 「%CALLNAME:MASTER%も動いていいですよ…お好きなように、使って下さい…♪」
-            ;乱数分岐:2
+                PRINTFORMW 「핫…핥짝, 하훗…기분, 좋으시죠…허리가, 떠있다고요？」
+                PRINTFORMW 「제…가슴과 입…보지라고 생각해도 좋으니까…」
+                PRINTFORMW 「%CALLNAME:MASTER%도 움직여도 괜찮아요…좋을대로, 써주세요…♪」
+            ;난수 분기:2
             ELSEIF RAND:2 == 0
-                PRINTFORMW 「じゅっ、じゅっ、っちゅるっ…れるぅ…亀頭がもう…ぱんぱんです…♪」
-                PRINTFORMW 「でも、だめです…こうやって、おっぱいで締めつけてっ…！」
-                PRINTFORMW 竿が乳房で締めつけられて精液が進めず、先端の感覚ばかりが敏感になっていく…
-                PRINTFORMW 「はっ、はっ…簡単には、イかせません…♪%CALLNAME:MASTER%の一番先っぽ、可愛がってあげますよ…♪」
-            ;その他の場合
+                PRINTFORMW 「쮸릅, 츄웁, 푸하앗…핥짝…귀두가 이젠…빵빵하네요…♪」
+                PRINTFORMW 「그래도, 안돼요…이렇게, 가슴으로 꽉 조여서…！」
+                PRINTFORMW 육봉이 유방에 꽉 조여져 정액이 나오지 않고, 끝 부분의 감각만이 민감해진다…
+                PRINTFORMW 「하앗, 핫…간단하게, 가게하지 않아요…♪%CALLNAME:MASTER%의 끝 부분, 귀여워해 줄게요…♪」
+            ;그 이외
             ELSE
-                PRINTFORMW 「%CALLNAME:MASTER%からしたら…とってもいい眺めでは？」
-                PRINTFORMW 「ふふっ、私もです…おっぱいに挟まれて苦しそうなおちんちんを、」
-                PRINTFORMW 「お口で包んであげる瞬間は…背筋がぞくぞく、しちゃうんですよ…♪」
+                PRINTFORMW 「%조사처리(CALLNAME:MASTER,"이")% 본다면…무척이나 좋은 풍경인게？」
+                PRINTFORMW 「후훗, 저도예요…가슴에 끼워져 괴로운 듯한 자지를,」
+                PRINTFORMW 「입으로 감싸는 순간은…등골이 오싹오싹, 해요…♪」
             ENDIF
-        ;その他の場合
+        ;그 이외
         ELSE
-            ;乱数分岐:2
+            ;난수 분기:2
             IF RAND:2 == 0
-                PRINTFORMW 「両方でして欲しいなんて…わがままなんですから…」
-                PRINTFORMW 「うまく加減が出来なかったら、ごめんなさいね…んじゅっ、ぐじゅ、じゅるっ…」
-            ;その他の場合
+                PRINTFORMW 「양쪽으로 해주길 바란다라니…제멋대로라니까요…」
+                PRINTFORMW 「제대로 못하면, 미안해요…츄웁, 쮸릅, 츄웃…」
+            ;그 이외
             ELSE
-                PRINTFORMW 「おちんちん、おっきいですね…胸の中に、収まり切らないです…」
-                PRINTFORMW 「でも、私も…胸とお口を使う事には、ちょっと自信がありますから…ふふっ」
+                PRINTFORMW 「자지, 크네요…가슴 사이에, 끼워지지 않아요…」
+                PRINTFORMW 「하지만, 저도…가슴과 입을 쓰는 일엔, 좀 자신이 있으니까…후훗」
             ENDIF
         ENDIF
-    ;屈服刻印Lv3
+    ;굴복각인Lv3
     ELSEIF MARK:굴복각인 == 3
-        ;乱数分岐:2
+        ;난수 분기:2
         IF RAND:2 == 0
-            PRINTFORMW 「上目遣いで…？はい」
-            PRINTFORMW 「んっ…あむっ…ふっ、じゅっ…いつでも、どうぞ…」
-        ;その他の場合
+            PRINTFORMW 「눈을 치켜 뜨고…？네」
+            PRINTFORMW 「읏…하웁…흣, 츄웁…부디, 언제든지…」
+        ;그 이외
         ELSE
-            PRINTFORMW 「上手に出来てますか…？」
-            PRINTFORMW 「んちゅ、んっ…はい、胸の方もちゃんと使いますね…」
+            PRINTFORMW 「잘 하고 있나요…？」
+            PRINTFORMW 「츄웁, 읏…네, 가슴도 제대로 쓸게요…」
         ENDIF
-    ;その他の場合
+    ;그 이외
     ELSE
-        PRINTFORMW 「早く、終わらせて下さい…！」
-        PRINTFORMW 衣玖は不快そうにしながら、強引にペニスへ刺激を与え続けている…
+        PRINTFORMW 「빨리, 끝내 주세요…！」
+        PRINTFORMW 이쿠는 불쾌해 하면서, 페니스에 억지로 자극을 주고 있다…
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
 ;乳合わせ
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_210
+@KOJO_51_TRAIN_MESSAGE_S_COM_210
 ;PRINTFORMW 
 
 ;-------------------------------------------------
 ;乳合わせ見せつけ
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_211
+@KOJO_51_TRAIN_MESSAGE_S_COM_211
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;スパンキング
+;스팽킹
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_220
-;初回実行時
+;처음
 IF RESULT:1 == 1
-    ;屈服刻印Lv3
+    ;굴복각인Lv3
     IF MARK:굴복각인 == 3
-        PRINTFORMW 「はあっ！くううっ…」
-        PRINTFORMW 「お尻が…痛い、痛いです…ううっ、あうっ…」
-        PRINTFORMW 衣玖は歯を食いしばって痛みに耐えている…
-    ;その他の場合
+        PRINTFORMW 「하앗！크으으으…」
+        PRINTFORMW 「엉덩이가…아파, 아파요…우읏, 아윽…」
+        PRINTFORMW 이쿠는 이를 악물어 아픔을 견디고 있다…
+    ;그 이외
     ELSE
-        PRINTFORMW 「痛いっ！痛いっ！やめてえっ！」
-        PRINTFORMW 「どうして…どうしてこんな事するんですか…」
-        PRINTFORMW 衣玖は涙ながらにあなたの非道を訴えている…
+        PRINTFORMW 「아팟！아파앗！그마안！」
+        PRINTFORMW 「어째서…어째서 이런 짓을 하는 건가요…」
+        PRINTFORMW 이쿠는 눈물을 흘리며 당신의 만행을 호소하고 있다…
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;マゾっ気Lv3以上
+        ;마조끼Lv3이상
         IF ABL:마조끼 >= 3
-            PRINTFORMW 「ふああっ！はああっ…衣玖のお尻…どうですか…？」
-            PRINTFORMW 「綺麗…ですか…？ふふっ、ありがとうございます…」
-            PRINTFORMW 「いい声で鳴きますから、%CALLNAME:MASTER%も衣玖のお尻、可愛がってくださいね…？」
-        ;その他の場合
+            PRINTFORMW 「후아앗！하아앗…이쿠의 엉덩이…어떤가요…？」
+            PRINTFORMW 「예쁘다…인가요…？후훗, 감사합니다…」
+            PRINTFORMW 「좋은 소리로 울테니까, %CALLNAME:MASTER%도 이쿠의 엉덩이를, 귀여워해 주세요…？」
+        ;그 이외
         ELSE
-            PRINTFORMW 「乱暴は止めてっ…あぁうっ、痛いっ…」
+            PRINTFORMW 「난폭한 짓은 멈춰 주세요…아으윽, 아팟…」
         ENDIF
-    ;その他の場合
+    ;그 이외
     ELSE
     ENDIF
 ENDIF
@@ -601,7 +717,6 @@ ENDIF
 ;-------------------------------------------------
 ;鞭
 ;-------------------------------------------------
-[SKIPSTART]
 @KOJO_51_TRAIN_MESSAGE_S_COM_221
 ;PRINTFORMW 
 
@@ -687,57 +802,56 @@ IF TEQUIP:42 == 0
 ELSE
     ;PRINTFORMW 
 ENDIF
-[SKIPEND]
 
 ;-------------------------------------------------
-;イラマチオ
+;이라마치오
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_230
-;初回実行時
+;처음
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모 == 1
-        PRINTFORMW 「うううっ…んぐっ、んんん…えぐっ、おごおっ、んぶぅ…」
-        PRINTFORMW 衣玖は涙目になりながら、精一杯あなたのペニスに奉仕しようとしている…
-    ;その他の場合
+        PRINTFORMW 「우으윽…그우윽, 우으읏…게흑, 콜록, 응부읏…」
+        PRINTFORMW 이쿠는 눈물이 맺힌 채로, 당신의 페니스에 최대한 봉사하려 하고 있다…
+    ;그 이외
     ELSE
-        PRINTFORMW 「んんんんっ！？んぐううっ…おえっ、えううっ、んうううっ」
-        PRINTFORMW 衣玖はあなたを突き放そうとするが、あなたは頭を抑え込み、それを許さない…
-        PRINTFORMW （苦しいっ、息がっ、出来なっ…）
+        PRINTFORMW 「으우으읏！？그우으으윽…게헥, 에으윽, 우으으으읏」
+        PRINTFORMW 이쿠는 당신을 떼내려고 했지만, 당신은 머리를 붙잡고, 그것을 허락하지 않는다…
+        PRINTFORMW （괴로웟, 숨을, 쉴 수가…）
     ENDIF
-;２回目以降
+;2회째 이후
 ELSE
     ;연모
     IF TALENT:연모
-        ;奉仕精神Lv5以上
+        ;봉사정신Lv5이상
         IF ABL:봉사정신 >= 5
-            ;乱数分岐:2
+            ;난수 분기:2
             IF RAND:2 == 0
-                PRINTFORMW 「んっ、えうっ、うううぅうぅ～っ……ぷはっ、はあっ、はあっ」
-                PRINTFORMW 衣玖は喉の一番奥までペニスを押し込まれ、さすがに苦しそうだ…
-                PRINTFORMW 「ふふっ…頭の中まで犯されてるみたいです…」
-                PRINTFORMW 「いいですよ…はあ、はあ、衣玖のお口…好きにしてください…」
-                PRINTFORMW そういって衣玖は大きく口を開き、あなたに差し出した…
-            ;その他の場合
+                PRINTFORMW 「읏, 에윽, 우으으우으～읏……푸핫, 하앗, 하앗」
+                PRINTFORMW 이쿠는 목의 가장 안쪽까지 페니스가 밀어넣어져, 역시나 괴로운 듯하다…
+                PRINTFORMW 「후훗…머릿속까지 범해지는 것 같아요…」
+                PRINTFORMW 「괜찮아요…하아, 하아, 이쿠의 입…좋을대로 써주세요…」
+                PRINTFORMW 이쿠는 그렇게 말하면서 입을 크게 벌려, 당신에게 내밀었다…
+            ;그 이외
             ELSE
-                PRINTFORMW 「んおっ、んぐっ、れるっ、ふぐううっ…衣玖のお口…気持ちいい、ですか…？」
-                PRINTFORMW 衣玖は苦しそうにしながらも、柔らかな微笑みをあなたに向けている…
-                PRINTFORMW 「大丈夫ですから…続きをどうぞ…衣玖の喉にあなたの精子、いっぱい出してください…♪」
+                PRINTFORMW 「츄웁, 구으윽, 핥짝, 크우응…이쿠의 입…기분 좋은, 가요…？」
+                PRINTFORMW 이쿠는 괴로워 하면서도, 당신에게 부드러운 미소를 지었다…
+                PRINTFORMW 「괜찮으니까…부디 계속…이쿠의 목구멍에 당신의 정자를, 잔뜩 사정해 주세요…♪」
             ENDIF
-        ;その他の場合
+        ;그 이외
         ELSE
-            PRINTFORMW 「んふううぅっ、んぐうっ、んんっ、えううっ！」
-            PRINTFORMW 「乱暴は…はあ、はあ…いけませんよ？あなただから、許してあげるんですから…」
+            PRINTFORMW 「후으우으윽, 크우응, 으읏, 에으윽！」
+            PRINTFORMW 「난폭하게는…하아, 하아…안된다고요？당신이니까, 용서해주는 거예요…」
         ENDIF
-    ;その他の場合
+    ;그 이외
     ELSE
-        ;屈服刻印Lv3
+        ;굴복각인Lv3
         IF MARK:굴복각인 == 3
-            PRINTFORMW 衣玖は時折ペニスを吐き出しそうになりながらも、ペニスを喉奥で受け入れている…
-        ;その他の場合
+            PRINTFORMW 이쿠는 가끔씩 페니스를 토해낼 듯 하면서도, 페니스를 목 안쪽으로 받아들이고 있다…
+        ;그 이외
         ELSE
-            PRINTFORMW 「ううぅぅうっ…おうっ、やめっ、えうううぅぅ…嫌っ、んんううぅ…」
-            PRINTFORMW あなたは衣玖の顔を苦痛に歪ませることにこの上ない興奮を感じた…
+            PRINTFORMW 「우으으윽…케헥, 그만, 에우으으읏…싫엇, 아우욱…」
+            PRINTFORMW 당신은 이쿠의 얼굴이 고통에 일그러지는 것을 보며 더 없을 흥분을 느꼈다…
         ENDIF
     ENDIF
 ENDIF
@@ -745,7 +859,6 @@ ENDIF
 ;-------------------------------------------------
 ;フィストファック
 ;-------------------------------------------------
-[SKIPSTART]
 @KOJO_51_TRAIN_MESSAGE_S_COM_231
 ;PRINTFORMW 
 
@@ -864,28 +977,27 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_270
 ;PRINTFORMW 
-[SKIPEND]
 
 ;-------------------------------------------------
-;足を舐める
+;발핥기
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_271
 ;연모
 IF TALENT:연모
-    ;サドっ気Lv3以上
+    ;새드끼Lv3이상
     IF ABL:새드끼 >= 3
-        ;足に汚れ
-        ;足に汚れが付くのは足扱きした場合のみでしょう…ということで簡単に分岐を設定
+        ;다리가 더럽혀짐
+        ;다리가 더럽혀진 경우는 풋잡했을 경우만이죠…라는 것으로 간단하게 분기 설정
         IF STAIN:6 & 4
-            ;乱数分岐:2
+            ;난수 분기:2
             IF RAND:2 == 0
-                PRINTFORMW 「自分で出したものは自分で責任を取る、そうでしょう？」
-                PRINTFORMW 「だからこれは当たり前の事なんです…ふふっ、精液まだ足に残ってます…」
-                PRINTFORMW 「%CALLNAME:MASTER%がそんなに出すのが悪いんですからね…♪」
-            ;その他の場合
+                PRINTFORMW 「스스로 싼 것은 스스로 책임 진다, 그렇죠？」
+                PRINTFORMW 「그러니 이건 당연한 일이에요…후훗, 정액이 아직 다리에 남아 있어요…」
+                PRINTFORMW 「%조사처리(CALLNAME:MASTER,"이")% 그렇게나 싼 게 잘못이니까요…♪」
+            ;그 이외
             ELSE
-                PRINTFORMW 「信じられません…%CALLNAME:MASTER%は今、自分の精液を舐め取っているんですよ？」
-                PRINTFORMW 「ああ汚らしい、頑張ってさっさと綺麗にして下さい」
+                PRINTFORMW 「믿을 수 없어요…%조사처리(CALLNAME:MASTER,"은")% 지금, 자신의 정액을 핥고 있다고요？」
+                PRINTFORMW 「아아 추접해라, 힘내서 빨리 깨끗하게 만들어 주세요」
             ENDIF
         ELSE
         ENDIF
@@ -897,365 +1009,366 @@ ENDIF
 ;-------------------------------------------------
 ;叩いてもらう
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_272
+@KOJO_51_TRAIN_MESSAGE_S_COM_272
 ;PRINTFORMW 
 
 ;-------------------------------------------------
 ;鞭で打ってもらう
 ;-------------------------------------------------
-;@KOJO_51_TRAIN_MESSAGE_S_COM_273
+@KOJO_51_TRAIN_MESSAGE_S_COM_273
 ;PRINTFORMW 
 
 ;-------------------------------------------------
-;コンドーム
-;TEQUIP:31 == 0で解除口上
-;TFLAG:99により着脱者と状況が分岐
-;0=調教者奴隷双方が選択できるかつ調教者が着脱
-;1=調教者奴隷双方が選択できるかつ奴隷が着脱
-;2=調教者しか着脱できない
-;3=奴隷しか着脱できない
+;콘돔
+;TEQUIP:31 == 0 해제 구상
+;TFLAG:99로 착탈자와 상황 분기
+;0=조교자 노예 쌍방 선택 가능+조교자가 착탈
+;1=조교자 노예 쌍방 선택 가능+노예가 착탈
+;2=조교자밖에 착탈 할 수 없음
+;3=노예밖에 착탈 할 수 없음
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_290
 SELECTCASE TFLAG:99
     CASE 0
-        ;解除
+        ;해제
         IF TEQUIP:PLAYER:31 == 0
             ;PRINTFORMW 
-        ;装着時
+        ;장착시
         ELSE
             ;PRINTFORMW 
         ENDIF
     CASE 1
-        ;解除
+        ;해제
         IF TEQUIP:31 == 0
             ;PRINTFORMW 
-        ;装着時
+        ;장착시
         ELSE
             ;PRINTFORMW 
         ENDIF
     CASE 2
-        ;解除
+        ;해제
         IF TEQUIP:PLAYER:31 == 0
             ;PRINTFORMW 
-        ;装着時
+        ;장착시
         ELSE
-            ;初回実行時
+            ;처음
             IF RESULT:1 == 1
-                ;처녀である
+                ;처녀
                 IF TALENT:처녀
                     ;연모
                     IF TALENT:연모
-                        PRINTFORMW 「これが、これから私の膣に…入ってしまうんですか…？」
-                        PRINTFORMW 衣玖は息を飲み、あなたのペニスをまじまじと見つめている…
-                    ;屈服刻印Lv3
+                        PRINTFORMW 「이게, 지금부터 제 질에…들어가는 건가요…？」
+                        PRINTFORMW 이쿠는 숨을 삼키며, 당신의 페니스를 초롱초롱하게 응시하고 있다…
+                    ;굴복각인Lv3
                     ELSEIF MARK:굴복각인 == 3
-                        PRINTFORMW 「それは…避妊具、ですか…？お気遣い、感謝します…」
-                    ;その他の場合
+                        PRINTFORMW 「그건…피임구, 인가요…？배려해 주셔서, 감사합니다…」
+                    ;그 이외
                     ELSE
-                        PRINTFORMW 「…これをつけて、これから何を、する気なんですか…？」
-                        PRINTFORMW 衣玖が怯えた目であなたを見ている…犯されてしまうという恐怖が、ありありと伝わってくる…
+                        PRINTFORMW 「…이걸 붙여서, 지금부터 무슨 짓을, 할 생각인가요…？」
+                        PRINTFORMW 이쿠가 겁먹은 눈으로 당신을 보고 있다…
+                        PRINTFORMW 범해져 버린다는 공포가, 또렷하게 전해져 온다…
                     ENDIF
                 ;연모
                 ELSEIF TALENT:연모
-                    ;膣出し経験済み
+                    ;질내사정 경험
                     IF CFLAG:5401 == 1
-                        PRINTFORMW 「避妊は…ええ、大切でしょうね」
-                        PRINTFORMW 「で、でも…私はどちらでも、構いませんからね…？」
-                    ;膣出し未経験
+                        PRINTFORMW 「피임은…네에, 중요하죠」
+                        PRINTFORMW 「그, 그래도…저는 어느 쪽이든, 상관 없으니까요…？」
+                    ;질내사정 미경험
                     ELSE
-                        PRINTFORMW 「これが、避妊具なのですね…？つけるという事は、その…」
-                        PRINTFORMW 「いえ、何でもありません…」
+                        PRINTFORMW 「이게, 피임구인 거죠…？붙인다는 것은, 그…」
+                        PRINTFORMW 「아뇨, 아무것도 아니에요…」
                     ENDIF
-                ;屈服刻印Lv3
+                ;굴복각인Lv3
                 ELSEIF MARK:굴복각인 == 3
-                    ;膣出し経験済み
+                    ;질내사정 경험
                     IF CFLAG:5401 == 1
-                        PRINTFORMW 「…心変わりですか？今までこんなもの、つけませんでしたよね」
-                        PRINTFORMW 「私が決める事ではありませんが…きっとその方がいいのでしょう…」
-                    ;その他の場合
+                        PRINTFORMW 「…변덕인가요？지금까진 이런 걸, 붙이지 않았을 텐데요」
+                        PRINTFORMW 「제가 결정할 일은 아닙니다만…분명 이러는 편이 좋을 거예요…」
+                    ;그 이외
                     ELSE
-                        PRINTFORMW 「避妊には気を遣うのですね…でも、私としてもその方がまだ助かります…」
+                        PRINTFORMW 「피임은 신경을 쓰는군요…그렇지만, 저역시도 그러는 게 편해요」
                     ENDIF
-                ;その他の場合
+                ;그 이외
                 ELSE
-                    PRINTFORMW 「何を今さら、そんなもの…！」
-                    PRINTFORMW 「…くっ、私をどうしたいのです、あなたは…」
+                    PRINTFORMW 「이제와서 무슨, 그런 걸…！」
+                    PRINTFORMW 「…큭, 저를 어쩌고 싶은 건가요, 당신은…」
                 ENDIF
-            ;２回目以降
+            ;2회째 이후
             ELSE
                 ;연모
                 IF TALENT:연모
-                    ;妊娠である
+                    ;임신
                     IF TALENT:임신
-                        ;淫乱である
+                        ;음란
                         IF TALENT:음란
-                            PRINTFORMW 「ふふっ、%CALLNAME:MASTER%のそういう優しいところ、好きですよ」
-                            PRINTFORMW 「でも…妊婦のおまんこ、直接味わえるのは今のうちなんですけど…してみたくは、ありませんか…♪」
-                        ;その他の場合
+                            PRINTFORMW 「후훗, %CALLNAME:MASTER%의 그런 상냥한 모습, 좋아해요」
+                            PRINTFORMW 「하지만…임산부의 보지, 직접 맛볼 수 있는 기회는 지금뿐입니다만…맛보고 싶진, 않은가요…♪」
+                        ;그 이외
                         ELSE
-                            PRINTFORMW 「わざわざ気を遣ってもらって、ありがとうございます…」
-                            PRINTFORMW 「子供が産まれたら…またいっぱい、膣に注いで下さいね…♪」
+                            PRINTFORMW 「일부러 신경써 주셔서, 감사합니다…」
+                            PRINTFORMW 「아이가 태어나면…또 잔뜩, 질에 쏟아 주세요…♪」
                         ENDIF
-                    ;淫乱であるまたはＶ感覚Lv5以上
+                    ;음란 또는 V감각Lv5이상
                     ELSEIF TALENT:음란 || ABL:V감각 >= 5
-                        ;膣出し経験済み
+                        ;질내사정 경험
                         IF CFLAG:5401 == 1
-                            ;乱数分岐:5
+                            ;난수 분기:5
                             IF RAND:5 == 0
-                                PRINTFORMW 「%CALLNAME:MASTER%の精液で、体の奥を満たされる感覚…」
-                                PRINTFORMW 「出来れば何度でも、味わいたいのですけど…いけません、でしょうか…」
-                            ;乱数分岐:4
+                                PRINTFORMW 「%CALLNAME:MASTER%의 정액으로, 몸 안쪽이 채워지는 감각…」
+                                PRINTFORMW 「할 수 있다면 몇번이든, 맛보고 싶지만…안 되나요…」
+                            ;난수 분기:4
                             ELSEIF RAND:4 == 0
-                                PRINTFORMW 「はい、ぴったり隙間の無いようにつけてあげましたよ」
-                                PRINTFORMW 「どうせつけるなら…生でするのと同じくらい気持ち良くなりたいですよね」
-                            ;乱数分岐:3
+                                PRINTFORMW 「네, 틈새가 없도록 붙여 드렸어요」
+                                PRINTFORMW 「어차피 붙일거라면…생으로 하는 것과 같을 정도로 기분 좋아지고 싶어요」
+                            ;난수 분기:3
                             ELSEIF RAND:3 == 0
-                                PRINTFORMW 「ううん…%CALLNAME:MASTER%のおちんちん、直接感じたいんですが…」
-                            ;乱数分岐:2
+                                PRINTFORMW 「우응…%CALLNAME:MASTER%의 자지, 직접 느끼고 싶은데요…」
+                            ;난수 분기:2
                             ELSEIF RAND:2 == 0
-                                PRINTFORMW 「そんな物…付けない方が衣玖の膣、いっぱい味わえますよ？」
-                            ;その他の場合
+                                PRINTFORMW 「그런 물건…붙이지 않는 쪽이 이쿠의 질을, 잔뜩 맛볼 수 있다고요？」
+                            ;그 이외
                             ELSE
-                                PRINTFORMW 「精液を子宮に注ぎ込まれるのって、とっても気持ちいいんですよね…」
-                                PRINTFORMW 衣玖は妖しい視線をこちらに向けている…
+                                PRINTFORMW 「정액을 자궁에 쏟아내는 게, 무척이나 기분 좋지요…」
+                                PRINTFORMW 이쿠는 이쪽을 요염한 시선으로 보고 있다…
                             ENDIF
-                        ;その他の場合
+                        ;그 이외
                         ELSE
-                            ;乱数分岐:2
+                            ;난수 분기:2
                             IF RAND:2 == 0
-                                PRINTFORMW 「絶対…絶対に、つけない方がいいと思うんです…」
-                                PRINTFORMW 「頑張っておまんこ締めて、おちんちん思いっきり気持ち良くしますから…」
-                                PRINTFORMW 「どうか衣玖の子宮に…%CALLNAME:MASTER%のお情けを、頂けませんか…」
-                            ;その他の場合
+                                PRINTFORMW 「분명…분명히, 붙이지 않는 쪽이 기분 좋다고 생각해요…」
+                                PRINTFORMW 「힘내서 보지로 조여, 자지 마음껏 기분 좋게 해드릴 테니까…」
+                                PRINTFORMW 「부디 이쿠의 자궁에…%CALLNAME:MASTER%의 정액을, 받을 수 없을까요…」
+                            ;그 이외
                             ELSE
-                                PRINTFORMW 「もう私のおまんこ…ゴムがついたのじゃ、満足出来ないんですよぉ…」
-                                PRINTFORMW 「生のおちんちんで、膣を思いっきり擦られて、ぐちゃぐちゃに、なりたいんです…！」
-                                PRINTFORMW 「妊娠してもいいですから…%CALLNAME:MASTER%の精液を私の奥で、感じさせて下さい…お願いですからぁ…！」
+                                PRINTFORMW 「이제 제 보지는…콘돔이 붙어 있으면, 만족할 수 없어요…」
+                                PRINTFORMW 「생 자지로, 질이 마음껏 문질러져, 질척질척하게, 되고 싶어요…！」
+                                PRINTFORMW 「임신해도 좋으니…%CALLNAME:MASTER%의 정액을 제 안에서, 느끼게 해주세요…부탁이니까아…！」
                             ENDIF
                         ENDIF
-                    ;膣出し経験済み
+                    ;질내사정 경험
                     ELSEIF CFLAG:5401 == 1
-                        ;乱数分岐:3
+                        ;난수 분기:3
                         IF RAND:3 == 0
-                            PRINTFORMW 「その…いつでも、していいですよ？別に避妊具を、つけなくても…」
-                        ;乱数分岐:2
+                            PRINTFORMW 「그…언제든지, 해도 괜찮다고요？딱히 피임구를, 붙이지 않아도…」
+                        ;난수 분기:2
                         ELSEIF RAND:2 == 0
-                            PRINTFORMW 「あら…付けちゃうんですね…その、な、生じゃダメ…でしょうか…？」
-                        ;その他の場合
+                            PRINTFORMW 「어라…붙이는 건가요…그, 새, 생으론 안 되…나요…？」
+                        ;그 이외
                         ELSE
-                            PRINTFORMW 「子を儲けようとしない、ただ快楽を貪るセックス…」
-                            PRINTFORMW 「わかりました…%CALLNAME:MASTER%がそういう気分であるなら、付き合いましょう…」
+                            PRINTFORMW 「아이를 갖기 위함이 아닌, 단지 쾌락을 탐하는 섹스…」
+                            PRINTFORMW 「알겠습니다…%조사처리(CALLNAME:MASTER,"이")% 그런 기분이라면, 함께 하죠…」
                         ENDIF
-                    ;その他の場合
+                    ;그 이외
                     ELSE
-                        ;乱数分岐:3
+                        ;난수 분기:3
                         IF RAND:3 == 0
-                            PRINTFORMW （これをつけずに膣で出されたら…どんな感じなのでしょう）
-                        ;乱数分岐:2
+                            PRINTFORMW （이걸 붙이지 않고 질에 사정하면…어떤 느낌일까요）
+                        ;난수 분기:2
                         ELSEIF RAND:2 == 0
-                            PRINTFORMW 「人間の間では…性行為をする時はこれをつけるのが普通なのでしょうか…？」
-                            PRINTFORMW 「いやその…他の妖怪がどうだとかなんて、考えた事もないですけど…！」
-                        ;その他の場合
+                            PRINTFORMW 「인간 사이에선…성행위를 할 때엔 이것을 붙이는 게 보통인 건가요…？」
+                            PRINTFORMW 「아니 그게…다른 요괴는 어떨지는, 생각하지도 않았지만…！」
+                        ;그 이외
                         ELSE
-                            PRINTFORMW 「上手につきましたね…それじゃあえっち、しましょうか…？」
+                            PRINTFORMW 「잘 붙였네요…그러면 야한 일, 할까요…？」
                         ENDIF
                     ENDIF
-                ;妊娠である
+                ;임신
                 ELSEIF TALENT:임신 == 1
-                    PRINTFORMW 「妊婦を抱くために、わざわざそんなものを用意して…」
-                ;淫乱である
+                    PRINTFORMW 「임산부를 안기 위해, 일부러 그런 것까지 준비하고…」
+                ;음란
                 ELSEIF TALENT:음란 == 1
-                    PRINTFORMW （おちんちんを、直接感じたいと思ってる浅ましい私がいるなんて…）
-                    PRINTFORMW （もう妊娠しようが何をされようが、どうでもいいのかもしれません…）
-                ;屈服刻印Lv3
+                    PRINTFORMW （자지를, 직접 느끼고 싶다는 한심한 제가 있다니…）
+                    PRINTFORMW （이젠 임신하든 뭘하든, 아무래도 좋을지도 몰라요…）
+                ;굴복각인Lv3
                 ELSEIF MARK:굴복각인 == 3
-                    PRINTFORMW 「するならせめて優しく…お願いします」
-                ;その他の場合
+                    PRINTFORMW 「할거라면 하다못해 상냥하게…부탁드려요」
+                ;그 이외
                 ELSE
-                    PRINTFORMW 「ぴったり、張り付いて…気色悪いですね…」
+                    PRINTFORMW 「딱, 붙어서…기분 나쁘네요…」
                 ENDIF
             ENDIF
         ENDIF
     CASE 3
-        ;解除
+        ;해제
         IF TEQUIP:31 == 0
             ;PRINTFORMW 
-        ;装着時
+        ;장착시
         ELSE
             ;PRINTFORMW 
         ENDIF
 ENDSELECT
 
 ;-------------------------------------------------
-;コンドーム精飲(奴)
+;콘돔정액마시기(노) // 노예란 뜻 ㅎ
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_291
 ;연모
 IF TALENT:연모
-    ;精液中毒Lv3以上
+    ;정액중독Lv3이상
     IF ABL:정액중독 >= 3
-        ;乱数分岐:3
+        ;난수 분기:3
         IF RAND:3 == 0
-            PRINTFORMW 「あん…じゅるっ、あむっ、ごくん……ぷはあっ、飲みましたよ…？」
-            PRINTFORMW 「あら…精液飲むところを見て興奮しましたか？…じゃあもう一回、してもいいですよ…♪」
-            PRINTFORMW 衣玖は新しいコンドームを咥えて、あなたの勃起したペニスににじり寄ってきた…
-        ;乱数分岐:2
+            PRINTFORMW 「앙…츄릅, 하웁, 꿀꺽……푸하앗, 마셨다고요…？」
+            PRINTFORMW 「어라…정액을 마시는 모습을 보고 흥분해 버렸나요？…그럼 다시 한번, 해도 좋아요…♪」
+            PRINTFORMW 이쿠는 새로운 콘돔을 문 채로, 당신의 발기한 페니스로 다가왔다…
+        ;난수 분기:2
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「%CALLNAME:MASTER%ったら、ほんとに凄い量なんですから…♪」
-            PRINTFORMW コンドームにたっぷりと溜まった精液を見て、衣玖は眼を輝かせている…
-            PRINTFORMW 「次は、私の中に出してみたくありませんか…？」
-        ;その他の場合
+            PRINTFORMW 「%CALLNAME:MASTER%도 참, 진심으로 굉장한 양이라니까요…♪」
+            PRINTFORMW 이쿠는 콘돔에 듬뿍 모인 정액을 보며, 눈을 반짝이고 있다…
+            PRINTFORMW 「다음엔, 제 안에 싸고 싶지 않나요…？」
+        ;그 이외
         ELSE
-            PRINTFORMW 「みてくださひ…ほらっ…」
-            PRINTFORMW 衣玖の口内は大量の精液と唾液でグチャグチャだ…
-            PRINTFORMW 「ひょれじゃあ、ひただきまふね…うむうっ、んぐっ、んっ…ぷはあっ、はあ…♪」
+            PRINTFORMW 「봐 주세요…자아…」
+            PRINTFORMW 이쿠의 입안은 대량의 정액과 타액으로 질척질척하다…
+            PRINTFORMW 「그러면, 잘 먹겠습니다…우물, 꿀꺽, 읏…푸하앗, 하아…♪」
         ENDIF
-    ;精液中毒Lv1以上
+    ;정액중독Lv1이상
     ELSEIF ABL:정액중독 >= 1
-        PRINTFORMW 「ぐっ、んぐっ、んはあ…」
-        PRINTFORMW 「口の中、あなたの匂いでいっぱいです…」
-        PRINTFORMW 衣玖は空になったコンドームを見せ付けながら、妖しく微笑んでいる…
-    ;その他の場合
+        PRINTFORMW 「하웁, 으응, 하앗…」
+        PRINTFORMW 「입안이, 당신의 냄새로 가득해요…」
+        PRINTFORMW 이쿠는 비워진 콘돔을 보이며, 요염한 미소를 짓고 있다…
+    ;그 이외
     ELSE
-        ;乱数分岐:2
+        ;난수 분기:2
         IF RAND:2 == 0
-            PRINTFORMW 「んぐっ、んぐっ…はあ、んっ、はあ…全部、飲みました…」
-            PRINTFORMW 「ちょっと、濃すぎですよ…喉に引っかかって大変でした…」
-        ;その他の場合
+            PRINTFORMW 「꿀꺽, 꿀꺽…하아, 읏, 하아…전부, 마셨어요…」
+            PRINTFORMW 「조금, 지나치게 진하네요…목에 걸려서 힘들었어요…」
+        ;그 이외
         ELSE
-            PRINTFORMW 「んむっ、んんっ……げほっ、げほっ！…すみません、むせてしまって…」
-            PRINTFORMW 涙目になりながらも笑みを向ける衣玖の背中を、あなたは優しくさすってやった…
+            PRINTFORMW 「우므읏, 으윽……콜록, 켈록！…죄송해요, 목이 막혀서…」
+            PRINTFORMW 당신은 눈물이 맺힌 채로 미소를 짓는 이쿠의 등을, 상냥하게 문질러줬다…
         ENDIF
     ENDIF
-;屈服刻印Lv3
+;굴복각인Lv3
 ELSEIF MARK:굴복각인 == 3
-    PRINTFORMW 「ううっ…うえっ、ぐっ、うぐんっ…」
-    PRINTFORMW 衣玖はあなたの指示通りに、時折むせながら精液を全て飲み込んだ…
-;その他の場合
+    PRINTFORMW 「우윽…우엑, 큭, 우그윽…」
+    PRINTFORMW 이쿠는 당신의 지시대로, 가끔씩 숨이 막히면서도 정액을 전부 삼켰다…
+;그 이외
 ELSE
-    ;乱数分岐:2
+    ;난수 분기:2
     IF RAND:2 == 0
-        PRINTFORMW 「うげっ、ゲホッ、ゲホッ！はあ、はあ…嫌っ、口の中があっ…」
-        PRINTFORMW 「水を…水を下さいっ、気持ち悪くて…」
-        PRINTFORMW 衣玖は口の周りを精液と唾液まみれにして咳きこんでいる…
-    ;その他の場合
+        PRINTFORMW 「으겍, 콜록, 쿨럭！하아, 하아…싫어, 입안이…」
+        PRINTFORMW 「물…물 주세요, 기분 나빠서…」
+        PRINTFORMW 이쿠는 입 주변이 정액과 타액 투성이인 채로 기침하고 있다…
+    ;그 이외
     ELSE
-        PRINTFORMW 「むぐうっ！？うえっ、げえっ、酷い…」
-        PRINTFORMW 「こんなことを、させるためにわざわざ…」
-        PRINTFORMW 衣玖は泣きそうな顔をしながら、あなたに抗議の視線を向けている…
+        PRINTFORMW 「크읍！？우엑, 케헥, 너무해…」
+        PRINTFORMW 「이런 짓을, 시키려고 일부러…」
+        PRINTFORMW 이쿠는 울 것 같은 얼굴로, 당신에게 항의의 시선을 보냈다…
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;コンドーム精飲(助)
+;콘돔정액마시기(조) // 조수란 뜻 ㅎ
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_292
-;助手が従順4以上かつ欲望4以上かつ奉仕精神3以上かつ精液中毒が3以上ないとダメ
-;助手が天子
+;조수 순종4이상+욕망4이상+봉사정신3이상+정액중독3이상이 아니면 안돼
+;텐시가 조수
 IF NO:ASSI == 52 
     IF ABL:정액중독 >= 3
-        PRINTFORMW 『こんなに、たっぷり…ほら見てよ衣玖…ふふ、興奮しない？』
-        PRINTFORMW 『それじゃあ、いただきまーす…♪』
-    ;精液中毒Lv1以上
+        PRINTFORMW 『이렇게나, 듬뿍…자아, 보라고 이쿠…후후, 흥분돼지？』
+        PRINTFORMW 『그러면, 잘 먹겠습니다…♪』
+    ;정액중독Lv1이상
     ELSEIF ABL:정액중독 >= 1
-        PRINTFORMW 『せっかく出してくれたんだもの、ちゃんと飲んであげなきゃご主人様に悪いじゃない？』
-    ;その他の場合
+        PRINTFORMW 『모처럼 사정해 준 건데, 제대로 마시지 않으면 주인님께 미안하지 않아？』
+    ;그 이외
     ELSE
-        PRINTFORMW 『そんな顔しないでよ衣玖。私何か変な事してる？』
+        PRINTFORMW 『그런 얼굴 하지마 이쿠.나, 뭔가 이상한 짓 하고 있는걸까나？』
     ENDIF
-;その他の場合
+;그 이외
 ELSE
 ENDIF
 
 ;-------------------------------------------------
-;ザーメンキス
+;정액키스
 ;-------------------------------------------------
 @KOJO_51_TRAIN_MESSAGE_S_COM_293
-;初キス体験をこのコマンドでさせる猛者はいるのだろうか…
-;助手の精液中毒が3ないと助手精飲出来ないので、天子はやはり開発済みといった感じで
-;助手が天子で助手が調教
+;첫키스 체험을 이 커맨드로 시키는 용자는 있는가…
+;조수의 정액중독이 3이 아니면 조수정음을 할 수 없으므로, 텐시는 역시 개발이 끝난 상태라는 느낌으로
+;텐시가 조수 조수가 조교
 IF ASSIPLAY && NO:ASSI == 52
-    ;口内射精経験なし
+    ;구내사정 경험 없음
     IF CFLAG:5404 == 0
         ;연모
-        ;お口未使用で恋慕はさすがに無いだろうな…
+        ;입을 사용하지 않고 연모는 역시 없겠지…
         IF TALENT:연모
-            PRINTFORMW 『ぷはっ、はあぁ…これがご主人様の味よ衣玖…』
-            PRINTFORMW 『私の味も混ぜてあげたんだから感謝しなさいね？それで感想はいかがかしら』
-            PRINTFORMW 天子に精液を口移しされ驚いた様子の衣玖だったが、徐々に落ち着きを取り戻し、
-            PRINTFORMW そしてゆっくりと口の中のものを飲み込んだ…
-            PRINTFORMW 「んっ、はぁ…これが、%CALLNAME:MASTER%の、味…？」
-            PRINTFORMW 「においが、すごくて…でも、%CALLNAME:MASTER%と、天子の味が、するような気がします…ふふっ」
-        ;その他の場合
+            PRINTFORMW 『푸핫, 하아아…이게 주인님의 맛이야 이쿠…』
+            PRINTFORMW 『내 맛도 섞어 줬으니 감사하라고？그래서 감상은 어떨까나』
+            PRINTFORMW 텐시에게서 정액을 입으로 옮겨받아 놀란 모습의 이쿠였지만, 
+            PRINTFORMW 서서히 침착을 되찾아, 입안의 것을 천천히 삼켰다…
+            PRINTFORMW 「읏, 하아…이게, %CALLNAME:MASTER%의, 맛…？」
+            PRINTFORMW 「냄새가, 굉장해서…하지만, %조사처리(CALLNAME:MASTER,"과")%, 텐시의 맛이, 느껴진 듯한 기분이 들어요…후훗」
+        ;그 이외
         ELSE
-            PRINTFORMW 『んむ、ん…ふふーん…ふん、ふん♪』
-            PRINTFORMW 何か思いついた様子の天子が、精液を口に含んだまま衣玖へとにじり寄る…
-            PRINTFORMW 「何ですか、天子…！あのちょっと、近いのですけど…！んぐむっ、んん～～～！」
-            PRINTFORMW 天子は衣玖をしっかりと捕まえ、精液と唾液の混ざった液体を強引に流し込む…
+            PRINTFORMW 『우물, 응…후흐ー응…흥, 흥♪』
+            PRINTFORMW 뭔갈 떠올린 모습의 텐시가, 정액을 입에 머금은 채로 이쿠에게 다가간다…
+            PRINTFORMW 「뭔가요, 텐시…！저기 잠깐, 가깝습니다만…！우읍, 으응～～～！」
+            PRINTFORMW 텐시는 이쿠를 꽉 잡아, 정액과 타액이 섞인 액체를 억지로 흘려 넣었다…
             PRINTFORML 
-            PRINTFORMW 『ぷはっ、はあぁ…これがご主人様の味よ衣玖…』
-            PRINTFORMW 『私の味も混ぜてあげたんだから感謝しなさいね？それで感想はいかがかしら』
-            PRINTFORMW 「やっ…にが、ううぇ…やだ、きもち、わるい…」
-            PRINTFORMW 『…最初だし仕方ないわね、まあでも…嫌でも慣れてもらわなくちゃね、ふふん…♪』
+            PRINTFORMW 『푸핫, 하아아…이게 주인님의 맛이야 이쿠…』
+            PRINTFORMW 『내 맛도 섞어 줬으니 감사하라고？그래서 감상은 어떨까나』
+            PRINTFORMW 「꺄…으읏, 우에엑…싫어, 기분, 나빠요…」
+            PRINTFORMW 『…처음이니 어쩔 수 없네, 뭐어 그렇지만…싫어도 익숙해지지 않으면, 후흥…♪』
         ENDIF
         CFLAG:5404 == 1
-    ;その他の場合
+    ;그 이외
     ELSE
         ;연모
         IF TALENT:연모
-            ;精液中毒Lv3以上
+            ;정액중독Lv3이상
             IF ABL:정액중독 >= 3
-                ;乱数分岐:3
+                ;난수 분기:3
                 IF RAND:3 == 0
-                    PRINTFORMW 「まだ、口の周りに…れろ、ちゅ…勿体無いです、天子…」
-                    PRINTFORMW 『衣玖だって、もうベタベタじゃない…私が綺麗にしてあげるから』
-                    PRINTFORMW 「天子が、んっ…激しいから…ですよ…おいし、ふむぅ、あむ…」
-                    PRINTFORMW 『んぁ…！もう、口の中、好き勝手して…んっ、んん～…衣玖の味…』
-                ;乱数分岐:2
+                    PRINTFORMW 「아직, 입 주변에…핥짝, 츄릅…아까워요, 텐시…」
+                    PRINTFORMW 『이쿠도, 이젠 끈적끈적하잖아…내가 깨끗하게 해줄게』
+                    PRINTFORMW 「텐시가, 읏…격렬하니까…예요…맛있어, 하웁, 핥짝…」
+                    PRINTFORMW 『아응…！정말, 입 주변, 제멋대로 하긴…읏, 우응～…이쿠의 맛…』
+                ;난수 분기:2
                 ELSEIF RAND:2 == 0
-                    PRINTFORMW 「はっ、ふあ、はむぅ…すごい、量でしたね…ふふっ♪」
-                    PRINTFORMW 『私が飲んじゃいたかったんだけど…あんまり衣玖がもの欲しそうな顔してるものだからねー』
-                    PRINTFORMW 「えっ…そんな…確かに、羨ましいとは、思いましたけど…」
-                    PRINTFORMW 『いいのよいいのよ、さあご主人様、今度は私に頂戴？』
-                ;その他の場合
+                    PRINTFORMW 「핫, 후아, 우물…굉장한, 양이었죠…후훗♪」
+                    PRINTFORMW 『내가 마시고 싶었지만…이쿠가 너무나도 갖고 싶은 듯한 얼굴을 하고 있으니까 말이야ー』
+                    PRINTFORMW 「엣…그런…확실히, 부럽다고는, 생각했지만…」
+                    PRINTFORMW 『괜찮아, 괜찮아, 자아, 주인님, 이번엔 나한테 줄래？』
+                ;그 이외
                 ELSE
-                    PRINTFORMW 「あむぅ…はぅ、いいですよ天子…天子のと混ざって、すごく、興奮します…」
-                    PRINTFORMW 『次は衣玖からして…？衣玖の味も私に教えて欲しいの…』
-                    PRINTFORMW 「ふふっ…ずっとずっと、楽しめそうです…♪じゃあ天子、今度はこちらから」
-                    PRINTFORMW 「どうぞお召し上がりくださいね…」
+                    PRINTFORMW 「츄웁…하응, 좋아요 텐시…텐시의 것과 섞여서, 굉장히, 흥분돼요…」
+                    PRINTFORMW 『다음엔 이쿠가 할래…？이쿠의 맛도 내게 알려줬음 하는걸…』
+                    PRINTFORMW 「후훗…쭈욱, 즐길 수 있을 것 같네요…♪그럼 텐시, 이번엔 이쪽에서」
+                    PRINTFORMW 「부디 드셔 주시길…」
                 ENDIF
-            ;精液中毒Lv1以上
+            ;정액중독Lv1이상
             ELSEIF ABL:정액중독 >= 1
-                PRINTFORMW 『へえ…衣玖ったら積極的ね、舌まで入れられちゃったわよ』
-                PRINTFORMW 「嫌でしたか…？その、つい…」
-                PRINTFORMW 『ふふん、まさか。嬉しいのよ、衣玖もご主人様の精液好きみたいだし、ね』
-            ;その他の場合
+                PRINTFORMW 『헤에…이쿠도 참 적극적이네, 혀까지 넣어 버려선』
+                PRINTFORMW 「싫었나요…？그게, 무심코…」
+                PRINTFORMW 『후흥, 설마.기쁜거야, 이쿠도 주인님의 정액 좋아하는 것, 같고』
+            ;그 이외
             ELSE
-                PRINTFORMW 「んっ！むうっ！ふぁ…」
-                PRINTFORMW 「えう、えほっ、はあ…も、もう天子…イタズラはほどほどにしましょうね…？」
-                PRINTFORMW 『ん～…衣玖とキスするのも悪くないわね、精液なしで次はしてあげるわ』
-                PRINTFORMW 「私の話聞いてます…？」
+                PRINTFORMW 「읏！무읏！후아…」
+                PRINTFORMW 「에윽, 게헥, 하아…테, 텐시 이제…장난은 적당히 해주세요…？」
+                PRINTFORMW 『웅～…이쿠랑 키스하는 것도 나쁘지 않은걸, 다음엔 정액없이 해줄게』
+                PRINTFORMW 「제 이야기 듣고 있나요…？」
             ENDIF
-        ;その他の場合
+        ;그 이외
         ELSE
-            ;精液中毒Lv3以上
+            ;정액중독Lv3이상
             IF ABL:정액중독 >= 3
-                PRINTFORMW 『ふふん…もうすっかり中毒ね、衣玖さん？』
-                PRINTFORMW 「知りません…天子の口の中…とっても、いい匂いがするから…」
-                PRINTFORMW 『へえ…どうやら衣玖がこうなったのは私のせいらしいわね』
-                PRINTFORMW 『ほらご主人様、衣玖が欲しがってるから私の口にもう一度射精しなさい？さあ早く』
-            ;精液中毒Lv1以上
+                PRINTFORMW 『후흥…이젠 완전히 중독이네, 이쿠씨？』
+                PRINTFORMW 「몰라요…텐시의 입 속…무척이나, 좋은 향기가 나니까…」
+                PRINTFORMW 『헤에…아무래도 이쿠가 이렇게 된 건 내 탓 같네』
+                PRINTFORMW 『자 주인님, 이쿠가 원하고 있으니까 한번 더 내 입에 사정해줘？자아 어서』
+            ;정액중독Lv1이상
             ELSEIF ABL:정액중독 >= 1
-                PRINTFORMW 『はぁ、はあ…ちょっとは慣れてきたでしょ？顔がとろけてるわよ、衣玖』
-                PRINTFORMW 「そんな、まさか…！違いますっ、苦しいだけ、ですから…」
-            ;その他の場合
+                PRINTFORMW 『하아, 하아…조금은 익숙해졌지？넋이 나갔다고, 이쿠』
+                PRINTFORMW 「그런, 설마…！달라요, 괴로울 뿐, 이니까…」
+            ;그 이외
             ELSE
-                PRINTFORMW 『ちょ、ちょっと…吐き出しちゃだめよ衣玖、おしおきするわよ？』
-                PRINTFORMW 「だって、こんなの…できません、無理です…」
+                PRINTFORMW 『자, 잠깐…토해내면 안된다고 이쿠, 벌을 줄거야？』
+                PRINTFORMW 「그치만, 이런 건…못해요, 무리예요…」
             ENDIF
         ENDIF
     ENDIF
-;その他の場合
+;그 이외
 ELSE
 ENDIF
 
