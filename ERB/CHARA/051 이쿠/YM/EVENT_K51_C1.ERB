@@ -1472,104 +1472,104 @@ IF TEQUIP:25 == 0
             ELSE
                 PRINTFORMW 「하앗, 하앗, 크흐읏, 하앗」
                 PRINTFORMW 이쿠는 고통에서 해방되었지만, 아직 괴로운 듯 하다…
-    			PRINTFORMW 「이쿠의…부끄러운 모습, 잘 보셨나요…？」
-				PRINTFORMW 「이런 모습을 보여서, 미움받는게 아닌가하고, 무서워서…」
-				PRINTFORMW 「부디…이쿠에게, 노력한 포상을, 주세요…」
-				PRINTFORMW 당신은 이쿠의 몸을 살며시 끌어안아, 상냥하게 머리를 쓰다듬었다…
-			ENDIF
-		;그 이외
-		ELSE
-			;난수 분기:3
-			IF RAND:3 == 0
-				PRINTFORMW 「이번엔 제가 할테니,  스스로 깨끗히 하게 해주세요…」
-				PRINTFORMW 「%CALLNAME:MASTER%에게 라곤 해도…보여 주는 건, 조금 슬퍼요」
-			;난수 분기:2
-			ELSEIF RAND:2 == 0
-				PRINTFORMW 「엉덩이로…하는 건, 싫지 않으니까…」
-				PRINTFORMW 「적어도 좀 더, 상냥하게 해주세요…하아, 후으으…아팠, 어요…」
-			;그 이외
-			ELSE
-				PRINTFORMW 「이젠…나와 버려요…아앗, 용서해…」
-				PRINTFORMW 이쿠는 배설을 참고 있었지만, 플러그가 뽑히자 곧 한계를 맞이했다…
-				PRINTFORMW 「우으…우으으…！뭐든지 좋아요, 부탁이니까…엉덩이를, 깨끗하게 해주세요…」
-			ENDIF
-		ENDIF
-	;마조끼Lv2이상
-	ELSEIF ABL:마조끼 >= 2
-		PRINTFORMW 「우으…윽, 크응…후아아아…！」
-		PRINTFORMW 「아 이젠…싫어…어째서 기분 좋은거야…」
-		PRINTFORMW 이쿠는 굴욕적인 채로, 배설을 마친 쾌감을 거역할 수 없었다…
-		RETURN 0
-	;그 이외
-	ELSE
-		PRINTFORMW 「싫어, 싫어요, 이런 곳에서！」
-		PRINTFORMW 「참을 수, 없……우윽, 우아아아…」
-		PRINTFORMW 이쿠는 웅크린 채로, 얼굴을 가리고 눈물을 흘리고 있다…
-	ENDIF
+                PRINTFORMW 「이쿠의…부끄러운 모습, 잘 보셨나요…？」
+                PRINTFORMW 「이런 모습을 보여서, 미움받는게 아닌가하고, 무서워서…」
+                PRINTFORMW 「부디…이쿠에게, 노력한 포상을, 주세요…」
+                PRINTFORMW 당신은 이쿠의 몸을 살며시 끌어안아, 상냥하게 머리를 쓰다듬었다…
+            ENDIF
+        ;그 이외
+        ELSE
+            ;난수 분기:3
+            IF RAND:3 == 0
+                PRINTFORMW 「이번엔 제가 할테니,  스스로 깨끗히 하게 해주세요…」
+                PRINTFORMW 「%CALLNAME:MASTER%에게 라곤 해도…보여 주는 건, 조금 슬퍼요」
+            ;난수 분기:2
+            ELSEIF RAND:2 == 0
+                PRINTFORMW 「엉덩이로…하는 건, 싫지 않으니까…」
+                PRINTFORMW 「적어도 좀 더, 상냥하게 해주세요…하아, 후으으…아팠, 어요…」
+            ;그 이외
+            ELSE
+                PRINTFORMW 「이젠…나와 버려요…아앗, 용서해…」
+                PRINTFORMW 이쿠는 배설을 참고 있었지만, 플러그가 뽑히자 곧 한계를 맞이했다…
+                PRINTFORMW 「우으…우으으…！뭐든지 좋아요, 부탁이니까…엉덩이를, 깨끗하게 해주세요…」
+            ENDIF
+        ENDIF
+    ;마조끼Lv2이상
+    ELSEIF ABL:마조끼 >= 2
+        PRINTFORMW 「우으…윽, 크응…후아아아…！」
+        PRINTFORMW 「아 이젠…싫어…어째서 기분 좋은거야…」
+        PRINTFORMW 이쿠는 굴욕적인 채로, 배설을 마친 쾌감을 거역할 수 없었다…
+        RETURN 0
+    ;그 이외
+    ELSE
+        PRINTFORMW 「싫어, 싫어요, 이런 곳에서！」
+        PRINTFORMW 「참을 수, 없……우윽, 우아아아…」
+        PRINTFORMW 이쿠는 웅크린 채로, 얼굴을 가리고 눈물을 흘리고 있다…
+    ENDIF
 ;장착시
 ELSE
-	;처음
-	IF RESULT:1 == 1
-		PRINTFORMW 「뭘, 한 건가요…！우윽…배가, 괴로워…！」
-		PRINTFORMW 「싫어…화장실에…가게 해주세요…우으윽！후읏, 」
-	;2회째 이후
-	ELSE
-		;연모
-		IF TALENT:연모
-			;임신
-			IF TALENT:임신 == 1
-				PRINTFORMW 「자, 잠깐…건강을, 위해…？」
-				PRINTFORMW 「쓸데없는 참견이니까…너무, 괴롭히지 말아 주세요…」
-			;그 이외
-			ELSE
-				;마조끼Lv3이상
-				IF ABL:마조끼 >= 3
-					;난수 분기:3
-					IF RAND:3 == 0
-						PRINTFORMW 「저기…뽑지, 말아 주세요…？」
-						PRINTFORMW 「저…배에 관장이 들어오는 느낌, 상당히, 좋아하는 것 같아요…♪」
-						PRINTFORMW 「안에서, 차가운게 퍼져서…온 몸이, 오싹오싹, 해져요…우으응！」
-						PRINTFORMW 「하아, 하아아…이런 변태 천녀라도…사랑해 주실 건가요…？후훗」
-					;난수 분기:2
-					ELSEIF RAND:2 == 0
-						PRINTFORMW 「크응, 으응！후읏, 우으으…」
-						PRINTFORMW 관장액이 채내로 들어갈 때마다, 이쿠는 하반신을 움찔움찔 움직이며 반응하고 있다…
-						PRINTFORMW 「배에, 들어오고, 있어요…아직도, 들어와…아앗…！」
-						PRINTFORMW 「좀 더, 원해요…！괴로운데도…아앗…좀 더, 밀어넣어 주세요…！」
-					;그 이외
-					ELSE
-						PRINTFORMW 「하앗！하앗, 하아…후훗…당신도 참, 악취미라니까요…」
-						PRINTFORMW 이쿠는 하복부의 고통에 시달리면서도, 당신에게 상냥한 미소를 보내고 있다…
-						PRINTFORMW 「당신이 이런 저를 보면서, 흥분한다는 걸, 크응, 알고 있다고요…？」
-						PRINTFORMW 「크으, 아아…이렇게나 부풀어 올라선…마치 임신한 것 같아…후훗♪」
-					ENDIF
-				;그 이외
-				ELSE
-					;난수 분기:2
-					IF RAND:2 == 0
-						PRINTFORMW 「크우읏…정말…정말로 제 이런 모습이, 보고 싶나요…？하우읏…！」
-						PRINTFORMW 이쿠는 심한 고통으로 인해 눈물이 고였지만, 그럼에도 저항없이 관장액을 넣고 있다…
-						PRINTFORMW 「꺄아아…이젠 안돼, 이젠 안돼애…더는, 새어 버려요…」
-						PRINTFORMW 「도와줘…부탁이에요, 정말로 더는, 안되니까…！히윽…아아, %CALLNAME:MASTER%…」
-					;그 이외
-					ELSE
-						PRINTFORMW 「하우으읏…배가아…괴로, 워요…」
-						PRINTFORMW 「부디…이젠, 편하게…해주세요…하지만, 보여주고 싶지 않은데…！」
-						PRINTFORMW 이쿠는 당신에게 매달려, 배설감으로부터의 해방과 수치의 사이에서 고민하고 있다…
-					ENDIF
-				ENDIF
-			ENDIF
-		;마조끼Lv3이상
-		ELSEIF ABL:마조끼 >= 3
-			PRINTFORMW 「하아아…하앗, 하아～～앗…싫어, 배가앗…」
-			PRINTFORMW 「대체 얼마나…넣는 건가요…하아, 읏…굉장해…」
-			PRINTFORMW 이쿠는 부풀어 오른 복부를 스스로 이리저리 쓰다듬고 있다…
-		;그 이외
-		ELSE
-			PRINTFORMW 「그렇게나 넣지 마세요, 배가, 괴롭, 응아아아…」
-			PRINTFORMW 이쿠는 괴로운 듯이 관장액으로 인해 부풀어 오른 배를 안고, 웅크렸다…
-		ENDIF
-	ENDIF
+    ;처음
+    IF RESULT:1 == 1
+        PRINTFORMW 「뭘, 한 건가요…！우윽…배가, 괴로워…！」
+        PRINTFORMW 「싫어…화장실에…가게 해주세요…우으윽！후읏, 」
+    ;2회째 이후
+    ELSE
+        ;연모
+        IF TALENT:연모
+            ;임신
+            IF TALENT:임신 == 1
+                PRINTFORMW 「자, 잠깐…건강을, 위해…？」
+                PRINTFORMW 「쓸데없는 참견이니까…너무, 괴롭히지 말아 주세요…」
+            ;그 이외
+            ELSE
+                ;마조끼Lv3이상
+                IF ABL:마조끼 >= 3
+                    ;난수 분기:3
+                    IF RAND:3 == 0
+                        PRINTFORMW 「저기…뽑지, 말아 주세요…？」
+                        PRINTFORMW 「저…배에 관장이 들어오는 느낌, 상당히, 좋아하는 것 같아요…♪」
+                        PRINTFORMW 「안에서, 차가운게 퍼져서…온 몸이, 오싹오싹, 해져요…우으응！」
+                        PRINTFORMW 「하아, 하아아…이런 변태 천녀라도…사랑해 주실 건가요…？후훗」
+                    ;난수 분기:2
+                    ELSEIF RAND:2 == 0
+                        PRINTFORMW 「크응, 으응！후읏, 우으으…」
+                        PRINTFORMW 관장액이 채내로 들어갈 때마다, 이쿠는 하반신을 움찔움찔 움직이며 반응하고 있다…
+                        PRINTFORMW 「배에, 들어오고, 있어요…아직도, 들어와…아앗…！」
+                        PRINTFORMW 「좀 더, 원해요…！괴로운데도…아앗…좀 더, 밀어넣어 주세요…！」
+                    ;그 이외
+                    ELSE
+                        PRINTFORMW 「하앗！하앗, 하아…후훗…당신도 참, 악취미라니까요…」
+                        PRINTFORMW 이쿠는 하복부의 고통에 시달리면서도, 당신에게 상냥한 미소를 보내고 있다…
+                        PRINTFORMW 「당신이 이런 저를 보면서, 흥분한다는 걸, 크응, 알고 있다고요…？」
+                        PRINTFORMW 「크으, 아아…이렇게나 부풀어 올라선…마치 임신한 것 같아…후훗♪」
+                    ENDIF
+                ;그 이외
+                ELSE
+                    ;난수 분기:2
+                    IF RAND:2 == 0
+                        PRINTFORMW 「크우읏…정말…정말로 제 이런 모습이, 보고 싶나요…？하우읏…！」
+                        PRINTFORMW 이쿠는 심한 고통으로 인해 눈물이 고였지만, 그럼에도 저항없이 관장액을 넣고 있다…
+                        PRINTFORMW 「꺄아아…이젠 안돼, 이젠 안돼애…더는, 새어 버려요…」
+                        PRINTFORMW 「도와줘…부탁이에요, 정말로 더는, 안되니까…！히윽…아아, %CALLNAME:MASTER%…」
+                    ;그 이외
+                    ELSE
+                        PRINTFORMW 「하우으읏…배가아…괴로, 워요…」
+                        PRINTFORMW 「부디…이젠, 편하게…해주세요…하지만, 보여주고 싶지 않은데…！」
+                        PRINTFORMW 이쿠는 당신에게 매달려, 배설감으로부터의 해방과 수치의 사이에서 고민하고 있다…
+                    ENDIF
+                ENDIF
+            ENDIF
+        ;마조끼Lv3이상
+        ELSEIF ABL:마조끼 >= 3
+            PRINTFORMW 「하아아…하앗, 하아～～앗…싫어, 배가앗…」
+            PRINTFORMW 「대체 얼마나…넣는 건가요…하아, 읏…굉장해…」
+            PRINTFORMW 이쿠는 부풀어 오른 복부를 스스로 이리저리 쓰다듬고 있다…
+        ;그 이외
+        ELSE
+            PRINTFORMW 「그렇게나 넣지 마세요, 배가, 괴롭, 응아아아…」
+            PRINTFORMW 이쿠는 괴로운 듯이 관장액으로 인해 부풀어 오른 배를 안고, 웅크렸다…
+        ENDIF
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1579,10 +1579,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_175
 ;解除時
 IF TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1592,10 +1592,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_176
 ;解除時
 IF TEQUIP:25 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1618,57 +1618,57 @@ ENDIF
 ;COM7의 자위라면 아무래도 Ｃ와Ｂ가 증가해 버리므로…
 ;처음
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		IF ABL:A감각 >= 3
-			PRINTFORMW 「%CALLNAME:MASTER%에게 가르침 받은대로…만져 볼게요」
-			PRINTFORMW 「흐앗, 으응…앗…」
-			PRINTFORMW 「기분 좋은게…얼굴에, 나오고 있나요…？역시…후후, 억누를 수, 없어요…♪」
-		;그 이외
-		ELSE
-			PRINTFORMW 「이, 이쪽으로 말인가요…？앞쪽이, 아니라…」
-		ENDIF
-	ELSE
-		PRINTFORMW 「엉덩이를, 스스로라니…」
-		PRINTFORMW 「잘할 수 있을지 모르겠어요…우으…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        IF ABL:A감각 >= 3
+            PRINTFORMW 「%CALLNAME:MASTER%에게 가르침 받은대로…만져 볼게요」
+            PRINTFORMW 「흐앗, 으응…앗…」
+            PRINTFORMW 「기분 좋은게…얼굴에, 나오고 있나요…？역시…후후, 억누를 수, 없어요…♪」
+        ;그 이외
+        ELSE
+            PRINTFORMW 「이, 이쪽으로 말인가요…？앞쪽이, 아니라…」
+        ENDIF
+    ELSE
+        PRINTFORMW 「엉덩이를, 스스로라니…」
+        PRINTFORMW 「잘할 수 있을지 모르겠어요…우으…」
+    ENDIF
 ;2회째 이후
 ELSE
-	;연모
-	IF TALENT:연모
-		;A감각Lv3이상
-		IF ABL:A감각 >= 3
-			;비디오 촬영+노출증3이상
-			IF TEQUIP:50 == 1 && ABL:노출증 >= 3
-				PRINTFORMW 「봐, 주세요…♪제가…아응, 엉덩이로, 가는 모습…」
-				PRINTFORMW 「하～읏, 하아아…배에서…오싹오싹한게, 올라 온다, 온다앗…！」
-			;애널바이브
-			ELSEIF TEQUIP:25 == 1
-				PRINTFORMW 「우아아, 아으응！읏！안을, 파내고 있어요, 크으응！」
-				PRINTFORMW 「…아아！앗！좋아요, 아아…손이, 멈추지 않아…」
-			;애널비즈
-			ELSEIF TEQUIP:25 == 5
-				PRINTFORMW 「잔뜩…밀어넣었, 으니까…♪」
-				PRINTFORMW 「천천히, 한개, 두갯…응앗！…햐앗…응옷, 하우응…」
-				PRINTFORMW 「뽑아내는 게…이거, 정말로 더는…안돼요…머리가…미칠 것, 같아…♪」
-			;그 이외
-			ELSE
-				PRINTFORMW 「싫다…엉덩이인데도, 스스로 기분 좋아지고 있어요…♪」
-				PRINTFORMW 이쿠는 황홀한 표정을 지으며 애널을 계속 만지고 있다…
-			ENDIF
-		;그 이외
-		ELSE
-			PRINTFORMW 「어, 엉덩이라니…스스로 만지는 게 꽤나, 어렵지 않나요…？」
-			PRINTFORMW 「힘 조절이…아읏, 핫…다치거나 하면, 무섭고…」
-		ENDIF
-	;A감각Lv3이상
-	ELSEIF ABL:A감각 >= 3
-		PRINTFORMW 「후읏…하앗…보지 마세요…」
-		PRINTFORMW 손가락의 움직임이 격렬해지고 있다…이쿠는 스스로 느끼는 곳을 찾기 시작했다…
-	;그 이외
-	ELSE
-		PRINTFORMW 「%조사처리(CALLNAME:MASTER,"이")%, 보고 싶을 뿐이죠？우읏…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        ;A감각Lv3이상
+        IF ABL:A감각 >= 3
+            ;비디오 촬영+노출증3이상
+            IF TEQUIP:50 == 1 && ABL:노출증 >= 3
+                PRINTFORMW 「봐, 주세요…♪제가…아응, 엉덩이로, 가는 모습…」
+                PRINTFORMW 「하～읏, 하아아…배에서…오싹오싹한게, 올라 온다, 온다앗…！」
+            ;애널바이브
+            ELSEIF TEQUIP:25 == 1
+                PRINTFORMW 「우아아, 아으응！읏！안을, 파내고 있어요, 크으응！」
+                PRINTFORMW 「…아아！앗！좋아요, 아아…손이, 멈추지 않아…」
+            ;애널비즈
+            ELSEIF TEQUIP:25 == 5
+                PRINTFORMW 「잔뜩…밀어넣었, 으니까…♪」
+                PRINTFORMW 「천천히, 한개, 두갯…응앗！…햐앗…응옷, 하우응…」
+                PRINTFORMW 「뽑아내는 게…이거, 정말로 더는…안돼요…머리가…미칠 것, 같아…♪」
+            ;그 이외
+            ELSE
+                PRINTFORMW 「싫다…엉덩이인데도, 스스로 기분 좋아지고 있어요…♪」
+                PRINTFORMW 이쿠는 황홀한 표정을 지으며 애널을 계속 만지고 있다…
+            ENDIF
+        ;그 이외
+        ELSE
+            PRINTFORMW 「어, 엉덩이라니…스스로 만지는 게 꽤나, 어렵지 않나요…？」
+            PRINTFORMW 「힘 조절이…아읏, 핫…다치거나 하면, 무섭고…」
+        ENDIF
+    ;A감각Lv3이상
+    ELSEIF ABL:A감각 >= 3
+        PRINTFORMW 「후읏…하앗…보지 마세요…」
+        PRINTFORMW 손가락의 움직임이 격렬해지고 있다…이쿠는 스스로 느끼는 곳을 찾기 시작했다…
+    ;그 이외
+    ELSE
+        PRINTFORMW 「%조사처리(CALLNAME:MASTER,"이")%, 보고 싶을 뿐이죠？우읏…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1707,64 +1707,64 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_190
 ;처음
 IF RESULT:1 == 1
-	;연모
-	IF TALENT:연모
-		PRINTFORMW 「앗, 이거…가슴도, 할 수 있나보네요…」
-		PRINTFORMW 「아, 꺄읏…응…♪간지러워, 후후…」
-	;굴복각인３
-	ELSEIF MARK:굴복각인 == 3
-		PRINTFORMW 「힉…읏！응앗…！」
-	;그 이외
-	ELSE
-		PRINTFORMW 「뭣…싫어…！」
-		PRINTFORMW 「이상한 걸…가슴에 대지 마세요！」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        PRINTFORMW 「앗, 이거…가슴도, 할 수 있나보네요…」
+        PRINTFORMW 「아, 꺄읏…응…♪간지러워, 후후…」
+    ;굴복각인３
+    ELSEIF MARK:굴복각인 == 3
+        PRINTFORMW 「힉…읏！응앗…！」
+    ;그 이외
+    ELSE
+        PRINTFORMW 「뭣…싫어…！」
+        PRINTFORMW 「이상한 걸…가슴에 대지 마세요！」
+    ENDIF
 ;2회째 이후
 ELSE
-	;연모
-	IF TALENT:연모
-		;모유체질
-		IF TALENT:134 == 1
-			;분유중독3이상
-			IF ABL:34 >= 3 && RAND:2 == 0
-				PRINTFORML 
-				PRINTFORMW 「싫어어…그렇게, 유두의 주변만…부탁이에요…끝에도 갖다, 대주세요…！」
-				PRINTFORMW 「세게…눌러서…잔뜩, 젖을 내고 싶어요…아아아아…！」
-				PRINTFORMW 「이상해져 버려…싫다, 끝쪽만…꺄으읏, 아아！」
-				PRINTFORMW 「마음껏…짜내도 좋으니까…！빨리, 가슴에 밀크…나오게 해주세요…！」
-			ELSE
-				PRINTFORML 
-				PRINTFORMW 볼록 부풀어 오른 유륜에 로터를 갖다누를 때마다, 모유가 조금씩 스며 나온다…
-				PRINTFORMW 이쿠는 쾌감으로 튈 것같은 몸을 꽉 껴안고, 유두로의 강렬한 진동을 만끽하고 있다…
-				PRINTFORML 「읏！응, 후읏…！젖꼭지, 저려어…」
-				PRINTFORMW 「아하앗, 응앗…아무것도, 안했는데…가슴이, 저려, 서…♪」
-			ENDIF
-		;B감각5이상
-		ELSEIF ABL:B감각 >= 5
-			PRINTFORMW 「아！아앗！읏, ……～～～～～！！」
-			PRINTFORMW 유방을 흔들며 몸부림치는 이쿠의 끝 부분을, 로터로 집요하게 노린다…
-			PRINTFORMW 「안돼애, 잠깐……히야앗！꺄읏, 이거…안돼요…！」
-			PRINTFORMW 「너무…민감해, 져서…！힉, 햐으응！괴로울, 정도…♪」
-		;B감각3이상
-		ELSEIF ABL:B감각 >= 3
-			PRINTFORMW 「아아아……핫, 후아, 아아…」
-			PRINTFORMW 「찌릿찌릿해서…가슴이…앗…뜨거워, 요…」
-		;그 이외　まあほぼ死に口上 // 뭐, 대개 죽은 구상 (연모인데 B감각이 3이하인 경우는 별로 없으니까?)
-		ELSE
-			PRINTFORMW 「하읏, 흐앗, 후훗…♪」
-			PRINTFORMW 「쿡, 간지러워…죄송해요, 무심코, 웃어 버려서…」
-		ENDIF
-	;B감각3이상
-	ELSEIF ABL:B감각 >= 3
-		PRINTFORMW 「시, 싫어, 우으으…！」
-		PRINTFORMW 「이젠, 떼주세요…이 이상은…아아, 으앗…정말…！」
-	;B감각1이상
-	ELSEIF ABL:B감각 >= 1
-		PRINTFORMW 「싫다…이거, 크읏…기분, 나빠요…」
-	;그 이외
-	ELSE
-		PRINTFORMW 「힉, 읏…아픕, 니다…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        ;모유체질
+        IF TALENT:134 == 1
+            ;분유중독3이상
+            IF ABL:34 >= 3 && RAND:2 == 0
+                PRINTFORML 
+                PRINTFORMW 「싫어어…그렇게, 유두의 주변만…부탁이에요…끝에도 갖다, 대주세요…！」
+                PRINTFORMW 「세게…눌러서…잔뜩, 젖을 내고 싶어요…아아아아…！」
+                PRINTFORMW 「이상해져 버려…싫다, 끝쪽만…꺄으읏, 아아！」
+                PRINTFORMW 「마음껏…짜내도 좋으니까…！빨리, 가슴에 밀크…나오게 해주세요…！」
+            ELSE
+                PRINTFORML 
+                PRINTFORMW 볼록 부풀어 오른 유륜에 로터를 갖다누를 때마다, 모유가 조금씩 스며 나온다…
+                PRINTFORMW 이쿠는 쾌감으로 튈 것같은 몸을 꽉 껴안고, 유두로의 강렬한 진동을 만끽하고 있다…
+                PRINTFORML 「읏！응, 후읏…！젖꼭지, 저려어…」
+                PRINTFORMW 「아하앗, 응앗…아무것도, 안했는데…가슴이, 저려, 서…♪」
+            ENDIF
+        ;B감각5이상
+        ELSEIF ABL:B감각 >= 5
+            PRINTFORMW 「아！아앗！읏, ……～～～～～！！」
+            PRINTFORMW 유방을 흔들며 몸부림치는 이쿠의 끝 부분을, 로터로 집요하게 노린다…
+            PRINTFORMW 「안돼애, 잠깐……히야앗！꺄읏, 이거…안돼요…！」
+            PRINTFORMW 「너무…민감해, 져서…！힉, 햐으응！괴로울, 정도…♪」
+        ;B감각3이상
+        ELSEIF ABL:B감각 >= 3
+            PRINTFORMW 「아아아……핫, 후아, 아아…」
+            PRINTFORMW 「찌릿찌릿해서…가슴이…앗…뜨거워, 요…」
+        ;그 이외　まあほぼ死に口上 // 뭐, 대개 죽은 구상 (연모인데 B감각이 3이하인 경우는 별로 없으니까?)
+        ELSE
+            PRINTFORMW 「하읏, 흐앗, 후훗…♪」
+            PRINTFORMW 「쿡, 간지러워…죄송해요, 무심코, 웃어 버려서…」
+        ENDIF
+    ;B감각3이상
+    ELSEIF ABL:B감각 >= 3
+        PRINTFORMW 「시, 싫어, 우으으…！」
+        PRINTFORMW 「이젠, 떼주세요…이 이상은…아아, 으앗…정말…！」
+    ;B감각1이상
+    ELSEIF ABL:B감각 >= 1
+        PRINTFORMW 「싫다…이거, 크읏…기분, 나빠요…」
+    ;그 이외
+    ELSE
+        PRINTFORMW 「힉, 읏…아픕, 니다…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1774,75 +1774,75 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_191
 ;해제시
 IF TEQUIP:35 == 0
-	;연모
-	IF TALENT:연모
-		;분유중독3이상
-		IF ABL:34 >= 3 && RAND:2 == 0
-			IF RAND:2 == 0
-				PRINTFORMW 기계를 정지하고, 이쿠의 유방에 달라붙은 흡인기를 떼어낸다.
-				PRINTFORMW 꽉 달라붙은 흔적이 남은 유두에서는 아직도 모유가 흘러나오고 있다……
-				PRINTFORMW 「후훗…후아, 아아…지금…젖꼭지, 무척이나 민감해져 있어요…」
-				PRINTFORMW 「기분 좋은게, 계속, 되서……좀 더, 제 젖을…짜, 주세요…♪」
-			ELSE
-				PRINTFORMW 「어랏, 앗……벌써, 끝인가요…？」
-				PRINTFORMW 「하, 하지만…그렇네요. 계속, 붙인 채로 있을 수는 없으니까…」
-				PRINTFORML 이쿠는 납득한 듯한 말투지만…안절부절하며 진정하지 못하고 있다.
-				PRINTFORMW 모유가 떨어지는 유방을 당신에게 보이며, 끈임없이 착유를 조르고 있다…
-			ENDIF
-		;난수 분기:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「하아, 하아…잔뜩 나왔네요…♪」
-			PRINTFORMW 「아직 나올 것 같아요…이번엔, %조사처리(CALLNAME:MASTER,"이")% 직접, 어떤가요？후훗」
-			PRINTFORMW 이쿠가 스스로의 유두를 쥐어짜자, 대량의 모유가 흘러나왔다…
-		;그 이외
-		ELSE
-			PRINTFORMW 「하읏…！난폭하게 내서는, 안된다고요…？정말…♪」
-			PRINTFORMW 「어떤가요…모유 잔뜩, 나왔나요？」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		PRINTFORMW 「우으…유두가 이렇게나, 부어서…」
-		PRINTFORMW 이쿠의 유두는 기계에 억지로 흡인된 탓에 붉어 부어 올랐다…
-	;그 이외
-	ELSE
-		PRINTFORMW 「이런 기계…이제 그만해 주세요…」
-		PRINTFORMW 이쿠는 유두에서 모유가 흘러나오는 채로, 괴로운 듯이 주저앉았다…
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        ;분유중독3이상
+        IF ABL:34 >= 3 && RAND:2 == 0
+            IF RAND:2 == 0
+                PRINTFORMW 기계를 정지하고, 이쿠의 유방에 달라붙은 흡인기를 떼어낸다.
+                PRINTFORMW 꽉 달라붙은 흔적이 남은 유두에서는 아직도 모유가 흘러나오고 있다……
+                PRINTFORMW 「후훗…후아, 아아…지금…젖꼭지, 무척이나 민감해져 있어요…」
+                PRINTFORMW 「기분 좋은게, 계속, 되서……좀 더, 제 젖을…짜, 주세요…♪」
+            ELSE
+                PRINTFORMW 「어랏, 앗……벌써, 끝인가요…？」
+                PRINTFORMW 「하, 하지만…그렇네요. 계속, 붙인 채로 있을 수는 없으니까…」
+                PRINTFORML 이쿠는 납득한 듯한 말투지만…안절부절하며 진정하지 못하고 있다.
+                PRINTFORMW 모유가 떨어지는 유방을 당신에게 보이며, 끈임없이 착유를 조르고 있다…
+            ENDIF
+        ;난수 분기:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「하아, 하아…잔뜩 나왔네요…♪」
+            PRINTFORMW 「아직 나올 것 같아요…이번엔, %조사처리(CALLNAME:MASTER,"이")% 직접, 어떤가요？후훗」
+            PRINTFORMW 이쿠가 스스로의 유두를 쥐어짜자, 대량의 모유가 흘러나왔다…
+        ;그 이외
+        ELSE
+            PRINTFORMW 「하읏…！난폭하게 내서는, 안된다고요…？정말…♪」
+            PRINTFORMW 「어떤가요…모유 잔뜩, 나왔나요？」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        PRINTFORMW 「우으…유두가 이렇게나, 부어서…」
+        PRINTFORMW 이쿠의 유두는 기계에 억지로 흡인된 탓에 붉어 부어 올랐다…
+    ;그 이외
+    ELSE
+        PRINTFORMW 「이런 기계…이제 그만해 주세요…」
+        PRINTFORMW 이쿠는 유두에서 모유가 흘러나오는 채로, 괴로운 듯이 주저앉았다…
+    ENDIF
 ;장착시
 ELSE
-	;연모
-	IF TALENT:연모
-		;분유중독3이상
-		IF ABL:34 >= 3 && RAND:2 == 0
-			IF RAND:2 == 0
-				PRINTFORMW 일정한 리듬으로 착유기가 강하게 흡인하며, 모유를 짜낸다…
-				PRINTFORMW 그 흡인이 강해질 때마다, 이쿠는 한숨을 흘리고 있다…
-				PRINTFORMW 「앗…으읏…어라, 앗…목소리…나와 버렸어요…」
-				PRINTFORMW 「후아…하지만…좋아하는걸요…이거…♪」
-			ELSE
-				PRINTFORMW 「이렇게, 읏, 강하고, 기분 좋게…젖을 짜내는 건, 꽤나…♪」
-				PRINTFORMW 이쿠는 웃음을 지으며 기분 좋은 듯이 착유기가 선사하는 자극을 즐기고 있다…
-				PRINTFORMW 「%CALLNAME:MASTER%의 손도 물론…정말 좋아한다고요？따뜻하고, 상냥해서…」
-				PRINTFORMW 「질투했나요？후후…아아, 그래도…이 압박이…좋앗, 히윽…！」
-			ENDIF
-		;난수 분기:2
-		ELSEIF RAND:2 == 0
-			PRINTFORMW 「아아…제 가슴에서, 이렇게나 나와선…」
-			PRINTFORMW 「자아…%CALLNAME:MASTER%도, 갖고 싶어졌지요？후훗」
-		;그 이외
-		ELSE
-			PRINTFORMW 「유두가, 꾸욱…！후아아…」
-			PRINTFORMW 「젖이, 멈추질 않아요…♪」
-		ENDIF
-	;굴복각인Lv3
-	ELSEIF MARK:굴복각인 == 3
-		PRINTFORMW 「응하앗…기계 따위에, 빨리고 있는데…느껴 버린, 다니…！」
-		RETURN 0
-	;그 이외
-	ELSE
-		PRINTFORMW 「이게 무슨…제 몸을, 장난감처럼…」
-		PRINTFORMW 「이 얼마나 무서운 인간인가요…」
-	ENDIF
+    ;연모
+    IF TALENT:연모
+        ;분유중독3이상
+        IF ABL:34 >= 3 && RAND:2 == 0
+            IF RAND:2 == 0
+                PRINTFORMW 일정한 리듬으로 착유기가 강하게 흡인하며, 모유를 짜낸다…
+                PRINTFORMW 그 흡인이 강해질 때마다, 이쿠는 한숨을 흘리고 있다…
+                PRINTFORMW 「앗…으읏…어라, 앗…목소리…나와 버렸어요…」
+                PRINTFORMW 「후아…하지만…좋아하는걸요…이거…♪」
+            ELSE
+                PRINTFORMW 「이렇게, 읏, 강하고, 기분 좋게…젖을 짜내는 건, 꽤나…♪」
+                PRINTFORMW 이쿠는 웃음을 지으며 기분 좋은 듯이 착유기가 선사하는 자극을 즐기고 있다…
+                PRINTFORMW 「%CALLNAME:MASTER%의 손도 물론…정말 좋아한다고요？따뜻하고, 상냥해서…」
+                PRINTFORMW 「질투했나요？후후…아아, 그래도…이 압박이…좋앗, 히윽…！」
+            ENDIF
+        ;난수 분기:2
+        ELSEIF RAND:2 == 0
+            PRINTFORMW 「아아…제 가슴에서, 이렇게나 나와선…」
+            PRINTFORMW 「자아…%CALLNAME:MASTER%도, 갖고 싶어졌지요？후훗」
+        ;그 이외
+        ELSE
+            PRINTFORMW 「유두가, 꾸욱…！후아아…」
+            PRINTFORMW 「젖이, 멈추질 않아요…♪」
+        ENDIF
+    ;굴복각인Lv3
+    ELSEIF MARK:굴복각인 == 3
+        PRINTFORMW 「응하앗…기계 따위에, 빨리고 있는데…느껴 버린, 다니…！」
+        RETURN 0
+    ;그 이외
+    ELSE
+        PRINTFORMW 「이게 무슨…제 몸을, 장난감처럼…」
+        PRINTFORMW 「이 얼마나 무서운 인간인가요…」
+    ENDIF
 ENDIF
 
 ;-------------------------------------------------
@@ -1858,10 +1858,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_193
 ;解除時
 IF TEQUIP:35 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1871,10 +1871,10 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_194
 ;解除時
 IF TEQUIP:36 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
 
 ;-------------------------------------------------
@@ -1884,8 +1884,8 @@ ENDIF
 @KOJO_51_TRAIN_MESSAGE_S_COM_195
 ;解除時
 IF TEQUIP:35 == 0
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ;装着時
 ELSE
-	;PRINTFORMW 
+    ;PRINTFORMW 
 ENDIF
