@@ -29,6 +29,10 @@ SIF LASTLOAD_VERSION < 3162
 SIF LASTLOAD_VERSION < 3163 
     CALL SAVE_SUPPORT_VERSION_3163
 
+;2018년 7월 10일 패치
+SIF LASTLOAD_VERSION < 3164 
+    CALL SAVE_SUPPORT_VERSION_3164
+
 SIF MONEY:100 == 0
     MONEY:100 = 1000000
 
@@ -79,4 +83,25 @@ REPEAT CHARANUM
     CFLAG:COUNT:4997 = LIMIT(CFLAG:COUNT:4997 + 1, 1, 5)
 REND
 
+RETURN 1
+
+;--------------------------------------------------
+;2018년 7월 10일 패치
+;--------------------------------------------------
+@SAVE_SUPPORT_VERSION_3164
+;모든 캐릭터의 신체 사이즈 재갱신 필요2
+REPEAT CHARANUM
+    CFLAG:COUNT:8 = 0
+REND
+
+
+LOADGLOBAL
+IF GLOBAL:999 < 1
+    PRINTW 버그 수정을 위해 전역 데이터에서 커맨드 필터링 정보를 초기화합니다.
+    ;GLOBAL 202, 201, 202를 제외하고 초기화
+    VARSET GLOBAL, 0, 21, 200
+    VARSET GLOBAL, 0, 203, 621
+    GLOBAL:999 = 1 ;전역 변수라 모든 불러오기에서 1회만 실행하면 됨. 임시로 GLOBAL:999를 이용
+    SAVEGLOBAL
+ENDIF
 RETURN 1

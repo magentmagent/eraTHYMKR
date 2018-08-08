@@ -502,7 +502,7 @@ ELSEIF CFLAG:2 >= 2100 && TALENT:159 == 0 && CFLAG:7815 == 0
     PRINTFORMW 「후훗, 이렇게나……. 이번엔 나를, 먹어도 되거든?」
     PRINTFORMW %CALLNAME:MASTER%에 올라탄 채로 레밀리아는 옷을 훌훌 벗어 그 해끄무레한 어린 몸을 드러내기 시작했다.
     PALAM:10 = 1500
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121
+    SIF EXIST_PENIS(MASTER)
     BASE:MASTER:2 = 3000
     CFLAG:7815 = 1
 
@@ -3088,7 +3088,7 @@ IF SELECTCOM == 602
             PRINTFORMW %조사처리(CALLNAME:PLAYER,"는")% 눈 앞에 있는 한 줄기 세로 금을 손가락으로 벌리고 그 입구를 부드럽게 자극하며 안의 빛깔이 예쁜 분홍빛 속살을 감상한다. 
             PRINTFORMW 「웅웅웅, 쩝, 쮸웁, 응, 날름, 쪼옥쪽, 쩝… 흐읍」
             ;남자거나 후타나리
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 PRINTFORMW 그 반대편에선 레밀리아가 한 마음으로 머리를 주억이며 %CALLNAME:PLAYER%의 육봉에 봉사하고 있다.
             ;여자
             ELSE
@@ -3101,7 +3101,7 @@ IF SELECTCOM == 602
         PRINTFORMW 서로서로 성기를 빤다는 행위에 레밀리아는 수치심을 느끼는 모양이다.
         PRINTFORML 「음, 흐응… 웅?! 응, 우그읍, 응, 쮸, 쪽, 날름, 응, 짭…」
         ;남자거나 후타나리
-        IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+        IF EXIST_PENIS(PLAYER)
             PRINTFORMW %CALLNAME:PLAYER%의 혀가 움직이기 시작하고, 레밀리아는 얼굴이 새빨개지면서도 육봉을 물고 계속 봉사했다.
         ;여자
         ELSE
@@ -5014,7 +5014,7 @@ IF SELECTCOM == 24
                 PRINTFORMW 레밀리아는 쭈뼛쭈뼛거리는 분위기로, 보지금을 물건 앞머리에 맞춘다.
                 PRINTFORMW 『아하하, 이거 내가 언니한테 들어가는 순간이 잘 보여♪』
                 ;플랑이 남자거나 후타나리
-                IF TALENT:ASSI:120 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_PENIS(ASSI)
                     PRINTFORMW 끄득, 끄득 하고 기대로 떠는 플랑의 끄트머리가 레밀리아의 처녀를 천천히 열어젖힌다.
                 ;그 외(패니스 밴드)
                 ELSE
@@ -10387,7 +10387,7 @@ IF TFLAG:200 == 406
     IF GET_NIGHT_KOJO() == 1
         IF NO:(GET_CHARA_M()) == 11
             ;결국, 이걸 하고 싶었던 것뿐 아닌가
-            IF TALENT:MASTER:120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER)
                 IF (TALENT:(GET_CHARA_M()):0 >= 1 && TALENT:0 == 0) || (TALENT:0 >= 1 && TALENT:(GET_CHARA_M()):0 == 0)
                     IF TALENT:(GET_CHARA_M()):0 >= 1 && TALENT:0 == 0
                         PRINTFORMW 「응, 쮸, 쮸르, 쮸우……. 후훗, 준비 다 됐다아♪ 언니 보고 있어」

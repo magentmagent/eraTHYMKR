@@ -1395,7 +1395,7 @@ ELSEIF ASSI > 0 && NO:ASSI == 10 && CFLAG:6005 == 0
         ENDIF
         PRINTFORMW 잠시 입 다물고 보고 있던 %조사처리(CALLNAME:MASTER,"는")% 슬슬 시작한다, 하고 둘에게 말을 걸었다.
         ;주인이 남자거나 후타나리
-        IF (TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1)
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 『그러네…. 시간도 한정된 노릇이고, 주인님의 자지를 받도록 할까』
         ELSE
             PRINTFORMW 『그러네…. 시간도 한정된 노릇이고, 주인님께 봉사를 시작할까』
@@ -1485,7 +1485,7 @@ ELSEIF ASSI > 0 && NO:ASSI == 10 && CFLAG:6005 == 0
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")%절정해서 힘이 빠진 레밀리아를 바닥에 내던지고는, 파츄리의 팔을 잡고 침대로 밀어 넘어뜨렸다.
                 PRINTFORML 
             ;파츄리가 처녀＋레밀리아V감각Lv3 이상＋주인이 남자거나 후타나리
-            ELSEIF TALENT:0 == 1 && ABL:ASSI:1 >= 3 && (TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1)
+            ELSEIF TALENT:0 == 1 && ABL:ASSI:1 >= 3 && EXIST_PENIS(MASTER)
                 PRINTFORMW 『그런 얼굴 하지 마 파체…. 나까지 슬퍼지겠어…』
                 PRINTFORMW 『그리고… 여기는 그렇게 나쁜 곳만도 아니야. 주인님은 다정하고… 무엇보다… 으응…읏!』
                 PRINTFORMW %CALLNAME:MASTER%의 손가락이 음부를 휘젓기 시작하자 레밀리아는 달콤한 소리를 흘린다.
@@ -7544,7 +7544,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                     PRINTFORMW 『어쩐지 말투가 좀 걸리는구만……. 뭐 상관없나…. 그만 넣을 테니까, 힘 빼라?』
                 ENDIF
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 마리사는 딱 다물린 파츄리의 비렬에다 페니스를 찔러넣기 시작한다.
                 ELSE
                     PRINTFORMW 마리사는 딱 다물린 파츄리의 비렬에다 사타구니의 딜도를 찔러넣기 시작한다.
@@ -7609,7 +7609,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                 PRINTFORML 
                 PRINTFORMW 『그럼 슬슬…… 힘은 빼고 있으세요』
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 메이링은 딱 다물린 파츄리의 비렬에 페니스를 찔러넣기 시작한다.
                 ELSE
                     PRINTFORMW 메이링은 딱 다물린 파츄리의 비렬에 사타구니의 딜도를 찔러넣기 시작한다.
@@ -7662,7 +7662,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                     PRINTFORMW 「……그런 건 됐으니까 빨리 끝내기나 해」
                     PRINTFORMW 『그럼 자 갑니다. 얼른 다리를 벌려주시고요……. 어차』
                     ;비대음핵이거나 후타나리
-                    IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                    IF EXIST_BAR(ASSI)
                         PRINTFORMW 소악마는 아무런 주저도 없이, 딱 다물린 파츄리의 비렬에 성난 육봉을 쑤셔넣는다.
                     ELSE
                         PRINTFORMW 소악마는 아무런 주저도 없이, 딱 다물린 파츄리의 비렬에 사타구니의 딜도를 쑤셔넣는다.
@@ -7728,7 +7728,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                     PRINTFORMW 『알겠습니다. 그럼 시작할게요……. 힘은 빼고 계세요』
                 ENDIF
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 사쿠야는 딱 다물린 파츄리의 비렬에 페니스를 찔러넣기 시작한다.
                 ELSE
                     PRINTFORMW 사쿠야는 딱 다물린 파츄리의 비렬에 사타구니의 딜도를 찔러넣기 시작한다.
@@ -7786,7 +7786,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                     PRINTFORMW 「레미…. 잠깐만…. 아직 마음의 준비가……」
                     PRINTFORMW 『못 써, 파체. 자, 도망치지 말고 얼른 다리를 벌리렴………. 으응…읏!』
                     ;비대음핵이거나 후타나리
-                    IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                    IF EXIST_BAR(ASSI)
                         PRINTFORMW 레밀리아는 아무런 주저도 없이, 딱 다물린 파츄리의 비렬에 성난 육봉을 쑤셔넣는다.
                     ELSE
                         PRINTFORMW 레밀리아는 아무런 주저도 없이, 딱 다물린 파츄리의 비렬에 사타구니의 딜도를 쑤셔넣는다.
@@ -7804,7 +7804,7 @@ IF ASSIPLAY && TALENT:0 == 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM
                     PRINTFORMW 『상관없어………. 그럼…… 힘은 빼도록 해』
                     PRINTFORMW 「……알았어……. 와줘… 레미」
                     ;비대음핵이거나 후타나리
-                    IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                    IF EXIST_BAR(ASSI)
                         PRINTFORMW 레밀리아는 딱 다물린 파츄리의 비렬에 페니스를 찔러넣기 시작한다.
                     ELSE
                         PRINTFORMW 레밀리아는 딱 다물린 파츄리의 비렬에 사타구니의 딜도를 찔러넣기 시작한다.
@@ -7949,7 +7949,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 역시나 창관에서 일한 값은 하는군』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 엉겨붙어오는데 그래. 이건 중독될 거 같다』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -7968,7 +7968,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 창관에서 일했었다는데 비해선 전혀 쓰질 않았군』
                 ;그 외
                 ELSE
@@ -7981,7 +7981,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리, 네 보지 대단하구만…』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 엉겨붙어오는데 그래. 이건 중독될 거 같다』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -8000,7 +8000,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음이 아닌가 본데… 이건 너무 조인다구』
                     PRINTFORMW 「그런 말 들어봤자… 아직 그다지 쓰질 않았어… 응크…읏!」
                 ;그 외
@@ -8014,7 +8014,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리, 네 보지 대단하구만…』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 엉겨붙어오는데 그래. 이건 중독될 거 같다』
                     PRINTFORMW 「응아…읏…… 좋아서 이렇게 된 게 아니라고…! 응……히야앗… 후아아앗…!」
@@ -8033,7 +8033,7 @@ IF ASSIPLAY && NO:ASSI == 2 && CFLAG:6021 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 그만둬…… 더 천천히…읏… 아팟…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음이 아닌가 본데… 이건 너무 조인다구』
                     PRINTFORMW 「그만 됐잖아…. 빨리 끝내…읏…응크…읏!」
                 ;그 외
@@ -8062,7 +8062,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 역시, 창관에 나가셨던 값은 하는걸요』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙어오고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -8081,7 +8081,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 창관에서 일하셨었다고 들었는데 전혀 쓰질 않았네요』
                 ;그 외
                 ELSE
@@ -8094,7 +8094,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님의 보지 대단한데요…』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙어오고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -8113,7 +8113,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌 것 같은데… 좀 지나치게 조여요…』
                     PRINTFORMW 「그런 말 들어봤자… 아직 그다지 쓰질 않았어… 응크…읏!」
                 ;그 외
@@ -8127,7 +8127,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님의 보지 대단한데요…』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙어오고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 좋아서 이렇게 된 게 아니라고…! 응……히야앗… 후아아앗…!」
@@ -8146,7 +8146,7 @@ IF ASSIPLAY && NO:ASSI == 6 && CFLAG:6022 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 그만둬…… 더 천천히…읏… 아팟…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌 것 같은데… 좀 지나치게 조여요…』
                     PRINTFORMW 「그만 됐잖아…. 빨리 끝내…읏…응크…읏!」
                 ;그 외
@@ -8175,7 +8175,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
             ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 역시, 창관에서 손님 받고 있던 값은 하시네요』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙고 있어요. 이 살구멍으로 몇 대의 자지로부터 정액을 쥐어짜냈는지 참』
                     PRINTFORMW 「응아…읏…… 후훗… 그런 말… 하지 마…! 응……히야앗… 후아아앗…!」
@@ -8194,7 +8194,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 창관에서 손님을 받았다고 들었는데 전혀 쓰질 않았네요』
                     PRINTFORMW 「창관에선 보지 쓰지 않았었어… 응크…읏!」
                 ;그 외
@@ -8208,7 +8208,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님 보지 굉장해요…』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 들러붙고 있어요. 이 살구멍은 정액을 짜내기 위해서 있다는 생각밖에 안 드네요』
                     PRINTFORMW 「응아…읏…… 그런 식으로… 말하지 마앗…! 응…… 히야앗… 후아아앗…!」
@@ -8227,7 +8227,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌가 본데… 좀 조임이 과하다고요』
                     PRINTFORMW 『뭐, 아파하는 파츄리 님 얼굴을 보는 게 재미있으니 상관없지만요』
                     PRINTFORMW 「너…무해…! 아직 그다지 쓰질 않았다고오… 읏…응크…읏!」
@@ -8244,7 +8244,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님 보지 굉장해요…』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 들러붙고 있어요. 이 살구멍은 정액을 짜내기 위해서 있다는 생각밖에 안 드네요』
                     PRINTFORMW 「응아…읏…… 좋아서 이렇게 된 게 아니라고…! 응……히야앗… 후아아앗…!」
@@ -8263,7 +8263,7 @@ IF ASSIPLAY && NO:ASSI == 7 && CFLAG:6023 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 그만둬…… 더 천천히…읏… 아팟…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌가 본데… 좀 조임이 과하다고요』
                     PRINTFORMW 『뭐, 아파하는 파츄리 님 얼굴을 보는 게 재미있으니 상관없지만요』
                     PRINTFORMW 「저 하고 싶은 대로 말 막 하네…. 그만 됐잖아…. 빨리 끝내… 읏…응크…읏!」
@@ -8295,7 +8295,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 과연, 창관에 나가시던 값은 하시는군요』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -8315,7 +8315,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁은데요…. 창관에서 일하셨었다고 말씀 들었습니다만』
                     PRINTFORMW 「창관에선 보지 쓰지 않았었어… 응크…읏!」
                 ;그 외
@@ -8329,7 +8329,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님의 보지… 굉장하네요…』
                     PRINTFORMW 『눅진눅진한 주름이 좆에 들러붙고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐… 응…… 히야앗… 후아아앗…!」
@@ -8348,7 +8348,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 더…… 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아니신 모양인데… 조임이 너무 세요…』
                     PRINTFORMW 「그런 말 들어봤자… 아직 그다지 쓰질 않았어… 응크…읏!」
                 ;그 외
@@ -8362,7 +8362,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파츄리 님의 보지… 굉장하네요…』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 들러붙고 있어요. 이건 중독되겠어요』
                     PRINTFORMW 「응아…읏…… 좋아서 이렇게 된 게 아니라고…! 응……히야앗… 후아아앗…!」
@@ -8381,7 +8381,7 @@ IF ASSIPLAY && NO:ASSI == 9 && CFLAG:6024 == 0 && (SELECTCOM == 20 || SELECTCOM 
             ELSE
                 PRINTFORMW 「아파앗…! 응… 그만둬…… 더 천천히…읏… 아팟…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아니신 모양인데… 조임이 너무 세요…』
                     PRINTFORMW 「그만 됐잖아…. 빨리 끝내…읏…응크…읏!」
                 ;그 외
@@ -8410,7 +8410,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 역시 창관에서 일했었던 값은 하는걸』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 엉겨붙고 있어. 이건 중독될 것 같아』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐, 레미…. 응…… 히야앗… 후아아앗…!」
@@ -8429,7 +8429,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ELSE
                 PRINTFORMW 「아파앗…! 응… 레미… 더 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 창관에서 일했었다고 들었는데』
                     PRINTFORMW 「창관에선 보지 쓰지 않았었어… 응크…읏!」
                 ;그 외
@@ -8443,7 +8443,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파체, 네 보지 대단해…』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 엉겨붙고 있어. 이건 중독될 것 같아』
                     PRINTFORMW 「응아…읏…… 후훗… 마음에 들어해줘서 기뻐, 레미…. 응…… 히야앗… 후아아앗…!」
@@ -8462,7 +8462,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ELSE
                 PRINTFORMW 「아파앗…! 응… 레미… 더 천천히 부탁해…읏…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌 모양인데… 이건 너무 조이잖니』
                     PRINTFORMW 「그런 말 들어봤자… 아직 그다지 쓰질 않았어… 응크…읏!」
                 ;그 외
@@ -8476,7 +8476,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ;V감각Lv5 이상
             IF ABL:1 >= 5
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『우앗… 크윽…!! 파체, 네 보지 대단해…』
                     PRINTFORMW 『눅진눅진한 주름이 자지에 엉겨붙고 있어. 이건 중독될 것 같아』
                     PRINTFORMW 「응아…읏…… 좋아서 이렇게 된 게 아니라고…! 응……히야앗… 후아아앗…!」
@@ -8495,7 +8495,7 @@ IF ASSIPLAY && NO:ASSI == 10 && CFLAG:6025 == 0 && (SELECTCOM == 20 || SELECTCOM
             ELSE
                 PRINTFORMW 「아파앗…! 응… 그만둬…… 더 천천히…읏… 아팟…!」
                 ;비대음핵이거나 후타나리
-                IF TALENT:ASSI:1 == 1 || TALENT:ASSI:121 == 1
+                IF EXIST_BAR(ASSI)
                     PRINTFORMW 『크윽… 좁앗…! 처음은 아닌 모양인데… 이건 너무 조이잖니』
                     PRINTFORMW 「아무래도 됐잖아…. 빨리 끝내기나 해…! …응크…읏!」
                 ;그 외
@@ -11626,7 +11626,7 @@ IF SELECTCOM == 43
         ;C감각Lv5 이상
         ELSEIF ABL:0 >= 5 && (CFLAG:5332 <= 3 || FLAG:11 == 2)
             ;비처녀で조교자가 オトコか후타나리
-            IF TALENT:0 == 0 && (TALENT:PLAYER:120 == 1 || TALENT:PLAYER:121 == 1)
+            IF TALENT:0 == 0 && EXIST_PENIS(PLAYER)
                 PRINTFORMW 「히야으…읏! 흐냐아…앗!! 이제 참을 수가 없어어…엇!!」
                 PRINTFORMW 「너어줘어…엇!! %CALLNAME:PLAYER%의 자지 너어줘어…엇!!!」
                 PRINTFORMW 파츄리의 비소로부터는 하얗고 탁한 애액이 멈추지 않고 흘러나오고 있다
@@ -20249,7 +20249,7 @@ ENDIF
 IF NOWEX:1 == 0 && NOWEX:2 == 0 && NOWEX:3 == 0 
     IF NOWEX:0 > 0
         IF CFLAG:5225 == 0
-            IF TALENT:1 == 1 || TALENT:121 == 1
+            IF EXIST_BAR(TARGET)
                 PRINTFORMW 「아……하아응……아! 아, 아아앗!」
                 PRINTFORMW 「하아… 하아….이렇게나…기분 좋아지다니…」
             ELSE

@@ -249,7 +249,7 @@ SIF TEQUIP:12 || TEQUIP:32 || TALENT:45 || EXP:6
 SIF TALENT:66 && FLAG:1200 & 2
     CALL CALC_GAUGEX_SLAVE_TORIKOMODE
 ;助手の射精ゲージを表示
-SIF ASSI >= 0 && (TALENT:ASSI:120 || TALENT:ASSI:121)
+SIF ASSI >= 0 && EXIST_PENIS(ASSI)
     CALL CALC_GAUGE2_ASSI_TORIKOMODE
 ;その他キャラの射精ゲージ
 ;イベントや機能によりゲージの最大値が変化することもありうるので表示と定義は各装着具毎に設定

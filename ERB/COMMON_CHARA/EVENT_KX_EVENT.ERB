@@ -372,7 +372,7 @@ IF TFLAG:200 == 10 && FLAG:11 == 2
         IF CFLAG:3005 == 3
             PRINTFORMW %CALLNAME:TARGET% 『이건 정말 기분 좋아요! 역시 사정은 질내사정이 최고일까요?』
         ELSEIF CFLAG:3005 == 1
-            IF TALENT:MASTER:120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW %CALLNAME:TARGET% 『이거 기분 좋다! %조사처리(STR:401,"가")% 집착할 만하네♪』
             ELSE
                 PRINTFORMW %CALLNAME:TARGET% 『이거 기분 좋다! 이 감촉, 죽여주네♪』

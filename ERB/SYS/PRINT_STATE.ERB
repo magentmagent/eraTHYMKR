@@ -919,10 +919,11 @@ CALL NEW_DRAWLINE
 @PRINT_CUPSIZE , ARG , ARG:1
 VARSET LOCALS,""
 SPLIT "(-) , (AAA) , (AA) , (A) , (B) , (C) , (D) , (E) , (F) , (G) , (H) , (I) , (J) , (K) , (L) , (M) , (N) , (O) , (P) , (Q) , (R) , (S) , (T) , (U) , (V) , (W) , (X) , (Y) , (Z) , (Z+) ",",", LOCALS
-LOCAL = (BASE:ARG:12 - ((((BASE:ARG:10 * 100) / 22) - ((BASE:ARG:10 * 100) / BASE:ARG:13)) / 10)) / 25
-;캐릭터 라인 변수가 약간 부자유스러워서 억지로 작성
-LOCAL = MAX(LOCAL , 1)
-LOCALS:0 = %LOCALS:(LOCAL-1)%
+;A컵은 10 +- 1.25 cm,  8.8 cm ~ 11.3 cm, AA컵은 7.5 +- 1.25 cm, AAA컵은 5 +- 1.25 cm
+;컵 크기는 키와 관계없다.
+LOCAL = (BASE:ARG:12 - MAXBASE:ARG:12 + 12) / 25
+LOCAL = LIMIT(LOCAL - 1 , 0 , 29) ;AAAA컵 (2.5 cm)이 없는 점을 주의
+LOCALS:0 = %LOCALS:(LOCAL)%
 
 SIF ARG:1 == 0
     PRINTFORM %LOCALS%

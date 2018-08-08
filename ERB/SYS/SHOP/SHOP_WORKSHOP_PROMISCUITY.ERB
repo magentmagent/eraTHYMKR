@@ -146,7 +146,7 @@ LOCAL:101 = 1
 SIF (CFLAG:(ARG:0):42 & 2) == 0 && TALENT:(ARG:1):62 == 0 || TALENT:(ARG:1):170
     LOCAL:102 = 1
 ;以下襲い側にペニスか肥大陰核が必要(貞操帯つけてるとダメ)
-IF (CFLAG:(ARG:1):42 & 2) == 0 && (TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || TALENT:(ARG:1):1)
+IF (CFLAG:(ARG:1):42 & 2) == 0 && EXIST_BAR(ARG:1)
     ;パイズリ：襲われ側にバストサイズに応じた技巧があれば可能
     SIF (TALENT:(ARG:0):111 && ABL:(ARG:0):12 > 4) || (TALENT:(ARG:0):112 && ABL:(ARG:0):12 > 1) || (TALENT:(ARG:0):113 && ABL:(ARG:0):12 > 0) || (TALENT:(ARG:0):110 == 0 && TALENT:(ARG:0):111 == 0 && TALENT:(ARG:0):112 == 0 && TALENT:(ARG:0):113 == 0 && ABL:(ARG:0):12 > 2)
         LOCAL:103 = 1
@@ -165,7 +165,7 @@ IF (CFLAG:(ARG:1):42 & 2) == 0 && (TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || T
     ENDIF
 ENDIF
 ;以下襲われ側にペニスか肥大陰核が必要(貞操帯つけてるとダメ)
-IF (CFLAG:(ARG:0):42 & 2) == 0 && (TALENT:(ARG:0):120 || TALENT:(ARG:0):121 || TALENT:(ARG:0):1)
+IF (CFLAG:(ARG:0):42 & 2) == 0 && EXIST_BAR(ARG:0)
     ;パイズリ：襲い側にバストサイズに応じた技巧があれば可能
     SIF (TALENT:(ARG:1):111 && ABL:(ARG:1):12 > 4) || (TALENT:(ARG:1):112 && ABL:(ARG:1):12 > 1) || (TALENT:(ARG:1):113 && ABL:(ARG:1):12 > 0) || (TALENT:(ARG:1):110 == 0 && TALENT:(ARG:1):111 == 0 && TALENT:(ARG:1):112 == 0 && TALENT:(ARG:1):113 == 0 && ABL:(ARG:1):12 > 2)
         LOCAL:107 = 1
@@ -316,7 +316,7 @@ RETURN 0
 ;弄られる側の絶頂回数に応じて弄る側の習得の珠と弄られる側の快Ｃの珠が増加
 SIF TALENT:MASTER:Debug && (FLAG:1109 & 1) && (FLAG:1109 & 2)
     PRINTFORML ;;; %조사선택(CALLNAME:(ARG:0), "과")% %CALLNAME:(ARG:1)%의 공방 난교 수음 개시
-IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+IF EXIST_PENIS(ARG:1)
     ;弄られる側が射精可能であれば弄る側の技巧と弄られる側の射精中毒・遅漏・早漏に応じて弄られる側の射精経験と絶頂経験を同数増加
     SELECTCASE ABL:(ARG:0):12
         CASE 0 TO 1
@@ -406,7 +406,7 @@ RETURN 0
 @JUDGE_WORKSHOP_RESULT_PROMISCUITY_MOUTH_PENIS, ARG:0, ARG:1
 SIF TALENT:MASTER:Debug && (FLAG:1109 & 1) && (FLAG:1109 & 2)
     PRINTFORML ;;; %조사선택(CALLNAME:(ARG:0), "과")% %CALLNAME:(ARG:1)%의 공방 난교 구강 성교 개시
-IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+IF EXIST_PENIS(ARG:1)
     ;しゃぶられる(しゃぶらせる)側が射精可能であれば口を使う(犯される)側の技巧としゃぶられる(しゃぶらせる)側の射精中毒・遅漏・早漏に応じてしゃぶられる(しゃぶらせる)側の射精経験と絶頂経験を同数増加
     SELECTCASE ABL:(ARG:0):12
         CASE 0 TO 1
@@ -466,7 +466,7 @@ ENDIF
 LOCAL@VALUE_WORKSHOP_EXP_02:(ARG:1) += LOCAL
 ;口を使う(犯される)側のフェラ経験もしゃぶられる(しゃぶらせる)側の絶頂回数だけ増加
 ;しゃぶられる(しゃぶらせる)側にペニスがあるか肥大陰核の場合、しゃぶられる(しゃぶらせる)側の絶頂回数に応じて口を使う(犯される)側の習得の珠としゃぶられる(しゃぶらせる)側の快Ｃの珠が増加
-SIF TALENT:(ARG:1):120 || TALENT:(ARG:1):121 || TALENT:(ARG:1):1
+SIF EXIST_BAR(ARG:1)
     LOCAL@VALUE_WORKSHOP_EXP_22:(ARG:0) += LOCAL
 SELECTCASE LOCAL
     CASE 0
@@ -487,7 +487,7 @@ IF (CFLAG:(ARG:0):691 & 1p3) == 0
     ;口を犯される側が襲われているならば舐めさせる側に先導の珠
     LOCAL@VALUE_WORKSHOP_JUEL_032:(ARG:1) += 50
     ;襲われた側には絶頂回数に応じて否定の珠が入る
-    IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+    IF EXIST_PENIS(ARG:1)
         LOCAL@VALUE_WORKSHOP_JUEL_100:(ARG:0) += LOCAL * 150
     ELSE
         LOCAL@VALUE_WORKSHOP_JUEL_100:(ARG:0) += LOCAL * 50
@@ -566,7 +566,7 @@ ELSE
             LOCAL:1 = 2
     ENDSELECT
 ENDIF
-IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+IF EXIST_PENIS(ARG:1)
     ;挟まれる(挟ませる)側が射精可能であれば射精中毒・遅漏・早漏に応じて挟まれる(挟ませる)側の射精経験と絶頂経験を同数増加
     SELECTCASE ABL:(ARG:1):37
         CASE 0
@@ -705,7 +705,7 @@ SELECTCASE ABL:(ARG:0):12
         LOCAL:1 += ABL:(ARG:1):0 + 1
         TIMES LOCAL:1, 1.50
 ENDSELECT
-IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+IF EXIST_PENIS(ARG:1)
     ;挿入側が射精可能であれば射精中毒・遅漏・早漏にも応じて挿入側の射精経験と絶頂経験を同数増加
     SELECTCASE ABL:(ARG:1):37
         CASE 0
@@ -838,7 +838,7 @@ SELECTCASE ABL:(ARG:0):12
         LOCAL:1 += ABL:(ARG:1):0 + 1
         TIMES LOCAL:1, 1.50
 ENDSELECT
-IF TALENT:(ARG:1):120 || TALENT:(ARG:1):121
+IF EXIST_PENIS(ARG:1)
     ;挿入側が射精可能であれば射精中毒・遅漏・早漏にも応じて挿入側の射精経験と絶頂経験を同数増加
     SELECTCASE ABL:(ARG:1):37
         CASE 0

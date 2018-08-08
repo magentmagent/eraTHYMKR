@@ -9338,7 +9338,7 @@ ENDIF
 ;-------------------------------------------------
 @KOJO_83_MESSAGE_SUB_EVENT_SCENE145
 ;주인에 장대가 있는 경우 (질삽입)
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     IF RAND:2 == 0
         PRINTFORMW 「아, , 갑자기 …!  안된다고, 응, 응은 …!」
         PRINTFORMW 「이도 참, 요리어디 는, 없어져버리는 , 아 응!」

@@ -163,7 +163,7 @@ ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:150 == 0
 ELSEIF CFLAG:5001 < 5 && TALENT:170
     DRAWLINE
     ;주인이 남자 또는 후타나리
-    IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+    IF EXIST_PENIS(MASTER)
         PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자, 아큐가 달려들어 안겼다
         PRINTFORML 「……오는 것이 늦었습니다」
         PRINTFORML 그렇게 말하고 아큐는 %CALLNAME:MASTER%의 손을 잡고 비밀스런 부위로 이끌어 갔다
@@ -693,7 +693,7 @@ ELSEIF CFLAG:5001 == 6 && FLAG:11 == 2
 ELSEIF CFLAG:5001 == 7 && FLAG:11 == 2
     DRAWLINE
     IF RAND:3 == 0
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
         PRINTFORMW 아큐의 요청으로 조교 전에 펠라를 해줬다
         PRINTFORMW 한 방울도 남기지 않고 모든 정액을 입에 머금고는
         PRINTFORMW 한손으론 보지를, 한손으론 애널을 벌리고 정액으로 가득한 입을 열어 보였다
@@ -793,7 +793,7 @@ ELSEIF CFLAG:5001 == 5
         PRINTFORML 「…반드시, 책임을 내던지고 이런 정사에 빠지고 있는 나를, 선대들은 용서하지 않겠군요」
         PRINTFORMW 「그렇지만. 주인님을 위해서라면, 나는 벌을 받아도 상관없으니까요」
     ELSE
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
         PRINTFORML 아큐는 조교가 끝난 후에도 아쉬운 듯이 자지를 빨고 있다…
         PRINTFORMW 「응…, 쪼옥, 으무…… 좀 더, 정자 주세요……, 으부, 할짝」
         ELSE
@@ -5020,7 +5020,7 @@ PRINTFORMW
         PRINTFORMW 절정에 달한지 얼마나 되었다고 그새 또 절정에 달했다.
         PRINTFORMW 아큐는 명백히 지쳤다.
         ;주인이 [남자]거나 [후타나리]
-        IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 하지만 아큐는 아직도 욕정을 바랬고, 기쁘게 웃는 입은 혀까지 내밀며 자지를 탐했다.
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 힘들어 보이니까 그만해도 된다고 말해도
             PRINTFORMW 입에서 자지를 떼지 않은 채 괜찮다고 부정확한 발음으로 대답했다.

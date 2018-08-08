@@ -479,7 +479,7 @@ ELSEIF TALENT:150 && TALENT:161 && BASE:0 < 500 && (STAIN:0 & 4 && STAIN:1 & 4 &
     DRAWLINE
     PRINTFORMW 모미지는 마치 집단 윤간당한 뒤처럼 축 늘어져 정액 웅덩이에 누워있다.
     PRINTFORMW 「우아, 아… 굉장한 냄새……♪」
-    IF ASSI > 0 && (TALENT:ASSI:120 || TALENT:ASSI:121)
+    IF ASSI > 0 && EXIST_PENIS(ASSI)
         PRINTFORM %조사처리(CALLNAME:MASTER,"와")% %조사처리(CALLNAME:ASSI,"는")% 
     ELSE
         PRINTFORM %조사처리(CALLNAME:MASTER,"는")%
@@ -4152,7 +4152,7 @@ ENDIF
 ;자위보여주기 CFLAG9115
 ;과시하고라고 하는 이름의 BUKKAKE 플레이인 생각이 든다
 ;-------------------------------------------------
-IF SELECTCOM == 115 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+IF SELECTCOM == 115 && EXIST_PENIS(MASTER)
     ;연모
     IF TALENT:150 && (CFLAG:9115 < 3 || FLAG:11 == 2)
         ;욕정 Lv3(3000) 이상 또는 낙인
@@ -6552,7 +6552,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 145 && (CFLAG:8145 < 1 || FLAG:11 == 2)
     ;주인에게 조리 아이가 있다
-    IF TALENT:MASTER:120 || TALENT:MASTER:121
+    IF EXIST_PENIS(MASTER)
         IF RAND:2 == 0
             PRINTFORMW 모미지는%조사처리(CALLNAME:MASTER,"를")% 알아차리자 노출된 엉덩이를 좌우로 살랑거리며 사랑스럽게 권해 온다.
             PRINTFORMW 「 밥이 뜸들 때까지 조금 더 걸리니까, 그때까지……에헤헤」

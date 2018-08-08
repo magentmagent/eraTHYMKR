@@ -328,7 +328,7 @@ ENDIF
 IF TEQUIP:20 == 0
     ;恋慕
     IF TALENT:150 == 1
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「후후……다음엔, 주인님이……♪」
         ELSE
             PRINTFORMW 「주인님은……다음……인가요……?」
@@ -345,7 +345,7 @@ ELSEIF RESULT:1 == 1
     ;恋慕
     IF TALENT:150 == 1
         PRINTFORMW 「우아아, 좋아, 안에서, 움직여서……」
-        SIF TALENT:MASTER:120 || TALENT:MASTER:121
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「……그, 그런데, 나는, 주인님의 것이, 더 좋아요오」
     ;それ以外(恋慕無し)
     ELSE
@@ -355,7 +355,7 @@ ELSEIF RESULT:1 == 1
 ELSE
     ;恋慕
     IF TALENT:150 == 1
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「후아아아아앗, 앙, 이, 이런 것보단, 주인님 물건이 더, 좋을 거 같아요옷」
         ELSE
             PRINTFORMW 「%CSTR:90%, %CSTR:92%, 더 움직여주세요!」

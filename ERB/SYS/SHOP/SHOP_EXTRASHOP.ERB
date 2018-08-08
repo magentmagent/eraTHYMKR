@@ -1204,7 +1204,7 @@ REPEAT CHARANUM
     ;クリトリスリング
     IF ARG:1 == 20
         ;[オトコ]・[ふたなり]は装着不可能
-        SIF TALENT:COUNT:120 || TALENT:COUNT:121
+        SIF EXIST_PENIS(COUNT)
             CONTINUE
         ;Ｃ調律経験が20未満だとダメ
         SIF EXP:COUNT:41 < 20
