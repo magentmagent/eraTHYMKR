@@ -43,7 +43,8 @@
 ;인원수분만큼 루프 돌린다　9 이하와 10이상으로 나누고 있는 것은 화면의 자리수 맞댐의 형편
 
 
-VARSET LOCAL, NULL
+VARSET LOCAL, NULL, 0, 99
+VARSET LOCAL, 0, 100
 
 ;캐릭터 조건 판정
 REPEAT CHARANUM
@@ -164,7 +165,6 @@ GOTO INPUT_LOOP1
 ;=============================================================================
 $RINKAN_PHASE
 
-VARSET LOCAL, 0
 ;GOTO INPUT_LOOP1
 
 ;일시적 기록용으로, LOCAL:500에 인원수를 두드려 넣는다
