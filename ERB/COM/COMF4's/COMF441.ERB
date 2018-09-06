@@ -70,7 +70,7 @@ ENDIF
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 소인체형のとき主人か조교자가 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]のとき主人か조교자가 금단의 지식 보유자가 아니면 불가
 IF TALENT:127 && TALENT:MASTER:56 == 0
     SIF TALENT:PLAYER:56 == 0
         RETURN 0
@@ -122,7 +122,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM441
 PRINTL 반령을 삽입한다 (앞)
-TSTR:0 = 반령을 삽입(전)
+COM_NAME = 반령을 삽입(전)
 CALL TRAIN_MESSAGE_COM441
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -192,7 +192,7 @@ ELSEIF PALAM:10 >= PALAMLV:4
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

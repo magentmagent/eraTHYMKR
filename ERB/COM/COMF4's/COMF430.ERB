@@ -37,7 +37,7 @@ ENDIF
 SIF TALENT:MASTER:56 == 0 && COMMON_BODYSIZE_CHECK(PLAYER, TARGET) == 0
     RETURN 0
 ;조교자에게 페니스가 없으면 불가
-SIF TALENT:PLAYER:1 == 0 && TALENT:PLAYER:120 == 0 && TALENT:PLAYER:121 == 0
+SIF EXIST_BAR(PLAYER) == 0
     RETURN 0
 ;수면 중에는 불가
 SIF EQUIP:14
@@ -109,7 +109,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 수레바퀴
+COM_NAME = 수레바퀴
 CALL TRAIN_MESSAGE_COM430
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -172,7 +172,7 @@ ELSE
     TIMES LOCAL , 0.60
 ENDIF
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -293,7 +293,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -399,7 +399,7 @@ ENDIF
 TCVAR:0 += 1
 IF PLAYER == MASTER
     TCVAR:42 += 2
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+    SIF EXIST_BAR(MASTER)
         CFLAG:173 += 2
 ENDIF
 

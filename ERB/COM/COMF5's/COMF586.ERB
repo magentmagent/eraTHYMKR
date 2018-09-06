@@ -47,7 +47,7 @@ RETURN 1
 ;카메라 타입의 촉수를 항문에 삽입해, 손에 가진 디스플레이로 장내의 모습을 과시한다……라고 하는 해독 불능인 플레이
 @COM586
 PRINTL 촉수 장내 촬영
-TSTR:0 = 촉수장내 촬영
+COM_NAME = 촉수장내 촬영
 CALL TRAIN_MESSAGE_COM586
 
 DOWNBASE:0 += 75
@@ -205,7 +205,7 @@ IF TALENT:80
     TIMES LOCAL:2 , 1.50
     TIMES LOCAL:6 , 0.80
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     TIMES LOCAL:3 , 2.00
     SIF TALENT:130 || TALENT:131
@@ -449,7 +449,7 @@ IF TALENT:80
     TIMES LOCAL:2 , 1.50
     TIMES LOCAL:6 , 0.80
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     TIMES LOCAL:3 , 2.00
     SIF TALENT:130 || TALENT:131

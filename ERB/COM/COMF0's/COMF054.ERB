@@ -74,7 +74,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 강제 불알 핥기
+COM_NAME = 강제 불알 핥기
 CALL TRAIN_MESSAGE_COM054
 
 ;-------------------------------------------------
@@ -113,7 +113,7 @@ SIF TALENT:54
 ;조교자의 Ｃ감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------

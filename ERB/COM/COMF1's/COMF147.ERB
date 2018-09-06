@@ -71,7 +71,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM147
 PRINTL 요도 비즈
-TSTR:0 = 요도비즈
+COM_NAME = 요도비즈
 CALL TRAIN_MESSAGE_COM147
 
 ;-------------------------------------------------
@@ -100,7 +100,7 @@ SIF TALENT:10
 ;감정결여
 SIF TALENT:22
     TIMES LOCAL:1 , 0.60
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 2.00
 ;요도광
@@ -218,7 +218,7 @@ ELSE
     TIMES SOURCE:0 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 ;남자 또는 후타나리
@@ -399,7 +399,7 @@ ENDIF
 ;남자 또는 후타나리
 SIF (TALENT:120 || TALENT:121)
     TIMES LOCAL:2 , 2.50
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 2.00
 ;요도광
@@ -485,9 +485,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM147
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 요도에 비즈가 넣어진 채로 계속해서 괴롭혀지고 있다….

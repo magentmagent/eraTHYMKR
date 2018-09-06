@@ -54,7 +54,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM534
 PRINTL 촉수 애널 산란
-TSTR:0 = 촉수 어널 산란
+COM_NAME = 촉수 어널 산란
 CALL TRAIN_MESSAGE_COM534
 
 LOCAL:1 = 65
@@ -201,7 +201,7 @@ ELSE
     TIMES SOURCE:2 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -360,7 +360,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 2.00
 
@@ -413,9 +413,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM534
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %조사선택(CALLNAME:TARGET, "는")% 항문에서 촉수의 알이 밀어 넣어져 항문이 막힌 채로, 계속 능욕당하고 있다.

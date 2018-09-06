@@ -36,7 +36,7 @@ RETURN 1
 IF TALENT:PLAYER:831
     IF TEQUIP:71
         PRINTL 볼텍스
-        TSTR:0 = 볼텍스
+        COM_NAME = 볼텍스
     ELSE
         PRINTFORML 야채 수：{FLAG:574} 
         PRINTL 시간 정지를 실행하려면, 3000개의 야채를 소비할 필요가 있습니다.
@@ -55,17 +55,17 @@ IF TALENT:PLAYER:831
         ENDIF
 
         PRINTL 퀵타임
-        TSTR:0 = 퀵타임
+        COM_NAME = 퀵타임
     ENDIF
 ELSEIF NO:PLAYER == 9
     PRINTL 프라이빗 스퀘어
-    TSTR:0 = 프라이빗 스퀘어
+    COM_NAME = 프라이빗 스퀘어
 ELSEIF TEQUIP:71
     PRINTL 영야 되돌리기
-    TSTR:0 = 영야 되돌리기
+    COM_NAME = 영야 되돌리기
 ELSE
     PRINTL 시간 정지
-    TSTR:0 = 시간 정지
+    COM_NAME = 시간 정지
 ENDIF
 CALL TRAIN_MESSAGE_COM418
 
@@ -73,7 +73,6 @@ CALL TRAIN_MESSAGE_COM418
 IF TEQUIP:71
     TEQUIP:71 = 0
     TFLAG:158 = -1
-    TFLAG:251 = 1
     TFLAG:140 |= 16
 
     TIMES TFLAG:280 , 1.50
@@ -142,7 +141,6 @@ RETURN 1
 @TIMESTOP_RELEASE
 TEQUIP:71 = 0
 TFLAG:158 = -1
-TFLAG:251 = 1
 TFLAG:140 |= 16
 
 TIMES TFLAG:280 , 1.50

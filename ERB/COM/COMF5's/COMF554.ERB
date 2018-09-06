@@ -38,9 +38,6 @@ SIF TEQUIP:11
 ;利尿剤効果発揮中はダメ
 SIF TEQUIP:12
     RETURN 0
-;強精神薬効果発揮中はダメ
-SIF TEQUIP:13
-    RETURN 0
 ;睡眠薬効果発揮中はダメ
 SIF EQUIP:14
     RETURN 0
@@ -52,9 +49,6 @@ SIF TEQUIP:17
     RETURN 0
 ;鈴蘭の毒効果発揮中はダメ
 SIF TEQUIP:18
-    RETURN 0
-;昆虫採集セットの薬効果発揮中はダメ
-SIF TEQUIP:19
     RETURN 0
 ;촉수強制回復効果発揮中はダメ
 SIF TEQUIP:91
@@ -69,7 +63,7 @@ RETURN 1
 ;「흡혈」 「바늘」을 참고에 작성.
 @COM554
 PRINTL 촉수 흡혈
-TSTR:0 = 촉수 흡혈
+COM_NAME = 촉수 흡혈
 CALL TRAIN_MESSAGE_COM554
 
 DOWNBASE:0 += 70

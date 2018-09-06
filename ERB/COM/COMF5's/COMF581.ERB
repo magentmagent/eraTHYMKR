@@ -41,7 +41,7 @@ RETURN 1
 ;기계 타입의 촉수를 사용해 바치바치와 전기 고문을 실시하는……이라고 말하는 구(? )플레이
 @COM581
 PRINTL 촉수 전기충격
-TSTR:0 = 촉수 조개 잡이
+COM_NAME = 촉수 조개 잡이
 CALL TRAIN_MESSAGE_COM581
 
 DOWNBASE:0 += 40
@@ -112,7 +112,7 @@ ENDIF
 ;도착적
 SIF TALENT:80
     TIMES LOCAL:2 , 1.20
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 2.50
 
@@ -228,7 +228,7 @@ ENDIF
 ;도착적
 SIF TALENT:80
     TIMES LOCAL:2 , 1.20
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 2.50
 

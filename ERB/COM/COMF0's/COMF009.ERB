@@ -26,10 +26,10 @@ CALL AUTONOMOUSLY
 TFLAG:699 = 0
 IF NO:TARGET == 6
     PRINTL 문지기 씨의 우아한 낮잠
-    TSTR:0 = 문지기 씨의 우아한 낮잠
+    COM_NAME = 문지기 씨의 우아한 낮잠
 ELSE
     PRINTL 아무것도 안 한다
-    TSTR:0 = 아무것도 안 한다
+    COM_NAME = 아무것도 안 한다
 ENDIF
 CALL TRAIN_MESSAGE_COM009
 
@@ -227,9 +227,6 @@ SIF TALENT:180
 ;媚薬使用中
 SIF TEQUIP:11
     LOCAL += 7000
-;興奮剤使用中
-SIF TEQUIP:14
-    LOCAL += 4000
 ;애태우기플레이 중
 SIF TEQUIP:68
     LOCAL += 8000
@@ -282,14 +279,14 @@ IF ABL:11 >= 3
         IF (TALENT:171 || TALENT:172 || TALENT:173 || TALENT:174) && RAND:3 == 0
             ;음고
             IF TALENT:173
-                IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+                IF EXIST_PENIS(PLAYER)
                     LOCAL:99 = 34
                 ELSE
                     LOCAL:99 = 182
                 ENDIF
             ;淫壺（非処女）
             ELSEIF TALENT:172 && TALENT:120 == 0 && TALENT:0 == 0 && EXP:0 > 0
-                IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+                IF EXIST_PENIS(PLAYER)
                     LOCAL:99 = 24
                 ELSE
                     LOCAL:99 = 7
@@ -297,7 +294,7 @@ IF ABL:11 >= 3
             ;음유
             ELSEIF TALENT:174
                 ;絶壁でなくて相手に棒があればパイズリでなければ胸自慰か自慰
-                IF TALENT:110 == 0 && (TALENT:PLAYER:120 || TALENT:PLAYER:121)
+                IF TALENT:110 == 0 && EXIST_PENIS(PLAYER)
                     LOCAL:99 = 42
                 ELSEIF TALENT:120 == 0
                     LOCAL:99 = 205
@@ -310,7 +307,7 @@ IF ABL:11 >= 3
             ENDIF
         ;乱数にひっかからなければランダムで実行コマンド決定（ここでひっかからなければ何もしない）
         ELSE
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 IF RAND:11 == 0 && TFLAG:143 <= 2 && (NO:PLAYER == 7 || NO:TARGET == 7) && TEQUIP:42 == 0
                     LOCAL:99 = 349
                 ELSEIF RAND:10 == 0
@@ -359,7 +356,7 @@ IF ABL:11 >= 3
             LOCAL:99 = 7
         ;그 외
         ELSE
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 IF RAND:4 == 0 && TEQUIP:42 == 0
                     LOCAL:99 = 41
                 ELSEIF RAND:3 == 0 && TALENT:110 == 0
@@ -389,7 +386,7 @@ IF ABL:11 >= 3
             ENDIF
         ;バイブ挿入中
         ELSEIF TEQUIP:20 == 1 || TEQUIP:25 == 1
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 IF RAND:10 < 3
                     LOCAL:99 = 7
                 ELSEIF RAND:7 == 0
@@ -409,7 +406,7 @@ IF ABL:11 >= 3
             ENDIF
         ;二穴バイブ挿入中
         ELSEIF TEQUIP:20 == 1 && TEQUIP:25 == 1
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 IF RAND:10 < 4
                     LOCAL:99 = 7
                 ELSEIF RAND:6 == 0
@@ -425,7 +422,7 @@ IF ABL:11 >= 3
             ENDIF
         ;그 외
         ELSE
-            IF TALENT:PLAYER:120 || TALENT:PLAYER:121
+            IF EXIST_PENIS(PLAYER)
                 IF RAND:11 == 0 && TFLAG:143 <= 2 && (NO:PLAYER == 7 || NO:TARGET == 7) && TEQUIP:42 == 0
                     LOCAL:99 = 349
                 ELSEIF RAND:10 == 0

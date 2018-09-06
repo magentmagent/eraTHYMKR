@@ -67,14 +67,14 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM124
-TSTR:7 = 로터
+COM_TOOL_NAME = 로터
 IF FLAG:1100 & 1
     ;技師パッチ有効なら命令前にローターの特殊な名前チェック
     FLAG:1110 = 0
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
 LOCALS = 
 SIF TEQUIP:50
@@ -120,7 +120,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = %LOCALS%
+COM_NAME = %LOCALS%
 CALL TRAIN_MESSAGE_COM124
 
 DOWNBASE:0 += 15
@@ -922,27 +922,27 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 IF FLAG:1100 & 1
     ;技師パッチ有効なら、各調教道具の特殊な名前チェック
     ;ローター分はコマンド開始時にチェック完了しているので退避する
-    LOCALS:0 = %TSTR:7%
-    LOCALS:1 = %TSTR:9%
+    LOCALS:0 = %COM_TOOL_NAME%
+    LOCALS:1 = %COM_TOOL_CALLNAME%
     IF TEQUIP:20 == 1
         ;バイブ挿してる場合はバイブの特殊な名前チェック
-        TSTR:7 = 바이브
+        COM_TOOL_NAME = 바이브
         FLAG:1110 = 3
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:2 = %TSTR:7%
+        LOCALS:2 = %COM_TOOL_NAME%
     ELSE
         LOCALS:2 = 바이브
     ENDIF
     IF TEQUIP:25 == 1
         ;アナルバイブ挿してる場合はアナルバイブの特殊な名前チェック
-        TSTR:7 = 애널바이브
+        COM_TOOL_NAME = 애널바이브
         FLAG:1110 = 9
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:3 = %TSTR:7%
+        LOCALS:3 = %COM_TOOL_NAME%
         IF LOCALS:3 == "애널바이브"
             LOCALS:6 = 바이브
         ELSE
-            LOCALS:6 = %TSTR:7%
+            LOCALS:6 = %COM_TOOL_NAME%
         ENDIF
     ELSE
         LOCALS:3 = 애널바이브
@@ -950,10 +950,10 @@ IF FLAG:1100 & 1
     ENDIF
     IF TEQUIP:21
         ;クスコ挿してる場合はクスコの開発者確認
-        TSTR:7 = 쿠스코
+        COM_TOOL_NAME = 쿠스코
         FLAG:1110 = 8
         CALL NAMECHECK_CUSTOMTOOL
-        LOCALS:4 = %TSTR:7%
+        LOCALS:4 = %COM_TOOL_NAME%
     ELSE
         LOCALS:4 = 쿠스코
     ENDIF

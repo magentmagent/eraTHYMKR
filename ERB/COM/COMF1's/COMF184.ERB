@@ -51,10 +51,10 @@ RETURN 1
 @COM184
 IF TEQUIP:15 & 4
     PRINTL 프리스크 추가삽입
-    TSTR:0 = 프리스크 추가 삽입
+    COM_NAME = 프리스크 추가 삽입
 ELSE
     PRINTL 프리스크 삽입
-    TSTR:0 = 프리스크 삽입
+    COM_NAME = 프리스크 삽입
 ENDIF
 
 DOWNBASE:0 += 10

@@ -1243,15 +1243,6 @@ IF CFLAG:7900 == 1
     CALL SELF_KOJO_K39_OBEY
     RETURN 0
 ENDIF
-;자고 있을 경우에는 돌아온다
-SIF EQUIP:14
-    RETURN 0
-;조교 중에다 재갈을 물렸을 때에도 돌아온다
-SIF TFLAG:999 && TEQUIP:42
-    RETURN 0
-;조교 중에다 기절 중일 때에도 돌아온다
-SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-    RETURN 0
 
 ;이벤트 대사 호출
 TRYCALLFORM K39_MESSAGE_EVENT_{(TFLAG:200)}

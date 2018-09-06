@@ -32,18 +32,18 @@ SIF TALENT:120
 ;공중육변기플레이를 실행할 경우, 낙인을 찍었거나 괴조인격이 아니면 안됨
 IF TALENT:161 == 0 && TALENT:169 == 0 && TEQUIP:52
     RETURN 0
-;육변기플레이를 실행할 경우, 대상에게 붉은 목걸이를 주었거나 낙인을 찍었거나 괴조인격이 아니면 안됨
+;육변기플레이를 실행할 경우, 대상에게 붉은 개목걸이를 주었거나 낙인을 찍었거나 괴조인격이 아니면 안됨
 ELSEIF TALENT:161 == 0 && TALENT:162 == 0 && TALENT:169 == 0
     ;ただし주인이 狂気持ちで対象が反発刻印Lv3または精神崩壊, 망신, 傀儡のどれかなら実行可能
     SIF TALENT:MASTER:158 == 0 || (MARK:9 < 3 && TALENT:167 == 0 && TALENT:168 == 0 && TALENT:151 == 0)
         RETURN 0
 ENDIF
 IF TALENT:128
-    ;작은 체형なら순종이 4이상かつ마조끼が4이상かつ확장경험10이상じゃないと実行できない
+    ;[작은체형]なら순종이 4이상かつ마조끼が4이상かつ확장경험10이상じゃないと実行できない
     SIF ABL:10 <= 3 || ABL:21 <= 3 || EXP:32 < 10 || EXP:33 < 10
         RETURN 0
 ELSEIF TALENT:127
-    ;조교 대상이 소인체형の場合, 上の条件に加え주인이 금단의 지식 보유자가 아니면 불가
+    ;조교 대상이 [소인]の場合, 上の条件に加え주인이 금단의 지식 보유자가 아니면 불가
      SIF TALENT:MASTER:56 == 0 || ABL:10 <= 3 || ABL:21 <= 3 || EXP:32 < 10 || EXP:33 < 10
         RETURN 0
 ELSE
@@ -125,7 +125,7 @@ RETURN 1
 @COM106_IN
 ;육변기 플레이
 PRINTL 육변기 플레이
-TSTR:0 = 육변기 플레이
+COM_NAME = 육변기 플레이
 CALL TRAIN_MESSAGE_COM106_IN
 
 DOWNBASE:0 += 750
@@ -181,7 +181,7 @@ LOCAL = EJACULATIONCHECK_PALAM_10_2(TARGET, LOCAL)
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -224,7 +224,7 @@ TCVAR:0 += LOCAL:1
 TCVAR:42 += (PLAYER == MASTER) ?  LOCAL:1 # 0
 ;A경험
 TCVAR:1 += LOCAL:2
-IF ASSIPLAY == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1)
+IF ASSIPLAY == 0 && EXIST_BAR(MASTER)
     CFLAG:173 += LOCAL:1
     CFLAG:174 += LOCAL:2
 ENDIF
@@ -296,20 +296,20 @@ ENDIF
 LOCAL:1 = 0
 IF NO:TARGET == 10
     PRINTL 전세계 공중 육변기
-    TSTR:0 = 전세계 공중 육변기
+    COM_NAME = 전세계 공중 육변기
     LOCAL:1 = 1
 ELSEIF NO:TARGET == 52
     PRINTL 전인류의 공중 육변기
-    TSTR:0 = 전인류의 공중 육변기
+    COM_NAME = 전인류의 공중 육변기
     LOCAL:1 = 2
 ;가 EX화하지 않은 것이 조건
 ELSEIF NO:TARGET == 63 && CFLAG:0 == 0
     PRINTL 핵융합 공중 육변기
-    TSTR:0 = 핵융합 공중 육변기
+    COM_NAME = 핵융합 공중 육변기
     LOCAL:1 = 3
 ELSE
     PRINTL 공중 육변기 플레이
-    TSTR:0 = 공중 육변기 플레이
+    COM_NAME = 공중 육변기 플레이
 ENDIF
 
 DOWNBASE:0 += 850

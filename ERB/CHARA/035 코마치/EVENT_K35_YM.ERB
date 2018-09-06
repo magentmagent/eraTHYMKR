@@ -854,7 +854,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 1
         ;연모
         IF TALENT:150 == 1
             ;조교자가 남자 또는 후타나리
-            IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW 「으, 응……. 확실히, 좋지만, 저어……」
                 PRINTFORMW 「역시 나는, 댁의 물건, 쪽이……」
             ;그 외의 경우
@@ -882,7 +882,7 @@ IF SELECTCOM == 12 && TEQUIP:20 == 0
     ;연모
     IF TALENT:150 == 1
         ;조교자가 남자 또는 후타나리
-        IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「아앙, 뽑아버리는 건가……」
             PRINTFORMW 「다음엔, 그 사타구니에 달려 있는 녀석을 받고 싶은데……」
         ;그 외의 경우
@@ -2106,25 +2106,10 @@ IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;強精神薬    CFLAG:8278
+;배란유도제    CFLAG:8279
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8278 == 0
-        CFLAG:8278= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;排卵誘発剤    CFLAG:8279
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 66
+IF SELECTCOM == 66 && TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;처음
     IF CFLAG:8279 == 0
         CFLAG:8279= 1
@@ -2134,12 +2119,38 @@ IF SELECTCOM == 66
         RETURN 0
     ENDIF
 ENDIF
+;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;緊急避妊薬    CFLAG:8280
+;긴급피임약    CFLAG:8280
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 67
+IF SELECTCOM == 67 && TFLAG:99 == 0
     ;처음
     IF CFLAG:8280 == 0
         CFLAG:8280= 1
@@ -2148,6 +2159,32 @@ IF SELECTCOM == 67
     ELSE
         RETURN 0
     ENDIF
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
@@ -2173,51 +2210,6 @@ IF SELECTCOM == 69
     ;처음
     IF CFLAG:8282 == 0
         CFLAG:8282= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;興奮剤    CFLAG:8283
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:8283 == 0
-        CFLAG:8283= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;助手避妊薬    CFLAG:8284
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 71
-    ;처음
-    IF CFLAG:8284 == 0
-        CFLAG:8284= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;감각増幅薬    CFLAG:8285
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 72
-    ;처음
-    IF CFLAG:8285 == 0
-        CFLAG:8285= 1
         RETURN 0
     ;2회째 이후
     ELSE
@@ -2308,21 +2300,6 @@ IF SELECTCOM == 85
     ;처음
     IF CFLAG:8291 == 0
         CFLAG:8291= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8292
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;처음
-    IF CFLAG:8292 == 0
-        CFLAG:8292= 1
         RETURN 0
     ;2회째 이후
     ELSE
@@ -3345,21 +3322,6 @@ IF SELECTCOM == 135
     ;처음
     IF CFLAG:8354 == 0
         CFLAG:8354= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;割礼    CFLAG:8355
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 136
-    ;처음
-    IF CFLAG:8355 == 0
-        CFLAG:8355= 1
         RETURN 0
     ;2회째 이후
     ELSE

@@ -21,12 +21,12 @@ SIF FLAG:2 & 4 && EXP:0 < EXPLV:1 && TALENT:PLAYER:120 == 0
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;작은 체형なら순종이 4이상かつ마조끼が4이상じゃないと実行できない
+;[작은체형]なら순종이 4이상かつ마조끼が4이상じゃないと実行できない
 IF TALENT:128
     SIF ABL:10 < 4 || ABL:21 < 4
         RETURN 0
 ENDIF
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;ASSI일 경우, 순종4이상이거나 새드じゃないとできない。
@@ -69,7 +69,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM231
 PRINTL 피스트퍽
-TSTR:0 = 피스트퍽
+COM_NAME = 피스트퍽
 CALL TRAIN_MESSAGE_COM231
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -126,7 +126,7 @@ ELSE
     SOURCE:20 += 0
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

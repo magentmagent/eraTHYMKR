@@ -36,7 +36,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM543
 PRINTL 촉수 방광 세정
-TSTR:0 = 촉수 방광 세정
+COM_NAME = 촉수 방광 세정
 CALL TRAIN_MESSAGE_COM543
 
 LOCAL:1 = 70
@@ -140,7 +140,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

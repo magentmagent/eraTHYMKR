@@ -2,14 +2,8 @@
 ;이벤트 대사
 ;-------------------------------------------------
 @SELF_KOJO_X
-;REVERSAL 모드 때는 범용역말을 호출한다
-SIF FLAG:4 == 3
-    CALL LES_SELF_KOJO_K0_MX
 ;범용 말미사용이라면 돌아온다
 SIF FLAG:22 == 1
-    RETURN 0
-;자고 있는 경우, 조교중이라면 기절중(TFLAG:899는 대상 노예의 기절이므로 조수에게는 관계없다)이나 구가포함의라고 하고도 돌아온다
-SIF EQUIP:14 || (TFLAG:999 && (KX_MOUSE_CHECK(TARGET) || (TARGET != ASSI && TFLAG:899 >= 1)))
     RETURN 0
 CALL JINKAKU
 ;(원래) 남자 혹은 말할 수가 없는 인형도 돌아온다
@@ -378,7 +372,7 @@ IF TFLAG:200 == 10 && FLAG:11 == 2
         IF CFLAG:3005 == 3
             PRINTFORMW %CALLNAME:TARGET% 『이건 정말 기분 좋아요! 역시 사정은 질내사정이 최고일까요?』
         ELSEIF CFLAG:3005 == 1
-            IF TALENT:MASTER:120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW %CALLNAME:TARGET% 『이거 기분 좋다! %조사처리(STR:401,"가")% 집착할 만하네♪』
             ELSE
                 PRINTFORMW %CALLNAME:TARGET% 『이거 기분 좋다! 이 감촉, 죽여주네♪』
@@ -1823,6 +1817,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 98
     IF NO == 149
+        FLAG:8501 = 0 ;딸 밖으로나간다 OFF
         IF SELECTCOM == 386
             PRINTFORMW 
             PRINTFORMW 「……………」
@@ -3721,10 +3716,10 @@ IF TFLAG:200 == 124
 ENDIF
 
 ;-------------------------------------------------
-;肥大陰核取得
+;비대음핵 습득
 ;-------------------------------------------------
 IF TFLAG:200 == 125
-    IF CFLAG:7004 == 1
+    IF CFLAG:7005 == 1
         PRINTFORMW 「…우우우우……」
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 비대해진 음핵을 곤혹스러운 눈으로 내려다보고 있다… 
     ;연모 보유
@@ -3777,10 +3772,10 @@ IF TFLAG:200 == 125
 ENDIF
 
 ;-------------------------------------------------
-;陰核肥大化完了(異様な大きさ)
+;비대음핵 최대
 ;-------------------------------------------------
 IF TFLAG:200 == 126
-    IF CFLAG:7004 == 1
+    IF CFLAG:7005 == 1
         PRINTFORMW 「어쩜 %STR:401% 팔뚝보다 더 클지도……」
         PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 곤혹스러워 하면서도 비정상적으로 거대해진 자신의 음핵이 신기한듯 쓰다듬었다 
     ;연모 보유
@@ -3836,6 +3831,7 @@ ENDIF
 ;매각
 ;-------------------------------------------------
 IF TFLAG:200 == 130
+    FLAG:8501 = 0 ;딸 밖으로나간다 OFF
     ;연모 보유
     IF TALENT:150 && CFLAG:7005 == 1
         IF CFLAG:3005 == 2 || CFLAG:3005 == 3 || CFLAG:3005 == 5 
@@ -5710,7 +5706,156 @@ IF TFLAG:200 == 163 || TFLAG:200 == 164
     ENDIF
     RETURN 1
 ENDIF
-
+;-------------------------------------------------
+;임신시켰다 (친부의 대사)
+;누가 임신시켰는지를 CFLAG:70으로 분기 가능
+;주인 = 1, 조수 = 2, 노예 = 3
+;-------------------------------------------------
+IF TFLAG:200 == 166
+    ;TFLAG:99 = 산모의 번호
+    ;주인에게
+    IF TFLAG:99 == MASTER ;TFLAG:99가 4면 주인을 임신시킴.
+        ;상애나 친애
+        IF TALENT:153 || TALENT:152
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"을")% 임신시켰을 시의 대사입니다』
+        ;연모, 복종, 음란
+        ELSEIF TALENT:150 || TALENT:160 || TALENT:170
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"을")% 임신시켰을 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"을")% 임신시켰을 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"을")% 임신시켰을 시의 대사입니다』
+        ENDIF
+    ;주인 외
+    ELSE
+        ;[상애]나 [친애] 이며, [질투하기 쉬움]이나 [질투]가 있다.
+        IF (TALENT:153 || TALENT:152) && (TALENT:19 || TALENT:157) 
+            PRINTFORMW %CALLNAME:TARGET% 『주인이 아닌 %조사처리(CALLNAME:(TFLAG:99),"을")% 임신시켰을 시의 대사입니다』
+        ;굿 임신
+        ELSEIF CFLAG:(TFLAG:99):76 == 1
+            PRINTFORMW %CALLNAME:TARGET% 『주인이 아닌 %조사처리(CALLNAME:(TFLAG:99),"을")% 임신시켰을 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『주인이 아닌 %조사처리(CALLNAME:(TFLAG:99),"을")% 임신시켰을 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『주인이 아닌 %조사처리(CALLNAME:(TFLAG:99),"을")% 임신시켰을 시의 대사입니다』
+        ENDIF
+    ENDIF
+ENDIF
+;-------------------------------------------------
+;출산시 (친부의 대사)
+;-------------------------------------------------
+IF TFLAG:200 == 167
+    ;TFLAG:99 = 산모의 번호
+    ;주인에게
+    IF TFLAG:99 == MASTER
+        ;상애나 친애
+        IF TALENT:153 || TALENT:152
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"가")% 출산 시의 대사입니다』
+        ;연모, 복종, 음란
+        ELSEIF TALENT:150 || TALENT:160 || TALENT:170
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"가")% 출산 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"가")% 출산 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"가")% 출산 시의 대사입니다』
+        ENDIF
+    ;주인 외
+    ELSE
+        ;[상애]나 [친애] 이며, [질투하기 쉬움]이나 [질투]가 있다.
+        IF (TALENT:153 || TALENT:152) && (TALENT:19 || TALENT:157) 
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"가")% 출산 시의 대사입니다』
+        ;굿 임신
+        ELSEIF CFLAG:(TFLAG:99):76 == 1
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"가")% 출산 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"가")% 출산 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"가")% 출산 시의 대사입니다』
+        ENDIF
+    ENDIF
+ENDIF
+;-------------------------------------------------
+;자식이 독립 (친부의 대사)
+;-------------------------------------------------
+IF TFLAG:200 == 168
+    ;TFLAG:99 = 산모의 번호
+    ;주인에게
+    IF TFLAG:99 == MASTER
+        ;상애나 친애
+        IF TALENT:153 || TALENT:152
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"의")% 자식이 독립했을 시의 대사입니다』
+        ;연모, 복종, 음란
+        ELSEIF TALENT:150 || TALENT:160 || TALENT:170
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"의")% 자식이 독립했을 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"의")% 자식이 독립했을 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"의")% 자식이 독립했을 시의 대사입니다』
+        ENDIF
+    ;주인 외
+    ELSE
+        ;[상애]나 [친애] 이며, [질투하기 쉬움]이나 [질투]가 있다.
+        IF (TALENT:153 || TALENT:152) && (TALENT:19 || TALENT:157) 
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"의")% 자식이 독립했을 시의 대사입니다』
+        ;굿 임신
+        ELSEIF CFLAG:(TFLAG:99):76 == 1
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"의")% 자식이 독립했을 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"의")% 자식이 독립했을 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"의")% 자식이 독립했을 시의 대사입니다』
+        ENDIF
+    ENDIF
+ENDIF
+;-------------------------------------------------
+;육아방 입실 (친부의 대사)
+;-------------------------------------------------
+IF TFLAG:200 == 169
+    ;TFLAG:99 = 산모의 번호
+    ;주인에게
+    IF TFLAG:99 == MASTER
+        ;상애나 친애
+        IF TALENT:153 || TALENT:152
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"이")% 육아방 입실 시의 대사입니다』
+        ;연모, 복종, 음란
+        ELSEIF TALENT:150 || TALENT:160 || TALENT:170
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"이")% 육아방 입실 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"이")% 육아방 입실 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:MASTER,"이")% 육아방 입실 시의 대사입니다』
+        ENDIF
+    ;주인 외
+    ELSE
+        ;[상애]나 [친애] 이며, [질투하기 쉬움]이나 [질투]가 있다.
+        IF (TALENT:153 || TALENT:152) && (TALENT:19 || TALENT:157) 
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"이")% 육아방 입실 시의 대사입니다』
+        ;굿 임신
+        ELSEIF CFLAG:(TFLAG:99):76 == 1
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"이")% 육아방 입실 시의 대사입니다』
+        ;반발 각인이 있다.
+        ELSEIF MARK:9
+            PRINTFORMW %CALLNAME:TARGET% 『%조사처리(CALLNAME:(TFLAG:99),"이")% 육아방 입실 시의 대사입니다』
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW %CALLNAME:TARGET% 「%조사처리(CALLNAME:(TFLAG:99),"이")% 육아방 입실 시의 대사입니다』
+        ENDIF
+    ENDIF
+ENDIF
 ;-------------------------------------------------
 ;임신했습니다
 ;-------------------------------------------------
@@ -5962,7 +6107,6 @@ IF TFLAG:200 == 170
             ENDIF
         ENDIF
     ENDIF
-RETURN 1
 ENDIF
 
 ;----------------------------------------------------------------
@@ -6018,7 +6162,24 @@ IF TFLAG:200 == 173
         ENDIF
     ENDIF
 ENDIF
-
+;----------------------------------------------------------------
+;유모가 된다
+;----------------------------------------------------------------
+IF TFLAG:200 == 174
+    IF NO == 149
+        IF TFLAG:99 == 1 ;주인이 산모일때 
+            ;PRINTFORMW 「유모가 될 때의 대사입니다」
+        ELSE
+            ;PRINTFORMW 「유모가 될 때의 대사입니다」
+        ENDIF
+    ELSE
+        IF TFLAG:99 == 1 ;주인이 산모일때 
+            ;PRINTFORMW 「유모가 될 때의 대사입니다」
+        ELSE
+            ;PRINTFORMW 「유모가 될 때의 대사입니다」
+        ENDIF
+    ENDIF
+ENDIF
 ;-------------------------------------------------
 ;主人を刺殺した奴隷(そしてバッドエンド直行)
 ;-------------------------------------------------
@@ -6305,9 +6466,10 @@ IF TFLAG:200 == 193
 ENDIF
 
 ;-------------------------------------------------
-;解放(これでこのキャラはこの周回からは消えていく)
+;해방(これでこのキャラはこの周回からは消えていく)
 ;-------------------------------------------------
 IF TFLAG:200 == 195 && TFLAG:99 != 130
+    FLAG:8501 = 0 ;딸 밖으로나간다 OFF
     ;연모 보유
     IF TALENT:150
         IF CFLAG:7005 == 1
@@ -6772,6 +6934,7 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 257
     IF NO == 149
+        FLAG:8501 = 0 ;딸 밖으로나간다 OFF
         PRINTFORMW 「아, 빠, 아… 아」
         PRINTFORMW 거의 전신의 구멍에 촉수가 박히고, 배꼽 속으로까지 파고 들고 있다 
         PRINTFORMW 그러나 %조사처리(CALLNAME:TARGET,"는")% 죽을 수도 없이 미약한 의식을 가진 채 계속 살아가야 한다… 
@@ -7603,10 +7766,11 @@ IF TFLAG:200 == 323 && TFLAG:99 == 1
 ENDIF
 
 ;-------------------------------------------------
-;약 사용(記憶消去)
+;약 사용(기억소거)
 ;-------------------------------------------------
 IF TFLAG:200 == 324 && TFLAG:99 == 0
     IF NO == 149
+        FLAG:8501 = 0 ;딸 밖으로 나간다 OFF
         IF CFLAG:TARGET:7005 == 1
             IF TALENT:MASTER:120 == 1
                 STR:401 = 아빠
@@ -7638,7 +7802,7 @@ IF TFLAG:200 == 324 && TFLAG:99 == 0
 ENDIF
 
 ;-------------------------------------------------
-;赤の飴玉使用(処女膜再生)(TFLAG:99 = 1은 사용 후 플래그)
+;처녀막 사탕使用(処女膜再生)(TFLAG:99 = 1은 사용 후 플래그)
 ;-------------------------------------------------
 IF TFLAG:200 == 330 && TFLAG:99 == 1 && CFLAG:7005 == 1
     IF TALENT:150
@@ -7655,7 +7819,7 @@ IF TFLAG:200 == 330 && TFLAG:99 == 1 && CFLAG:7005 == 1
 ENDIF
 
 ;-------------------------------------------------
-;赤の飴玉使用(処女膜再生)(TFLAG:99 = 1은 사용 후 플래그)
+;처녀막 사탕使用(処女膜再生)(TFLAG:99 = 1은 사용 후 플래그)
 ;-------------------------------------------------
 IF TFLAG:200 == 330 && TFLAG:99 == 1
     ;연모 보유
@@ -7760,94 +7924,28 @@ IF TFLAG:200 == 332
 ENDIF
 
 ;-------------------------------------------------
-;緑の飴玉（ロリ化）
+;약 사용(銀のキャンディ)
 ;-------------------------------------------------
 IF TFLAG:200 == 333
-    IF CHECK_MASTERS_CHILD(TARGET) == 1
-        ;연모 보유
-        IF TALENT:150
-            IF CFLAG:3005 == 3
-                PRINTFORMW 「딸로서는, 빨리 어른이 되고 싶은데…」
-            ELSEIF CFLAG:3005 == 1
-                PRINTFORMW 「이건, 그… %STR:401%에게는 역시 딸이 어린 모습으로 남아주는 게 좋은 걸까?」
-            ELSEIF CFLAG:3005 == 2
-                PRINTFORMW 「뭔가 할 말이 궁하네요. 그래도 뭐, %STR:401%의 선택이니까. 그럼 앞으로 어떻게 하죠…」
-            ELSEIF CFLAG:3005 == 5
-                PRINTFORMW 「저기, %조사처리(STR:401,"는")% 역시, 어린 모습을 좋아하는 건가요?」
-            ELSEIF CFLAG:3005 == 6
-                PRINTFORMW 「%조사처리(STR:401,"는")% 역시 %조사처리(STR:400,"가")% 어린 게 좋은가요?」
-            ELSEIF CFLAG:3005 == 4
-                PRINTFORMW 「작아졌다… 에? 귀여워? 으~응. 역시 복잡하네…」
-            ENDIF
-        ;그 외
+    IF NO == 149
+        IF EXP:52 >= 1
+            PRINTFORMW 「다행이다……」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 살짝 안도의 한숨을 쉬며 %조사처리(CALLNAME:MASTER,"를")% 바라보았다 
+            PRINTFORMW 「이제 %CALLNAME:TARGET%도 다시 %STR:401%의 아기를 가질 수 있어」
+            PRINTFORMW 그렇게 말하고 있는 %CALLNAME:TARGET%의 표정은 굉장히 진지하다 
+            PRINTFORMW 「%STR:401%, 잘 부탁해… 에헤헷」
         ELSE
-            IF CFLAG:3005 == 3
-                PRINTFORMW 「딸을 더 어리게 해서, %조사처리(STR:401,"는")% 어떻게 할 생각이죠…」
-            ELSEIF CFLAG:3005 == 1
-                PRINTFORMW 「%STR:401%에게는 딸이 역시 어린 게 좋은 걸까?」
-            ELSEIF CFLAG:3005 == 2
-                PRINTFORMW 「모처럼 크게 되고 싶었습니다만… 하아…」
-            ELSEIF CFLAG:3005 == 5
-                PRINTFORMW 「아아아, %조사처리(STR:401,"는")% 너무해요… 언제까지 %조사처리(STR:400,"가")% 작은 모습으로 있으면 되나요?」
-            ELSEIF CFLAG:3005 == 6
-                PRINTFORMW 「%조사처리(STR:401,"는")% %조사처리(STR:400,"가")% 어린 게 좋은가요? 조금 아쉽군요…」
-            ELSEIF CFLAG:3005 == 4
-                PRINTFORMW 「에에! 너무해! 빨리 어른이 되고 싶은데!」
-            ENDIF
+            PRINTFORMW 「원래대로, 돌아왔어……」
+            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 몸이 원래대로 돌아왔다는 걸 느끼고 안도의 한숨을 쉬었다 
+            PRINTFORMW 「%CALLNAME:TARGET%, 계속 알을 낳아야하나 싶었어」
+            PRINTFORMW 꽤나 많이 불안했던 것 같다… 
         ENDIF
-    ELSE
-        ;연모 보유
-        IF TALENT:150
-            IF CFLAG:3005 == 3
-                PRINTFORMW 「우우, 난감하네요… 본래의 %조사처리(STR:400,"를")% 더 사랑해줬으면 하는데…」
-            ELSEIF CFLAG:3005 == 1
-                PRINTFORMW 「앞으로 잘 부탁해♪ 오빠♪ …라고 하면 되나?」
-            ELSEIF CFLAG:3005 == 2
-                PRINTFORMW 「뭔가 할 말이 궁하네. 그래도 뭐, %STR:401%의 선택이니까. 그럼 앞으로 어떻게 하지…」
-            ELSEIF CFLAG:3005 == 5
-                PRINTFORMW 「저기, 귀여워 보이나요?」
-            ELSEIF CFLAG:3005 == 6
-                PRINTFORMW 「작아졌군요… 뭐, %조사처리(STR:401,"가")% 좋다면 어쩔 수 없죠…」
-            ELSEIF CFLAG:3005 == 4
-                PRINTFORMW 「작아졌다… 에? 귀여워? 으~응. 그럼 알겠어!」
-            ENDIF
-        ;반발 보유
-        ELSEIF MARK:9
-            IF CFLAG:3005 == 3
-                PRINTFORMW 「우와, %조사처리(STR:401,"가")% 로리콘이었다니… 진성 변태네요…」
-            ELSEIF CFLAG:3005 == 1
-                PRINTFORMW 「뭐야? 왜 %STR:401%의 취미에 이렇게까지 %조사처리(STR:400,"가")% 휘둘려야 하는 건데!」
-            ELSEIF CFLAG:3005 == 2
-                PRINTFORMW 「이래서, 로리콘 변태는 처치 곤란하군…」
-            ELSEIF CFLAG:3005 == 5
-                PRINTFORMW 「하아, 뭐, 뭐죠? 작은 쪽을 좋아한다니…」
-            ELSEIF CFLAG:3005 == 6
-                PRINTFORMW 「솔직히, 이건 납득하기 어렵군요…」
-            ELSEIF CFLAG:3005 == 4
-                PRINTFORMW 「우와, 변태한테 시달리고 있어!」
-            ENDIF
-        ;그 외
-        ELSE
-            IF CFLAG:3005 == 3
-                PRINTFORMW 「하아, %조사처리(STR:401,"가")% 로리콘이었다니…」
-            ELSEIF CFLAG:3005 == 1
-                PRINTFORMW 「%조사처리(STR:401,"는")% 범죄자였어? 뭐, 새삼스럽네. 유괴에 감금에 로리콘에 아주 사형감이지…」
-            ELSEIF CFLAG:3005 == 2
-                PRINTFORMW 「로리콘은 고칠 수 없는 병일지도 모르겠군… 하아…」
-            ELSEIF CFLAG:3005 == 5
-                PRINTFORMW 「아아아, 이런 모습으로는 도저히 밖에 나갈 수 없어요…」
-            ELSEIF CFLAG:3005 == 6
-                PRINTFORMW 「%조사처리(STR:401,"는")% 퍽이나 좋은 취미를 갖고 계시군요… 눈물이 다 나네요…」
-            ELSEIF CFLAG:3005 == 4
-                PRINTFORMW 「에에! 너무해! 다 큰 %조사처리(STR:400,"가")% 더 좋을텐데!」
-            ENDIF
-        ENDIF
+        RETURN 1
     ENDIF
-RETURN 1
 ENDIF
 
 ;-------------------------------------------------
-;白の飴玉(妖精化)
+;요정화 사탕(妖精化)
 ;-------------------------------------------------
 IF TFLAG:200 == 334 && TFLAG:99 == 1
     ;対象が娘の場合
@@ -7958,28 +8056,94 @@ RETURN 1
 ENDIF
 
 ;-------------------------------------------------
-;약 사용(銀のキャンディ)
+;젊음의 사탕（ロリ化）
 ;-------------------------------------------------
 IF TFLAG:200 == 338
-    IF NO == 149
-        IF EXP:52 >= 1
-            PRINTFORMW 「다행이다……」
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 살짝 안도의 한숨을 쉬며 %조사처리(CALLNAME:MASTER,"를")% 바라보았다 
-            PRINTFORMW 「이제 %CALLNAME:TARGET%도 다시 %STR:401%의 아기를 가질 수 있어」
-            PRINTFORMW 그렇게 말하고 있는 %CALLNAME:TARGET%의 표정은 굉장히 진지하다 
-            PRINTFORMW 「%STR:401%, 잘 부탁해… 에헤헷」
+    IF CHECK_MASTERS_CHILD(TARGET) == 1
+        ;연모 보유
+        IF TALENT:150
+            IF CFLAG:3005 == 3
+                PRINTFORMW 「딸로서는, 빨리 어른이 되고 싶은데…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORMW 「이건, 그… %STR:401%에게는 역시 딸이 어린 모습으로 남아주는 게 좋은 걸까?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORMW 「뭔가 할 말이 궁하네요. 그래도 뭐, %STR:401%의 선택이니까. 그럼 앞으로 어떻게 하죠…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORMW 「저기, %조사처리(STR:401,"는")% 역시, 어린 모습을 좋아하는 건가요?」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORMW 「%조사처리(STR:401,"는")% 역시 %조사처리(STR:400,"가")% 어린 게 좋은가요?」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORMW 「작아졌다… 에? 귀여워? 으~응. 역시 복잡하네…」
+            ENDIF
+        ;그 외
         ELSE
-            PRINTFORMW 「원래대로, 돌아왔어……」
-            PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 몸이 원래대로 돌아왔다는 걸 느끼고 안도의 한숨을 쉬었다 
-            PRINTFORMW 「%CALLNAME:TARGET%, 계속 알을 낳아야하나 싶었어」
-            PRINTFORMW 꽤나 많이 불안했던 것 같다… 
+            IF CFLAG:3005 == 3
+                PRINTFORMW 「딸을 더 어리게 해서, %조사처리(STR:401,"는")% 어떻게 할 생각이죠…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORMW 「%STR:401%에게는 딸이 역시 어린 게 좋은 걸까?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORMW 「모처럼 크게 되고 싶었습니다만… 하아…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORMW 「아아아, %조사처리(STR:401,"는")% 너무해요… 언제까지 %조사처리(STR:400,"가")% 작은 모습으로 있으면 되나요?」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORMW 「%조사처리(STR:401,"는")% %조사처리(STR:400,"가")% 어린 게 좋은가요? 조금 아쉽군요…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORMW 「에에! 너무해! 빨리 어른이 되고 싶은데!」
+            ENDIF
         ENDIF
-        RETURN 1
+    ELSE
+        ;연모 보유
+        IF TALENT:150
+            IF CFLAG:3005 == 3
+                PRINTFORMW 「우우, 난감하네요… 본래의 %조사처리(STR:400,"를")% 더 사랑해줬으면 하는데…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORMW 「앞으로 잘 부탁해♪ 오빠♪ …라고 하면 되나?」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORMW 「뭔가 할 말이 궁하네. 그래도 뭐, %STR:401%의 선택이니까. 그럼 앞으로 어떻게 하지…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORMW 「저기, 귀여워 보이나요?」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORMW 「작아졌군요… 뭐, %조사처리(STR:401,"가")% 좋다면 어쩔 수 없죠…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORMW 「작아졌다… 에? 귀여워? 으~응. 그럼 알겠어!」
+            ENDIF
+        ;반발 보유
+        ELSEIF MARK:9
+            IF CFLAG:3005 == 3
+                PRINTFORMW 「우와, %조사처리(STR:401,"가")% 로리콘이었다니… 진성 변태네요…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORMW 「뭐야? 왜 %STR:401%의 취미에 이렇게까지 %조사처리(STR:400,"가")% 휘둘려야 하는 건데!」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORMW 「이래서, 로리콘 변태는 처치 곤란하군…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORMW 「하아, 뭐, 뭐죠? 작은 쪽을 좋아한다니…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORMW 「솔직히, 이건 납득하기 어렵군요…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORMW 「우와, 변태한테 시달리고 있어!」
+            ENDIF
+        ;그 외
+        ELSE
+            IF CFLAG:3005 == 3
+                PRINTFORMW 「하아, %조사처리(STR:401,"가")% 로리콘이었다니…」
+            ELSEIF CFLAG:3005 == 1
+                PRINTFORMW 「%조사처리(STR:401,"는")% 범죄자였어? 뭐, 새삼스럽네. 유괴에 감금에 로리콘에 아주 사형감이지…」
+            ELSEIF CFLAG:3005 == 2
+                PRINTFORMW 「로리콘은 고칠 수 없는 병일지도 모르겠군… 하아…」
+            ELSEIF CFLAG:3005 == 5
+                PRINTFORMW 「아아아, 이런 모습으로는 도저히 밖에 나갈 수 없어요…」
+            ELSEIF CFLAG:3005 == 6
+                PRINTFORMW 「%조사처리(STR:401,"는")% 퍽이나 좋은 취미를 갖고 계시군요… 눈물이 다 나네요…」
+            ELSEIF CFLAG:3005 == 4
+                PRINTFORMW 「에에! 너무해! 다 큰 %조사처리(STR:400,"가")% 더 좋을텐데!」
+            ENDIF
+        ENDIF
     ENDIF
+RETURN 1
 ENDIF
 
 ;-------------------------------------------------
-;翠の飴玉(陰毛を生やす)
+;발모 사탕(陰毛を生やす)
 ;-------------------------------------------------
 IF TFLAG:200 == 340 && TFLAG:99 == 1
     ;対象が娘の場合
@@ -8051,7 +8215,7 @@ RETURN 1
 ENDIF
 
 ;-------------------------------------------------
-;桃の飴玉(ＥＸ化解除)
+;EX해제 사탕(ＥＸ化解除)
 ;-------------------------------------------------
 IF TFLAG:200 == 342 && TFLAG:99 == 1
     ;反発刻印持ちで[親愛]及び[相愛]はなし
@@ -8757,7 +8921,7 @@ ENDIF
 ;-------------------------------------------------
 ;夜襲撃成功
 ;-------------------------------------------------
-IF TFLAG:200 == 405
+IF NO != 149 && TFLAG:200 == 405
     ;반발 보유の夜這い
     IF MARK:9
         IF CFLAG:3005 == 3
@@ -8808,7 +8972,7 @@ IF TFLAG:200 == 405
             PRINTFORMW 「에에, 저기? 조금 몸을 녹이지 않을래?」
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「밤늦게 실례지만, 왠지 몸이 달아오르는 걸 위로해줬으면 하는군」
-        ;人格5で非処女でＶ感覚がLv2以上で小人体型ではない場合
+        ;人格5で非処女でＶ感覚がLv2以上で[소인]ではない場合
         ELSEIF CFLAG:3005 == 5 && TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
             PRINTFORMW 「좋은 밤이에요. 저기, 하지 않겠어요?」
         ELSEIF CFLAG:3005 == 5
@@ -8824,7 +8988,7 @@ IF TFLAG:200 == 405
     ELSEIF GET_NIGHT_KOJO() == 3 && LOCAL == 0
         IF CFLAG:3005 == 3
             PRINTFORMW 「…후후후, 방심은 금물이죠, 제대로 문단속하지 않으면 이렇게 기습을 당한다고요♪」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「반성할 때까지, 범하는 걸 계속하죠♪」
             ELSE
@@ -8832,7 +8996,7 @@ IF TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「안녕하세요, 는 왜 벌써 자려고 드는거야! 이 녀석은!」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「당장 하기나 해!」
             ELSE
@@ -8840,7 +9004,7 @@ IF TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW 「흠, 혼자인가? 어쩔 수 없군. %조사처리(STR:400,"가")% 함께 있어주지」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「어이? 왜 그래? 넣지 않을 건가? %조사처리(STR:400,"는")% 괜찮다고?」
             ELSE
@@ -8848,7 +9012,7 @@ IF TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「저기, 잘 시간에 죄송합니다만, 참을 수 없게 됐어요」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「그러니, 안아 주세요♪」
             ELSE
@@ -8864,7 +9028,7 @@ IF TFLAG:200 == 405
     ELSEIF GET_NIGHT_KOJO() == 3
         IF CFLAG:3005 == 3
             PRINTFORMW 「어머어머? 혼자인가요? 외롭겠어요」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「착한 %조사처리(STR:400,"가")% 안겨드리죠」
             ELSE
@@ -8872,7 +9036,7 @@ IF TFLAG:200 == 405
             ENDIF
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「좋은 밤. 저기? 같이 있어도 돼? 왠지 몸이 뜨거워서」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「뭐, 대신 넣게 해줄게」
             ELSE
@@ -8883,7 +9047,7 @@ IF TFLAG:200 == 405
             PRINTFORMW 「뭐 평소에 사랑해 주고 있었다면 문제 없었잖아」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「좋은 밤이에요. 저기, 조금 몸이 식은 것 같아서요」
-            ;非処女でＶ感覚がLv2以上で小人体型ではない場合
+            ;非処女でＶ感覚がLv2以上で[소인]ではない場合
             IF TALENT:0 == 0 && ABL:1 >= 2 && TALENT:127 == 0
                 PRINTFORMW 「%STR:401%의 사랑을 받고 싶은데, 괜찮을까요?」
             ELSE
@@ -9795,10 +9959,10 @@ IF TFLAG:200 == 412
             PRINTFORMW %CALLNAME:TARGET% 「아아, 아팟! 읏, …이, 이 쾌감, 참을 수 없어요!」
         ELSEIF CFLAG:3005 == 1
             PRINTFORM %CALLNAME:TARGET% 「아팟! 앙! …기분 좋아…  
-            IF TALENT:GET_CHARA_M():120
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 오빠앗!」
+            IF TALENT:GET_CHARA_G():120
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 오빠앗!」
             ELSE
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 여왕님!」
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 여왕님!」
             ENDIF
         ELSEIF CFLAG:3005 == 2
             PRINTFORMW %CALLNAME:TARGET% 「앗, 아팟! …아아, 맞는 걸 그만둘 수 없어♪」
@@ -9808,10 +9972,10 @@ IF TFLAG:200 == 412
             PRINTFORMW %CALLNAME:TARGET% 「아아, 아팟! 아, 아앙! …이런 미천한 돼지를 흠씬 두들겨 패주세요♪」
         ELSEIF CFLAG:3005 == 4
             PRINTFORM %CALLNAME:TARGET% 「아팟! 아, 아응! …기분 좋아앗! 
-            IF TALENT:GET_CHARA_M():120
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 오빠앗!」
+            IF TALENT:GET_CHARA_G():120
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 오빠앗!」
             ELSE
-                PRINTFORMW %CALLNAME:GET_CHARA_M()% 여왕님!」
+                PRINTFORMW %CALLNAME:GET_CHARA_G()% 여왕님!」
             ENDIF
         ENDIF
     ENDIF

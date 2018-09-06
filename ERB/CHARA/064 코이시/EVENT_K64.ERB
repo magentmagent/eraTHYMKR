@@ -232,7 +232,7 @@ IF CFLAG:5220 == 0
     ELSE
         GOTO INPUT_EX_LOOP
     ENDIF
-    PRINTL 코이시쨩은 유아체형?
+    PRINTL 코이시쨩은 작은체형?
     PRINTL [0] 물론
     PRINTL [1] 그럴리가
     $INPUT_EX_LOOP2
@@ -242,7 +242,7 @@ IF CFLAG:5220 == 0
         TALENT:128 = 1
         PRINTFORMW ―이 로리콘 놈들!―
     ELSEIF RESULT == 1
-        PRINTFORMW ―유아체형 없이 진행합니다―
+        PRINTFORMW ―[작은체형] 없이 진행합니다―
     SIF TALENT:128
           TALENT:128 = 0
     ELSE
@@ -1689,7 +1689,7 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 1 &&TEQUIP:16 == 0
     ENDIF
     RETURN 1
 
-;굴복각인Lv3+연모+排卵誘発剤
+;굴복각인Lv3+연모+배란유도제
 ELSEIF MARK:2 == 3 && TALENT:150 == 1 &&TEQUIP:16
     DRAWLINE
     PRINTFORML 「애 만들기 수고했어♪」
@@ -1715,41 +1715,19 @@ ENDIF
 IF TALENT:140 && CFLAG:5202 == 2
     ;임신を消去
     TALENT:140 = 0
-    ;出産予定日を初期化
-    CFLAG:77 =  0
-    ;父親を初期化
-    CFLAG:78 = 0
+    CALL RESET_FLAG_N_FORCE, TARGET
     ;最大체력を元に戻す
     ;ただし現在の체력は戻さない
     MAXBASE:0 += 500
     PRINTFORMW 조교 종료 후, %조사처리(CALLNAME:TARGET,"는")% 유산했다.
-
-    ;バストサイズを一段階小さくする
-    ;元々爆乳？知るか
-    ;爆乳
-    IF TALENT:113
-        TALENT:113 = 0
-        TALENT:112 = 1
-    ;巨乳
-    ELSEIF TALENT:112
-        TALENT:112 = 0
-    ;貧乳
-    ELSEIF TALENT:111
-        TALENT:111 = 0
-        TALENT:110 = 1
-    ;絶壁
-    ELSEIF TALENT:110
-        ;サイズそのまま
-    ;並乳
-    ELSE
-        TALENT:111 = 1
+    IF CFLAG:ARG:3006
+        CALL RESET_ASSI_PREGNANT, TARGET
+        PRINTFORMW %CALLNAME:TARGET%의 가슴 사이즈가 원래대로 돌아왔다.
     ENDIF
-    PRINTFORMW %CALLNAME:TARGET%의 가슴 사이즈가 원래대로 돌아왔다.
+    
 
-    ;母乳体質を消す
-    ;青いキャンディ返せ? [幼稚]の助手を使え
-    SIF TALENT:134
-        TALENT:134 = 0
+    ;임신 시에 발생한 모유체질을 소실시킨다
+    CALL LOST_MILK, TARGET
 
     ;腹パン判定を元に戻す
     CFLAG:5201 = 1
@@ -2907,7 +2885,7 @@ ELSEIF SELECTCOM == 4
         ;처녀
         IF TALENT:0 == 1
             ;연모+ペニスのある주인이 하는 플레이
-            IF TALENT:150 && ASSIPLAY == 0 && (TALENT:MASTER:121 || TALENT:MASTER:120 || TALENT:MASTER:121)
+            IF TALENT:150 && ASSIPLAY == 0 && (TALENT:MASTER:121 || EXIST_PENIS(MASTER))
                 PRINTFORML 「손가락으로 하면 별로 안 아픈 거야?」
                 PRINTFORMW 「몹시 아파도 좋으니까, 난 자지 쪽이 더 좋겠는데 말야…」
             ;그 외
@@ -5705,7 +5683,7 @@ ELSEIF SELECTCOM == 615 && PREVCOM == 24
     ELSE
         ;연모
         IF TALENT:150
-            ;排卵誘発剤 or 目的が売り物 or 売り物宣言
+            ;배란유도제 or 目的が売り物 or 売り物宣言
             IF TEQUIP:16 || (CFLAG:5150 < 2 && CFLAG:5201 < 6) || (CFLAG:5201 >= 6 && TALENT:27)
                 ;V감각LV3+윤활LV2이상+전회의 커맨드가 정상위以外일 때 자동 신음성 함수
                 SIF ABL:1 >= 3 && PALAM:10 >= PALAMLV:2 && PREVCOM != 20
@@ -6590,7 +6568,7 @@ IF SELECTCOM == 26
 ;        CFLAG:5356 = 1
     ;2회째 이후
     ELSE
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORMW 「저기 말야아…. 오늘은 나하고 애 만드는 게 아니었어?」
         ;연모+주인が射精
@@ -7380,7 +7358,7 @@ ENDIF
 IF SELECTCOM == 110
     ;精液いっぱい入ってる（精液量2이상）
     IF CFLAG:5231 > 1
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORML 「아아…정액 나와버리면 안 돼……」
             PRINTFORMW 코이시는 비부에서 흘러나오는 정액을 아쉬운 듯 바라보고 있다
@@ -7404,7 +7382,7 @@ IF SELECTCOM == 110
             CFLAG:5231 = 0
     ;精液入ってる（精液量1）
     ELSEIF CFLAG:5231 == 1
-        ;연모+排卵誘発剤
+        ;연모+배란유도제
         IF TALENT:150 && TEQUIP:16
             PRINTFORML 「아아 안 돼…. 이 정도론 아기가 안 생겨」
             PRINTFORMW 「좀 더 섹스해서 자궁이 정액으로 가득할 정도로 하지 않으면」
@@ -9315,10 +9293,10 @@ IF SELECTCOM == 441
 ENDIF
 
 ;-------------------------------------------------
-;排卵誘発剤
+;배란유도제         CFLAG:필요 시 새로 확보해야함
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 185
+IF SELECTCOM == 66 && TFLAG:99 == 0
     ;연모
     IF TALENT:150
     ;굴복각인LV3
@@ -9327,14 +9305,40 @@ IF SELECTCOM == 185
     ELSE
     ENDIF
 ENDIF
+;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 [SKIPEND]
 
 ;-------------------------------------------------
-;緊急避妊薬
+;긴급피임약
 ;精液量はCFLAG:5231で確認
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 443
+IF SELECTCOM == 67 && TFLAG:99 == 0
     ;연모
     IF TALENT:150
     ;굴복각인LV3
@@ -9342,6 +9346,32 @@ IF SELECTCOM == 443
     ;그 외
     ELSE
     ENDIF
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 [SKIPEND]
 
@@ -9640,14 +9670,14 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
             ;子宮口責め
             IF A == 2 && SELECTCOM == 615
                 PRINTFORMW 「아…아…. 정액이 뱃속으로 점점 들어와……」
-                ;排卵誘発剤
+                ;배란유도제
                 SIF TEQUIP:16
                     PRINTFORMW 「직접 자궁에 넣었더라면 정말 생겨버렸을지도♪」
             ELSEIF A
                 PRINTFORMW 「아… 따뜻해……」
                 PRINTFORMW 「이 느낌… 좋아…. 더 정액 가져갈게―」
             ELSE
-                ;排卵誘発剤
+                ;배란유도제
                 IF TEQUIP:16
                     PRINTFORMW 「배 안이 따뜻해―……」
                     ;마스터가 인간
@@ -10713,8 +10743,8 @@ ENDIF
 IF TFLAG:200 == 200
 ;대사 표시 직후에 「%NAME:TARGET%는 뺨을 발갛게 물들이며 %NAME:MASTER%의 마음을 받아들이는 뜻을 전했다」로 이어집니다
 ;자연히 이어지도록 하면 좋을 거라 생각합니다
-    ;제3의 눈이 닫혀 있음+코이시는 팔것 or 성노예라고 대답했거나 신부라고 대답했어도 [일선을 넘지 않음]이 남아 있으면 새드 엔딩 분기로
-    IF TALENT:213 != 1 && (CFLAG:5150 != 2 || TALENT:27 == 1)
+    ;제3의 눈이 닫혀 있음+코이시는 팔것 or 성노예라고 대답했으면 새드 엔딩 분기로
+    IF TALENT:213 != 1 && CFLAG:5150 != 2
         PRINTFORMW 「예쁜 가락지네?」
         PRINTFORMW 그녀가 손에 끼어진 반지를 이리저리 둘러보는 동안 지금까지 일어났던 일들을 진지하게 다시 생각해보았다.
         PRINTL 
@@ -10850,7 +10880,7 @@ ENDIF
 ;ENDIF
 
 ;----------------------------------------------------------------
-;예속의 증표 사용시(낙인을 찍는다)
+;노예의 증표 사용시(낙인을 찍는다)
 ;----------------------------------------------------------------
 ;「%NAME:TARGET%は%NAME:MASTER%の所有物となったことにこの上ない悦びを感じているようだ……」
 ;へ続きます
@@ -10873,9 +10903,9 @@ PRINTFORMW ………
 PRINTFORMW ……
 PRINTFORMW 
 WAIT
-;제3의 눈이 닫혀 있음+코이시는 팔것 or 성노예라고 대답했거나 신부라고 대답했어도 [일선을 넘지 않음]이 남아 있으면 새드 엔딩 분기로
+;제3의 눈이 닫혀 있음+코이시는 팔것 or 성노예라고 대답했으면 새드 엔딩 분기로
 ;영원정 일당(테위, 우동게, 에이린, 카구야)+모코우 중 하나라도 빠져 있으면 새드 엔딩 못 들어감
-IF TALENT:213 != 1 && (CFLAG:5150 != 2 || TALENT:27 == 1) && (ITEM:127 == 0 && ITEM:128 == 0 && ITEM:129 == 0 && ITEM:130 == 0 && ITEM:131 == 0)
+IF TALENT:213 != 1 && CFLAG:5150 != 2 && (ITEM:127 == 0 && ITEM:128 == 0 && ITEM:129 == 0 && ITEM:130 == 0 && ITEM:131 == 0)
     PRINTL 
     PRINTFORML ―행복한 순간들의 연속이었다.
     PRINTW

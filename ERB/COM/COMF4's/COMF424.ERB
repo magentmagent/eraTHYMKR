@@ -27,7 +27,7 @@ ENDIF
 ;그 조교 중에 관장 플레이＋배설이 있었을 경우, 조교자가 汚れ無視もしくは汚臭鈍感を持たないなら実行できない
 SIF TFLAG:140 & 256 && TALENT:PLAYER:61 == 0 && TALENT:PLAYER:64 == 0
     RETURN 0
-;작은 체형の場合, 巨乳か爆乳じゃないとダメ
+;[작은체형]の場合, 巨乳か爆乳じゃないとダメ
 SIF TALENT:128 && TALENT:111 == 0 && TALENT:112 == 0
     RETURN 0
 ;남자라면 안 됨
@@ -77,10 +77,10 @@ RETURN 1
 @COM424
 IF TEQUIP:20 == 9
     PRINTL 고구마 술 따르기
-    TSTR:0 = 고구마 술 따르기
+    COM_NAME = 고구마 술 따르기
 ELSE
     PRINTL 가랑이 술 따르기
-    TSTR:0 = 가랑이 술 따르기
+    COM_NAME = 가랑이 술 따르기
 ENDIF
 ;말용으로 TFLAG:201을 사용. (0=가슴에, 1=정좌로 가랑이에, 2=보통으로 가랑이에)
 TFLAG:201 = 0

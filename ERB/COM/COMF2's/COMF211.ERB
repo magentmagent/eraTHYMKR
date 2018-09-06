@@ -17,8 +17,8 @@ SIF ASSI < 0
 ;主人もしくは조수가 オトコだとダメ
 SIF TALENT:MASTER:120 || TALENT:ASSI:120
     RETURN 0
-;主人と助手の体格差が違いすぎるとダメ(금단의 지식は無関係で)
-SIF ABS(COMMON_BODYSIZE_CHECK2(MASTER, ASSI)) > 1
+;조교자 측과 대상과의 체격 차이가 4 단계 이상이면 안 된다(금단의 지식은 무관하다)
+SIF ABS(BODYSIZE(MASTER) - BODYSIZE(ASSI)) >= 4
     RETURN 0
 ;수면 중에는 불가
 SIF EQUIP:14
@@ -44,7 +44,7 @@ RETURN 1
 ;외형적으로는  진기한 것을 보고 즐김이지만 효과적으로는 역시 초라하다
 @COM211
 PRINTL 젖 맞대기 과시
-TSTR:0 = 젖 맞대기 과시
+COM_NAME = 젖 맞대기 과시
 CALL TRAIN_MESSAGE_COM211
 
 DOWNBASE:0 += 5

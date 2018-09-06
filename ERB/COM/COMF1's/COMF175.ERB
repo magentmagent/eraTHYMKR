@@ -32,7 +32,7 @@ SIF TEQUIP:25 == 8
 ;아이템을 가지고 있거나, 아이템 없음 설정이 아니면 불가
 SIF ITEM:12 == 0 && NOITEM == 0
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;기계면 불가
@@ -63,7 +63,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM175
 PRINTL 공기 관장
-TSTR:0 = 공기 관장
+COM_NAME = 공기 관장
 CALL TRAIN_MESSAGE_COM175
 
 DOWNBASE:0 += 200

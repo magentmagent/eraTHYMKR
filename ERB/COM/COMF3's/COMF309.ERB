@@ -58,7 +58,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 조수와 키스한다
+COM_NAME = 조수와 키스한다
 CALL TRAIN_MESSAGE_COM309
 
 ;-------------------------------------------------
@@ -96,7 +96,7 @@ SIF TALENT:ASSI:54
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------

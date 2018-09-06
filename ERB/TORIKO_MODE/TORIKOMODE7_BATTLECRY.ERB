@@ -206,11 +206,17 @@ SELECTCASE ARG
         ENDSELECT
     ;필살기. 보통 스펠 카드를 쓰면 좋음.
     CASE 7
-        SELECTCASE RAND:2
+        SELECTCASE RAND:5
             CASE 0
                 PRINTFORMW 「신령! 몽상봉인!」
             CASE 1
                 PRINTFORMW 「몽상천생!」
+            CASE 2
+                PRINTFORMW 「보구! 음양귀신옥!」
+            CASE 3
+                PRINTFORMW 「영부! 음양보옥!」
+            CASE 4
+                PRINTFORMW 「신기! 팔방귀박진!」
         ENDSELECT
     ;승리대사
     CASE 8
@@ -552,11 +558,15 @@ SELECTCASE ARG
         ENDSELECT
     ;필살기. 보통 스펠 카드를 쓰면 좋음.
     CASE 7
-        SELECTCASE RAND:2
+        SELECTCASE RAND:4
             CASE 0
-                PRINTFORMW 「『동부』 퍼펙트 프리즈! 얼어버려랏!」
+                PRINTFORMW 「받아랏! 『빙부』아이시클 폴!」
             CASE 1
+                PRINTFORMW 「『동부』 퍼펙트 프리즈! 얼어버려랏!」
+            CASE 2
                 PRINTFORMW 「『동부』 마이너스 K」
+            CASE 3
+                PRINTFORMW 「『빙괴』그레이트 크래셔!」
         ENDSELECT
     ;필살기. 보통 스펠 카드를 쓰면 좋음.
     CASE 8
@@ -802,11 +812,15 @@ SELECTCASE ARG
         ENDSELECT
     ;필살기. 보통 스펠 카드를 쓰면 좋음.
     CASE 7
-        SELECTCASE RAND:2
+        SELECTCASE RAND:4
             CASE 0
-                PRINTFORMW 「시간이여, 멈춰라! 더 월드!」
+                PRINTFORMW 「단검술, 인스크라이브 레드 솔!」
             CASE 1
                 PRINTFORMW 「벌집이 되십시오! 이터널 미크!」
+            CASE 2
+                PRINTFORMW 「스펠카드! 실버 바운드!」
+            CASE 3
+                PRINTFORMW 「시간이여, 멈춰라! 더 월드!」
         ENDSELECT
     ;승리대사
     CASE 8
@@ -890,7 +904,7 @@ SELECTCASE ARG
         ENDSELECT
     ;필살기. 보통 스펠 카드를 쓰면 좋음.
     CASE 7
-        SELECTCASE RAND:2
+        SELECTCASE RAND:3
             CASE 0
                 PRINTFORMW 「스칼렛 데빌」
                 PRINTFORMW 주변에 있을 리 없는 붉은 안개가 자욱하게 끼기 시작했다.
@@ -899,6 +913,10 @@ SELECTCASE ARG
                 PRINTFORMW 「『신창』 스피어 더 궁그닐」
                 PRINTFORMW 오른손에 쥐고 있던 붉은 창이 %조사처리(ARGS,"를")% 향해 날아오는가 싶더니, 창은 무한히 쪼개져 무수한 창이 되어 날아오기 시작했다.
                 PRINTFORMW  「'빗나간다'의 개념이 존재하지 않는, 필살의 정의를 끝까지 맛보도록 해라」
+            CASE 2
+                PRINTFORMW 「『홍부』불야성 레드」
+                PRINTFORMW 눈 앞에서 십자모양의 붉은 빛이 쇄도하기 시작했다.
+                PRINTFORMW 「나의 진정한 힘으로 네놈을 불태워주마.」
         ENDSELECT
     ;이겼을때
     CASE 8
@@ -4983,7 +5001,7 @@ SELECTCASE ARG
     CASE 7
         SELECTCASE RAND:2
             CASE 0
-                PRINTFORMW 「린노한테 빌려온거야! 쿠사나기의 검!」
+                PRINTFORMW 「[금기] 『책으로 내려치기』!! 으엑! 내.. 내 책이!」
             CASE 1
                 PRINTFORMW 「[청음] 『따오기 울음소리』!!! …그런 거 없다는 거 안다고!!!」
         ENDSELECT

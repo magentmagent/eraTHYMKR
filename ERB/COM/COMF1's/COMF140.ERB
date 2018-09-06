@@ -25,7 +25,7 @@ IF ASSIPLAY
     SIF ABL:ASSI:12 < 3
         RETURN 0
 ENDIF
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;그밖의 Ｕ계 장착구 사용 중에는 불가
@@ -66,7 +66,7 @@ RETURN 1
 ;eraElona 동고의 자작 커맨드를 유용
 @COM140
 PRINTL 요도 면봉
-TSTR:0 = 요도 면봉
+COM_NAME = 요도 면봉
 CALL TRAIN_MESSAGE_COM140
 
 DOWNBASE:0 += 40

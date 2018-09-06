@@ -14,8 +14,8 @@ SIF (FLAG:15 & 8) == 0
 ;조교자もしくは対象がオトコだとダメ
 SIF TALENT:120 || TALENT:PLAYER:120
     RETURN 0
-;조교 대상と조교자의 体格差が違いすぎるとダメ(금단의 지식は無関係で)
-SIF ABS(COMMON_BODYSIZE_CHECK2(PLAYER, TARGET)) > 1
+;조교자 측과 대상과의 체격 차이가 4 단계 이상이면 안 된다(금단의 지식은 무관하다)
+SIF ABS(BODYSIZE(PLAYER) - BODYSIZE(TARGET)) >= 4
     RETURN 0
 ;Ｂ계 장착구 사용 중에는 불가
 SIF TEQUIP:35 || TEQUIP:36
@@ -44,7 +44,7 @@ RETURN 1
 ;외형적으로  진기한 것을 보고 즐김이지만 효과적으로는 초라하다
 @COM210
 PRINTL 젖 맞대기
-TSTR:0 = 젖 맞대기
+COM_NAME = 젖 맞대기
 CALL TRAIN_MESSAGE_COM210
 
 DOWNBASE:0 += 5

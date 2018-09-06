@@ -20,7 +20,7 @@ SIF TEQUIP:55 == 3
 ;ローションを30個이상持っているか, 아이템なし設定でないとダメ
 SIF ITEM:60 < 30 && NOITEM == 0
     RETURN 0
-;조교자가 소인체형のときは기교가 3이상 없으면 안 됨
+;조교자가 [소인]のときは기교가 3이상 없으면 안 됨
 IF TALENT:PLAYER:127
     SIF ABL:PLAYER:12 < 3
         RETURN 0
@@ -83,7 +83,7 @@ RETURN 1
 ; 고로 일정치를 넘은 윤활(1만 이상이라든지)이라고 하는 것은 애액등의 양이00L라고 하는 것보다 오히려 미끄러져나 물러나 의미 쪽이 강하다고 판단해, 목욕탕의 사양에 반영
 @COM362
 PRINTL 로션 목욕탕
-TSTR:0 = 로션 목욕탕
+COM_NAME = 로션 목욕탕
 CALL TRAIN_MESSAGE_COM362
 
 IF TEQUIP:55 == 3

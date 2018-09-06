@@ -56,7 +56,7 @@ IF FLAG:15 & 128
     IF LOCAL:1 == 0
         ;イベント口上呼び出し
         CALL SELF_KOJO, TARGET, 131, LOCAL
-        PRINTFORMW 조교시에 녹화한 비디오 『%TSTR:0%』를 팔아서, {LOCAL}원을 손에 넣었다.
+        PRINTFORMW 조교시에 녹화한 비디오 『%COM_NAME%』를 팔아서, {LOCAL}원을 손에 넣었다.
         MONEY:1 = LOCAL
         CALL SHOW_MONEY_INCREACE
         ;--------------------------------------------------
@@ -587,10 +587,6 @@ FOR COUNT, 40, 39+TFLAG:121
         ;COM:陰核測定를 본다
         CASE 135
             LOCAL:3 += 600
-            CALLF COUNT_GENRE, 0
-        ;COM:割礼를 본다
-        CASE 136
-            LOCAL:3 += 1000
             CALLF COUNT_GENRE, 0
         ;COM:射精機能開発를 본다
         CASE 137
@@ -2152,10 +2148,10 @@ SIF TALENT:116
 ;[ふたなり]를 본다
 SIF TALENT:121
     TIMES ARG , 1.10
-;[小人体型]를 본다
+;[소인]를 본다
 SIF TALENT:127
     TIMES ARG , 1.10
-;[小柄体型]를 본다
+;[작은체형]를 본다
 SIF TALENT:128
     TIMES ARG , 1.10
 ;[母乳体質]를 본다

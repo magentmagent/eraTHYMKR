@@ -82,19 +82,19 @@ RETURN 1
 @COM367
 IF (NO:TARGET >= 37 && NO:TARGET <= 39) || NO:TARGET == 43 || NO:TARGET == 44 || NO:TARGET == 119
     PRINTL 술 목욕탕
-    TSTR:0 = 술 목욕탕
+    COM_NAME = 술 목욕탕
 ELSEIF NO:TARGET == 23 || NO:TARGET == 60 || NO:TARGET == 181 || NO:TARGET == 182
     PRINTL 오니고로시
-    TSTR:0 = 오니고로시
+    COM_NAME = 오니고로시
 ELSEIF NO:TARGET == 32 || NO:TARGET == 41 || NO:TARGET == 174 || NO:TARGET == 175
     PRINTL 텐구의 목욕물
-    TSTR:0 = 텐구의 목욕물
+    COM_NAME = 텐구의 목욕물
 ELSEIF TALENT:210
     PRINTL 오이 리큐르
-    TSTR:0 = 오이 리큐르
+    COM_NAME = 오이 리큐르
 ELSE
     PRINTL 술 목욕탕
-    TSTR:0 = 술 목욕탕
+    COM_NAME = 술 목욕탕
 ENDIF
 CALL TRAIN_MESSAGE_COM367
 

@@ -34,8 +34,8 @@ SIF NO:ASSI != 58
 ;조수가 オトコだとダメ
 SIF TALENT:ASSI:120
     RETURN 0
-;소인체형 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
-;그 외의 경우에는 조수가 소인체형のとき주인이 금단의 지식 보유자가 아니면 불가
+;[소인] 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
+;그 외의 경우에는 조수가 [소인]のとき주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:ASSI:127 && (TALENT:MASTER:56 == 0 && TALENT:PLAYER:127 == 0)
     RETURN 0
 ;主人にペニスがない, かつペニスバンドもないとダメ
@@ -80,7 +80,7 @@ IF TFLAG:699 == 0
         RETURN 0
 ENDIF
 
-TSTR:0 = 거미먹이 플레이
+COM_NAME = 거미먹이 플레이
 SELECTCOM = 657
 CALL TRAIN_MESSAGE_COM657
 
@@ -121,7 +121,7 @@ LOCAL = EJACULATIONCHECK_EXP_0_1(ASSI, LOCAL)
 ;조교 대상의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(TARGET, LOCAL)
 
-SIF TALENT:MASTER:120 || TALENT:MASTER:121
+SIF EXIST_PENIS(MASTER)
     BASE:MASTER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -215,7 +215,7 @@ IF TALENT:ASSI:0
     STAIN:ASSI:3 |= 32
 ENDIF
 TCVAR:ASSI:0 += 1
-SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+SIF EXIST_BAR(MASTER)
     CFLAG:ASSI:173 += 1
 
 ;-------------------------------------------------
@@ -251,7 +251,7 @@ IF TFLAG:91 >= 1
 ENDIF
 
 ;사정에 관계없이 행해지는 처리는 여기로부터
-IF TALENT:MASTER:120 || TALENT:MASTER:121
+IF EXIST_PENIS(MASTER)
     ;주인의 P⇔조수의 V의 불결이 이동
     STAIN:MASTER:2 |= STAIN:ASSI:3
     STAIN:ASSI:3 |= STAIN:MASTER:2

@@ -98,7 +98,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 기승 유방 자위
+COM_NAME = 기승 유방 자위
 SELECTCOM =613
 CALL TRAIN_MESSAGE_COM613
 
@@ -162,7 +162,7 @@ ELSE
     TIMES LOCAL , 0.60
 ENDIF
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -294,7 +294,7 @@ ENDIF
 SIF TALENT:PLAYER:120
     TIMES SOURCE:1 , 2.50
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 ;정조관념
@@ -598,7 +598,7 @@ PRINTL
 TCVAR:0 += 1
 IF PLAYER == MASTER
     TCVAR:42 += 1
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+    SIF EXIST_BAR(MASTER)
         CFLAG:173 += 1
 ENDIF
 ;비디오 촬영시는 경험에 플러스

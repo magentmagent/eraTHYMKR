@@ -55,17 +55,18 @@ RETURN 1
 ;조교자가 새드 또는 왕S의 경우, 커맨드가 큰폭으로 약체화 한다
 @COM236
 PRINTL 경혈 찌르기
-TSTR:7 = 바늘
+COM_TOOL_NAME = 바늘
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 33
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-TSTR:0 = 경혈 찌르기
+COM_NAME = 경혈 찌르기
 CALL TRAIN_MESSAGE_COM236
 
+;[새드] 또는 [초S]
 IF TALENT:PLAYER:81 || TALENT:PLAYER:177
     DOWNBASE:1 += 180
 ELSE
@@ -122,41 +123,55 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 PRINTL
-;조교자가 새드이 왕S
+;[새드] 또는 [초S]
 IF TALENT:PLAYER:81 || TALENT:PLAYER:177
-    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(TSTR:9, "로")% 자극하기 시작했다.
+    PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(COM_TOOL_CALLNAME, "로")% 자극하기 시작했다.
     PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 그 격렬한 공격에 비명을 지르고 있다….
+;[치료] 소질
+ELSEIF TALENT:PLAYER:59
+    PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 맥을 짚어 보고,
+    PRINTFORMW %조사선택(COM_TOOL_CALLNAME, "로")% %CALLNAME:TARGET%의 경혈을 자극하기 시작했다….
 ELSE
-    PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(TSTR:9, "로")% 자극하기 시작했다….
+    PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 경혈을 %조사선택(COM_TOOL_CALLNAME, "로")% 자극하기 시작했다….
 ENDIF
 
 ;--------------------------------------------------
 ;경혈 찌르기 소모 감소 처리
 ;--------------------------------------------------
 @EQUIP_COM236
-;조교자가 새드 또는 왕S의 경우, 체력 회복의 효과는 없음＋소모의 비율이 감소
+;조교자가 [새드] 또는 [초S]의 경우, 체력 회복의 효과는 없음＋소모의 비율이 감소
 LOCAL = 0
 IF TALENT:PLAYER:81 || TALENT:PLAYER:177
     TIMES DOWNBASE:0 , 0.80
     LOCAL = 0
-ELSEIF ABL:PLAYER:12 <= 3
-    DOWNBASE:0 /= 2
-    LOCAL = 100
-ELSEIF ABL:PLAYER:12 == 4
+;[치료] 소질을 보유 시 가장 좋은 효과를 가진다.
+ELSEIF TALENT:PLAYER:59
+    DOWNBASE:0 = 0
+    LOCAL = 350
+    ;주인 조교시에 대상이[연모][복종][사용마]의 어느쪽이든을 가지고 있는 경우는 기력의 소모도 조금 경감
+    IF PLAYER == MASTER && (TALENT:150 || TALENT:160 || TALENT:164)
+        TIMES DOWNBASE:1 , 0.65
+        MAXBASE:0 += 2 ;최대 체력이 조금 증가
+    ENDIF
+ELSEIF ABL:PLAYER:12 >= 5 ;기교가 5LV
+    DOWNBASE:0 = 0
+    LOCAL = 250
+    ;주인 조교시에 대상이[연모][복종][사용마]의 어느쪽이든을 가지고 있는 경우는 기력의 소모도 조금 경감
+    SIF PLAYER == MASTER && (TALENT:150 || TALENT:160 || TALENT:164)
+        TIMES DOWNBASE:1 , 0.75
+ELSEIF ABL:PLAYER:12 >= 4 ;기교가 4LV
     DOWNBASE:0 /= 3
     LOCAL = 150
     ;주인 조교시에 대상이[연모][복종][사용마]의 어느쪽이든을 가지고 있는 경우는 기력의 소모도 조금 경감
     SIF PLAYER == MASTER && (TALENT:150 || TALENT:160 || TALENT:164)
         TIMES DOWNBASE:1 , 0.90
 ELSE
-    DOWNBASE:0 = 0
-    LOCAL = 250
-    ;주인 조교시에 대상이[연모][복종][사용마]의 어느쪽이든을 가지고 있는 경우는 기력의 소모도 조금 경감
-    SIF PLAYER == MASTER && (TALENT:150 || TALENT:160 || TALENT:164)
-        TIMES DOWNBASE:1 , 0.75
+    DOWNBASE:0 /= 2
+    LOCAL = 100
 ENDIF
 
-SIF LOCAL
+IF LOCAL
     BASE:0 = MIN(BASE:0 + LOCAL, MAXBASE:0)
-
+    PRINTFORMW %CALLNAME:TARGET%의 체력이 조금 회복 된 것 같다….
+ENDIF
 RETURN 1

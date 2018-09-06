@@ -80,15 +80,15 @@ RETURN 1
 @COM373
 IF NO:TARGET == 25 || NO:TARGET == 32 || NO:TARGET == 63
     PRINTL 돌 새 찜
-    TSTR:0 = 돌 새 찜
+    COM_NAME = 돌 새 찜
     LOCAL:1 = 1
 ELSEIF NO:TARGET == 37 || NO:TARGET == 38
     PRINTL 돌 감자 찜
-    TSTR:0 = 돌 감자 찜
+    COM_NAME = 돌 감자 찜
     LOCAL:1 = 2
 ELSE
     PRINTL 암반 욕
-    TSTR:0 = 암반 욕
+    COM_NAME = 암반 욕
     LOCAL:1 = 0
 ENDIF
 CALL TRAIN_MESSAGE_COM373

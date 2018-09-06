@@ -77,7 +77,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 육봉마찰
+COM_NAME = 육봉마찰
 CALL TRAIN_MESSAGE_COM052
 
 ;-------------------------------------------------
@@ -110,7 +110,7 @@ LOCAL = EJACULATIONCHECK_ABL_13_3(TARGET, LOCAL)
 ;조교자의 Ｃ감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -254,7 +254,7 @@ STAIN:PLAYER:2 |= STAIN:2
 
 IF TALENT:120 == 0 && TALENT:PLAYER:120 == 0
     TCVAR:12 += 4
-ELSEIF TALENT:122 == 1 && TALENT:PLAYER:122 == 1
+ELSEIF TALENT:120 && TALENT:PLAYER:120
     TCVAR:13 += 4
 ENDIF
 ;奉仕快楽経験入手判定

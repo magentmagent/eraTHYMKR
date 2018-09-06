@@ -1088,9 +1088,7 @@ IF SELECTCOM == 7 && CFLAG:5208 >= 1
         PRINTFORML 「아응, 뭔가 굉장히, 오랜만인 것 같은 기분……」
         PRINTFORML 야마메는 숨을 흐트러뜨리면서, 과시하는 듯한 자위에 몰두했다……. 
     ENDIF
-    A = 0
-    R = 58
-    CALL SELFPLAY_4
+    CALL SELFPLAY_4, 58, 0
     RETURN 0
 ENDIF
 
@@ -1377,17 +1375,12 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
         ELSEIF CFLAG:5208 == 1
             PRINTFORML 「그 눈은 그거네, 가만 놔두면 자위해버리는 게 아닐까 하는 눈이네」
             PRINTFORMW 「너도 바보네……아무리 그래도 첫날에 무너질 리가 없잖아?」
-            A = 0
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 0
         ;オナ禁10日以上
         ELSEIF CFLAG:5208 >= 10
             ;オナ禁判定を行う
             ;補正+0上限50, うっかりするとシてしまうレベル
-            S = 0
-            T = 50
-            R = 58
-            CALL SELFPLAY
+            CALL SELFPLAY, 58, 0, 50
             ;我慢できなかった
             IF RESULT == 1
                 PRINTFORMW 야마메가 어쩐지 우물쭈물 진정하지 못하고 있다……. 
@@ -1399,9 +1392,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
                 PRINTFORML 「쿠, 안됏, 이제 무리, 저기, 만져줘, 가게 해줘어」
                 PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 그저 아무 말도 하지 않고, 차가운 눈으로 바라보고 있을 뿐. 
                 PRINTFORMW 그것만으로 야마메는, 조용히 허리를 띄우고, 굴욕스럽게 절정을 맞이했다……. 
-                A = 1
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 1
                 ;オナ禁結果＋３
                 CFLAG:5204 += 3
                 CFLAG:5208 = 0
@@ -1411,9 +1402,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
                 PRINTFORMW 「슬슬, 괴로워……솔직히」
                 PRINTFORML 「아무 것도 안 하고 있어도, 어질어질해서 만지고 싶어서 견딜 수가 없어……」
                 PRINTFORMW 「너의 걸 쭉 빨고 있으면 괜찮을 것 같은데……저기, 그렇게 하자?」
-                A = 0
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 0
                 ;オナ禁結果＋1
                 CFLAG:5204 += 1
             ENDIF
@@ -1421,10 +1410,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
         ELSEIF CFLAG:5208 >= 2 && ASSI > 0
             ;オナ禁判定を行う
             ;補正0上限40, ちょっと危ないレベル
-            S = 0
-            T = 40
-            R = 58
-            CALL SELFPLAY
+            CALL SELFPLAY, 58, 0, 40
             ;我慢できなかった
             IF RESULT == 1
                 PRINTFORMW %CALLNAME:MASTER%는, %조사처리(CALLNAME:ASSI,"과")% 서로를 애무했다. 
@@ -1440,9 +1426,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
                 PRINTFORML ……야마메의 간원을 무시하고 어느 정도 지났을까. 
                 PRINTFORML 언제부터인가 야마메와 %조사처리(CALLNAME:ASSI,"는")%, 똑같이 텅 빈 눈을 하고, 
                 PRINTFORMW 여자의 약점을 매만지는 쾌락에 합창하듯 달콤한 목소리를 내뱉고 있다……. 
-                A = 1
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 1
                 ;オナ禁結果＋３
                 CFLAG:5204 += 3
                 CFLAG:5208 = 0
@@ -1463,9 +1447,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
                 PRINTFORMW 눈물이 맺힌 텅 빈 눈동자로, %조사처리(CALLNAME:ASSI,"가")% 절정에 달할 때까지 계속해서 보고 있었다……. 
                 ;蜘蛛フラグ＋2
                 CFLAG:5202 += 2
-                A = 0
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 0
                 ;オナ禁結果＋1
                 CFLAG:5204 += 1
             ENDIF
@@ -1473,10 +1455,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
         ELSEIF CFLAG:5208 >= 2
             ;オナ禁判定を行う
             ;補正-5上限30, エロい子ならたまにオチるレベル
-            S = -5
-            T = 30
-            R = 58
-            CALL SELFPLAY
+            CALL SELFPLAY, 58, -5, 30
             ;我慢できなかった
             IF RESULT == 1
                 PRINTFORMW 야마메가 어쩐지 우물쭈물 진정하지 못하고 있다……. 
@@ -1488,9 +1467,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
                 PRINTFORML 「쿠, 안됏, 이제 무리, 저기, 만져줘, 가게 해줘어」
                 PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 그저 아무 말도 하지 않고, 차가운 눈으로 바라보고 있을 뿐. 
                 PRINTFORMW 그것만으로 야마메는, 조용히 허리를 띄우고, 굴욕스럽게 절정을 맞이했다……. 
-                A = 1
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 1
                 ;オナ禁結果＋３
                 CFLAG:5204 += 3
                 CFLAG:5208 = 0
@@ -1498,9 +1475,7 @@ IF SELECTCOM == 9 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUI
             ELSE
                 PRINTFORML 「뭐? 아아, 자위 금지의 얘기일까」
                 PRINTFORML 「순조로워……당연한 거지만 말야」
-                A = 0
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 0
                 ;オナ禁結果＋1
                 CFLAG:5204 += 1
             ENDIF
@@ -1531,9 +1506,7 @@ $INPUT_LOOP_58
             ENDIF
             CFLAG:5307 = 2
             CFLAG:5370 = 2
-            A = 4
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 4
             RETURN 0
         ;二回目以降
         ELSEIF (TALENT:150 || MARK:9 < 3) && ABL:30 >= 1
@@ -3047,10 +3020,7 @@ IF SELECTCOM == 26
         IF CFLAG:5208 >= 2 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUIP:73 == 0 && TEQUIP:72 == 0
             ;オナ禁判定を行う
             ;補正10上限50, 割とオチるレベル
-            S = 10
-            T = 50
-            R = 58
-            CALL SELFPLAY
+            CALL SELFPLAY, 58, 10, 50
             ;我慢できなかった
             IF RESULT == 1
                 PRINTFORMW 얌전하게 행위를 보고 있던 야마메였지만, 머뭇머뭇거리며 어딘가 초조한 듯하다. 
@@ -3060,17 +3030,13 @@ IF SELECTCOM == 26
             WAIT
                 PRINTFORML 이윽고, %조사처리(CALLNAME:ASSI,"가")% 질 안쪽까지 후벼지며 튕기듯 절정을 맞이함과 동시에, 
                 PRINTFORML 질내에 뜨거운 정액을 받는 망상으로, 야마메도 조용히 절정에 달했다……. 
-                A = 1
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 1
                 ;オナ禁結果＋3
                 CFLAG:5204 += 3
             ;我慢した
             ELSE
                 PRINTFORML 「후우……조금, 나한테는 눈에 독이라고 이거……」
-                A = 0
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 0
                 ;オナ禁結果＋1
                 CFLAG:5204 += 1
             ENDIF
@@ -3092,10 +3058,7 @@ IF SELECTCOM == 26
         IF CFLAG:5208 >= 2 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUIP:73 == 0 && TEQUIP:72 == 0
             ;オナ禁判定を行う
             ;補正0上限30, うっかりすると落ちるレベル
-            S = 0
-            T = 30
-            R = 58
-            CALL SELFPLAY
+            CALL SELFPLAY, 58, 0, 30
             ;我慢できなかった
             IF RESULT == 1
                 PRINTFORMW 얌전하게 행위를 보고 있던 야마메였지만, 머뭇머뭇거리며 어딘가 초조한 듯하다. 
@@ -3105,18 +3068,14 @@ IF SELECTCOM == 26
             WAIT
                 PRINTFORML 이윽고, %조사처리(CALLNAME:ASSI,"가")% 질 안쪽까지 후벼지며 튕기듯 절정을 맞이함과 동시에, 
                 PRINTFORML 질내에 뜨거운 정액을 받는 망상으로, 야마메도 조용히 절정에 달했다……. 
-                A = 1
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 1
                 ;オナ禁結果＋3
                 CFLAG:5204 += 3
                 WAIT
             ;我慢した
             ELSE
                 PRINTFORML 「후우……조금, 나한테는 눈에 독인걸 이거……」
-                A = 0
-                R = 58
-                CALL SELFPLAY_4
+                CALL SELFPLAY_4, 58, 0
                 ;オナ禁結果＋1
                 CFLAG:5204 += 1
             ENDIF
@@ -3611,39 +3570,29 @@ IF SELECTCOM == 227
         IF CFLAG:5208 == 1
             PRINTFORML 「아무리 그래도, 첫날부터 못 참을 정도로 음란하지는 않아 나도」
             PRINTFORML 「뭐, 한 달 정도라면 자신 없지만 말이지」
-            A = 0
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 0
         ;オナ禁10日以上
         ELSEIF CFLAG:5208 >= 10
             PRINTFORML 「벌서 꽤 참은 것 같은데……이쯤 되면 오히려 즐거워지는걸」
             PRINTFORML 「……아니, 그렇지도 않나. 이런 유혹 만발의 생활이라면 말이지」
-            A = 0
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 0
         ;オナ禁中
         ELSEIF CFLAG:5208 >= 2
             PRINTFORML 「게으른 주인님께서 확실히 만족시켜준다면야」
             PRINTFORML 「당분간은 참을 수 있어」
-            A = 0
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 0
         ;オナ禁命令初回
         ELSEIF ABL:30 >= 1 && CFLAG:5370 == 1 && (TALENT:150 || MARK:9 < 3)
             PRINTFORML 「자위광 자위광이라니 너 정말……」
             PRINTFORML 「알았어, 나도 여자다. 확실하게 끊어주겠어」
             CFLAG:5307 = 2
             CFLAG:5370 = 2
-            A = 4
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 4
         ;二回目以降
         ELSEIF ABL:30 >= 1 && (TALENT:150 || MARK:9 < 3)
             PRINTFORML 「또 하는 거야……?」
             PRINTFORML 「우우, 생각했던 것보다 힘들어, 그거……」
-            A = 4
-            R = 58
-            CALL SELFPLAY_4
+            CALL SELFPLAY_4, 58, 4
         ;それ以外
         ELSE
             PRINTFORML 「나는, 환상향에서 가장 미움 받는 사람들의 모임에서 제법 인기를 얻고 있어」
@@ -5610,33 +5559,31 @@ ENDIF
 ;-------------------------------------------------
 ;セックスで射精させた CFLAG230 CFLAG231
 ;-------------------------------------------------
-IF TFLAG:9 > 0 || FLAG:10 > 0
-    ;アナルセックスか?
-    IF TFLAG:9 > 0
-        ;연모
-        IF TALENT:150
-            PRINTFORMW 「아앗……배에, 잔뜩 들어와서, 따뜻해……」
-        ;それ以外
-        ELSE
-            PRINTFORMW 「우으으응……그런 데에, 싸지 마……」
-        ENDIF
-    ;それ以外
+;セックス(Ａ)で射精
+IF TFLAG:9 > 0
+    ;연모
+    IF TALENT:150
+        PRINTFORMW 「아앗……배에, 잔뜩 들어와서, 따뜻해……」
+    ;그외
     ELSE
-        ;연모
-        IF TALENT:150
-            PRINTFORML 「안에, 꿀럭꿀럭하고 따뜻한 게……응, 좋아」
-            PRINTFORMW 「여자를 녹아내리게 하는, 마법의 감각이야……」
-        ;それ以外
-        ELSE
-            PRINTFORML 「앗……나오고 있어……, 왔, 다……앗」
-            PRINTFORMW 「따뜻한 게 오고 있는데, 등쪽은 차가운 게, 기분 좋아……」
-        ENDIF
-        ;精液量+1
-        CFLAG:5231 += 1
-        ;大量射精ならさらに+1
-        SIF TFLAG:10 == 2
-            CFLAG:5231 += 1
+        PRINTFORMW 「우으으응……그런 데에, 싸지 마……」
     ENDIF
+;セックス(V)で射精
+ELSEIF TFLAG:10 > 0
+    ;연모
+    IF TALENT:150
+        PRINTFORML 「안에, 꿀럭꿀럭하고 따뜻한 게……응, 좋아」
+        PRINTFORMW 「여자를 녹아내리게 하는, 마법의 감각이야……」
+    ;그외
+    ELSE
+        PRINTFORML 「앗……나오고 있어……, 왔, 다……앗」
+        PRINTFORMW 「따뜻한 게 오고 있는데, 등쪽은 차가운 게, 기분 좋아……」
+    ENDIF
+    ;精液量+1
+    CFLAG:5231 += 1
+    ;大量射精ならさらに+1
+    SIF TFLAG:10 == 2
+        CFLAG:5231 += 1
 ENDIF
 
 ;-------------------------------------------------
@@ -5908,9 +5855,7 @@ IF TFLAG:44 == 3 && CFLAG:5300 == 0
     CFLAG:5205 += 40
     ;オナ禁中で연모なしだと放棄します
     IF CFLAG:5208 > 0
-        R = 58
-        A = 2
-        CALL SELFPLAY_4
+        CALL SELFPLAY_4, 58, 2
     ENDIF
     CFLAG:5300 = 1
     RETURN 0
@@ -5920,9 +5865,7 @@ ELSEIF TFLAG:44 == 3
     PRINTFORMW 「너는 여자의 적, 어차피 환상이었다는 거네」
     ;オナ禁中で연모なしだと放棄します
     IF CFLAG:5208 > 0 && TALENT:150 == 0
-        R = 58
-        A = 2
-        CALL SELFPLAY_4
+        CALL SELFPLAY_4, 58, 2
     ENDIF
     RETURN 0
 ENDIF
@@ -5937,8 +5880,7 @@ ENDIF
 ;※追加機能C2『調教後オナ禁判定』
 ;調教後自慰の際のオナ禁判定を行います. 実は計算式が少し違います
 IF TFLAG:200 == 151
-    R = 58
-    CALL SELFPLAY_2
+    CALL SELFPLAY_2, 58
     ;オナ禁成功
     IF RESULT == 0 && CFLAG:5208
         ;オナ禁初日
@@ -5961,9 +5903,7 @@ IF TFLAG:200 == 151
             PRINTFORML 「명안이야, 읏크, 하우, 쿠으으응, 하아아, 앗아」
             PRINTFORMW 「자구 안이, 움찔움찔 하고 욱신거려……흐아앙」
         ENDIF
-        A = 0
-        R = 58
-        CALL SELFPLAY_4
+        CALL SELFPLAY_4, 58, 0
         ;オナ禁結果＋1
         CFLAG:5204 += 1
     ;オナ禁失敗
@@ -5996,9 +5936,7 @@ IF TFLAG:200 == 151
         ;蜘蛛フラグ＋2
         CFLAG:5202 += 2
         ENDIF
-        A = 1
-        R = 58
-        CALL SELFPLAY_4
+        CALL SELFPLAY_4, 58, 1
         ;オナ禁結果＋3
         CFLAG:5204 += 3
     ;オナ禁していない
@@ -6781,8 +6719,7 @@ RETURN 0
 ;オナ禁中に日付が変わった際に判定を行います. 
 
 ;日替わりオナ禁判定
-R = 58
-CALL SELFPLAY_3
+CALL SELFPLAY_3, 58
 U = M
 SIF RESULT == 2
     RETURN 0
@@ -6804,9 +6741,7 @@ IF RESULT == 1
 ;        CALL SELFPLAY_58_C
 ;    SIF H == 2
 ;        CALL SELFPLAY_58_D
-    A = 1
-    R = 58
-    CALL SELFPLAY_4
+    CALL SELFPLAY_4, 58, 1
     ;オナ禁結果＋３
     CFLAG:U:5204 += 3
 ;我慢した
@@ -6815,7 +6750,7 @@ ELSE
     S = 0
     T = 30
     H = 4
-    CALL SELFPLAY
+    CALL SELFPLAY, 58, 0, 30
     IF RESULT == 1
         PRINTFORMW 심야, %NAME:M%의 방……. 
         WAIT
@@ -6830,11 +6765,7 @@ ELSE
 ;        SIF H == 3
 ;            CALL SELFPLAY_58_H
     ENDIF
-    A = 0
-    R = 58
-    SIF H == 4
-        A = 3
-    CALL SELFPLAY_4
+    CALL SELFPLAY_4, 58, (H == 4 ? 3 # 0)
     ;オナ禁結果＋1
     CFLAG:U:5204 += 1
 ENDIF
@@ -6859,9 +6790,7 @@ IF RESULT == 1 && CFLAG:ASSI:5208 >= 1
 ;拡張する場合↓二行のコメントアウトを外す
 ;    SIF A == 2
 ;        CALL SELFPLAY_58_3
-    A = 1
-    R = 58
-    CALL SELFPLAY_4
+    CALL SELFPLAY_4, 58, 1
     ;オナ禁結果＋３
     CFLAG:ASSI:5204 += 3
     DRAWLINE
@@ -6908,10 +6837,9 @@ RETURN 0
 ;口上主が주인公でない場合, 助手プレイ内容保存関数
 ;さらにオナ禁している場合, おあずけ自慰判定関数を呼ぶ
 IF NO:MASTER != 58
-    R = 58
     CALL ASSIDATA
     IF CFLAG:5208 > 0
-        CALL SELFPLAY_5
+        CALL SELFPLAY_5, 58
         SIF RESULT == 1
             CALL SELFPLAY_58_ROOT
     ENDIF
@@ -7641,10 +7569,7 @@ IF TALENT:150 && ((TFLAG:133 && ASSIPLAY) || (TFLAG:133 == 0 && ASSIPLAY == 0))
             IF CFLAG:5208 >= 2 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUIP:73 == 0 && TEQUIP:72 == 0
                 ;オナ禁判定を行う
                 ;補正10上限50, 割とオチるレベル
-                S = 10
-                T = 50
-                R = 58
-                CALL SELFPLAY
+                CALL SELFPLAY, 58, 10, 50
                 ;我慢できなかった
                 IF RESULT == 1
                     PRINTFORMW 얌전하게 행위를 보고 있던 야마메였지만, 머뭇머뭇거리며 어딘가 초조한 듯하다. 
@@ -7653,18 +7578,14 @@ IF TALENT:150 && ((TFLAG:133 && ASSIPLAY) || (TFLAG:133 == 0 && ASSIPLAY == 0))
                     PRINTFORMW 「하, 후앗……싫어, 싫어어……참을 수 없어지잖아앗……」
                     PRINTFORML 허벅지 사이에 손을 대버린 야마메는, %조사처리(CALLNAME:ASSI,"과")% 함께 달콤한 소리를 내며, 
                     PRINTFORML 동시에 절정을 맞을 때까지 손을 멈출 수 없었다……. 
-                    A = 1
-                    R = 58
-                    CALL SELFPLAY_4
+                    CALL SELFPLAY_4, 58, 1
                     ;オナ禁結果＋3
                     CFLAG:5204 += 3
                 ;我慢した
                 ELSE
                     PRINTFORML 「싫은걸……이쪽도 해버릴 것만 같아」
                     PRINTFORML 격렬하게 범해져 흐트러진 %조사처리(CALLNAME:ASSI,"를")% 보면서, 야마메는 어깨를 움츠렸다……. 
-                    A = 0
-                    R = 58
-                    CALL SELFPLAY_4
+                    CALL SELFPLAY_4, 58, 0
                     ;オナ禁結果＋1
                     CFLAG:5204 += 1
                 ENDIF
@@ -8550,10 +8471,7 @@ IF TALENT:150
             IF CFLAG:5208 >= 2 && TEQUIP:55 == 0 && TEQUIP:41 == 0 && TEQUIP:70 == 0 && TEQUIP:73 == 0 && TEQUIP:72 == 0
                 ;オナ禁判定を行う
                 ;補正10上限50, 割とオチるレベル
-                S = 10
-                T = 50
-                R = 58
-                CALL SELFPLAY
+                CALL SELFPLAY, 58, 10, 50
                 ;我慢できなかった
                 IF RESULT == 1
                     PRINTFORMW 얌전하게 행위를 보고 있던 야마메였지만, 머뭇머뭇거리며 어딘가 초조한 듯하다. 
@@ -8562,18 +8480,14 @@ IF TALENT:150
                     PRINTFORMW 「하, 후앗……싫어, 싫어어……참을 수 없어지잖아앗……」
                     PRINTFORML 허벅지 사이에 손을 대버린 야마메는, %조사처리(CALLNAME:ASSI,"과")% 함께 달콤한 소리를 내며, 
                     PRINTFORML 동시에 절정을 맞을 때까지 손을 멈출 수 없었다……. 
-                    A = 1
-                    R = 58
-                    CALL SELFPLAY_4
+                    CALL SELFPLAY_4, 58, 1
                     ;オナ禁結果＋3
                     CFLAG:5204 += 3
                 ;我慢した
                 ELSE
                     PRINTFORML 「싫은걸……이쪽도 해버릴 것만 같아」
                     PRINTFORML 격렬하게 범해져 흐트러진 %조사처리(CALLNAME:ASSI,"를")% 보면서, 야마메는 어깨를 움츠렸다……. 
-                    A = 0
-                    R = 58
-                    CALL SELFPLAY_4
+                    CALL SELFPLAY_4, 58, 0
                     ;オナ禁結果＋1
                     CFLAG:5204 += 1
                 ENDIF

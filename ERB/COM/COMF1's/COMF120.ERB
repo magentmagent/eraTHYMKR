@@ -26,7 +26,7 @@ RETURN 1
 ;다만 밸런스 조정을 위해 대폭 약체화
 @COM120
 PRINTL 애태우기 플레이
-TSTR:0 = 애태우기플레이
+COM_NAME = 애태우기플레이
 CALL TRAIN_MESSAGE_COM120
 
 DOWNBASE:0 += 10
@@ -64,12 +64,9 @@ ELSEIF SELECTCOM == 24 || SELECTCOM == 34 || SELECTCOM == 43 || SELECTCOM == 301
 ;시리코다마 빼기
 ELSEIF SELECTCOM == 402
     TFLAG:99 = 3
-;주사·곤충 채집 세트
-ELSEIF (SELECTCOM >= 80 && SELECTCOM < 90) || TEQUIP:19
+;주사
+ELSEIF (SELECTCOM >= 80 && SELECTCOM < 90)
     TFLAG:99 = 4
-;현자의 피 반동
-ELSEIF TEQUIP:13 == 1
-    TFLAG:99 = 5
 ;충·슬라임·뱀장어 목욕탕
 ELSEIF TEQUIP:55
     TFLAG:99 = 6
@@ -165,9 +162,12 @@ ENDIF
 ;애태우기플레이중 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM120
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 SELECTCASE TFLAG:99
     CASE 1

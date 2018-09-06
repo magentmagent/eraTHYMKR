@@ -3099,9 +3099,6 @@ ENDIF
 ;SELF_KOJO 실행 때(시)에 출력됩니다
 ;==================================================
 @SELF_KOJO_K36
-;자고 있는·조교중 또한 기절중·구가 다하고는 돌아온다
-SIF EQUIP:14 || TFLAG:999 && (TEQUIP:42 || (TFLAG:899 >= 1 && TFLAG:200 != 12))
-    RETURN 0
 ;이벤트 말호출
 TRYCALLFORM K36_MESSAGE_EVENT_{(TFLAG:200)}
 
@@ -7027,166 +7024,179 @@ ENDIF
 ;배란유발제
 ;-------------------------------------------------
 @K36_MESSAGE_COM_66
-;첫회의 경우
-IF RESULT:1 == 1
-    IF CFLAG:4900 >= 1 && TALENT:150 == 0
-        PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
-        PRINTFORMW 싫어하는 에이키에게 억지로%조사처리(CALLNAME:MASTER,"는")% 배란유발제를 먹였다.
-            CFLAG:4900 += 1
-            IF CFLAG:2 == 0
-                PRINTFORMW 스트레스가 1000 상승
-                PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                PRINTFORMW C감각·쾌V의 주가 리셋
-                PRINTFORMW B감각·쾌B의 주가 리셋
-                PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
-                PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
-                    CFLAG:65 += 1000
-                    ABL:2 = 0
-                    ABL:0 = 0
-                    ABL:1 = 0
-                    ABL:3 = 0
-                    ABL:10 = 0
-                    EXP:0 = 0
-                    EXP:1 = 0
-                    JUEL:0 = 0
-                    JUEL:1 = 0
-                    JUEL:2 = 0
-                    JUEL:3 = 0
-                    JUEL:12 = 0
-                    JUEL:14 = 0
-                    JUEL:20 += 10000
-                    JUEL:22 += 10000
-                    MARK:9 = 3
-                    MARK:8 = 3
-            ELSE
-                PRINTFORMW 호감도 0이 되었다
-                PRINTFORMW 스트레스가 1000 상승
-                PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                PRINTFORMW C감각·쾌V의 주가 리셋
-                PRINTFORMW B감각·쾌B의 주가 리셋
-                PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
-                PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
-                    CFLAG:2 = 0
-                    CFLAG:65 += 1000
-                    ABL:2 = 0
-                    ABL:0 = 0
-                    ABL:1 = 0
-                    ABL:3 = 0
-                    ABL:10 = 0
-                    EXP:0 = 0
-                    EXP:1 = 0
-                    JUEL:0 = 0
-                    JUEL:1 = 0
-                    JUEL:2 = 0
-                    JUEL:3 = 0
-                    JUEL:12 = 0
-                    JUEL:14 = 0
-                    JUEL:20 += 10000
-                    JUEL:22 += 10000
-                    MARK:9 = 3
-                    MARK:8 = 3
-            ENDIF
-    ELSEIF TALENT:153 ||TALENT:152
-        PRINTFORMW 「네? 그 약…확실히 갖고 싶습니다만…약이라고 하는 것은 조금 씁슬하군요」
-    ELSEIF TALENT:150 == 1
-        PRINTFORMW 「서방님…그렇게 아이가…알았습니다」
+IF TFLAG:99 == 0 ;노예가 배란유도제 사용
+    ;첫회의 경우
+    IF RESULT:1 == 1
+        IF CFLAG:4900 >= 1 && TALENT:150 == 0
+            PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
+            PRINTFORMW 싫어하는 에이키에게 억지로%조사처리(CALLNAME:MASTER,"는")% 배란유발제를 먹였다.
+                CFLAG:4900 += 1
+                IF CFLAG:2 == 0
+                    PRINTFORMW 스트레스가 1000 상승
+                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
+                    PRINTFORMW C감각·쾌V의 주가 리셋
+                    PRINTFORMW B감각·쾌B의 주가 리셋
+                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW 반발·공포 각인이 레벨 3
+                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                        CFLAG:65 += 1000
+                        ABL:2 = 0
+                        ABL:0 = 0
+                        ABL:1 = 0
+                        ABL:3 = 0
+                        ABL:10 = 0
+                        EXP:0 = 0
+                        EXP:1 = 0
+                        JUEL:0 = 0
+                        JUEL:1 = 0
+                        JUEL:2 = 0
+                        JUEL:3 = 0
+                        JUEL:12 = 0
+                        JUEL:14 = 0
+                        JUEL:20 += 10000
+                        JUEL:22 += 10000
+                        MARK:9 = 3
+                        MARK:8 = 3
+                ELSE
+                    PRINTFORMW 호감도 0이 되었다
+                    PRINTFORMW 스트레스가 1000 상승
+                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
+                    PRINTFORMW C감각·쾌V의 주가 리셋
+                    PRINTFORMW B감각·쾌B의 주가 리셋
+                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW 반발·공포 각인이 레벨 3
+                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                        CFLAG:2 = 0
+                        CFLAG:65 += 1000
+                        ABL:2 = 0
+                        ABL:0 = 0
+                        ABL:1 = 0
+                        ABL:3 = 0
+                        ABL:10 = 0
+                        EXP:0 = 0
+                        EXP:1 = 0
+                        JUEL:0 = 0
+                        JUEL:1 = 0
+                        JUEL:2 = 0
+                        JUEL:3 = 0
+                        JUEL:12 = 0
+                        JUEL:14 = 0
+                        JUEL:20 += 10000
+                        JUEL:22 += 10000
+                        MARK:9 = 3
+                        MARK:8 = 3
+                ENDIF
+        ELSEIF TALENT:153 ||TALENT:152
+            PRINTFORMW 「네? 그 약…확실히 갖고 싶습니다만…약이라고 하는 것은 조금 씁슬하군요」
+        ELSEIF TALENT:150 == 1
+            PRINTFORMW 「서방님…그렇게 아이가…알았습니다」
+        ELSE
+            PRINTFORMW 「뭐, 설마…당신이라는 사람은…싫어요. 절대로…」
+        ENDIF
+    ;2번째 이후
     ELSE
-        PRINTFORMW 「뭐, 설마…당신이라는 사람은…싫어요. 절대로…」
+        IF CFLAG:4900 >= 1 && TALENT:150 == 0
+            PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
+            PRINTFORMW 싫어하는 에이키에 %조사처리(CALLNAME:MASTER,"는")% 억지로 배란유발제를 먹였다.
+                CFLAG:4900 += 1
+                IF CFLAG:2 == 0
+                    PRINTFORMW 스트레스가 1000 상승
+                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
+                    PRINTFORMW C감각·쾌V의 주가 리셋
+                    PRINTFORMW B감각·쾌B의 주가 리셋
+                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW 반발·공포 각인이 레벨 3
+                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                        CFLAG:65 += 1000
+                        ABL:2 = 0
+                        ABL:0 = 0
+                        ABL:1 = 0
+                        ABL:3 = 0
+                        ABL:10 = 0
+                        EXP:0 = 0
+                        EXP:1 = 0
+                        JUEL:0 = 0
+                        JUEL:1 = 0
+                        JUEL:2 = 0
+                        JUEL:3 = 0
+                        JUEL:12 = 0
+                        JUEL:14 = 0
+                        JUEL:20 += 10000
+                        JUEL:22 += 10000
+                        MARK:9 = 3
+                        MARK:8 = 3
+                ELSE
+                    PRINTFORMW 호감도 0이 되었다
+                    PRINTFORMW 스트레스가 1000 상승
+                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
+                    PRINTFORMW C감각·쾌V의 주가 리셋
+                    PRINTFORMW B감각·쾌B의 주가 리셋
+                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW 반발·공포 각인이 레벨 3
+                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                        CFLAG:2 = 0
+                        CFLAG:65 += 1000
+                        ABL:2 = 0
+                        ABL:0 = 0
+                        ABL:1 = 0
+                        ABL:3 = 0
+                        ABL:10 = 0
+                        EXP:0 = 0
+                        EXP:1 = 0
+                        JUEL:0 = 0
+                        JUEL:1 = 0
+                        JUEL:2 = 0
+                        JUEL:3 = 0
+                        JUEL:12 = 0
+                        JUEL:14 = 0
+                        JUEL:20 += 10000
+                        JUEL:22 += 10000
+                        MARK:9 = 3
+                        MARK:8 = 3
+                ENDIF
+        ELSEIF TALENT:153 ||TALENT:152
+            PRINTFORMW 「아이를 갖고 싶은 것은 저 역시입니다. 그렇지만, 약은…예, 알고 있습니다」
+        ELSEIF TALENT:150 == 1
+            PRINTFORMW 「이것은… 확실히 저 역시 아이가 생겼으면 좋겠다고 생각하고는 있습니다만…」
+            PRINTFORMW 「약에는 의지하고 싶지 않습니다…」
+        ELSE
+            PRINTFORMW 「자, 장난치지 말아주세요! 싫습니다!」
+        ENDIF
     ENDIF
-;2번째 이후
-ELSE
-    IF CFLAG:4900 >= 1 && TALENT:150 == 0
-        PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
-        PRINTFORMW 싫어하는 에이키에 %조사처리(CALLNAME:MASTER,"는")% 억지로 배란유발제를 먹였다.
-            CFLAG:4900 += 1
-            IF CFLAG:2 == 0
-                PRINTFORMW 스트레스가 1000 상승
-                PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                PRINTFORMW C감각·쾌V의 주가 리셋
-                PRINTFORMW B감각·쾌B의 주가 리셋
-                PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
-                PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
-                    CFLAG:65 += 1000
-                    ABL:2 = 0
-                    ABL:0 = 0
-                    ABL:1 = 0
-                    ABL:3 = 0
-                    ABL:10 = 0
-                    EXP:0 = 0
-                    EXP:1 = 0
-                    JUEL:0 = 0
-                    JUEL:1 = 0
-                    JUEL:2 = 0
-                    JUEL:3 = 0
-                    JUEL:12 = 0
-                    JUEL:14 = 0
-                    JUEL:20 += 10000
-                    JUEL:22 += 10000
-                    MARK:9 = 3
-                    MARK:8 = 3
-            ELSE
-                PRINTFORMW 호감도 0이 되었다
-                PRINTFORMW 스트레스가 1000 상승
-                PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                PRINTFORMW C감각·쾌V의 주가 리셋
-                PRINTFORMW B감각·쾌B의 주가 리셋
-                PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
-                PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
-                    CFLAG:2 = 0
-                    CFLAG:65 += 1000
-                    ABL:2 = 0
-                    ABL:0 = 0
-                    ABL:1 = 0
-                    ABL:3 = 0
-                    ABL:10 = 0
-                    EXP:0 = 0
-                    EXP:1 = 0
-                    JUEL:0 = 0
-                    JUEL:1 = 0
-                    JUEL:2 = 0
-                    JUEL:3 = 0
-                    JUEL:12 = 0
-                    JUEL:14 = 0
-                    JUEL:20 += 10000
-                    JUEL:22 += 10000
-                    MARK:9 = 3
-                    MARK:8 = 3
-            ENDIF
-    ELSEIF TALENT:153 ||TALENT:152
-        PRINTFORMW 「아이를 갖고 싶은 것은 저 역시입니다. 그렇지만, 약은…예, 알고 있습니다」
-    ELSEIF TALENT:150 == 1
-        PRINTFORMW 「이것은… 확실히 저 역시 아이가 생겼으면 좋겠다고 생각하고는 있습니다만…」
-        PRINTFORMW 「약에는 의지하고 싶지 않습니다…」
-    ELSE
-        PRINTFORMW 「자, 장난치지 말아주세요! 싫습니다!」
-    ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 배란유도제 사용
+    ;PRINTFORMW 「조수 배란유도제 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 배란유도제 사용
+    ;PRINTFORMW 「주인 배란유도제 대사입니다」
 ENDIF
+
 ;-------------------------------------------------
 ;긴급 피임약
 ;-------------------------------------------------
 @K36_MESSAGE_COM_67
-;첫회의 경우
-IF RESULT:1 == 1
-    IF TALENT:150 == 1
-        PRINTFORMW 「예? 그렇습니까…확실히 저도 아이를 낳을 용기는 없기 때문에… 배려 감사합니다」
+IF TFLAG:99 == 0 ;노예가 긴급피임약 사용
+    ;첫회의 경우
+    IF RESULT:1 == 1
+        IF TALENT:150 == 1
+            PRINTFORMW 「예? 그렇습니까…확실히 저도 아이를 낳을 용기는 없기 때문에… 배려 감사합니다」
+        ELSE
+            PRINTFORMW 「……그 기분은 고맙습니다만…섹스를 하지 않으면 되는 것이…아닙니까?」
+        ENDIF
+    ;2번째 이후
     ELSE
-        PRINTFORMW 「……그 기분은 고맙습니다만…섹스를 하지 않으면 되는 것이…아닙니까?」
+        IF TALENT:150 == 1
+            PRINTFORMW 「나도, 아이를 낳을 용기는 아직 없기 때문에…그 쪽이 도움이 됐습니다」
+        ELSE
+            PRINTFORMW 「그렇습니까…당신에게도 사람의 마음이 있었군요…일단은」
+        ENDIF
     ENDIF
-;2번째 이후
-ELSE
-    IF TALENT:150 == 1
-        PRINTFORMW 「나도, 아이를 낳을 용기는 아직 없기 때문에…그 쪽이 도움이 됐습니다」
-    ELSE
-        PRINTFORMW 「그렇습니까…당신에게도 사람의 마음이 있었군요…일단은」
-    ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 긴급피임약 사용
+    ;PRINTFORMW 「조수 긴급피임약 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 긴급피임약 사용
+    ;PRINTFORMW 「주인 긴급피임약 대사입니다」
 ENDIF
 ;-------------------------------------------------
 ;로터 자위
@@ -9043,13 +9053,13 @@ ELSEIF CFLAG:6831 == 17
             WAIT
             WAIT
             PRINTFORMW 그날, \@(TIME == 0) ? 따뜻하게 녹아내리는 석양빛이 # 부드럽게 빛나는 백색달빛이 \@ 에이키의 미소에 물들어있었다…
-			MARK:2 = 3 
-			ABL:10 = 3
-			EXP:20 = 200 
-			CFLAG:2 += 1000
-			CFLAG:6834 = 1
-			CFLAG:6831 += 1
-			TALENT:MASTER:22 = 0
+            MARK:2 = 3 
+            ABL:10 = 3
+            EXP:20 = 200 
+            CFLAG:2 += 1000
+            CFLAG:6834 = 1
+            CFLAG:6831 += 1
+            TALENT:MASTER:22 = 0
             DRAWLINE
             PRINTFORMW 당신은 잊었던 감정들을 조각으로 나마 되찾았습니다.
             PRINTFORMW 당신은 [감정결여]를 잃었습니다…
@@ -9213,15 +9223,15 @@ ELSEIF CFLAG:6831 == 18 && CFLAG:6833 == 2
         PRINTFORMW 「…」
         PRINTFORMW 「그래도…당신안에서 무언가 보였으니…」
         PRINTFORMW 「후훗… 뭐,그걸로 만족하죠…」
-		MARK:2 = 3 
-		ABL:10 = 3
-		EXP:20 = 200 
-		CFLAG:2 += 1000
-		CFLAG:6834 = 1
-		CFLAG:6831 += 1
-		CFLAG:6833 = 0
-		;CFLAG:6831 == 17
-		TALENT:MASTER:22 = 0
+        MARK:2 = 3 
+        ABL:10 = 3
+        EXP:20 = 200 
+        CFLAG:2 += 1000
+        CFLAG:6834 = 1
+        CFLAG:6831 += 1
+        CFLAG:6833 = 0
+        ;CFLAG:6831 == 17
+        TALENT:MASTER:22 = 0
         PRINTFORML
         PRINTFORML
         PRINTFORML

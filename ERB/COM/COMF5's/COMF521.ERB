@@ -52,7 +52,7 @@ RETURN 1
 ;촉수 삽입으로부터의 재즈 악단적 취급
 @COM521
 PRINTL 촉수 자궁 고문
-TSTR:0 = 촉수 자궁 고문
+COM_NAME = 촉수 자궁 고문
 CALL TRAIN_MESSAGE_COM521
 
 IF TEQUIP:20 == 3
@@ -148,7 +148,7 @@ ELSE
     SOURCE:20 = 0
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -374,7 +374,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 2.00
 
@@ -420,9 +420,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM521
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 복부는 촉수로 채워져 크게 부풀어 오르고 있다….

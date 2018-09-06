@@ -2729,37 +2729,10 @@ IF SELECTCOM == 64 && TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;強精神薬    CFLAG:8264
+;배란유도제    CFLAG:8265
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 65
-    ;初めて
-    IF CFLAG:8264 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8264= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8264 <= 2 || FLAG:11 == 2)
-            CFLAG:8264 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8264 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;排卵誘発剤    CFLAG:8265
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 66
+IF SELECTCOM == 66 && TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;初めて
     IF CFLAG:8265 == 0
         ;恋慕
@@ -2781,12 +2754,38 @@ IF SELECTCOM == 66
         RETURN 0
     ENDIF
 ENDIF
+;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;緊急避妊薬    CFLAG:8266
+;긴급피임약    CFLAG:8266
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 67
+IF SELECTCOM == 67 && TFLAG:99 == 0
     ;初めて
     IF CFLAG:8266 == 0
         ;恋慕
@@ -2807,6 +2806,32 @@ IF SELECTCOM == 67
         ENDIF
         RETURN 0
     ENDIF
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
@@ -2858,87 +2883,6 @@ IF SELECTCOM == 69
         ;その他の場合
         ELSE
             CFLAG:8268 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;興奮剤    CFLAG:8269
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;初めて
-    IF CFLAG:8269 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8269= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8269 <= 2 || FLAG:11 == 2)
-            CFLAG:8269 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8269 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;助手避妊薬    CFLAG:8270
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 71
-    ;初めて
-    IF CFLAG:8270 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8270= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8270 <= 2 || FLAG:11 == 2)
-            CFLAG:8270 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8270 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;感覚増幅薬    CFLAG:8271
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 72
-    ;初めて
-    IF CFLAG:8271 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8271= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8271 <= 2 || FLAG:11 == 2)
-            CFLAG:8271 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8271 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -3101,33 +3045,6 @@ IF SELECTCOM == 85
         ;その他の場合
         ELSE
             CFLAG:8277 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8278
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;初めて
-    IF CFLAG:8278 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8278= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8278 <= 2 || FLAG:11 == 2)
-            CFLAG:8278 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8278 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -4166,33 +4083,6 @@ IF SELECTCOM == 135
         ;その他の場合
         ELSE
             CFLAG:8314 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;割礼    CFLAG:8315
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 136
-    ;初めて
-    IF CFLAG:8315 == 0
-        ;恋慕
-        IF TALENT:150 == 1
-        ;その他の場合
-        ELSE
-        ENDIF
-        CFLAG:8315= 1
-        RETURN 0
-    ;２回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 == 1 && (CFLAG:8315 <= 2 || FLAG:11 == 2)
-            CFLAG:8315 = 3
-        ;その他の場合
-        ELSE
-            CFLAG:8315 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -10362,7 +10252,7 @@ ENDIF
 ;IF TFLAG:200 == 130
 ;ENDIF
 ;-------------------------------------------------
-;エンゲ―ジリング使用    CFLAG:9198
+;약혼 반지使用    CFLAG:9198
 ;-------------------------------------------------
 IF TFLAG:200 == 200
     PRINTFORMW 「뭐야, 중요한 이야기란게?」
@@ -10377,7 +10267,7 @@ IF TFLAG:200 == 200
     PRINTFORMW “아니, 그런게 아냐　이건…”
     PRINTFORMW ……
     PRINTFORMW …
-    PRINTFORMW 인게이지 링에 대해서 설명하자
+    PRINTFORMW 약혼 반지에 대해서 설명하자
     PRINTFORMW 「에, 그렇다는 건 혹시…」
     PRINTFORMW “결혼하고 싶어”
     PRINTFORMW 「진심…이야?」

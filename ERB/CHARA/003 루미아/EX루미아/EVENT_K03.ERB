@@ -4,7 +4,7 @@
 ;-------------------------------------------------
 ;루미아
 ;[처녀] [プライド低い] [好奇心] [貞操無頓着] [恥薄い] [自慰しやすい] 
-;[쾌감에 素直] [貧乳] [小柄体型] [幼稚] [料理苦手]
+;[쾌감에 素直] [貧乳] [작은체형] [幼稚] [料理苦手]
 ;ＹＭ紳士御用達のマ―フィ―ズゴ―スト
 ;ＥＸ루미아
 ;[처녀] [気丈] [プライド高い] [自制心] [保守的] [貞操観念] 
@@ -188,7 +188,7 @@ IF CFLAG:5020 == 0
     PRINTL 처음부터 ＥＸ루미아로 조교하시겠습니까?
     PRINTL [0] 자신의 취향대로 ＥＸ화 한다(이상경험 변동을 비롯하여 세세한 설정변경이 가능)
     PRINTL [1] ＥＸ화  시키지 않는다, 혹은 이미 ＥＸ화 시켰고 설정을 바꾸지 않는다
-    PRINTL [2] 보통으로 ＥＸ화 시키는 걸로 좋다(흑색 사탕과 같은 효과)
+    PRINTL [2] 보통으로 ＥＸ화 시키는 걸로 좋다(EX화 사탕과 같은 효과)
     PRINTL [3] 이미 ＥＸ화 시켰지만 여러가지 설정을 바꿔보고 싶다
     $INPUT_LOOP
     INPUT
@@ -5564,9 +5564,9 @@ IF SELECTCOM == 61
 ENDIF
 
 ;-------------------------------------------------
-;排卵誘発剤 CFLAG9066
+;배란유도제 CFLAG9066
 ;-------------------------------------------------
-IF SELECTCOM == 66
+IF SELECTCOM == 66 && TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;처음
     IF CFLAG:9066 == 0
         ;親愛か相愛
@@ -5643,84 +5643,71 @@ IF SELECTCOM == 66
         RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
-;興奮剤使用 CFLAG9070
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
 ;-------------------------------------------------
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:9070 == 0
-        ;연모
-        IF TALENT:150 == 1
-            PRINTFORMW 「……뭐야, 이 약?」
-            PRINTFORMW 「저기, 가르쳐줘. 이 약, 뭐―야? 후훗」
-            PRINTFORMW 흥분제의 영향인지, 루미아는 즐거운듯이 스텝을 밣기 시작했다……
-        ;従順3이상かつ反発3未満
-        ELSEIF ABL:10 > 3 && MARK:9 < 3
-            IF CFLAG:0 == 1 && TALENT:159 == 0
-                PRINTFORMW 「갑자기 뭘 하……아, 미안해……」
-                PRINTFORMW (뭘까, 갑자기 머리가 두둥실 해서, 뭔가 생각하기 어려워……)
-                PRINTFORMW (……설마, 그런 약？)
-            ELSE
-                PRINTFORMW 「정말―, 갑자기 뭘 하……아, 미안해……」
-                PRINTFORMW (뭘까, 갑자기 머리가 어질어질해서, 뭔가 생각하기 어려워……)
-            ENDIF
-        ;그 외
-        ELSE
-            IF CFLAG:0 == 1 && TALENT:159 == 0
-                PRINTFORMW 「갑지가 뭘 하는거야! 무슨 약 먹인거야, 저기!」
-                PRINTFORMW 「뭐야 그 얼굴. 풋, 이―상한 얼굴!」
-                PRINTFORMW 약의 영향이 나온건지, 루미아는 갑자기 키득키득 웃기 시작했다……
-            ELSE
-                PRINTFORMW 「저기, 무슨 약 먹인거야, 응?」
-                PRINTFORMW 「뭐야 그 얼굴. 아핫, 이―상한 얼굴!」
-                PRINTFORMW 약의 영향이 나온건지, 루미아는 갑자기 히히히 웃기 시작했다……
-            ENDIF
-        ENDIF
-        CFLAG:9070 = 1
-        ;ファ―ストキス判定, 技能3이상だと口移しで飲ませるんだよね
-        SIF CFLAG:9006 == 0 && ABL:PLAYER:12 >= 3
-            CFLAG:9006 = 1
-        RETURN 0
-    ;二回目以降
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
     ELSE
-        ;薬物刻印
-        IF MARK:3 > 0 && (CFLAG:9070 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「후……후훗, 조흔―기분……」
-            PRINTFORMW 「저기, 좀 더 약, 줘―어……?」
-            CFLAG:9070 = 5
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:9070 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「후……후훗, %CALLNAME:MASTER%, 좋아한다구. 정말 좋아한다구―?」
-            PRINTFORMW 「%CALLNAME:PLAYER%도, 이거 먹고 같이 놀자―?」
-            CFLAG:9070 = 4
-        ;従順3이상かつ反発3未満
-        ELSEIF ABL:10 > 3 && MARK:9 < 3 && (CFLAG:9070 <= 2 || FLAG:11 == 2)
-            IF CFLAG:0 == 1 && TALENT:159 == 0 && TALENT:170 == 0
-                PRINTFORMW (……냉정하게 되지 않으면, 이 약의 효과 기억해, 냉정하게)
-            ELSE
-                PRINTFORMW 「왜 이 약 먹이고, 그 쪽이 히죽히죽 웃는거야?」
-                PRINTFORMW 「아, 하지만 나도 즐거워졌어, 이건 즐거워지는 약?」
-            ENDIF
-            CFLAG:9070 = 3
-        ;그 외
-        ELSEIF CFLAG:9070 < 2 || FLAG:11 == 2
-            IF CFLAG:0 == 1 && TALENT:159 == 0
-                PRINTFORMW 「뭐어야 그 얼굴? 성대모사라도 하고 놀자?」
-                PRINTFORMW 「너무 얼간이같은 얼굴이야, 이쪽이 웃고 싶어져」
-            ELSE
-                PRINTFORMW 「아, 또, 머리, 어질어질해……」
-            ENDIF
-            CFLAG:9070 = 2
-        ENDIF
-        ;ファ―ストキス判定, 技能3이상だと口移しで飲ませるんだよね
-        SIF CFLAG:9006 == 0 && ABL:PLAYER:12 >= 3
-            CFLAG:9006 = 1
-        RETURN 0
+        PRINTFORMW 『조수가 배란유도제 섭취』
     ENDIF
+    RETURN 0
 ENDIF
-
-
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약         CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「노예가 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「노예가 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 ;-------------------------------------------------
 ;ビデオ撮影(ビデオカメラ使用) CFLAG9100
 ;-------------------------------------------------
@@ -6390,13 +6377,13 @@ ELSEIF SELECTCOM == 151
     ;음란か親愛か相愛で처녀でない
     IF (TALENT:170 || TALENT:152 == 1 || TALENT:153 == 1) && TALENT:0 == 0 && (CFLAG:8816 < 3 || FLAG:11 == 2)
         PRINTFORMW 「아, 빠졌다……」
-        SIF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「그럼, 다음은……%CALLNAME:MASTER%게, 갖고 싶어……♪」
         CFLAG:8816 = 3
     ;연모
     ELSEIF TALENT:150 && (CFLAG:8816 < 2 || FLAG:11 == 2)
         PRINTFORMW 「아, 빠졌다……」
-        SIF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「다음은……그……으응, 아무것도 아냐……」
         CFLAG:8816 = 2
     ;그 외
@@ -12963,7 +12950,7 @@ IF TFLAG:200 == 409
     IF GET_NIGHT_KOJO(0) == 0
         ;ＥＸ연모　ぱるぱるぱるぱる(ry　ＥＸは嫉妬しすぎ
         IF TALENT:150 && CFLAG:0 == 1 && TALENT:159 == 0
-            PRINTFORML 「%CALLNAME:MASTER%……%CALLNAME:G%와……읏……」
+            PRINTFORML 「%CALLNAME:MASTER%……%조사처리(CALLNAME:GET_CHARA_G(),"와")%……읏……」
             PRINTFORML 「흣……아, 하아……훌쩍, 어째서, 흐, 윽, 내가 아닌거야……?」
             IF TALENT:19 == 0 && CFLAG:7000 > 0 
                 PRINTFORML 루미아는 [질투하기 쉬움]을 얻었다
@@ -15486,7 +15473,7 @@ IF TFLAG:200 == 174 && CFLAG:6002 == 0
 ENDIF
 
 ;-------------------------------------------------
-;エンゲ―ジリングor青珊瑚の指輪使用時
+;약혼 반지or青珊瑚の指輪使用時
 ;-------------------------------------------------
 IF TFLAG:200 == 200 || TFLAG:200 == 205
     IF CFLAG:0 == 1 && TALENT:159 == 0
@@ -16228,7 +16215,7 @@ ELSE
 ;        CFLAG:8000 = 1
     ;連続イベントで料理苦手が消えているか料理技能Lv4이상
     IF TALENT:192 == 0 || ABL:70 >= 4
-        PRINTFORMW 인게이지링을 전했던 다음날. 
+        PRINTFORMW 약혼 반지를 전했던 다음날. 
         PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 눈을 뜨자, 집 안이 공연히 어두웠다. 
         PRINTFORMW 시곗바늘을 확인해도, 이미 아침이라고 부를만한 시각을 가리키고 있다. 
         PRINTFORMW 「신경쓰지 않아도 돼, %CALLNAME:MASTER%. 내 능력이야」
@@ -16251,7 +16238,7 @@ ELSE
         PRINTFORMW 인간마을은 또 모르겠지만, 요정이나 요괴 가운데선 위험인물이라고 알려져 있을지도 모른다. 
         PRINTFORMW %CALLNAME:MASTER%의 생각을 간파했는지, 당황해서 루미아는 고개를 저었다. 
         PRINTFORMW 「하지만, 나는 좋아. 나는 그런 %조사처리(CALLNAME:MASTER,"를")% 사랑하고……사랑받고 있으니까」
-        PRINTFORMW 루미아의 웃는얼굴. 소녀의 어둠 안에서 빛나는 것은, 흔들림 없는 인게이지 링. 
+        PRINTFORMW 루미아의 웃는얼굴. 소녀의 어둠 안에서 빛나는 것은, 흔들림 없는 약혼 반지. 
         PRINTFORMW 「그러니까……난, 분명 행복한걸」
         PRINTFORML 그 말에 %CALLNAME:MASTER%도 웃는얼굴로 답해, 그녀가 내민 손에, 자신의 손을 겹쳤다. 
         PRINTFORMW 그대로 둘이서 빵 나이프를 쥐어, 루미아가 만든 케이크를 둘이서 자른다. 
@@ -16410,7 +16397,7 @@ IF CFLAG:0 == 1 && TALENT:159 == 0
         PRINTFORMW 대강 준비가 끝난 %조사처리(CALLNAME:MASTER,"가")% 현관에서 생각에 빠져있자, 말을 걸어왔다. 
         PRINTFORMW 「우리들도 준비됐어, %CALLNAME:MASTER%」
         PRINTFORMW 어두운 곳에서 나타난 건 루미아다. 
-        PRINTFORMW 옷은 입고 있지만, 그녀의 목에는 충성의 증거인 붉은 목걸이가 지금도 채워져 있다. 
+        PRINTFORMW 옷은 입고 있지만, 그녀의 목에는 충성의 증거인 붉은 개목걸이가 지금도 채워져 있다. 
         PRINTFORMW 그 뒤에 있는건 악마의 여동생, 플랑드르・스칼렛과, 닫힌 눈, 코메이지 코이시. 
         PRINTFORMW 그녀들은 %CALLNAME:MASTER%에게 충성을 맹세하면서도, 셋이서 서로 사랑하고 있다. 
         PRINTFORMW 그리고 조금 뒤에는, %조사처리(CALLNAME:MASTER,"가")% 조교해온 소녀, 

@@ -33,7 +33,7 @@ ELSEIF NO:PLAYER == 57
 ELSE
     RETURN 0
 ENDIF
-;対象が작은 체형か소인체형でないとダメ
+;対象が[작은체형]か[소인]でないとダメ
 SIF TALENT:127 == 0 && TALENT:128 == 0
     RETURN 0
 ;薬毒耐性だとダメ
@@ -95,7 +95,7 @@ RETURN 1
 ;TFLAG:156은 소질의 보존에 사용(1:억압 소멸 기억, 2:해방 소멸 보호, 4:쾌감의 부정 소멸 기억, 8:쾌감에 솔직 소멸 보호)
 @COM422
 PRINTL 미약 절이기
-TSTR:0 = 미약 절이기
+COM_NAME = 미약 절이기
 CALL TRAIN_MESSAGE_COM422
 
 IF TEQUIP:55 == 6

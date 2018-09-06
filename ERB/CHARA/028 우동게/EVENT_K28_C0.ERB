@@ -328,7 +328,7 @@ ENDIF
 IF TEQUIP:20 == 0
     ;恋慕
     IF TALENT:150 == 1
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「후후……다음엔, 주인님이……♪」
         ELSE
             PRINTFORMW 「주인님은……다음……인가요……?」
@@ -345,7 +345,7 @@ ELSEIF RESULT:1 == 1
     ;恋慕
     IF TALENT:150 == 1
         PRINTFORMW 「우아아, 좋아, 안에서, 움직여서……」
-        SIF TALENT:MASTER:120 || TALENT:MASTER:121
+        SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「……그, 그런데, 나는, 주인님의 것이, 더 좋아요오」
     ;それ以外(恋慕無し)
     ELSE
@@ -355,7 +355,7 @@ ELSEIF RESULT:1 == 1
 ELSE
     ;恋慕
     IF TALENT:150 == 1
-        IF TALENT:MASTER:120 || TALENT:MASTER:121
+        IF EXIST_PENIS(MASTER)
             PRINTFORMW 「후아아아아앗, 앙, 이, 이런 것보단, 주인님 물건이 더, 좋을 거 같아요옷」
         ELSE
             PRINTFORMW 「%CSTR:90%, %CSTR:92%, 더 움직여주세요!」
@@ -1331,27 +1331,39 @@ ELSE
 ENDIF
 
 ;-------------------------------------------------
-;排卵誘発剤
+;배란유도제
 ;-------------------------------------------------
 @K28_MESSAGE_COM_66
-;初回の場合
-IF RESULT:1 == 1
-    ;PRINTFORMW 「初回用排卵誘発剤口上です」
-;２回目以降
-ELSE
-    ;PRINTFORMW 「排卵誘発剤口上です」
+IF TFLAG:99 == 0 ;노예가 배란유도제 사용
+    ;첫회일 경우
+    IF RESULT:1 == 1
+        ;PRINTFORMW 「첫회용 배란유도제 대사입니다」
+    ;2회째 이후
+    ELSE
+        ;PRINTFORMW 「배란유도제 대사입니다」
+    ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 배란유도제 사용
+    ;PRINTFORMW 「조수 배란유도제 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 배란유도제 사용
+    ;PRINTFORMW 「주인 배란유도제 대사입니다」
 ENDIF
 
 ;-------------------------------------------------
-;緊急避妊薬
+;긴급피임약
 ;-------------------------------------------------
 @K28_MESSAGE_COM_67
-;初回の場合
-IF RESULT:1 == 1
-    ;PRINTFORMW 「初回用緊急避妊薬口上です」
-;２回目以降
-ELSE
-    ;PRINTFORMW 「緊急避妊薬口上です」
+IF TFLAG:99 == 0 ;노예가 긴급피임약 사용
+    ;첫회일 경우
+    IF RESULT:1 == 1
+        ;PRINTFORMW 「첫회용 긴급피임약 대사입니다」
+    ;2회째 이후
+    ELSE
+        ;PRINTFORMW 「긴급피임약 대사입니다」
+    ENDIF
+ELSEIF TFLAG:99 == 1 ;조수가 긴급피임약 사용
+    ;PRINTFORMW 「조수 긴급피임약 대사입니다」
+ELSEIF TFLAG:99 == 2 ;주인이 긴급피임약 사용
+    ;PRINTFORMW 「주인 긴급피임약 대사입니다」
 ENDIF
 
 ;-------------------------------------------------

@@ -1,6 +1,6 @@
-﻿;=============================================================================
-;조수피임약
-;=============================================================================
+﻿;=================================================================
+;약물계 커맨드 템플릿
+;=================================================================
 ;………………………………………………
 ;실행 판정
 ;………………………………………………
@@ -12,101 +12,154 @@ SIF DITEMTYPE:999:71 > 0
 SIF (FLAG:15 & 32) == 0
     RETURN 0
 ;아이템을 가지고 있는지, 아이템 없음 설정이 아니면 안 됨
-SIF ITEM:65 == 0 && NOITEM == 0
-    RETURN 0
-;조수가 없으면 안 됨
-SIF ASSI < 0
+SIF ITEM:64 == 0 && NOITEM == 0
     RETURN 0
 ;주인이 아니면 안 됨
 SIF ASSIPLAY
     RETURN 0
-;주인 혹은 노예가 남자나 후타나리 나오지 않으면 안 됨
-SIF EXIST_PENIS(MASTER) == 0 && EXIST_PENIS(TARGET) == 0
-    RETURN 0
-;약물내성의 경우 안 됨
-SIF TALENT:ASSI:44
-    RETURN 0
-;남자라면 안 됨
-SIF TALENT:ASSI:120
-    RETURN 0
-;임신중이라면 불가
-SIF TALENT:ASSI:140
-    RETURN 0
-;회란 중에는 불가
-SIF TALENT:ASSI:145
-    RETURN 0
-;산란촉진제를 사용 중이면 사용할 수 없다(사용할 수 없겠지만)
-SIF TEQUIP:ASSI:9
-    RETURN 0
-;수면중은 불가
-SIF EQUIP:ASSI:14
-    RETURN 0
-;배란유도제를 사용 중이면 사용할 수 없다(사용할 수 없겠지만)
-SIF TEQUIP:ASSI:16
-    RETURN 0
-;벌써 사용중이라면 사용할 수 없다
-SIF TEQUIP:ASSI:17
-    RETURN 0
+;3명 중 최소 하나는 여자고 배란유도제, 긴급피임약을 먹지 않았어야 함
+IF ASSI > 0
+    SIF (ASSITALENT(120) || TEQUIP:ASSI:16 || TEQUIP:ASSI:17) && (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
+        RETURN 0
+ELSE
+    SIF (TALENT:MASTER:120 || TEQUIP:MASTER:16 || TEQUIP:MASTER:17) && (TALENT:120 || TEQUIP:16 || TEQUIP:17)
+        RETURN 0
+ENDIF
 ;촉수 조교 중에는 불가
 SIF TEQUIP:90
     RETURN 0
-RETURN 1
+  RETURN 0
+
+
+@EXCOM_ABLE71(ARG)
+#FUNCTION
+;먹는 대상마다 판정
+IF ARG == TARGET
+    ;주인 혹은 조수가 남자나 후타나리 나오지 않으면 안 됨
+    SIF EXIST_PENIS(MASTER) == 0 && EXIST_PENIS(ASSI) == 0 
+        RETURNF 0
+    ;강제개구기 외에 다른 걸로 입이 막혀 있으면 불가
+    SIF TEQUIP:42 && TEQUIP:42 != 3
+        RETURNF 0
+ENDIF
+IF ARG == ASSI
+    ;조수가 없으면 안 됨
+    SIF ASSI < 0 
+        RETURNF 0
+    ;주인 혹은 노예가 남자나 후타나리 나오지 않으면 안 됨
+    SIF EXIST_PENIS(MASTER) == 0 && EXIST_PENIS(TARGET) == 0
+        RETURNF 0
+    ;난생, 산란 체질이 일 때 (원래는 먹고 탈이 나야 하지만 조수와 주인 파라미터가 제대로 구현 안 되서 못 먹는 걸로 처리함)
+    SIF TALENT:135 || TALENT:136
+        RETURNF 0
+ENDIF
+IF ARG == MASTER
+    ;조수 혹은 노예가 남자나 후타나리 나오지 않으면 안 됨
+    SIF EXIST_PENIS(TARGET) == 0 && EXIST_PENIS(ASSI) == 0 
+        RETURNF 0
+    ;난생, 산란 체질이 일 때 (원래는 먹고 탈이 나야 하지만 조수와 주인 파라미터가 제대로 구현 안 되서 못 먹는 걸로 처리함)
+    SIF TALENT:135 || TALENT:136
+        RETURNF 0
+ENDIF
+;약물내성의 경우 안 됨
+SIF TALENT:ARG:44
+    RETURNF 0
+;남자라면 안 됨
+SIF TALENT:ARG:120
+    RETURNF 0
+;임신중이라면 불가
+SIF TALENT:ARG:140
+    RETURNF 0
+;회란 중에는 불가
+SIF TALENT:ARG:145
+    RETURNF 0
+;산란촉진제를 사용 중이면 사용할 수 없다(사용할 수 없겠지만)
+SIF TEQUIP:ARG:9
+    RETURNF 0
+;수면중은 불가
+SIF EQUIP:ARG:14
+    RETURNF 0
+;긴급피임약을 사용 중이면 사용할 수 없다(사용할 수 없겠지만)
+SIF TEQUIP:ARG:17
+    RETURNF 0
+;벌써 사용중이라면 사용할 수 없다
+SIF TEQUIP:ARG:16
+    RETURNF 0
+RETURNF 1
 
 ;--------------------------------------------------
 ;커맨드 본체
 ;--------------------------------------------------
-;역시, 조수에 먹이지 않으면 안 될 때는 있을 것
 @COM71
 PRINTL 조수피임약
-TSTR:0 = 조수피임약
-CALL TRAIN_MESSAGE_COM071
+COM_NAME = 조수피임약
 
-;조제 지식이 있으면 소비를 억제한다
-IF TALENT:MASTER:55 || (ASSI >= 0 && TALENT:ASSI:55)
-    DOWNBASE:ASSI:1 += 30
+LOCAL == 0
+;노예 체크
+IF TALENT:120 == 0
+    SIF EXCOM_ABLE71(TARGET)
+        LOCAL |= 1
+ENDIF
+;조수 체크
+IF ASSI > 0
+    SIF EXCOM_ABLE71(ASSI)
+        LOCAL |= 2
+ENDIF
+;주인 체크
+IF TALENT:MASTER:120 == 0
+    SIF EXCOM_ABLE71(MASTER)
+        LOCAL |= 4
+ENDIF
+
+IF LOCAL == 0
+    PRINTL 조수피임약를 먹을 수 있는 사람이 없다.
+    PRINTW 그러므로 아무것도 하지 않았다….
+    RETURN 1
+;정상작동
 ELSE
-    DOWNBASE:ASSI:1 += 50
-ENDIF
+    PRINTL 조수피임약를 먹입니다.
+    PRINTL 누구에게 먹입니까?
+    SIF LOCAL & 1
+        PRINT [0] 「노예」 
+    SIF LOCAL & 2
+        PRINT [1] 「조수」 
+    SIF LOCAL & 4
+        PRINT [2] 「주인」 
+    PRINTL
 
-DOWNBASE:0 += 0
-DOWNBASE:1 += 5
-
-IF NOITEM == 0
-    ITEM:65 -= 1
-    SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:65
-        CALL FILL_PLURAL_ITEM, 65
-ENDIF
-TEQUIP:ASSI:17 = 1
-
-;상애 or친애 or낙인 소유
-IF TALENT:153 || TALENT:152 || TALENT:161
-    ;[광기]＋[질투]
-    IF TALENT:157 && TALENT:158
-        SOURCE:32 = 6666
-    ;[질투]
-    ELSEIF TALENT:157
-        SOURCE:32 = 3333
-    ;[질투하기 쉽다]
-    ELSEIF TALENT:19
-        SOURCE:32 = 666
-    ENDIF
-ELSE
-    ;[광기]＋[질투]
-    IF TALENT:157 && TALENT:158
-        SOURCE:32 = 666
-    ;[질투]
-    ELSEIF TALENT:157
-        SOURCE:32 = 333
+    $INPUT_LOOP
+    INPUT
+    IF RESULT == 0
+        TFLAG:99 = 0
+        CALL COM71_TARGET
+    ELSEIF RESULT == 1
+        TFLAG:99 = 1
+        CALL COM71_ASSI
+    ELSEIF RESULT == 2
+        TFLAG:99 = 2
+        CALL COM71_MASTER
+    ELSE
+        GOTO INPUT_LOOP
     ENDIF
 ENDIF
-
-SIF TALENT:MASTER:120 == 0 && TALENT:ASSI:120 == 0
-    TCVAR:ASSI:12 += 1
-
-;약물 경험
-TCVAR:ASSI:40 += 1
 
 RETURN 1
+
+@COM71_TARGET
+PRINTL 조수피임약(노예)
+COM_NAME = 조수피임약
+CALL TRAIN_MESSAGE_COM071
+
+@COM71_ASSI
+PRINTL 조수피임약(조수)
+COM_NAME = 조수피임약(조수)
+CALL TRAIN_MESSAGE_COM071
+
+@COM71_MASTER
+PRINTL 조수피임약(주인)
+COM_NAME = 조수피임약(주인)
+CALL TRAIN_MESSAGE_COM071
+
 
 ;--------------------------------------------------
 ;조교시 메시지
@@ -117,12 +170,12 @@ CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
-PRINTL
-PRINTFORML %조사선택(CALLNAME:MASTER, "는")% %CALLNAME:ASSI%에게 긴급 피임약을 먹으라고 명령했다.
-PRINTFORM 그것을 들은 %조사선택(CALLNAME:ASSI, "는")% 
-;[연모],[친애],[상애] 중 최악이어도 1개를 가진다
-IF TALENT:ASSI:150 || TALENT:ASSI:152 || TALENT:ASSI:153
-    PRINTW 조금 서운한 표정을 짓고 있다.
+IF TFLAG:99 == 0
+    
+ELSEIF TFLAG:99 == 1
+    
+ELSEIF TFLAG:99 == 2
+
 ELSE
-    PRINTW 명령을 충실히 따르고 있다….
+    PRINTFORMW 버그발생 COMF071.ERB
 ENDIF

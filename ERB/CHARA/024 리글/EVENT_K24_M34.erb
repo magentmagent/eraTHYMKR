@@ -4026,42 +4026,6 @@ ENDIF
 ;    ENDIF
 ;ENDIF
 ;
-;-------------------------------------------------
-;助手を犯させる CFLAG649
-;-------------------------------------------------
-;IF SELECTCOM == 65
-;    ;初めて
-;    IF CFLAG:5649 == 0
-;        ;陥落済み
-;        IF CFLAG:5501 >= 5
-;            PRINTFORMW 
-;        ;それ以外
-;        ELSE
-;            PRINTFORMW 
-;        ENDIF
-;            CFLAG:5649 = 1
-;            RETURN 0
-;    ELSE
-;        ;陥落済み+レズっ気Lv5以上+C感覚Lv3以上
-;        IF CFLAG:5501 >= 5 && ABL:9 >= 5 && ABL:3 >= 3 && (CFLAG:5649 <= 4 || FLAG:11 == 2)
-;            PRINTFORMW 
-;            CFLAG:5649 = 5
-;        ;陥落済み
-;        ELSEIF CFLAG:5501 >= 5 && (CFLAG:5649 <= 3 || FLAG:11 == 2)
-;            PRINTFORMW 
-;            CFLAG:5649 = 4
-;        ;レズっ気Lv3以上+C感覚Lv3以上
-;        ELSEIF ABL:9 >= 3 && ABL:3 >= 3 && (CFLAG:5649 <= 2 || FLAG:11 == 2)
-;            PRINTFORMW 
-;            CFLAG:5649 = 3
-;        ;それ以外
-;        ELSEIF CFLAG:5649 <= 1 || FLAG:11 == 2
-;            PRINTFORMW 
-;            CFLAG:5649 = 2
-;        ENDIF
-;            RETURN 0
-;    ENDIF
-;ENDIF
 ;
 ;-------------------------------------------------
 ;Ｗフェラ（主人と助手のペニスを舐めさせる） CFLAG650

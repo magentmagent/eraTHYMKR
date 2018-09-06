@@ -116,51 +116,6 @@ LOCAL = CALC_SLAVE_CAPACITY() - CHARANUM
 PRINTFORML \@(LOCAL > 0) ? (최대 {LOCAL}명 노예구입가능) #  (노예의 수 최대치임) \@
 
 ;-------------------------------------------------
-;캐릭터 능력 표시(종족 외)
-;-------------------------------------------------
-;能力を見る選択のとき、各キャラの横で種族、体力、気力が表示されます.
-
-;일단 완성.
-@SHOW_RACE, ARG
-PRINT 　　종족:
-IF NO:ARG == 0 && TALENT:ARG:998 && TALENT:ARG:116
-    PRINT 치터
-ELSEIF TALENT:ARG:48
-    PRINTS STR:145
-ELSEIF TALENT:ARG:200 && CFLAG:ARG:5 == 1
-    PRINTS STR:103
-ELSEIF TALENT:ARG:205 && CFLAG:ARG:5 == 2
-    PRINTS STR:106
-ELSEIF TALENT:ARG:206 && CFLAG:ARG:5 == 3
-    PRINTS STR:146
-ELSEIF TALENT:ARG:207 && CFLAG:ARG:5 == 4
-    PRINTS STR:143
-ELSEIF TALENT:ARG:208 && CFLAG:ARG:5 == 5
-    PRINTS STR:121
-ELSEIF TALENT:ARG:209 && CFLAG:ARG:5 == 6
-    PRINTS STR:104
-ELSEIF TALENT:ARG:210 && CFLAG:ARG:5 == 7
-    PRINTS STR:127
-ELSEIF TALENT:ARG:211 && CFLAG:ARG:5 == 8
-    PRINTS STR:112
-ELSEIF TALENT:ARG:212 && CFLAG:ARG:5 == 9
-    PRINTS STR:116
-ELSE
-    PRINTS CSTR:ARG:33
-ENDIF
-SIF TALENT:MASTER:998
-    PRINTFORM 　캐릭터번호:{NO:ARG, 3}
-PRINTFORML 　체력:({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4})　기력:({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4})
-;한 마디 대사 호출
-SIF ARG != MASTER && FLAG:1200 & 4
-    CALL IMPRESSION_MAIN, ARG
-IF ARG == MASTER && FLAG:12 & 4
-    CALL PRINT_MASTER_STATUS, ARG
-ELSEIF FLAG:12 & 4
-    CALL PRINT_SLAVE_STATUS, ARG
-ENDIF
-
-;-------------------------------------------------
 ;주인용 스테이터스 표시 처리
 ;-------------------------------------------------
 @PRINT_MASTER_STATUS, ARG
@@ -197,7 +152,10 @@ IF FLAG:423 != CFLAG:MASTER:3109 && FLAG:423 != 0
     SIF LOCAL > 0
         PRINTFORML 마지막 조교에서 조수를 담당한 것은 %CALLNAME:LOCAL%입니다.
 ENDIF
-
+;성장촉진 사탕의 영향을 받고 있다면 표시
+SIF EQUIP:ARG:1 > 0
+    PRINTFORML 신비한 성장촉진 사탕의 영향을 받고 있다
+    
 ;칭호 · 엔딩 도달 표시
 STRLENS NICKNAME:MASTER
 SIF FLAG:9 || RESULT > 0
@@ -241,7 +199,7 @@ SIF CFLAG:MASTER:157 & 1
     PRINT 수재
 SIF CFLAG:MASTER:157 & 2
     PRINT 천재 
-SIF NICKNAME:MASTER != "『鬼畜』" && CFLAG:MASTER:157 & 8
+SIF NICKNAME:MASTER != "『귀축』" && CFLAG:MASTER:157 & 8
     PRINT 귀축
 PRINTL 
 
@@ -287,12 +245,12 @@ SIF CFLAG:ARG:4 == 4096
 ;수면제의 영향하에 있으면 표시
 SIF EQUIP:ARG:14 > 0
     PRINTFORML 수면제의 영향을 받아 \@(EQUIP:ARG:14 >= 10000) ? 곤히 자고 # 자고 \@ 있다.
-;복숭아의 눈깔사탕의 영향을 받고 있다면 표시
+;EX해제 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:0 > 0
-    PRINTFORML 신비한 복숭아색 사탕의 영향을 받고 있다.
-;감색의 눈깔사탕의 영향을 받고 있다면 표시
+    PRINTFORML 신비한 EX해제 사탕의 영향을 받고 있다.
+;성장촉진 사탕의 영향을 받고 있다면 표시
 SIF EQUIP:ARG:1 > 0
-    PRINTFORML 신비한 감색 사탕의 영향을 받고 있다.
+    PRINTFORML 신비한 성장촉진 사탕의 영향을 받고 있다.
 
 CALL NEW_DRAWLINE
 
@@ -307,14 +265,14 @@ LOCAL:2 = 0
 
 ;난이도 PHANTASM일 때 표시 없음
 IF FLAG:3 == 5
-    TSTR:0 = ―
+    COM_NAME = ―
     TSTR:1 = ―
     TSTR:2 = ―
     TSTR:3 = ―
     RETURN 0
 ;아나타는 측정 불능
 ELSEIF ARG == 0 || ARG == 400
-    TSTR:0 = \@(ARG == 400) ? 만능 # 불명\@
+    COM_NAME = \@(ARG == 400) ? 만능 # 불명\@
     TSTR:1 = \@(ARG == 400) ? 귀중 # 불명\@
     TSTR:2 = \@(ARG == 400) ? 무한 # 불명\@
     TSTR:3 = \@(ARG == 400) ? 야채 # 불명\@
@@ -528,33 +486,33 @@ SIF ARG == 72
     LOCAL += 1
 
 IF LOCAL < 0
-    TSTR:0 = Ｆ
+    COM_NAME = Ｆ
 ELSEIF LOCAL < 2
-    TSTR:0 = Ｅ
+    COM_NAME = Ｅ
 ELSEIF LOCAL < 4
-    TSTR:0 = Ｄ
+    COM_NAME = Ｄ
 ELSEIF LOCAL < 7
-    TSTR:0 = Ｃ
+    COM_NAME = Ｃ
 ELSEIF LOCAL < 10
-    TSTR:0 = Ｂ
+    COM_NAME = Ｂ
 ELSEIF LOCAL < 14
-    TSTR:0 = Ａ
+    COM_NAME = Ａ
 ELSEIF LOCAL < 18
-    TSTR:0 = Ｓ
+    COM_NAME = Ｓ
 ELSEIF LOCAL < 23
-    TSTR:0 = ＳＳ
+    COM_NAME = ＳＳ
 ELSEIF LOCAL < 27
-    TSTR:0 = ＳＳＳ
+    COM_NAME = ＳＳＳ
 ELSEIF LOCAL < 31
-    TSTR:0 = ＳＳＳＳ
+    COM_NAME = ＳＳＳＳ
 ELSEIF LOCAL < 36
-    TSTR:0 = ＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳ
 ELSEIF LOCAL < 40
-    TSTR:0 = ＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳ
 ELSEIF LOCAL < 44
-    TSTR:0 = ＳＳＳＳＳＳＳ
+    COM_NAME = ＳＳＳＳＳＳＳ
 ELSE
-    TSTR:0 = ★
+    COM_NAME = ★
 ENDIF
 
 ;………………………………………………
@@ -697,7 +655,7 @@ IF TALENT:ARG:120
     LOCAL += 2
     LOCAL:2 += 1
 ENDIF
-;소인체형
+;[소인]
 IF TALENT:ARG:127 && TALENT:MASTER:127 == 0 && TALENT:MASTER:56 == 0
     LOCAL += 2
     LOCAL:2 += 1
@@ -891,7 +849,7 @@ ELSEIF ABL:ARG:10 >= 3 && ABL:ARG:11 >=3 && ABL:ARG:12 >=3 && ABL:ARG:13 >=3 && 
 ELSE
     PRINTFORM 성장도：육성중　
 ENDIF
-PRINTFORML 공헌도：%TSTR:0%　매각치：%TSTR:1%
+PRINTFORML 공헌도：%COM_NAME%　매각치：%TSTR:1%
 CALL NEW_DRAWLINE
 ;-------------------------------------------------
 ;신장  · 체중 · 3사이즈의 표시 처리
@@ -908,38 +866,52 @@ CALL NEW_DRAWLINE
 CALL MAKE_SIZE, 1, ARG
 
 PRINTFORML \@(FLAG:12 & 2) ? □ 사이즈 # 사이즈:\@
-PRINTFORM  신장:{BASE:ARG:10 / 10}. {BASE:ARG:10 % 10}cm
+PRINTFORM  신장:{BASE:ARG:10 / 10}.{BASE:ARG:10 % 10} cm
 ;보테배상태의 경우 표시 수치 보정
 IF FLAG:1500 & 2 && (CFLAG:ARG:3502 % 1000000)
-    LOCAL:11 = BASE:ARG:11 + ((CFLAG:ARG:3502 % 1000000 ) * 10) / 34
-    PRINTFORM    체중:{LOCAL:11 / 10}. {LOCAL:11 % 10}kg
-    PRINTFORML  임신전({BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg)
+    LOCAL:11 = BASE:ARG:11 + ((CFLAG:ARG:3502 % 1000000 ) * 10000) / 34
+    IF BASE:ARG:11 > 10000
+        PRINTFORM    체중:{LOCAL:11 / 10000}. {LOCAL:11 % 10000 / 1000} kg
+        PRINTFORML  임신전({BASE:ARG:11 / 10000}. {BASE:ARG:11 % 10000 / 1000} kg)
+    ELSE
+        PRINTFORM    체중:{LOCAL:11 / 10}.{LOCAL:11 % 10} g
+        PRINTFORML  임신전({BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} kg)
+    ENDIF
 ;임신 소유의 경우 표시 수치 보정
 ELSEIF TALENT:ARG:140
-    LOCAL:11 = BASE:ARG:11 + (CFLAG:ARG:3500 * 10) / 34
-    PRINTFORM    체중:{LOCAL:11 / 10}. {LOCAL:11 % 10}kg
-    PRINTFORML  임신전({BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg)
+    LOCAL:11 = BASE:ARG:11 + CFLAG:ARG:3500
+    IF BASE:ARG:11 > 10000
+        PRINTFORM    체중:{LOCAL:11 / 10000}.{LOCAL:11 % 10000 / 1000} kg
+        PRINTFORML  임신전({BASE:ARG:11 / 10000}.{BASE:ARG:11 % 10000 / 1000} kg)
+    ELSE
+        PRINTFORM    체중:{LOCAL:11 / 10}.{LOCAL:11 % 10} g
+        PRINTFORML  임신전({BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} g)
+    ENDIF
 ELSE
-    PRINTFORML    체중:{BASE:ARG:11 / 10}. {BASE:ARG:11 % 10}kg
+    IF BASE:ARG:11 > 10000
+        PRINTFORML    체중:{BASE:ARG:11 / 10000}.{BASE:ARG:11 % 10000 / 1000} kg
+    ELSE
+        PRINTFORML  체중:{BASE:ARG:11 / 10}.{BASE:ARG:11 % 10} g
+    ENDIF
 ENDIF
 ;[남자]소유는 3 사이즈는 표시하지 않는다
 IF ! TALENT:ARG:120
-    PRINTFORM  B:{BASE:ARG:12 / 10}. {BASE:ARG:12 % 10}cm 
+    PRINTFORM  B:{BASE:ARG:12 / 10}.{BASE:ARG:12 % 10} cm 
     CALL PRINT_CUPSIZE , ARG
     ;보테배상태의 경우 표시 수치 보정
     IF FLAG:1500 & 2 && ( CFLAG:ARG:3502 % 1000000 )
         LOCAL:13 = BASE:ARG:13 + (CFLAG:ARG:3502 % 1000000)
-        PRINTFORM / W:{LOCAL:13 / 10}. {LOCAL:13 % 10}cm
-        PRINTFORM    임신전({BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm) /
+        PRINTFORM / W:{LOCAL:13 / 10}.{LOCAL:13 % 10} cm
+        PRINTFORM    임신전({BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm) /
     ;임신 소유의 경우 표시 수치 보정
     ELSEIF TALENT:ARG:140
-        LOCAL:13 = BASE:ARG:13 + CFLAG:ARG:3500
-        PRINTFORM / W:{LOCAL:13 / 10}. {LOCAL:13 % 10}cm
-        PRINTFORM  임신전({BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm) /
+        LOCAL:13 = BASE:ARG:13 + CFLAG:ARG:3500 * 3 / 1000 ;체중 1kg 에  30 mm 정도 허리둘레가 늘어난다고 치자
+        PRINTFORM / W:{LOCAL:13 / 10}.{LOCAL:13 % 10} cm
+        PRINTFORM  임신전({BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm) /
     ELSE
-        PRINTFORM / W:{BASE:ARG:13 / 10}. {BASE:ARG:13 % 10}cm /
+        PRINTFORM / W:{BASE:ARG:13 / 10}.{BASE:ARG:13 % 10} cm /
     ENDIF
-    PRINTFORML  H:{BASE:ARG:14 / 10}. {BASE:ARG:14 % 10}cm
+    PRINTFORML  H:{BASE:ARG:14 / 10}.{BASE:ARG:14 % 10} cm
 ENDIF
 CALL NEW_DRAWLINE
 
@@ -947,10 +919,11 @@ CALL NEW_DRAWLINE
 @PRINT_CUPSIZE , ARG , ARG:1
 VARSET LOCALS,""
 SPLIT "(-) , (AAA) , (AA) , (A) , (B) , (C) , (D) , (E) , (F) , (G) , (H) , (I) , (J) , (K) , (L) , (M) , (N) , (O) , (P) , (Q) , (R) , (S) , (T) , (U) , (V) , (W) , (X) , (Y) , (Z) , (Z+) ",",", LOCALS
-LOCAL = (BASE:ARG:12 - ((((BASE:ARG:10 * 100) / 22) - ((BASE:ARG:10 * 100) / BASE:ARG:13)) / 10)) / 25
-;캐릭터 라인 변수가 약간 부자유스러워서 억지로 작성
-LOCAL = MAX(LOCAL , 1)
-LOCALS:0 = %LOCALS:(LOCAL-1)%
+;A컵은 10 +- 1.25 cm,  8.8 cm ~ 11.3 cm, AA컵은 7.5 +- 1.25 cm, AAA컵은 5 +- 1.25 cm
+;컵 크기는 키와 관계없다.
+LOCAL = (BASE:ARG:12 - MAXBASE:ARG:12 + 12) / 25
+LOCAL = LIMIT(LOCAL - 1 , 0 , 29) ;AAAA컵 (2.5 cm)이 없는 점을 주의
+LOCALS:0 = %LOCALS:(LOCAL)%
 
 SIF ARG:1 == 0
     PRINTFORM %LOCALS%
@@ -1125,15 +1098,26 @@ CALL NEW_DRAWLINE
 @PRINT_PARENT, ARG
 SIF FLAG:12 & 2
     PRINTL □ 자녀관계
-LOCAL:0 = CFLAG:ARG:3103 + 100
-LOCAL:1 = CFLAG:ARG:3100 + 100
 LOCAL:2 = CFLAG:ARG:3104
 LOCAL:3 = CFLAG:ARG:3102
 
-PRINTFORML 아버지：%ITEMNAME:(LOCAL:0)%({LOCAL:2}번째 아이) 어머니：%ITEMNAME:(LOCAL:1)%({LOCAL:3}번째 아이)
+IF CSTR:ARG:37 == "" ;아버지 이름이 없을 때 아버지의 아이템 이름 호출
+    LOCAL = CFLAG:ARG:3103 + 100
+    CSTR:ARG:37 = %ITEMNAME:(LOCAL:0)%
+ENDIF
+
+IF CSTR:ARG:38 == "" ;어머니 이름이 없을 때 어머니의 아이템 이름 호출
+    LOCAL:1 = CFLAG:ARG:3100 + 100
+    CSTR:ARG:38 = %ITEMNAME:(LOCAL:1)%
+ENDIF
+
+PRINTFORML 아버지：%CSTR:ARG:37%({LOCAL:2}번째 아이) 어머니：%CSTR:ARG:38%({LOCAL:3}번째 아이)
 IF CFLAG:ARG:3100 != CFLAG:ARG:3101
-    LOCAL:4 = CFLAG:ARG:3101 + 100
-    PRINTFORML 키워준 부모는 %ITEMNAME:(LOCAL:4)%입니다.
+    IF CSTR:ARG:39 == "" ;유모이름이 없을 때 유모의 아이템 이름 호출
+        LOCAL:4 = CFLAG:ARG:3101 + 100
+        CSTR:ARG:39 = %ITEMNAME:(LOCAL:4)%
+    ENDIF
+    PRINTFORML 키워준 부모는 %CSTR:ARG:39%입니다.
 ENDIF
 CALL NEW_DRAWLINE
 
@@ -1481,7 +1465,7 @@ CALL NEW_DRAWLINE
 @PRINT_PUBIC_HAIR, ARG
 PRINTFORML \@(FLAG:12 & 2) ?  □ 음모 상태 # 음모 상태:\@
 
-;소인 체형이나 작은 몸집 체형의 경우는 데포라면 반들반들
+;[소인]이나 [작은체형]의 경우는 데포라면 반들반들
 IF (TALENT:ARG:127 || TALENT:ARG:128) && CFLAG:ARG:36 != 2
     PRINTFORML 음모는 나지 않았습니다. \@(CFLAG:ARG:36 == 1) ? 탈모 처리가 되었으므로, # 그리고\@ 날 낌새도 없습니다.
 ;소인이나 작은 몸집 이외로 데포라면 나 있다
@@ -1519,7 +1503,7 @@ SIF CFLAG:ARG:42 & 8
 SIF CFLAG:ARG:42 & 16
     PRINT 《라비아피어스》 
 SIF CFLAG:ARG:42 & 32
-    PRINT 《유두피어스》 
+    PRINT 《니플피어스》 
 
 PRINTL 
 CALL NEW_DRAWLINE
@@ -1667,9 +1651,9 @@ SIF CFLAG:ARG:13 & 4096
 
 ;기타 MARK상의 이력
 IF MARK:ARG:80 == 1
-    PRINTL 현재 잿빛 사탕에 의해 성격이 반전되어 있다.
+    PRINTL 현재 성격반전 사탕에 의해 성격이 반전되어 있다.
 ELSEIF MARK:ARG:80 == 2
-    PRINTL 잿빛 사탕의 효과로 반전되었던 성격이 원래대로 돌아왔다.
+    PRINTL 성격반전 사탕의 효과로 반전되었던 성격이 원래대로 돌아왔다.
 ENDIF
 
 ;매각 가능한가?　조수화 가능한가?
@@ -2115,7 +2099,7 @@ SIF CFLAG:ARG:20 & 16384
 SIF CFLAG:ARG:20 & 32768
     PRINTL 　지하실에서 교정이라는 이름의 고문을 받은 적이 있다.
 SIF CFLAG:ARG:20 & 65536
-    PRINTL 　약의 힘으로 강제로 소인체형이 된 적이 있다.
+    PRINTL 　약의 힘으로 강제로 [소인]가 된 적이 있다.
 SIF CFLAG:ARG:21 & 1
     PRINTL 　공개 자위 경험이 있다.
 SIF CFLAG:ARG:21 & 16
@@ -2461,20 +2445,27 @@ MONEY += MONEY:1
 ;토리코모드 대응용 개조. 
 ;130821 BY V.K
 ;-------------------------------------------------
-@ARRANGE_CHARALIFE, ARG
-
+@ARRANGE_CHARALIFE, ARG, ARG:1
+;ARG:1 : 1로 영양 상태를 켬, 2로 식단을 켠다, 4로 체력,기력을 끈다.
 ;토리코모드 플래그 체크.
 IF FLAG:5000 & 1
     ;토리코모드
-    CALL LIFE_BAR_TORIKOMODE , ARG
-    CALL VITALITY_BAR_TORIKOMODE, ARG
+    IF (ARG:1 & 4) == 0
+        CALL LIFE_BAR_TORIKOMODE , ARG
+        CALL VITALITY_BAR_TORIKOMODE, ARG
+    ENDIF
     ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ELSE
     ENDIF
 
@@ -2488,106 +2479,59 @@ IF FLAG:5000 & 1
     ;PRINTL
 
 ELSE
-;일반모드
-PRINTFORM 체력
-;60%까지는 초록
-IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
-RESETCOLOR
+    ;일반모드
+    IF (ARG:1 & 4) == 0
+        PRINTFORM 체력
+        ;60%까지는 초록
+        IF BASE:ARG:0 > (MAXBASE:ARG:0 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:0 > (MAXBASE:ARG:0 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:0, 4}/{MAXBASE:ARG:0, 4}) 
+        RESETCOLOR
 
-PRINTFORM 기력
-;60%까지는 초록
-IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
-    CALL SETCOLOR_TORIKOMODE, "GREEN", 4
-;30%까지는 노랑
-ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
-    CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
-;그 밑으론 빨강
-ELSE
-    CALL SETCOLOR_TORIKOMODE, "RED", 4
-ENDIF
-PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4})
-RESETCOLOR
-
-;만약 식사 시스템 사용중이라면
+        PRINTFORM 기력
+        ;60%까지는 초록
+        IF BASE:ARG:1 > (MAXBASE:ARG:1 * 60) / 100
+            CALL SETCOLOR_TORIKOMODE, "GREEN", 4
+        ;30%까지는 노랑
+        ELSEIF BASE:ARG:1 > (MAXBASE:ARG:1 * 30) / 100
+            CALL SETCOLOR_TORIKOMODE, "YELLOW", 4
+        ;그 밑으론 빨강
+        ELSE
+            CALL SETCOLOR_TORIKOMODE, "RED", 4
+        ENDIF
+        PRINTFORM ({BASE:ARG:1, 4}/{MAXBASE:ARG:1, 4}) 
+        RESETCOLOR
+    ENDIF
+    ;만약 식사 시스템 사용중이라면
     IF FLAG:5000 & 32
-        CALL HUNGER_BAR_TORIKOMODE, ARG
-        CALL NUTRITION_BAR_TORIKOMODE,ARG
-        CALL FEEDMENU_BAR_TORIKOMODE, ARG
-        PRINTL
-        CALL STARVE_BAR_TORIKOMODE, ARG
+        IF ARG:1 & 1
+            CALL HUNGER_BAR_TORIKOMODE, ARG
+            CALL NUTRITION_BAR_TORIKOMODE,ARG
+        ENDIF
+        IF ARG:1 & 2
+            PRINTL
+            PRINT 　
+            CALL FEEDMENU_BAR_TORIKOMODE, ARG
+            CALL STARVE_BAR_TORIKOMODE, ARG
+        ENDIF
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
 ;캐릭터 일람표시처리
 ;-------------------------------------------------
-@CHARADATA_LIST, ARG, ARG:2
-LOCAL:3 = 0
-REPEAT 20
-    LOCAL = GET_LIST(COUNT + ARG * 20)
-    SIF LOCAL == 0
-        CONTINUE
+@CHARADATA_LIST, ARG, ARG:2, ARG:3
+;ARG:3 (비트연산) 일부 표시를 켠다. (1: 영양상태, 2: 식단, 4: 체력,기력(을 끈다), 8: 스케쥴,스트레스, 16: 한마디대사, 32: 소질(을 끈다))
 
-    ;주인공과 조수 대상과 조교중 캐릭터는 배제
-    SIF LOCAL == 0
-        CONTINUE
-    SIF CFLAG:LOCAL:4 == 1
-        CONTINUE
-    IF LOCAL == TARGET
-        PRINT ☆
-    ELSEIF LOCAL == ASSI
-        PRINT ★
-    ELSEIF CFLAG:LOCAL:4 == 4
-        PRINT ◆
-        LOCAL:3 |= 1
-    ELSEIF CFLAG:LOCAL:4 == 8
-        PRINT ▲
-        LOCAL:3 |= 2
-    ELSEIF CFLAG:LOCAL:4 == 16
-        PRINT ■
-        LOCAL:3 |= 4
-    ELSEIF CFLAG:LOCAL:4 & 1024
-        PRINT ▼
-        LOCAL:3 |= 16
-    ELSEIF CFLAG:LOCAL:4 == 2048 || CFLAG:LOCAL:4 == 4096
-        PRINT ▽
-        LOCAL:3 |= 8
-    ELSEIF ISASSI:LOCAL == 1
-        PRINT ●
-    ELSEIF CFLAG:LOCAL:1 == 2
-        PRINT ○
-    ELSE
-        PRINT 　
-    ENDIF
-    CALL ARRANGE_CHARALIST, LOCAL
-    CALL ARRANGE_CHARALIFE, LOCAL
-    CALL ARRANGE_CHARATALENT, LOCAL
-    PRINTL 
-    ;한 마디 대사 호출
-    SIF FLAG:1200 & 4
-        CALL IMPRESSION_MAIN, LOCAL
-REND
-IF ARG:2 >= 1
-    PRINT 　　　☆:조교중 ★:조수 ○:조수가능 ●:전 조수
-    SIF FLAG:15 & 4096 && FLAG:75 & 32768 && LOCAL:3 & 1
-        PRINT  ◆:촉수 유폐중
-    SIF FLAG:73 & 1 && LOCAL:3 & 4
-        PRINT  ■:지하실 수감중
-;    SIF FLAG:15 & 4096 && LOCAL:3 & 2
-;        PRINT  ▲:우리 유폐중
-    SIF FLAG:79 & 1 && LOCAL:3 & 8
-        PRINT  ▽:허브 작업중
-    PRINTL 　(을)를 나타내고 있습니다
-ENDIF
+;토리코 모드 코드로도 충분해 보입니다. (코드가 완전 같았음)
+CALL CHARADATA_LIST_TORIKOMODE, ARG, ARG:2, ARG:3
 
 ;-------------------------------------------------
 ;캐릭터의 소질 간이 표시의 보조 처리
@@ -2606,7 +2550,7 @@ ELSE
     IF TALENT:ARG:121
         PRINT 후타나리.
     ELSEIF TALENT:ARG:1
-        PRINT 후타불알.
+        PRINT 비대음핵.
     ENDIF
 ENDIF
 IF TALENT:ARG:153

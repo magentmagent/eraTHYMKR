@@ -30,7 +30,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM201
 PRINTL 유두 고문
-TSTR:0 = 유두 고문
+COM_NAME = 유두 고문
 CALL TRAIN_MESSAGE_COM201
 
 DOWNBASE:0 += 10
@@ -147,8 +147,8 @@ ENDIF
 ;확장유두의 추가경험획득의 계산
 ;-------------------------------------------------
 IF TALENT:2
-    TCVAR:35 += 1
-    TCVAR:45 += 2
+    TCVAR:35 += 2
+    TCVAR:45 += 3
 ENDIF
 
 RETURN 1

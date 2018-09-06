@@ -24,7 +24,7 @@ SIF FLAG:2 & 4 && EXP:0 < EXPLV:1 && TALENT:PLAYER:120 == 0
 ;조교자가 ヤマメでないとダメ
 SIF NO:PLAYER != 58
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;脚の妨げとなる도구の装着はダメ
@@ -80,7 +80,7 @@ RETURN 1
 ;처녀 상실을 수반하므로 주의
 @COM654
 PRINTL 거미다리6점고문
-TSTR:0 = 거미다리6점고문
+COM_NAME = 거미다리6점고문
 SELECTCOM = 654
 CALL TRAIN_MESSAGE_COM654
 
@@ -347,7 +347,7 @@ ELSEIF TALENT:104
     TIMES SOURCE:22 , 0.60
     TIMES SOURCE:31 , 0.60
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

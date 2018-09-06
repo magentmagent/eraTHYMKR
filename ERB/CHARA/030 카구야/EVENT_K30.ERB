@@ -10060,152 +10060,6 @@ IF SELECTCOM == 61
 ENDIF
 
 ;-------------------------------------------------
-;強精神薬使用 CFLAG9065
-;-------------------------------------------------
-IF SELECTCOM == 65
-    ;初めて
-    IF CFLAG:TARGET:9065 == 0
-        ;恋慕
-        IF TALENT:150
-            PRINTFORML 「으응……츄우……」
-            PRINTFORMW 「하앗……이 약、먹은 뒤에 오는게 무서워요……」
-        ;それ以外
-        ELSE
-            PRINTFORML 「으웃！　응ー！　응ー！」
-            PRINTFORMW %CALLNAME:MASTER%는 카구야에게 억지로 강 정신약을 먹였다.
-            PRINTFORML 「푸하아……제게 뭘 먹인거에요、기분이 안 좋아……」
-            PRINTFORMW 입을 해방하기 위해、카구야는 거친 숨을 내쉬었다
-        ENDIF
-            CFLAG:TARGET:9065 = 1
-            RETURN 0
-    ;二回目以降
-    ELSE
-        ;恋慕
-        IF TALENT:150 && (CFLAG:9065 <= 3 || FLAG:11 == 2)
-            LOCAL:0 = RAND:2
-            IF LOCAL:0 == 0
-                PRINTFORML 「후훗……이 약으로 저를 마음대로 조종할 셈인가요？」
-                PRINTFORMW 「%CALLNAME:MASTER%도 꽤 심술궂네요♪」
-            ELSE
-                PRINTFORML 「응……이 약은……」
-                PRINTFORML 「나중에 쾌락이 밀려오는게 견딜수 없어요」
-                PRINTFORMW 「%CALLNAME:MASTER%……상냥하네요」
-                PRINTFORMW 카구야는 %CALLNAME:MASTER%를 바라봤다
-            ENDIF
-            CFLAG:9065 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:9065 < 2 || FLAG:11 == 2)
-            PRINTFORML 「큿……이 약……싫어요……」
-            PRINTFORMW 「애초에、나중에 반동이 오는건 반칙이잖아요……」
-            CFLAG:9065 = 3
-        ;それ以外
-        ELSEIF CFLAG:9065 <= 1 || FLAG:11 == 2
-            PRINTFORML 「또인가요……？　이런 일을 당해도 저는 굴하지 않아요」
-            PRINTFORMW 카구야는 의연하게 버티고있다.
-            CFLAG:9065 = 2
-        ENDIF
-            RETURN 0
-    ENDIF
-ENDIF
-
-;-------------------------------------------------
-;興奮剤使用 CFLAG9070
-;-------------------------------------------------
-IF SELECTCOM == 70
-    ;初めて
-    IF CFLAG:TARGET:9070 == 0
-        ;恋慕
-        IF TALENT:150
-            PRINTFORMW 「……수상쩍은 약이네요.」
-            PRINTFORMW 「몸도 마음도 부수는 약이라니, 저한테 쓸 생각은 하지 마세요.」
-            PRINTFORMW 「아무리 봉래의 약이라도, 마음까지는 고치지 못하니까...」
-        ;それ以外
-        ELSE
-            PRINTFORMW 「뭐에요, 척 보기에도 수상쩍은 그 약은?」
-            PRINTFORMW 「……혹시 저한테 먹일 생각은 아니겠죠?」
-            PRINTFORMW %CALLNAME:MASTER%카구야에게 억지로 흥분제를 먹인다.
-            PRINTFORMW 「앗, 크읏...... 하우우...... 눈앞이 어지러워.」
-            PRINTFORMW 「아흑……！　이건, 설마……！」
-            PRINTFORML 「싫어……하앗……이런 약, 달의 도시에서도 금지되어있는데……」
-            PRINTFORMW 카구야의 몸은 금새 달아올라 송글송글 땀을 맺기 시작했다.
-        ENDIF
-            CFLAG:TARGET:9070 = 1
-            RETURN 0
-    ;二回目以降
-    ELSE
-        ;壊造人格
-        IF TALENT:TARGET:169 == 1 && (CFLAG:9070 <= 7 || FLAG:11 == 2)
-            LOCAL:0 = RAND:2
-            IF LOCAL:0 == 0
-                PRINTFORMW 「아……하아……주인님……흥분제……너무 좋아요.」
-                PRINTFORML 「좀 더 나를…… 쾌락으로 채워주세요……」
-                PRINTFORMW 카구야는 억양이 없는 목소리로 흥분제를 갈구했다.
-            ELSE
-                PRINTFORML 「아앙…… 이 약, 정말로 기분 좋아……」
-                PRINTFORML 「좀 더 저를 기분 좋게 만들어주세요……」
-                PRINTFORMW 카구야는 얼빠진 눈을 하고, 마치 고장난 기계 같은 목소리로 %CALLNAME:MASTER% 에게 말했다.
-            ENDIF
-            CFLAG:9070 = 7
-        ;恋慕&薬物刻印Lv3
-        ELSEIF TALENT:150 && MARK:3 == 3 && (CFLAG:9070 <= 6 || FLAG:11 == 2)
-            LOCAL:0 = RAND:2
-            IF LOCAL:0 == 0
-                PRINTFORML 「아앗…… 약… 원해요.」
-                PRINTFORML 「이제 이것이 없으면…… 나, 살아갈 수 없어서……」
-                IF CFLAG:9070 == 5
-                    PRINTFORMW 카구야는 얼빠진 눈을 하고서 흥분제를 요구하고 있다.
-                    PRINTFORMW 그만큼 본인에게 충고를 들었는데도 결국 카구야에게 약을 써버렸다……
-                    PRINTFORMW %CALLNAME:MASTER%의 뇌리에 카구야와의 추억들이 주마등처럼 흘러간다……
-                ELSE
-                    PRINTFORMW 카구야는 얼빠진 눈을 하고서 흥분제를 요구하고 있다.
-                    PRINTFORMW 이미 지금의 카구야는 흥분제 없이는 살 수 없을지도 모른다……
-                ENDIF
-            ELSE
-                PRINTFORML 「응…… 나, %CALLNAME:MASTER%를 사랑했으면 좋았을텐데……」
-                PRINTFORML 「하지만……이미 이 약이 저를 지배하고 있어요……」
-                PRINTFORML 「저는…… 더이상 제가 아닐지도 몰라요……」
-                PRINTFORMW 카구야는 얼빠진 눈을 하고서 %CALLNAME:MASTER%를 바라보고 있다.
-            ENDIF
-            CFLAG:9070 = 6
-        ;恋慕
-        ELSEIF TALENT:150 && (CFLAG:9070 <= 5 || FLAG:11 == 2)
-            LOCAL:0 = RAND:2
-            IF LOCAL:0 == 0
-                PRINTFORML 「이런 약은 재미로 쓰는 물건이 아니에요?」
-                PRINTFORML 「저를 망가뜨리면 후회하는 것은 %CALLNAME:MASTER% 니까요……」
-                PRINTFORMW 카구야는 슬픈 듯한 눈으로 %CALLNAME:MASTER% 를 바라보고 있다
-            ELSE
-                PRINTFORML 「달의 수도에서 이 약에 손을 댄 사람이 어떻게 되는지 아시나요?」
-                PRINTFORMW 「……모두 사형이에요, 그것도 분자 단위로 분해되서.」
-                PRINTFORML 「경우에 따라서는 사형이 아닐지도 모르지만, 아마 그에 준하는 극형으로 결국 목숨을 끊겠죠.」
-                PRINTFORML 「이제 그 처형은 받기 싫어요, 죽지 않는다는 두려움의,」
-                PRINTFORMW 카구야는 무언가를 회상하는 듯 그렇게 말한다.
-                PRINTFORMW ……과거에 비슷한 처형을 보았거나 받은 경험이 있는 걸까?
-            ENDIF
-            CFLAG:9070 = 5
-        ;屈服刻印Lv3+薬物刻印Lv3
-        ELSEIF MARK:2 == 3 && MARK:3 == 3 && (CFLAG:9070 < 4 || FLAG:11 == 2)
-            PRINTFORML 「아힛! 기분이 좋아지는 약……♪」
-            PRINTFORML 「줘…… 좀 더 내게 줘……♪」
-            PRINTFORMW 카구야는 초점이 맞지 않는 눈으로 마냥 흥분제를 요구하고 있다.
-            PRINTFORMW 흥분제의 부작용으로 모발에는 윤기가 사라지고 피부도 거칠어지고 있는 지금의 카구야는 더이상 원래의 아름다웠던 모습의 흔적도 찾아볼수 없게 되어 있었다.
-            CFLAG:9070 = 4
-        ;屈服刻印Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:9070 < 2 || FLAG:11 == 2)
-            PRINTFORML 「그 약은…… 안 돼요…… 하앗……! 아우……」
-            PRINTFORMW 카구야는 흥분제의 작용으로 온 몸을 발갛게 물들이며 음부에서는 애액을 내뿜고 있다.
-            CFLAG:9070 = 3
-        ;それ以外
-        ELSEIF CFLAG:9070 <= 1 || FLAG:11 == 2
-            PRINTFORML 「하앗……하아……아응……몸이 멋대로 흥분해버리고 있어요……」
-            PRINTFORMW 카구야의 몸은 흥분제의 작용으로 억지로 발정하고 있다.
-            CFLAG:9070 = 2
-        ENDIF
-            RETURN 0
-    ENDIF
-ENDIF
-
-;-------------------------------------------------
 ;お酒を飲ませる CFLAG9348
 ;-------------------------------------------------
 IF SELECTCOM == 348
@@ -13387,7 +13241,7 @@ ENDIF
 [SKIPSTART]
 IF SELECTCOM == 111 || SELECTCOM == 620
     ;強制放尿
-    IF SELECTCOM == 86 || SELECTCOM == 85 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:31 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:22 == 0))
+    IF SELECTCOM == 85 && ((TALENT:45 == 0 && ABL:10 >= 4 && ABL:31 >= 3 && ABL:21 >= 3) || (TALENT:45 && TEQUIP:22 == 0))
         ;恋慕+おもらし癖+野外プレイ
         IF TALENT:TARGET:150 && TALENT:45 && TEQUIP:52 && (CFLAG:9620 < 5 || FLAG:11 == 2)
             PRINTFORMW 
@@ -18017,7 +17871,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                 PRINTFORML 「안되에, 나르을, 앗♪　두고 가지말아아……」
                 PRINTFORMW 카구야는 그 자리에서 기절했다
             ;輝夜の精液中毒がLv3以上＆主人がオトコかふたなり
-            ELSEIF !RAND:2 && ABL:31 >= 3 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+            ELSEIF !RAND:2 && ABL:31 >= 3 && EXIST_PENIS(MASTER)
                 ;変態度が40以上＆輝夜がふたなり
                 IF CFLAG:5111 >= 40 && TALENT:121 == 1
                     PRINTFORMW 요리의 완성이 매우 늦기 때문에, %CALLNAME:MASTER%는 카구야의 곁에 갔다
@@ -19262,7 +19116,7 @@ IF TFLAG:200 == 324
     IF TALENT:200 == 1
         CFLAG:(LOCAL@SELF_KOJO):4900 |= 1
     ENDIF
-	CFLAG:(LOCAL@SELF_KOJO):5112 = CFLAG:5112
+    CFLAG:(LOCAL@SELF_KOJO):5112 = CFLAG:5112
 ENDIF
 
 ;-------------------------------------------------
@@ -19624,7 +19478,7 @@ ENDIF
 
 ;-------------------------------------------------
 ;覗き見オナニー　奴隷と主人の行為を覗き見しておかずにします。恋慕が付いていたらその場で嫉妬オナニーになります
-;一応%CALLNAME:G%で相手の名前を参照できますが, 相手は相性の良い奴隷に限らないのでおすすめはできません
+;一応%CALLNAME:GET_CHARA_G()%で相手の名前を参照できますが, 相手は相性の良い奴隷に限らないのでおすすめはできません
 ;-------------------------------------------------
 IF TFLAG:200 == 409
     IF GET_NIGHT_KOJO(0) == 0
@@ -20369,7 +20223,7 @@ ELSEIF (SELECTCOM >= 90 && SELECTCOM <= 94) || (SELECTCOM >= 101 && SELECTCOM <=
     ENDIF
     PRINTFORMW 카구야는 텅 빈 눈을 한채로 있다, 아무래도 수치심을 느끼고 있는 것으로, 다른 광경을 보고있는 거 같다
 ;痛覚系
-ELSEIF SELECTCOM == 136 || SELECTCOM == 206 || (SELECTCOM >= 220 && SELECTCOM <= 224) || SELECTCOM == 227 || (SELECTCOM >= 231 && SELECTCOM <= 236) || SELECTCOM == 251
+ELSEIF SELECTCOM == 206 || (SELECTCOM >= 220 && SELECTCOM <= 224) || SELECTCOM == 227 || (SELECTCOM >= 231 && SELECTCOM <= 236) || SELECTCOM == 251
     LOCAL:1 = 3
 ;痛覚系2＆痛覚+失神系
 ELSEIF SELECTCOM == 311 || (SELECTCOM >= 243 && SELECTCOM <= 245) || SELECTCOM == 252 || SELECTCOM == 238 || SELECTCOM == 240 || SELECTCOM == 241
@@ -20695,7 +20549,7 @@ ELSEIF CFLAG:4900 & 1 && TALENT:200 && TALENT:150 && (CFLAG:5112 == 2 || CFLAG:5
     PRINTFORMW 그 요정은 온 몸이 굳은 정액으로 덮혀, 마치 옷을 입고있는 것 같다
     PRINTFORMW 눈은 텅 비고, 항상 황홀한 표정을 짓고 있는 요정――카구야는격자 앞에 온 %CALLNAME:MASTER%를 올려다보고 있다
     ;主人がふたなりorオトコ
-    IF TALENT:MASTER:120 == 1 || TALENT:MASTER:121 == 1
+    IF EXIST_PENIS(MASTER)
         PRINTFORMW 매일의 일과를 하러 온 %CALLNAME:MASTER%는, 즉시 육봉을 꺼내 카구야에게 봉사 받았다……
         PRINTFORMW 「읏……으으우……」
         PRINTFORMW 능숙한 혀놀림으로 육봉을 자극하여, %CALLNAME:MASTER%의 육봉은 순식간에 커졌다

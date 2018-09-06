@@ -29,7 +29,7 @@ SIF TALENT:PLAYER:212 != 2 && TALENT:PLAYER:214 == 0
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;처녀で, 순종5미만 · 레즈끼4미만의 ASSI일 경우, 조교 대상이 동성이라면 실행할 수 없다(새드거나 새드끼Lv3이상, 또는 망신이나 복종이 있다면 ＯＫ)
@@ -84,7 +84,7 @@ IF NO:TARGET == 26 && TFLAG:199 && MARK:9 >= 3 && TEQUIP:40 == 0 && FLAG:15 & 32
 ENDIF
 
 PRINTL 뿔 삽입 
-TSTR:0 = 뿔 삽입 
+COM_NAME = 뿔 삽입 
 CALL TRAIN_MESSAGE_COM435
 
 ;-------------------------------------------------
@@ -180,7 +180,7 @@ ELSE
         SOURCE:32 = 3000
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

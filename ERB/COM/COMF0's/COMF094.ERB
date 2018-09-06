@@ -93,52 +93,52 @@ IF TEQUIP:ASSI:59 == 0
 
     SELECTCASE LOCAL:3
         CASE 2
-            TSTR:0 = 조수의 학교수영복 코스프레
+            COM_NAME = 조수의 학교수영복 코스프레
         CASE 3
-            TSTR:0 = 조수의 여교사 코스프레
+            COM_NAME = 조수의 여교사 코스프레
         CASE 4
-            TSTR:0 = 조수의 전통복 코스프레
+            COM_NAME = 조수의 전통복 코스프레
         CASE 5
-            TSTR:0 = 조수의 메이드복 코스프레
+            COM_NAME = 조수의 메이드복 코스프레
         CASE 6
-            TSTR:0 = 조수의 체육복＋블루머 코스프레
+            COM_NAME = 조수의 체육복＋블루머 코스프레
         CASE 7
-            TSTR:0 = 조수의 간호사 코스프레
+            COM_NAME = 조수의 간호사 코스프레
         CASE 8
-            TSTR:0 = 조수의 차이나복 코스프레
+            COM_NAME = 조수의 차이나복 코스프레
         CASE 9
-            TSTR:0 = 조수의 학생 코스프레
+            COM_NAME = 조수의 학생 코스프레
         CASE 10
-            TSTR:0 = 조수의 네글리제 코스프레
+            COM_NAME = 조수의 네글리제 코스프레
         CASE 11 
-            TSTR:0 = 조수의 알몸 와이셔츠 코스프레
+            COM_NAME = 조수의 알몸 와이셔츠 코스프레
         CASE 12
-            TSTR:0 = 조수의 비키니 코스프레
+            COM_NAME = 조수의 비키니 코스프레
         CASE 13
-            TSTR:0 = 조수의 위험한 레오타드 코스프레
+            COM_NAME = 조수의 위험한 레오타드 코스프레
         CASE 14
-            TSTR:0 = 조수의 바니 슈츠 코스프레
+            COM_NAME = 조수의 바니 슈츠 코스프레
         CASE 15
-            TSTR:0 = 조수의 본디지 코스프레
+            COM_NAME = 조수의 본디지 코스프레
         CASE 16
-            TSTR:0 = 조수의 유치원복 코스프레
+            COM_NAME = 조수의 유치원복 코스프레
         CASE 17
-            TSTR:0 = 조수의 훈도시 코스프레
+            COM_NAME = 조수의 훈도시 코스프레
         CASE 18
-            TSTR:0 = 조수의 군인 코스프레
+            COM_NAME = 조수의 군인 코스프레
         CASE 19
-            TSTR:0 = 조수의 웨딩 드레스 코스프레
+            COM_NAME = 조수의 웨딩 드레스 코스프레
         CASE 20
-            TSTR:0 = 조수의 고스로리 코스프레
+            COM_NAME = 조수의 고스로리 코스프레
         CASE 21
-            TSTR:0 = 조수의 알몸 멜빵 코스프레
+            COM_NAME = 조수의 알몸 멜빵 코스프레
         CASE 22
-            TSTR:0 = 조수의 무녀 의상 코스프레
+            COM_NAME = 조수의 무녀 의상 코스프레
         CASEELSE
             GOTO INPUT_LOOP
     ENDSELECT
 ELSE
-    TSTR:0 = 조수의 코스프레 의상 탈의
+    COM_NAME = 조수의 코스프레 의상 탈의
 ENDIF
 TFLAG:146 = LOCAL:3
 CALL TRAIN_MESSAGE_COM094
@@ -509,7 +509,7 @@ RETURN 1
 CALL KOJO_TRAIN_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
-SUBSTRING TSTR:0, 6, -1
+SUBSTRING COM_NAME, 6, -1
 PRINTL
 IF TEQUIP:ASSI:59 > 1
     PRINTFORML %조사선택(CALLNAME:ASSI, "가")% 입고 있는 옷을 벗겼다….
@@ -525,13 +525,13 @@ ELSE
     ELSEIF (TALENT:ASSI:152 || TALENT:ASSI:153 || TALENT:ASSI:160 || TALENT:ASSI:151 || TALENT:ASSI:161 || TALENT:ASSI:162) && TFLAG:146 == 19
         PRINTW 몹시 기뻐하는 얼굴로 갈아입는 중 몇 번씩이나 자신의 모습을 보여주고 있다.
     ELSEIF (TFLAG:146 == 1 || TFLAG:146 == 10 || TFLAG:146 == 11 || TFLAG:146 == 12 || TFLAG:146 == 13 || TFLAG:146 == 14 || TFLAG:146 == 15) &&(TALENT:ASSI:110 || TALENT:ASSI:111)
-        PRINTFORML %조사처리(TSTR:0,"를")% 입어서 좋지만
+        PRINTFORML %조사처리(COM_NAME,"를")% 입어서 좋지만
         PRINTW 자신의 가슴이 납작한걸 의식해서 그런지 자꾸만 가슴을 숨기려 한다.
     ELSEIF (TFLAG:146 == 1 || TFLAG:146 == 10 || TFLAG:146 == 11 || TFLAG:146 == 12 || TFLAG:146 == 13 || TFLAG:146 == 14 || TFLAG:146 == 15) &&(TALENT:ASSI:112 || TALENT:ASSI:113)
-        PRINTFORMW %조사처리(TSTR:0,"를")% 입는 건 좋지만
+        PRINTFORMW %조사처리(COM_NAME,"를")% 입는 건 좋지만
         PRINTL 큰 가슴이 아무래도 조이는지, 쭈뼛쭈뼛하며 가슴팍 천을 잡아당기고 있다….
     ELSEIF TALENT:ASSI:130 || TALENT:ASSI:131
-        PRINTFORMW %조사처리(TSTR:0,"를")% 입자 아이처럼 까불거리고 있다.
+        PRINTFORMW %조사처리(COM_NAME,"를")% 입자 아이처럼 까불거리고 있다.
     ELSEIF TALENT:ASSI:80 || TALENT:ASSI:170
         PRINTL 잠깐 주저하더니
         PRINTW 새로운 쾌감에 눈을 떴는지 허겁지겁 옷을 갈아입기 시작했다….

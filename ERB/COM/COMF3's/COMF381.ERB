@@ -29,7 +29,7 @@ SIF TALENT:120
 ;主人に금단의 지식か狂気がないとダメ
 SIF TALENT:MASTER:56 == 0 && TALENT:MASTER:158 == 0
     RETURN 0
-;소인체형だとダメ
+;[소인]だとダメ
 SIF TALENT:127
     RETURN 0
 ;Ｖ계 장착구 사용 중에는 불가
@@ -71,7 +71,7 @@ RETURN 1
 ;또한 사정 케이지 보지 않지만, 개는 반드시 사정합니다. 그것도 복수.
 @COM381
 PRINTL 개로 범한다
-TSTR:0 = 개에게 범하게 한다
+COM_NAME = 개에게 범하게 한다
 CALL TRAIN_MESSAGE_COM381
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -152,7 +152,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

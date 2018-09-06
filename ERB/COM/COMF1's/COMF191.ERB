@@ -29,7 +29,7 @@ SIF TALENT:120
 ;모유체질이 아니면 쓸 수 없다
 SIF TALENT:134 == 0
     RETURN 0
-;소인체형 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
+;[소인] 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
 ;그 외의 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 ;SIF TALENT:127 && (TALENT:MASTER:56 == 0 && TALENT:PLAYER:127 == 0)
 ;PLAYER의 크기가 도구 사용과 무슨 관련이 있는지 의문이 들어서 비활성화하고 새로 조건문을 만듦. T
@@ -70,19 +70,19 @@ RETURN 1
 @COM191
 IF TEQUIP:90
     PRINTL 촉수 착유
-    TSTR:0 = 촉수 착유
+    COM_NAME = 촉수 착유
 ELSE
-    TSTR:7 = 착유기
+    COM_TOOL_NAME = 착유기
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 21
         CALL NAMECHECK_CUSTOMTOOL
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 착유기
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 착유기
 ENDIF
 CALL TRAIN_MESSAGE_COM191
 
@@ -210,13 +210,13 @@ RETURN 1
 IF TEQUIP:90
     PRINTL <촉수 착유 중>
 ELSE
-    TSTR:7 = 착유기
+    COM_TOOL_NAME = 착유기
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 21
         CALL NAMECHECK_CUSTOMTOOL
     ENDIF
-    PRINTFORML <%TSTR:7% 장비 중>
+    PRINTFORML <%COM_TOOL_NAME% 장비 중>
 ENDIF
 
 DOWNBASE:0 += 15
@@ -345,12 +345,12 @@ IF TEQUIP:35 == 2
     IF TEQUIP:90
         PRINTFORMW 촉수는 %CALLNAME:TARGET%의 유두를 해방했다.
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:TARGET, "로")%부터 %조사선택(TSTR:7, "를")% 떼어냈다.
+        PRINTFORMW %조사선택(CALLNAME:TARGET, "로")%부터 %조사선택(COM_TOOL_NAME, "를")% 떼어냈다.
     ENDIF
 ELSE
     IF TEQUIP:90
         PRINTFORMW 촉수는 흡판으로 %CALLNAME:TARGET%의 유두를 감싸 달라붙었다.
     ELSE
-        PRINTFORMW %CALLNAME:TARGET%에게 %조사선택(TSTR:9, "를")% 달았다.
+        PRINTFORMW %CALLNAME:TARGET%에게 %조사선택(COM_TOOL_CALLNAME, "를")% 달았다.
     ENDIF
 ENDIF

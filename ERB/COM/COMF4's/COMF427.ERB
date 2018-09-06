@@ -23,7 +23,7 @@ SIF TALENT:121 && ABL:PLAYER:12 < 3
 ;[パイパン]だと不可, 生えそろっていないと無理
 SIF TALENT:65 || (CFLAG:36 && BASE:5 < 250)
     RETURN 0
-;テキストより[작은 체형]はデフォでツルツル。[소인체형]もそれに準じる
+;テキストより[작은체형]はデフォでツルツル。[소인]もそれに準じる
 SIF (TALENT:128 || TALENT:127) && CFLAG:36 == 0
     RETURN 0
 ;Ｖ계 장착구 사용 중에는 불가
@@ -63,7 +63,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM427
 PRINTL 음모 지지기
-TSTR:0 = 음모 지지기
+COM_NAME = 음모 지지기
 CALL TRAIN_MESSAGE_COM427
 
 DOWNBASE:0 += 55
@@ -128,7 +128,7 @@ SOURCE:12 += LOCAL:1
 ;새드을 본다
 SIF TALENT:81
     TIMES SOURCE:20 , 2.00
-;작은 몸집 체형, 소인 체형
+;[작은체형], [소인]
 SIF TALENT:128 || TALENT:127
     TIMES SOURCE:12 , 2.50
 

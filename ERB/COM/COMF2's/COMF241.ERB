@@ -28,7 +28,7 @@ RETURN 1
 ;말용으로 TFLAG:201을 사용. (0=통상, 1=역류, 2=흘려, 3=배설물 역류, 4=계란 역류, 5=기절)
 @COM241
 PRINTL 배 펀치
-TSTR:0 = 배 펀치
+COM_NAME = 배 펀치
 TFLAG:201 = 0
 
 ;실제로는 고통이 있기 (위해)때문에 좀 더 체력 기력을 갖고 있고 쉰다
@@ -72,7 +72,7 @@ CALL TRAIN_MESSAGE_COM241
 
 TFLAG:198 = 0
 ;미약등의 약을 사용하고 있으면(자) 역류
-IF TEQUIP:11 == 1 || TEQUIP:13 || TEQUIP:18 || TEQUIP:19
+IF TEQUIP:11 == 1 || TEQUIP:18
     TFLAG:201 = 1
     TFLAG:198 |= 1
 ENDIF
@@ -151,7 +151,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 배에 강력한 일격을 날랐다.
 ;미약등의 약을 사용하고 있으면(자) 역류
-IF TEQUIP:11 == 1 || TEQUIP:13 || TEQUIP:18 || TEQUIP:19
+IF TEQUIP:11 == 1 || TEQUIP:18
     IF TEQUIP:59 == 1
         PRINTFORMW %조사선택(CALLNAME:TARGET, "는")% 입고 있는 앞치마를 더럽혀 버렸다.
     ELSEIF TEQUIP:59 == 2

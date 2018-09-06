@@ -77,7 +77,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM630
 PRINTL 후배위 수음
-TSTR:0 = 후배위 수음
+COM_NAME = 후배위 수음
 SELECTCOM = 630
 CALL TRAIN_MESSAGE_COM630
 
@@ -116,7 +116,7 @@ LOCAL = EJACULATIONCHECK_PALAM_10_1(TARGET, LOCAL)
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -197,7 +197,7 @@ ENDIF
 SIF TALENT:PLAYER:120
     TIMES SOURCE:1 , 2.50
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -326,7 +326,7 @@ ENDIF
 TCVAR:0 += 1
 IF PLAYER == MASTER
     TCVAR:42 += 1
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+    SIF EXIST_BAR(MASTER)
         CFLAG:173 += 1
 ENDIF
 
@@ -385,7 +385,7 @@ IF PREVCOM == 21 && ((ASSIPLAY && TFLAG:133) || (ASSIPLAY == 0 && TFLAG:133 == 0
             PRINT 펄떡펄떡 경련하는 
         PRINTL 허리를 억눌러 삽입한 채로 작고 그라인드 시키면서,
     ;조교자가 남자나 후타나리이다
-    ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+    ELSEIF EXIST_PENIS(PLAYER)
         PRINTFORML %CALLNAME:TARGET%의 질 내의 감촉을 맛보면서, 다시 허리를 움직이면서,
     ELSE
     ;페니스 밴드를 사용하고 있는 경우
@@ -405,7 +405,7 @@ ELSE
         PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 계속해, %CALLNAME:TARGET%의 페니스를 천천히 훑으면서
         PRINTFORMW 허리를 느슨하게 움직여, %CALLNAME:TARGET%의 질을 자극했다….
     ;조교자가 남자나 후타나리이다
-    ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+    ELSEIF EXIST_BAR(PLAYER)
         PRINTFORML %조사선택(CALLNAME:PLAYER, "는")% 계속해, %CALLNAME:TARGET%의 페니스를 손으로 훑으면서
         PRINTW 질 안을 페니스로 계속 자극했다….
     ;페니스 밴드를 사용하고 있는 경우

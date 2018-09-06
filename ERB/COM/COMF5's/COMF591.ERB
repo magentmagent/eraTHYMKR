@@ -24,7 +24,7 @@ SIF TEQUIP:90 == 0
 SIF TEQUIP:30 == 8
     RETURN 1
 ;조교 대상에게 페니스가 없으면 불가
-SIF TALENT:1 == 0 && TALENT:120 == 0 && TALENT:121 == 0
+SIF EXIST_BAR(TARGET) == 0
     RETURN 0
 ;조교자는 촉수사역LV3이상 필요
 SIF ABL:PLAYER:98 < 3
@@ -47,7 +47,7 @@ RETURN 1
 ;차가운 손으로 끝없이 노예에 손코키 해 나간다……라고 하는 초변태적인 플레이
 @COM591
 PRINTL 촉수빙정자위
-TSTR:0 = 촉수빙정자위
+COM_NAME = 촉수빙정자위
 CALL TRAIN_MESSAGE_COM591
 
 DOWNBASE:0 += 15

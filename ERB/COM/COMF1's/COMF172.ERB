@@ -35,7 +35,7 @@ SIF TFLAG:140 & 256 && TALENT:PLAYER:61 == 0 && TALENT:PLAYER:64 == 0
 ;아이템을 가지고 있거나, 아이템 없음 설정이 아니면 불가
 SIF ITEM:11 == 0 && NOITEM == 0
     RETURN 0
-;소인체형 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
+;[소인] 보유자는, 쌍방이 조교자와 조교 대상이라면 OK
 ;그 외의 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 ;SIF TALENT:127 && (TALENT:MASTER:56 == 0 && TALENT:PLAYER:127 == 0)
 ;PLAYER의 크기가 도구 사용과 무슨 관련이 있는지 의문이 들어서 비활성화하고 새로 조건문을 만듦. T
@@ -62,17 +62,17 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM172
-TSTR:7 = 애널 비즈
+COM_TOOL_NAME = 애널 비즈
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 11
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
-PRINTFORML %TSTR:8%
-TSTR:0 = 애널 비즈
+PRINTFORML %COM_TOOL_NAME%
+COM_NAME = 애널 비즈
 CALL TRAIN_MESSAGE_COM172
 
 DOWNBASE:0 += 40
@@ -166,7 +166,7 @@ ELSE
     TIMES SOURCE:2 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     TIMES SOURCE:20 , 2.00
     SIF TALENT:130 || TALENT:131
@@ -220,13 +220,13 @@ RETURN 1
 ;애널 비즈 삽입중
 ;--------------------------------------------------
 @EQUIP_COM172
-TSTR:7 = 애널 비즈
+COM_TOOL_NAME = 애널 비즈
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 11
     CALL NAMECHECK_CUSTOMTOOL
 ENDIF
-PRINTFORML <%TSTR:7% 삽입 중>
+PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 
 DOWNBASE:0 += 10
 DOWNBASE:1 += 30
@@ -319,7 +319,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 1.50
 
@@ -375,22 +375,22 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
 
 ;토리코 모드에서의 직접 호출 대비
-TSTR:7 = 애널 비즈
+COM_TOOL_NAME = 애널 비즈
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 11
     CALL NAMECHECK_CUSTOMTOOL
 ELSE
-    TSTR:8 = %TSTR:7%
-    TSTR:9 = %TSTR:7%
+
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
 ENDIF
 
 PRINTL
 IF TEQUIP:25
     IF MARK:9 > 1
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% 굴욕과 자극을 참고 있는 %CALLNAME:TARGET%의 항문에서 %조사선택(TSTR:7, "를")% 기세 좋게 뽑아 냈다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% 굴욕과 자극을 참고 있는 %CALLNAME:TARGET%의 항문에서 %조사선택(COM_TOOL_NAME, "를")% 기세 좋게 뽑아 냈다….
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 항문에서 %조사선택(TSTR:7, "를")% 기세 좋게 뽑아 냈다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 항문에서 %조사선택(COM_TOOL_NAME, "를")% 기세 좋게 뽑아 냈다….
     ENDIF
 ELSE
     IF MARK:9 > 1
@@ -398,11 +398,11 @@ ELSE
         PRINTFORM 그리고, %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 점액 투성이가 된 
-        PRINTFORMW 항문에 %조사선택(TSTR:9, "를")% 하나씩 삼키게 했다….
+        PRINTFORMW 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 하나씩 삼키게 했다….
     ELSE
         PRINTFORM %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 점액 투성이가 된 
-        PRINTFORMW 항문에 %조사선택(TSTR:9, "를")% 하나씩 삼키게 했다….
+        PRINTFORMW 항문에 %조사선택(COM_TOOL_CALLNAME, "를")% 하나씩 삼키게 했다….
     ENDIF
 ENDIF

@@ -41,19 +41,19 @@ RETURN 1
 @COM221
 IF TEQUIP:90
     PRINTL 촉수채찍
-    TSTR:0 = 촉수채찍
+    COM_NAME = 촉수채찍
 ELSE
-    TSTR:7 = 채찍
+    COM_TOOL_NAME = 채찍
     IF FLAG:1100 & 1
         ;技師パッチ有効なら特殊な名前チェック
         FLAG:1110 = 32
         CALL NAMECHECK_CUSTOMTOOL
     ELSE
-        TSTR:8 = %TSTR:7%
-        TSTR:9 = %TSTR:7%
+
+        COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     ENDIF
-    PRINTFORML %TSTR:8%
-    TSTR:0 = 채찍
+    PRINTFORML %COM_TOOL_NAME%
+    COM_NAME = 채찍
 ENDIF
 CALL TRAIN_MESSAGE_COM221
 
@@ -124,5 +124,5 @@ PRINTL
 IF TEQUIP:90
     PRINTFORMW 채찍과 같이 된 촉수가 %조사선택(CALLNAME:TARGET, "를")% 내려쳐, 피부에 새빨간 줄기가 새겨지고 있다….
 ELSE
-    PRINTFORMW %조사선택(TSTR:9, "를")% 높이 치켜들고 마음껏 내려치자, %CALLNAME:TARGET%의 피부에 새빨간 줄기가 새겨졌다….
+    PRINTFORMW %조사선택(COM_TOOL_CALLNAME, "를")% 높이 치켜들고 마음껏 내려치자, %CALLNAME:TARGET%의 피부에 새빨간 줄기가 새겨졌다….
 ENDIF

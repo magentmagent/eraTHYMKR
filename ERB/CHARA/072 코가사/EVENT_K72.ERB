@@ -4293,7 +4293,7 @@ IF EXP:0 && TALENT:0 && TFLAG:1
     ELSEIF TEQUIP:90 || SELECTCOM == 361
         CFLAG:5216 |= 1p6
     ;조수가 페니스로 이겼다
-    ELSEIF PENIS(ASSI) && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 24 || SELECTCOM == 430 || (SELECTCOM == 610 && TFLAG:131 == 1))
+    ELSEIF EXIST_PENIS(ASSI) && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 24 || SELECTCOM == 430 || (SELECTCOM == 610 && TFLAG:131 == 1))
         CFLAG:5216 |= 1p5
     ;주인의 손가락등으로 빼앗았다
     ELSEIF ASSIPLAY == 0 && (SELECTCOM == 4 || SELECTCOM == 431 || SELECTCOM == 435 || SELECTCOM == 654)
@@ -4564,7 +4564,7 @@ ENDIF
 
 ;응개조교자 지정 커맨드 별구상을 부른다
 ;플래그 체크를 위해, 특수 말시도 말표시를 오프로 해 부른다
-IF PENIS(PLAYER)
+IF EXIST_PENIS(PLAYER)
     TRYCCALLFORM KOJO_C_2_72_COM{SELECTCOM}_PLAYMALE
         IF RESULT
             SIF FLAG:11 == 2
@@ -4626,7 +4626,7 @@ ENDIF
 
 ;응개지정 커맨드 별구상을 부른다
 ;플래그 체크를 위해, 특수 말시도 말표시를 오프로 해 부른다
-IF PENIS(TARGET)
+IF EXIST_PENIS(TARGET)
     TRYCCALLFORM KOJO_C_2_72_COM{SELECTCOM}_PLAYMALE
         IF RESULT
             SIF FLAG:11 == 2
@@ -5523,7 +5523,7 @@ IF RESULT:1 == 1
     IF J:3
         PRINTFORM %조사처리(CALLNAME:TARGET,"는")% 공허한 표정으로 
         IF F:1 <= 1 || CFLAG:5223 & 1p2
-            IF PENIS(TARGET)
+            IF EXIST_PENIS(TARGET)
                 PRINTFORML 벌벌 떠는 페니스를 손으로 문지르고 있다.
             ELSE
                 PRINTFORML 클리토리스를 손가락으로 조금씩 튕기고 있다….
@@ -5573,7 +5573,7 @@ ELSE
             IF J:3
                 PRINTFORM %조사처리(CALLNAME:TARGET,"는")% 팔을 떨며, 
                 IF F:1 <= 1 || CFLAG:5223 & 1p2
-                    IF PENIS(TARGET)
+                    IF EXIST_PENIS(TARGET)
                         PRINTFORML 귀두 끝을 만지면서 돌리고 있다.
                     ELSE
                         PRINTFORML 클리토리스를 손가락끝으로 가볍게 찌르고 있다….
@@ -5748,7 +5748,7 @@ ENDIF
 IF J:3
     PRINTFORML %조사처리(CALLNAME:TARGET,"는")% 안타까운 눈동자로 두 명을 보면서 뜨거운 숨을 쉬더니 
     IF F:1 <= 1 || CFLAG:5223 & 1p2
-        IF PENIS(TARGET)
+        IF EXIST_PENIS(TARGET)
             PRINTFORML 발기한 자지를 상하로 문지르고 있다.
         ELSE
             PRINTFORML 스스로 음핵을 보여주듯이 애무하고 있다….

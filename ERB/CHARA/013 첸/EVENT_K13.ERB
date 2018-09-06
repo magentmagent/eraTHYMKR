@@ -198,7 +198,9 @@ ELSEIF CFLAG:7010 == 1
         PRINTFORMW 「ありがとう!これからはチェンとずっと一緒だね！！」
         PRINTFORMW 「チェン…%CALLNAME:MASTER%のこと好きになって良かった」
         TALENT:152 = 1
+        CFLAG:14 |= 4
         TALENT:153 = 1
+        CFLAG:14 |= 8
         CFLAG:7010 = 3
     ELSEIF CHARANUM >= 3
         PRINTFORMW 「………まだ、他の娘と別れてくれてないの？」
@@ -1406,15 +1408,6 @@ IF CFLAG:7900 == 0
     CALL SELF_KOJO_K13_RR
     RETURN 0
 ENDIF
-;眠ってる場合は戻る
-SIF EQUIP:14
-    RETURN 0
-;調教中かつ口枷つきも戻る
-SIF TFLAG:999 && TEQUIP:42
-    RETURN 0
-;調教中かつ気絶中も戻る
-SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-    RETURN 0
 
 ;イベント口上呼び出し
 TRYCALLFORM K13_MESSAGE_EVENT_{(TFLAG:200)}

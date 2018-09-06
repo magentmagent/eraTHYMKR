@@ -68,7 +68,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM148
 PRINTL 요도 바이브
-TSTR:0 = 요도바이브
+COM_NAME = 요도바이브
 CALL TRAIN_MESSAGE_COM148
 
 ;-------------------------------------------------
@@ -97,7 +97,7 @@ SIF TALENT:10
 ;감정결여
 SIF TALENT:22
     TIMES LOCAL:1 , 0.60
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:1 , 2.00
 ;요도광
@@ -221,7 +221,7 @@ ELSE
     TIMES SOURCE:0 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 ;요도광
@@ -397,7 +397,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 2.00
 ;요도광
@@ -481,9 +481,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM148
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORM %CALLNAME:TARGET%의 요도에 꽃힌 바이브는 계속 %조사선택(CALLNAME:TARGET, "를")% 괴롭히고 있다….

@@ -47,7 +47,7 @@ RETURN 1
 ;꼭 껴안으면서 유령 체질의 투명한 촉수를 삽입해 의사적인 촉수 쿠스코를 재현……이라고 하는 초의미불인 플레이
 @COM582
 PRINTL 촉수 유령질경
-TSTR:0 = 촉수 유령질경
+COM_NAME = 촉수 유령질경
 CALL TRAIN_MESSAGE_COM582
 
 DOWNBASE:0 += 75
@@ -207,7 +207,7 @@ IF TALENT:80
     TIMES SOURCE:12 , 1.50
     TIMES SOURCE:31 , 1.20
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.50
 
@@ -419,7 +419,7 @@ IF TALENT:80
     TIMES LOCAL:2 , 1.50
     TIMES SOURCE:31 , 1.20
 ENDIF
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:3 , 1.50
 

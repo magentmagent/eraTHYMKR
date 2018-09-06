@@ -26,7 +26,7 @@
 ;-------------------------------------------------
 ;리리카 대사
 ;기력:1200 / 
-;처녀 / 거만함 / 호기심 / 눈에 띄고 싶어해 / 습득 빠른 / 소악마 / 인기 / C민감 / 빈유 / 작은 몸집 체형 / 음감 / 령체 / 
+;처녀 / 거만함 / 호기심 / 눈에 띄고 싶어해 / 습득 빠른 / 소악마 / 인기 / C민감 / 빈유 / 작은체형 / 음감 / 령체 / 
 ;
 ;레즈경험:50 / 
 ;메를랑:150% / 루나사:150% / 레이라:200% / 
@@ -2221,10 +2221,10 @@ IF SELECTCOM == 5
                 ENDIF
                 CFLAG:8205 = 9
             ELSEIF CFLAG:8205 <= 7 || FLAG:11 == 2
-                IF RAND:3  == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+                IF RAND:3  == 0 && EXIST_PENIS(MASTER)
                     PRINTFORML 「하으으응, 자지 녹을 것 같아…」
                     PRINTFORMW 「주인님도 이렇게 기분 좋은 걸 항상 느껴? 좋겠다~」
-                ELSEIF RAND:2  == 0 && (TALENT:MASTER:120 || TALENT:MASTER:121)
+                ELSEIF RAND:2  == 0 && EXIST_PENIS(MASTER)
                     PRINTFORML 「그래―, 이런 식으로 하면 기분 좋구나―」
                     PRINTFORMW 「에헤헤, 다음에 주인님~도 기분 좋게 해줄게♪」
                 ELSE
@@ -2240,7 +2240,7 @@ IF SELECTCOM == 5
                 PRINTFORMW 리리카는 까딱까딱 허리를 흔들며 한층 더 쾌감을 탐내려 하고 있다.
                 PRINTFORMW 「주인니이임! 너무 기분 좋아서 머리 녹을 것 같아아아앗」
                 CFLAG:8205 = 7
-            ELSEIF ABL:37 >= 3 && TALENT:MASTER:120 || TALENT:MASTER:121 && (CFLAG:8205 <= 5|| FLAG:11 == 2)
+            ELSEIF ABL:37 >= 3 && EXIST_PENIS(MASTER) && (CFLAG:8205 <= 5|| FLAG:11 == 2)
                 PRINTFORMW 「후아아앗, 이거 기분 좋앗, 주인님은 언제나 이런 걸 느끼고 있구나!」
                 PRINTFORMW 리리카의 페니스에 혀를 뻗자 리리카는 녹은 것처럼 허덕였다.
                 CFLAG:8205 = 6
@@ -4236,7 +4236,7 @@ IF SELECTCOM == 16 && TEQUIP:30 == 0
             CFLAG:8231 = 5
         ;그 외의 경우
         ELSEIF CFLAG:8231 <= 3 || FLAG:11 == 2
-            IF TALENT:MASTER:120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER)
                 PRINTFORMW 「주인님도 이거 썼어?」
             ELSE
                 PRINTFORMW 「이런 걸 가지고 있다는 건, 처음부터 기를 생각이었던 거야?」
@@ -7266,47 +7266,9 @@ ENDIF
 IF SELECTCOM == 64 &&  TEQUIP:15 & 2
 ENDIF
 ;-------------------------------------------------
-;강정신약    CFLAG:8273
-;-------------------------------------------------
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8273 == 0
-        ;연모
-        IF TALENT:150 == 1
-            PRINTFORMW 「으엣, 지금 무슨 약이야? 능글거리지 말고 알려줘―」
-            PRINTFORMW 「지금은 아무 느낌도 없는데…, 불안해―」
-        ;그 외의 경우
-        ELSE
-            PRINTFORMW 「으윽, 끄으… 이상한 약을 먹이다니―」
-        ENDIF
-        CFLAG:8273 = 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;음란하다
-        IF TALENT:170 && (CFLAG:8273 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「이 약, 갈 때 정말 대단해~…」
-            PRINTFORMW 「눈앞이 뿌옇게 되면서, 몸이 덜덜거리는 게 멈추지 않고… 계속 가는데 끝도 없이 간다니까…」
-            PRINTFORMW 「하핫… 흥분된다. 이번엔 망가질지도 몰라♪」
-            CFLAG:8273 = 4
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8273 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「지금 가지 못하게 하는 약이지? 이거 정말로 이상해져버리니까 싫어…. 으~」
-            PRINTFORMW 「저기, 이거 사라질 때, 손, 잡아줘. 부탁이야…」
-            CFLAG:8273 = 3
-        ;그 외의 경우
-        ELSEIF CFLAG:8273 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「시, 싫엇! 이런 건!」
-            PRINTFORMW 리리카는 먹은 약을 토해내려 했지만 %조사처리(CALLNAME:MASTER,"는")% 그것을 허락하지 않았다….
-            CFLAG:8273 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
 ;배란유발제    CFLAG:8274
 ;-------------------------------------------------
-IF SELECTCOM == 66
+IF SELECTCOM == 66 && TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;처음
     IF CFLAG:8274 == 0
         ;연모
@@ -7366,19 +7328,71 @@ IF SELECTCOM == 66
     ENDIF
 ENDIF
 ;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
 ;긴급 피임약    CFLAG:8275
 ;-------------------------------------------------
-IF SELECTCOM == 67 && FLAG:11 == 2
+IF (SELECTCOM == 67 && TFLAG:99 == 0) && FLAG:11 == 2
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「그걸 할 생각이 없으면 사전에 대책을 세우는 게 좋지 않을까?」
         PRINTFORMW 「『고무도 붙이지 못하는 남자는 인사를 못하는 것과 같다』라고 훌륭한 사람이…」
-        RETURN 0
     ;그 외의 경우(era 합동 2의 사나에씨…)
     ELSE
         PRINTFORMW 「다행이다…. 일단 최소한의 양심은 있네…」
         PRINTFORMW 「실은 이건 피임약이 아니었다, 같은 반전은 없겠지?」
     ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 ;-------------------------------------------------
 ;산란 촉진제    CFLAG:8276
@@ -8092,7 +8106,7 @@ IF SELECTCOM == 110
                         PRINTFORMW 「에헤헤~♪ 오줌 구멍도 기분 좋아~」
                         PRINTFORMW 「좀 더 힘낼게♪ 맘껏 괴롭혀봐♪」
                     ;음 단지이다
-                    ELSEIF TALENT:172 && TALENT:MASTER:120 || TALENT:MASTER:121
+                    ELSEIF TALENT:172 && EXIST_PENIS(MASTER)
                         PRINTFORML 「에헤헤♪ 자아, 보이지? 자지 갖고 싶어서 움찔거리는 게…」
                         PRINTFORMW 「더 많이, 잔뜩 섹스하자~, 에헤헤헤헤~♪」
                         PRINTFORMW 리리카는 걸쭉하게 꿀이 흘러 넘치는 질내를 펼치며 %CALLNAME:MASTER%의 욕정을 자아내고 있다….
@@ -8524,7 +8538,7 @@ IF SELECTCOM == 121
     ;2번째 이후
     ELSE
         ;연모
-        IF TALENT:150 == 1 && (CFLAG:8304 <= 2 || FLAG:11 == 2) && (TALENT:MASTER:120 || TALENT:MASTER:121)
+        IF TALENT:150 == 1 && (CFLAG:8304 <= 2 || FLAG:11 == 2) && EXIST_PENIS(MASTER)
             PRINTFORMW 「으―…, 그거 묶으면 힘든데….」
             PRINTFORMW 「이 괴로움은 주인님도 알겠지?」
             CFLAG:8304 = 3
@@ -8797,18 +8811,6 @@ IF SELECTCOM == 135 && FLAG:11 == 2
         ELSE
             PRINTFORMW 「뭐 때문에 이러는데…, 이해할 수 없어」
         ENDIF
-    ENDIF
-ENDIF
-;-------------------------------------------------
-;할례    CFLAG:8311
-;-------------------------------------------------
-IF SELECTCOM == 136
-    ;처음
-    ;아마 일회뿐 밖에 할 수 없다고 생각하는데…
-    IF CFLAG:8311 == 0
-        PRINTFORMW 「----------끄으으!!!!!」
-        PRINTFORMW 「끄……, 하악…, 하악…, 너무, 해…」
-        CFLAG:8311 = 1
     ENDIF
 ENDIF
 ;-------------------------------------------------
@@ -9120,7 +9122,7 @@ IF SELECTCOM == 143 && TEQUIP:32 == 0 && FLAG:11 == 2
         IF TALENT:요도광
             PRINTFORMW 「하앗…, 아하아… 주인니임, 계속 여기 괴롭해줘~♪」
             PRINTFORMW 리리카는 누그러든 표정으로 뻥 뚫린 요도를 더 벌리고 있다….
-            SIF (TALENT:MASTER:120 || TALENT:MASTER:121)
+            SIF EXIST_PENIS(MASTER)
             PRINTFORMW 「자지 넣고, 정액 쭉쭉 넣어줘~♪」
         ;요도 개발 경험 20이상
         ELSEIF     EXP:46 >= EXPLV:3
@@ -9317,7 +9319,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 3
             ;순수 처녀
             IF TALENT:0 == 1
                 ;V감각 Lv2
-                IF ABL:1 == 2 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+                IF ABL:1 == 2 && EXIST_PENIS(MASTER) 
                     PRINTFORMW 「히아아아앙♪ 로터… 안에 문질러서 기분 좋아아앗!」
                     PRINTFORMW 「기분 좋앗, 좋은데, 너무 아쉬워어…!」
                     PRINTFORMW 리리카는 달콤한 한숨을 돌리며 %CALLNAME:MASTER%의 육봉을 응시하고 있다….
@@ -9329,11 +9331,11 @@ IF SELECTCOM == 151 && TEQUIP:20 == 3
             ;비처녀
             ELSE
                 ;삽의 것이 1개라고는 할 수 없잖아
-                IF ABL:1 >= 5 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+                IF ABL:1 >= 5 && EXIST_PENIS(MASTER)
                     PRINTFORMW 「흐아… 로터가, 들어 와… 에, 아직 끝이 아니라고?」
                     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 주르륵 꿀이 흘러넘치는 리리카의 비소에 로터를 두 개, 세 개씩 밀어넣었다….
                     PRINTFORMW 「햐흣, 그렇게 많이, 안에서 딱딱하고 스쳐, 아아아아앗!!」
-                ELSEIF ABL:1 >= 3 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+                ELSEIF ABL:1 >= 3 && EXIST_PENIS(MASTER)
                     PRINTFORMW 「저기, 있지, 그거 넣어줘. 깊은 곳까지 부들거려서 천국 갈 거야♪」
                     PRINTFORMW 「시스템적으로 무리야? 므~, 아쉽다」
                 ELSE
@@ -9359,7 +9361,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 3
             ELSE
                 IF ABL:1 >= 3
                     PRINTFORMW 「하앗, 아앙… 이런 걸 넣으면, 쑤셔져…」
-                    SIF (TALENT:MASTER :120 || TALENT:MASTER:121)
+                    SIF EXIST_PENIS(MASTER)
                     PRINTFORMW 리리카는 허리를 비비 꼬며 야릇한 눈초리로 %CALLNAME:MASTER%의 노장을 보고 있다….
                 ELSE
                     PRINTFORMW 「하흐으…, 안에서 떨려…」
@@ -9388,7 +9390,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 0 && FLAG:11 == 2
         ;순수 처녀
         IF TALENT:0 == 1
             ;V감각 Lv2
-            IF ABL:1 == 2 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+            IF ABL:1 == 2 && EXIST_PENIS(MASTER)
                 PRINTFORMW 「흐으응… 여자 아이의 제일 소중한 곳이, 이제 참지 못해…」
                 PRINTFORMW 「저기, 그… 말야, 좋지 않을까? 나, 이제 쑤셔서 어쩌지 못하겠어」
                 PRINTFORMW 「그거… 이제 해도 되지 않을까, 섹스…」
@@ -9399,7 +9401,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 0 && FLAG:11 == 2
             ENDIF
         ;비처녀
         ELSE
-            IF ABL:1 >= 5 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+            IF ABL:1 >= 5 && EXIST_PENIS(MASTER)
                 PRINTFORMW 「히아앗, 아아앙♪ 뺄 때도 가버려… 꺄으으으!!」
                 PRINTFORMW 질내에 들어간 로터를 꺼내자 리리카의 비소에서 물이 뿜어져 나왔다.
                 PRINTFORMW 「하아아… 아직 부족해… 이 안을 휘저어주는 걸 갖고 싶어서 어쩔 수 없어…」
@@ -9416,7 +9418,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 0 && FLAG:11 == 2
         ;순수 처녀
         IF TALENT:0 == 1
             ;V감각 Lv2
-            IF ABL:1 == 2 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+            IF ABL:1 == 2 && EXIST_PENIS(MASTER)
                 PRINTFORMW 「흐으… 으아… 이거, 좀 더 큰 걸 안쪽까지 넣으면 어떻게 될까…」
                 PRINTFORMW 「그렇지만, 일단 아직 깨끗한 몸이여야 해…」
             ;그 외
@@ -9426,7 +9428,7 @@ IF SELECTCOM == 151 && TEQUIP:20 == 0 && FLAG:11 == 2
             ENDIF
         ;비처녀
         ELSE
-            IF ABL:1 >= 5 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+            IF ABL:1 >= 5 && EXIST_PENIS(MASTER)
                 PRINTFORMW 질에서 꺼낸, 애액으로 젖은 로터를 리리카에게 빨게 했다.
                 PRINTFORMW 「으음… 푸아…, 액에 젖어서 엄청 야한 맛이 나…」
                 PRINTFORMW 「나, 이렇게 흠뻑 젖고 내뿜었어…」
@@ -9478,7 +9480,7 @@ IF SELECTCOM == 170 && TEQUIP:25 == 3
                 PRINTFORMW 국혈에 하나만 넣는 건 만족스럽지 않은지, 리리카는 한층 더 음구의 고문을 바라고 있다….
                 PRINTFORMW 「흐냐아앗!! 와, 왔다아앗! 안에서 서로 부딪쳐, 햐흐아아아앙♪」
             ;A감각 5이상
-            ELSEIF ABL:2 >= 5 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+            ELSEIF ABL:2 >= 5 && EXIST_PENIS(MASTER)
                 PRINTFORMW 「이런 건 싫어…」
                 PRINTFORMW 「좀 더, 주인님 걸로 엉덩이 휘저어줘…」
                 PRINTFORMW 「응흐으…, 흐아, 떨리고 있어… 아앙, 오히려 아쉬워져엇!」
@@ -9538,7 +9540,7 @@ IF SELECTCOM == 170 && TEQUIP:25 == 0 && FLAG:11 == 2
             PRINTFORMW 「이번엔, 더 두꺼운 걸 넣을 거야? 기다릴 수 없어~♪」
             PRINTFORMW 리리카는 스스로 엉덩이를 벌리고 잘 풀어진 애널을 과시하고 있다….
         ;A감각 5이상
-        ELSEIF ABL:2 >= 5 && (TALENT:MASTER :120 || TALENT:MASTER:121)
+        ELSEIF ABL:2 >= 5 && EXIST_PENIS(MASTER)
             PRINTFORMW 「흐햐으… 엉덩이에서, 나와…」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 리리카의 애널로부터 꺼내진 지 얼마 안 된 음구를 리리카의 코 끝에 가까이 대자
             PRINTFORMW 리리카는 풀어진 표정으로 거기에 혀를 댔다….
@@ -9567,7 +9569,7 @@ IF SELECTCOM == 170 && TEQUIP:25 == 0 && FLAG:11 == 2
         ;그 외
         ELSE
             PRINTFORMW 「우―, 엉덩이의 성감을 개발해서 의미가 있을까?」
-            IF TALENT:MASTER :120 || TALENT:MASTER:121
+            IF EXIST_PENIS(MASTER )
                 PRINTFORMW 「설마, 나중에 여기에 자지 넣을려고?」
             ENDIF
         ENDIF
@@ -15046,77 +15048,6 @@ IF SELECTCOM == 17
     ENDIF
 ENDIF
 ;-------------------------------------------------
-;흥분제    CFLAG:8458
-;좀 더 드러그 같은 느낌에 고쳐 쓸지도
-;-------------------------------------------------
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:8458 == 0
-        ;연모
-        IF TALENT:150 == 1
-            PRINTFORMW 「하이가 되는 약? 메를랑 언니처럼?」
-        ;그 외의 경우
-        ELSE
-            PRINTFORMW 「하이가 되는 약? 메를랑 언니가 시간마다 먹고 있어」
-        ENDIF
-        CFLAG:8458 = 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;연모
-        IF TALENT:150 == 1 && (CFLAG:8458 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「약으로 조가 되는 것도 말이지…. 음악을 들어서, 정신을 고양시키는 쪽이 난 좋아~」
-            CFLAG:8458 = 3
-        ;그 외의 경우
-        ELSEIF CFLAG:8458 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「약에 의지해서는 말야, 음악의 훌륭함을 이해할 수 없다고?」
-            CFLAG:8458 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
-;C강정신약주사    CFLAG:8459
-;-------------------------------------------------
-IF SELECTCOM == 86
-    ;처음
-    IF CFLAG:8459 == 0
-        ;C감각 Lv3 이상 또한 마조끼 Lv3 이상
-        IF ABL:C감각 >= 3 && ABL:21 >= 3
-            PRINTFORMW 「앗파아아아!! 우우, 클리에 주사라니 너무해…」
-            PRINTFORMW 「어, 어라…? 원래라면 그렇게 만지면 가야 하는데…, 가지 않아?」
-            PRINTFORMW 「대체 무슨 약이야? 『나중에 천국으로 간다』고? 으에~, 무서워…」
-            PRINTFORMW 약으로 절정을 억제당하는 미지의 감각에 리리카는 어쩔 줄 몰라하고 있다….
-        ;그 외의 경우
-        ELSE
-            PRINTFORMW 「으끄윽!! 무슨 주사야, 정말…」
-            PRINTFORMW 「뭐, 이제 안 아픈데…… 아냐, 이상해. 뭔가 묘해…」
-            PRINTFORMW 강정신약의 효과가 나타났지만, 경험이 없는 리리카는 어쩔 줄 몰라하고 있다….
-        ENDIF
-        CFLAG:8459 = 1
-        RETURN 0
-    ;2번째 이후
-    ELSE
-        ;음란하다
-        IF TALENT:170 && (CFLAG:8459 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「에헤헤~♪ 지금 찌른 주사로 다음에 엄청난 게 오는 걸까~♪」
-            PRINTFORMW 「그럼, 많이 해줘. 내가 망가질 때까지♪」
-            CFLAG:8459 = 4
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8459 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「우우… 이 약, 정말로 무서워…」
-            PRINTFORMW 「그러니까, 가버릴 때, 손 잡아주지 않을래? 부탁할게…」
-            CFLAG:8459 = 3
-        ;그 외의 경우
-        ELSEIF FLAG:8459 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「까″으″윽, 으″으윽, 주사로, 이렇게 해서, 날 망가뜨릴 속셈이야!?」
-            PRINTFORMW 리리카는 격통에 목이 메이는지 끊김 있는 어투로 항의했다….
-            CFLAG:8459 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-;-------------------------------------------------
 ;채혈 주사    CFLAG:8460
 ;-------------------------------------------------
 IF SELECTCOM == 88 && FLAG:11 == 2
@@ -16017,7 +15948,7 @@ ENDIF
 IF SELECTCOM == 602
     ;처음
     IF CFLAG:8500 == 0
-        ;마스터가 작은 몸집 체형
+        ;마스터가 [작은체형]
         IF TALENT:MASTER:128
             ;연모
             IF TALENT:150 == 1
@@ -16062,7 +15993,7 @@ IF SELECTCOM == 602
         RETURN 0
     ;2번째 이후
     ELSE
-        ;마스터가 작은 몸집 체형
+        ;마스터가 [작은체형]
         IF TALENT:MASTER:128 && FLAG:11 == 2
             ;연모
             IF TALENT:150 == 1
@@ -18487,7 +18418,7 @@ IF SELECTCOM == 152
                 ;그 외
                 ELSE
                     PRINTFORMW 「흐얏, 하으으……♪ 여자 아이의 가장 안쪽이, 꾹꾹거리고 있어……」
-                    PRINTFORMW 리리카는 젖은 눈동자로 %CALLNAME:MASTER%의 \@ TALENT:MASTER:120 || TALENT:MASTER:121 ? 페니스를 # 손가락 끝을 \@ 응시했다….
+                    PRINTFORMW 리리카는 젖은 눈동자로 %CALLNAME:MASTER%의 \@ EXIST_PENIS(MASTER) ? 페니스를 # 손가락 끝을 \@ 응시했다….
                 ENDIF
             ;V감각 Lv3 이상
             ELSEIF ABL:1 >= 3
@@ -20236,7 +20167,7 @@ IF TFLAG:30 > 0
                 PRINTFORML 기나긴 사정 뒤, %조사처리(CALLNAME:MASTER,"는")% 입안이 정액 투성이로 된 채로 리리카와 입맞췄다.
                 PRINTFORMW 리리카는 처음 겪는 자신의 정액의 맛에 머뭇거렸지만, 이윽고 농후한 입맞춤을 서로 주고 받았다….
                 PRINTFORMW 「이게, 정액이구나… 주인님이 입으로 해주는 거, 진짜 기분 좋았어…♪」
-                    SIF TALENT:MASTER:120 || TALENT:MASTER:121
+                    SIF EXIST_PENIS(MASTER)
                         PRINTFORMW 「나도 자지 기쁘게 하는 방법 알았으니까, 다음은 주인님… 이네♪」
             ;굴복각인 3
             ELSEIF MARK:2 == 3
@@ -22762,7 +22693,7 @@ IF TFLAG:200 == 200
     PRINTFORMW 「날 뽑아줘서…, 고마워…」
 ENDIF
 ;-------------------------------------------------
-;붉은 목걸이 사용    CFLAG:9194
+;붉은 개목걸이 사용    CFLAG:9194
 ;-------------------------------------------------
 IF TFLAG:200 == 201
     PRINTFORMW 「이런 거 없어도 난 주인님의 물건이야」
@@ -22771,7 +22702,7 @@ IF TFLAG:200 == 201
     PRINTFORMW 「후후, 흥분되네. 다음엔 어떤 일 가르쳐 줄 거야? 우리 『주인님』…」
 ENDIF
 ;-------------------------------------------------
-;예속의 증거 사용    CFLAG:9195
+;노예의 증표 사용    CFLAG:9195
 ;-------------------------------------------------
 IF TFLAG:200 == 202
     PRINTFORMW 「아―아, 흠집난 물건이 돼버렸어―. 너무해라―」
@@ -23286,7 +23217,7 @@ IF TFLAG:200 == 122
     ;그 외
     ELSE
         PRINTFORMW 「흐앗……, 끄응. 야한 걸 다스릴 수가 없어…, 흐아앗!」
-        SIF (TALENT:MASTER:120 || TALENT:MASTER:121)
+        SIF EXIST_PENIS(MASTER)
         PRINTFORMW 「빨라고? 응…, 알았어…. 쮸… 쮸으읍, 아흐…」
         PRINTFORMW 조교가 끝난 후에도 리리카는 자신을 위로하지 않고는 가만히 있지 못하는 것 같다.
         PRINTFORMW 이쪽이 말하는 일도 잘 듣게 됐으니 성노예로서 내놓아도 괜찮을 것이다.
@@ -23636,7 +23567,7 @@ IF TFLAG:200 == 311
             ELSEIF ABL:37 >= 3
                 PRINTFORMW 「원래대로 돌아갔… 어?」
                 PRINTFORMW 「으~응, 꽤 기분 좋았는데…」
-                SIF TALENT:MASTER:120 || TALENT:MASTER:121
+                SIF EXIST_PENIS(MASTER)
                 PRINTFORMW 「뭐, 나한테 그게 있을 때 취급 방법도 많이 알았으니까, 주인님을 능숙하게 기분 좋게 해줄 거야♪」
             ;그 외의 경우
             ELSE
@@ -23851,7 +23782,7 @@ ENDIF
 IF TFLAG:200 == 325
 ENDIF
 ;-------------------------------------------------
-;빨강의 눈깔사탕(처녀막 재생)    CFLAG:9259
+;처녀막 사탕(처녀막 재생)    CFLAG:9259
 ;-------------------------------------------------
 IF TFLAG:200 == 330
     ;사용후에 표시
@@ -23868,7 +23799,7 @@ IF TFLAG:200 == 330
     ENDIF
 ENDIF
 ;-------------------------------------------------
-;파랑의 눈깔사탕(모유 체질)    CFLAG:9260
+;모유 사탕(모유 체질)    CFLAG:9260
 ;-------------------------------------------------
 IF TFLAG:200 == 331
     ;사용후에 표시
@@ -23878,47 +23809,47 @@ IF TFLAG:200 == 331
     ENDIF
 ENDIF
 ;-------------------------------------------------
-;노랑의 눈깔사탕(산란 체질)    CFLAG:9261
+;난생 사탕(산란 체질)    CFLAG:9261
 ;-------------------------------------------------
 IF TFLAG:200 == 332
 ENDIF
 ;-------------------------------------------------
-;초록의 눈깔사탕(작은 몸집 체형)    CFLAG:9262
+;태생 사탕(태생)    CFLAG:9267
 ;-------------------------------------------------
 IF TFLAG:200 == 333
 ENDIF
 ;-------------------------------------------------
-;흰색의 눈깔사탕(요정 전생)    CFLAG:9263
+;요정화 사탕(요정 전생)    CFLAG:9263
 ;-------------------------------------------------
 IF TFLAG:200 == 334
 ENDIF
 ;-------------------------------------------------
-;흑의 눈깔사탕(EX화)    CFLAG:9264
+;EX화 사탕(EX화)    CFLAG:9264
 ;-------------------------------------------------
 IF TFLAG:200 == 335
 ENDIF
 ;-------------------------------------------------
-;재의 눈깔사탕    CFLAG:9265
+;성격반전 사탕    CFLAG:9265
 ;-------------------------------------------------
 IF TFLAG:200 == 336
 ENDIF
 ;-------------------------------------------------
-;돈의 눈깔사탕    CFLAG:9266
+;성숙의 사탕    CFLAG:9266
 ;-------------------------------------------------
 IF TFLAG:200 == 337
 ENDIF
 ;-------------------------------------------------
-;은의 눈깔사탕(태생)    CFLAG:9267
+;젊음의 사탕([작은체형])    CFLAG:9262
 ;-------------------------------------------------
 IF TFLAG:200 == 338
 ENDIF
 ;-------------------------------------------------
-;무지개의 눈깔사탕    CFLAG:9268
+;성전환 사탕    CFLAG:9268
 ;-------------------------------------------------
 IF TFLAG:200 == 339
 ENDIF
 ;-------------------------------------------------
-;취의 눈깔사탕(음모가 난다)    CFLAG:9269
+;발모 사탕(음모가 난다)    CFLAG:9269
 ;-------------------------------------------------
 IF TFLAG:200 == 340
     ;사용후에 표시
@@ -24086,7 +24017,7 @@ IF TFLAG:200 == 452
                     PRINTFORMW 『두 사람 모두 기분 좋은 것 같아서 좋은데~. 이번엔 나도 불러 주지 않을까』
                 ;그 외
                 ELSE
-                    PRINTFORML 『으~윽, 또 %조사처리(CALLNAME:G,"과")%…. 나하고도 확실히 해줬으면 좋겠어』
+                    PRINTFORML 『으~윽, 또 %조사처리(CALLNAME:GET_CHARA_G(),"과")%…. 나하고도 확실히 해줬으면 좋겠어』
                     PRINTFORMW 『우선 이거, 어떡하지. 모처럼인데 봐 볼까』
                 ENDIF
             ENDIF
@@ -24094,7 +24025,7 @@ IF TFLAG:200 == 452
             ;도촬이 발각되고 있다
             IF ABL:MASTER:14 >= 3
                 PRINTFORML 『흐앗, 엄청 야해…, 이런 걸 보여주면…, 흐아앗!』
-                PRINTFORML 리리카는 얽히는 %조사처리(CALLNAME:MASTER,"과")% %CALLNAME:G%의 영상을 보면서 몇 번이나 자위에 빠진 것 같다.
+                PRINTFORML 리리카는 얽히는 %조사처리(CALLNAME:MASTER,"과")% %CALLNAME:GET_CHARA_G()%의 영상을 보면서 몇 번이나 자위에 빠진 것 같다.
                 PRINTFORMW 『아……, 끝나 버렸다…. 되감아서 다시 한 번……』
             ELSE
                 PRINTFORML 『무르군~, 언제라도 방심은 금물이야』
@@ -25345,7 +25276,7 @@ IF TFLAG:200 == 1203
     ;창녀
     IF TALENT:COUNT:260
         ;나 있다
-        IF TALENT:COUNT:120 || TALENT:COUNT:121
+        IF EXIST_PENIS(COUNT)
             PRINTFORMW 「나… 이런 거 붙어 있는데, 알고 지명한 거야?」
             PRINTFORMW 「손님도 기특한 사람이구나…. 그래도, 기분 좋게 해 주는 거지? 에헤헤♪」
         ELSEIF RAND:2 == 0

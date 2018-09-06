@@ -57,7 +57,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM237
 PRINTL 코클립
-TSTR:0 = 코클립
+COM_NAME = 코클립
 CALL TRAIN_MESSAGE_COM237
 
 ;-------------------------------------------------
@@ -79,10 +79,10 @@ IF TALENT:40
 ELSEIF TALENT:41
     TIMES SOURCE:20 , 0.80
 ENDIF
-;TALENT:소인 체형을 본다
+;TALENT:[소인]을 본다
 SIF TALENT:127
     TIMES SOURCE:20 , 2.00
-;TALENT:작은 몸집 체형을 본다
+;TALENT:[작은체형]을 본다
 SIF TALENT:128
     TIMES SOURCE:20 , 1.50
 

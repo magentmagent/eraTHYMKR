@@ -553,7 +553,7 @@ BASE:2 += LOCAL
 TFLAG:91 = SAMEN_CHECK(TARGET)
 
 ;Ｃ계 확장コマンド有効の場合, Ｃ刺激かＧスポット（前立腺ぽく）責めでないと사정できない(感覚増幅薬効果中は사정できる)
-IF TFLAG:91 >= 1 && FLAG:15 & 1 && UP:0 == 0 && NOWEX:20 == 0 && SELECTCOM != 520 && SELECTCOM != 600 && SELECTCOM != 414 && TEQUIP:20 != 2 && TEQUIP:7 == 0
+IF TFLAG:91 >= 1 && FLAG:15 & 1 && UP:0 == 0 && NOWEX:20 == 0 && SELECTCOM != 520 && SELECTCOM != 600 && SELECTCOM != 414 && TEQUIP:20 != 2
     SOURCE:18 += ((BASE:2 * 30) / MAXBASE:2)
     SOURCE:20 += ((BASE:2 * 15) / MAXBASE:2)
     TIMES SOURCE:18 , 1.10
@@ -717,6 +717,9 @@ ENDIF
 ;Ｂ민감
 SIF TALENT:106
     TIMES LOCAL , 1.50
+;절벽
+SIF TALENT:110
+    TIMES LOCAL , 0.25
 ;빈유
 SIF TALENT:111
     TIMES LOCAL , 0.50
@@ -775,7 +778,7 @@ ELSE
 ENDIF
 
 ;Ｂ계 확장コマンド有効の場合, Ｂ刺激がないと분유できない(感覚増幅薬効果中は분유できる)
-IF LOCAL:2 >= 1 && FLAG:15 & 8 && UP:3 == 0 && NOWEX:23 == 0 && TEQUIP:7 == 0
+IF LOCAL:2 >= 1 && FLAG:15 & 8 && UP:3 == 0 && NOWEX:23 == 0
     SOURCE:18 += ((BASE:3 * 10) / MAXBASE:3)
     SOURCE:20 += ((BASE:3 * 5) / MAXBASE:3)
     TIMES SOURCE:18 , 1.10
@@ -974,7 +977,7 @@ ELSE
 ENDIF
 
 ;Ｃ계 확장コマンド有効の場合, Ｃ刺激がないと방뇨できない(感覚増幅薬効果中は방뇨できる)
-IF LOCAL:2 >= 1 && FLAG:15 & 1 && UP:0 == 0 && NOWEX:20 == 0 && TEQUIP:7 == 0
+IF LOCAL:2 >= 1 && FLAG:15 & 1 && UP:0 == 0 && NOWEX:20 == 0
     SOURCE:18 += ((BASE:4 * 30) / MAXBASE:4)
     SOURCE:20 += ((BASE:4 * 15) / MAXBASE:4)
     TIMES SOURCE:18 , 1.10

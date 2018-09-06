@@ -106,11 +106,11 @@ ENDIF
 ;실행 결정
 ;-------------------------------------------------
 IF NO:TARGET == 37
-    TSTR:0 = 단풍 비비기
+    COM_NAME = 단풍 비비기
 ELSEIF NO:TARGET == 41
-    TSTR:0 = 모미지 비비기
+    COM_NAME = 모미지 비비기
 ELSE
-    TSTR:0 = 파이즈리
+    COM_NAME = 파이즈리
 ENDIF
 CALL TRAIN_MESSAGE_COM042
 
@@ -158,7 +158,7 @@ ENDIF
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------

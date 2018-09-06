@@ -32,7 +32,7 @@ SIF TEQUIP:25 == 7
 ;아이템을 가지고 있거나, 아이템 없음 설정이 아니면 불가
 SIF ITEM:10 == 0 && NOITEM == 0
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;기계면 불가
@@ -62,25 +62,25 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 ;촉수 관장은 COMF500.ERB로부터 JUMP 해 온다.
-;TFLAG:99 = 말분기용(0=촉수 관장 1=통상의 관장 or관장 플러그 빼내기 2=미약관장 3=이뇨제 관장 4=현자의 피 관장 5=흥분제 관장 6=감각 증폭약관장)
+;TFLAG:99 = 말분기용(0=촉수 관장 1=통상의 관장 or관장 플러그 빼내기 2=미약관장 3=이뇨제 관장)
 @COM174
 SIF TEQUIP:90 == 0
     TFLAG:177 = KANTYO_BLEND_CHECK(TARGET)
 IF TEQUIP:90
     PRINTL 촉수 관장
-    TSTR:0 = 촉수 관장
+    COM_NAME = 촉수 관장
     TFLAG:99 = 0
 ELSEIF TEQUIP:25 == 7
     PRINTL 관장 플러그 빼내기
-    TSTR:0 = 관장 플러그 빼내기
+    COM_NAME = 관장 플러그 빼내기
     TFLAG:99 = 1
 ELSEIF TFLAG:177 <= 0
     PRINTL 관장 플레이
-    TSTR:0 = 관장 플레이
+    COM_NAME = 관장 플레이
     TFLAG:99 = 1
 ELSE
     VARSET LOCALS,""
-    SPLIT "노멀, 미약, 이뇨제, 현자의 피, 흥분제, 감각증폭약, 정액",",", LOCALS
+    SPLIT "노멀, 미약, 이뇨제, 정액",",", LOCALS
 
     PRINTL 무엇을 관장액에 섞을까?
     PRINTLC [ 0] 아무것도 블렌드하지 않는다.
@@ -89,26 +89,20 @@ ELSE
     SIF TFLAG:177 & 2
         PRINTLC [ 2] 이뇨제
     SIF TFLAG:177 & 4
-        PRINTLC [ 3] 현자의 피
-    SIF TFLAG:177 & 8
-        PRINTLC [ 4] 흥분제
-    SIF TFLAG:177 & 16
-        PRINTLC [ 5] 감각증폭약
-    SIF TALENT:PLAYER:149
-        PRINTLC [ 6] 정액
+        PRINTLC [ 3] 정액
     $INPUT_LOOP
     INPUT
     SIF RESULT < 0 || RESULT > 6
         GOTO INPUT_LOOP
     
     ;이하 아이템 조건 등에 걸렸을 경우는 입력 다시 해
-    IF RESULT > 0 && RESULT < 6
+    IF RESULT > 0 && RESULT < 5
         SIF RESULT > 0  && GETBIT(TFLAG:177, RESULT - 1) == 0
             GOTO INPUT_LOOP
     ENDIF
     TFLAG:99 = RESULT + 1
     PRINTFORML %LOCALS:RESULT%관장
-    TSTR:0 = %LOCALS:RESULT%관장
+    COM_NAME = %LOCALS:RESULT%관장
 ENDIF
 CALL TRAIN_MESSAGE_COM174
 
@@ -185,68 +179,8 @@ ELSEIF TFLAG:99 == 3
     CALL CALC_GAUGE4_SLAVE, TARGET, 1
     TCVAR:40 += 1
 
-;현자의 피의 경우
-ELSEIF TFLAG:99 == 4
-    LOCAL:2 = 20
-    LOCAL:3 = 100
-
-    ;현자의 피 소비
-    IF NOITEM == 0
-        ITEM:66 -= 1
-        SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:66
-            CALL FILL_PLURAL_ITEM, 66
-    ENDIF
-
-    ;현자의 피 관련 소스 처리
-    SOURCE:26 = 2500
-    SOURCE:31 = 3000
-
-    ;현자의 피 관련의 TEQUIP와 경험 처리
-    TEQUIP:13 = 8
-    TCVAR:40 += 3
-
-;흥분제의 경우
-ELSEIF TFLAG:99 == 5
-    LOCAL:2 = 20
-    LOCAL:3 = 90
-
-    ;흥분제 소비
-    IF NOITEM == 0
-        ITEM:69 -= 1
-        SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:69
-            CALL FILL_PLURAL_ITEM, 69
-    ENDIF
-
-    ;흥분제 관련 소스 처리
-    SOURCE:26 = 3800
-    SOURCE:31 = 3200
-
-    ;흥분제 관련의 TEQUIP와 경험 처리
-    TEQUIP:14 = 10
-    TCVAR:40 += 5
-
-;감각 증폭약의 경우
-ELSEIF TFLAG:99 == 6
-    LOCAL:2 = 20
-    LOCAL:3 = 100
-
-    ;감각 증폭약소비
-    IF NOITEM == 0
-        ITEM:70 -= 1
-        SIF FLAG:13 & 8 && MONEY:0 >= ITEMPRICE:70
-            CALL FILL_PLURAL_ITEM, 70
-    ENDIF
-
-    ;감각 증폭약관련 소스 처리
-    SOURCE:26 = 3300
-    SOURCE:31 = 3100
-
-    ;감각 증폭약관련의 TEQUIP와 경험 처리
-    TEQUIP:7 = 8
-    TCVAR:40 += 4
-
 ;정액의 경우
-ELSEIF TFLAG:99 == 7
+ELSEIF TFLAG:99 == 4
     LOCAL:2 = 40
     LOCAL:3 = 150
 ;정액관련 소스 처리(정액중독 봄)
@@ -432,7 +366,7 @@ ELSE
     TIMES SOURCE:2 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -615,7 +549,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 2.00
 
@@ -710,12 +644,6 @@ IF FLAG:14 & 256
             CASE 3
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 이뇨제와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 4
-                PRINTFORMW %CALLNAME:TARGET%의 애널에 현자의 피와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 5
-                PRINTFORMW %CALLNAME:TARGET%의 애널에 흥분제와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 6
-                PRINTFORMW %CALLNAME:TARGET%의 애널에 감각증폭약과 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 7
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 정액과 관장액을 흘려 넣고 그대로 막아버렸다.
         ENDSELECT
     ENDIF
@@ -752,12 +680,6 @@ ELSE
             CASE 3
                 PRINTFORMW %CALLNAME:TARGET%의 항문에 이뇨제와 관장액을 흘려 넣고 그대로 막아버렸다.
             CASE 4
-                PRINTFORMW %CALLNAME:TARGET%의 항문에 현자의 피와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 5
-                PRINTFORMW %CALLNAME:TARGET%의 항문에 흥분제와 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 6
-                PRINTFORMW %CALLNAME:TARGET%의 항문에 감각증폭약과 관장액을 흘려 넣고 그대로 막아버렸다.
-            CASE 7
                 PRINTFORMW %CALLNAME:TARGET%의 애널에 정액과 관장액을 흘려 넣고 그대로 막아버렸다.
         ENDSELECT
     ENDIF
@@ -767,9 +689,12 @@ ENDIF
 ;장착시 메시지
 ;--------------------------------------------------
 @EQUIP_MESSAGE_COM174
+
+[IF ENABLE_KOJO_EQUIP_MESSAGE]
 CALL KOJO_EQUIP_MESSAGE_COM
 SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
     RETURN 0
+[ENDIF]
 
 PRINTL
 PRINTFORML %CALLNAME:TARGET%의 항문에 대량의 관장액을 집어넣은 후, 마개로 막은 후 계속 괴롭혔다….
@@ -817,13 +742,7 @@ SIF TALENT:ARG:44 == 0 && (ITEM:61 || NOITEM) && TEQUIP:ARG:11 == 0 && EQUIP:ARG
     LOCAL |= 1
 SIF TALENT:ARG:44 == 0 && (ITEM:62 || NOITEM) && TEQUIP:ARG:12 == 0 && EQUIP:ARG:14 == 0 && TEQUIP:ARG:59 != 1
     LOCAL |= 2
-SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:66 || NOITEM) && TEQUIP:ARG:13 == 0 && TEQUIP:ARG:9 == 0 && EQUIP:ARG:14 == 0
-    LOCAL |= 4
-SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:69 || NOITEM) && TEQUIP:ARG:14 == 0 && TEQUIP:ARG:9 == 0 & EQUIP:ARG:14 == 0
-    LOCAL |= 8
-SIF FLAG:15 & 32 && TALENT:ARG:44 == 0 && (ITEM:70 || NOITEM) && TEQUIP:ARG:7 == 0 && TEQUIP:ARG:9 == 0 && EQUIP:ARG:14 == 0 && EXP:ARG:40 >= EXPLV:3
-    LOCAL |= 16
 SIF TALENT:PLAYER:149 && EQUIP:ARG:14 == 0
-    LOCAL |= 32
+    LOCAL |= 4
 
 RETURNF LOCAL

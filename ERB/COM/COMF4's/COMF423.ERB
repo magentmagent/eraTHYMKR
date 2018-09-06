@@ -33,7 +33,7 @@ ELSEIF NO:PLAYER == 57
 ELSE
     RETURN 0
 ENDIF
-;対象が작은 체형か소인체형でないとダメ
+;対象が[작은체형]か[소인]でないとダメ
 SIF TALENT:127 == 0 && TALENT:128 == 0
     RETURN 0
 ;薬毒耐性だとダメ
@@ -93,7 +93,7 @@ RETURN 1
 ;돈소비형으로 첫회가 1500원, 효과 유지는 매턴 10원. 즉 술목욕탕의 데드 카피
 @COM423
 PRINTL 술 절이기
-TSTR:0 = 술 절이기
+COM_NAME = 술 절이기
 CALL TRAIN_MESSAGE_COM423
 
 IF TEQUIP:55 == 17

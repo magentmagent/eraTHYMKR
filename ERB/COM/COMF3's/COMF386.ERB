@@ -35,7 +35,7 @@ SIF TALENT:0
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;소인체형だとダメ
+;[소인]だとダメ
 SIF TALENT:127
     RETURN 0
 ;일정의 Ｖ경험とＶ확장경험이 필요([巨躯]の場合は軽減)
@@ -86,7 +86,7 @@ RETURN 1
 ;後背位を元に作成. 馬はねえ殺人覚悟でＧＯ！
 @COM386
 PRINTL 말로 범한다
-TSTR:0 = 말로 범한다
+COM_NAME = 말로 범한다
 CALL TRAIN_MESSAGE_COM386
 
 ;Ｖ経験を伴うコマンドのフラグ(処女膜再生対応)

@@ -19,7 +19,7 @@ CALLF CLEAR_LIST
 REPEAT CHARANUM
     MARK:COUNT:98 = 0
     ;주인공은 제외
-    SIF COUNT == 0
+    SIF COUNT == MASTER
         CONTINUE
     ;실종 중도 제외
     SIF CFLAG:COUNT:4
@@ -49,7 +49,7 @@ $CHARA_SORT_FIRST
 TFLAG:0 = 0
 PRINTFORML 누구를 어떻게 정렬하겠습니까? ＜page.{LOCAL + 1}＞
 DRAWLINE
-CALL SORT_LIST, TOSTR(LOCAL), -1
+CALL SORT_LIST, LOCAL, -1
 DRAWLINE
 PRINTL 아래 항목대로 자동 정렬한다.
 PRINTL [1102] 캐릭터 번호　 [1103] 능력　　　[1104] 경험
@@ -103,7 +103,7 @@ DRAWLINE
 $CHARA_SORT_SECOND
 PRINTFORML 누구의 순서를 바꾸겠습니까? (현재 {LOCAL:1}. %조사처리(CALLNAME:(LOCAL:1),"를")% 선택 중) ＜page.{LOCAL + 1}＞
 DRAWLINE
-CALL SORT_LIST, TOSTR(LOCAL), LOCAL:1
+CALL SORT_LIST, LOCAL, LOCAL:1
 DRAWLINE
 PRINTL 　　　☆:조교중 ★:조수 ○:조수가능 ●:원조수를 가리킵니다
 DRAWLINE
@@ -154,9 +154,9 @@ DRAWLINE
 PRINTFORML 정렬 기준인 %조사처리(TSTR:99,"를")% 선택해주세요. ＜page.{LOCAL:1}＞
 IF TFLAG:0 == 5
     REPEAT 6
-        TSTR:0 = %LOCALS:COUNT%
+        COM_NAME = %LOCALS:COUNT%
         SIF LOCAL:2 / 30 >= LOCAL:1 && LOCAL:2 / 30 < 1 + LOCAL:1
-            PRINTFORMLC [{COUNT, 3}] %TSTR:0, 12, LEFT%
+            PRINTFORMLC [{COUNT, 3}] %COM_NAME, 12, LEFT%
         LOCAL:2 += 1
         CALLF SET_LIST, COUNT, 1
     REND
@@ -167,25 +167,25 @@ ELSE
                 CONTINUE
             SIF STRLENS (ABLNAME:COUNT) < 1
                 CONTINUE
-            TSTR:0 = %ABLNAME:COUNT%
+            COM_NAME = %ABLNAME:COUNT%
         ELSEIF TFLAG:0 == 2
             SIF COUNT >= 100
                 CONTINUE
             SIF STRLENS(EXPNAME:COUNT) < 1
                 CONTINUE
-            TSTR:0 = %EXPNAME:COUNT%
+            COM_NAME = %EXPNAME:COUNT%
         ELSEIF TFLAG:0 == 3
             SIF COUNT >= 12
                 CONTINUE
             SIF STRLENS(MARKNAME:COUNT) < 1
                 CONTINUE
-            TSTR:0 = %MARKNAME:COUNT%
+            COM_NAME = %MARKNAME:COUNT%
         ELSEIF TFLAG:0 == 4
             SIF (COUNT >= 20 && COUNT < 30) || COUNT > 198
                 CONTINUE
             SIF STRLENS(PALAMNAME:COUNT) < 1
                 CONTINUE
-            TSTR:0 = %PALAMNAME:COUNT%의 구슬
+            COM_NAME = %PALAMNAME:COUNT%의 구슬
         ELSEIF TFLAG:0 == 6
             SIF COUNT >= 2 && COUNT <= 9
                 CONTINUE
@@ -193,7 +193,7 @@ ELSE
                 CONTINUE
             SIF STRLENS(BASENAME:COUNT) < 1
                 CONTINUE
-            TSTR:0 = %BASENAME:COUNT%
+            COM_NAME = %BASENAME:COUNT%
         ELSEIF TFLAG:0 == 7
             SIF STRLENS(CFLAGNAME:COUNT) < 1
                 CONTINUE
@@ -201,10 +201,10 @@ ELSE
                 CONTINUE
             SIF (COUNT == 80 || COUNT == 81) && FLAG:13 & 1024 == 0
                 CONTINUE
-            TSTR:0 = %CFLAGNAME:COUNT%
+            COM_NAME = %CFLAGNAME:COUNT%
         ENDIF
         SIF LOCAL:2 / 30 >= LOCAL:1 && LOCAL:2 / 30 < 1 + LOCAL:1
-            PRINTFORMLC [{COUNT, 3}] %TSTR:0, 12, LEFT%
+            PRINTFORMLC [{COUNT, 3}] %COM_NAME, 12, LEFT%
         LOCAL:2 += 1
         CALLF SET_LIST, COUNT, 1
     REND
@@ -241,22 +241,22 @@ ELSE
 ENDIF
 
 IF TFLAG:0 == 1
-    TSTR:0 = %ABLNAME:RESULT%
+    COM_NAME = %ABLNAME:RESULT%
 ELSEIF TFLAG:0 == 2
-    TSTR:0 = %EXPNAME:RESULT%
+    COM_NAME = %EXPNAME:RESULT%
 ELSEIF TFLAG:0 == 3
-    TSTR:0 = %MARKNAME:RESULT%
+    COM_NAME = %MARKNAME:RESULT%
 ELSEIF TFLAG:0 == 4
-    TSTR:0 = %PALAMNAME:RESULT%의 구슬
+    COM_NAME = %PALAMNAME:RESULT%의 구슬
 ELSEIF TFLAG:0 == 5
     TFLAG:2 += 3110
-    TSTR:0 = %LOCALS:RESULT%
+    COM_NAME = %LOCALS:RESULT%
 ELSEIF TFLAG:0 == 6
-    TSTR:0 = %BASENAME:RESULT%
+    COM_NAME = %BASENAME:RESULT%
 ELSEIF TFLAG:0 == 7
     SIF (RESULT == 80 || RESULT == 81) && FLAG:13 & 1024 == 0
         GOTO INPUT_LOOP_0
-    TSTR:0 = %CFLAGNAME:RESULT%
+    COM_NAME = %CFLAGNAME:RESULT%
 ENDIF
 IF TFLAG:0 == 6 && TFLAG:2 > 9 && FLAG:1500 & 1
     REPEAT CHARANUM
@@ -295,50 +295,50 @@ SELECTCASE TFLAG:0
     CASE 1
         IF TFLAG:1 == 1
             SORTCHARA ABL:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA ABL:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
     CASE 2
         IF TFLAG:1 == 1
             SORTCHARA EXP:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA EXP:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
     CASE 3
         IF TFLAG:1 == 1
             SORTCHARA MARK:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA MARK:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
     CASE 4
         IF TFLAG:1 == 1
             SORTCHARA JUEL:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA JUEL:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
     CASE 5 , 7
         IF TFLAG:1 == 1
             SORTCHARA CFLAG:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA CFLAG:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
     CASE 6
         IF TFLAG:1 == 1
             SORTCHARA BASE:(TFLAG:2)
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 낮은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 낮은 순으로 정렬했습니다＞
         ELSE
             SORTCHARA BASE:(TFLAG:2), BACK
-            PRINTFORMW ＜%조사처리(TSTR:0,"가")% 높은 순으로 정렬했습니다＞
+            PRINTFORMW ＜%조사처리(COM_NAME,"가")% 높은 순으로 정렬했습니다＞
         ENDIF
 ENDSELECT
 RETURN 0
@@ -346,11 +346,11 @@ RETURN 0
 ;---------------------------------------------------------------------
 ;캐릭터 교체 · 정렬용 리스트
 ;---------------------------------------------------------------------
-@SORT_LIST, ARGS, ARG:1
+@SORT_LIST, ARG, ARG:1
 REPEAT 20
     LOCAL = GET_LIST(COUNT + ARG * 20)
     ;주인공과 실종 캐릭터는 배제
-    SIF LOCAL == 0
+    SIF LOCAL == MASTER
         CONTINUE
     SIF CFLAG:LOCAL:4
         CONTINUE

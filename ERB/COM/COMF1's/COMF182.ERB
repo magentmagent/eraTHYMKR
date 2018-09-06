@@ -98,7 +98,7 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = %LOCALS%
+COM_NAME = %LOCALS%
 CALL TRAIN_MESSAGE_COM182
 
 DOWNBASE:0 += 5
@@ -263,7 +263,7 @@ IF TEQUIP:25
     ;정조관념
     SIF TALENT:30
         TIMES LOCAL:3, 3.00
-    ;작은 몸집 체형
+    ;[작은체형]
     SIF TALENT:128
         TIMES LOCAL:3 , 2.00
 ENDIF

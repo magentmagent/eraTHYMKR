@@ -128,50 +128,50 @@ IF TEQUIP:59 < 1
 
     SELECTCASE LOCAL:3
         CASE 3
-            TSTR:0 = 여교사 코스프레
+            COM_NAME = 여교사 코스프레
         CASE 4
-            TSTR:0 = 전통복 코스프레
+            COM_NAME = 전통복 코스프레
         CASE 5
-            TSTR:0 = 메이드복 코스프레
+            COM_NAME = 메이드복 코스프레
         CASE 6
-            TSTR:0 = 체육복＋부르마 코스프레
+            COM_NAME = 체육복＋부르마 코스프레
         CASE 7
-            TSTR:0 = 간호사 코스프레
+            COM_NAME = 간호사 코스프레
         CASE 8
-            TSTR:0 = 차이나복 코스프레
+            COM_NAME = 차이나복 코스프레
         CASE 9
-            TSTR:0 = 세일러복 코스프레
+            COM_NAME = 세일러복 코스프레
         CASE 10
-            TSTR:0 = 네글리제 코스프레
+            COM_NAME = 네글리제 코스프레
         CASE 11
-            TSTR:0 = 알몸 와이셔츠 코스프레
+            COM_NAME = 알몸 와이셔츠 코스프레
         CASE 12
-            TSTR:0 = 비키니 코스프레
+            COM_NAME = 비키니 코스프레
         CASE 13
-            TSTR:0 = 위험한 레오타드 코스프레
+            COM_NAME = 위험한 레오타드 코스프레
         CASE 14
-            TSTR:0 = 바니 슈츠 코스프레
+            COM_NAME = 바니 슈츠 코스프레
         CASE 15
-            TSTR:0 = 본디지 코스프레
+            COM_NAME = 본디지 코스프레
         CASE 16
-            TSTR:0 = 유치원복 코스프레
+            COM_NAME = 유치원복 코스프레
         CASE 17
-            TSTR:0 = 훈도시 코스프레
+            COM_NAME = 훈도시 코스프레
         CASE 18
-            TSTR:0 = 군복 코스프레
+            COM_NAME = 군복 코스프레
         CASE 19
-            TSTR:0 = 웨딩 드레스 코스프레
+            COM_NAME = 웨딩 드레스 코스프레
         CASE 20
-            TSTR:0 = 고딕 로리타 코스프레
+            COM_NAME = 고딕 로리타 코스프레
         CASE 21
-            TSTR:0 = 알몸 멜빵 코스프레
+            COM_NAME = 알몸 멜빵 코스프레
         CASE 22
-            TSTR:0 = 무녀 의상 코스프레
+            COM_NAME = 무녀 의상 코스프레
         CASEELSE
             GOTO INPUT_LOOP
     ENDSELECT
 ELSE
-    TSTR:0 = 코스프레 의상 탈의
+    COM_NAME = 코스프레 의상 탈의
 ENDIF
 TFLAG:146 = LOCAL:3
 CALL TRAIN_MESSAGE_COM093
@@ -505,7 +505,7 @@ IF LOCAL:3 == 6 || LOCAL:3 == 13 || LOCAL:3 == 16
     ENDIF
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     TIMES LOCAL:1, 1.50
     TIMES LOCAL:2 , 1.50
@@ -910,7 +910,7 @@ IF LOCAL == 6 || LOCAL == 13 || LOCAL == 16
     ENDIF
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 IF TALENT:128
     TIMES LOCAL:1, 1.50
     TIMES LOCAL:2 , 1.50
@@ -1012,7 +1012,7 @@ PRINTL
 IF TEQUIP:59 > 2
     PRINTFORML %조사선택(CALLNAME:TARGET, "가")% 입고 있는 의상을 벗게 했다….
 ELSE
-    PRINTFORML %CALLNAME:TARGET%에게 %조사처리(TSTR:0,"를")% 하도록 명령했다.
+    PRINTFORML %CALLNAME:TARGET%에게 %조사처리(COM_NAME,"를")% 하도록 명령했다.
     PRINTFORM %조사선택(CALLNAME:TARGET, "는")% 
     IF TALENT:35
         PRINTFORMW 얼굴이 새빨개지면서 %CALLNAME:PLAYER%의 명령을 실행하고 있다….
@@ -1023,18 +1023,18 @@ ELSE
     ELSEIF (TALENT:152 || TALENT:153 || TALENT:160 || TALENT:151 || TALENT:161 || TALENT:162) && TFLAG:146 == 19
         PRINTW 몹시 기쁜 듯한 얼굴을 하면서 갈아입어 몇 번도 휙 주위면서 자신의 모습을 과시하고 있다….
     ELSEIF (TFLAG:146 == 10 || TFLAG:146 == 11 || TFLAG:146 == 12 || TFLAG:146 == 13 || TFLAG:146 == 14 || TFLAG:146 == 15) &&(TALENT:110 || TALENT:111)
-        PRINTFORML %조사처리(TSTR:0,"를")% 입어서 좋기는 했지만,
+        PRINTFORML %조사처리(COM_NAME,"를")% 입어서 좋기는 했지만,
         PRINTW 자신의 가슴의 궁상스러움을 의식하고 있는지 끊임없이 가슴을 숨기는 동작을 반복하고 있다….
     ELSEIF (TFLAG:146 == 10 || TFLAG:146 == 11 || TFLAG:146 == 12 || TFLAG:146 == 13 || TFLAG:146 == 14 || TFLAG:146 == 15) &&(TALENT:112 || TALENT:113)
-        PRINTFORMW %조사처리(TSTR:0,"를")% 입는 건 좋기는 했지만,
+        PRINTFORMW %조사처리(COM_NAME,"를")% 입는 건 좋기는 했지만,
         PRINTW 가슴둘레가 거북하게 느끼는지 가슴 팍에 손을 뻗어 천을 이끄는 동작을 빈번하게 반복하고 있다….
     ELSEIF TALENT:130 || TALENT:131
-        PRINTW %조사처리(TSTR:0,"를")% 대자 아이와 같이 까불며 떠들기 시작했다.
+        PRINTW %조사처리(COM_NAME,"를")% 대자 아이와 같이 까불며 떠들기 시작했다.
     ELSEIF TALENT:80 || TALENT:170
         PRINTL 일순간 주저 하는 기색을 보였지만,
         PRINTW 이미 새로운 쾌감에 눈을 떴는지 허겁지겁 갈아입기 시작했다….
     ELSE
-        PRINTFORMW 기가 막힌 것 같은 표정을 지으면서도, 명령대로 %조사처리(TSTR:0,"를")% 해 나간다….
+        PRINTFORMW 기가 막힌 것 같은 표정을 지으면서도, 명령대로 %조사처리(COM_NAME,"를")% 해 나간다….
     ENDIF
 ENDIF
 

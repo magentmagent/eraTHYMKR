@@ -10,12 +10,29 @@
 
 ------
 
+## 비활성화된 기능 활성화하기
+
+ERB 폴더의 FEATURES 폴더 안에있는 ERH 파일들을 열어보시면 ;#DEFINE 으로 시작하는 줄이 있습니다  
+여기서 #DEFINE앞의 ;를 지우시면 해당하는 기능이 활성화됩니다
+
+### 현재 비활성화된 기능들
+
+>### MESSAGE_ENABLE.ERH  
+>* ENABLE_KOJO_EQUIP_MESSAGE  
+>캐릭터별 아이템 장착 구문 출력(현재 구현되어있는 캐릭터는 없음)
+>### TRANSLATOR_ENABLE.ERH
+>* ENABLE_DESCRIPTION_TRANS_13  
+>첸 번역기 구상 출력
+
+
+------
+
 ## 기여하는 방법
 
 1. GitHub 아이디를 만듭니다
 2. 이 저장소를 포크합니다
 3. 자기 저장소에서 작업을 합니다
-4. 저 위에있는 Pull requests에 들어간뒤 New pull request를 선택하고 반영하고싶은 브렌치를 올립니다
+4. Pull requests에 들어간뒤 New pull request를 선택하고 반영하고싶은 브렌치를 올립니다 이때 base 브렌치는 **'develop'** 브렌치로 해주세요
 
 
 ------

@@ -50,12 +50,12 @@ IF ASSIPLAY
     SIF ABL:ASSI:10 < 4 && TALENT:ASSI:81 == 0 && TALENT:ASSI:151 == 0 && TALENT:ASSI:160 == 0
         RETURN 0
 ENDIF
-;작은 체형なら순종이 4이상かつ마조끼が4이상じゃないと実行できない
+;[작은체형]なら순종이 4이상かつ마조끼が4이상じゃないと実行できない
 IF TALENT:128
     SIF ABL:10 < 4 || ABL:21 < 4
         RETURN 0
 ENDIF
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;그밖의 Ｖ계 장착구 사용 중에는 불가
@@ -89,7 +89,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM439
 PRINTL 양 구멍 요석
-TSTR:0 = 양구멍 요석
+COM_NAME = 양구멍 요석
 CALL TRAIN_MESSAGE_COM439
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -324,7 +324,7 @@ ELSE
     TIMES SOURCE:18, 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 3.00
 

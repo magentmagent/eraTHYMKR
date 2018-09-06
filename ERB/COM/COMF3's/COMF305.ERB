@@ -114,7 +114,7 @@ ENDIF
 ;실행 결정
 ;-------------------------------------------------
 SELECTCOM = 305
-TSTR:0 = 둘이서 가랑이
+COM_NAME = 둘이서 가랑이
 CALL TRAIN_MESSAGE_COM305
 
 ;-------------------------------------------------
@@ -147,7 +147,7 @@ LOCAL = EJACULATIONCHECK_ABL_13_1(TARGET, LOCAL)
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------

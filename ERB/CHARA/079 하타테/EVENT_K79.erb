@@ -4937,52 +4937,10 @@ IF SELECTCOM == 64 && TEQUIP:15 & 2
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;強精神薬    CFLAG:8278
+;배란유도제    CFLAG:8279
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 65
-    ;처음
-    IF CFLAG:8278 == 0
-        ;반발각인Lv3
-        IF MARK:9 == 3
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8278= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;반발각인Lv3
-        IF MARK:9 == 3 && (CFLAG:8278 <= 5|| FLAG:11 == 2)
-            CFLAG:8278 = 6
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8278 <= 4|| FLAG:11 == 2)
-            CFLAG:8278 = 5
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8278 <= 3|| FLAG:11 == 2)
-            CFLAG:8278 = 4
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1 && (CFLAG:8278 <= 2|| FLAG:11 == 2)
-            CFLAG:8278 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8278 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;排卵誘発剤    CFLAG:8279
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 66
+IF SELECTCOM == 66 && TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;처음
     IF CFLAG:8279 == 0
         ;반발각인Lv3
@@ -5019,12 +4977,38 @@ IF SELECTCOM == 66
         RETURN 0
     ENDIF
 ENDIF
+;-------------------------------------------------
+;배란유도제(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 배란유도제 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 배란유도제 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;배란유도제(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 66 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 배란유도제 섭취」
+    ENDIF
+    RETURN 0
+ENDIF
 [SKIPEND]
 ;-------------------------------------------------
-;緊急避妊薬    CFLAG:8280
+;긴급피임약    CFLAG:8280
 ;-------------------------------------------------
 [SKIPSTART]
-IF SELECTCOM == 67
+IF SELECTCOM == 67 && TFLAG:99 == 0
     ;처음
     IF CFLAG:8280 == 0
         ;반발각인Lv3
@@ -5060,6 +5044,32 @@ IF SELECTCOM == 67
         ENDIF
         RETURN 0
     ENDIF
+ENDIF
+;-------------------------------------------------
+;긴급피임약(조수)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 1
+    ;조수가 메를랑
+    IF ASSINO() == 17 ;조수가 말하는 것은 굵은 괄호
+        PRINTFORMW 『조수가 긴급피임약 섭취』 
+    ;조수가 기타
+    ELSE
+        PRINTFORMW 『조수가 긴급피임약 섭취』
+    ENDIF
+    RETURN 0
+ENDIF
+;-------------------------------------------------
+;긴급피임약(주인)    CFLAG:필요 시 새로 확보해야함
+;-------------------------------------------------
+IF SELECTCOM == 67 && TFLAG:99 == 2
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「주인이 긴급피임약 섭취」
+    ENDIF
+    RETURN 0
 ENDIF
 [SKIPEND]
 ;-------------------------------------------------
@@ -5141,48 +5151,6 @@ IF SELECTCOM == 69
         ;그 외의 경우
         ELSE
             CFLAG:8282 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;興奮剤    CFLAG:8283
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 70
-    ;처음
-    IF CFLAG:8283 == 0
-        ;반발각인Lv3
-        IF MARK:9 == 3
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8283= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;반발각인Lv3
-        IF MARK:9 == 3 && (CFLAG:8283 <= 5|| FLAG:11 == 2)
-            CFLAG:8283 = 6
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8283 <= 4|| FLAG:11 == 2)
-            CFLAG:8283 = 5
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8283 <= 3|| FLAG:11 == 2)
-            CFLAG:8283 = 4
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1 && (CFLAG:8283 <= 2|| FLAG:11 == 2)
-            CFLAG:8283 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8283 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -5435,48 +5403,6 @@ IF SELECTCOM == 85
         ;그 외의 경우
         ELSE
             CFLAG:8289 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;Ｃ強精神薬注射    CFLAG:8290
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 86
-    ;처음
-    IF CFLAG:8290 == 0
-        ;반발각인Lv3
-        IF MARK:9 == 3
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8290= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;반발각인Lv3
-        IF MARK:9 == 3 && (CFLAG:8290 <= 5|| FLAG:11 == 2)
-            CFLAG:8290 = 6
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8290 <= 4|| FLAG:11 == 2)
-            CFLAG:8290 = 5
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8290 <= 3|| FLAG:11 == 2)
-            CFLAG:8290 = 4
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1 && (CFLAG:8290 <= 2|| FLAG:11 == 2)
-            CFLAG:8290 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8290 = 2
         ENDIF
         RETURN 0
     ENDIF
@@ -8029,48 +7955,6 @@ IF SELECTCOM == 135
         ;그 외의 경우
         ELSE
             CFLAG:8349 = 2
-        ENDIF
-        RETURN 0
-    ENDIF
-ENDIF
-[SKIPEND]
-;-------------------------------------------------
-;割礼    CFLAG:8350
-;-------------------------------------------------
-[SKIPSTART]
-IF SELECTCOM == 136
-    ;처음
-    IF CFLAG:8350 == 0
-        ;반발각인Lv3
-        IF MARK:9 == 3
-        ;연모
-        ELSEIF TALENT:150 == 1
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1
-        ;그 외의 경우
-        ELSE
-        ENDIF
-        CFLAG:8350= 1
-        RETURN 0
-    ;2회째 이후
-    ELSE
-        ;반발각인Lv3
-        IF MARK:9 == 3 && (CFLAG:8350 <= 5|| FLAG:11 == 2)
-            CFLAG:8350 = 6
-        ;연모
-        ELSEIF TALENT:150 == 1 && (CFLAG:8350 <= 4|| FLAG:11 == 2)
-            CFLAG:8350 = 5
-        ;굴복각인Lv3
-        ELSEIF MARK:2 == 3 && (CFLAG:8350 <= 3|| FLAG:11 == 2)
-            CFLAG:8350 = 4
-        ;굴복각인Lv1
-        ELSEIF MARK:2 == 1 && (CFLAG:8350 <= 2|| FLAG:11 == 2)
-            CFLAG:8350 = 3
-        ;그 외의 경우
-        ELSE
-            CFLAG:8350 = 2
         ENDIF
         RETURN 0
     ENDIF

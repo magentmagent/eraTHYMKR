@@ -61,8 +61,12 @@ RETURN 1
 ;처리 간략화를 위해[남자],[후타나리]에는 사용할 수 없게
 ;동시에 지문에 죽어 판정이 발생(향후의 확장성을 전망해 굳이 남기고 있습니다)
 @COM135
+;남자 또는 후타나리
+IF EXIST_PENIS(TARGET)
+    PRINTL 길이 측정
+ELSE
 PRINTL 음핵 측정
-
+ENDIF
 ;-------------------------------------------------
 ;실행할 수 있을까의 판정
 ;-------------------------------------------------
@@ -79,7 +83,12 @@ ENDIF
 ;-------------------------------------------------
 ;실행 결정
 ;-------------------------------------------------
-TSTR:0 = 음핵 측정
+;남자 또는 후타나리
+IF EXIST_PENIS(TARGET)
+    COM_NAME = 길이 측정
+ELSE
+COM_NAME = 음핵 측정
+ENDIF
 CALL TRAIN_MESSAGE_COM135
 
 ;-------------------------------------------------
@@ -234,7 +243,7 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 
 PRINTL
 PRINTFORM %CALLNAME:TARGET%의 
-IF TALENT:120 || TALENT:121
+IF EXIST_PENIS(TARGET)
     PRINT 페니스의 길이
 ELSE
     SIF TALENT:1
@@ -277,7 +286,7 @@ ELSE
     ELSE
         PRINTL 얼굴을 새빨갛게 하고 흠칫 흠칫 손을 움직여
     ENDIF
-        IF TALENT:120 || TALENT:121
+        IF EXIST_PENIS(TARGET)
             PRINT 페니스를 
         ELSE
             SIF TALENT:1
@@ -289,7 +298,7 @@ ENDIF
 PRINTL
 
 PRINT 측정기에 
-IF TALENT:120 || TALENT:121
+IF EXIST_PENIS(TARGET)
     PRINT 페니스를 
 ELSE
     SIF TALENT:1
@@ -340,13 +349,13 @@ ELSEIF BASE:7 > 200
 ;음핵 비대 이벤트
 ELSEIF BASE:7 >= 150
     PRINTFORM %CALLNAME:TARGET%의 
-    IF TALENT:120 || TALENT:121
+    IF EXIST_PENIS(TARGET)
         PRINT 페니스는 
     ELSE
         PRINT 클리토리스는 
     ENDIF
     PRINTW 발기한 페니스 정도 길이다.
-    IF TALENT:1 == 0 && TALENT:120 == 0 && TALENT:121 == 0
+    IF EXIST_BAR(TARGET) == 0
         PRINTFORMW %CALLNAME:TARGET%의 클리토리스는 [비대 음핵]이 되었다.
         TALENT:1 = 1
         IF (CFLAG:37 & 2) == 0
@@ -356,13 +365,13 @@ ELSEIF BASE:7 >= 150
     ENDIF
 ELSEIF BASE:7 > 100
     PRINTFORM %CALLNAME:TARGET%의 
-    IF TALENT:120 || TALENT:121
+    IF EXIST_PENIS(TARGET)
         PRINT 페니스는 
     ELSE
         PRINT 클리토리스는 
     ENDIF
     PRINTW 보통 페니스 정도의 길이다.
-ELSEIF TALENT:120 || TALENT:121
+ELSEIF EXIST_PENIS(TARGET)
     PRINTFORMW %CALLNAME:TARGET%의 페니스는 약간 좀 작은 크기다.
 ELSEIF BASE:7 > 50
     PRINTFORMW %CALLNAME:TARGET%의 클리토리스는 새끼 손가락 만큼 성장하고 있다.
@@ -372,7 +381,7 @@ ENDIF
 
 ;음핵 사이즈 표시 일시 보존 변수로 LOCAL:150을 사용
 LOCAL:150 = BASE:7 * BASE:7 / 150
-PRINTFORMW 대체로 {LOCAL:150 / 10}. {LOCAL:150 % 10}cm 일까…
+PRINTFORMW 대체로 {LOCAL:150 / 10}.{LOCAL:150 % 10} cm 일까…
 
 ;-------------------------------------------------
 ;고유의 실행 판정

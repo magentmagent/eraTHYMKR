@@ -31,9 +31,6 @@ SIF TEQUIP:11
 ;이뇨제 효과 발휘 중에는 불가
 SIF TEQUIP:12
     RETURN 0
-;현자의 피 효과 발휘 중에는 불가
-SIF TEQUIP:13
-    RETURN 0
 ;수면제 효과 발휘 중에는 불가
 SIF EQUIP:14
     RETURN 0
@@ -45,9 +42,6 @@ SIF TEQUIP:17
     RETURN 0
 ;은방울꽃의 독 효과 발휘 중에는 불가
 SIF TEQUIP:18
-    RETURN 0
-;곤충 채집 세트의 약 효과 발휘 중에는 불가
-SIF TEQUIP:19
     RETURN 0
 ;촉수 강제 회복 효과 발휘 중에는 불가
 SIF TEQUIP:91
@@ -68,7 +62,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM88
 PRINTL 채혈 주사
-TSTR:0 = 채혈 주사
+COM_NAME = 채혈 주사
 CALL TRAIN_MESSAGE_COM088
 
 DOWNBASE:0 += 80

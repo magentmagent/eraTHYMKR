@@ -80,7 +80,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM617
 PRINTL 대면가슴 애무
-TSTR:0 = 대면가슴 애무
+COM_NAME = 대면가슴 애무
 SELECTCOM = 617
 CALL TRAIN_MESSAGE_COM617
 
@@ -119,7 +119,7 @@ LOCAL = EJACULATIONCHECK_PALAM_10_2(TARGET, LOCAL)
 ;조교자의 C감각을 본다
 LOCAL = EJACULATIONCHECK_ABL_0_1(PLAYER, LOCAL)
 
-SIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+SIF EXIST_PENIS(PLAYER)
     BASE:PLAYER:2 += LOCAL
 
 ;-------------------------------------------------
@@ -250,7 +250,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 ;음유
@@ -379,7 +379,7 @@ ENDIF
 TCVAR:0 += 1
 IF PLAYER == MASTER
     TCVAR:42 += 1
-    SIF TALENT:MASTER:120 || TALENT:MASTER:121 || TALENT:MASTER:1
+    SIF EXIST_BAR(MASTER)
         CFLAG:173 += 1
 ENDIF
 
@@ -447,7 +447,7 @@ IF TFLAG:102 && (PREVCOM == 22 || PREVCOM == 617 ) && ((ASSIPLAY && TFLAG:133) |
             PRINT 펄떡펄떡 경련하는 
         PRINTW 허리를 억눌러 가슴을 만지작 거리며, 삽입한 채로 작게 비볐다….
     ;조교자가 남자나 후타나리이다
-    ELSEIF TALENT:PLAYER:120 || TALENT:PLAYER:121
+    ELSEIF EXIST_PENIS(PLAYER)
         PRINTFORML 서로 마주 봐 앉은 상태로 삽입한 채로, %CALLNAME:TARGET%의 가슴에 손을 뻗어,
         PRINTFORMW %CALLNAME:TARGET%의 가슴과 질 내의 감촉을 맛보면서, 다시 허리를 움직이기 시작했다….
     ;페니스 밴드를 사용하고 있는 경우

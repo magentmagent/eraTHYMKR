@@ -60,7 +60,7 @@ RETURN 1
 ;--------------------------------------------------
 @COM561
 PRINTL 촉수 배란 유도
-TSTR:0 = 촉수 배란 유도
+COM_NAME = 촉수 배란 유도
 CALL TRAIN_MESSAGE_COM561
 
 IF TEQUIP:20 == 3
@@ -148,7 +148,7 @@ ELSE
     TIMES SOURCE:20 , 0.10
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 

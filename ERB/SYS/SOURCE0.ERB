@@ -161,23 +161,13 @@ ENDIF
 ;토리코모드. 특별한 건 없고, 색만 살짝 칠해준다. (핑크)
 IF FLAG:5000 & 16
     CALL SETCOLOR_TORIKOMODE, "PINK", 5
-    IF TEQUIP:13 > 1
-        ;強精神薬の効果処理
-        CALL ECST_CANCEL
-    ELSE
-        CALL ORGASM_PROCESS
-    ENDIF
+    CALL ORGASM_PROCESS
     RESETCOLOR
 ELSE
 
 ;일반모드
     CALL SETCOLOR_TORIKOMODE, "PINK", 5
-    IF TEQUIP:13 > 1
-        ;強精神薬の効果処理
-        CALL ECST_CANCEL
-    ELSE
-        CALL ORGASM_PROCESS
-    ENDIF
+    CALL ORGASM_PROCESS
 
 ;모드분기 종료
 ENDIF
@@ -186,23 +176,18 @@ ENDIF
 ;-------------------------------------------------
 ;まだ射精していない場合に조교 대상の射精チェック(ふたなり・オトコ)
 ;-------------------------------------------------
-IF TFLAG:705 == 0 && (TALENT:120 || TALENT:121)
+IF (TALENT:120 || TALENT:121)
+    ;
+    SIF TFLAG:705 == 0
+        TFLAG:703 = -1
 
-    ;토리코 모드시 색 강조 (살색)
-    IF FLAG:5000 & 16
-        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-        CALL TARGET_EJAC_CHECK
-        RESETCOLOR
-    ;일반모드
-    ELSE
-        CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
-        CALL TARGET_EJAC_CHECK
-        RESETCOLOR
-    ;모드분기종료
-    ENDIF
+    CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
+    CALL TARGET_EJAC_CHECK
+    RESETCOLOR
 
 ENDIF
 
+TFLAG:703 = -1
 TFLAG:705 = 0
 
 ;-------------------------------------------------
@@ -479,11 +464,21 @@ SIF TALENT:19 && TALENT:150
     CALL UP_ENVY_CHECK
 
 ;-------------------------------------------------
-;気力０による体力消耗増加処理([淫魔]は無効)
+;苦痛からくる체력 · 기력의 감소
 ;-------------------------------------------------
-IF BASE:1 <= 0 && TALENT:180 == 0
-    TIMES DOWNBASE:0 , 1.50
-    DOWNBASE:0 += (FLAG:3 == 4 || FLAG:3 == 5) ? 100 # 80
+CALL CHECK_TRAIN_PAIN
+
+;-------------------------------------------------
+;기력이 0이하일 경우
+;-------------------------------------------------
+IF BASE:1 <= 0
+    ;음마가 없으면 체력 추가소모
+    IF TALENT:180 == 0
+        TIMES DOWNBASE:0 , 1.50
+        DOWNBASE:0 += (FLAG:3 == 4 || FLAG:3 == 5) ? 100 # 80
+    ENDIF
+
+    DOWNBASE:1 = 0
 ENDIF
 
 ;-------------------------------------------------
@@ -499,9 +494,9 @@ ENDIF
 ;-------------------------------------------------
 ;조교 대상이 勝手にコマンドを実行した場合の処理
 ;-------------------------------------------------
-;TSTR:0に付け加える
+;COM_NAMEに付け加える
 SIF TFLAG:699
-    TSTR:0 = 奴隷が我慢できずに勝手に%TSTR:0%
+    COM_NAME = 奴隷が我慢できずに勝手に%COM_NAME%
 
 ;パラメータの変化
 IF TFLAG:699 == 1
@@ -535,11 +530,6 @@ ENDIF
 
 ;フラグのリセット
 TFLAG:699 = 0
-
-;-------------------------------------------------
-;苦痛からくる체력 · 기력의 감소
-;-------------------------------------------------
-CALL CHECK_TRAIN_PAIN
 
 ;-------------------------------------------------
 ;[爆発物]の爆発判定に

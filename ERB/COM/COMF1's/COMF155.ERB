@@ -38,7 +38,7 @@ SIF TALENT:0 == 1
 ;남자라면 안 됨
 SIF TALENT:120
     RETURN 0
-;조교 대상이 소인체형일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
+;조교 대상이 [소인]일 경우에는 주인이 금단의 지식 보유자가 아니면 불가
 SIF TALENT:127 && TALENT:MASTER:56 == 0
     RETURN 0
 ;기계면 불가
@@ -73,21 +73,21 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM155
-TSTR:7 = 전극
+COM_TOOL_NAME = 전극
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 7
     CALL NAMECHECK_CUSTOMTOOL
-    IF (TSTR:8 != "전극") && (TSTR:8 != ITEMNAME:7)
-        PRINTFORML %TSTR:8% 삽입
+    IF (COM_TOOL_NAME != "전극") && (COM_TOOL_NAME != ITEMNAME:7)
+        PRINTFORML %COM_TOOL_NAME% 삽입
     ELSE
         PRINTL 바기나 전극
     ENDIF
 ELSE
-    TSTR:9 = %TSTR:7%
+    COM_TOOL_CALLNAME = %COM_TOOL_NAME%
     PRINTL 바기나 전극
 ENDIF
-TSTR:0 = 보지 전극
+COM_NAME = 보지 전극
 CALL TRAIN_MESSAGE_COM155
 
 ;V경험을 수반하는 커맨드의 플래그(처녀막 재생 대응)
@@ -194,7 +194,7 @@ ELSE
     TIMES SOURCE:1 , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES SOURCE:20 , 2.00
 
@@ -249,13 +249,13 @@ RETURN 1
 ;보지 전극 삽입중
 ;--------------------------------------------------
 @EQUIP_COM155
-TSTR:7 = 바기나 전극
+COM_TOOL_NAME = 바기나 전극
 IF FLAG:1100 & 1
     ;技師パッチ有効なら特殊な名前チェック
     FLAG:1110 = 7
     CALL NAMECHECK_CUSTOMTOOL
 ENDIF
-PRINTFORML <%TSTR:7% 삽입 중>
+PRINTFORML <%COM_TOOL_NAME% 삽입 중>
 
 DOWNBASE:0 += 70
 DOWNBASE:1 += 110
@@ -346,7 +346,7 @@ ELSE
     TIMES LOCAL , 1.30
 ENDIF
 
-;작은 몸집 체형
+;[작은체형]
 SIF TALENT:128
     TIMES LOCAL:2 , 2.00
 
@@ -409,9 +409,9 @@ PRINTL
 ;전극의 착탈
 IF TEQUIP:20
     IF MARK:9 > 1
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 보지로부터 %조사선택(TSTR:7, "를")% 뽑아 던져버렸다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "가")% 미처 손을 쓰기도 전에, %조사선택(CALLNAME:TARGET, "는")% 보지로부터 %조사선택(COM_TOOL_NAME, "를")% 뽑아 던져버렸다….
     ELSE
-        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 보지로부터 %조사선택(TSTR:7, "를")% 뽑아 주었다….
+        PRINTFORMW %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 보지로부터 %조사선택(COM_TOOL_NAME, "를")% 뽑아 주었다….
     ENDIF
 ELSE
     IF MARK:9 > 1
@@ -419,11 +419,11 @@ ELSE
         PRINTFORM 그리고, %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 흠뻑 젖어있는 
-        PRINTFORMW 질에 %조사선택(TSTR:9, "를")% 삽입해 스위치를 넣었다….
+        PRINTFORMW 질에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입해 스위치를 넣었다….
     ELSE
         PRINTFORM %조사선택(CALLNAME:PLAYER, "는")% %CALLNAME:TARGET%의 
         SIF PALAM:10 >= PALAMLV:4
             PRINT 흠뻑 젖어있는 
-        PRINTFORMW 질에 %조사선택(TSTR:9, "를")% 삽입해 스위치를 넣었다….
+        PRINTFORMW 질에 %조사선택(COM_TOOL_CALLNAME, "를")% 삽입해 스위치를 넣었다….
     ENDIF
 ENDIF
