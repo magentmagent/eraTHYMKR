@@ -6064,6 +6064,11 @@ REND
 ;-------------------------------------------------
 ;表記例, 1, 22
 @SINGLE_ENDING_K24
+IF NO:MASTER == 34
+    CALL LES_MESSAGE_END24_M34
+    RETURN 0
+ENDIF
+
 DRAWLINE
 PRINTFORMW ―――개별 엔딩 조건 달성―――
 PRINTFORMW …………

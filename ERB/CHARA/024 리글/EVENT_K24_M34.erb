@@ -4833,13 +4833,10 @@ IF TFLAG:200 == 200
     PRINTFORMW 「.... 유카, 진심이신가요?」
     PRINTFORMW 『그래 이년아. 이제 식을 올리면 될려나? 어디로 갈래? 하쿠레이 신사? 인간마을? 요괴의 산 신사?』
     PRINTFORMW 「유카 고마워요」
-IF NO:MASTER == 34
-        CALL LES_MESSAGE_END24_M34
-    RETURN 0
-    ENDIF
 ENDIF
-    TFLAG:200 = 0
-    RETURN 0
+
+TFLAG:200 = 0
+RETURN 0
 
 @LES_MESSAGE_END24_M34
 DRAWLINE
