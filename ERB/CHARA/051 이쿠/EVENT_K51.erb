@@ -85,7 +85,7 @@ IF CFLAG:8002 == 0
     CFLAG:5450 = 0
     PRINTFORML 「그러니까, 당신이…」
     PRINTFORML 「저를…이런 곳에 가둔거군요…!!!!!」
-    PRINTFORML %CALLNAME:MASTER%은 말 없이 응시하고 있었다.
+    PRINTFORML %조사처리(CALLNAME:MASTER, "는")% 말 없이 응시하고 있었다.
     PRINTFORMW 「도대체 뭘 어쩌려는 겁니까？!」
     CFLAG:8002 = 1
     RETURN 1
@@ -7632,7 +7632,7 @@ IF CFLAG:7900 == 1
     RESULT = 0
     CALL KOJO_51_MESSAGE_SUB_EVENT_BEFORE
     SIF !RESULT
-        TRYCALLFORM KOJO_51_MESSAGE_SUB_EVENT_SCENE{SELECTCOM}
+        TRYCALLFORM KOJO_51_MESSAGE_SUB_EVENT_SCENE{TFLAG:200}
     RETURN 0
 ENDIF
 ;-------------------------------------------------

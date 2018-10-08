@@ -28,12 +28,6 @@
 ;LOCAL:100 참가인수
 
 
-;변수의 초기화　(LOCAL:0에서 299까지 제로를 대입? )
-REPEAT 300
-LOCAL:COUNT = 0
-REND
-
-
 ;=============================================================================
 ;제작중의 메모 쓰기 실장하는···일지도
 ;스스로 노예를 선택하는적인이 끝난 상태
@@ -48,14 +42,11 @@ REND
 
 ;인원수분만큼 루프 돌린다　9 이하와 10이상으로 나누고 있는 것은 화면의 자리수 맞댐의 형편
 
-$INPUT_LOOP1
-PRINTFORML 윤간에 참가시키는 노예를 선택해 주세요(3명 이상)
-PRINTFORML 현재 {LOCAL:100}명
-DRAWLINE
 
-VARSET LOCAL, NULL
+VARSET LOCAL, NULL, 0, 99
+VARSET LOCAL, 0, 100
 
-;조건에 맞는 캐릭터를 표시
+;캐릭터 조건 판정
 REPEAT CHARANUM
     ;주인을 제외
     SIF COUNT == MASTER
@@ -72,21 +63,36 @@ REPEAT CHARANUM
     ;체력이나 기력이 8할 미만이라면 제외
     SIF (MAXBASE:COUNT:0 * 8 / 10 > BASE:COUNT:0 || MAXBASE:COUNT:1 * 8 / 10 > BASE:COUNT:1)
         CONTINUE
+    LOCAL:COUNT = FALSE
+REND
+
+LOCAL:100 = 0
+
+$INPUT_LOOP1
+PRINTFORML 윤간에 참가시키는 노예를 선택해 주세요(3명 이상)
+PRINTFORML 현재 {LOCAL:100}명
+DRAWLINE
+
+;캐릭터 표시
+REPEAT CHARANUM
+    ;조건 불충족
+    SIF LOCAL:COUNT == NULL
+        CONTINUE
+        
     ;참가하는 노예는★을 숫자의 전에 붙인다
     ;9이하는 스페이스 2개
     IF COUNT < 10
-        SIF LOCAL:COUNT == 1
+        SIF LOCAL:COUNT == TRUE
             PRINTFORM ★
         PRINTFORML [  {COUNT}] %CALLNAME:COUNT%
     ;10이상은 스페이스 1개
     ELSEIF COUNT >= 10
-        SIF LOCAL:COUNT == 1
+        SIF LOCAL:COUNT == TRUE
             PRINTFORM ★
         PRINTFORML [ {COUNT}] %CALLNAME:COUNT%
     ENDIF
-    LOCAL:COUNT = FALSE
-;캐릭터 표시 종료
 REND
+
 DRAWLINE
 SIF LOCAL:100 > 2
     PRINTC [101] 결정
@@ -99,17 +105,17 @@ IF RESULT <= 100 && LOCAL:RESULT == FALSE
     LOCAL:100 += 1
         ;추가·99 인선등 마음대로 스타트 시켜 버리자
     IF LOCAL:100 >= 99
-            REPEAT CHARANUM
-            SIF LOCAL:COUNT == 1
-            PRINTFORM [%CALLNAME:COUNT%] 
-            REND
-            PRINTFORML 
-            PRINTFORML 이 인원들이 참가합니다.
-            PRINTL
-            PRINTL
-            PRINTL
-            PRINTL
-            GOTO RINKAN_PHASE
+        REPEAT CHARANUM
+            SIF LOCAL:COUNT == TRUE
+                PRINTFORM [%CALLNAME:COUNT%] 
+        REND
+        PRINTFORML 
+        PRINTFORML 이 인원들이 참가합니다.
+        PRINTL
+        PRINTL
+        PRINTL
+        PRINTL
+        GOTO RINKAN_PHASE
     ENDIF
 
 ELSEIF RESULT <= 100 && LOCAL:RESULT == TRUE
@@ -158,6 +164,7 @@ GOTO INPUT_LOOP1
 
 ;=============================================================================
 $RINKAN_PHASE
+
 ;GOTO INPUT_LOOP1
 
 ;일시적 기록용으로, LOCAL:500에 인원수를 두드려 넣는다
