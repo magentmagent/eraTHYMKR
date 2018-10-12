@@ -2157,6 +2157,10 @@ RETURN 0
 
 @EVENTCOMEND
 #LATER
+;게임 오버 후 재시작 선택 시 발생하는 버그 해결을 위해 추가. T(181012)
+SIF CHARANUM < 1
+    RETURN 0
+
 IF NO == 72
     ;사랑계 이벤트 Lv5·및 리메이크(키스 한다)
     IF CFLAG:9102 == 7
