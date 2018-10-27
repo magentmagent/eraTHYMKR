@@ -2272,9 +2272,6 @@ SIF TCVAR:301 >= 2 && ASSI >= 0 && ASSIPLAY
 ;커멘드 종료후의 처리
 ;-------------------------------------------------
 @EVENTCOMEND
-;게임 오버 후 재시작 선택 시 발생하는 버그 해결을 위해 추가. T(181012)
-SIF CHARANUM < 1
-    RETURN 0
 SIF NO:TARGET != 33
     RETURN 0
 ;지문 컷 플래그 리셋트
