@@ -5593,6 +5593,9 @@ IF SELECTCOM == 7 || SELECTCOM == 102 || SELECTCOM == 1 || SELECTCOM == 10 || SE
 ENDIF
 
 @EVENTCOMEND
+;게임 오버 후 재시작 선택 시 발생하는 버그 해결을 위해 추가. T(181012)
+SIF CHARANUM < 1
+    RETURN 0
 SIF NO:TARGET != 0 || NO:MASTER != 32
     RETURN 0
 CFLAG:99 = 0

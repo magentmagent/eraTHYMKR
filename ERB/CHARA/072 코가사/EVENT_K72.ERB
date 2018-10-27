@@ -5862,6 +5862,9 @@ ENDIF
 
 ;조르는 말리셋트
 @EVENTCOMEND
+;게임 오버 후 재시작 선택 시 발생하는 버그 해결을 위해 추가. T(181012)
+SIF CHARANUM < 1
+    RETURN 0
 SIF NO == 72
     TCVAR:300 = 0
 
