@@ -1012,7 +1012,7 @@ IF LOCAL:101 == 1
     RESETCOLOR
     PRINTFORML 원을 받을 수 있을 것 같습니다.
     ;デバッグモードでは売値の基礎値・倍率補正(カンスト前の分のみ)を表示
-    PRINTFORM ※{RESULT:1}원(노예의 매각치 기본) × {RESULT:2/100}.{RESULT:2%100}(기초 구입률 보정) × α(그밖의 보정) + 의뢰 보상
+    PRINTFORM ※{RESULT:1}원(노예의 매각치 기본) × {RESULT:2/10000}.{RESULT:2%10000}(기초 구입률 보정) × α(그밖의 보정) + 의뢰 보상
     CALL SETCOLOR_TORIKOMODE, "SKYBLUE", 4
     PRINTFORML {LOCAL:100}
     RESETCOLOR
