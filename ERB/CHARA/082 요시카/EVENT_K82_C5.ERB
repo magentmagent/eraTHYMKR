@@ -23,151 +23,151 @@ IF TEQUIP:90 == 0
     IF CFLAG:7001 == 1 || TALENT:150 == 1
         IF CFLAG:7002 == 1
             IF ABL:35 == 5
-                PRINTFORM 「あひゅ
+                PRINTFORM 「아햐
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM ひゅ…　ひゅごかった…
+                PRINTFORM 됴…　됴하앗…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORML %CALLNAME:TARGET%は触手の責めが終わり投げ出されたにもかかわらず
-                PRINTFORMW その衝撃の波が未だ引かないのか体をびくりびくりと震わせている…
+                PRINTFORML %CALLNAME:TARGET%는 촉수가 몸을 핥아대는 게 끝났음에도 불구하고
+                PRINTFORMW 그 충격에 아직 몸에 힘이 들어가지 않는지 벌벌 떨고 있다…
             ELSEIF ABL:35 >= 3
-                PRINTFORM 「ひっぎゅっ
+                PRINTFORM 「히규웃
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM しょくしゅ…　すごかった…　ぞ…
+                PRINTFORM 쵹슈…　대다내…　햇…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW 触手の責めが終わり投げ出された%CALLNAME:TARGET%の体は汚濁液によりべとべとにデコレーションされていた…
+                PRINTFORMW 촉수가 핥아대는 게 끝난 뒤 내던져진 %CALLNAME:TARGET%의 몸은 더러운 액체로 엉망이 되어있다…
             ELSE
-                PRINTFORM 「や、やっとおわった…　ひんっ
+                PRINTFORM 「겨, 겨우 끝난 건가…　히읏
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW 触手の責めが終わり投げ出された%CALLNAME:TARGET%がびくりと体を震わせるとヴァギナやアヌスからどろりと汚濁液が溢れた…
+                PRINTFORMW 촉수가 핥아대는 게 끝난 뒤 내던져진 %CALLNAME:TARGET%가 몸을 움찔움찔 떨자 질과 애널에서 걸쭉한 액체가 울컥거리며 넘쳐흘렀다…
             ENDIF
         ELSE
-            PRINTFORML 「や、やっと　おわった…」
+            PRINTFORML 「겨, 겨우 끝난건가…」
         ENDIF
     ELSE
         IF ABL:35 == 5
-            PRINTFORM 「しょくしゅ　もっと…
+            PRINTFORM 「쵸, 쵹수 둄 더…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML %CALLNAME:MASTER%に屈しなかった%CALLNAME:TARGET%であったが触手の責めには心が折れてしまった様子で
-            PRINTFORMW 開放されてもなお刺激を求めようとしている…
+            PRINTFORML %CALLNAME:MASTER%에게 굴하지 않은 %CALLNAME:TARGET%였지만 촉수의 애무엔 마음이 꺾인건지
+            PRINTFORMW 개발되서 자극을 찾아 헤매고 있다…
         ELSEIF ABL:35 >= 3
-            PRINTFORML 「く…　くせになんてなってにゃひぞ？　ほんとだぞ！！」
-            PRINTFORMW 触手から開放され自由になった%CALLNAME:TARGET%は口ではそう言っているが体が覚えこんでしまったのか股をすり合わせもじもじとしている…
+            PRINTFORML 「버…　버릇이 되버렸다는 건가？　그럴 리가 없는 거─다！！」
+            PRINTFORMW 촉수에서 벗어나 자유로워진 %CALLNAME:TARGET%는 그렇게 말하곤 있지만 몸은 솔직하게 쾌락에 녹아서 허벅지를 비비적대며 떨고 있다…
         ELSE
-            PRINTFORML 「も…　もう…　やだ…」
-            PRINTFORMW 触手から開放された%CALLNAME:TARGET%は汚濁液でべとべとに汚され襲われる前の元気さはドコへやら四肢を投げ出しぐったりとしている…
+            PRINTFORML 「이…　이제…　안 돼…」
+            PRINTFORMW 촉수에게서 해방된 %CALLNAME:TARGET%는 백탁액에 엉망진창이 되선 이전의 건강함이 어디로 사라진 건지 사지를 푸들거리며 녹초가 되어있다…
         ENDIF
     ENDIF
 ;装着時
 ELSE
     IF CFLAG:8100 == 0
-        PRINTFORML 「おー、せーががおなじの　つかってたぞー」
-        PRINTFORML %CALLNAME:TARGET%は触手を見たことがある様子でニコニコとしているが
-        PRINTFORMW これから自分に使われるという事まで想像が至らなかったようだ…
+        PRINTFORML 「오ー, 청ー아가 같은 거 썼었다ー」
+        PRINTFORML %CALLNAME:TARGET%는 촉수를 본 적 있던 건지 킁킁대고 있지만
+        PRINTFORMW 앞으로 자신에게 닥쳐올 일은 상상하지 못하는 것 같다…
         CFLAG:8100 = 1
     ELSEIF CFLAG:7001 == 1
         IF CFLAG:7002 == 1
             IF ABL:35 >= 5
                 IF CFLAG:7010 >= 1
-                    PRINTFORM 「あっ
+                    PRINTFORM 「앗
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM えへへ
+                    PRINTFORM 에헤헤
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM しょくしゅ…　わたしのからだ…　こわれちゃう　な…
+                    PRINTFORM 쵹슈…　내 몸에…　고장나버리는 걸까나…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML 触手の責めがすっかりクセになってしまった%CALLNAME:TARGET%は
-                    PRINTFORMW その姿を認識するだけで肉壺からは洪水のように愛液が溢れている…
+                    PRINTFORML 촉수가 핥아대는 것에 완전히 함락되버린 %CALLNAME:TARGET%는
+                    PRINTFORMW 자신의 상태를 인식하는 것만으로 보지에서 애액이 줄줄 흐르고 있다…
                 ENDIF
             ELSEIF ABL:35 >= 3
                 IF CFLAG:7010 >= 1
-                    PRINTFORM 「しょ…しょくしゅあたまおかしくなっちゃう…　から…
+                    PRINTFORM 「쵸…쵹슈때므내 머리 이상해져… 버려…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW 触手の責めがクセになり始めているのか%CALLNAME:TARGET%はもじもじと股をすり合わせじっと見つめている…
+                    PRINTFORMW 촉수에 핥아지는 게 버릇이 되기 시작한 건지 %CALLNAME:TARGET%는 움찔움찔 가랑이를 떨며 촉수를 바라보고 있다…
                 ENDIF
             ELSE
                 IF CFLAG:7010 >= 1
-                    PRINTFORM 「あっ
+                    PRINTFORM 「앗
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORML しょくしゅ…　つよすぎるから…」
-                    PRINTFORML %CALLNAME:TARGET%は敏感になり始めた体を触手に弄ばれる自分を想像してしまったのか
-                    PRINTFORMW 顔を赤く染めながらももをしきりにすり合わせている…
+                    PRINTFORML 쵹슈…　너무 강렬해…」
+                    PRINTFORML %CALLNAME:TARGET%는 민감하게 변한 몸을 촉수에 희롱당하는 자신을 상상한 건지
+                    PRINTFORMW 얼굴을 붉게 물들이며 허벅지를 비비 꼬고 있다…
                 ELSE
-                    PRINTFORML 「おー、しょくしゅかー　こわさないてーどになー？」
+                    PRINTFORML 「오ー, 쵹슈인가ー　무섭지ー않은거다ー？」
                 ENDIF
             ENDIF
         ELSE
-            PRINTFORML 「やーめーろー！」
+            PRINTFORML 「그ー만ー둬ー！」
         ENDIF
     ELSEIF TALENT:150 == 1
         IF ABL:35 >= 5
-            PRINTFORM 「えへへ
+            PRINTFORM 「에헤헤
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM しょくしゅきもちいから　ぶっこわしてほしい　ぞ
+            PRINTFORM 촉슈로 기분 좋아지고　싶은 거─다
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML 触手の刺激がすっかりとクセになってしまった%CALLNAME:TARGET%は膣口を指で割り開きその刺激をねだるかのように腰をゆらゆら揺らし責めを待つ…
+            PRINTFORML 촉수의 자극에 완전히 중독되버린 %CALLNAME:TARGET%는 외음부를 손가락으로 젖히고 자극을 조르는 것처럼 허리를 하늘하늘 흔들어댔다…
         ELSEIF ABL:35 >= 3
-            PRINTFORM 「えへへ
+            PRINTFORM 「에헤헤
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM こんなきもちいこと　しらなかった　ぞ
+            PRINTFORM 이런 기분 좋은 거 몰랐었어
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW 触手の刺激がクセになり始めた%CALLNAME:TARGET%の理性は蕩け始め触手へと異常な快楽を求め始めた…
+            PRINTFORMW 촉수의 자극에 중독된 %CALLNAME:TARGET%의 이성은 완전히 녹아 없어져 촉수로 비정상적인 성감을 추구하고 있다…
         ELSE
         
         ENDIF
     ELSE
         IF ABL:35 >= 5
-            PRINTFORM 「く、クセになんか…　なってないぞっ！！　あっ
+            PRINTFORM 「버, 버릇된건가…　그럴 리 없는거다！！　앗
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW 口では強がる%CALLNAME:TARGET%だがその姿を認識すると快楽を思い出してしまったのか膝と肩を震わせ軽く絶頂してしまう…
+            PRINTFORMW 입으로는 허세부리고 있지만 %CALLNAME:TARGET%는 그 말과는 달리 쾌락을 상상해버린 것인지 무릎과 어깨를 떨며 가볍게 절정에 달했다…
         ELSEIF ABL:35 >= 3
-            PRINTFORM 「んっ
+            PRINTFORM 「읏
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORML しょ…　しょくしゅはやめてほしい…　ぞ…？」
-            PRINTFORMW そういう%CALLNAME:TARGET%だがももをすり合わせもじもじとしている…
+            PRINTFORML 쵸…　쵸슈는 더 이상 싫은… 거다…？」
+            PRINTFORMW 그런 말을 하면서도 %CALLNAME:TARGET%는 허벅지를 부벼대고 있다…
         ELSE
-            PRINTFORMW 「やーめーろー　おんなのこは　だいじにあつかえって　ならわなかったかー？」
+            PRINTFORMW 「그ー만ー둬ー　여자애는 소중하게 대해주라는 거 못 배운건가ー？」
         ENDIF
     ENDIF
 ENDIF
@@ -183,118 +183,118 @@ IF TEQUIP:20 == 0
         IF CFLAG:7002 == 1
             IF CFLAG:7010 >= 1
                 IF ABL: 35 == 5
-                    PRINTFORM 「いひっ
+                    PRINTFORM 「이힉
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM ぬけひゃ…　た…
+                    PRINTFORM 바보같… 무섭…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML 乱暴に引き抜かれていく触手により%CALLNAME:TARGET%の性器はぼこぼこと歪に蠢き　ごぽりと音を立てるように抜けるが
-                    PRINTFORMW その収まっていた洞穴は子宮口までぽっかりと口を開き責めの激しさを物語る…
+                    PRINTFORML 격렬하게 움직이는 촉수에 의해 %CALLNAME:TARGET%의 성기는 우묵하게 될 정도로 찌그러졌다가 꿈틀거리며 쭈욱 소리를 내면서 뱉어냈지만
+                    PRINTFORMW 그것이 머물렀던 구멍은 자궁 입구가 보일 정도로 벌려진 채 그대로다…
                 ELSEIF ABL:35 >= 3
-                    PRINTFORM 「ぬ…　ぬけひゃ…う…
+                    PRINTFORM 「마…　망가져…허…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM ぬけひゃうううぅうぅぅぅっ　ひぎっ
+                    PRINTFORM 망가져허어어어엇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML 触手の一際太い部分、カリの部分が%CALLNAME:TARGET%の肉壺から抜けるとほぼ同時にびくんと体を震わせ
-                    PRINTFORMW 背を弓なりにそらし絶頂へと登ってしまった様子だ…
+                    PRINTFORML 촉수 중에서도 유달리 굵은 부분이 %CALLNAME:TARGET%의 보지에서 빠져나오자 거의 동시에 움찔거리며 몸을 떨곤
+                    PRINTFORMW 등을 활처럼 휘면서 절정에 달했다…
                 ELSE
-                    PRINTFORM 「ひっ　いっ　ぎいいいぃいいぃぃいいぃっ
+                    PRINTFORM 「힉　잇 기이이이이이잇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML %CALLNAME:TARGET%は内臓を引きずり出されるような刺激に白目を向き体を強張らせ
-                    PRINTFORMW 完全に抜け切るとだらりと四肢を脱力させた…
+                    PRINTFORML %CALLNAME:TARGET%는 내장이 끌려 나오는 듯한 자극에 눈을 희번덕거리며 몸을 가누지 못하고
+                    PRINTFORMW 완전히 빠져나오자 사지를 축 늘어뜨렸다…
                 ENDIF
             ELSE
-                PRINTFORMW 「こ、こわれて…　ないよなー…？」
+                PRINTFORMW 「이, 이제는…　없는 건가ー…？」
             ENDIF
         ELSE
-            PRINTFORMW 「や、やっと…　おわ…った…」
+            PRINTFORMW 「겨, 겨우…　끝났…다…」
         ENDIF
     ELSEIF TALENT:150 == 1
         IF ABL:35 == 5
-            PRINTFORM 「もっひょ…
+            PRINTFORM 「둄 뎌허…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM もっひょ　しょくひゅちんちん…
+            PRINTFORM 둄 뎌　쵹슈자히…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML 触手から与えられる快楽がすっかりとクセになった%CALLNAME:TARGET%は
-            PRINTFORMW 引き抜かれた後も肉壺の快楽を触手へねだる…
+            PRINTFORML 촉수가 주는 쾌락에 완전히 중독된 %CALLNAME:TARGET%는
+            PRINTFORMW 거두어진 뒤에도 보지의 쾌락을 촉수로 해달라고 조르고 있다…
         ELSEIF ABL:35 >= 3
-            PRINTFORM 「しょっくひゅちんちん　たりなひ
+            PRINTFORM 「쵹슈 꼬츄 더어
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM たりなひ　ぞ…
+            PRINTFORM 좀 더 인거다…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW 触手から与えられる快楽がクセになり始めた%CALLNAME:TARGET%はぽっかり口を開いてしまった肉壺の縁を物寂しそうに撫で回している…
+            PRINTFORMW 촉수로 얻는 쾌락에 중독되기 시작한 %CALLNAME:TARGET%는 입구가 활짝 열린 보지를 못내 아쉬운 듯 슬슬 쓸어대고 있다…
         ELSE
-            PRINTFORM 「ひっぎっ
+            PRINTFORM 「힉기잇
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM きもひよくにゃんか…　にゃってにゃひっ
+            PRINTFORM 기훈 이샹해…　머햐이거
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%は触手から与えられる強烈な快楽によりすっかり蕩け呂律の回らない口でそう強がっている…
+            PRINTFORMW %CALLNAME:TARGET%는 촉수가 주는 강렬한 쾌락에 완전히 맛이 가서 제대로 움직이지도 않는 혀로 뭔가 말하고 있다…
         ENDIF
     ELSE
         IF ABL:35 == 5
-            PRINTFORM 「こわれひゃった
+            PRINTFORM 「부허혀 버려
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM わらひのからだ　きもひくて　こわれひゃった　ぞ
+            PRINTFORM 이러거 해속하면 부서혀 버혀
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW 触手の快楽に完全に心の折れてしまった%CALLNAME:TARGET%は与えられる刺激を心の底から楽しんでいる…
+            PRINTFORMW 촉수의 쾌락에 완전히 마음이 무너진 %CALLNAME:TARGET%는 자극을 진심으로 즐기고 있다…
         ELSEIF ABL:35 >= 3
-            PRINTFORM 「いひんっ
+            PRINTFORM 「이히잇
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM ち、ちがうぞっ　きもちよくなってなんか…　あっ…
+            PRINTFORM 아, 아니 기분 좋은 게 아니…　앗…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML 触手に屈服しかけている%CALLNAME:TARGET%は肉の槍から与えられる快楽を否定しているが
-            PRINTFORMW 抜け落ちた肉壺を触手が軽く触れただけで熱の篭った声を漏らしてしまう…
+            PRINTFORML 촉수에 굴복해야하는 %CALLNAME:TARGET%는 고기창이 주는 쾌락을 필사적으로 부정하고 있지만
+            PRINTFORMW 잔뜩 젖어있는 보지를 촉수가 가볍게 훑기만 해도 열띤 목소리를 흘리고 만다…
         ELSE
-            PRINTFORM 「いっ…　ひっ
+            PRINTFORM 「잇…　히익
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORMW や、やっと…　おわった…」
+            PRINTFORMW 겨, 겨우…　끝났다…」
         ENDIF
     ENDIF
     CFLAG:7038 = 0
 ;装着時
 ELSEIF CFLAG:8101 == 0
-    PRINTFORML 「は…？　そ…そんなのはいるわけな…　いっぎひい"ぃい"い"ぃぃい"い"ぃぃっ」
-    PRINTFORML いつも受け入れている陰茎よりも一回りも二回りも太い触手を突き入れられ
-    PRINTFORMW 陰部はいびつに歪み腹部は異常に盛り上がっている…
+    PRINTFORML 「하…？　그…그런게 다 있다니…　」
+    PRINTFORML 항상 넣어지던 음경보다 확연하게 굵은 촉수가 들어오자
+    PRINTFORMW 음부는 찌그러지고 복부는 확연하게 튀어나왔다…
     CFLAG:8101 = 1
     CFLAG:7038 = 1
 ELSE
@@ -302,49 +302,49 @@ ELSE
         IF CFLAG:7002 == 1
             IF CFLAG:7010 >= 1
                 IF ABL: 35 == 5
-                    PRINTFORM 「きひゃっ
+                    PRINTFORM 「키햐앗
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM ぶっひょいにょ　はひってきひゃああぁぁあぁぁんっ
+                    PRINTFORM 번쩍하고 눈이이이이이
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML %CALLNAME:TARGET%は触手から与えられる快楽がすっかりとクセになってしまったようで
-                    PRINTFORMW その性器を破壊しかねない暴力的な抽送すらも快楽へ変換し髪を振り乱しながらよがり狂っている…
+                    PRINTFORML %CALLNAME:TARGET%는 촉수에게 받는 쾌락에 완전히 맛이 간 것처럼
+                    PRINTFORMW 심지어 성기를 파괴할 듯한 폭력적인 촉수의 움직임조차도 그저 쾌락으로 받아들이며 머리를 흔들어대면서 미친듯이 날뛰고 있다…
                 ELSEIF ABL:35 >= 3
-                    PRINTFORM 「ひゅごひ　ひゅごひぞっ
+                    PRINTFORM 「됴하아 됴햐아아앗
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM しょくひゅにっ　おまんひょこわされひゃたああぁぁあああぁぁぁぁんっ
+                    PRINTFORM 쵸슈에헤 보히 마하혀 버혀어어어어어
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML 触手から与えられる快楽がクセになり始めた%CALLNAME:TARGET%は
-                    PRINTFORMW 次第に理性も蕩け始め自らも腰を振るい快楽を高めている…
+                    PRINTFORML 촉수로 얻는 쾌락에 중독된 듯한 %CALLNAME:TARGET%는
+                    PRINTFORMW 점차 이성도 잃어가면서 스스로 허리를 움직이며 쾌락을 갈구하고 있다…
                 ELSE
-                    PRINTFORM 「きっ　ひっ
+                    PRINTFORM 「킷 히익
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM ひょ…　ひょくひゅは　ちゅよしゅぎりゅ…　ぞ…
+                    PRINTFORM 효…　횩휴는　해다내해…　애…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML 触手から与えられる快楽というモノを理性はまだまだ受け入れ切れていない%CALLNAME:TARGET%はソレを否定しているが
-                    PRINTFORMW 呂律は回らず快楽に当てられ顔を真っ赤にし体は素直に楽しんでいるようだ…
+                    PRINTFORML 이성이 촉수로부터 전해오는 쾌락을 아직 받아들이지 못한 건지 %CALLNAME:TARGET%는 그걸 부정하고 있지만
+                    PRINTFORMW 말하는 투로 봐선 제대로 생각하지도 못하는 것 같고 얼굴은 새빨갛게 물들여선 몸만이 솔직하게 즐기고 있는 것 같다…
                 ENDIF
             ELSE
-                PRINTFORML 「わたしのからだ　こ…こわすなよー…？」
-                PRINTFORMW %CALLNAME:TARGET%はまだ触手から与えられる刺激を知らず体が壊れないか心配する方にばかり意識が向いている…
+                PRINTFORML 「내 몸이　부…부서지는 건가ー…？」
+                PRINTFORMW %CALLNAME:TARGET%는 아직 촉수에게서 쾌락을 느끼진 못하고 그저 몸이 망가지지 않을까 걱정하고 있다…
             ENDIF
         ELSE
-            PRINTFORML 「やーめーろー　こわれるだろー！！」
-            PRINTFORMW じたばたと暴れる%CALLNAME:TARGET%を触手は押さえつけその凶悪な槍をナカへと埋没させていく…
+            PRINTFORML 「그ー만ー둬ー　부서져버렷ー！！」
+            PRINTFORMW 발버둥치며 날뛰는 %CALLNAME:TARGET%를 촉수가 단단이 옭아매곤 그 굵은 말단을 천천히 삽입시키고 있다…
         ENDIF
     ELSEIF TALENT:150 == 1
         IF ABL:35 == 5
@@ -1029,20 +1029,20 @@ ELSEIF CFLAG:7001 == 1
                 IF ABL:35 == 5
                     IF CFLAG:8013 == 2
                         IF RAND:2 == 0
-                            PRINTFORM 「ひっ　ひぎっ
+                            PRINTFORM 「힉 히긱
                             SETCOLOR 0xFF0000
                             PRINTFORM %UNICODE(0x2665)%
                             RESETCOLOR
-                            PRINTFORM うごかにゃっ　うごかにゃひでっ
+                            PRINTFORM 움찔 움찔 움직여석
                             SETCOLOR 0xFF0000
                             PRINTFORM %UNICODE(0x2665)%
                             RESETCOLOR
-                            PRINTFORM ひぎゅっ　ちゅよしゅぎりゅっ　ぞっ
+                            PRINTFORM 히그윽 쵹슈가앗
                             SETCOLOR 0xFF0000
                             PRINTFORM %UNICODE(0x2665)%
                             RESETCOLOR
                             PRINTFORML 」
-                            PRINTFORMW 子宮に収まった触手が子宮内壁を抉るように動き回ると腹部はぼこりぼこりと膨らみ蠢きまわり%CALLNAME:TARGET%へと快楽を送る…
+                            PRINTFORMW 자궁에 들어간 촉수가 자궁벽을 도려내듯 움직이자 복부가 부풀어올라 꿈틀거리며 %CALLNAME:TARGET%에게 쾌락을 주었다…
                         ELSE
                             PRINTFORM 「ぬけひゃうっ
                             SETCOLOR 0xFF0000

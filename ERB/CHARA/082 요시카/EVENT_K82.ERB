@@ -30,22 +30,22 @@ RETURN 1
 ;自らの理想の嫁を表現するのに使う
 ;========================================================
 @SET_CHARA_KOJO_EXTRA_K82
-PRINTFORML 口上内イベント起こるようにしますか？（素質が変わり難易度に差が出てきます）
-PRINTL [0]イベントを発生させる
-PRINTL [1]素質変化無しでイベントだけを発生させる
-PRINTL [2]イベントはいらない
+PRINTFORML 구상 내의 이벤트가 일어나게 할까요? (소질이 변하는 난이도에 차이가 생깁니다.)
+PRINTL [0]이벤트를 발생시킨다
+PRINTL [1]소질 변화는 없이 이벤트만 발생시킨다
+PRINTL [2]이벤트는 필요없다
 $INPUT_LOOP_1
 INPUT
 IF RESULT == 0
-    PRINTFORMW イベントが起きるよう変更しました
+    PRINTFORMW 이벤트가 일어나도록 변경했습니다
     CFLAG:7000 = 1
     CFLAG:7001 = 1
 ELSEIF RESULT == 1
-    PRINTFORMW 素質を変化させないでイベントを起こします
+    PRINTFORMW 소질 변화는 없이 이벤트만 일어나도록 합니다
     CFLAG:7000 = 0
     CFLAG:7001 = 1
 ELSEIF RESULT == 2
-    PRINTFORMW イベントを起こしません
+    PRINTFORMW 이벤트가 발생하지 않습니다
     CFLAG:7000 = 0
     CFLAG:7001 = 0
 ELSE
@@ -84,13 +84,13 @@ ENDIF
 ;初調教時
 ;-------------------------------------------------
 @K82_MESSAGE_START_1
-PRINTFORML %CALLNAME:MASTER%は奴隷商から墓場をふらふらと徘徊していたという%CALLNAME:TARGET%を買い取り
-PRINTFORMW %CALLNAME:TARGET%の為に割り当てた部屋へと入った
-PRINTFORMW 「おー、ここはドコだー？おまえはダレだー？」
-PRINTFORMW 元気は良さそうだ、それに死体で思考が鈍って居るであろうし調教もしやすいだろう
-PRINTFORML %CALLNAME:TARGET%は奴隷商に捕まり売り払われここに居るということ
-PRINTFORML そしてこれから調教を始めることを告げ%CALLNAME:TARGET%の服を脱がしにかかった…
-PRINTFORMW 「な、何をするー。ちーかーよーるなー！！」
+PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 노예상에게 무덤가를 떠돌고 있었다던 %CALLNAME:TARGET%를 사들였다.
+PRINTFORMW %CALLNAME:TARGET%에게 배정시킨 방에 들어갔다.
+PRINTFORMW 「오ー, 여기는 어디인가ー？너는 누구인거냐ー？」
+PRINTFORMW 건강상태는 좋은 것 같고, 시체니까 사고능력도 떨어지겠지. 조교는 쉬워보인다.
+PRINTFORML %CALLNAME:TARGET%는 노예상에게 붙잡혔기에 여기에 있다고
+PRINTFORML 그리고 앞으로 조교를 시작할 거라고 말하곤 %CALLNAME:TARGET%의 옷을 벗기기 시작했다…
+PRINTFORMW 「뭐, 뭐하는건가ー. 다ー가ー오ー지 마ー！！」
 CFLAG:5201 = 1
 
 ;-------------------------------------------------
@@ -100,50 +100,50 @@ CFLAG:5201 = 1
     ;感度変化開始
     ;もう一度
     IF TALENT:150 == 1 && CFLAG:7002 == 3 && CFLAG:7001 == 1 && CFLAG:7003 == 0
-        PRINTFORML 「なー%CALLNAME:MASTER%ー
-        PRINTFORMW  まえにせーがが言っていたことをおもいだしたぞー！」
-        PRINTFORML 話を聞くに前%CALLNAME:TARGET%の体を調べた時に見つけた回路についての話だった…
-        PRINTFORMW %CALLNAME:TARGET%のその回路をどうしようかと考えていると%CALLNAME:TARGET%が話しかけてきた
-        PRINTFORML 「あ…あのなー、あ…%CALLNAME:MASTER%にだったら…」
-        PRINTFORMW 回路について意識が向いていて生返事を返すと%CALLNAME:TARGET%に%CALLNAME:MASTER%は組み敷かれた
-        PRINTFORMW 「あ…あのなー？だいじなコト…私がはなしてるのに…」
-        PRINTFORML ふと気が付く、%CALLNAME:TARGET%の目じりが軽く濡れていることに
-        PRINTFORMW %CALLNAME:TARGET%は身も心も%CALLNAME:MASTER%へ捧げる決心が付いたことに…
-        PRINTFORML %CALLNAME:MASTER%は%CALLNAME:TARGET%の頬に手を当て涙を指で拭い
-        PRINTFORMW そして%CALLNAME:MASTER%は%CALLNAME:TARGET%を強く強く抱きしめた…
+        PRINTFORML 「저ー%CALLNAME:MASTER%ー
+        PRINTFORMW  예전에 청-아가 말했던 것이 기억났다ー！」
+        PRINTFORML 이야기를 들어보자 %CALLNAME:TARGET%의 몸을 조사했을 때 발견했던 회로에 대한 이야기였다…
+        PRINTFORMW %CALLNAME:TARGET%는 그 회로를 어떻게 할까 생각하는 와중 %CALLNAME:TARGET%이 말을 걸어왔다
+        PRINTFORML 「저…저ー기, 저어…%조사처리(CALLNAME:MASTER,"가")%라며ー언…」
+        PRINTFORMW 회로에 대한 생각으로 가득해서 건성으로 대답하자 %CALLNAME:TARGET%에게 %조사처리(CALLNAME:MASTER,"는")% 깔려버렸다
+        PRINTFORMW 「저…저기 말야ー？중요한거─다…내가 말하는 거…」
+        PRINTFORML 겨우 정신이 들자, %CALLNAME:TARGET%의 눈가가 살짝 젖어있었다.
+        PRINTFORMW %CALLNAME:TARGET%는 몸도 마음도 %CALLNAME:MASTER%에게 바칠 결심이 되어있는 것이다…
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 뺨에 손을 대고 눈물을 손가락으로 닦아내었다.
+        PRINTFORMW 그리고 %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%를 강하게, 강하게 끌어안아 주었다…
         CFLAG:7002 = 1
         CFLAG:7003 = 1
     ;연모
     ELSEIF TALENT:150 == 1 && CFLAG:7001 == 1 && CFLAG:7003 == 0
-        PRINTFORML 「あ、あのな%CALLNAME:MASTER%…
-        PRINTFORML せーがが前言ってたことおもいだしたぞ」
-        PRINTFORMW なんでも%CALLNAME:TARGET%を作った人物はその体にある仕掛けを施したらしい
-        PRINTFORML %CALLNAME:TARGET%本人が気を許し、その身を捧げたいと心の底から思い
-        PRINTFORMW 相手も生涯を添い遂げたいと精神に刻み込まれた場合のみ発動するそうだ
-        PRINTFORML 身も心も深く愛しその結果体の感覚も生前を上回るほどに取り戻し
-        PRINTFORMW より深くお互いを感じ、夫婦として何ら障害も無く暮らせるため施したそうだ
-        PRINTFORML 「な、何ぼーっとしてるんだー！
-        PRINTFORMW こんなだいじなこと　はなしたいみを　さっせよーばかー！」
-        PRINTL 深く愛してやれるだろうか…？
-        PRINTL [0] 当たり前だ
-        PRINTL [1] 道具は道具に過ぎない
+        PRINTFORML 「아, 저─기 %CALLNAME:MASTER%…
+        PRINTFORML 청─아가 전에 한 말이 생각났다」
+        PRINTFORMW 아무래도 %CALLNAME:TARGET%를 만든 인물이 그녀의 몸에 장치를 설계해놓은 것 같다
+        PRINTFORML %CALLNAME:TARGET% 본인이 마음을 허락하고, 그 몸을 바치고 싶다고 진심으로 생각하고
+        PRINTFORMW 상대 또한 일생을 그녀와 보내고 싶다고 진심으로 응한 경우에만 발동한다고 한다
+        PRINTFORML 몸도 마음도 깊이 사랑받고, 사랑한 결과 전신의 감각도 생전과 다름 없을 정도로 회복되어
+        PRINTFORMW 더 깊이 서로를 느끼고 부부로써 아무 방해도 받지 않고 살 수 있게 안배해둔 것이다
+        PRINTFORML 「어, 어째ー서 멍하니 있는 것이냐ー！
+        PRINTFORMW 이런 중요한 걸 이야기했으니까 좀 눈ー치 채라고 바ー보！」
+        PRINTL 더욱 사랑해줄 수 있을까…？
+        PRINTL [0] 당연하지
+        PRINTL [1] 도구는 도구에 불과하다
         $INPUT_LOOP_2
         INPUT
         ;ON
         IF RESULT == 0
-            PRINTFORMW %CALLNAME:MASTER%は考えるまでも無く即答し、%CALLNAME:TARGET%に口付けをした
-            PRINTFORML 「そ…そーいうことだからよろしくなー！」
-            PRINTFORMW %CALLNAME:TARGET%は気恥ずかしそうにそう言い放ちこちらに背を向け服を脱ぎ始める
-            PRINTFORMW そんな%CALLNAME:TARGET%の青く血色の悪い頬はほのかに朱に染まっているように見えた…
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 생각할 필요도 없이 즉시, %CALLNAME:TARGET%에게 입을 맞췄다.
+            PRINTFORML 「그…그ー럼 잘 부탁ー해！」
+            PRINTFORMW %CALLNAME:TARGET%는 부끄러운 듯 그렇게 내뱉곤 뒤로 돌아 옷을 벗기 시작했다
+            PRINTFORMW そんな%CALLNAME:TARGET%의 핏기 없는 얼굴에 희미하게 홍조가 피어오른 것 같다…
             CFLAG:7002 = 1
             CFLAG:7003 = 1
         ;OFF
         ELSEIF RESULT == 1
-            PRINTFORML %CALLNAME:MASTER%は少し思案し『あぁ、当たり前だろう』とニヤリと笑うように言い放ち
-            PRINTFORMW %CALLNAME:TARGET%の服を脱がしにかかる
-            PRINTFORMW 「こ、これからもよろしくなー！」
-            PRINTFORML %CALLNAME:TARGET%は%CALLNAME:MASTER%を疑う事無く
-            PRINTFORMW 青白く血色の悪い頬をほのかに染めながらそう言い放った
+            PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 조금 생각해보곤,『아아, 당연하잖아』라고 말하듯이 히죽 웃고 단언했다
+            PRINTFORMW %CALLNAME:TARGET%의 옷을 벗기기 시작했다
+            PRINTFORMW 「아, 앞으로도 잘 부탁ー해！」
+            PRINTFORML %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"를")% 의심하는 일 없이
+            PRINTFORMW 창백한, 핏기 없는 얼굴을 발갛게 물들이며 그렇게 말했다
             CFLAG:7002 = 2
             CFLAG:7003 = 2
         ELSE
@@ -151,43 +151,43 @@ CFLAG:5201 = 1
         ENDIF
     ;従順LV3以上、굴복각인LV3、あなたが禁断の知識持ち
     ELSEIF ABL:10 >= 3 && MARK:2 == 3 && TALENT:MASTER:56 == 1 && CFLAG:7001 == 1 && CFLAG:7003 == 0
-        PRINTFORML %CALLNAME:MASTER%は%CALLNAME:TARGET%を調教しようと近づいた時にふと思いつく
-        PRINTFORMW %CALLNAME:MASTER%の持つ知識を駆使すれば%CALLNAME:TARGET%の使い物にならなくなった神経を生前まで戻すことが出来るのではないのだろうかと
-        PRINTFORML 「なー%CALLNAME:MASTER%ー、うんうんうなってどーしたー？」
-        PRINTFORMW そう呼びかけられ思案をやめ%CALLNAME:TARGET%の方へ向き直る…
-        PRINTFORML %CALLNAME:TARGET%の了承を取り、少し%CALLNAME:TARGET%の体を調べたところ
-        PRINTFORMW どうやら既に神経を元に戻すための回路は作られているようだ
-        PRINTFORML しかし、その元に戻すための条件にはお互いに深く愛し合うという事が必要らしい…
-        PRINTFORMW だが%CALLNAME:MASTER%の持つ知識を使えばその条件を書き換えることも出来るが…
-        PRINTL 書き換えてしまおうか…？
-        PRINTL ［0］やってしまおう
-        PRINTL ［1］やめておこう
-        PRINTFORML ［2］%CALLNAME:TARGET%が決めた相手に…
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%를 조교하려 다가갔을 때 문득 떠올렸다
+        PRINTFORMW %CALLNAME:MASTER%의 지식을 사용한다면 %CALLNAME:TARGET%의 제 기능을 못하는 신경계를 살아있을 때처럼 되돌릴 수 있지 않을까?
+        PRINTFORML 「저ー%CALLNAME:MASTER%ー, 왜 끙끙 대고ー있는 거냐ー？」
+        PRINTFORMW 그녀의 목소리에 생각을 마치고 %CALLNAME:TARGET%의 방향으로 향했다…
+        PRINTFORML %CALLNAME:TARGET%의 승낙을 받고, %CALLNAME:TARGET%의 몸을 조사한 결과
+        PRINTFORMW 아무래도 이미 신경을 복구하는 회로는 짜여있는 것 같다
+        PRINTFORML 그러나, 그걸 실행시키기 위한 조건은 서로를 깊이 사랑할 것…
+        PRINTFORMW 하지만 %조사처리(CALLNAME:MASTER,"가")% 가진 지식을 활용한다면, 그 조건을 덮어씌울 수도 있을 것이다…
+        PRINTL 고쳐써버릴까…？
+        PRINTL ［0］저질러버리자
+        PRINTL ［1］관두자
+        PRINTFORML ［2］%CALLNAME:TARGET%이 결정하도록 할까…
         $INPUT_LOOP_3
         INPUT
         ;ON
         IF RESULT == 0
-            PRINTFORML %CALLNAME:MASTER%は%CALLNAME:TARGET%にじっとしているようにと告げ
-            PRINTFORMW 回路を書き換えるために%CALLNAME:TARGET%へと手をかざし作り変えていった…
+            PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%에게 가만히 있으라고 말했다
+            PRINTFORMW 회로를 고쳐쓰기 위해 %CALLNAME:TARGET%의 이마에 손을 올렸다…
             CFLAG:7002 = 1
             CFLAG:7002 = 2
         ;OFF
         ELSEIF RESULT == 1
-            PRINTFORMW やめておこう、どうせ売り払う奴隷だ。余計な力を使う必要は無い…
+            PRINTFORMW 관두자, 어차피 팔아먹을 노예인데, 괜히 힘 뺄 필요는 없지…
             CFLAG:7002 = 2
             CFLAG:7003 = 2
         ELSEIF RESULT == 2
-            PRINTFORMW やめておこう、%CALLNAME:TARGET%が心の底から思う相手に楽しんでもらうとしよう…
+            PRINTFORMW 관두자, %CALLNAME:TARGET%이 진정 원하는 상대가 즐길 수 있도록…
             CFLAG:7002 =3
         ELSE
             GOTO INPUT_LOOP_3
         ENDIF
     ELSEIF MARK:9 == 3
         IF TALENT:150 == 1
-            PRINTFORMW 「ちーかーよーるーなー！！」
+            PRINTFORMW 「다ー가ー오ー지ー마ー！！」
         ELSE
-            PRINTFORML 「ちーかーよーるーなー！！」
-            PRINTFORMW %CALLNAME:TARGET%は口を大きく開け、うなりながら%CALLNAME:MASTER%を威嚇している
+            PRINTFORML 「다ー가ー오ー지ー마ー！！」
+            PRINTFORMW %CALLNAME:TARGET%는 입을 크게 벌리고 으르렁대며 %조사처리(CALLNAME:MASTER,"를")% 위협했다.
         ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
@@ -196,78 +196,78 @@ CFLAG:5201 = 1
             IF RAND:7 == 0 && CFLAG:7010 >= 1
                 ;V
                 IF CFLAG:7010 == 1
-                    PRINTFORML 「あ…あのなー、いつもちんちん出し入れしてるところが何かむずむずするんだー！」
-                    PRINTFORMW %CALLNAME:TARGET%はまだまだ硬い関節を動かし太ももをすり合わせながら%CALLNAME:MASTER%へそう告げた…
+                    PRINTFORML 「저…있잖ー아, 항상 자지 들어오는 곳이 뭔가 근질근질하ー다！」
+                    PRINTFORMW %CALLNAME:TARGET%는 아직 굳어있는 관절을 움직여 허벅지를 딱딱 부딪히면서 %CALLNAME:MASTER%에게 말했다…
                 ELSEIF CFLAG:7010 == 2
-                    PRINTFORML 「あっ%CALLNAME:MASTER%ー！せっくす？ってこんなにきもちいーコトだったんだなー！！」
-                    PRINTFORMW %CALLNAME:TARGET%は大分動くようになって来た自らの足で歩きながら%CALLNAME:MASTER%へ抱きつきそう言った…
+                    PRINTFORML 「앗 %CALLNAME:MASTER%ー！섹스？라는 건 이런 기ー분 좋은 일이었구ー나！！」
+                    PRINTFORMW %CALLNAME:TARGET%는 제대로 움직일 수 있게 된 발로 걸으면서 %조사처리(CALLNAME:MASTER,"를")% 껴안고 말했다…
                 ELSEIF CFLAG:7010 == 3
-                    PRINTFORML 「おー、%CALLNAME:MASTER%ー！いっぱいいっぱいせっくすしてくれー！！」
-                    PRINTFORMW %CALLNAME:TARGET%は自由になった自らの足を開き%CALLNAME:MASTER%を誘惑している…
+                    PRINTFORML 「오ー, %CALLNAME:MASTER%ー！가득 가득 섹스해ー줘！！」
+                    PRINTFORMW %CALLNAME:TARGET%는 자유롭게 움직일 수 있게 된 다리를 벌리곤 %조사처리(CALLNAME:MASTER,"를")% 유혹해왔다…
                 ENDIF
             ;A
             ELSEIF RAND:6 == 0 && CFLAG:7012 >= 1
                 IF CFLAG:7012 == 1
-                    PRINTFORML 「あ…あのなー？さいきんおしりにちんちんが出たり入ったりするとむずむずするんだー」
-                    PRINTFORMW どうやら%CALLNAME:TARGET%は今までの成果が出てきたようでアヌスで感じ始めるようになって来たようだ…
-                    PRINTFORMW 「だ…だからもっと一杯…」
+                    PRINTFORML 「저…있잖ー아？요즘 엉덩이에 꼬추가 들락날락해서 가려운 거ー다」
+                    PRINTFORMW 아무래도 %CALLNAME:TARGET%는 지금까지의 성과가 나온 듯 애널로 느끼기 시작하는 것 같다…
+                    PRINTFORMW 「그…그러─니까 한 번 더…」
                 ELSEIF CFLAG:7012 == 2
                     IF CFLAG:7101 == 0
-                        PRINTFORML 「あ…あのなー？%CALLNAME:MASTER%がおしりにちんちん出し入れするたびに頭が真っ白になって世界がまわってみえるんだー！
-                        PRINTFORMW 私のからだ…こわれちゃったのか…？」
-                        PRINTFORML %CALLNAME:MASTER%は不安そうにしている%CALLNAME:TARGET%を安心させるため愛し合った結果治ってきたと告げると
-                        PRINTFORMW 今まで不安そうだった%CALLNAME:TARGET%の顔は一瞬で笑顔に変わり恥ずかしそうに
-                        PRINTFORM 「も…もっとセカイ…　回して…
+                        PRINTFORML 「저…있잖ー아？%조사처리(CALLNAME:MASTER,"가")% 엉덩이에 넣을 때마다 머리가 하얗게 되고 세상이 빙빙 돈ー다！
+                        PRINTFORMW 내 몸…부서진건─가…？」
+                        PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 불안해하던 %CALLNAME:TARGET%를 안심시키기 위해 열심히 사랑했던 결과가 나오고 있는 거라고 말하자
+                        PRINTFORMW 지금까지 불안해하던 %CALLNAME:TARGET%의 만면에 웃음꽃이 피며 수줍어했다
+                        PRINTFORM 「좀…좀 더 세상…　돌려─줘…
                         SETCOLOR 0xFF0000
                         PRINTFORM %UNICODE(0x2665)%
                         RESETCOLOR
                         PRINTFORML 」
                         CFLAG:7101 = 1
                     ELSE
-                        PRINTFORML 「き…きょーもいっぱい　おかして欲しい…なー…
+                        PRINTFORML 「조…조ー금 더 잔뜩 해줬으면…좋겠ー다…
                         SETCOLOR 0xFF0000
                         PRINTFORM %UNICODE(0x2665)%
                         RESETCOLOR
                         PRINTFORML 」
-                        PRINTFORMW %CALLNAME:TARGET%は恥ずかしそうにうつむきながらも%CALLNAME:MASTER%へアヌスの責めを求める…
+                        PRINTFORMW %CALLNAME:TARGET%는 부끄러운 듯이 고개를 저으면서도 %CALLNAME:MASTER%에게 애널을 괴롭혀지길 원하고 있었다…
                     ENDIF
                 ELSEIF CFLAG:7012 == 3
                     ;음란or음고
                     IF TALENT:170 == 1 || TALENT:173 == 1
-                        PRINTFORM 「えへへ…%CALLNAME:MASTER%にあいされて、おしりおかされるの　だいすきになっちゃった…
+                        PRINTFORM 「에헤헤…%CALLNAME:MASTER%에게 사랑받으면서, 엉덩이 쑤셔지는 거 좋아하게 되버렸다…
                         SETCOLOR 0xFF0000
                         PRINTFORM %UNICODE(0x2665)%
                         RESETCOLOR
                         PRINTFORML 」
-                        PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%にしな垂れかかりながら、自らの指でアヌスを責め続けている…
+                        PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%에게 기대오면서 자신의 애널에 손가락을 넣어달라고 보채왔다…
                     ELSE
-                        PRINTFORML 「お…おしりでかんじるとか…　うおー%CALLNAME:MASTER%ー！せきにんとれー！！」
-                        PRINTFORMW そう詰め寄る%CALLNAME:TARGET%のアヌスを指で弄ってやると可愛く声を上げた…
+                        PRINTFORML 「어…어, 엉덩이에서 느끼다니…　우아ー%CALLNAME:MASTER%ー！책임지는 거ー다！！」
+                        PRINTFORMW 그렇게 대드는 %CALLNAME:TARGET%의 애널을 손가락으로 만지작거리자 귀여운 목소리를 내었다…
                     ENDIF
                 ENDIF
             ;C
             ELSEIF RAND:5 == 0 && CFLAG:7014 >= 1
-                PRINTFORM 「く、くりとりす…おかしくなってきちゃった…　ぞ…
+                PRINTFORM 「크, 크리토리스…이상해져 버린…　다…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は自らの指でくりくりと淫核を弄びながら%CALLNAME:MASTER%へと近づいてきた…
+                PRINTFORMW %CALLNAME:TARGET%는 자신의 손가락으로 슬근슬근 음핵을 문지르면서 %CALLNAME:MASTER%에게로 다가왔다…
             ;B
             ELSEIF RAND:4 == 0 && CFLAG:7016 >= 1
-                PRINTFORM 「えへへ
+                PRINTFORM 「에헤へ
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM ちくびもおっぱいもきもちいぞ…
+                PRINTFORM 젖꼭지도 가슴도 기분 좋아……
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:MASTER%が来るまで%CALLNAME:TARGET%は自らの胸を責めながら体の疼きを慰めていたようだ…
+                PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 올 때까지 %CALLNAME:TARGET%는 자신의 가슴을 애무하며 몸을 달래고 있던 모양이다…
             ;痛覚
             ELSEIF RAND:3 == 0 && CFLAG:7018 >= 1
-                PRINTFORM 「いたみがわかるってこんなにうれしーことだったんだなー
+                PRINTFORM 「아픔을 안다는 게 이렇게나ー기쁜 일이었구나ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
@@ -278,22 +278,22 @@ CFLAG:5201 = 1
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORML いままでごはんってうごくためだけにたべてたけどなー
-                PRINTFORMW あじがわかっておいしいって思えるってすごいうれしいことだったんだなー」
+                PRINTFORML 지금까지 밥은 움직이기 위해서만 먹고 있었지만ー
+                PRINTFORMW 맛을 알게 되니 맛있는 걸 먹는다는 게 얼마나 기쁜 일인지 알게 됐ー다」
             ;子宮
             ELSEIF RAND:1 == 0 && CFLAG:7022 >= 1
                 IF CFLAG:7022 == 3
-                    PRINTFORM 「えへへ…
+                    PRINTFORM 「에헤헤…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORML にんしん出来るようになったから早くあかちゃんできないかなー」
-                    PRINTFORMW %CALLNAME:TARGET%は顔を赤くし、ニコニコしながら%CALLNAME:MASTER%へそう言った
+                    PRINTFORML 임신할 수 있게 됐으니 빨리 아기 만들 수 없을ー까」
+                    PRINTFORMW %CALLNAME:TARGET%는 얼굴이 빨갛게 물든 채 생글생글 웃으며 %CALLNAME:MASTER%에게 말했다た
                 ELSEIF CFLAG:7022 == 2
-                    PRINTFORMW 「はやくあかちゃんほしいぞー！！」
+                    PRINTFORMW 「빨리 아기 원하는 거ー다！！」
                 ELSEIF CFLAG:7022 == 1
-                    PRINTFORML 「はやくあかちゃん作れるようになりたいぞー！！
-                    PRINTFORM 今日もがんばろーなー、%CALLNAME:MASTER%ー
+                    PRINTFORML 「빨리 아기 만들 수 있게 되고 싶은 거ー다！！
+                    PRINTFORM 오늘도 힘─내─라, %CALLNAME:MASTER%ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
@@ -301,26 +301,26 @@ CFLAG:5201 = 1
                 ENDIF
             ;その他
             ELSE
-                PRINTFORML 「はやく、きもちくなりたいぞー！
-                PRINTFORM だから…いっぱいおかしてなー？
+                PRINTFORML 「빨리, 기분 좋게 되고 싶은 거ー다！
+                PRINTFORM 그러니까…잔뜩 범해줘ー？
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORMW 」
             ENDIF
         ELSE
-            PRINTFORML 「おー、%CALLNAME:MASTER%ー！きょーもいっぱい　あいしてもらうぞー！！」
-            PRINTFORMW %CALLNAME:TARGET%は待ちわびた様子で%CALLNAME:MASTER%を見た途端服を脱ぎ放っていった
+            PRINTFORML 「오ー, %CALLNAME:MASTER%ー！오─늘도 많이 사랑해ー줘！！」
+            PRINTFORMW %CALLNAME:TARGET%는 애가 타는지 %CALLNAME:MASTTER%를 보자마자 옷을 벗기 시작했다
         ENDIF
     ;굴복각인lv3
     ELSEIF MARK:2 == 3
-        PRINTFORML 「んー、きょーもやるのかー？よくあきないなー」
-        PRINTFORMW %CALLNAME:TARGET%はぶつくさと文句を言いながらも素直に服を脱いでいく
+        PRINTFORML 「응ー, 오ー늘도 인건가ー？질리지도 않는 건가ー」
+        PRINTFORMW %CALLNAME:TARGET%는 투덜투덜 불평하면서도 솔직하게 옷을 벗었다
     ;従順LV3
 ;    ELSEIF ARB:10 == 3
 ;        PRINTFORML 
     ELSE
-        PRINTFORML 「したいいじくるとか　いーしゅみだなー？」
+        PRINTFORML 「시체 만지작 거리는 게　취ー미인건ー가？」
     ENDIF
     
 ;========================================================
@@ -350,9 +350,9 @@ TRYCALL K82_MESSAGE_END
 @K82_MESSAGE_END
 IF MARK:9 == 3
     IF TALENT:150 == 1
-        PRINTFORMW 「さ…さわんなー！！」
+        PRINTFORMW 「마…만지지ー마！！」
     ELSE
-        PRINTFORMW 「もーくんなー！！」
+        PRINTFORMW 「오ー지ー마！！」
     ENDIF
 ;연모
 ELSEIF TALENT:150 == 1
@@ -360,264 +360,264 @@ ELSEIF TALENT:150 == 1
     IF CFLAG:7002 == 4
         IF RAND:5 == 0
             IF BASE:0 <= 500 && TFLAG:11 >= 0
-                PRINTFORM 「は…はげしすぎだぞー…
+                PRINTFORM 「겨…격렬한 거ー다…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM こわれちゃう…
+                PRINTFORM 부서져버려…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は体力を使い果たしはぁはぁと肩で息をしている…
+                PRINTFORMW %CALLNAME:TARGET%는 체력이 떨어져서 하아하아 어깨를 들썩이며 숨쉬고 있다…
             ELSEIF TFLAG:11 >= 0
-                PRINTFORM 「もっとナカにいれてくれー
+                PRINTFORM 「좀 더 안에 싸달라는 거ー다
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は物足りない様子で自らの指でヴァギナを慰めている…
+                PRINTFORMW %CALLNAME:TARGET%는 부족하다는 듯이 자신의 질을 애무하고 있다…
                 EXP:10 += 1
                 EXP:0 += 1
             ELSE
-                PRINTFORM 「つ…つぎはこっちにも…
+                PRINTFORM 「다…다음은 나한테도…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%にヴァギナへの刺激をねだる…
+                PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%에게 보지에 넣어달라고 조르고 있다…
             ENDIF
 
             IF TFLAG:11 >= 5 && TFLAG:12 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%の存分に愛されたヴァギナとアヌスから大量に注ぎ込まれた精液がごぽごぽと音を立てるように溢れた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 충분히 애정을 주입받은 질과 애널에서 대량의 정액이 뚝뚝 소리를 내며 쏟아졌다…
             ELSEIF TFLAG:11 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%のたっぷり愛された膣内からはごぽりと精液が溢れた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 충분히 애정을 주입받은 질에선 주르륵 정액이 쏟아졌다…
             ELSEIF TFLAG:12 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%のアヌスからごぽりと精液が溢れた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 애널에서 정액이 흘러넘친다…
             ENDIF
             
         ELSEIF RAND:4 == 0 
             IF BASE:0 <= 500 && TFLAG:12 >= 0
-                PRINTFORM 「あはっ
+                PRINTFORM 「아핫
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM おしり…
+                PRINTFORM 엉덩이…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM もっとぉ…
+                PRINTFORM 좀 더어…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:MASTER%に愛しぬかれぐったりとした%CALLNAME:TARGET%はアヌスへの刺激がまだまだ足りない様子で力なく指で慰めている…
+                PRINTFORMW %CALLNAME:MASTER%에게 사랑을 다 받자 추욱 늘어진 %CALLNAME:TARGET%는 엉덩이에 자극이 부족했던 모양인지 힘없이 손가락을 움직여 달래고 있었다…
                 EXP:10 += 1
                 EXP:1 += 1
                 PRINTFORML A経験+1
                 PRINTFORMW 自慰経験+1
             ELSEIF TFLAG:12 >= 0
-                PRINTFORM 「わたしのおしり…もっといじめてくれー…
+                PRINTFORM 「내 엉덩이…더 괴롭혀ー줘…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は物足りない様子で%CALLNAME:MASTER%へとアヌスの刺激をねだる…
+                PRINTFORMW %CALLNAME:TARGET%는 부족하다는 듯이 %CALLNAME:MASTER%에게 애널을 자극해달라고 졸라왔다…
             ELSE
-                PRINTFORM 「こ…こんどはおしりにも…
+                PRINTFORM 「이…이번엔 엉덩이에도…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%はアヌスへの刺激をねだる…
+                PRINTFORMW %CALLNAME:TARGET%는 애널을 자극해달라고 조른다…
             ENDIF
             
             IF TFLAG:11 >= 5 && TFLAG:12 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%の存分に愛されたヴァギナとアヌスから大量に注ぎ込まれた精液がごぽごぽと音を立てるように溢れた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 충분히 사랑받은 질과 애널에서 대량의 정액이 뚝뚝 소리를 내며 쏟아졌다…
             ELSEIF TFLAG:11 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%の愛されていたヴァギナからごぽりと音を立てながら精液が溢れてきた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 사랑을 받은 질에서 주르륵 소리를 내며 정액이 넘쳐흘렀다…
             ELSEIF TFLAG:12 >= 5
-                PRINTFORMW そういう%CALLNAME:TARGET%のアヌスからはごぽりと音を立てながら精液が溢れてきた…
+                PRINTFORMW 그런 %CALLNAME:TARGET%의 애널에선 주르륵 정액이 흘러내렸다…
             ENDIF
             
         ELSEIF RAND:3 == 0
             IF BASE:0 <= 500
-                PRINTFORM 「んっ…
+                PRINTFORM 「읏…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM つぎもいっぱい…いじめ…て…
+                PRINTFORM 너무 많아…괴로…워…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORM %CALLNAME:TARGET%は力なくも物足りない様子で
+                PRINTFORM %CALLNAME:TARGET%는 힘빠진 모습으로
                 
                 IF CFLAG:7014 == 3
-                    PRINTFORMW クリトリスへの刺激で自らを慰め続けていた…
+                    PRINTFORMW 클리토리스를 자극하며 스스로를 달래고 있다…
                 ELSE
-                    PRINTFORMW 乳首への刺激で自らを慰め続けていた…
+                    PRINTFORMW 유두를 자극하며 스스로 달래고 있다…
                 ENDIF
                 
                 EXP:10 += 1
                 PRINTFORMW 自慰経験+1
             ELSE
-                PRINTFORM 「こんども…いっぱい…
+                PRINTFORM 「이번에도…가득…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%はにこりと%CALLNAME:MASTER%に笑みを投げかけると口付けをした…
+                PRINTFORMW %CALLNAME:TARGET%는 히죽 웃고는 %CALLNAME:MASTER%에게 입맞춤했다…
                 EXP:23 += 1
                 PRINTFORMW キス経験+1
             ENDIF
         ELSEIF RAND:2 == 0
             IF BASE:0 <= 500 && (TFLAG:15 >= 0 || TFLAG:14 >= 0)
-                PRINTFORM 「こんなにいっぱい…
+                PRINTFORM 「이렇게 많이…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は口の周りにこびりついた精液をうっとりとした瞳で舐め取り味わっている…
+                PRINTFORMW %CALLNAME:TARGET%는 입 주위에 묻은 정액을 황홀한 표정으로 핥으며 맛보고 있다…
                 EXP:4 += 1
                 PRINTFORMW 精液経験+1
             ELSE
-                PRINTFORML 「なー、もっといっぱいせーしくれー
+                PRINTFORML 「므ー, 더 많이 정ー액 줘ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%はまだまだ味わい足りないといった様子で%CALLNAME:MASTER%を咥えている…
+                PRINTFORMW %CALLNAME:TARGET%은 아직 맛보기에도 부족하다는 모습으로 %조사처리(CALLNAME:MASTER,"를")% 물고 있다…
                 EXP:22 += 1
                 PRINTFORMW フェラ経験+1
             ENDIF
             
         ELSEIF RAND:1 == 0
             IF BASE:0 <= 500 && CFLAG:7030 >= 100 && TFLAG:11 >= 0
-                PRINTFORM 「しきゅう…
+                PRINTFORM 「자구웅…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM こわれ…ちゃう…
+                PRINTFORM 부서져…읏…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORM %CALLNAME:MASTER%の性器を奥まで受け入れていた%CALLNAME:TARGET%の膣はぽっかりと口を開き
+                PRINTFORM %CALLNAME:MASTER%의 성기를 끝까지 받아들였던 %CALLNAME:TARGET%의 질은 입구를 벌려서
                 IF TFLAG:11 >= 15
-                    PRINTFORMW 大量に注ぎ込まれた精液がどろりと溢れた…
+                    PRINTFORMW 대량으로 넣어진 정액을 쏟아내고 있다…
                 ELSE
-                    PRINTFORMW 注ぎ込まれていた精液が溢れてきた…
+                    PRINTFORMW 들어갔던 정액이 넘치고 있다…
                 ENDIF
             ELSE
-                PRINTFORM 「えへへー
+                PRINTFORM 「에헤헤ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM あかちゃん出来るようにもっといっぱいだしてー
+                PRINTFORM 아기 가질 수 있게 더 많이 싸줘ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%との子供が欲しい様子で膣出しをねだっている
+                PRINTFORMW %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"와")%의 사이에서 아기를 원하는 지 질내사정을 졸라왔다
             ENDIF
         ELSE
             IF BASE:0 <= 500
-                PRINTFORM 「もー…
+                PRINTFORM 「으ー…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM からだうごかないー…
+                PRINTFORM 몸이 움직이지 않아ー…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:MASTER%に力尽きてしまうほど愛された%CALLNAME:TARGET%ははぁはぁと肩で息をしている…
+                PRINTFORMW %CALLNAME:MASTER%에게 지칠 정도로 사랑받은 %CALLNAME:TARGET%는 하아하아 어깨로 숨을 쉬고 있다…
             ELSE
-                PRINTFORM 「つぎもいっぱいかわいがってほしいぞ…
+                PRINTFORM 「다음에도 많이 사랑해줘…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は顔を赤くしながら%CALLNAME:MASTER%へもたれかかった…
+                PRINTFORMW %CALLNAME:TARGET%는 얼굴을 붉히며 %CALLNAME:MASTER%에게 몸을 기대어 왔다…
             ENDIF
         ENDIF
     ;感度変化
     ELSEIF CFLAG:7002 == 1
         ;v感度
         IF CFLAG:7011 >= 10
-            PRINTFORM %CALLNAME:TARGET%のヴァギナは
+            PRINTFORM %CALLNAME:TARGET%의 질은
                 IF CFLAG:7010 == 0
-                    PRINTFORMW 感じることが出来なかったが
+                    PRINTFORMW 느끼지는 못하는 것 같지만
                 ELSEIF CFLAG:7010 == 1
-                    PRINTFORMW あまり感じることが出来なかったが
+                    PRINTFORMW 특별히 느끼지는 못하지만
                 ELSE
-                    PRINTFORMW だいぶ感じるようになって来たが
+                    PRINTFORMW 많이 느낄 수 있게 됐지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの愛を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 사랑을 충분히 받고
                 IF CFLAG:7010 == 0
-                    PRINTFORMW わずかに感じるようになって来た
+                    PRINTFORMW 조금 느낄 수 있게 됐다
                 ELSEIF CFLAG:7010 == 1
-                    PRINTFORMW だいぶ感じるようになって来た
+                    PRINTFORMW 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW 生前よりも強力な快感を受けるようになって来た
+                    PRINTFORMW 생전보다도 강렬한 쾌감을 느끼게 됐다
                 ENDIF
-            PRINTFORML 「えへへ、%CALLNAME:MASTER%にいっぱい可愛がられて
+            PRINTFORML 「에헤헤, %CALLNAME:MASTER%한테 잔뜩 사랑받고
                 IF CFLAG:7010 == 0
-                    PRINTFORM 少しだけ%CALLNAME:MASTER%のちんちんが出たり入ったりがわかるようになって来たぞー
+                    PRINTFORM 조금이지만 %CALLNAME:MASTER%의 자지가 들락날락하는 이유를 알게 된 거다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7010 == 1
-                    PRINTFORM きもちよくなれるようになったから…
-                    PRINTFORM もっとわたしとせっくすしてくれー
+                    PRINTFORM 기분 좋은 게 뭔지 알게 됐으니
+                    PRINTFORM 좀 더 나랑 섹스하는 거다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORM 「あたままっしろになっちゃった
+                    PRINTFORM 「머리 새하얗게 되서
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM だからせっくす…
+                    PRINTFORM 그래서 섹스…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM せっくすもっといっぱい…
+                    PRINTFORM 섹스를 더 많이…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ENDIF
-            PRINTFORML %CALLNAME:TARGET%は
+            PRINTFORML %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 0
                     IF CFLAG:7010 == 2
-                         PRINTFORML 表情はだいぶ硬いがヴァギナへの刺激にすっかり脳はとろけきり
-                         PRINTFORMW 呂律が回らないようだ…
+                         PRINTFORML 표정은 여전히 굳어있지만 질에 가해지는 자극에 뇌가 완전히 넋이 나가서
+                         PRINTFORMW 입이 제대로 움직이질 못하는 것 같다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが少し恥ずかしそうにすごくうれしそうな声でそう言った…
+                        PRINTFORMW 표정은 상당히 굳어있지만 조금 수줍게, 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7010 == 2
-                        PRINTFORML 表情はまだまだ硬いがヴァギナへの刺激にすっかり脳はとろけきり
-                        PRINTFORMW 呂律が回らないようだ…
+                        PRINTFORML 표정은 아직 굳어있지만 질에 가해진 자극에 뇌가 완전히 넋이 나가버려서
+                        PRINTFORMW 말하는 투가 입을 제대로 쓰질 못하는 것 같다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 표정은 굳어있지만 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF CFLAG:7010 == 2
-                        PRINTFORML だいぶ自由になった表情は快楽により痙攣し
-                        PRINTFORMW 呂律も回らなくしゃべるのもままならないようだ…
+                        PRINTFORML 꽤 자유롭게 지을 수 있게 된 표정은 쾌락으로 떨리고 있었다
+                        PRINTFORMW 말하는 투가 역시 입술을 움직이는 게 영 부자연스러운 것 같다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 풀어진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7010 == 2
-                        PRINTFORMW すっかり蕩けきった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 완전히 넋나간 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 自由になった表情筋で恥ずかしさとうれしさの入り混じった顔で%CALLNAME:MASTER%にそう言った
+                        PRINTFORMW 자유롭게 표정을 지을 수 있게 된 얼굴로 부끄러움과 기쁨이 뒤섞인 감정을 표현하며 %CALLNAME:MASTER%에게 말했다
                     ENDIF
                 ENDIF
 
@@ -627,91 +627,91 @@ ELSEIF TALENT:150 == 1
                 IF CFLAG:7000 == 1
                     IF CFLAG:7010 == 3
                         TALENT:102 = 1
-                        PRINTFORMW %CALLNAME:TARGET%はV敏感を得ました
+                        PRINTFORMW %CALLNAME:TARGET%은 V 민감을 얻었습니다
                     ELSEIF CFLAG:7010 == 1
                         TALENT:103 = 0
-                        PRINTFORMW %CALLNAME:TARGET%はV鈍感を失いました
+                        PRINTFORMW %CALLNAME:TARGET%은 V 둔감을 잃었습니다
                     ENDIF
                 ENDIF
         ;A感度
         ELSEIF CFLAG:7013 >= 10
-            PRINTFORM %CALLNAME:TARGET%のアヌスは
+            PRINTFORM %CALLNAME:TARGET%의 애널은
                 IF CFLAG:7012 == 0
-                    PRINTFORMW 感じることが出来なかったが
+                    PRINTFORMW 느끼지 못하는 것 같지만
                 ELSEIF CFLAG:7012 == 1
-                    PRINTFORMW あまり感じることが出来なかったが
+                    PRINTFORMW 별로 느낌이 없는 것 같지만
                 ELSE
-                    PRINTFORMW だいぶ感じるようになって来たが
+                    PRINTFORMW 다소 느낄 수 있게 되었지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの愛と努力を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 노력과 사랑을 여실히 받고 나서
                 IF CFLAG:7012 == 2
-                    PRINTFORMW 生前よりも強力な快楽を受けるようになって来た
+                    PRINTFORMW 생전보다도 강렬하게 쾌감을 느끼게 됐다
                 ELSEIF CFLAG:7012 == 1
-                    PRINTFORMW だいぶ感じるようになって来た
+                    PRINTFORMW 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW わずかに感じるようになって来た
+                    PRINTFORMW 조금 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%にお尻いっぱいいじめられて
+            PRINTFORM 「에헤헤, %조사처리(CALLNAME:MASTER,"는")% 엉덩이를 많이 괴롭힌다
                 IF CFLAG:7012 == 2
-                    PRINTFORM 頭まっしろになっちゃった…
+                    PRINTFORM 머리가 새하얗게 되버려…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORMW だからおしり…
+    	            PRINTFORMW 또 엉덩이…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM もっといっぱいいじめ…て…
+                    PRINTFORM 더 많이 괴롭혀…줘…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7012 == 1
-                    PRINTFORM きもちよくなれるようになったから
+                    PRINTFORM 기분 좋아질 거 같다
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM もっといっぱいおしりをいじめてくれー
+                    PRINTFORM 더 많이 엉덩이 괴롭혀줘ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORM ちんちんが出たり入ったりしてるのわかるようになってきたぞ
+                    PRINTFORM 꼬추가 들락날락하는 게 어떤 느낌인지 알게 됐단 말─야
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF CFLAG:7012 == 2
-                        PRINTFORML アヌスへの快楽を常人以上に受けすっかり顔は蕩け切り
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ刺激を求め続けた…
+                        PRINTFORML 애널에 대한 쾌감을 보통 사람 이상으로 받아 완전히 뿅 간 얼굴로
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 자극을 계속 요구했다…
                     ELSE
-                        PRINTFORML 自由になった表情筋でアヌスで感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 자유롭게 지을 수 있게 된 표정을 통해 애널로 느끼면서도
+                        PRINTFORMW 부끄러움과 기쁨이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF CFLAG:7012 == 2
-                        PRINTFORML だいぶ自由になった表情はアヌスからの快楽により痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유롭게 지을 수 있게 된 표정은 애널에 가해진 쾌락에 경련하고 있다
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 부드러워진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7012 == 2
-                        PRINTFORML 表情はまだまだ硬いがアヌスから与えられた快楽により脳はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 아직 굳어있지만 애널에 자극받고 있는 쾌락때문에 완전히 뇌가 가버린 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 표정은 굳어있지만 목소리만은 즐거운 듯이 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7012 == 2
-                        PRINTFORML 表情はだいぶ硬いがアヌスから与えられた快楽により脳はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 아직 굳어있지만 애널에 자극받고 있는 쾌락때문에 완전히 뇌가 가버린 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 아직 굳어있지만 기쁜듯한 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
 
@@ -721,80 +721,80 @@ ELSEIF TALENT:150 == 1
             IF CFLAG:7000 == 1
                 IF CFLAG:7012 == 3
                     TALENT:104 = 1
-                    PRINTFORMW %CALLNAME:TARGET%はA敏感を得ました
+                    PRINTFORMW %CALLNAME:TARGET%는 A 민감을 얻었습니다
                 ELSEIF CFLAG:7012 == 1
                     TALENT:105 = 0
-                    PRINTFORMW %CALLNAME:TARGET%はA鈍感を失いました
+                    PRINTFORMW %CALLNAME:TARGET%는 A 둔감을 잃었습니다
                 ENDIF
             ENDIF
 
         ;C感度
         ELSEIF CFLAG:7015 >= 10
-            PRINTFORM %CALLNAME:TARGET%のクリトリスは
+            PRINTFORM %CALLNAME:TARGET%의 클리토리스는
                 IF CFLAG:7014 == 0
-                    PRINTFORMW 感じることが出来なかったが
+                    PRINTFORMW 느끼지 못하는 것 같지만
                 ELSEIF CFLAG:7014 == 1
-                    PRINTFORMW あまり感じることが出来なかったが
+                    PRINTFORMW 딱히 느끼진 못하는 거 같지만
                 ELSE
-                    PRINTFORMW だいぶ感じるようになって来たが
+                    PRINTFORMW 제법 느낄 수 있게 됐지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの愛と努力を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 노력과 사랑을 충분히 받아서
                 IF CFLAG:7014 == 2
-                    PRINTFORMW 生前よりも強力な快楽を受けるようになって来た
+                    PRINTFORMW 생전보다도 더욱 쾌락을 느낄 수 있게 되었다
                 ELSEIF CFLAG:7014 == 1
-                    PRINTFORMW だいぶ感じるようになって来た
+                    PRINTFORMW 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW わずかに感じるようになって来た
+                    PRINTFORMW 조금은 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%にくりとりすいっぱいいじめられて
+            PRINTFORM 「에헤헤, %CALLNAME:MASTER%에게 크리토리스 많이 괴롭혀져서
                 IF CFLAG:7014 == 2
-                    PRINTFORM あたままっしろになっちゃったぞ…
+                    PRINTFORM 머리 새하얗게 되버렸다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7014 == 1
-                    PRINTFORM きもちよくなれるようになったぞー
+                    PRINTFORM 기분 좋은 걸 알게 된거다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORM 「さわられるたびにくりとりすがむずむずしてきたぞ…
+                    PRINTFORM 「만질 때마다 크리토리스가 근질거리는거다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF CFLAG:7014 == 2
-                        PRINTFORML クリトリスへの快楽を常人以上に受けすっかり顔は蕩け切り
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ刺激を求め続けた…
+                        PRINTFORML 클리토리스에 쾌락을 너무 많이 받아서 완전히 뿅 가버린 얼굴로
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 자극을 계속 요구했다…
                     ELSE
-                        PRINTFORML 自由になった表情筋でクリトリスで感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정을 자유롭게 지을 수 있게 된 얼굴에서 클리토리스로 느끼는 것을 드러내면서
+                        PRINTFORMW 부끄러움과 기쁨이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF CFLAG:7014 == 2
-                        PRINTFORML だいぶ自由になった表情はクリトリスからの快楽により痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유자재로 지을 수 있게 된 표정은 클리토리스에서 전해지는 쾌락에 의해 가볍게 떨리며 
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 풀린 표정으로 で%CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7014 == 2
-                        PRINTFORML 表情はまだまだ硬いがクリトリスから与えられた快楽により脳はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 클리토리스에 가해진 쾌락 때문에 뇌는 완전히 황홀경에 빠진 듯
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 표정은 굳어있지만 즐거워하는 목소리로 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7014 == 2
-                        PRINTFORML 表情はだいぶ硬いがクリトリスから与えられた快楽により脳はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 클리토리스에 가해진 쾌락 때문에 뇌는 완전히 황홀경에 빠진 듯
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 여전히 굳어있지만 꽤 기쁜 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
 
@@ -804,80 +804,80 @@ ELSEIF TALENT:150 == 1
             IF CFLAG:7000 == 1
                 IF CFLAG:7014 == 3
                     TALENT:100 = 1
-                    PRINTFORMW %CALLNAME:TARGET%はC敏感を得ました
+                    PRINTFORMW %CALLNAME:TARGET%은 C 민감을 얻었습니다
                 ELSEIF CFLAG:7014 == 1
                     TALENT:101 = 0
-                    PRINTFORMW %CALLNAME:TARGET%はC鈍感を失いました
+                    PRINTFORMW %CALLNAME:TARGET%은 C 둔감을 잃었습니다
                 ENDIF
             ENDIF
 
         ;B感度
         ELSEIF CFLAG:7017 >= 10
-            PRINTFORM %CALLNAME:TARGET%の胸は
+            PRINTFORM %CALLNAME:TARGET%의 가슴은
                 IF CFLAG:7016 == 2
-                    PRINTFORMW だいぶ感じるようになって来たが
+                    PRINTFORMW 많이 느낄 수 있게 된건지
                 ELSEIF CFLAG:7016 == 1
-                    PRINTFORMW あまり感じることが出来なかったが
+                    PRINTFORMW 별로 느끼진 못하는 것 같지만
                 ELSE
-                    PRINTFORMW 感じることが出来なかったが
+                    PRINTFORMW 느끼지 못하는 것 같지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの愛と努力を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 노력과 사랑을 충분히 받아서
                 IF CFLAG:7016 == 2
-                    PRINTFORMW 生前よりも強力な快楽を受けるようになって来た
+                    PRINTFORMW 생전보다도 더욱 쾌락을 느낄 수 있게 되었다
                 ELSEIF CFLAG:7016 == 1
-                    PRINTFORMW だいぶ感じるようになって来た
+                    PRINTFORMW 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW わずかに感じるようになって来た
+                    PRINTFORMW 조금은 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%におっぱいいじめられて
+            PRINTFORM 「에헤헤, %CALLNAME:MASTER%에게 가슴 괴롭혀져서
                 IF CFLAG:7016 == 2
-                    PRINTFORM あたままっしろになっちゃったぞ…
+                    PRINTFORM 머리가 새하얗게 되버렸다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7016 == 1
-                    PRINTFORM きもちよくなれるようになったぞー
+                    PRINTFORM 기분 좋게 되었다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORM 」
                 ELSE
-                    PRINTFORM 触られるたびにちくびがむずむずしてきたぞ…
+                    PRINTFORM 만질 때마다 젖꼭지가 간질간질하게 됐다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF CFLAG:7016 == 2
-                        PRINTFORML 胸への快楽を常人以上に受けすっかり顔は蕩け切り
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ刺激を求め続けた…
+                        PRINTFORML 가슴으로 얻는 쾌락이 완전히 보통 사람보다 민감해져서 황홀경에 빠져버린 채
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 자극을 계속 요구했다…
                     ELSE
-                        PRINTFORML 自由になった表情筋で胸で感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 자유롭게 움직일 수 있게 된 얼굴 근육은 표정으로 느낀다는 걸 표현하며
+                        PRINTFORMW 부끄러움과 기뿜이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF CFLAG:7016 == 2
-                        PRINTFORML だいぶ自由になった表情は胸からの快楽により痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유롭게 지을 수 있게 된 표정이 가슴에서 느껴지는 자극때문에 쾌락으로 움찔거리면서
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 부드러워진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7016 == 2
-                        PRINTFORML 表情はまだまだ硬いが胸から与えられた快楽により脳はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 아직 굳어있지만 가슴에 가해지는 쾌락 때문에 뇌가 완전히 황홀경에 빠져버려서
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 표정은 굳어있지만 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7016 == 2
-                        PRINTFORML 表情はだいぶ硬いが胸から与えられた快楽により脳はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 가슴에서 받는 쾌락에 뇌가 완전히 뿅 가버렸는지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 여전히 굳어있지만 기쁜 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
 
@@ -887,83 +887,83 @@ ELSEIF TALENT:150 == 1
             IF CFLAG:7000 == 1
                 IF CFLAG:7016 == 3
                     TALENT:106 = 1
-                    PRINTFORMW %CALLNAME:TARGET%はB敏感を得ました
+                    PRINTFORMW %CALLNAME:TARGET%는 B 민감을 얻었습니다
                 ELSEIF CFLAG:7016 == 1
                     TALENT:107 = 0
-                    PRINTFORMW %CALLNAME:TARGET%はB鈍感を失いました
+                    PRINTFORMW %CALLNAME:TARGET%는 B 둔감을 잃었습니다
                 ENDIF
             ENDIF
         ;痛覚
         ELSEIF CFLAG:7019 >= 10
-            PRINTFORM %CALLNAME:TARGET%の痛覚は
+            PRINTFORM %CALLNAME:TARGET%는 통각을
                 IF CFLAG:7018 == 2
-                    PRINTFORMW だいぶ感じるようになって来たが
+                    PRINTFORMW 많이 느낄 수 있게 된건지
                 ELSEIF CFLAG:7018 == 1
-                    PRINTFORMW あまり感じることが出来なかったが
+                    PRINTFORMW 별로 느끼진 못하지만
                 ELSE
-                    PRINTFORMW 感じることが出来なかったが
+                    PRINTFORMW 느끼고 있는 것 같진 않지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの愛と努力を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 노력과 사랑을 충분히 받아서
                 IF CFLAG:7018 == 2 && ABL:21 == 5
-                    PRINTFORMW 生前よりも強力な快楽を受けるようになって来た
+                    PRINTFORMW 생전보다도 더욱 쾌락을 느낄 수 있게 되었다
                 ELSEIF CFLAG:7018 == 2
-                    PRINTFORMW 完全に痛覚が戻ってきたようだ
+                    PRINTFORMW 완전히 통각이 돌아온 것 같다
                 ELSEIF CFLAG:7018 == 1
-                    PRINTFORMW だいぶ感じるようになって来た
+                    PRINTFORMW 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW わずかに感じるようになって来た
+                    PRINTFORMW 조금은 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%に叩かれて
+            PRINTFORM 「에헤헤, %CALLNAME:MASTER%한테 맞아서
                 IF CFLAG:7018 == 2 && ABL:21 == 5
-                    PRINTFORM あたままっしろになっちゃったぞ…
+                    PRINTFORM 머리 새하얗게 되버린다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7018 == 2
-                    PRINTFORM 痛い…けれど…うれしいぞ
+                    PRINTFORM 아파아…하지만…기뻐어
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7018 == 1
-                    PRINTFORM 肌がぴりぴりするのがわかるようになって来たぞー
+                    PRINTFORM 피부가 찌릿찌릿한 감각을 알게 되버린 거다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORMW ぴりぴりするのが痛みなのかー？」
+                    PRINTFORMW 찌릿찌릿하는 게 통증인건가ー？」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF CFLAG:7018 == 2 && ABL:21 == 5
-                        PRINTFORML 痛みが快楽となりその刺激で理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ刺激を求め続けた…
+                        PRINTFORML 통증이 쾌락을 주는 자극이 되어버려서 이성이 완전히 마비된 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 자극을 계속 요구했다…
                     ELSE
-                        PRINTFORML 自由になった表情筋で痛みを感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 자유롭게 지을 수 있게 된 얼굴 표정은 통증을 느낄 수 있다는 걸
+                        PRINTFORMW 부끄러움과 기쁨이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF CFLAG:7018 == 2 && ABL:21 == 5
-                        PRINTFORML だいぶ自由になった表情は痛みが快楽になり痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유롭게 지을 수 있게 된 얼굴 표정이 쾌락으로 변한 통증으로 경련하면서도
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 부드러워진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7018 == 2 && ABL:21 == 5
-                        PRINTFORML 表情はまだまだ硬いが痛みは快楽になり理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 통증이 쾌락으로 변한 탓에 이성이 완전히 맛이 간 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 표정은 굳어있지만 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7018 == 2 && ABL:21 == 5
-                        PRINTFORML 表情はだいぶ硬いが痛みは快楽になり理性はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 통증이 쾌락으로 변한 탓에 이성이 완전히 날아가버린 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 여전히 굳어있지만 기쁜 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
     
@@ -973,81 +973,81 @@ ELSEIF TALENT:150 == 1
             IF CFLAG:7000 == 1
                 IF CFLAG:7018 == 3
                     TALENT:82 = 1
-                    PRINTFORMW %CALLNAME:TARGET%はマゾを取得しました
+                    PRINTFORMW %CALLNAME:TARGET%는 마조를 취득했습니다
                 ENDIF
             ENDIF
         
         ;味覚
         ELSEIF CFLAG:7021 >= 10
-            PRINTFORM %CALLNAME:TARGET%の味覚は
+            PRINTFORM %CALLNAME:TARGET%의 미각은
                 IF CFLAG:7020 == 2
-                    PRINTFORMW だいぶ精の味がクセになってきたようだが
+                    PRINTFORMW 상당히 정액 맛에 길들여진 것 같은데
                 ELSEIF CFLAG:7020 == 1
-                    PRINTFORMW 精の味をあまり感じることが出来なかったが
+                    PRINTFORMW 정액의 맛을 별로 느끼고 있는 것 같진 않지만
                 ELSE
-                    PRINTFORMW 精の味を感じることが出来なかったが
+                    PRINTFORMW 정액의 맛을 느끼고 있는 것 같진 않지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの精を十分受け
+            PRINTFORM %CALLNAME:MASTER%의 사랑을 충분히 받아서
                 IF CFLAG:7020 == 2 && ABL:31 == 5
-                    PRINTFORMW すっかり精液の味の虜となったようだ
+                    PRINTFORMW 완전히 정액의 맛에 빠져버린 것 같다
                 ELSEIF CFLAG:7020 == 2
-                    PRINTFORMW 生前よりも強力に精を味わえるようになった
+                    PRINTFORMW 생전보다도 강력하게 정액의 맛을 느낄 수 있게 됐다
                 ELSEIF CFLAG:7020 == 1
-                    PRINTFORMW 味がだいぶ感じるようになって来た
+                    PRINTFORMW 맛을 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW 味覚をわずかに感じるようになって来た
+                    PRINTFORMW 미각을 조금은 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%にいっぱいくちにそそがれて
+            PRINTFORM 「에헤헤, %CALLNAME:MASTER%에게 가득 입에 싸넣어져서
                 IF CFLAG:7020 == 2 && ABL:31 == 5
-                    PRINTFORM あたままっしろになっちゃった…
+                    PRINTFORM 머리 새하얗게 되버렸다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7020 == 2
-                    PRINTFORM せーしのあじがおいしくなってきちゃったぞ…
+                    PRINTFORM 정액의 맛이 좋다고 느끼게 되버렸다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7020 == 1
-                    PRINTFORM すこしなまぐさいけど…なんかクセに…
+                    PRINTFORM 조금 비릿하지만…어쩐지 버릇될 거 같다…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORMW これがせーしの…あじなのかー…？」
+                    PRINTFORMW 이것이 정─액의…맛인건가ー…？」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF ABL:31 == 5
-                        PRINTFORML すっかりクセになってしまった精子の味により理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ精を求め続けた…
+                        PRINTFORML 완전히 버릇이 되버린 정액의 맛에 의해 이성이 완전히 맛이 간 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 정액을 계속 요구해왔다…
                     ELSE
-                        PRINTFORML 自由になった表情筋で味を感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 자유롭게 표정을 지을 수 있게 된 얼굴로 맛을 느낄 수 있다는 걸 어필하려는 건지
+                        PRINTFORMW 부끄러움과 기쁨이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF  ABL:31 == 5
-                        PRINTFORML だいぶ自由になった表情は痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유롭게 표정을 지을 수 있게 된 얼굴이 경련하느라
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 부드러워진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF ABL:21 == 5
-                        PRINTFORML 表情はまだまだ硬いが精の味に理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 정액의 맛에 이성이 완전히 맛이 간 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 굳어있는 표정이지만 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF ABL:21 == 5
-                        PRINTFORML 表情はだいぶ硬いが精の味に理性はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 정액의 맛에 이성이 완전히 날아가버린 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 여전히 굳어있지만 기쁜 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
         
@@ -1056,67 +1056,67 @@ ELSEIF TALENT:150 == 1
     
         ;子宮
         ELSEIF CFLAG:7023 >= 10
-            PRINTFORM %CALLNAME:TARGET%の子宮は
+            PRINTFORM %CALLNAME:TARGET%의 자궁은
                 IF CFLAG:7022 == 2
-                    PRINTFORMW だいぶ子宮でも感じるようになってきたようだが
+                    PRINTFORMW 상당히 자궁으로도 느낄 수 있게 된 것 같지만
                 ELSEIF CFLAG:7022 == 1
-                    PRINTFORMW 子宮口ではあまり感じることが出来なかったが
+                    PRINTFORMW 자궁구는 별로 느끼고 있는 것 같진 않지만
                 ELSE
-                    PRINTFORMW 子宮口では感じることが出来なかったが
+                    PRINTFORMW 자궁구는 느끼고 있는 것 같진 않지만
                 ENDIF
-            PRINTFORM %CALLNAME:MASTER%からの子宮へのマッサージを十分受け
+            PRINTFORM %CALLNAME:MASTER%에게 자궁 마사지를 충분히 받아서
                 IF CFLAG:7022 == 2
-                    PRINTFORMW すっかり子宮へ与えられる刺激の虜となったようだ
+                    PRINTFORMW 완전히 자궁에의 자극에 대해 빠져버리게 된 것 같다
                 ELSEIF CFLAG:7022 == 1
-                    PRINTFORMW 子宮口でだいぶ感じるようになって来た
+                    PRINTFORMW 자궁구는 많이 느낄 수 있게 됐다
                 ELSE
-                    PRINTFORMW 子宮口でわずかに感じるようになって来た
+                    PRINTFORMW 자궁구는 조금은 느낄 수 있게 됐다
                 ENDIF
-            PRINTFORM 「えへへ、%CALLNAME:MASTER%にいっぱいおく突かれて
+            PRINTFORM 「에헤헤, %CALLNAME:MASTER%에게 잔뜩 찔려서
                 IF CFLAG:7022 == 2
-                    PRINTFORM あたま…まっしろに…
+                    PRINTFORM 머리가…새하얗게…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7022 == 1
-                    PRINTFORM ちょっとくるしいけど…きもちよく…
+                    PRINTFORM 좀 힘들지만…기분이…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORMW さっきのはなにしたんだー…？」
+                    PRINTFORMW 아까 뭐한 거야ー…？」
                 ENDIF
-            PRINTFORM %CALLNAME:TARGET%は
+            PRINTFORM %CALLNAME:TARGET%는
                 IF CFLAG:7020 == 3
                     IF CFLAG:7022 == 2
-                        PRINTFORML すっかりクセになってしまった子宮への刺激により理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%へ精を求め続けた…
+                        PRINTFORML 완전히 버릇되어버린 자궁에의 자극에 이성이 완전히 맛이 간 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 사랑해달라고 계속 요구해왔다…
                     ELSE
-                        PRINTFORML 自由になった表情筋で子宮への刺激を感じられるということに
-                        PRINTFORMW 恥ずかしさと嬉しさの入り混じった顔で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 자유롭게 표정을 지을 수 있게 된 얼굴로 자궁에의 자극을 느낄 수 있는 걸 어필하는 건지
+                        PRINTFORMW 부끄러움과 기쁨이 뒤섞인 얼굴로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 2
                     IF  CFLAG:7022 == 2
-                        PRINTFORML だいぶ自由になった表情は子宮への刺激により痙攣し
-                        PRINTFORMW 呂律の回らない言葉で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 꽤 자유롭게 표정 지을 수 있게 된 얼굴이 자궁에 가해지는 자극에 의해 경련하면서도
+                        PRINTFORMW 말이 제대로 나오지 않지만 억지로 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW だいぶやわらかくなった表情で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORMW 많이 부드러워진 표정으로 %CALLNAME:MASTER%에게 말했다…
                     ENDIF
                 ELSEIF CFLAG:7020 == 1
                     IF CFLAG:7022 == 2
-                        PRINTFORML 表情はまだまだ硬いが子宮への刺激理性はすっかり蕩けきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 자궁에의 자극에 이성이 완전히 맛이 간 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW まだまだ硬い表情だがうれしそうな声でそう言った…
+                        PRINTFORMW 아직 굳어있는 표정이지만 즐거운 목소리로 그렇게 말했다…
                     ENDIF
                 ELSE
                     IF CFLAG:7022 == 2
-                        PRINTFORML 表情はだいぶ硬いが子宮への刺激により理性はすっかりとろけきり
-                        PRINTFORMW 呂律の回らない声で%CALLNAME:MASTER%にそう言った…
+                        PRINTFORML 표정은 여전히 굳어있지만 자궁에의 자극에 이성이 완전히 날아가버린 건지
+                        PRINTFORMW 말을 제대로 못하는 상태에서도 %CALLNAME:MASTER%에게 말했다…
                     ELSE
-                        PRINTFORMW 表情はだいぶ硬いが嬉しそうな声でそう言った…
+                        PRINTFORMW 표정은 여전히 굳어있지만 기쁜 목소리로 그렇게 말했다…
                     ENDIF
                 ENDIF
             
@@ -1124,27 +1124,27 @@ ELSEIF TALENT:150 == 1
             CFLAG:7023 = 0
     
             IF CFLAG:7022 == 2
-                PRINTFORMW %CALLNAME:TARGET%は妊娠が可能になりました…
+                PRINTFORMW %CALLNAME:TARGET%는 임신이 가능하게 되었습니다…
             ENDIF
         
         ELSE
-            PRINTFORM 「えへへ…
+            PRINTFORM 「에헤헤…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM いっぱい可愛がってもらえて…　えへへー
+            PRINTFORM 가득 귀여워해주는 거다…　에헤헤ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%は満たされた様子で%CALLNAME:MASTER%に寄りかかった…
+            PRINTFORMW %CALLNAME:TARGET%는 만족한 모습으로 %CALLNAME:MASTER%에게 몸을 기댔다…
         ENDIF
     ENDIF
 ELSEIF MARK:2 == 3
-    PRINTFORML 「もう…おわりなのかー？」
+    PRINTFORML 「이제…끝인건가ー？」
 ELSE
-    PRINTFORML 「やっと…おわりかー…」
-    PRINTFORMW %CALLNAME:TARGET%は疲れた様子でベッドへ横になった…
+    PRINTFORML 「겨우…끝인가ー…」
+    PRINTFORMW %CALLNAME:TARGET%는 지쳐버려서 침대에 드러누웠다…
 ENDIF
 
 IF CFLAG:7010 == 3 && CFLAG:7012 == 3 && CFLAG:7014 == 3 && CFLAG:7016 == 3 && CFLAG:7018 == 3 && CFLAG:7020 == 3 && CFLAG:7022 == 3
@@ -1225,45 +1225,45 @@ NEXT
 IF TFLAG:2
     IF CFLAG:7001
         IF CFLAG:7018 >= 1
-            PRINTFORM 「叩かれるのとちょっとちがって
+            PRINTFORM 「얻어맞는 거랑은 조금 다르게
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM なんだかあたまがふわふわするぞー
+            PRINTFORM 왠지 머리가 들썩들썩 거린다ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF CFLAG:7018 == 0
-            PRINTFORMW 「お？、なんかしたのかー？」
+            PRINTFORMW 「오？, 뭘 한거냐ー？」
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORM 「えへへー
+        PRINTFORM 「에헤헤ー
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM %CALLNAME:MASTER%にあげられてうれしいぞー
+        PRINTFORM %CALLNAME:MASTER%에게 줘서 기쁘다ー
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:TARGET%は破瓜の痛みに涙を浮かべながらも、嬉しそうに%CALLNAME:MASTER%へ口付けをした
+        PRINTFORMW %CALLNAME:TARGET%는 처녀상실의 아픔에 눈물을 글썽이면서도 쾌활하게 %CALLNAME:MASTER%에게 입맞춤했다
     ELSE
-        PRINTFORML 「やめろっていったのにー…」
+        PRINTFORML 「그만두라고 했단거다ー…」
     ENDIF
 ;それ以外
 ELSE
     IF CFLAG:7001 == 1
-        PRINTFORML 「%CALLNAME:MASTER%が…よかったのに…」
+        PRINTFORML 「%조사처리(CALLNAME:MASTER,"가")%…좋았을텐데…」
         IF CFLAG:7018 >= 1
-            PRINTFORMW %CALLNAME:TARGET%は破瓜による痛みではない涙をぽろぽろと流している…
+            PRINTFORMW %CALLNAME:TARGET%는 처녀상실의 아픔을 느끼지 못하면서도 눈물을 흘리고 있다…
         ELSE
-            PRINTFORMW %CALLNAME:TARGET%は破瓜の痛みを感じないがぽろぽろと涙を流している…
+            PRINTFORMW %CALLNAME:TARGET%는 처녀상실의 아픔을 느끼지 못하지만 눈물을 흘리고 있다…
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORMW 「いや…なのに…」
+        PRINTFORMW 「싫어…이런거…」
     ELSE
-        PRINTFORMW 「なんかしたのかー？」
+        PRINTFORMW 「뭔가 했던건가ー？」
     ENDIF
 ENDIF
 
@@ -1275,7 +1275,7 @@ ENDIF
 ;初めて윤활がLV2超えた CFLAG:5330
 ;-------------------------------------------------
 @K82_MESSAGE_OVERLV2_10
-PRINTFORMW 「おー、なんだこれー」
+PRINTFORMW 「오ー, 뭔가 이거ー」
 CFLAG:5330 = 1
 
 ;-------------------------------------------------
@@ -1289,7 +1289,7 @@ CFLAG:5330 = 1
 ;初めて恥情がLV2超えた CFLAG:5335
 ;-------------------------------------------------
 @K82_MESSAGE_OVERLV2_15
-PRINTFORMW 「は…はずかしいぞー」
+PRINTFORMW 「부…부끄러운 거다ー」
 CFLAG:5335 = 1
 
 ;-------------------------------------------------
@@ -1309,24 +1309,24 @@ CFLAG:5335 = 1
 @K82_MESSAGE_ORGASM_0
 ;初めて
 IF CFLAG:5300 == 0 && CFLAG:7001 == 1
-    PRINTFORMW %CALLNAME:TARGET%は絶頂したはずだが全く表情が変わらない…
+    PRINTFORMW %CALLNAME:TARGET%는 절정에 다다랐을텐데도 표정이 전혀 변하지 않는다…
     CFLAG:5300 = 1
 ELSEIF CFLAG:5300 == 0
-    PRINTFORMW 「な…からだがびりってしたぞー？」
+    PRINTFORMW 「모…몸이 찌릿찌릿한거다ー？」
     CFLAG:5300 = 1
 ELSEIF CFLAG:5300 == 1 && SELECTCOM == 146 && CFLAG:7001 == 1 && CFLAG:7014 == 0 && CFLAG:7018 == 0
-    PRINTFORMW %CALLNAME:TARGET%は尿道で絶頂したはずだが痛みも快楽も全くわからないようだ…
+    PRINTFORMW %CALLNAME:TARGET%는 요도로 절정했겠지만 아픔도 쾌락도 전혀 느끼지 못하는 것 같다…
     CFLAG:5300 += 1
 ELSEIF CFLAG:5300 == 1 && SELECTCOM == 146 && (CFLAG:7014 >= 1 || CFLAG:7018 >= 1)
     IF CFLAG:7014 >= 1 && RAND:2 == 0
-        PRINTFORM 「おしっこのあな…きもちい…ぞ…
+        PRINTFORM 「오줌 구멍…기분 조…아…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORMW 」
         CFLAG:5300 += 1
     ELSEIF CFLAG:7018 >= 1 && RAND:1 == 0
-        PRINTFORM 「ひっ…いた…いけど…きもちい…ぞ
+        PRINTFORM 「힉…아팟…아픈데…기분이…잇
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
@@ -1334,21 +1334,21 @@ ELSEIF CFLAG:5300 == 1 && SELECTCOM == 146 && (CFLAG:7014 >= 1 || CFLAG:7018 >= 
         CFLAG:5300 += 1
     ENDIF
 ELSEIF CFLAG:5300 == 1 && SELECTCOM == 146 && CFLAG:7001 == 0
-    PRINTFORMW 「お…ぐっ…い…いまのなんだー…？」
+    PRINTFORMW 「으…그읏…지…지금 뭘ー…？」
 ;２回目以降
 ELSE
     ;尿道挿入
     IF SELECTCOM == 146
         IF TALENT:175 == 1
-            PRINTFORM 「あぎっ…
+            PRINTFORM 「아그읏…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM おしっこにょ…
+            PRINTFORM 오줌을…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM あにゃがあぁあ…
+            PRINTFORM 아야아아앗…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
@@ -1356,39 +1356,39 @@ ELSE
         ELSE
             IF CFLAG:7031 >= 150
                 IF RAND:2 == 0
-                    PRINTFORM 「きひゃうっ
+                    PRINTFORM 「꺄아흣
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM くりとりひゅにょうらがわごりごりっって
+                    PRINTFORM 크리토리슈 안쪼게서 버걱버걱
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM きひゃうぞおおぉぉぉおおっ
+                    PRINTFORM 끼야하으으으읏
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF RAND:1 == 0
-                    PRINTFORM 「ひぎゅっ
+                    PRINTFORM 「히기얏
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM にょーどーきひゃうっ
+                    PRINTFORM 뇨ー도ー끼햐으읏
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM にょーどーごりごりらいひゅきっ
+                    PRINTFORM 뇨ー도ー버거걱버걱해서어엇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORM 「いっ、ぎひっ
+                    PRINTFORM 「잇, 기힛
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM こわれっ　んひぃいいいぃぃぃいいんっ
+                    PRINTFORM 거기기잇 응히이이이이이이잇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
@@ -1413,7 +1413,7 @@ ELSE
 ;                
 ;                ENDIF
             ELSEIF CFLAG:7031 >= 10
-                PRINTFORM 「おしっこのあな…きもちいい…ぞ…
+                PRINTFORM 「오줌 나오는 구멍…기분 조아아…앗…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
@@ -1424,46 +1424,46 @@ ELSE
         ENDIF
     ;C感度2以上
     ELSEIF CFLAG:7014 >= 2
-        PRINTFORM 「ひっ…ぐっ…
+        PRINTFORM 「힛…그읏…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM くりとりしゅ…こわれ…
+        PRINTFORM 크리토리슈…거기이…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORML %CALLNAME:TARGET%はすっかり敏感になったクリトリスへの刺激により
-        PRINTFORMW 首をいやいやと振るようにしながら絶頂に達した…
+        PRINTFORML %CALLNAME:TARGET%는 완전히 예민해진 클리토리스에의 자극으로
+        PRINTFORMW 고개를 절레절레 흔들면서 절정에 달했다…
     ELSEIF CFLAG:7014 == 1
-        PRINTFORM 「あっ…
+        PRINTFORM 「앗…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM なんかびりって…
+        PRINTFORM 어쩐지 찌릿해…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%との特訓の成果により%CALLNAME:TARGET%はクリトリスで絶頂することが出来るようになって来たようだ…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"와")%의 특훈 성과로 %CALLNAME:TARGET%는 클리토리스로 절정에 다다를 수 있게 되었다…
     ELSEIF CFLAG:7001 == 1
-        PRINTFORML %CALLNAME:TARGET%は絶頂に達したはずだが
-        PRINTFORMW まだまだ特訓が足りないようでその刺激を認識することが出来ないようだ…
+        PRINTFORML %CALLNAME:TARGET%는 절정에 다다랐을 텐데도
+        PRINTFORMW 아직 조교가 부족한 것인지 그 자극을 인식하질 못하는 것 같다…
     ELSEIF CFLAG:7001 == 0 && TALENT:150 == 1
         IF ABL:0 == 5
-            PRINTFORM 「くりとりす…しゅごひ…ぞ…
+            PRINTFORM 「크리토리스…조아…하…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF ABL:0 >= 3
-            PRINTFORM 「また…きひゃう…ぞ…
+            PRINTFORM 「아직…뷰우…족…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORM 「ま…またびりってしたぞー
+            PRINTFORM 「또…또 찌릿해진다ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
@@ -1471,15 +1471,15 @@ ELSE
         ENDIF
     ELSE
         IF ABL:0 == 5
-            PRINTFORM 「も…もう…やめ…
+            PRINTFORM 「이…이제…그마…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF ABL:0 >= 3
-            PRINTFORMW 「もう…やめ…」
+            PRINTFORMW 「이제…그마…」
         ELSE
-            PRINTFORMW 「ま…またびりって…」
+            PRINTFORMW 「또…또 찌릿하고…」
         ENDIF
     ENDIF
 ENDIF
@@ -1491,11 +1491,11 @@ ENDIF
 ;初めて
 IF CFLAG:5301 == 0 
     IF CFLAG:7001 == 1
-        PRINTFORML %CALLNAME:TARGET%のヴァギナは絶頂に達したようで激しく収縮するが
-        PRINTFORMW その刺激を感じ取ることが出来ないようだ…
+        PRINTFORML %CALLNAME:TARGET%의 질은 절정에 달한 듯 계속 수축을 반복하지만
+        PRINTFORMW 그 자극을 느끼고 있진 못하는 거 같다…
         CFLAG:5301 = 1
     ELSE
-        PRINTFORMW 「ひっ…い…いまのなんだー？」
+        PRINTFORMW 「힛…지…지금 뭐하는건가ー？」
         CFLAG:5301 = 1
     ENDIF
 ;２回目以降
@@ -1503,114 +1503,114 @@ ELSE
     ;触手
     IF CFLAG:7038 == 1
         IF ABL:35 == 5
-            PRINTFORM 「いぎっ
+            PRINTFORM 「이긱
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM しょくひゅっ
+            PRINTFORM 쵹슈우
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM しょくひゅちんちんっしゅきっ
+            PRINTFORM 쵹슈자지조하
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM ひゅきいいぃいぃいいぃぃっ
+            PRINTFORM 조하아아앗
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF ABL:35 >= 3
-            PRINTFORM 「いっ、ぎっ
+            PRINTFORM 「잇, 기잇
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM いひっ　ばけもにょちんちん…ひゅご…ひ…
+            PRINTFORM 이힉 요괴자지…조하…아…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORM 「やめっ
+            PRINTFORM 「그맛
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORMW きもちくなっちゃ…う…ぞ…」
+            PRINTFORMW 망가져버려…거짓…말…」
         ENDIF
     ;バイブ
     ELSEIF TEQUIP:20 == 1
         IF CFLAG:7001 == 1
             IF CFLAG:7035 == 1
-                PRINTFORM 「いっ…
+                PRINTFORM 「잇…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM ぐっ
+                PRINTFORM 긋
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM いっぢゃう"う"う"ぅぅぅう"う"ぅう"
+                PRINTFORM 응기이이이잇
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は腕ほどの太さのあるバイブをくわえ込みながら獣の様な喘ぎ声をあげながら絶頂へ達した…
+                PRINTFORMW %CALLNAME:TARGET%는 팔뚝 두께의 바이브를 찔러넣자 짐승같은 소리를 내면서 절정에 도달했다…
             ELSEIF CFLAG:7036 == 1
-                PRINTFORM 「しきゅー…
+                PRINTFORM 「입꾸ー…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM しきゅーおかひくなっひゃううぅぅううぅぅうう
+                PRINTFORM 입ー꾸에 걸르응그으으으읏
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は子宮まで突き入れられたバイブをぎちぎちと締め付け絶頂へと達した…
+                PRINTFORMW %CALLNAME:TARGET%는 자궁까지 밀어넣어진 바이브를 꽈악 죄어대며 절정에 도달했다…
             ELSEIF CFLAG:7010 >= 2 || CFLAG:7002 == 4
-                PRINTFORM 「ばいぶっ
+                PRINTFORM 「바이브읏
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM ばいぶしゅごひぞおおぉぉぉぉおおお
+                PRINTFORM 바이부흣조하아아아아아앗
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%の肉壺に突き入れられたバイブの刺激により絶頂してしまったようだ…
+                PRINTFORMW %CALLNAME:TARGET%의 보지에 밀어넣은 바이브의 자극에 절정에 다다른 것 같다…
             ELSEIF CFLAG:7010 == 1
-                PRINTFORM 「んっ…
+                PRINTFORM 「응…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM おまんこでも…きもちくなれてきた…ぞ
+                PRINTFORM 보지로…느끼는 거 익숙해졌…다
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%との特訓によりヴァギナで絶頂を迎えるようになって来たようだ…
+                PRINTFORMW %CALLNAME:TARGET%는%조사처리(CALLNAME:MASTER,"와")%의 훈련을 통해 질로 절정을 느낄 수 있게 된 것 같다…
             ELSEIF CFLAG:7002 == 1
-                PRINTFORMW %CALLNAME:TARGET%は特訓がまだ足りない様子で絶頂を感じ取ることが出来ないようだ…
+                PRINTFORMW %CALLNAME:TARGET%는 조교가 아직 부족해서 절정을 느끼진 못하는 것 같다…
             ELSE
-                PRINTFORMW %CALLNAME:TARGET%は絶頂を感じ取ることが出来ない様子だ…
+                PRINTFORMW %CALLNAME:TARGET%는 절정을 느끼질 못하는 거 같다…
             ENDIF
         ELSE
             IF TALENT:150 == 1
                 IF ABL:1 >= 3
-                    PRINTFORM 「んひっ
+                    PRINTFORM 「응힛
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM おまんこ…きもちくなっちゃったぞ…
+                    PRINTFORM 보지가…기분 좋아지게 되버렸어…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
                 ELSE
-                    PRINTFORM 「えへへ…
+                    PRINTFORM 「에헤헤…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM おまんこでも…きもちよくなれちゃった…
+                    PRINTFORM 보지에도…기분 좋아지는 방법이 있구나…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
@@ -1628,23 +1628,23 @@ ELSE
     ELSEIF SELECTCOM == 231
         IF CFLAG:7032 >= 150
             IF RAND:2 == 0
-                PRINTFORM 「いっぎぎぎい"い"い"ぃ"ぃ"い"い"ぃ"っ"
+                PRINTFORM 「응기이이이이이잇
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
             ELSE
-                PRINTFORM 「こっ　こわれっ
+                PRINTFORM 「브…부서졋
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM こわれひゃううぅぅうっ
+                PRINTFORM 부서져버려어어어어엇
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
             ENDIF
-            PRINTFORMW %CALLNAME:TARGET%はヴァギナに突き入れられた腕をぎちぎちと締め上げながらケモノの様な声を上げ絶頂に達したようだ…
+            PRINTFORMW %CALLNAME:TARGET%는 질에 침입한 팔을 움찔움찔 조여대면서 짐승같은 소리를 내며 절정에 도달했다…
 ;        ELSEIF CFLAG:7032 >= 50
 ;            IF RAND:2 == 0
 ;            
@@ -1653,11 +1653,11 @@ ELSE
 ;            ENDIF
         ELSEIF CFLAG:7032 >= 30
 ;            IF RAND:2 == 0
-                PRINTFORM 「やっ、いぎぃっ
+                PRINTFORM 「긋, 이기잇
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM こわれ…ちゃっ…
+                PRINTFORM 부서졋…부…
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
@@ -1675,35 +1675,35 @@ ELSE
 ;            
         ENDIF
     ELSEIF CFLAG:7010 >= 2
-        PRINTFORM 「んぎっ…おま…こ…
+        PRINTFORM 「응깃…보…지…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM こわれ…ひゃう…
+        PRINTFORM 부서져…햐읏…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORML 特訓ですっかり敏感になった%CALLNAME:TARGET%のヴァギナは
-        PRINTFORMW 絶頂により%CALLNAME:MASTER%のペニスを食いちぎらんばかりに締め付けてくる
+        PRINTFORML 특훈으로 완전히 민감해진 %CALLNAME:TARGET%의 질은
+        PRINTFORMW 절정때문에 %CALLNAME:MASTER%의 페니스를 뜯어먹듯 조여왔다
     ELSEIF CFLAG:7010 == 1
-        PRINTFORM 「んっ…なんだか気持ちいいのがー…
+        PRINTFORM 「응…왠지 기분 좋은 거다ー…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%との特訓の成果により%CALLNAME:TARGET%はヴァギナで快感を得ることが出来るようになったようだ…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"와")%의 특훈 성과로 %CALLNAME:TARGET%는 질로 쾌감을 느낄 수 있게 된 것 같다…
     ELSEIF CFLAG:7001 == 1 
-        PRINTFORML %CALLNAME:TARGET%は絶頂に達し激しく収縮するがまだまだ特訓が足りないようでその刺激を認識することが出来ないようだ…
+        PRINTFORML %CALLNAME:TARGET%는 절정때문에 질이 격렬하게 수축하고 있지만 아직 조교가 부족해서 그 자극을 인식하지는 못하는 것 같다…
     ELSEIF CFLAG:7001 == 0 && TALENT:150 == 1
         IF ABL:1 == 5
-            PRINTFORM 「おまんこ…気持ち良いぞー
+            PRINTFORM 「보지…기분 좋다ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORM 「ひぐっ…ま…またくるぞ…
+            PRINTFORM 「히읏…아…아직이야…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
@@ -1719,81 +1719,81 @@ ENDIF
 ;初めて
 IF CFLAG:5302 == 0
     IF CFLAG:7001 == 1
-        PRINTFORML %CALLNAME:TARGET%のアヌスは絶頂したようにきつく締め付けてくるが
-        PRINTFORMW その刺激を感じ取ることが出来ないようだ…
+        PRINTFORML %CALLNAME:TARGET%의 애널은 절정한 건지 바짝 조여들었지만
+        PRINTFORMW 그 자극을 본인이 느끼진 못하는 것 같다…
         CFLAG:5302 = 1
     ELSE
-        PRINTFORMW 「おしりで感じるとか…おかしい…ぞ…」
+        PRINTFORMW 「엉덩이에서 느끼다니…이상해…애…」
         CFLAG:5302 = 1
     ENDIF
 ELSEIF CFLAG:5302 == 1 && CFLAG:7012 >= 1
-    PRINTFORM 「おしりってこんなに…きもちいの…かー…
+    PRINTFORM 「엉덩이도 이렇게…기분 좋은 건…가ー…
     SETCOLOR 0xFF0000
     PRINTFORM %UNICODE(0x2665)%
     RESETCOLOR
     PRINTFORML 」
-    PRINTFORMW いままで感じることの出来なかったアヌスでの絶頂に%CALLNAME:TARGET%は身震いをしている…
+    PRINTFORMW 지금까지는 느껴보지 못했던 애널에서의 절정에 %CALLNAME:TARGET%는 소스라치게 놀라고 있다…
     CFLAG:5302 = 1
 ;２回目以降
 ELSE
     IF CFLAG:7012 >= 2
-        PRINTFORM 「ひっ
+        PRINTFORM 「힉
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM ぎっ…おしりっ…
+        PRINTFORM 그읏…엉덩이잇…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM おしりいぃ…
+        PRINTFORM 엉덩이가앗…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORML 特訓ですっかり敏感になったアヌスは絶頂により%CALLNAME:MASTER%のペニスを万力のように締め付けながらも
-        PRINTFORMW %CALLNAME:TARGET%はまだまだ足らないという様子で自ら腰を振り続けている
+        PRINTFORML 조교로 인해 아주 민감해진 애널이 절정하면서 %CALLNAME:MASTER%의 페니스를 압착기처럼 죄면서도
+        PRINTFORMW %CALLNAME:TARGET%는 아직 부족하다는 듯 스스로 허리를 흔들고 있다
     ELSEIF CFLAG:7012 == 1
-        PRINTFORM 「あはぁっ…おしり…で…きもちくなれた…ぞ…
+        PRINTFORM 「아하아앗…엉덩이…에…기분 좋은…게…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%との特訓の成果により%CALLNAME:TARGET%はアヌスの絶頂を感じることが出来るようになって来たようだ…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"와")%의 특훈 성과로 %CALLNAME:TARGET%는 애널로 절정을 느낄 수 있게 된 것 같다…
     ELSEIF CFLAG:7002 == 1 || CFLAG:7002 == 3 || CFLAG:7001 == 1
-        PRINTFORMW %CALLNAME:TARGET%のアヌスは絶頂に達しペニスを締め付けてくるがまだまだ特訓が足りないようでその刺激を認識することが出来ないようだ…
+        PRINTFORMW %CALLNAME:TARGET%의 애널은 절정에 달해서 페니스를 죄어오고 있지만, 아직 조교가 부족한 건지 그 자극을 인식하진 못하는 것 같다…
     ELSEIF TALENT:150 == 1
         IF ABL:2 == 5
-            PRINTFORM 「おしりっ…おしりいっ
+            PRINTFORM 「엉덩이…엉덩이잇
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%は絶頂したがかまわず腰を振り続けている…
+            PRINTFORMW %CALLNAME:TARGET%는 절정하면서도 개의치않고 허리를 흔들고 있다…
         ELSEIF ABL:2 >= 3
-            PRINTFORM 「おしりで…きもちく…
+            PRINTFORM 「엉덩이가…기분 좋아…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORMW 「また…おしり…がー…」
+            PRINTFORMW 「또…엉덩이…가ー…」
         ENDIF
     ELSE
         IF ABL:2 == 5
-            PRINTFORM 「やだっ…やだぁああぁぁ
+            PRINTFORM 「싫엇…시러어어어어
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%はアヌスの絶頂に耐え切れないという様子で頭を振り乱している…
+            PRINTFORMW %CALLNAME:TARGET%는 애널로 절정한다는 사실을 못 견디겠다는 듯 도리질을 하고 있다…
         ELSEIF ABL:2 >= 3
-            PRINTFORM 「おしり…またきちゃう…ぞ…
+            PRINTFORM 「엉덩이…다시 와…앗…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORMW 「もう…やめ…ろー…」
+            PRINTFORMW 「이제…그마…안ー…」
         ENDIF
     ENDIF
 ENDIF
@@ -1805,77 +1805,77 @@ ENDIF
 ;初めて
 IF CFLAG:5303 == 0
     IF CFLAG:7001 == 1
-        PRINTFORMW %CALLNAME:TARGET%は絶頂したはずだがその刺激を認識できないようだ…
+        PRINTFORMW %CALLNAME:TARGET%는 절정에 달했지만 그 자극을 인식하지 못하는 것 같다…
         CFLAG:5303 = 1
     ELSE
-        PRINTFORMW 「お…おぉう…なんだいまのはー」
+        PRINTFORMW 「오…오오오…뭐야 지금 건ー」
         CFLAG:5303 = 1
     ENDIF
 ELSEIF CFLAG:5303 == 1 && CFLAG:7016 >= 1
-    PRINTFORM 「こ…こんな…にっ…
+    PRINTFORM 「이…이런…거…
     SETCOLOR 0xFF0000
     PRINTFORM %UNICODE(0x2665)%
     RESETCOLOR
     PRINTFORML 」
-    PRINTFORMW %CALLNAME:TARGET%は初めて胸の絶頂を認識しびくりと肩を震わせた…
+    PRINTFORMW %CALLNAME:TARGET%는 가슴으로 절정에 다다르는 걸 처음 겪어봤기 때문인지 움찔거리며 어깨를 떨고 있다…
     CFLAG:7303 = 2
 ;２回目以降
 ELSE
     IF CFLAG:7016 >= 2
-        PRINTFORM 「また…おっぱいきちゃう…ぞ…
+        PRINTFORM 「또…가슴 와버…려…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW 特訓により敏感になった胸で絶頂へと%CALLNAME:TARGET%は導かれた…
+        PRINTFORMW 조교로 인해 더 민감해진 가슴이 절정으로 %CALLNAME:TARGET%를 이끌었다…
     ELSEIF CFLAG:7016 == 1
-        PRINTFORM 「おっぱい…きもちい…ぞ…
+        PRINTFORM 「가슴…기분 조…앗…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%との特訓の成果により%CALLNAME:TARGET%は胸での絶頂を迎えることが出来るようになって来たようだ…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"와")%의 특훈 성과로 %CALLNAME:TARGET%는 가슴으로 절정을 느낄 수 있게 된 것 같다…
     ELSEIF CFLAG:7001 == 1
-        PRINTFORMW %CALLNAME:TARGET%は胸で絶頂したはずだがやはりその刺激を認識できないようだ…
+        PRINTFORMW %CALLNAME:TARGET%는 가슴으로 절정에 달했을 게 분명하지만 그 자극을 인식하질 못하는 것 같다…
     ELSEIF TALENT:150 == 1
         IF ABL:3 == 5
-            PRINTFORM 「あひっ…ん…
+            PRINTFORM 「아히잇…응…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM おっぱいしゅごひ…ぞ…
+            PRINTFORM 가슴 조아…핫…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF ABL:3 >= 3
-            PRINTFORM 「あ…はぁっ
+            PRINTFORM 「아…하앗
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM ちくび…とれちゃうかとおもったぞ…
+            PRINTFORM 젖꼭지…잡혔다고 생각한 것만으로…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORMW 「ま…またおっぱい…きちゃう…ぞ…」
+            PRINTFORMW 「또…또 가슴…가버…려…」
         ENDIF
     ELSE
         IF ABL:3 == 5
-            PRINTFORM 「ちくび…しゅご…ひ…
+            PRINTFORM 「젖꼭지…조아…하…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSEIF ABL:3 >= 3
-            PRINTFORM 「やーめー…ひんっ…
+            PRINTFORM 「그ー마ー…히읏…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORMW 「さーわーるー…ひっ…」
+            PRINTFORMW 「오ー지ー마ー…힛…」
         ENDIF
     ENDIF
 ENDIF
@@ -1903,19 +1903,19 @@ ENDIF
 IF CFLAG:5305 == 0
     IF CFLAG:7001 == 1
         IF CFLAG:7014 >= 1
-            PRINTFORM 「お…おしっこ…でるっ…
+            PRINTFORM 「오…오줌…나와…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORMW あ…あれ…あなたとおなじの…が…？」
+            PRINTFORMW 어…어…당신과 같은 건…가…？」
             CFLAG:5305 = 1
         ELSE
-            PRINTFORMW 「おー、ちんちんからなんかでてるぞー？」
+            PRINTFORMW 「오ー, 자지에서 뭔가 나오는 거다ー？」
             CFLAG:5305 = 1
             CFLAG:7102 = 1
         ENDIF
     ELSE
-        PRINTFORM 「なんか･･･でちゃう…でちゃうぞー
+        PRINTFORM 「어쩐지･･･그래서…그래서인건가ー
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
@@ -1923,11 +1923,11 @@ IF CFLAG:5305 == 0
         CFLAG:5305 = 1
     ENDIF
 ELSEIF CFLAG:5305 == 1 && CFLAG:7102 == 1 && CFLAG:7014 >= 1
-    PRINTFORM 「ひぎっ
+    PRINTFORM 「히기잇
     SETCOLOR 0xFF0000
     PRINTFORM %UNICODE(0x2665)%
     RESETCOLOR
-    PRINTFORM せ…せーしでるのってこんなに…
+    PRINTFORM 정…정액이 이렇게나…
     SETCOLOR 0xFF0000
     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
     RESETCOLOR
@@ -1936,36 +1936,36 @@ ELSEIF CFLAG:5305 == 1 && CFLAG:7102 == 1 && CFLAG:7014 >= 1
 ELSE
     IF CFLAG:7001 == 1
         IF CFLAG:7014 >= 1
-            PRINTFORM 「しゃせー…とまらにゃひ…
+            PRINTFORM 「싼다아ー…멈추지 않아…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORML 「おー、せーしまたでてるぞー」
-            PRINTFORMW %CALLNAME:TARGET%は射精の感覚というものがわからない様子で精子を指で弄んでいる…
+            PRINTFORML 「오ー, 정─액 또 나오고 있다ー」
+            PRINTFORMW %CALLNAME:TARGET%는 사정의 감각이란 걸 잘 모르는 건지 정액을 손으로 만지작거리고 있다…
         ENDIF
     ELSEIF TALENT:150 == 1
         IF ABL:37 >= 3
-            PRINTFORM 「えへへ…
+            PRINTFORM 「에헤헤…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM しゃせいきもちひ…
+            PRINTFORM 사정 기분 조아…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%は射精の終えたペニスを物足りない様子でしごき続けている…
+            PRINTFORMW %CALLNAME:TARGET%는 사정이 끝난 자지를 아쉬운 듯이 주물거리고 있다…
         ELSE
-            PRINTFORM 「んっ…でるっ…
+            PRINTFORM 「읏…나왓…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ENDIF
     ELSE
-        PRINTFORMW 「せーし…もう出したく…ないのに…」
+        PRINTFORMW 「정액…좀 더 싸고 싶은데…안 되네…」
     ENDIF
 ENDIF
 
@@ -1994,45 +1994,45 @@ IF TFLAG:35
     IF CFLAG:7001 == 1
         IF CFLAG:7002 == 1 || CFLAG:7002 == 4
             IF CFLAG:7022 >= 2
-                PRINTFORM 「おー、ナカででてるぞー
+                PRINTFORM 「오─, 안에 싸고 있는 건가ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM いっぱいだして…私を孕ませてほしいぞー
+                PRINTFORM 가득 싸서…나를 임신시켜주는 거다ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORMW 」
             ELSEIF CFLAG:7022 <= 1
-                PRINTFORM 「えへへー
+                PRINTFORM 「에헤헤ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
-                PRINTFORM イったんだなー？えへへ、早くあかちゃんほしいぞー%CALLNAME:MASTER%ー
+                PRINTFORM 갔구나ー？에헤헤, 빨리 아기 생겼으면 좋겠다ー%CALLNAME:MASTER%ー
                 SETCOLOR 0xFF0000
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORMW 」
             ENDIF
         ELSE
-            PRINTFORMW %CALLNAME:TARGET%のナカに精を放つが全くの無反応だ…
+            PRINTFORMW %CALLNAME:TARGET%의 안에 가득 쌌지만 여전히 반응이 없다…
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORM 「えへへー
+        PRINTFORM 「에헤헤ー
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM ナカでどくどくいってるぞー？
+        PRINTFORM 안에서 주륵주륵인거다ー？
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORMW 」
     ELSE
-        PRINTFORMW 「だーすーなー！！」
+        PRINTFORMW 「싸ー지ー마ー！！」
     ENDIF
 ;それ以外
 ELSE
-    PRINTFORMW 「だーすーなー！！」
+    PRINTFORMW 「싸ー지ー마ー！！」
 ENDIF
 
 ;-------------------------------------------------
@@ -2043,26 +2043,26 @@ ENDIF
 IF TFLAG:35
     IF CFLAG:7001 == 1
         IF CFLAG:7012 >= 1
-            PRINTFORM 「こんなに出して…おしりで妊娠させるつもりかー？
+            PRINTFORM 「이렇게 싸놓고…엉덩이로 임신시킬 건ー가？
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ELSE
-            PRINTFORMW %CALLNAME:TARGET%のアヌスに精を放つがやはり感じ取れないようだ…
+            PRINTFORMW %CALLNAME:TARGET%의 애널에 잔뜩 싸봤지만 역시 느끼질 못하는 것 같다…
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORM 「えへへ…
+        PRINTFORM 「에헤헤…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM いっぱいだしたなー？
+        PRINTFORM 많이 쌌구ー나？
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORMW 」
     ELSE
-        PRINTFORMW 「死体のおしりはそんなにいいかー？」
+        PRINTFORMW 「시체의 엉덩이가 그렇게 좋은 건ー가？」
     ENDIF
 ;それ以外
 ;ELSE
@@ -2089,27 +2089,27 @@ ENDIF
 @K82_MESSAGE_EJAC_PLAYER_11
 IF GROUPMATCH (SELECTCOM, 41, 54, 230, 303, 304, 601, 602, 604, 610)
     IF CFLAG:7001 == 1
-        PRINTFORMW 「おー、なんかでてるぞー？」
+        PRINTFORMW 「오ー, 뭐하는 건ー가？」
     ELSEIF CFLAG:7020 >= 1
         IF RAND:2 == 0
-            PRINTFORM 「んっ…　えへへー
+            PRINTFORM 「응…　에헤헤ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORMW いっぱいでたなー？」
+            PRINTFORMW 가득 쌌네ー？」
         ELSE
-            PRINTFORM 「えへへ…
+            PRINTFORM 「에헤헤…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM クセになっちゃった…ぞ…
+            PRINTFORM 버릇 되어버릴 거 같…아…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORMW 」
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORM 「おー、くちのなか…　いっぱい…
+        PRINTFORM 「오ー, 입 속…　가득…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
@@ -2198,82 +2198,82 @@ IF TFLAG:25 > 0 && SELECTCOM == 146
         IF CFLAG:7002 == 1 || CFLAG:7002 == 4
             IF CFLAG:7014 >= 1
                 IF CFLAG:7031 >= 150
-                    PRINTFORM 「ひぎっ
+                    PRINTFORM 「히기잇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORMW にょーどー…　にん…しんしちゃ…
-                    PRINTFORM あはぁ…
+                    PRINTFORMW 오줌─구멍ー…　임…신해버려…
+                    PRINTFORM 아하아…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSEIF CFLAG:7031 >= 50
-                    PRINTFORM 「あは…
+                    PRINTFORM 「아하…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM だし…すぎ…
+                    PRINTFORM 한…가득…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
-                    PRINTFORMW %CALLNAME:TARGET%は%CALLNAME:MASTER%にたっぷりと精を注ぎ込まれた尿道を指でぐちゅぐちゅと弄んでいる…
+                    PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%에게 잔뜩 힘이 들어간 요도를 손가락으로 질척질척 괴롭힘당하고 있다…
                 ;ELSEIF CFLAG:7031 >= 30
                 
                 ;ELSEIF CFLAG:7031 >= 10
                 
                 ELSE
-                    PRINTFORM 「もー…こんなトコに出しすぎだぞー
+                    PRINTFORM 「읏ー…이런 곳에 싸다니 너무 심하ー다
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW %CALLNAME:TARGET%のすっかり拡がりきった尿道からは尿と精液の混じった液体がごぽりと音を立てるように溢れてきた…
+                    PRINTFORMW %CALLNAME:TARGET%의 완전히 넓혀진 요도는 소변과 정액이 섞인 액체를 쿨럭거리며 쏟아내고 있다…
                 ENDIF
             ELSEIF CFLAG:7018 >= 1
                 ;IF CFLAG:7031 >= 150
                     
                 IF CFLAG:7031 >= 50
-                    PRINTFORM 「いっぱいだしたなー
+                    PRINTFORM 「가득 쌌구나ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
-                    PRINTFORM えへへ…
+                    PRINTFORM 에헤헤…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW %CALLNAME:TARGET%は尿道を責められ膀胱にたっぷり出されるがその痛みが快感となったようで精が溢れるたびにびくりと体を震わせた…
+                    PRINTFORMW %CALLNAME:TARGET%는 요도를 괴롭힘 당하고 방광에 가득 싸질러졌지만 그 아픔이 쾌감으로 된 것인지 정액이 넘쳐 흐를 때마다 움찔거리며 몸을 떨었다…
                 ;ELSEIF CFLAG:7031 >= 30
                 
                 ELSEIF CFLAG:7031 >= 10
-                    PRINTFORM 「えへへ…いたいけど…きもちかった…ぞ…
+                    PRINTFORM 「에헤헤…아프지만…기분 좋아…하…
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORMW 」
                 ELSE
-                    PRINTFORM 「もー、こんなトコにだしすぎだぞー
+                    PRINTFORM 「윽ー, 이런 곳에 싸다니 너무한 것이다ー
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW %CALLNAME:TARGET%のすっかり拡がりきった尿道からは精と尿が混じりあった液体がごぽりと音を立てるように溢れてきた…
+                    PRINTFORMW %CALLNAME:TARGET%의 완전히 넓혀진 요도가 정액과 소변이 섞인 액체를 쿨럭거리며 쏟아내고 있다…
                 ENDIF
             ENDIF
         ELSE
-            PRINTFORMW %CALLNAME:TARGET%の膀胱へ精を放ったが全く感じ取ることが出来ないようだ…
+            PRINTFORMW %CALLNAME:TARGET%의 방광에 정액을 쌌으나 전혀 느끼질 못하는 것 같다…
         ENDIF
     ELSEIF TALENT:150 == 1
-        PRINTFORM 「もー、こんなトコにいっぱい出してー…
+        PRINTFORM 「뭐ー, 이런 곳에 잔뜩 싸다니ー…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:TARGET%がぴくんと体を震わせるたび、すっかり拡がった尿道からはごぽりと精と尿の混じった液体が溢れた…
+        PRINTFORMW %CALLNAME:TARGET%가 움찔거리며 몸을 떨 때마다 완전히 벌려진 요도에서 주륵주륵 정액과 소변이 섞인 액체가 넘쳐흘렀다…
     ELSE
-        PRINTFORML 「したいのにょーどーはそんなにいいかー？」
+        PRINTFORML 「어째서 요ー도ー를 그렇게 좋아하는 거ー냐？」
     ENDIF
 ENDIF
 ;-------------------------------------------------
