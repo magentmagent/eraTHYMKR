@@ -21,6 +21,7 @@
 ;CFLAG:5159 = 전 조교에서 딸에게 못된 짓을 한 플래그. 매 조교 시작시 전용 구상이 나온 후 0으로 소멸.
 ;CFLAG:5161 = 전 조교에서 딸에게 못된 짓(폭력 과다)을 한 플래그.-> 유산
 ;CFLAG:5162 = 전 조교에서 딸에게 못된 짓(폭력 과다)을 한 플래그.
+;CFLAG:5203 = 주인의 딸이 주인의 아이를 임신했을 때의 관련 이벤트에서 사용.
 ;CFLAG:5225 = CFLAG:5225
 ;CFLAG:5228 = CFLAG:5228
 ;CFLAG:5231 = CFLAG:5231
@@ -1472,11 +1473,22 @@ ELSEIF CFLAG:5201 < 7 && TALENT:162 == 1
     RETURN 1
 
 ;딸 임신. 출산이 5회를 넘어가면 12회까지는 회수별 구상이 있다.;;
-ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
+;기존 조건문의 경우 다음과 같은 문제가 생길 수 있음. 
+;1. 임신 이벤트가 첫 상애 구상보다 우선도가 높은 문제 존재.
+;2. 중간에 타 캐릭터의 아이를 임신하게 되거나 아이를 입양 보내는 경우 이벤트가 제대로 진행되지 않음.
+;조건문을 일부 수정하고 CFLAG:5203을 대신 사용함.
+;CFLAG:5203을 4로 나눈 나머지가 0이면 아예 자기 아버지의 아이를 임신한 적이 없거나 자기 아버지의 자식을 출산한 것에 대해 조교 시작 시의 구상을 출력하며 이벤트 한 세트가 끝났음을 의미.
+;CFLAG:5203을 4로 나눈 나머지가 1이면 자기 아버지의 자식을 임신한 걸 알게 된 뒤를 의미.
+;CFLAG:5203을 4로 나눈 나머지가 2이면 자기 아버지의 자식을 임신한 것에 대해 조교 시작 시의 구상을 출력한 뒤를 의미.
+;CFLAG:5203을 4로 나눈 나머지가 3이면 자기 아버지의 자식을 출산한 뒤를 의미.
+;CFLAG:5203을 4로 나눈 값은 몇 세트를 진행했는지를 의미.
+;CFLAG:5203의 증가는 바로 아래의 명령문과 EVENT_KX_EVENT.ERB의 임신과 출산 부분에서 다루게 됨. T(181216)
+ELSEIF NO == 149 && ((CFLAG:5203 & 3) == 1)
+    DRAWLINE
+    ;LOCAL은 원래 해당 함수 시작 시 랜덤 분기를 위해 RAND:2가 들어가는 부분이지만 어차피 여기에선 랜덤 분기를 할 필요가 없고 이 조건문 안에서 함수가 종료되므로 덮어쓰기함. T
+    LOCAL = CFLAG:5203 >> 2
     IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        IF CFLAG:5201 < 8 && EXP:52 == 0
-        CFLAG:5201 = 8 
-        DRAWLINE
+        IF LOCAL == 0
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%STR:401%!!」
@@ -1487,18 +1499,14 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「꺗!! 지금 또 움직였다」
                 PRINTFORMW 「무섭지만, 기뻐…… 에헤헤」
                 PRINTFORMW 아무것도 모르는 순수한 표정으로 웃고 있는 딸을 보며 당신의 입가는 여러가지 의미를 담아 일그러졌다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「%STR:401%… 나, 이상해…」
                 PRINTFORMW 「배도 자꾸 부풀어 오르고, 메스껍고, 몸이 무거워…」
                 PRINTFORMW 「병인 걸까…? 나, 병에 걸린 거야?」
                 PRINTFORMW 그렇게 말하고 부풀어 오른 배를 쓰다듬는 딸을 보며 당신은 희열을 느꼈다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 10 && EXP:52 == 1
-        CFLAG:5201 = 10
-        DRAWLINE
+        ELSEIF LOCAL == 1
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「나, 또 %STR:401%의 아이가 생겼어」
@@ -1506,32 +1514,24 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「그래도 기분 좋은 일은 계속 할 수 있는 거지…?」
                 PRINTFORMW %CALLNAME:TARGET%의 눈이 빛나고 있다…… 
                 PRINTFORMW 그 모습을 보고 %조사처리(CALLNAME:MASTER,"는")% 강렬한 흥분을 느꼈다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 부풀은 배를 쓰다듬는 %CALLNAME:TARGET%의 모습이 어쩐지 처연해 보였다…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 12 && EXP:52 == 2
-        CFLAG:5201 = 12
-        DRAWLINE
+        ELSEIF LOCAL == 2
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「나, 또 %STR:401%의 아이가 생겼어」
                 PRINTFORMW 칭찬받고 싶다는 듯이 %조사처리(CALLNAME:TARGET,"는")% 임신사실을 고해왔다.
                 PRINTFORMW 「앞으로도 계속 %STR:401%의 아기, 많이 낳을 거야」
                 PRINTFORMW 사랑하는 %CALLNAME:MASTER%의 아이를 낳을 수 있다는 사실이 큰 기쁨인 것 같다… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 부풀은 배를 쓰다듬는 %CALLNAME:TARGET%의 모습이 어쩐지 처연해 보였다…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 14 && EXP:52 == 3
-        CFLAG:5201 = 14
-        DRAWLINE
+        ELSEIF LOCAL == 3
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%STR:401%!」
@@ -1539,16 +1539,12 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「%CALLNAME:TARGET%, 또 %STR:401%의 아기가 생겼어」
                 PRINTFORMW …또인가, 하고 잠시나마 이건 아무래도 좀 심하지 않았나 생각했다.
                 PRINTFORMW 그러나 %CALLNAME:TARGET%의 얼굴에는 싫은 기색은 커녕, 아이를 배게 된 기쁨만이 배어나왔다… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 부풀어 오른 배를 한 %CALLNAME:TARGET%에게선 이젠 아무것도 느껴지지 않는다…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 16 && EXP:52 == 4
-        CFLAG:5201 = 16
-        DRAWLINE
+        ELSEIF LOCAL == 4
         ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「이히힛, 있잖아 %STR:401%」
@@ -1557,16 +1553,12 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「%조사처리(STR:401,"는")% %조사처리(CALLNAME:TARGET,"랑")% 아기 만드는 게 좋은 거지?」
                 PRINTFORMW …반짝거리는 눈으로 그렇게 면전에서 물으니 대답할 말이 오히려 궁해졌다.
                 PRINTFORMW 「%CALLNAME:TARGET%, 이번에도 정∼말 건강한 아이를 낳을 거야!」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 이제 딸이라기 보다는 아기를 낳는 그릇에 가깝다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 18 && EXP:52 == 5
-        CFLAG:5201 = 18
-        DRAWLINE
+        ELSEIF LOCAL == 5
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「아기 낳는 거, 정말 좋아!」
@@ -1575,33 +1567,25 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 잠시 더 무슨 이유가 있나 곰곰히 생각해 보던 %조사처리(CALLNAME:MASTER,"는")% 생각하는 것을 그만둬 버렸다.
                 PRINTFORMW 「…%STR:401%도 그러니깐 %조사처리(CALLNAME:TARGET,"랑")% 아이를 만든 거지? 난 다.알아!」
                 PRINTFORMW 득의양양한 얼굴의 %조사처리(CALLNAME:TARGET,"는")% 너무나도 행복해 보였다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 산처럼 부푼 배를 한 채 침대에 널브러져 있다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 20 && EXP:52 == 6
-        CFLAG:5201 = 20
-        DRAWLINE
+        ELSEIF LOCAL == 6
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「이번으로 일곱번째 아이야! %STR:401%」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 배가 불러오는 것에 완전히 익숙해진 것 같다.
                 PRINTFORMW 「이번엔 남자아이일까 여자아이일까, 너무 기대되는 거 있지……」
                 PRINTFORMW 그 행복한 얼굴은 지금 저지른 일들이 마치 죄가 아닌 것만 같은 느낌을 줬다… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 이번으로 7번째 임신이다… 
                 PRINTFORMW %CALLNAME:TARGET%에게 사태를 파악할 만큼의 인지능력은 이제 남겨져 있지 않았다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 22 && EXP:52 == 7
-        CFLAG:5201 = 22
-        DRAWLINE
+        ELSEIF LOCAL == 7
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%조사처리(STR:401,"과")%의 여덟번째♪ %조사처리(STR:401,"과")%의 여덟번째♪」
@@ -1609,18 +1593,14 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 배가 불룩하다… 이번에도 %CALLNAME:MASTER%의 아이를 임신한 것 같다.
                 PRINTFORMW 「어떤 애가 태어날까나♪」
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 자기도 모르게 피식 웃으며 조교 준비를 시작했다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 8번째 임신, 자신의 관리를 전혀 하지 않는 %CALLNAME:TARGET%의 몸과 마음은 너덜너덜하다… 
                 PRINTFORMW …뭐, 어쨌든 이제 %CALLNAME:MASTER%에겐 아무래도 좋은 일이다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 옷을 벗기기 시작했다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 24 && EXP:52 == 8
-        CFLAG:5201 = 24
-        DRAWLINE
+        ELSEIF LOCAL == 8
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%CALLNAME:TARGET%, 결심했어!」
@@ -1629,17 +1609,13 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 열두 명? 
                 PRINTFORMW ……운동경기라도 할 생각인가? 
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 쓴웃음을 짓자, %조사처리(CALLNAME:TARGET,"는")% 브이자로 받아쳤다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………」
                 PRINTFORMW 이것으로 9번째 임신이다… 애초에 의도하고 하는 짓이지만 정말 심하게 애를 낳게 한 것 같다.
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 말없이 일어나 옷을 벗기 시작했다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 26 && EXP:52 == 9
-        CFLAG:5201 = 26
-        DRAWLINE
+        ELSEIF LOCAL == 9
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%STR:401%∼ 나, 이제 10번째야」
@@ -1647,17 +1623,13 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「고생하셨습니다」
                 PRINTFORMW 갑자기 예의바르게 %CALLNAME:MASTER%에게 고개를 숙였다.
                 PRINTFORMW 쓰다듬어주고 싶은 생각이 불현듯 치밀어 언제까지고 머리를 쓰다듬고 있었다… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………에헤헷… 아핫」
                 PRINTFORMW 웃고 있다… 처음에는 그렇게 싫어했는데… 
                 PRINTFORMW %CALLNAME:TARGET%의 그런 모습이 왠지 모르게 요염해 보였다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 28 && EXP:52 == 10
-        CFLAG:5201 = 28
-        DRAWLINE
+        ELSEIF LOCAL == 10
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「아기∼아기아기∼♬」
@@ -1665,11 +1637,8 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 열한 명째… 아이를 배는 불편함도 낳을 때의 괴로움도 즐거움으로 받아들이는 것 같다.
                 PRINTFORMW 어쩌면 임신 중독일지도 모르겠지만… 뭐, 상관없나 
                 PRINTFORMW 「더 많이 낳는 거야, %STR:401%♪」
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 30 && EXP:52 == 11
-        CFLAG:5201 = 30
-        DRAWLINE
+        ELSEIF LOCAL == 11
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「됐다∼!!」
@@ -1678,13 +1647,19 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 하지만 아이를 갖는 건 무사히 낳는 것까지 이루어야 완료되는 거라고 짐짓 엄하게 말해주니 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 싱긋 웃으며 브이를 그렸다.
                 PRINTFORMW 「%조사처리(STR:401,"가")% 있는걸, 절대 괜찮아!」
-                RETURN 1
+            ENDIF
+        ;娘妊娠∼回
+        ELSEIF CFLAG:6566 == 0 && LOCAL >= 12
+            CFLAG:6566 = 1
+            ;연모
+            IF TALENT:150 == 1
+                PRINTFORMW 「이번에도 %CALLNAME:TARGET%, 건강한 아이를 낳을 거야」
+                PRINTFORMW 순수한 의욕이 넘치고 있다… 
+                PRINTFORMW 「저기 %STR:401%, 누구 더 닮았을지 맞춰보자 우리!」
             ENDIF
         ENDIF
     ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
-        IF CFLAG:5201 < 8 && EXP:52 == 0
-        CFLAG:5201 = 8 
-        DRAWLINE
+        IF LOCAL == 0
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「그, 그러니깐 내가 안된다고 한 거야!」
@@ -1695,18 +1670,14 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「…그딴 식으로 얼버무려도 안 통하니깐…」
                 PRINTFORMW 「……악당 주제에, 품은……따뜻하다니까, 반칙이야」
                 PRINTFORMW 윤리도덕의 궤도를 완전히 벗어나 버린 %조사처리(CALLNAME:TARGET,"는")% 당황과 동시에 사랑하는 이의 아이를 가진 기쁨에 곤혹스러워 하고 있었다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 「친아빠에게 범해지고, 이젠, 뱃속에 아기까지…」
                 PRINTFORMW 「…어쩌고 싶어? 나는…… 대체 당신에게 어떤 존재지?」
                 PRINTFORMW 딸의 눈동자는 텅 비어서, 무엇을 바라보는지 알 길이 없다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 10 && EXP:52 == 1
-        CFLAG:5201 = 10
-        DRAWLINE
+        ELSEIF LOCAL == 1
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「으으으……」
@@ -1714,32 +1685,24 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「…짐승」
                 PRINTFORMW 그렇지만 %조사처리(CALLNAME:TARGET,"는")% 마냥 싫은 것 같지만은 않다.
                 PRINTFORMW 「이렇게 만들어버린 건, 어디까지나 %STR:401%니깐…!」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…뭐가……」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 자신의 부풀어오른 배를 만지며 뭐라고 중얼거리고 있다…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 12 && EXP:52 == 2
-        CFLAG:5201 = 12
-        DRAWLINE
+        ELSEIF LOCAL == 2
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「이것으로, 세 번째 아이네…나랑 아빠 사이의」
                 PRINTFORMW %CALLNAME:TARGET%의 얼굴은 착잡한 듯 했다.
                 PRINTFORMW 「…나보고 이제 엄마를 어떻게 보라는 거야…정말…읍」
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 다정하게 %조사처리(CALLNAME:TARGET,"를")% 끌어안으며 입을 입으로 막았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……주…」
                 PRINTFORMW 뭐라고 중얼거리고 있는 %CALLNAME:TARGET%지만 그 목소리는 여기까지 닿지 않는다…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 14 && EXP:52 == 3
-        CFLAG:5201 = 14
-        DRAWLINE
+        ELSEIF LOCAL == 3
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「……%STR:401%…」
@@ -1747,16 +1710,12 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「이제, 돌아갈 수 없는 거네…」
                 PRINTFORMW 「그렇게 된 바엔, 차라리 잊을 수 있을 만큼 기분 좋게 해 줘…」
                 PRINTFORMW 포기한 듯한 %조사처리(CALLNAME:TARGET,"였")%지만, 상기된 얼굴은 마치 흥분해 있는 것 같았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……아」
                 PRINTFORMW %CALLNAME:TARGET%의 텅 빈 눈동자에서 증오도 분노도 잡아낼 수가 없다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 16 && EXP:52 == 4
-        CFLAG:5201 = 16
-        DRAWLINE
+        ELSEIF LOCAL == 4
         ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「정말, 피임도 안 하고 그냥 마구마구 안에다만」
@@ -1766,16 +1725,12 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW …진지한 표정으로 이쪽을 바라보는 %CALLNAME:TARGET%에게 사랑스러움을 느낀 %조사처리(CALLNAME:MASTER,"는")% 음란한 손동작으로 몸을 쓰다듬기 시작했다.
                 PRINTFORMW 「! 바, 바보! 아기가 있단 말야……!」
                 PRINTFORMW 「……어쩔 수 없다니깐…… 바보」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 이제 딸이라기보다는 아기를 낳는 그릇에 가깝다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 18 && EXP:52 == 5
-        CFLAG:5201 = 18
-        DRAWLINE
+        ELSEIF LOCAL == 5
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「이젠 한 손으로는 다.셀 수도 없게 되어버렸네?」
@@ -1784,33 +1739,25 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「그래도, 이정도 쯤 되면…내가 아빠에게 있어…그, 트, 특별한 사람이라고…봐도 될까……나」
                 PRINTFORMW 「……히이익, 뭔 얘길 하는 거야 나! 잊어 그냥 잊…꺄웃」
                 PRINTFORMW %CALLNAME:TARGET%의 말은 채 다.끝맺지도 못한 채 %CALLNAME:MASTER%의 입술에 의해 봉해졌다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 산처럼 부푼 배를 한 채 침대에 널브러져 있다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 20 && EXP:52 == 6
-        CFLAG:5201 = 20
-        DRAWLINE
+        ELSEIF LOCAL == 6
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「으…이제 아기 자체는 좋다.나쁘다.할 말은 아니지만…」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 몸이 무거워져서 조금 불편한듯 침대에 기대 누웠다.
                 PRINTFORMW 「몸이 무거운 것만은 지내기 힘들어…」
                 PRINTFORMW 그렇게 말하면서도 %조사처리(CALLNAME:TARGET,"는")% 뱃속의 아이를 소중하다는 듯 쓰다듬어주었다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 이번으로 7번째 임신이다… 
                 PRINTFORMW %CALLNAME:TARGET%에게 사태를 파악할 만큼의 인지능력은 이제 남겨져 있지 않았다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 22 && EXP:52 == 7
-        CFLAG:5201 = 22
-        DRAWLINE
+        ELSEIF LOCAL == 7
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「…이 절륜남」
@@ -1818,18 +1765,14 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「몇 번을 더 아이를 낳게 할 생각이야? 라고 말해도 이젠 의미가 없네」
                 PRINTFORMW 「좋아… 와, %STR:401%♪」
                 PRINTFORMW 손을 뻗어 다정하게 안아주는 사랑스러운 딸에게 성난 물건을 꺼내들었다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 8번째 임신, 자신의 관리를 전혀 하지 않는 %CALLNAME:TARGET%의 몸과 마음은 너덜너덜하다… 
                 PRINTFORMW …뭐, 어쨌든 이제 %CALLNAME:MASTER%에겐 아무래도 좋은 일이다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 옷을 벗기기 시작했다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 24 && EXP:52 == 8
-        CFLAG:5201 = 24
-        DRAWLINE
+        ELSEIF LOCAL == 8
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「아기♪ 아기♪ 아기♪」
@@ -1838,17 +1781,13 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「아, 악당……!? 나가, 나가아아아」
                 PRINTFORMW 부끄러움을 못 견디고 베개를 던지는 %CALLNAME:TARGET%의 모습이 참을 수 없이 귀엽다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 옷을 벗으며 %CALLNAME:TARGET%에게 다가갔다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………」
                 PRINTFORMW 이것으로 9번째 임신이다… 애초에 의도하고 하는 짓이지만 정말 심하게 애를 낳게 한 것 같다.
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 말없이 일어나 옷을 벗기 시작했다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 26 && EXP:52 == 9
-        CFLAG:5201 = 26
-        DRAWLINE
+        ELSEIF LOCAL == 9
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「하아∼ 아빠랑 같이 지낸지도 정말 오래되었네」
@@ -1857,17 +1796,13 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「내가 이 아이를 낳게 된다면…그 애에게는 아빠로만 있어줘」
                 PRINTFORMW 「된다면…연인은, 그 애한테, 내어주고 싶지… 않으니깐」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 빨개진 얼굴로 띄엄띄엄, 그러나 확실하게 자신의 마음을 전해왔다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………아하…핫」
                 PRINTFORMW 웃고 있다… 처음에는 그렇게 싫어했는데… 
                 PRINTFORMW %CALLNAME:TARGET%의 그런 모습이 왠지 모르게 요염해 보였다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 28 && EXP:52 == 10
-        CFLAG:5201 = 28
-        DRAWLINE
+        ELSEIF LOCAL == 10
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「하아아아아아…」
@@ -1875,11 +1810,8 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「히힛, 나도 아기도 몹시 건강! 이상 무!」
                 PRINTFORMW 「조금쯤은 야한 짓도 할 수 있을지도 몰라?」
                 PRINTFORMW 그렇게 말하는 %CALLNAME:TARGET%의 웃는 얼굴이 놀랍도록 야해 보인다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 30 && EXP:52 == 11
-        CFLAG:5201 = 30
-        DRAWLINE
+        ELSEIF LOCAL == 11
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「나…이번으로 12명이 되는 셈이네」
@@ -1888,18 +1820,28 @@ ELSEIF NO == 149 && TALENT:140 == 1 && CFLAG:78 == NO:MASTER
                 PRINTFORMW 「그렇게 되면…꼭 하고 싶은 말이 있으니까, 나」
                 PRINTFORMW 「지, 지금 물어보지 마! 그 때 말해준다니깐!」
                 PRINTFORMW 「그러니까… 반드시 무사히 낳아서 %STR:401%에게 보여줄게, 우리 두 사람의 아이를…」
-                RETURN 1
+            ENDIF
+        ;娘妊娠∼回
+        ELSEIF CFLAG:6566 == 0 && LOCAL >= 12
+            CFLAG:6566 = 1
+            ;연모
+            IF TALENT:150 == 1 
+                PRINTFORMW 「이번에도 %CALLNAME:TARGET%, 건강한 아이를 낳을 거야」
+                PRINTFORMW 순수한 의욕이 넘치고 있다… 
+                PRINTFORMW 「저기 %STR:401%, 누구 더 닮았을지 맞춰보자 우리!」
             ENDIF
         ENDIF
     ENDIF
-    ;딸 출산
-ELSEIF NO == 149 && TALENT:142 == 1
+    CFLAG:5203++
+    RETURN 1
+;딸 출산
+ELSEIF NO == 149 && ((CFLAG:5203 & 3) == 3)
+    DRAWLINE
+    LOCAL = CFLAG:5203 >> 2
     IF CFLAG:3005 == 2 || CFLAG:3005 == 4 || CFLAG:3005 == 5
-        IF CFLAG:5201 < 9 && EXP:52 == 1
-        CFLAG:5201 = 9
-        DRAWLINE
+        IF LOCAL == 0
             ;연모
-            IF TALENT:150 == 1 
+            IF TALENT:150 == 1
                 PRINTFORMW 「%STR:401%………」
                 PRINTFORMW 무사히 출산을 끝낸 딸을 찾아가자 이쪽을 보고 부드럽게 미소지어 보인다.
                 PRINTFORMW 「아프고 무서웠지만, 힘냈어…」
@@ -1907,18 +1849,14 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「그리고 또 %조사처리(STR:401,"랑")% 아기를 낳는 거고」
                 PRINTFORMW 「너무 좋아해, %STR:401%!」
                 PRINTFORMW 키스를 구하며 매달려오는 딸을 당신은 꾸욱 끌어안았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 「또, %조사처리(STR:401,"랑")% 아기를 만들게 되는 걸까」
                 PRINTFORMW 「왠지 해서는 안 될 것 같은 느낌이 들어…꺄, 꺄앗」
                 PRINTFORMW 번민하고 있는 %조사처리(CALLNAME:TARGET,"를")% %조사처리(CALLNAME:MASTER,"는")% 덮쳐눌렀다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 11 && EXP:52 == 2
-        CFLAG:5201 = 11
-        DRAWLINE
+        ELSEIF LOCAL == 1
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「에헤헷, 다녀왔습니다」
@@ -1926,37 +1864,29 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「%CALLNAME:TARGET%, 아기 너무 좋아」
                 PRINTFORMW 「이번에도 기분 좋은 일 잔뜩 하고 많이 낳자, %STR:401%!」
                 PRINTFORMW 친아버지의 아이를 낳는 것임에도 불구하고 %조사처리(CALLNAME:TARGET,"는")% 더할 나위 없는 기쁨을 느끼고 있다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 「또, %조사처리(STR:401,"랑")% 아기를 만들게 되는 걸까」
                 PRINTFORMW 「나…싫어…그치만, 몸도 무겁고…이상해」
                 PRINTFORMW 번민하고 있는 %CALLNAME:TARGET%의 의사 따위 %CALLNAME:MASTER%에겐 아무래도 좋은 것이었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 13 && EXP:52 == 3
-            CFLAG:5201 = 13
-            DRAWLINE
+        ELSEIF LOCAL == 2
             ;연모
-                IF TALENT:150 == 1 
+            IF TALENT:150 == 1 
                 PRINTFORMW 「다녀왔습니다∼」
                 PRINTFORMW 벌써 이것으로 세 번째의 출산, 부녀관계의 선은 이미 오래 전에 흔적도 없이 사라져 버렸다.
                 PRINTFORMW 「세번째이지만 이번에도 아팠어…그치만 %조사처리(STR:401,"과")%의 아이니까 몇 번이라도 좋아」
                 PRINTFORMW 「…이번에도…%조사처리(STR:401,"랑")% 아이, 낳고 싶어」
                 PRINTFORMW 작은 동물처럼 몸을 부벼오는 %CALLNAME:TARGET%의 천진한 미소를 보고 %조사처리(CALLNAME:MASTER,"는")% 꼿꼿하게 서는 아래를 느낄 수 있었다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 「아팠어…무서웠고」
                 PRINTFORMW 「%STR:401%……이제 그만하고 싶어」
                 PRINTFORMW 싫어하는 기색을 보이는 %조사처리(CALLNAME:TARGET,"였")%지만, 이미 %CALLNAME:MASTER%의 성기는 최대치까지 발기되었다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 15 && EXP:52 == 4
-            CFLAG:5201 = 15
-            DRAWLINE
+        ELSEIF LOCAL == 3
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「쨘∼」
@@ -1964,16 +1894,12 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「이제 하나만 더 채우면 한 손이 꽉 찬다!」
                 PRINTFORMW …자세히 보니 자랑스레 웃고 있는 %CALLNAME:TARGET%의 엄지손가락은 접혀 있다.
                 PRINTFORMW 친아버지의 아이를 낳았다는 거부감 따위는 전혀 없는 것 같다…… 
-                RETURN 1
-                ;그 외
+            ;그 외
             ELSE
                 PRINTFORMW 「……아핫」
                 PRINTFORMW 무슨 의미인지 몰라도 %조사처리(CALLNAME:TARGET,"는")% 엷은 미소를 띄었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 17 && EXP:52 == 5
-            CFLAG:5201 = 17
-            DRAWLINE
+        ELSEIF LOCAL == 4
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「후아, 무사히 다녀왔습니다」
@@ -1982,35 +1908,27 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「그렇게 해서 집 안에 %조사처리(STR:401,"랑")% %CALLNAME:TARGET%의 아이들로 꽉 채우는 거야」
                 PRINTFORMW 「왁자지껄하고 너무 재밌겠다, 에헤헷」
                 PRINTFORMW %CALLNAME:TARGET%의 천진난만한 미소에 %조사처리(CALLNAME:MASTER,"는")% 묘한 행복을 느꼈다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 지금은 거의 저항하지 않지만, 싫어하던 %조사처리(CALLNAME:TARGET,"를")% 임신시켜 아이를 낳게 한 게 이번으로 다섯번째 
                 PRINTFORMW 과연 몇 명까지 낳을 수 있을까? 
                 PRINTFORMW 문득 %조사처리(CALLNAME:MASTER,"는")% 한계를 시험해 보고 싶어졌다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 19 && EXP:52 == 6
-            CFLAG:5201 = 19
-            DRAWLINE
+        ELSEIF LOCAL == 5
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「저기 %STR:401%, 앞으로…얼마나 더 낳을까?」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 모성이 가득 느껴지는 얼굴을 하고 있었다.
                 PRINTFORMW 「…몇 명이라도 좋아, %조사처리(STR:401,"랑")% 내 아인걸…」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 가만히 자신의 가슴을 끌어안았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 이미 인간으로서의 도리는 포기했다, 그럼 언제 또 %CALLNAME:TARGET%에게 아이를 낳게 할까… 
                 PRINTFORMW 그런 생각을 하자 아랫도리에 피가 격렬히 도는 걸 느낄 수 있었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 21 && EXP:52 == 7
-            CFLAG:5201 = 21
-            DRAWLINE
+        ELSEIF LOCAL == 6
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%STR:401%, 아이 얼굴 봤어?」
@@ -2018,17 +1936,13 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「누굴 더 닮은 것 같았어? %CALLNAME:TARGET%? 아님 %STR:401%?」
                 PRINTFORMW 천진한 질문을 던지는 %조사처리(CALLNAME:TARGET,"를")% 끌어안고 다정하게 토닥여줬다.
                 PRINTFORMW 「에헤헷…다녀왔습니다」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 일곱은 행운의 숫자이지…따위 시시껄렁한 생각을 하며 %조사처리(CALLNAME:MASTER,"는")% 피식 웃었다.
                 PRINTFORMW 완전히 부서져 버린 %CALLNAME:TARGET%의 안위 따위는 안중에도 없었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 23 && EXP:52 == 8
-            CFLAG:5201 = 23
-            DRAWLINE
+        ELSEIF LOCAL == 7
             ;연모
             IF TALENT:150 == 1 && TALENT:128 == 1 
                 PRINTFORMW 벌써 여덟번째의 출산을 맞이한 %CALLNAME:TARGET%의 모습은…… 
@@ -2052,24 +1966,19 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「이번에도 건강한 아이를 낳고 왔어요! 칭찬해주세요」
                 PRINTFORMW 득의양양한 얼굴에선 죄의식도 거리낌도 한 점도 발견할 수 없다… 
                 PRINTFORMW 이 아이는 과연 지금 일어나는 일의 의미를 알고 있는 걸까… 
-                RETURN 1
             ELSEIF TALENT:150 == 1 && TALENT:128 == 0
                 PRINTFORMW 오래간만에 보는 %CALLNAME:TARGET%의 모습은 몹시 건강해 보였다.
                 PRINTFORMW 「%STR:401%!! 다녀왔습니다!」
                 PRINTFORMW 「이번에도 건강한 아이를 낳고 왔어요! 칭찬해주세요」
                 PRINTFORMW 득의양양한 얼굴에선 죄의식도 거리낌도 한 점도 발견할 수 없다… 
                 PRINTFORMW 이 아이는 과연 지금 일어나는 일의 의미를 알고 있는 걸까… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………%STR:401%………」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 침대에 그저 누워 있다가 가만히 이쪽을 바라보았다.
                 PRINTFORMW 하지만 그 눈동자 안에 %CALLNAME:MASTER%의 모습은 비치지 않았다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 25 && EXP:52 == 9
-            CFLAG:5201 = 25
-            DRAWLINE
+        ELSEIF LOCAL == 8
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %CALLNAME:TARGET%의 출산도 9번째를 무사히 끝마쳤다.
@@ -2080,7 +1989,6 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW …그러고 보니 전에 열두명을 채우겠다고 말했던가? 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 당신의 몸에 가만히 몸을 부비며 작은 고양이같이 옹알거렸다.
                 PRINTFORMW 「에헤헷……언제까지고 이렇게 있을 수 있음 좋겠다」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………………아」
@@ -2088,18 +1996,14 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 무언가 새로운 것이 %CALLNAME:TARGET% 안에서 싹트고 있는 것 같다.
                 PRINTFORMW ……하지만 그것이 어떤 것인지는 알 수가 없다.
                 PRINTFORMW 좀 더 두고보도록 할까…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 27 && EXP:52 == 10
-            CFLAG:5201 = 27
-            DRAWLINE
+        ELSEIF LOCAL == 9
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 가벼운 발걸음으로 이쪽을 향해 뛰어왔다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 두 팔을 벌려 와락 끌어안아 주었다.
                 PRINTFORMW 「아기 너무 좋아!」
                 PRINTFORMW %CALLNAME:TARGET%의 만족한 얼굴에 %조사처리(CALLNAME:MASTER,"는")% 더할 나위 없는 행복을 느꼈다…… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「안녕하세요」
@@ -2119,11 +2023,8 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW [괴조인격]이 되었습니다.
                 TALENT:169 = 1
                 CFLAG:6666 = 1
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 29 && EXP:52 == 11
-            CFLAG:5201 = 29
-            DRAWLINE
+        ELSEIF LOCAL == 10
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %CALLNAME:TARGET%의 방에 들어가니, 따뜻한 표정을 하고 무언가를 쓰다듬고 있다.
@@ -2135,11 +2036,8 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「%STR:401%…… 언젠가 다.같이 살 수 있음, 좋겠어…」
                 PRINTFORMW …열한 번째 출산, 솔직히 이 아이를 단순한 딸로 생각하지 않은지는 오래되었다.
                 PRINTFORMW 하지만 무엇을 어떻게 해 줄 수 있을지에 대해 물어보면 말문이 막히는 %조사처리(CALLNAME:MASTER,"였")%다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 31 && EXP:52 == 12
-            CFLAG:5201 = 31
-            DRAWLINE
+        ELSEIF LOCAL == 11
             ;연모
             IF TALENT:150 == 1 && TALENT:153 == 0 && TALENT:162 == 0
                 PRINTFORMW 「지금까지, 정말 고맙습니다, %STR:401%……」
@@ -2161,7 +2059,6 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% [상애]를 획득했습니다.
                 TALENT:153 = 1
                 CFLAG:14 |= 8
-                RETURN 1
             ELSEIF TALENT:153 == 1
                 PRINTFORMW 「지금까지, 정말 고맙습니다, %STR:401%……」
                 PRINTFORMW 무사히 돌아온 %CALLNAME:TARGET%의 방에 들어간 %조사처리(CALLNAME:MASTER,"가")% 본 것은 
@@ -2177,36 +2074,20 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 마찬가지로, 이쪽 역시 더 이상 이 아이 없이는 살아갈 수 없을 것 같았지만… 
                 PRINTFORMW 말로 하는 건 오히려 부끄러워서, 행동으로 보여주기로 했다.
                 PRINTFORMW 자신의 옷을 벗기는 %CALLNAME:MASTER%의 손길을 느끼며, %조사처리(CALLNAME:TARGET,"는")% 내내 황홀한 표정이었다… 
-                RETURN 1
-            ENDIF
-        ;娘妊娠∼回
-        ELSEIF NO == 149 && CFLAG:6566 == 0 && TALENT:140 == 1 && EXP:52 >= 12
-            CFLAG:6566 = 1
-            DRAWLINE
-            ;연모
-            IF TALENT:150 == 1 
-                PRINTFORMW 「이번에도 %CALLNAME:TARGET%, 건강한 아이를 낳을 거야」
-                PRINTFORMW 순수한 의욕이 넘치고 있다… 
-                PRINTFORMW 「저기 %STR:401%, 누구 더 닮았을지 맞춰보자 우리!」
-                RETURN 1
             ENDIF
         ;娘出産∼回
-        ELSEIF NO == 149 && CFLAG:6567 == 0 && EXP:52 >= 13
+        ELSEIF CFLAG:6567 == 0 && LOCAL >= 12
             CFLAG:6567 = 1
-            DRAWLINE
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「앞으로도 계∼속, %조사처리(CALLNAME:TARGET,"랑")% %STR:401%의 아이를 낳아서……」
                 PRINTFORMW 열두명 채우겠다는 목표는 이미 끝났는데도 %CALLNAME:TARGET%의 아이 욕심은 멈추질 않는다.
                 PRINTFORMW 「…이번엔 %STR:401% 마을을 만들자! 재밌겠지♪」
                 PRINTFORMW …그것도 나쁘지만은 않으려나… 
-                RETURN 1
             ENDIF
         ENDIF
     ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
-        IF CFLAG:5201 < 9 && EXP:52 == 1
-        CFLAG:5201 = 9
-        DRAWLINE
+        IF LOCAL == 0
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「……다녀왔어」
@@ -2216,18 +2097,14 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「흑… 으으읏, 바보같아, 한때나마 기뻐한 내가…」
                 PRINTFORMW 「그리고 이렇게 다시 %조사처리(STR:401,"를")% 보고 기뻐하는 나… 정말 싫다…」
                 PRINTFORMW %CALLNAME:TARGET%의 괴로움에 %조사처리(CALLNAME:MASTER,"는")% 입술을 겹쳐 그 번민을 막았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……이제」
                 PRINTFORMW 「난, %STR:401%의 딸은 아닌 거지」
                 PRINTFORMW 「그래, 어떻게 생각하면 아무 생각도 할 수 없는 게 더 기쁠거야…」
                 PRINTFORMW %CALLNAME:TARGET%의 마음속에서 무언가가 끊어져버린 것 같다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 11 && EXP:52 == 2
-        CFLAG:5201 = 11
-        DRAWLINE
+        ELSEIF LOCAL == 1
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「…불행하게 만들고 싶지 않았어」
@@ -2235,37 +2112,29 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「잘못된 생명이라고 세상이 모두 비난하더라도, 내 아기는…」
                 PRINTFORMW 「…내 아이는…」
                 PRINTFORMW 「사랑해서…… 낳은 거였으니까…」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……언제까지 이렇게 할 생각일까」
                 PRINTFORMW 「나는, 당신의 욕망을 채우기 위한 도구가 아니야」
                 PRINTFORMW 「난! 당신이… 당신이… 낳게 한, 딸…이란 말야」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% %조사처리(CALLNAME:TARGET,"를")% 마주보지 않은 채 몸을 감싸쥐고 중얼거렸다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 13 && EXP:52 == 3
-            CFLAG:5201 = 13
-            DRAWLINE
+        ELSEIF LOCAL == 2
             ;연모
-                IF TALENT:150 == 1 
+            IF TALENT:150 == 1 
                 PRINTFORMW 「다녀왔습니다∼」
                 PRINTFORMW 벌써 이것으로 세 번째의 출산, 부녀관계의 선은 이미 오래 전에 흔적도 없이 사라져 버렸다.
                 PRINTFORMW 「세번째이지만 이번에도 아팠어… 그치만 %조사처리(STR:401,"과")%의 아이니까 몇 번이라도 좋아」
                 PRINTFORMW 「…이번에도… %조사처리(STR:401,"랑")% 아이, 낳고 싶어」
                 PRINTFORMW 작은 동물처럼 몸을 부벼오는 %CALLNAME:TARGET%의 천진한 미소를 보고 %조사처리(CALLNAME:MASTER,"는")% 꼿꼿하게 서는 아래를 느낄 수 있었다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「……」
                 PRINTFORMW 「아팠어… 무서웠고」
                 PRINTFORMW 「%STR:401%…… 이제 그만하고 싶어」
                 PRINTFORMW 싫어하는 기색을 보이는 %조사처리(CALLNAME:TARGET,"였")%지만, 이미 %CALLNAME:MASTER%의 성기는 최대치까지 발기되었다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 15 && EXP:52 == 4
-            CFLAG:5201 = 15
-            DRAWLINE
+        ELSEIF LOCAL == 3
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「쨘∼」
@@ -2273,16 +2142,12 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「이제 하나만 더 채우면 한 손이 꽉 찬다!」
                 PRINTFORMW …자세히 보니 자랑스레 웃고 있는 %CALLNAME:TARGET%의 엄지손가락은 접혀 있다.
                 PRINTFORMW 친아버지의 아이를 낳았다는 거부감 따위는 전혀 없는 것 같다…… 
-                RETURN 1
-                ;그 외
+            ;그 외
             ELSE
                 PRINTFORMW 「……아핫」
                 PRINTFORMW 무슨 의미인지 몰라도 %조사처리(CALLNAME:TARGET,"는")% 엷은 미소를 띄었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 17 && EXP:52 == 5
-            CFLAG:5201 = 17
-            DRAWLINE
+        ELSEIF LOCAL == 4
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「후아, 무사히 다녀왔습니다」
@@ -2291,35 +2156,27 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「그렇게 해서 집 안에 %조사처리(STR:401,"랑")% %CALLNAME:TARGET%의 아이들로 꽉 채우는 거야」
                 PRINTFORMW 「왁자지껄하고 너무 재밌겠다, 에헤헷」
                 PRINTFORMW %CALLNAME:TARGET%의 천진난만한 미소에 %조사처리(CALLNAME:MASTER,"는")% 묘한 행복을 느꼈다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 지금은 거의 저항하지 않지만, 싫어하던 %조사처리(CALLNAME:TARGET,"를")% 임신시켜 아이를 낳게 한 게 이번으로 다섯번째 
                 PRINTFORMW 과연 몇 명까지 낳을 수 있을까? 
                 PRINTFORMW 문득 %조사처리(CALLNAME:MASTER,"는")% 한계를 시험해 보고 싶어졌다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 19 && EXP:52 == 6
-            CFLAG:5201 = 19
-            DRAWLINE
+        ELSEIF LOCAL == 5
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「저기 %STR:401%, 앞으로…얼마나 더 낳을까?」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 모성이 가득 느껴지는 얼굴을 하고 있었다.
                 PRINTFORMW 「…몇 명이라도 좋아, %조사처리(STR:401,"랑")% 내 아인걸…」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 눈을 감은 채 가만히 자신의 가슴을 끌어안았다.
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 이미 인간으로서의 도리는 포기했다, 그럼 언제 또 %CALLNAME:TARGET%에게 아이를 낳게 할까… 
                 PRINTFORMW 그런 생각을 하자 아랫도리에 피가 격렬히 도는 걸 느낄 수 있었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 21 && EXP:52 == 7
-            CFLAG:5201 = 21
-            DRAWLINE
+        ELSEIF LOCAL == 6
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「%STR:401%, 아이 얼굴 봤어?」
@@ -2327,17 +2184,13 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「누굴 더 닮은 것 같았어? %CALLNAME:TARGET%? 아님 %STR:401%?」
                 PRINTFORMW 천진한 질문을 던지는 %조사처리(CALLNAME:TARGET,"를")% 끌어안고 다정하게 토닥여줬다.
                 PRINTFORMW 「에헤헷…다녀왔습니다」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「…………………」
                 PRINTFORMW 일곱은 행운의 숫자이지…따위 시시껄렁한 생각을 하며 %조사처리(CALLNAME:MASTER,"는")% 피식 웃었다.
                 PRINTFORMW 완전히 부서져 버린 %CALLNAME:TARGET%의 안위 따위는 안중에도 없었다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 23 && EXP:52 == 8
-            CFLAG:5201 = 23
-            DRAWLINE
+        ELSEIF LOCAL == 7
             ;연모
             IF TALENT:150 == 1 && TALENT:128 == 1 
                 PRINTFORMW 벌써 여덟번째의 출산을 맞이한 %CALLNAME:TARGET%의 모습은…… 
@@ -2361,24 +2214,19 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「이번에도 건강한 아이를 낳고 왔어요! 칭찬해주세요」
                 PRINTFORMW 득의양양한 얼굴에선 죄의식도 거리낌도 한 점도 발견할 수 없다… 
                 PRINTFORMW 이 아이는 과연 지금 일어나는 일의 의미를 알고 있는 걸까… 
-                RETURN 1
             ELSEIF TALENT:150 == 1 && TALENT:128 == 0
                 PRINTFORMW 오래간만에 보는 %CALLNAME:TARGET%의 모습은 몹시 건강해 보였다.
                 PRINTFORMW 「%STR:401%!! 다녀왔습니다!」
                 PRINTFORMW 「이번에도 건강한 아이를 낳고 왔어요! 칭찬해주세요」
                 PRINTFORMW 득의양양한 얼굴에선 죄의식도 거리낌도 한 점도 발견할 수 없다… 
                 PRINTFORMW 이 아이는 과연 지금 일어나는 일의 의미를 알고 있는 걸까… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………%STR:401%………」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 침대에 그저 누워 있다가 가만히 이쪽을 바라보았다.
                 PRINTFORMW 하지만 그 눈동자 안에 %CALLNAME:MASTER%의 모습은 비치지 않았다.
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 25 && EXP:52 == 9
-            CFLAG:5201 = 25
-            DRAWLINE
+        ELSEIF LOCAL == 8
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %CALLNAME:TARGET%의 출산도 9번째를 무사히 끝마쳤다.
@@ -2389,7 +2237,6 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW …그러고 보니 전에 열두명을 채우겠다고 말했던가? 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 당신의 몸에 가만히 몸을 부비며 작은 고양이같이 옹알거렸다.
                 PRINTFORMW 「에헤헷……언제까지고 이렇게 있을 수 있음 좋겠다」
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「………………아」
@@ -2397,18 +2244,14 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 무언가 새로운 것이 %CALLNAME:TARGET% 안에서 싹트고 있는 것 같다.
                 PRINTFORMW ……하지만 그것이 어떤 것인지는 알 수가 없다.
                 PRINTFORMW 좀 더 두고보도록 할까…… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 27 && EXP:52 == 10
-            CFLAG:5201 = 27
-            DRAWLINE
+        ELSEIF LOCAL == 9
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 가벼운 발걸음으로 이쪽을 향해 뛰어왔다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 두 팔을 벌려 와락 끌어안아 주었다.
                 PRINTFORMW 「아기 너무 좋아!」
                 PRINTFORMW %CALLNAME:TARGET%의 만족한 얼굴에 %조사처리(CALLNAME:MASTER,"는")% 더할 나위 없는 행복을 느꼈다…… 
-                RETURN 1
             ;그 외
             ELSE
                 PRINTFORMW 「안녕하세요」
@@ -2428,11 +2271,8 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW [괴조인격]이 되었습니다.
                 TALENT:169 = 1
                 CFLAG:6666 = 1
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 29 && EXP:52 == 11
-            CFLAG:5201 = 29
-            DRAWLINE
+        ELSEIF LOCAL == 10
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW %CALLNAME:TARGET%의 방에 들어가니, 따뜻한 표정을 하고 무언가를 쓰다듬고 있다.
@@ -2444,11 +2284,8 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 「%STR:401%……언젠가 다.같이 살 수 있음, 좋겠어…」
                 PRINTFORMW …열한 번째 출산, 솔직히 이 아이를 단순한 딸로 생각하지 않은지는 오래되었다.
                 PRINTFORMW 하지만 무엇을 어떻게 해 줄 수 있을지에 대해 물어보면 말문이 막히는 %조사처리(CALLNAME:MASTER,"였")%다… 
-                RETURN 1
             ENDIF
-        ELSEIF CFLAG:5201 < 31 && EXP:52 == 12
-            CFLAG:5201 = 31
-            DRAWLINE
+        ELSEIF LOCAL == 11
             ;연모
             IF TALENT:150 == 1 && TALENT:153 == 0 && TALENT:162 == 0
                 PRINTFORMW 「지금까지, 정말 고맙습니다, %STR:401%……」
@@ -2470,7 +2307,6 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% [상애]를 획득했습니다.
                 TALENT:153 = 1
                 CFLAG:14 |= 8
-                RETURN 1
             ELSEIF TALENT:153 == 1
                 PRINTFORMW 「지금까지, 정말 고맙습니다, %STR:401%……」
                 PRINTFORMW 무사히 돌아온 %CALLNAME:TARGET%의 방에 들어간 %조사처리(CALLNAME:MASTER,"가")% 본 것은 
@@ -2486,33 +2322,21 @@ ELSEIF NO == 149 && TALENT:142 == 1
                 PRINTFORMW 마찬가지로, 이쪽 역시 더 이상 이 아이 없이는 살아갈 수 없을 것 같았지만… 
                 PRINTFORMW 말로 하는 건 오히려 부끄러워서, 행동으로 보여주기로 했다.
                 PRINTFORMW 자신의 옷을 벗기는 %CALLNAME:MASTER%의 손길을 느끼며, %조사처리(CALLNAME:TARGET,"는")% 내내 황홀한 표정이었다… 
-                RETURN 1
-            ENDIF
-        ;娘妊娠∼回
-        ELSEIF CFLAG:6566 == 0 && TALENT:140 == 1 && EXP:52 >= 12
-            CFLAG:6566 = 1
-            DRAWLINE
-            ;연모
-            IF TALENT:150 == 1 
-                PRINTFORMW 「이번에도 %CALLNAME:TARGET%, 건강한 아이를 낳을 거야」
-                PRINTFORMW 순수한 의욕이 넘치고 있다… 
-                PRINTFORMW 「저기 %STR:401%, 누구 더 닮았을지 맞춰보자 우리!」
-                RETURN 1
             ENDIF
         ;娘出産∼回
-        ELSEIF CFLAG:6567 == 0 && EXP:52 >= 13
+        ELSEIF CFLAG:6567 == 0 && LOCAL >= 12
             CFLAG:6567 = 1
-            DRAWLINE
             ;연모
             IF TALENT:150 == 1 
                 PRINTFORMW 「앞으로도 계∼속, %조사처리(CALLNAME:TARGET,"랑")% %STR:401%의 아이를 낳아서……」
                 PRINTFORMW 열두명 채우겠다는 목표는 이미 끝났는데도 %CALLNAME:TARGET%의 아이 욕심은 멈추질 않는다.
                 PRINTFORMW 「…이번엔 %STR:401% 마을을 만들자! 재밌겠지♪」
                 PRINTFORMW …그것도 나쁘지만은 않으려나… 
-                RETURN 1
             ENDIF
         ENDIF
     ENDIF
+    CFLAG:5203++
+    RETURN 1
 ENDIF
 
 ;-------------------------------------------------

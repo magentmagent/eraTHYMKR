@@ -5889,13 +5889,18 @@ IF TFLAG:200 == 170 && CFLAG:7005 == 1
             PRINTFORMW 뱃속에서는 생겨서는 안될 생명이 움트고 있다…… 
         ENDIF
     ENDIF
+    ;EVENT_KX_MAIN.ERB에서 사용하는 주인 딸의 주인 아이 임신 플래그를 여기에서 설정.
+    ;조교 시작 시 대사를 안 봤을 때를 대비해서 추가적인 합산이 더해짐.
+    ;그러나 만약 유저가 구상 설정을 껐다가 켜는 경우에는 현 시스템에서는 대책이 없음. T
+    SIF NO == 149 && CFLAG:78 == NO:MASTER
+        CFLAG:5203 += ((CFLAG:5203 & 3) == 3) ? 2 # 1
     RETURN 1
 ENDIF
 
 ;-------------------------------------------------
 ;妊娠した
 ;-------------------------------------------------
-IF TFLAG:200 == 170
+IF TFLAG:200 == 170 && CFLAG:7005 == 0
     ;主人による
     IF CFLAG:70 == 1
         ;対象が娘の場合
@@ -6107,6 +6112,8 @@ IF TFLAG:200 == 170
             ENDIF
         ENDIF
     ENDIF
+    SIF NO == 149 && CFLAG:78 == NO:MASTER
+        CFLAG:5203 += (CFLAG:5203 & 3 == 3) ? 2 # 1
 ENDIF
 
 ;----------------------------------------------------------------
@@ -6114,13 +6121,15 @@ ENDIF
 ;----------------------------------------------------------------
 IF TFLAG:200 == 171
     IF NO == 149
+        ;CFLAG:78은 이미 초기화된 상태이므로 사용할 수 없지만 @CHILD_BIRTH의 LOCAL 변수 안에 약간의 변형을 거친 채 남아 있으므로 이를 다시 불러와서 누구의 아이인지 판별 가능. T
+        LOCAL = (LOCAL@CHILD_BIRTH:1) - 1000
         CFLAG:6567 = 0
         IF TALENT:150
-            IF CFLAG:78 == 0 && EXP:52 > 1
+            IF LOCAL == 0 && EXP:52 > 1
                 PRINTFORMW 「귀여워…」
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 아이를 받아들었다 
                 PRINTFORMW 행복함에 가득찬 표정은, 금단의 아이를 낳은 딸이라고는 생각할 수 없었다 
-            ELSEIF CFLAG:78 == 0 && EXP:52 == 1
+            ELSEIF LOCAL == 0 && EXP:52 == 1
                 PRINTFORMW 「하… 아아… 앗, 무서웠어…」
                 PRINTFORMW 출산의 격통을 가까스로 이겨낸 %조사처리(CALLNAME:TARGET,"가")% 옆을 보자 거기엔 막 낳은 아이가 울고 있었다 
                 PRINTFORMW 「에헤헷… %조사처리(STR:401,"랑")% %CALLNAME:TARGET%의 아기」
@@ -6135,7 +6144,7 @@ IF TFLAG:200 == 171
             IF EXP:52 > 1
                 PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 완전히 무반응이었다 
                 PRINTFORMW 그 눈 안에선 현실이 아닌 다른 무언가를 보고 있는 것만 같다…… 
-            ELSEIF CFLAG:78 == 0 && EXP:52 == 1
+            ELSEIF LOCAL == 0 && EXP:52 == 1
                 PRINTFORMW 「…%조사처리(STR:401,"랑")%, 내, 아이…」
                 PRINTFORMW 돌이킬 수 없는 강을 건넌 %CALLNAME:TARGET%의 표정은 혼이 나간 것 같다…… 
             ELSE
@@ -6143,6 +6152,8 @@ IF TFLAG:200 == 171
                 PRINTFORMW 돌이킬 수 없는 강을 건넌 %CALLNAME:TARGET%의 표정은 혼이 나간 것 같다…… 
             ENDIF
         ENDIF
+        SIF LOCAL == NO:MASTER
+            CFLAG:5203 += ((CFLAG:5203 & 3) == 1) ? 2 # 1
     ENDIF
 ENDIF
 
