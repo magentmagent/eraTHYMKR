@@ -13477,7 +13477,7 @@ IF TFLAG:200 == 130
         PRINTFORMW 「%조사처리(CALLNAME:MASTER,"과")% 노는 거, 그렇게 싫지 않았어」
         PRINTFORMW 「우후후… 탈출한다면, 또 놀러 올게」
     ENDIF
-    IF CFLAG:5806 == 1 && TALENT:158 == 0 && TALENT:170 == 0
+    IF (CFLAG:5806 == 0 || TALENT:158 == 1) && TALENT:170 == 0
         DRAWLINE
         PRINTFORMW 얼마 지나지 않아, 커다란 폭발음과 플랑의 천진난만한 웃음 소리가 들려온 것 같은 느낌이 들었다
     ENDIF
