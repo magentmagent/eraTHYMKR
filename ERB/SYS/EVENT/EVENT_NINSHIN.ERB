@@ -588,11 +588,13 @@ ENDIF
 
 ;출산시의 대사를 이벤트 대사로 해보는 건 좋다 치고 분기 어쩌지…
 ;기본적으로는 대사 측에서 분기해주는 방향으로
+;@RESET_FLAG_N_FORCE가 CFLAG:78을 초기화시켰으므로 이 값이 가공된 채 등록된 LOCAL:1을 원래 CFLAG:78 값으로 되돌려서 사용. T
+LOCAL:1 -= 1000
 ;산모의 대사
-CALL SELF_KOJO, ARG, 171
+CALL SELF_KOJO, ARG, 171, LOCAL:1
 ;친부의 대사
-SIF GETCHARA(CFLAG:ARG:78) >= 0
-    CALL SELF_KOJO, GETCHARA(CFLAG:ARG:78), 167, ARG
+SIF GETCHARA(LOCAL:1) >= 0
+    CALL SELF_KOJO, GETCHARA(LOCAL:1), 167, ARG
 ;-------------------------------------------------
 ;키우는 부모 지정
 ;-------------------------------------------------
