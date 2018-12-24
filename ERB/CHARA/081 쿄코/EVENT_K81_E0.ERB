@@ -2,7 +2,7 @@
 ;eratohoYM Mk-2 rev.6용 분할형 대사 템플릿
 ;81을 캐릭터 번호 치환해 사용해주세요(레이무라면 1, 렌코라면 49, 미마라면 100).
 ;
-;이 파일에는 TFLAG:200으로 분기하는 이벤트 대사 중, 0～399번 대사를 관리하고 있습니다.
+;이 파일에는 TFLAG:200으로 분기하는 이벤트 대사 중, 0~399번 대사를 관리하고 있습니다.
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;==================================================
 ;○○ 대사
@@ -522,17 +522,17 @@ ENDIF
 IF TFLAG:99 == 2
     ;ミスティアが助手で二人が연모
     IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-        PRINTFORMW 「…お疲れ様でした！」
-        PRINTFORMW 『今日は…いつもより盛り上がってなかった？』
-        PRINTFORMW 「人気が出たって事なのかなぁ」
-        PRINTFORMW 二人は手ごたえを感じながら帰路に付いた。
+        PRINTFORMW 「…수고했어!」
+        PRINTFORMW 『오늘은… 평소보다 열광적이었지?』
+        PRINTFORMW 「인기가 생겼나 봐~」
+        PRINTFORMW 둘은 반응을 느끼며 귀로에 섰다.
     ELSEIF TALENT:연모
-        PRINTFORMW 「今日はいつもより盛り上がっていましたね」
-        PRINTFORMW 「人気者になったって事かなぁ？」
+        PRINTFORMW 「오늘은 평소보다 열광적이었어요」
+        PRINTFORMW 「인기가 생겼나 봐요~?」
     ;その他
     ELSE
-        PRINTFORMW 「今日は人多かったですね」
-        PRINTFORMW 「ライブも盛り上がって来て本当に…良かったです！」
+        PRINTFORMW 「오늘은 사람이 많았어요」
+        PRINTFORMW 「라이브 분위기도 열광적이어서, 정말… 감동이었어요!」
     ENDIF
 ;성공
 ELSEIF TFLAG:99 == 1
@@ -540,19 +540,19 @@ ELSEIF TFLAG:99 == 1
     IF CFLAG:9901 == 0
         ;ミスティアが助手で二人が연모
         IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-            PRINTFORMW 『…やった！』
-            PRINTFORMW 「良かった…%CALLNAME:MASTER%さんに変なとこ見られなくて…」
-            PRINTFORMW ライブの成功を噛み締め二人は岐路に着く。
-            PRINTFORMW 慢心すれば次に繋がらないが…
-            PRINTFORMW 今日の所は二人の成功を祝うことにしよう。
+            PRINTFORMW 『…야호!』
+            PRINTFORMW 「다행이다… %CALLNAME:MASTER% 씨에게 엉뚱한 모습 보이지 않아서…」
+            PRINTFORMW 라이브의 성공을 되새기며 귀로에 섰다.
+            PRINTFORMW 방심하면 다음으로 이어지지 않겠지만…
+            PRINTFORMW 지금 만큼은 둘의 성공을 경축하자.
         ;연모
         ELSEIF TALENT:연모
-            PRINTFORMW 「…大成功ですね！」
-            PRINTFORMW 「やっぱり盛り上がるって楽しいなぁ…」
+            PRINTFORMW 「…대성공이네요!」
+            PRINTFORMW 「역시 분위기를 살리는 건 즐거워요…」
         ;その他
         ELSE
-            PRINTFORMW 「よかった…失敗しなくて…！」
-            PRINTFORMW どうやらライブに成功したことで喜んでいるようだ。
+            PRINTFORMW 「다행이다… 실패하지 않아서…!」
+            PRINTFORMW 라이브에 성공해서 기뻐하는 것 같다.
         ENDIF
         CFLAG:9901++
     ELSE
@@ -560,40 +560,40 @@ ELSEIF TFLAG:99 == 1
         ;ミスティアが助手で二人が연모
         IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모 
             IF RAND:3 == 0
-                PRINTFORMW 『…今日は成功したねぇ…！』
-                PRINTFORMW 「成功したね！」
-                PRINTFORMW 成功の喜びを噛み締めながら帰路に着いた。
-                PRINTFORMW 次も成功させる、二人ともそう思っているようだ。
+                PRINTFORMW 『…오늘은 성공이네…!』
+                PRINTFORMW 「성공이야!」
+                PRINTFORMW 성공의 기쁨을 되새기며 귀로에 섰다.
+                PRINTFORMW 둘 다 다음에도 성공하자고 생각하는 것 같다.
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『おつかれー次も頑張ろ！』
-                PRINTFORMW 「おつかれー打ち上げ行こう！」
-                PRINTFORMW 二人とも達成感で胸いっぱいなようだ。
+                PRINTFORMW 『수고했어~ 다음에도 열심히 하자!』
+                PRINTFORMW 「수고했어~ 더 높은 곳으로 가는 거야!」
+                PRINTFORMW 둘 다 달성감에 가슴 벅찬 것 같다.
             ELSE
-                PRINTFORMW 「…おつかれ」
-                PRINTFORMW 『次も盛り上がるといいなぁ…』
-                PRINTFORMW 次のライブのことを考えながら三人は帰路に着く。
+                PRINTFORMW 「…수고했어」
+                PRINTFORMW 『다음에도 반응이 뜨거웠으면 좋겠어…』
+                PRINTFORMW 다음 라이브를 기대하며 셋은 귀로에 섰다.
             ENDIF
         ;연모
         ELSEIF TALENT:연모
             IF RAND:3 == 0
-                PRINTFORMW 「ふふふ…」
-                PRINTFORMW 「やった！今日も盛り上がりましたね！」
+                PRINTFORMW 「후후훗…」
+                PRINTFORMW 「야호! 오늘도 뜨거운 반응이어서요!」
             ELSEIF RAND:2 == 0 
                 PRINTFORMW 「………」
-                PRINTFORMW 響子は疲労困憊、されど満足したといった表情でぼうっとしている。
-                PRINTFORMW 今日はお疲れ様、そう言うと響子は
-                PRINTFORMW 「はい、ありがとうございます…！」
-                PRINTFORMW 次も盛り上がればいいな、そう呟きながら帰路に付いた。
+                PRINTFORMW 쿄코는 피곤하지만 만족스러운 표정으로 멍하니 있다.
+                PRINTFORMW 오늘도 수고했다고 하자 쿄코는,
+                PRINTFORMW 「네, 감사합니다…!」
+                PRINTFORMW 다음에도 잘 됐으면 좋겠다고 중얼거리고 귀로에 섰다.
             ELSE
-                PRINTFORMW 「ん…今日も…成功して…良かった…」
-                PRINTFORMW 響子は疲労困憊といった様子で肩で息しながら胸をなでおろしている。
-                PRINTFORMW この調子で頼むぞ、と頭を撫でてやると
-                PRINTFORMW 「…ありがとうございます…！」
-                PRINTFORMW 響子は飛びっきりの笑顔を見せながら感謝の言葉をかけてきた。
-            ENDIF    
+                PRINTFORMW 「응… 오늘도… 성공해서… 다행이야…」
+                PRINTFORMW 쿄코는 피로에 찬 모습으로 심호흡하며 가슴을 쓸어내리고 있다.
+                PRINTFORMW 그런 식으로 계속 부탁한다면서 머리를 쓰다듬어 주자,
+                PRINTFORMW 「…감사합니다…!」
+                PRINTFORMW 쿄코는 날아갈 듯한 미소로 감사를 표했다.
+            ENDIF
         ;その他
         ELSE
-            PRINTFORMW 「盛り上がってよかった…」
+            PRINTFORMW 「잘 돼서 다행이야…」
         ENDIF
     ENDIF
 ;실패
@@ -602,18 +602,18 @@ ELSE
     IF CFLAG:9900 == 0
         ;ミスティアが助手で二人が연모
         IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-            PRINTFORMW 『…う～ん…』
-            PRINTFORMW 「…何がダメだったんだろう…」
-            PRINTFORMW 二人は反省しながら帰路に着く。
-            PRINTFORMW この分なら二人はどんどん成長していくだろう、そう思った。
+            PRINTFORMW 『…음…』
+            PRINTFORMW 「…뭔가 안 됐어…」
+            PRINTFORMW 둘은 반성하며 귀로에 섰다.
+            PRINTFORMW 이런 자세라면 둘은 점점 성장해 나갈 것이라 생각했다.
         ;연모
         ELSEIF TALENT:연모
-            PRINTFORMW 「ごめんなさい…修行不足でした…」
-            PRINTFORMW 「つ、次はもっとうまくやります！」
+            PRINTFORMW 「죄송해요… 수행이 부족했어요…」
+            PRINTFORMW 「다, 다음엔 더 잘 할게요!」
         ;その他
         ELSE
             PRINTFORMW 「………」
-            PRINTFORMW どうやらライブに失敗したのを相当堪えているらしい。
+            PRINTFORMW 라이브의 실패에 대해 애써 감정을 억누르려는 것 같다.
         ENDIF
         CFLAG:9900++
     ELSE
@@ -623,38 +623,38 @@ ELSE
             IF RAND:3 == 0
                 PRINTFORMW 『…』
                 PRINTFORMW 「…」
-                PRINTFORMW 二人とも押し黙ったまま帰路に着いた。
-                PRINTFORMW しかし二人とも次は成功させる、そう思っているようだ。
+                PRINTFORMW 둘 다 침묵한 채 귀로에 섰다.
+                PRINTFORMW 그러나 둘 다 다음엔 성공하겠다고 생각하고 있었다.
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『…ダメだったね…』
-                PRINTFORMW 「ダメだったね…」
-                PRINTFORMW 帰ったら悪かったところを洗い出して次に生かそう、そう二人に伝えた。
+                PRINTFORMW 『…망했어…』
+                PRINTFORMW 「실패네…」
+                PRINTFORMW 돌아가서 나쁜 기억은 씻은 듯이 잊고 다음을 기약하자고 전했다.
             ELSE
-                PRINTFORMW 「…無念…」
-                PRINTFORMW 『つ、次は、がんばろ！』
-                PRINTFORMW ミスティアは響子を元気付けている。
+                PRINTFORMW 「…미안해…」
+                PRINTFORMW 『다, 다음엔 더 열심히 하면 돼!』
+                PRINTFORMW 미스티아는 쿄코를 격려하고 있다.
             ENDIF
         ;연모
         ELSEIF TALENT:연모
             IF RAND:3 == 0
-                PRINTFORMW 「ん…」
-                PRINTFORMW 「ごめんなさい…もっと頑張らないと…」
+                PRINTFORMW 「으…」
+                PRINTFORMW 「죄송해요… 더 열심히 해야 했는데…」
             ELSEIF RAND:2 == 0 
                 PRINTFORMW 「………」
-                PRINTFORMW 響子は意気消沈、といった表情で涙ぐんでいる。
-                PRINTFORMW 次があるさ、こういう時こそ笑おう、そう言うと響子は
-                PRINTFORMW 「はい、頑張ります…！」
-                PRINTFORMW 今度は必ず成功させる、そう誓ったようだ。
+                PRINTFORMW 쿄코는 우울한 표정으로 눈물을 글썽이고 있다.
+                PRINTFORMW 다음이 있으니, 이럴 때야말로 웃어야 한다고 하자, 쿄코는,
+                PRINTFORMW 「네, 열심히 할게요…!」
+                PRINTFORMW 다음엔 꼭 성공하겠다고 맹세했다.
             ELSE
-                PRINTFORMW 「あううう…盛り上がらなかったなぁ…」
-                PRINTFORMW 響子は反省点の多いライブイベントからも色々学んだようだ。
-                PRINTFORMW 次に生かせばいい、反省できるのは良い妖怪だ、と頭を撫でてやると
-                PRINTFORMW 「ん…分かりました、練習して次は、必ず…」
-                PRINTFORMW 響子はリベンジを誓っているようだ。
-            ENDIF    
+                PRINTFORMW 「아으… 분위기가 싸늘했어…」
+                PRINTFORMW 쿄코는 반성을 많이 하는 편이기에, 이번 라이브 이벤트에서도 많은 걸 배운 것 같다.
+                PRINTFORMW 다음에 잘 하면 된다, 반성도 할 줄 알고 착한 요괴다라고 하자, 쿄코는,
+                PRINTFORMW 「네… 알았어요. 연습해서, 다음엔 꼭…」
+                PRINTFORMW 재도전에 대한 의지를 다잡았다.
+            ENDIF
         ;その他
         ELSE
-            PRINTFORMW 「うまくいかないなぁ…」
+            PRINTFORMW 「잘 안 됐어…」
         ENDIF
     ENDIF
 ENDIF
@@ -663,16 +663,16 @@ ENDIF
 [SKIPSTART]
 ;ミスティアが助手で二人が연모
 IF ASSI >= 0 && NO:ASSI == 25 && TALENT:연모 && TALENT:ASSI:연모
-    PRINTFORMW 「ありがとーみんなありがとー！」
-    PRINTFORMW 『応援ありがとう！みんなに貰ったの、大事にするね！』
-    PRINTFORMW 二人はプレゼント以外にも大切なモノを貰っているようだ。
+    PRINTFORMW 「고마워요~ 모두, 고마워요~!」
+    PRINTFORMW 『응원 고마워! 받은 것들, 하나도 빠지지 않고 소중히 간직할게!』
+    PRINTFORMW 둘은 선물 말고도 소중한 걸 받은 것 같다.
 ELSEIF TALENT:연모
-    PRINTFORMW 「ありがとう！みんな！」
-    PRINTFORMW 「こんなにいっぱい…ありがとう！」
+    PRINTFORMW 「모두! 고마워요!」
+    PRINTFORMW 「이렇게나 잔뜩… 고마워요!」
 ;その他
 ELSE
-    PRINTFORMW 「あ…ありがとうございました！」
-    PRINTFORMW 「ライブも盛り上がって…本当に…ありがとう！」
+    PRINTFORMW 「아… 감사합니다!」
+    PRINTFORMW 「라이브도 성공적이고… 정말… 고마워요!」
 ENDIF
 [SKIPEND]
 
@@ -868,10 +868,10 @@ ENDIF
 @K81_MESSAGE_EVENT_140
 ;연모
 IF TALENT:연모
-        PRINTFORMW 「じゅる…れろ…ん…おはよーございま～す！」
+        PRINTFORMW 「쮸르… 할짝… 응… 안녕하세요~!」
 ;その他
 ELSE
-    PRINTFORMW 「ん…じゅる…元気ですか～？」
+    PRINTFORMW 「응… 쮸릅… 괜찮아요~?」
 ENDIF
 
 ;-------------------------------------------------
@@ -881,13 +881,13 @@ ENDIF
 @K81_MESSAGE_EVENT_141
 ;연모
 IF TALENT:연모
-        PRINTFORMW 「おはよーございま～す！」
-        PRINTFORMW 「今日も元気ですか～？」
-        PRINTFORMW そう言いながら薄っぺらい胸で陰茎を扱いてくる。
+        PRINTFORMW 「안녕하세요~!」
+        PRINTFORMW 「오늘도 몸 괜찮아요~?」
+        PRINTFORMW 그러면서 얄팍한 가슴으로 성기를 다뤘다.
 ;その他
 ELSE
-    PRINTFORMW 「ん～うまくできないよぉ…」
-    PRINTFORMW 響子は布団の中で必死に陰茎を胸で擦り上げている。
+    PRINTFORMW 「응~ 잘 안 돼…」
+    PRINTFORMW 쿄코는 이불 속에서 필사적으로 성기를 가슴으로 문질러 대고 있다.
 ENDIF
 
 ;-------------------------------------------------
@@ -897,12 +897,12 @@ ENDIF
 @K81_MESSAGE_EVENT_142
 ;연모
 IF TALENT:연모
-        PRINTFORMW 「んあ…朝から頂いてます…♪」
-        PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取ってくる。
+    PRINTFORMW 「응아… 아침부터 받고 싶었어요…♪」
+    PRINTFORMW 그러면서 쿄코는 기승위로 정액을 짜냈다.
 ;その他
 ELSE
-    PRINTFORMW 「ん…おはよーございまーす！」
-    PRINTFORMW そう言いながら響子は騎乗位で精液を搾り取っている。
+    PRINTFORMW 「응… 안~ 녕하~ 세요~!」
+    PRINTFORMW 그러면서 쿄코는 기승위로 정액을 짜냈다.
 ENDIF
 
 ;-------------------------------------------------
@@ -912,12 +912,12 @@ ENDIF
 @K81_MESSAGE_EVENT_143
 ;연모
 IF TALENT:연모
-        PRINTFORMW 「んちゅ…♪」
-        PRINTFORMW 「えへへ、おはようのキスですよ！」
+        PRINTFORMW 「응, 쪽…♪」
+        PRINTFORMW 「에헤헤, 굿모닝 키스예요!」
 ;その他
 ELSE
-    PRINTFORMW 「ん…ちゅ…」
-    PRINTFORMW 「おはよ～ございます！」
+    PRINTFORMW 「응… 쪽…」
+    PRINTFORMW 「안녕하세요~!」
 ENDIF
 
 ;-------------------------------------------------
@@ -948,10 +948,10 @@ ENDIF
 @K81_MESSAGE_EVENT_147
 ;연모
 IF TALENT:연모
-        PRINTFORMW 「お尻にいっぱい…入ってる…」
+        PRINTFORMW 「엉덩이에 잔뜩… 들어와…」
 ;その他
 ELSE
-    PRINTFORMW 「ん…お尻…大きいの入ってくる…！」
+    PRINTFORMW 「응… 엉덩이에… 굵은 게 들어와…!」
 ENDIF
 
 ;-------------------------------------------------

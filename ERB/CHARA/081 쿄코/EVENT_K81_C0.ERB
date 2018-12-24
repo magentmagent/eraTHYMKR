@@ -1,8 +1,8 @@
 ﻿;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;eratohoYM Mk-3用 口上テンプレート
-;X1をキャラ番号に置換して使用してください(霊夢なら1、蓮子なら49、魅魔なら100)。
+;X1をキャラ番号に置換して使用してください(霊夢なら1,蓮子なら49,魅魔なら100).
 ;
-;このファイルでは0～99番のコマンドの口上用関数が置いてあります。
+;このファイルでは0~99番のコマンドの口上用関数が置いてあります.
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;==============================================================
 ;○○口上
@@ -28,7 +28,7 @@
 
 ;========================================================
 ;コマンド口上
-;CFLAG:9000～9099までの100個を使用して、
+;CFLAG:9000~9099までの100個を使用して,
 ;選んだコマンドを対象に初めて使ったかどうかを判別できる
 ;「IF RESULT:1 == 1」で初回か2回目以降なのかで表示内容を変えることが出来る
 ;========================================================
@@ -40,22 +40,22 @@
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あ、ん…」
-        PRINTFORMW 「も…もっといっぱい…触れて…」
+        PRINTFORMW 「아, 응…」
+        PRINTFORMW 「더… 더 많이… 만져 줘요…」
     ;その他
     ELSE
-        PRINTFORMW 「なぁ！？へ、変態…！！」
+        PRINTFORMW 「윽!? 벼, 변태…!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あっ、あっ、ふみゅ！？」
-        PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
+        PRINTFORMW 「앗, 앗, 흐읏!?」
+        PRINTFORMW 「…그렇게 몸을 만져 주니까… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「いやぁ！触らないで！！」
+        PRINTFORMW 「싫어요! 만지지 마세요!!」
     ENDIF
 ENDIF
 
@@ -67,22 +67,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「んん！？」
-        PRINTFORMW 「そ、そんなところ舐めて…気持ちいいですけど…汚くなかったですか？」
+        PRINTFORMW 「으응!?」
+        PRINTFORMW 「그, 그런 데를 핥아 주니까… 기분 좋긴 한데… 지저분하진 않나요?」
     ;その他
     ELSE
-        PRINTFORMW 「や、やめて…んぁっ！？」
+        PRINTFORMW 「그, 그만… 응앗!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あっ、あっ、ふみゅ！？」
-        PRINTFORMW 「…こうして体中弄られて…気持ちよくなって…」
+        PRINTFORMW 「앗. 앗, 흐읏!?」
+        PRINTFORMW 「…그렇게 몸을 만져 주니까… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「変態！変態！変態！…ああっ！？」
+        PRINTFORMW 「변태! 변태! 변태! …아앗!?」
     ENDIF
 ENDIF
 
@@ -94,22 +94,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「そ、そんなところ…」
-        PRINTFORMW 「汚く…ないですか？」
+        PRINTFORMW 「그, 그런 데를…」
+        PRINTFORMW 「더럽지… 않아요?」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ！？変なとこ触らないで！！」
+        PRINTFORMW 「시, 싫어요!? 이상한 데 만지지 마세요!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あ…ふああ！？」
-        PRINTFORMW 「お尻…気持ちいい…」
+        PRINTFORMW 「아… 흐아아!?」
+        PRINTFORMW 「엉덩이… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ…変な感じ…」
+        PRINTFORMW 「싫어요… 느낌 이상해요…」
     ENDIF
 ENDIF
 
@@ -121,22 +121,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あ…ん…」
-        PRINTFORMW 「おっぱい…気持ちいい…」
+        PRINTFORMW 「아… 응…」
+        PRINTFORMW 「가슴… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「胸触って楽しいですか？」
+        PRINTFORMW 「가슴 만져서 좋아요?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「へぁっ！？んみゅ！？」
-        PRINTFORMW 「む、胸触られてると…気持ちよくなってしまいます…」
+        PRINTFORMW 「헤앗!? 응으읏!?」
+        PRINTFORMW 「가, 가슴 만져 주니까… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「や、ふみゅぁあ！？」
+        PRINTFORMW 「시럿, 흐으으으읏!?」
     ENDIF
 ENDIF
 
@@ -148,22 +148,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ひぁ！？」
-        PRINTFORMW 「ご、ご主人様の指が挿入ってくる！？」
+        PRINTFORMW 「히아!?」
+        PRINTFORMW 「주, 주인님 손가락이 들어와요!?」
     ;その他
     ELSE
-        PRINTFORMW 「な、何するんですか！？」
+        PRINTFORMW 「뭐, 뭐하는 거예요!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ひゅん！？」
-        PRINTFORMW 「き、きちゃう…気持ちいいの…」
+        PRINTFORMW 「휴응!?」
+        PRINTFORMW 「기, 기분 좋은 게… 와요…」
     ;その他
     ELSE
-        PRINTFORMW 「い、挿入れるなんて…ふむぅ！？」
+        PRINTFORMW 「너, 넣는다니… 흐읍!?」
     ENDIF
 ENDIF
 
@@ -181,22 +181,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「んくっ」
-        PRINTFORMW 「えへへへへ、キス、しちゃいました！」
+        PRINTFORMW 「응끄읍」
+        PRINTFORMW 「에헤헤헤, 키스, 했네요!」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…あなたとなんて…ふむぅ！？」
+        PRINTFORMW 「시, 싫어요… 당신이랑 하라니… 흐읍!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…ちゅっ…」
-        PRINTFORMW 「キスって…楽しいですね！」
+        PRINTFORMW 「응… 쪽…」
+        PRINTFORMW 「키스… 즐겁네요!」
     ;その他
     ELSE
-        PRINTFORMW 「す、好きでもない人とキスだなんて…ひにゃっ！？」
+        PRINTFORMW 「조, 좋지도 않은 사람이랑 키스라니… 흐냐읍!?」
     ENDIF
 ENDIF
 
@@ -208,23 +208,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「分かりました」
-        PRINTFORMW 「響子のオナニー見てください！！」
+        PRINTFORMW 「알았어요」
+        PRINTFORMW 「쿄코가 자위하는 걸 봐 주세요!!」
     ;その他
     ELSE
-        PRINTFORMW 「お、オナニーしろって…」
-        PRINTFORMW 「す、すればいいんでしょう！？」
+        PRINTFORMW 「자, 자위하라니…」
+        PRINTFORMW 「하, 하면 되잖아요!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ふぁっ…ん…ひぁ…」
-        PRINTFORMW 「オナニー…気持ちいいの…」
+        PRINTFORMW 「흐앗… 응… 히아…」
+        PRINTFORMW 「자위… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「んぁ…くっ…ひっ…」
+        PRINTFORMW 「응아… 끅… 힉…」
     ENDIF
 ENDIF
 
@@ -242,22 +242,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「こ、これ…気持ちよくて…」
+        PRINTFORMW 「이, 이거… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「なんですかこれ！？」
-        PRINTFORMW 「こんなおもちゃなんかに…ふにゃぁあ！？」
+        PRINTFORMW 「이게 뭐예요!?」
+        PRINTFORMW 「이런 장난감에… 흐냐아아!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「やぁああ…」
-        PRINTFORMW 「ぶるぶるって…なっちゃう…」
+        PRINTFORMW 「햐아아…」
+        PRINTFORMW 「부들거리는 게… 전해져요…」
     ;その他
     ELSE
-        PRINTFORMW 「ひっ…やぁぁぁああぁぁ！？」
+        PRINTFORMW 「힛… 시러어어어어어어!?」
     ENDIF
 ENDIF
 
@@ -269,23 +269,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「こ、これ、」
-        PRINTFORMW 「強いの、来ちゃうううぅぅ！！」
+        PRINTFORMW 「이, 이거」
+        PRINTFORMW 「센 게, 와요오오오오오오!!」
     ;その他
     ELSE
-        PRINTFORMW 「何！？何を…ひぁぁぁ！？」
-        PRINTFORMW 「これ！強くて…んぁ！！」
+        PRINTFORMW 「뭐…!? 뭘… 히아아아!?」
+        PRINTFORMW 「이거, 너무 세…! 응아!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…もっと…もっと強く…！」
-        PRINTFORMW 「ああああああ！！！」
+        PRINTFORMW 「응… 더… 더 세게…!」
+        PRINTFORMW 「아아아아아아!!!」
     ;その他
     ELSE
-        PRINTFORMW 「やだぁ…もうやめて…ひぎぃ！？」
+        PRINTFORMW 「싫어요… 더 이상은 그만… 히익!?」
     ENDIF
 ENDIF
 
@@ -375,23 +375,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「は、初めてなのでうまく出来るかわかりませんが…」
-        PRINTFORMW 「やさしくしてくださいね…？」
+        PRINTFORMW 「처, 처음이라 잘 할 수 있을진 모르겠는데…」
+        PRINTFORMW 「부드럽게 해 주실 거죠…?」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…止め…」
-        PRINTFORMW 「ひがああああぁぁぁぁ！！！？？！？」
+        PRINTFORMW 「시, 싫어요… 그만…」
+        PRINTFORMW 「히아아아아아아아악!!!??!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「んあっ…くぁっ…！」
-        PRINTFORMW 「もっと…おちんちんください…！！」
+        PRINTFORMW 「응앗… 끄앗…!」
+        PRINTFORMW 「자지… 더 넣어 주세요…!!」
     ;その他
     ELSE
-        PRINTFORMW 「こ、こっち見ないでください！！」
+        PRINTFORMW 「여, 여기 보지 마세요!!」
     ENDIF
 ENDIF
 
@@ -403,23 +403,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「わ、分かりました」
-        PRINTFORMW 「思う存分響子を後ろから襲ってください！」
+        PRINTFORMW 「아, 알았어요」
+        PRINTFORMW 「쿄코를 맘껏 뒤에서 찔러 주세요!」
     ;その他
     ELSE
-        PRINTFORMW 「よ、四つん這いになれって何を…」
-        PRINTFORMW 「！？やだ！ぎあああああああ！？」
+        PRINTFORMW 「어, 엎드려서 뭘…!?」
+        PRINTFORMW 「안 돼! 꺄아아아아아아!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「わん！わん！わん！」
-        PRINTFORMW 「響子を後ろから…犯してください！！」
+        PRINTFORMW 「멍! 멍! 멍!」
+        PRINTFORMW 「쿄코를… 뒤에서 범해 주세요!!」
     ;その他
     ELSE
-        PRINTFORMW 「やだ！こんな…私は犬じゃない！！」
+        PRINTFORMW 「이런 건, 싫어요…! 전 개가 아니라고요!!」
     ENDIF
 ENDIF
 
@@ -431,21 +431,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+        PRINTFORMW 「앞에서 안으면… 당신 얼굴을 볼 수 있겠네요!!」
     ;その他
     ELSE
-        PRINTFORMW 「こ、こんな形で初めてを…」
+        PRINTFORMW 「이, 이런 식으로 처음을…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「이러고 있으면… 좀 부끄럽네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ、やだ…あああああ！？」
+        PRINTFORMW 「싫어요, 싫어… 아아아아아!?」
     ENDIF
 ENDIF
 
@@ -457,22 +457,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「う、後ろからよろしくお願いします…」
+        PRINTFORMW 「뒤, 뒤에서… 잘 부탁할게요」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…」
-        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+        PRINTFORMW 「시, 싫어요…」
+        PRINTFORMW 「뒤에서 한다니… 으아아아아!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「後ろからされるって…興奮しますね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「뒤에서 하니까… 흥분되네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+        PRINTFORMW 「싫어… 나… 범해지고 있어…」
     ENDIF
 ENDIF
 
@@ -484,23 +484,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ご主人様に…御奉仕出来て…」
-        PRINTFORMW 「この体勢、ん…気持ちいいです…」
+        PRINTFORMW 「주인님께… 봉사할게요…」
+        PRINTFORMW 「이 자세, 응… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…自分から入れろだなんて…」
-        PRINTFORMW 「いやあああああああああああああああ！！」
+        PRINTFORMW 「시, 싫어요… 스스로 넣으라니…」
+        PRINTFORMW 「싫어어어어어어어어어어어어어어어어!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
-        PRINTFORMW 「とても楽しいです！！！」
+        PRINTFORMW 「이거! 주인님을! 기분 좋게 하는 느낌이라서!」
+        PRINTFORMW 「너무 기분 좋아요!!!」
     ;その他
     ELSE
-        PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
+        PRINTFORMW 「싫어요! 이런 자세로…! 아아아아아아아아아아아아!!!?!?」
     ENDIF
 ENDIF
 
@@ -519,47 +519,47 @@ IF NO:ASSI == 25
         ;2人に연모
         IF TALENT:연모 && TALENT:ASSI:연모
             IF RAND:3 == 0
-                PRINTFORMW 『ああっ…うん…』
-                PRINTFORMW 「いいなぁ…みすちーご主人様にしてもらえて…」
+                PRINTFORMW 『아앗… 응…』
+                PRINTFORMW 「좋겠다, 미스치… 주인님이랑 해서…」
             ELSEIF RAND:2 == 0
-                PRINTFORMW 「なんでみすちーばっかり…」
-                PRINTFORMW 『ん…ご主人様のおちんぽ…深いとこ…来てる…！！』
+                PRINTFORMW 「왜 미스치만…」
+                PRINTFORMW 『응… 주인님 고추… 깊숙히… 들어와…!!』
             ELSE
-                PRINTFORMW 「ぶー…」
-                PRINTFORMW 『あ、あ、おちんぽ気持ちいい！もっと…』
+                PRINTFORMW 「으…」
+                PRINTFORMW 『아, 아, 고추 기분 좋아! 더 해 줘…』
             ENDIF
         ;響子のみ연모
         ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
             IF RAND:3 == 0
-                PRINTFORMW 「いいなぁ…ご主人様に犯してもらえて…」
-                PRINTFORMW 『や、やめ…あああああああ！！？』
+                PRINTFORMW 「좋겠다… 주인님이랑 해서…」
+                PRINTFORMW 『그, 그만… 아아아아아아아!!?』
             ELSEIF RAND:2 == 0
-                PRINTFORMW 「あ！みすちーいっぱい中で出されてる！」
-                PRINTFORMW 『響子に見られながら…こんな…』
+                PRINTFORMW 「아! 미스치 안에 잔뜩 사정했어!」
+                PRINTFORMW 『쿄코가 보는데… 이런 걸…』
             ELSE
-                PRINTFORMW 『あがぁ！？は、入ってる！？』
-                PRINTFORMW 「もー下手に暴れると痛いよー？」
+                PRINTFORMW 『아악!? 드, 들어와!?』
+                PRINTFORMW 「아이, 참, 섣불리 몸부림치면 아플 텐데~?」
             ENDIF
         ;ミスティアのみ연모
         ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
             IF RAND:3 == 0
-                PRINTFORMW 「見ないで！見ないでみすちー！」
-                PRINTFORMW 『慣れないときついよーそんなに濡らしてるのにさー』
+                PRINTFORMW 「보지 마! 보지 마, 미스치!」
+                PRINTFORMW 『익숙해져야 할걸~ 그렇게 젖어들고 있으면서~』
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『ご主人様に愛してもらえるってだけで十分なのに響子は欲張りだなぁ』
-                PRINTFORMW 「何言ってるの！？元に戻ってよ…みすちー…」
+                PRINTFORMW 『주인님한테 사랑받는 걸로 충분한데 쿄코는 욕심쟁이네~』
+                PRINTFORMW 「무슨 소리야!? 원래대로 돌아와… 미스치…」
             ELSE
-                PRINTFORMW 『響子の喘ぎ声って素敵ね…』
-                PRINTFORMW 「聞かないでよぉ…こんなの…ああああ！！！」
+                PRINTFORMW 『쿄코 신음 소리도 멋질 텐데…』
+                PRINTFORMW 「듣지 마… 그런 거… 아아아아!!!」
             ENDIF
         ;その他
         ELSE
             IF RAND:2 == 0
-                PRINTFORMW 「まって！わ、私が代わりに…」
-                PRINTFORMW 『やだぁ！！やめて！お願い！響子の前でこんな…ああああああ！！？！！？』
+                PRINTFORMW 「잠깐! 내, 내가 대신…」
+                PRINTFORMW 『싫어~!! 그만해! 제발! 쿄코 앞에서 이런 건… 아아아아아아!!?!!?』
             ELSE
-                PRINTFORMW 『私が…うまくできたら…響子は…』
-                PRINTFORMW 「…そんなこと…」
+                PRINTFORMW 『내가… 할 거니까… 쿄코는…』
+                PRINTFORMW 「…이럴 수가…」
             ENDIF
         ENDIF
         RETURN 1
@@ -573,23 +573,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「た、立ったまま入れるんですか？」
-        PRINTFORMW 「私背が低いですから…や、やさしくしてくださいね？」
+        PRINTFORMW 「이, 일어선 채로 넣어요?」
+        PRINTFORMW 「제가 키가 작아서… 부, 부드럽게 해 줄 거죠?」
     ;その他
     ELSE
-        PRINTFORMW 「な、い、いきなり持ち上げてなんですか…！？」
-        PRINTFORMW 「ぎゃぁ！？い、いきなりこんな…やだ…」
+        PRINTFORMW 「아, 가, 갑자기 들고 뭘 하려고요…!?」
+        PRINTFORMW 「꺄악!? 갑자기 이러는 건… 싫어요…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「あ…ん…こうやってもたれかかっても」
-        PRINTFORMW 「体は動かして…気持ちよくなって…」
+        PRINTFORMW 「아… 응… 이렇게 기대도」
+        PRINTFORMW 「몸은 움직이고… 기분 좋아져서…」
     ;その他
     ELSE
-        PRINTFORMW 「こんな…見ないでください！！」
+        PRINTFORMW 「이런 거… 보지 마세요!!」
     ENDIF
 ENDIF
 
@@ -601,21 +601,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「立って後ろから…」
+        PRINTFORMW 「선 채로 뒤에서…」
     ;その他
     ELSE
-        PRINTFORMW 「後ろから…おっぱい揉んで…」
-        PRINTFORMW 「楽しいですか…？」
+        PRINTFORMW 「뒤에서… 가슴 만지면서…」
+        PRINTFORMW 「즐거워요…?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「おっぱい触られながら入れられるての…いい…」
+        PRINTFORMW 「가슴 만져 주면서 넣는 거… 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ…胸触られながら…入ってる…」
+        PRINTFORMW 「싫어… 가슴 만져지면서… 들어와…」
     ENDIF
 ENDIF
 
@@ -627,21 +627,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+        PRINTFORMW 「앞에서 하면… 당신의 얼굴을 잘 볼 수 있겠네요!!」
     ;その他
     ELSE
-        PRINTFORMW 「あああああ！？お尻が！！熱い！！」
+        PRINTFORMW 「아아아아악!? 엉덩이가!! 뜨거워!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「이러고 있으면… 좀 부끄럽네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ、やだ…あああああ！？」
+        PRINTFORMW 「싫어요, 싫어… 아아아아악!?」
     ENDIF
 ENDIF
 
@@ -653,22 +653,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「四つん這いになって…」
-        PRINTFORMW 「ひぎぃ！？…お知りに入れるなら入れると…」
+        PRINTFORMW 「엎드리라니…」
+        PRINTFORMW 「히익!? …알려주고 넣는다면 넣어도…」
     ;その他
     ELSE
-        PRINTFORMW 「？四つん這いですか？」
-        PRINTFORMW 「…ちょ、ちょっとま…お尻なんて無理ぃぃぃぃぃぃ！！？！？」
+        PRINTFORMW 「? 엎드려요?」
+        PRINTFORMW 「…자, 잠깐만… 엉덩이는 무리이이이이이!!?!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…犯されて…獣みたいに…」
+        PRINTFORMW 「응… 개처럼… 범해져요…」
     ;その他
     ELSE
-        PRINTFORMW 「犬みたいな格好で…犯されて…！があああああああああ！！！？！？」
+        PRINTFORMW 「개같은 자세로… 범해져…! 끄아아아아아아아아아!!!?!?」
     ENDIF
 ENDIF
 
@@ -680,21 +680,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+        PRINTFORMW 「앞에서 안으면… 당신 얼굴을 볼 수 있겠네요!!」
     ;その他
     ELSE
-        PRINTFORMW 「こ、こんな形で初めてを…」
+        PRINTFORMW 「이, 이런 식으로 처음을…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「이러고 있으면… 좀 부끄럽네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ、やだ…あああああ！？」
+        PRINTFORMW 「싫어요, 싫어… 아아아아아!?」
     ENDIF
 ENDIF
 
@@ -706,22 +706,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「う、後ろからよろしくお願いします…」
+        PRINTFORMW 「뒤, 뒤에서… 잘 부탁할게요」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…」
-        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+        PRINTFORMW 「시, 싫어요…」
+        PRINTFORMW 「뒤에서 한다니… 으아아아아!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「後ろからされるって…興奮しますね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「뒤에서 하니까… 흥분되네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+        PRINTFORMW 「싫어… 나… 범해지고 있어…」
     ENDIF
 ENDIF
 
@@ -733,23 +733,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ご主人様に…御奉仕出来て…」
-        PRINTFORMW 「この体勢、ん…気持ちいいです…」
+        PRINTFORMW 「주인님께… 봉사할게요…」
+        PRINTFORMW 「이 자세, 응… 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…自分から入れろだなんて…」
-        PRINTFORMW 「いやあああああああああああああああ！！」
+        PRINTFORMW 「시, 싫어요… 스스로 넣으라니…」
+        PRINTFORMW 「싫어어어어어어어어어어어어어어어어!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「これ！ご主人様を！気持ちよくしてるって感じで！」
-        PRINTFORMW 「とても楽しいです！！！」
+        PRINTFORMW 「이거! 주인님을! 기분 좋게 하는 느낌이라서!」
+        PRINTFORMW 「너무 기분 좋아요!!!」
     ;その他
     ELSE
-        PRINTFORMW 「やだ！こんな体勢で！ああああああああああああ！！！？！？」
+        PRINTFORMW 「싫어요! 이런 자세로…! 아아아아아아아아아아아아!!!?!?」
     ENDIF
 ENDIF
 
@@ -773,21 +773,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「前からなら…あなたの顔もよく見えますね！！」
+        PRINTFORMW 「앞에서 안으면… 당신 얼굴을 볼 수 있겠네요!!」
     ;その他
     ELSE
-        PRINTFORMW 「こ、こんな形で初めてを…」
+        PRINTFORMW 「이, 이런 식으로 처음을…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「こうしていると…少し恥ずかしいですね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「이러고 있으면… 좀 부끄럽네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ、やだ…あああああ！？」
+        PRINTFORMW 「싫어요, 싫어… 아아아아아!?」
     ENDIF
 ENDIF
 
@@ -799,22 +799,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「う、後ろからよろしくお願いします…」
+        PRINTFORMW 「뒤, 뒤에서… 잘 부탁할게요」
     ;その他
     ELSE
-        PRINTFORMW 「や、やだ…」
-        PRINTFORMW 「後ろから…うぁぁぁぁ！？」
+        PRINTFORMW 「시, 싫어요…」
+        PRINTFORMW 「뒤에서 한다니… 으아아아아!?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…あっ…」
-        PRINTFORMW 「後ろからされるって…興奮しますね…」
+        PRINTFORMW 「응… 앗…」
+        PRINTFORMW 「뒤에서 하니까… 흥분되네요…」
     ;その他
     ELSE
-        PRINTFORMW 「やあぁぁ…私…犯されてる…」
+        PRINTFORMW 「싫어… 나… 범해지고 있어…」
     ENDIF
 ENDIF
 
@@ -826,22 +826,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…しこしこすればいいんですか？」
-        PRINTFORMW 「うまくできるかなぁ？」
+        PRINTFORMW 「응… 쓱싹거리면 돼요?」
+        PRINTFORMW 「잘 될까요~?」
     ;その他
     ELSE
-        PRINTFORMW 「手、手でしろって…」
-        PRINTFORMW 「…にちゃにちゃして気持ち悪い…」
+        PRINTFORMW 「소, 손으로 하라니…」
+        PRINTFORMW 「…끈적거리고 끕끕해요…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ほんとにおっきいですねこれ…」
+        PRINTFORMW 「이거 진짜 크네요…」
     ;その他
     ELSE
-        PRINTFORMW 「こんな…ぬちゃぬちゃしてて…」
+        PRINTFORMW 「이렇게… 질척해져서…」
     ENDIF
 ENDIF
 
@@ -853,23 +853,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…くちゅる…じゅる…」
-        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
+        PRINTFORMW 「응… 쯉… 쮸릅…」
+        PRINTFORMW 「이, 이런 식으로 하면 돼요…?」
     ;その他
     ELSE
-        PRINTFORMW 「こ、こんな…気持ち悪いもの…口に入れろなんてはぐっ…！？」
-        PRINTFORMW 「はふっ…ぐちゅ…れろっ…はむっ…ん…」
+        PRINTFORMW 「그, 그런… 징그러운 걸… 입에 물라아읍…!?」
+        PRINTFORMW 「하흡… 끕… 할짝… 하음… 응…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「先っぽと玉も一緒に舐められるといいんですけど…」
-        PRINTFORMW 「ん…じゅるっ…れろっ…くちゅ…はむっ…」
+        PRINTFORMW 「끝이랑 알을 같이 핥을 수 있으면 좋을 텐데…」
+        PRINTFORMW 「응… 쮸릅… 낼릅… 쯉… 하음…」
     ;その他
     ELSE
-        PRINTFORMW 「ぐむっ！？ぷはっ…げほっげほっ…」
+        PRINTFORMW 「끄웁!? 푸합… 콜록, 콜록…」
     ENDIF
 ENDIF
 
@@ -881,21 +881,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「こ、この胸でうまく出来るかわかりませんけど…」
+        PRINTFORMW 「이, 이 가슴으로 잘 될진 모르겠는데…」
     ;その他
     ELSE
-        PRINTFORMW 「胸でどうしろっていうのですか…」
+        PRINTFORMW 「가슴으로 어쩌려고요…?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…ん…」
-        PRINTFORMW 「こんな感じですか？」
+        PRINTFORMW 「응… 응…」
+        PRINTFORMW 「이런 식으로요?」
     ;その他
     ELSE
-        PRINTFORMW 「こんなの擦り付けられても…」
+        PRINTFORMW 「그렇게 문질러도…」
     ENDIF
 ENDIF
 
@@ -907,21 +907,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「お股でするのがいいんですか…」
-        PRINTFORMW 「これで…どうですか？」
+        PRINTFORMW 「가랑이로 하면 돼요…?」
+        PRINTFORMW 「이러면… 어때요?」
     ;その他
     ELSE
-        PRINTFORMW 「中に入れられないだけましですかね…」
+        PRINTFORMW 「안에 넣지 않는 것만은 낫네요…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「…中で出してくれてもいいんですよ？」
+        PRINTFORMW 「…안에다 싸도 괜찮아요」
     ;その他
     ELSE
-        PRINTFORMW 「こんなのがいいんですか？」
+        PRINTFORMW 「이런 게 좋아요?」
     ENDIF
 ENDIF
 
@@ -933,21 +933,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「はい、ご主人様のお尻をきれいにします！」
+        PRINTFORMW 「네, 주인님 엉덩이를 깨끗하게 할게요!」
     ;その他
     ELSE
-        PRINTFORMW 「そ、そんなところ舐めろなだんて…」
-        PRINTFORMW 「…臭い…」
+        PRINTFORMW 「그, 그런 데를 핥으라니…」
+        PRINTFORMW 「…냄새…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「んちゅ…ぺろ…れろっ…」
+        PRINTFORMW 「응, 쯉… 할짝… 낼름…」
     ;その他
     ELSE
-        PRINTFORMW 「やだ…舐めたくなんてふぐっ！？」
+        PRINTFORMW 「싫어요… 핥으라느읍!?」
     ENDIF
 ENDIF
 
@@ -959,20 +959,20 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「響子の…お尻の穴使ってください！」
+        PRINTFORMW 「쿄코의… 똥구멍을 써 주세요!」
     ;その他
     ELSE
-        PRINTFORMW 「きょ、響子の…お、お尻の穴…やだ…言えません…！！」
+        PRINTFORMW 「쿄, 쿄코의… ㄸ, 또… 안 돼요… 말 못 해요…!!」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「響子のお尻の穴を使っていっぱい気持ちよくなって下さい！」
+        PRINTFORMW 「쿄코의 똥구멍으로 기분 많이 좋아지세요!」
     ;その他
     ELSE
-        PRINTFORMW 「響子の…お尻に…おちんちんください…」
+        PRINTFORMW 「쿄코… 엉덩이에… 자, 지, 주세요…」
     ENDIF
 ENDIF
 
@@ -990,21 +990,21 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
-        PRINTFORMW 「むず、かしいですね…」
+        PRINTFORMW 「이, 이렇게 하면 돼요…?」
+        PRINTFORMW 「어렵, 네요…」
     ;その他
     ELSE
-        PRINTFORMW 「これ…私のほうがご主人様みたいですね」
+        PRINTFORMW 「이건… 입장이 바뀐 것처럼 보이네요」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ふふふ…気持ちいいですかー？」
+        PRINTFORMW 「후후… 기분 좋아요~?」
     ;その他
     ELSE
-        PRINTFORMW 「踏まれて気持ちいいんですか？きもいですよ」
+        PRINTFORMW 「밟혀서 기분 좋아요? 소름 돋아요」
     ENDIF
 ENDIF
 
@@ -1034,22 +1034,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「お尻…大きくないですけど…」
-        PRINTFORMW 「気持ちよくなって下さいね！」
+        PRINTFORMW 「엉덩이… 크진 않아도…」
+        PRINTFORMW 「기분 좋게 해 줄게요!」
     ;その他
     ELSE
-        PRINTFORMW 「お、お尻になにを…！？」
-        PRINTFORMW 「…そんなもの擦り付けないでください…」
+        PRINTFORMW 「어, 엉덩이로 뭘…!?」
+        PRINTFORMW 「…그런 거 대지 마세요…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「お尻で」
+        PRINTFORMW 「엉덩이로 기분 좋게 해 줄게요!」
     ;その他
     ELSE
-        PRINTFORMW 「んぁ…くっ…ひっ…」
+        PRINTFORMW 「응아… 끄읏… 힉…」
     ENDIF
 ENDIF
 
@@ -1073,22 +1073,22 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「ん…じゅる…」
-        PRINTFORMW 「こ、こんな感じでいいのでしょうか…？」
+        PRINTFORMW 「응… 쮸릅…」
+        PRINTFORMW 「이, 이렇게 하면 돼요…?」
     ;その他
     ELSE
-        PRINTFORMW 「な、舐めろって…」
-        PRINTFORMW 「ぐちゅ…れろっ…はむっ…ん…」
+        PRINTFORMW 「뭐라고요, 핥으라니…」
+        PRINTFORMW 「끄읍… 할짝… 하음… 응…」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「せーしタンク…きれいにしてあげますね」
+        PRINTFORMW 「정액 탱크… 깨끗이 해 줄게요」
     ;その他
     ELSE
-        PRINTFORMW 「くちゅ…気持ち悪い…」
+        PRINTFORMW 「끄웁… 비위 상해…」
     ENDIF
 ENDIF
 
@@ -1112,20 +1112,20 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「いっぱい濡らして下さいね…」
+        PRINTFORMW 「많이 적셔 주세요…」
     ;その他
     ELSE
-        PRINTFORMW 「ひゃっ！？なにこれ…」
+        PRINTFORMW 「꺅!? 이거 뭐예요…?」
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「こんなもの使わなくても…ご主人様となら…」
+        PRINTFORMW 「이런 거 안 써도… 주인님이랑 하면…」
     ;その他
     ELSE
-        PRINTFORMW 「これ…慣れません…ぬるぬるして…」
+        PRINTFORMW 「이거… 미끈거리는 게… 적응되지 않아요…」
     ENDIF
 ENDIF
 
@@ -1137,23 +1137,23 @@ ENDIF
 IF RESULT:1 == 1
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「薬なんか使わなくたって…」
-        PRINTFORMW 「ん…でも気持ちよくなってきました…」
+        PRINTFORMW 「약 안 써도…」
+        PRINTFORMW 「응… 그래도 기분 좋아요…」
     ;その他
     ELSE
-        PRINTFORMW 「な、なんですかこれ…！？」
-        PRINTFORMW （やだ…体中が…むずむずする…）
+        PRINTFORMW 「이, 이거 뭐예요…!?」
+        PRINTFORMW （안 돼… 몸이… 근질거려…）
     ENDIF
 
 ;2回目以降
 ELSE
     ;연모
     IF TALENT:연모
-        PRINTFORMW 「もう…こんなの…」
-        PRINTFORMW 「ん…体が疼いて来る…」
+        PRINTFORMW 「또… 이걸…」
+        PRINTFORMW 「응… 몸이 저려 와요…」
     ;その他
     ELSE
-        PRINTFORMW 「やだぁ…変になっちゃうよぉ…」
+        PRINTFORMW 「안 돼… 나 이상해져…」
     ENDIF
 ENDIF
 
@@ -1339,10 +1339,10 @@ ENDIF
 @KOJO_81_TRAIN_MESSAGE_S_COM_91
 ;解除時
 IF TEQUIP:59 == 0
-    PRINTFORMW 「終わりですか？…結構気に入ってたんですけど」
+    PRINTFORMW 「끝이에요? 꽤 맘에 들었는데…」
 ;装着時
 ELSE
-    PRINTFORMW 「外の世界の水着ですか？…サイズぴったりしてて動きやすいですね」
+    PRINTFORMW 「바깥 세상의 수영복이에요? …사이즈가 딱 맞아서 움직이기 쉽네요」
 ENDIF
 ;-------------------------------------------------
 ;お医者プレイ
