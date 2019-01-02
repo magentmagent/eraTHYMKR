@@ -1,15 +1,15 @@
 ﻿;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;eratohoYM Mk-3用 口上テンプレート
-;X1をキャラ番号に置換して使用してください(霊夢なら1、蓮子なら49、魅魔なら100)。
+;X1をキャラ番号に置換して使用してください(霊夢なら1,蓮子なら49,魅魔なら100).
 ;
-;このファイルでは300～399番のコマンドの口上用関数が置いてあります。
+;このファイルでは300~399番のコマンドの口上用関数が置いてあります.
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;==============================================================
 ;○○口上
 ;==============================================================
 ;========================================================
 ;コマンド口上
-;CFLAG:9000～9099までの100個を使用して、
+;CFLAG:9000~9099までの100個を使用して,
 ;選んだコマンドを対象に初めて使ったかどうかを判別できる
 ;「IF RESULT:1 == 1」で初回か2回目以降なのかで表示内容を変えることが出来る
 ;========================================================
@@ -41,52 +41,52 @@ IF NO:ASSI == 25
         ;2人に연모
         IF TALENT:연모 && TALENT:ASSI:연모
             IF RAND:3 == 0
-                PRINTFORMW 『んちゅ…れろっ…くちゅっ…せーし…もっと…』
-                PRINTFORMW 「ふみゅっ…ぺろっ…いっぱい…だして…」
+                PRINTFORMW 『응, 쪽… 낼름… 쯉… 정액… 더…』
+                PRINTFORMW 「흐으읍… 할짝… 많이… 싸 줘요…」
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『ん…れろ…ほら、響子も玉舐めて！』
-                PRINTFORMW 「くちゅっ…はむっ…」
-                PRINTFORMW （みすちーみたくうまくできないよ…）
+                PRINTFORMW 『응… 할짝… 자, 쿄코도 알 빨아!』
+                PRINTFORMW 「쯉… 하음…」
+                PRINTFORMW （미스치 보고 싶어서 잘 할 수가 없어…）
             ELSE
-                PRINTFORMW 「ん…ん…んあっ…じゅぷっ…」
-                PRINTFORMW 『はふっ…むっ…れら…』
-                PRINTFORMW 二人は竿と玉を交互に一生懸命舐めている
+                PRINTFORMW 「응… 응… 응앗… 쮸븝…」
+                PRINTFORMW 『하흡… 음… 할짝…』
+                PRINTFORMW 둘이서 장대와 구슬을 교대로 열심히 빨았다.
             ENDIF
         ;響子のみ연모
         ELSEIF TALENT:연모 && TALENT:ASSI:연모 == 0
             IF RAND:3 == 0
-                PRINTFORMW 「ふみゅっ…くちゅ…なにやってるのみすちー？もっと舌使わないと！」
-                PRINTFORMW 『ん…響子に言われなくても…ぺろっ…』
+                PRINTFORMW 「흐음… 쮹… 미스치, 뭐 해? 혀를 더 제대로 써!」
+                PRINTFORMW 『응… 쿄코가 말 안 해도… 할짝…』
             ELSEIF RAND:2 == 0
-                PRINTFORMW 「ぺろっ…はむっ…ん…ん…」
-                PRINTFORMW 『んあ…れろ…』
-                PRINTFORMW 『こんなの…何がいいのよ…』
+                PRINTFORMW 「할짝… 하음… 응… 응…」
+                PRINTFORMW 『응아… 낼름…』
+                PRINTFORMW 『이런 게… 뭐가 좋아…?』
             ELSE
-                PRINTFORMW 『あがぁ！？んほぉ…げほっ、ごほっ…！』
-                PRINTFORMW 「もーそんなにがっついたらダメだって…はむっ…」
-                PRINTFORMW 『違っ…突っ込まれて…ぇ…』
+                PRINTFORMW 『어억!? 응오옵… 콜록, 콜록…!』
+                PRINTFORMW 「아이, 참, 그렇게 탐내면 안 되지… 하음…」
+                PRINTFORMW 『아니… 깊이 들어가서… 어…』
             ENDIF
         ;ミスティアのみ연모
         ELSEIF TALENT:연모 == 0 && TALENT:ASSI:연모
             IF RAND:3 == 0
-                PRINTFORMW 「くちゅ…こんなの…気持ち悪い…」
-                PRINTFORMW 『慣れればおいしいわよ？精子にも味があって…れろ…』
+                PRINTFORMW 「쯉… 이런 거… 불쾌하기만 해…」
+                PRINTFORMW 『익숙해지면 맛있을걸? 정자에도 맛이 있어… 할짝…』
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『ん…くちゅ…せーし溜まってるの…いっぱい出して…』
-                PRINTFORMW 「…んちゅ…れろ…」
-                PRINTFORMW （そんなに美味しいかな…？精子って…）
+                PRINTFORMW 『응… 쯉… 정액 모였네… 많이 싸 줘…』
+                PRINTFORMW 「…응, 쪽… 내름…」
+                PRINTFORMW （정자란 게… 그렇게 맛있어…?）
             ELSE
-                PRINTFORMW 『れろ…れら…じゅぷっ…じゅぽっ…早くだして…』
-                PRINTFORMW 「はむっ…げほっ…げほっ…なんでこんな…」
+                PRINTFORMW 『할짝… 할짝… 쯉… 쮸븝… 빨리 싸 줘…』
+                PRINTFORMW 「하읍… 콜록… 콜록… 왜 이런 걸…」
             ENDIF
         ;その他
         ELSE
             IF RAND:2 == 0
-                PRINTFORMW 「こんなの…れろっ…したくないのに…くちゅ…」
-                PRINTFORMW 『はむっ…玉…固くなってる…』
+                PRINTFORMW 「이런 건… 할짝… 하고 싶지 않은데… 쯉…」
+                PRINTFORMW 『하읍… 구슬이… 단단해졌어…』
             ELSE
-                PRINTFORMW 『んちゅっ…れろ…大きくて…硬いの…』
-                PRINTFORMW 「…こんな臭いのに…擦り付けないでください…ぺろっ…」
+                PRINTFORMW 『응, 쪽… 할짝… 크고… 딱딱해…』
+                PRINTFORMW 「…이렇게 고약한 걸… 문지르지 마세요… 할짝…」
             ENDIF
         ENDIF
         RETURN 1
@@ -108,25 +108,25 @@ IF NO:ASSI == 25
         ;ミスティアと響子の2人に연모
         IF TALENT:연모 && TALENT:ASSI:연모
             IF RAND:3 == 0
-                PRINTFORMW 『ん…おっぱいで…うまく擦れる…かな…』
-                PRINTFORMW 「…みすちーの方がおっぱい大きいけど…私だって…」
+                PRINTFORMW 『응… 가슴으로… 잘… 문질러질까…?』
+                PRINTFORMW 「…미스치가 더 크긴 해도… 나라도…」
             ELSEIF RAND:2 == 0
-                PRINTFORMW 『ほら！もっと乳首とかで擦る！』
-                PRINTFORMW 「そんなこと言われても…ん…」
-                PRINTFORMW （もっとおっぱい大きかったらなぁ…）
+                PRINTFORMW 『젖꼭지를 더 써 봐!』
+                PRINTFORMW 「그렇게 말해도… 응…」
+                PRINTFORMW （더 가슴이 컸으면…）
             ELSE
-                PRINTFORMW 「ん…ん…」
-                PRINTFORMW 『もっと激しく、動かして…』
-                PRINTFORMW 二人は胸を使って竿を挟み込んで一生懸命擦り上げている
+                PRINTFORMW 「응… 응…」
+                PRINTFORMW 『더 열심히, 움직여…』
+                PRINTFORMW 둘이서 가슴에 장대를 끼우고 열심히 문지르고 있다.
             ENDIF
         ;その他
         ELSE
             IF RAND:2 == 0
-                PRINTFORMW 「こんなのうまく出来るかわかんないけど…」
-                PRINTFORMW 『ん…おっぱいで挟んで…』
+                PRINTFORMW 「이런 게 잘 될진 모르겠는데…」
+                PRINTFORMW 『응… 가슴에 끼워서…』
             ELSE
-                PRINTFORMW 『相変わらず大きい…これを響子と二人で…』
-                PRINTFORMW 「ん…おっぱいで…うまく…」
+                PRINTFORMW 『여전히 크네… 이걸 쿄코랑 같이…』
+                PRINTFORMW 「응… 가슴으로… 잘…」
             ENDIF
         ENDIF
         RETURN 1
@@ -372,7 +372,7 @@ ELSEIF TFLAG:149 == 605
 ENDIF
 
 ;-------------------------------------------------
-;ふぉーゆーっ！
+;ふぉーゆーっ!
 ;-------------------------------------------------
 @KOJO_81_TRAIN_MESSAGE_S_COM_349
 ;PRINTFORMW 
