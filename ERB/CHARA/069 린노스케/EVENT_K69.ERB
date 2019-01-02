@@ -11,6 +11,77 @@
 @TRY_69
 RETURN 1
 
+
+@RIN_EASY
+PRINTFORMW Q, 린노스케가 함락해주지 않습니다. 어떻게 하면 좋죠? (남성 32세)
+PRINTFORMW A, 조교를 베풀면서, 기합으로 (반발각인을) 피해주세요.
+PRINTFORMW  
+PRINTFORMW 라고 말하고 싶은 심정이지만, 린노스케파의 미래를 더욱 빛나는 것으로 하기 위해서.
+PRINTFORMW 나는 이 eratoho에 새로운 질서를 세우기로 했다.
+PRINTFORMW 이하 귀공들은 이지 모드 린노스케와 싸워줘야겠다.
+PRINTFORMW 눈물과 콧물의 각오는 되었는가?
+PRINTL [0] 【참으로 황공무지】  [1] 【건 좀 아니지 않냐?】
+$INPUT_LOOP2
+INPUT
+IF RESULT != 0 && RESULT != 1
+   GOTO INPUT_LOOP2
+ELSEIF RESULT == 0
+   PRINTFORMW 린노스케 08
+   PRINTFORMW 아직도 개발 도중의 성노예
+   PRINTFORMW 망가지기 쉬운 정신이나 자아로 필사적으로 반항할 거야
+   BASE:0 = 3000
+   BASE:1 = 2000
+   BASE:2 = 0
+   MAXBASE:0 = 3000
+   MAXBASE:1 = 2000
+   MAXBASE:2 = 5000
+   ABL:2 = 2
+   EXP:1 = 0
+   EXP:11 = 0
+   EXP:22 = 0
+   EXP:41 = 0
+   EXP:51 = 0
+   TALENT:11 = 0
+   TALENT:14 = 1
+   TALENT:20 = 0
+   TALENT:21 = 0
+   TALENT:23 = 1
+   TALENT:27 = 0
+   TALENT:41 = 0
+   TALENT:50 = 1
+   TALENT:71 = 0
+   TALENT:106 = 1
+   TALENT:107 = 0
+ELSEIF RESULT == 1
+   DRAWLINE
+   PRINTFORMW ―――단독 엔딩 조건 달성―――
+   PRINTFORMW …………
+   PRINTFORMW ………
+   PRINTFORMW ……
+   PRINTFORMW  
+   PRINTFORMW 어쩐지 빨리도 끝나버렸으므로, 지난날의 향림당 모습을 봐주십시오.
+   PRINTFORMW  
+   PRINTFORMW 「잘도 여기(주1)까지 왔군.
+   PRINTFORMW  네놈들(주2)은 내 모든 것을 빼앗아갔다.
+   PRINTFORMW  이건 용납할 수 없는 반역행위(주3)라 할 수 있으리.
+   PRINTFORMW  이 최종귀축병기(주4)로
+   PRINTFORMW  네놈들의 죄에 내가 몸소 처벌을 내려주겠다(주5).
+   PRINTFORMW  죽도록 해라(주6)」
+   PRINTFORMW  
+   PRINTL 주1: 향림당. 마법의 숲 입구에 있는 고도구점. 도통 손님이 오질 않는다.
+   PRINTL 주2: 레이무와 마리사. 안 그래도 손님이 없는 향림당에서 노상 상품을 강탈한다.
+   PRINTL 주3: 외상을 갚지 않는 것. 전혀 손님이 없는 향림당에선 사활 문제.
+   PRINTL 주4: 쿠사나기의 검. 천하를 쥐는 정도의 능력을 가진 희귀한 물품이지만, 활용할 수 없으므로 무리.
+   PRINTL 주5: 궁둥이 백 번 때리기라던가. 필시 반격 당하므로 무리.
+   PRINTL 주6: 과언. 그리고 필시 린노스케가 질 테니 무리.
+   PRINTFORMW  
+   PRINTFORMW         ―― Ending No.106⑨ (린노스케 노멀 엔딩)
+   CFLAG:5001 = 1
+   CFLAG:5020 = 1
+   CALL BADEND_COMMON
+   RETURN 0
+ENDIF
+
 @EVENTTRAIN
 #PRI
 SIF FLAG:11 == 0
@@ -31,111 +102,43 @@ SIF NO != 69
 ;덧붙여 【건 좀 아니지 않냐?】를 선택하면 엔딩이 시작됩니다
 ;엔딩을 보는 것뿐이라면 아마 가장 재미있는 캐릭터라고 생각합니다w
 ;-------------------------------------------------;
+
 IF CFLAG:5020 == 0
-    PRINTL 이 앞에는
-    PRINTL 폭력적이고
-    PRINTL 오니 같은
-    PRINTL 극살점주가
-    PRINTL 당신을 기다리고 있습니다.
-    PRINTL  
-    PRINTL 그래도 플레이하겠습니까?
-    PRINTL  
-    PRINTL [0] 예  [1] 아니오
-    $INPUT_LOOP
-    INPUT
-    IF RESULT != 0 && RESULT != 1
-        GOTO INPUT_LOOP 
-    ELSEIF RESULT == 0
-        PRINTL 과연 여기까지 왔는가.
-        PRINTL 부아가 치밀 정도로 신사로군.
-        PRINTL 허나 가장 바람직한 모양새로 전진해온 건 매우 유쾌하다.
-        PRINTL 나의 린노스케 ⑨극소적계획은
-        PRINTL 자네들의 강한 생명으로
-        PRINTL 비로소 완수될 것이다.
-        PRINTL  
-        PRINTW 이로써 드디어
-        PRINTW 죽
-        PRINTW 도
-        PRINTW 록
-        PRINTW 해
-        PRINTW 라
-        PRINTW .
-        PRINTW 그리고 작별이다.
-    ELSEIF RESULT == 1
-        JUMP RIN_EASY
-    ENDIF
-    CFLAG:5020 = 1
+   PRINTL 이 앞에는
+   PRINTL 폭력적이고
+   PRINTL 오니 같은
+   PRINTL 극살점주가
+   PRINTL 당신을 기다리고 있습니다.
+   PRINTL  
+   PRINTL 그래도 플레이하겠습니까?
+   PRINTL  
+   PRINTL [0] 예  [1] 아니오
+   $INPUT_LOOP
+   INPUT
+   IF RESULT != 0 && RESULT != 1
+       GOTO INPUT_LOOP 
+   ELSEIF RESULT == 0
+       PRINTL 과연 여기까지 왔는가.
+       PRINTL 부아가 치밀 정도로 신사로군.
+       PRINTL 허나 가장 바람직한 모양새로 전진해온 건 매우 유쾌하다.
+       PRINTL 나의 린노스케 ⑨극소적계획은
+       PRINTL 자네들의 강한 생명으로
+       PRINTL 비로소 완수될 것이다.
+       PRINTL  
+       PRINTW 이로써 드디어
+       PRINTW 죽
+       PRINTW 도
+       PRINTW 록
+       PRINTW 해
+       PRINTW 라
+       PRINTW .
+       PRINTW 그리고 작별이다.
+   ELSEIF RESULT == 1
+       JUMP RIN_EASY
+   ENDIF
+   CFLAG:5020 = 1
 ENDIF
 
-@RIN_EASY
-PRINTFORMW Q, 린노스케가 함락해주지 않습니다. 어떻게 하면 좋죠? (남성 32세)
-PRINTFORMW A, 조교를 베풀면서, 기합으로 (반발각인을) 피해주세요.
-PRINTFORMW  
-PRINTFORMW 라고 말하고 싶은 심정이지만, 린노스케파의 미래를 더욱 빛나는 것으로 하기 위해서.
-PRINTFORMW 나는 이 eratoho에 새로운 질서를 세우기로 했다.
-PRINTFORMW 이하 귀공들은 이지 모드 린노스케와 싸워줘야겠다.
-PRINTFORMW 눈물과 콧물의 각오는 되었는가?
-PRINTL [0] 【참으로 황공무지】  [1] 【건 좀 아니지 않냐?】
-$INPUT_LOOP2
-INPUT
-IF RESULT != 0 && RESULT != 1
-    GOTO INPUT_LOOP2
-ELSEIF RESULT == 0
-    PRINTFORMW 린노스케 08
-    PRINTFORMW 아직도 개발 도중의 성노예
-    PRINTFORMW 망가지기 쉬운 정신이나 자아로 필사적으로 반항할 거야
-    BASE:0 = 3000
-    BASE:1 = 2000
-    BASE:2 = 0
-    MAXBASE:0 = 3000
-    MAXBASE:1 = 2000
-    MAXBASE:2 = 5000
-    ABL:2 = 2
-    EXP:1 = 0
-    EXP:11 = 0
-    EXP:22 = 0
-    EXP:41 = 0
-    EXP:51 = 0
-    TALENT:11 = 0
-    TALENT:14 = 1
-    TALENT:20 = 0
-    TALENT:21 = 0
-    TALENT:23 = 1
-    TALENT:27 = 0
-    TALENT:41 = 0
-    TALENT:50 = 1
-    TALENT:71 = 0
-    TALENT:106 = 1
-    TALENT:107 = 0
-ELSEIF RESULT == 1
-    DRAWLINE
-    PRINTFORMW ―――단독 엔딩 조건 달성―――
-    PRINTFORMW …………
-    PRINTFORMW ………
-    PRINTFORMW ……
-    PRINTFORMW  
-    PRINTFORMW 어쩐지 빨리도 끝나버렸으므로, 지난날의 향림당 모습을 봐주십시오.
-    PRINTFORMW  
-    PRINTFORMW 「잘도 여기(주1)까지 왔군.
-    PRINTFORMW  네놈들(주2)은 내 모든 것을 빼앗아갔다.
-    PRINTFORMW  이건 용납할 수 없는 반역행위(주3)라 할 수 있으리.
-    PRINTFORMW  이 최종귀축병기(주4)로
-    PRINTFORMW  네놈들의 죄에 내가 몸소 처벌을 내려주겠다(주5).
-    PRINTFORMW  죽도록 해라(주6)」
-    PRINTFORMW  
-    PRINTL 주1: 향림당. 마법의 숲 입구에 있는 고도구점. 도통 손님이 오질 않는다.
-    PRINTL 주2: 레이무와 마리사. 안 그래도 손님이 없는 향림당에서 노상 상품을 강탈한다.
-    PRINTL 주3: 외상을 갚지 않는 것. 전혀 손님이 없는 향림당에선 사활 문제.
-    PRINTL 주4: 쿠사나기의 검. 천하를 쥐는 정도의 능력을 가진 희귀한 물품이지만, 활용할 수 없으므로 무리.
-    PRINTL 주5: 궁둥이 백 번 때리기라던가. 필시 반격 당하므로 무리.
-    PRINTL 주6: 과언. 그리고 필시 린노스케가 질 테니 무리.
-    PRINTFORMW  
-    PRINTFORMW         ―― Ending No.106⑨ (린노스케 노멀 엔딩)
-    CFLAG:5001 = 1
-    CFLAG:5020 = 1
-    CALL BADEND_COMMON
-    RETURN 0
-ENDIF
 CFLAG:5020 = 1
 ;--------------------------------------------------
 ;특정 조수, 주인 시에 특수 조교 대사를 호출한다
@@ -161,8 +164,43 @@ CFLAG:5020 = 1
 ;-------------------------------------------------
 ;첫 조교시 CFLAG:5001
 ;-------------------------------------------------
+;성전환 후 첫 개시시. 뭣모르고 약부터 먹이고 시작했다면 재시작을 하시는건?
+IF CFLAG:5001 == 0 && TALENT:120 == 0
+    DRAWLINE
+    PRINTFORMW  방에 들어가니, 문이 열리는 소리를 듣자마자 달려든 반광란 상태의 린노스케가 당신의 멱살을 잡아챘다
+    PRINTFORMW 「네 놈이지! 날 이꼴로 만든건!」
+    PRINTFORMW  시끄럽게 소리를 지르는 그녀 에게 짜증이 앞서 멱살을 잡은 손목을 잡아채 밀쳤더니 린노스케는 아주 가볍게 밀려 바닥에 쓰러졌다
+    PRINTFORMW 「내…내게 무슨 짓을 한거냐?! 이 몸은 아무리 봐도…」
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"는")% 조교나 성노예, 성전환 사탕에 대한 일을 짧게 설명했다
+    PRINTFORMW 「그런 약이 있을리가… 말도 안돼… 아니, 분명 소녀의 납치 사건이라거나 그런 얘기는 들었지만…」
+    PRINTFORMW 「나… 나, 나는 남… 남자고…」
+    PRINTFORMW  그 말을 %조사처리(CALLNAME:MASTER,"가")% 남자였었다, 라고 정정해주자 린노스케는 일그러진 표정으로 %조사처리(CALLNAME:MASTER,"를")% 멍하니 쳐다보았다
+    PRINTFORMW  할 말은 있지만 입 밖으로 도저히 나오지 않는 듯 입을 뻐끔대며 손을 떨 뿐이였다
+    PRINTFORML 
+    PRINTFORMW  혼란에 빠진 린노스케가 진정하길 기다리며 잠시 %조사처리(CALLNAME:MASTER,"는")% 생각에 빠졌다
+    PRINTFORMW  무슨 일이라도 일어날 수 있는 환상향을 이해하는 인물이라고 생각했다만 자신에게 닥친 일은 상황이 좀 다른걸까?
+    PRINTFORMW  하지만 그런 건 %조사처리(CALLNAME:MASTER,"가")% 고민할 일 따위는 아니다
+    PRINTFORMW  어느새 정신을 차린 듯 %CALLNAME:MASTER%에게 남성으로 돌아갈 방법은 없는지 애타게 물어오며 매달리는 린노스케의 말은 무시한채
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"는")% 조교를 시작하기 위해서, 린노스케의 옷을 벗기기 시작했다.
+    PRINTFORMW 「소, 손대지마아아아앗!」
+    PRINTFORMW  무엇을 하는지 깨달은 린노스케는 전력으로 저항하려고 했지만
+    ;주인이 남자
+    IF TALENT:MASTER:120
+        PRINTFORMW  남성과 여성의 힘 차이를 이길수는 없었고, 자신의 처지를 한층 더 깊게 깨닫게 된 계기만 된 듯 하다…
+    ;주인이 여성
+    ELSE
+        PRINTFORMW  %조사처리(CALLNAME:MASTER,"와")%의 힘 차이를 이길수는 없었고, 자신의 처지를 한층 더 깊게 깨닫게 된 계기만 된 듯 하다
+    ENDIF
+    PRINTFORMW 
+    PRINTFORMW  린노스케는 받아들이기 어려운 상황을 마주한 탓에 정신에 큰 상처를 입은것 같다…
+    PRINTFORMW  린노스케는 [비관적], [저항], [광기]를 얻었다
+    TALENT:26 = 1
+    TALENT:34 = 1
+    TALENT:158 = 1
+    CFLAG:5001 = 1
+    RETURN 1
 
-IF CFLAG:5001 == 0
+ELSEIF CFLAG:5001 == 0
     DRAWLINE
     PRINTFORMW 「요즘 소녀의 실종 사건을 자주 주워 들었지만, 아무래도 원인은 너인가 보군.
     PRINTFORMW  그런데 보는 대로 날더러 소녀라고 부르기엔 무리가 있을 텐데, 그건 어떻게 생각하지?」
@@ -277,18 +315,16 @@ ELSEIF CFLAG:5001 < 5 && TALENT:150
     PRINTFORMW  거기까지 단숨에 입에 올린 린노스케는 마침내 다다른 결론을 앞에 두고 놀라 중얼거렸다.
     PRINTFORMW 「……이래선 마치, 사랑, 같지 않으냐……」
     PRINTFORMW  도달한 진실의 충격에, 방심해서 주저앉은 린노스케에게로
-    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 다가가서, 그 몸을 꽉 끌어안았다.%CALLNAME:MASTER%は近付き,その身を抱きすくめた.
+    PRINTFORMW  %조사처리(CALLNAME:MASTER,"는")% 다가가서, 그 몸을 꽉 끌어안았다.
     PRINTFORMW  얌전하게 안겨 있게 된 린노스케의 턱에 손을 대어, 가볍게 위를 향하게 했다.
-    PRINTFORMW 저항은 없다.
-    PRINTFORMW 그리고 살풍경한 방에, 두 개의 그림자가 겹쳤다……
+    PRINTFORMW  저항은 없다.
+    PRINTFORMW  그리고 살풍경한 방에, 두 개의 그림자가 겹쳤다……
     PRINTFORML 
     PRINTFORMW ―린노스케가 【반항적】을 잃었습니다―
-    PRINTFORMW ―린노스케가【쾌감을 부정】을 잃었습니다―
-    PRINTFORMW ―린노스케가【남성혐오】를 잃었습니다―
+    PRINTFORMW ―린노스케가 【쾌감을 부정】을 잃었습니다―
     CFLAG:5001 = 5
     TALENT:11 = 0
     TALENT:71 = 0
-    TALENT:37 = 0
     RETURN 1
 
 ;조수 유무를 체크(없을 경우엔 2회째 이후로 넘어감)
@@ -2030,7 +2066,7 @@ IF SELECTCOM == 25
                             PRINTFORMW  단번에 하는 쪽이 좋을까…… 싶어서…… 였는데』
                             PRINTFORMW  숨이 넘어갈 듯한 상태로, 이어져 있는 채로 마리사는 린노스케에게 쓰러졌다.
                             PRINTFORMW 『……좀 얕봤다구, ……설마 이 정도로 아플 줄이야』
-                            PRINTFORMW 「어째서 이렇게 너는君は……. 옛날부터 너무 무대포였다고」
+                            PRINTFORMW 「어째서 이렇게 너는……. 옛날부터 너무 무대포였다고」
                             PRINTFORMW 『옛날부터, 인가……. 그렇구나, 언제나 내가 터무니없는 짓을 해서
                             PRINTFORMW  ……그래서 코우린이 마중을 나왔던가
                             PRINTFORMW  헤헤, 계속 폐만 끼쳐 왔구나, 옛날부터……
@@ -3127,7 +3163,7 @@ IF SELECTCOM == 103 && TEQUIP:56
             PRINTFORMW  도구점 주인에 대한 모독이군. 하지만 뭐 괜찮아, 향림당 점주로서 그 도전, 받아들여 주지」
         ;그 외
         ELSE
-            PRINTFORMW 「鏡に映して……頭は大丈夫か,君は」
+            PRINTFORMW 「거울에 비춘다라…… 정말 머리는 괜찮은건가, 너」
         ENDIF
         CFLAG:9103 = 1
     ;2회째 이후
@@ -4690,8 +4726,11 @@ ENDIF
 IF SELECTCOM == 445
     ;처음
     IF CFLAG:9445 == 0
+		;음란
+		IF TALENT:170
+			PRINTFORMW 「내 이야기가 듣고 싶어? 그런 것보단 다른 일이나… 그래 알았다」
         ;연모
-        IF TALENT:150
+        ELSEIF TALENT:150
             PRINTFORMW 「내 이야기가 듣고 싶다고? 그래, 기꺼이 말해주지」
         ;그 이외
         ELSE
@@ -4700,8 +4739,11 @@ IF SELECTCOM == 445
         CFLAG:9445 = 1
     ;2회 이후
     ELSE
+		;음란
+		IF TALENT:170 && (CFLAG:9445 <= 2 || FLAG:11 == 2)
+			PRINTFORMW 「또 이야기가 듣고 싶다고? 그런 것보단 다른 일이나… 하아, 하면 되지 않는가」
         ;연모
-        IF TALENT:150 && (CFLAG:9445 <= 2 || FLAG:11 == 2)
+        ELSEIF TALENT:150 && (CFLAG:9445 <= 2 || FLAG:11 == 2)
             PRINTFORMW 「뭔가, 또 내 이야기가 듣고 싶은건가? 그럼 오늘은 무슨 이야기를 할까……」
             CFLAG:9445 = 3
         ;그 이외
@@ -5515,7 +5557,7 @@ IF LOCAL > PALAMLV:2 && CFLAG:8002 == 0
             IF TALENT:ASSI:150
                 PRINTFORMW 『그건 곤란하네. 코우린의 육욕이 저 녀석을 향하는 것도 나로서는……
                 PRINTFORMW  음ー…… 뭐 됐어, 계속한다 코우린. 나는 믿고 있으니까 말야』
-                PRINTFORMW 「거기서 그렇게 말하는 건가. 비겁하군, 너는君は……」
+                PRINTFORMW 「거기서 그렇게 말하는 건가. 비겁하군, 너는……」
             ;그 외
             ELSE
                 PRINTFORMW 『그러냐, 그래서 그게 어쨌다는 거야』
@@ -6143,6 +6185,37 @@ IF TFLAG:200 == 151
     ENDIF
 ENDIF
 
+;----------------------------------------------------------------
+;아이템 사용 CFLAG267~268
+;----------------------------------------------------------------
+;성전환 사탕
+IF TFLAG:200 == 339
+	;연모, 남성→여성
+	IF TALENT:150 && TALENT:120 == 0
+	PRINTFORMW 「그런데… 이런 약이 있었다면 왜 이제 와서 주는 건가?」
+	PRINTFORMW 「아니, 싫은 건 아니야. 오히려 기쁘기도 하지만… 조금 혼란스럽기도 해서」
+	PRINTFORMW 「그래도, 어떤 모습이라도 나를 나로 봐줄거라고 믿는다」
+	;연모, 여성→남성
+	ELSEIF TALENT:150
+	PRINTFORMW 「아무리 그래도 이건 변덕이 너무 심한 것 같군」
+	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 한심하다는 듯이 쳐다보는 린노스케의 눈을 피했다
+	;첫조교 전 성전환 시
+	ELSEIF CFLAG:5001 == 0
+	PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 납치 후 잠들어 아직 깨어나지 못한 린노스케에게 성전환 사탕을 먹였다
+	PRINTFORMW 과연 깨어나서 어떤 반응을 보일지는…
+	;남성→여성
+	ELSEIF TALENT:120 == 0
+	PRINTFORMW 린노스케는 사탕을 먹기 전 이름과 용도를 파악하고 거부하려 했으나 결국 받아들여 삼켰다
+	PRINTFORMW 「이런건 여기서 나가기만 하면 원래대로 돌아갈 수 있을게 뻔하잖나」
+	PRINTFORMW 「약물에 관한 지식이 있는 자라면 두번도 만들 수 있겠지」
+	PRINTFORMW  의외로 태연한 반응이다… 태연한 척 하는 것일수도 있지만
+	;여성→남성 (이런거 할 사람은 없다고 생각하지만)
+	ELSE
+	PRINTFORMW 「나가서 뭔가 할 수고를 덜었군……」
+	ELSE
+	ENDIF
+ENDIF
+
 ;-------------------------------------------------
 ;레즈 플레이 CFLAG:8254
 ;-------------------------------------------------
@@ -6188,7 +6261,12 @@ ENDIF
 ;-------------------------------------------------
 IF TFLAG:200 == 200
     PRINTFORMW 「명칭은 약혼 반지. 용도는……에, 영원한 사랑을 맹세하다……」
-    PRINTFORMW 「제정신인거냐, 너는! 나는 반인반요인 어중간한 존재인데다, 애초에 남자라구!」
+	IF TALENT:120
+	PRINTFORMW 「제정신인거냐, 너는! 나는 반인반요인 어중간한 존재인데다, 애초에 남자라구!」
+	ELSE
+	PRINTFORMW 「제정신인거냐, 너는! 나는 반인반요인 어중간한 존재인데다, 한때는 남자이기까지 했는데!」
+	PRINTFORMW 「사람을 소유물마냥 멋대로 몸까지 바꿔버리던 주제에 이제 와선 사랑한다고 해서…… 아니다, 됐어」
+	ENDIF
     PRINTFORMW 「……전에도 말했을지 모르겠지만, 넌 확실히 어딘가 이상해」
     PRINTFORMW 「뭐, 이상한게 두 명이라면 딱 좋으려나……」
 ENDIF
@@ -6238,7 +6316,11 @@ PRINTFORMW 「나 이외에도 선택지는 얼마든지 있었을텐데, 어째
 PRINTFORMW 「애초에 그대로 장사를 계속해나가는 인생도 있었을거다. 돈도 여자도 부족하지 않은 생활이」
 PRINTFORMW 「그런데. 그런데, 나같은걸 선택해서 이런 싸구려 아파트 방에서 초라하게, 지금……수명이 다하려 하고있어」
 PRINTFORMW  어째서 린노스케였는지, %CALLNAME:MASTER%도 알지 못한다. 
-PRINTFORMW  모든 것을 던져서라도 손에 넣고싶었던게 눈 앞의 남자였다. 그것 뿐이다.
+IF TALENT:120
+    PRINTFORMW  모든 것을 던져서라도 손에 넣고싶었던게 눈 앞의 남자였다. 그것 뿐이다.
+ELSE
+    PRINTFORMW  모든 것을 던져서라도 손에 넣고싶었던게 눈 앞의 여자였다. 그것 뿐이다.
+ENDIF
 PRINTFORMW  그저 그것 뿐이다.
 PRINTFORMW 「정말이지, 구제불능이구나, 너란 녀석은……」
 PRINTFORMW  그렇게 말하면서, 한심하다는 듯한 어조와 반대로 린노스케의 표정은 진지함 그 자체였다.
@@ -6283,15 +6365,31 @@ RETURN 0
 ;-------------------------------------------------
 ;@노예 엔딩 관계
 ;-------------------------------------------------
-;@SLAVE_ENDING_K69
-;DRAWLINE
-;PRINTFORMW ―――단독 엔딩 조건 달성―――
-;PRINTFORMW …………
-;PRINTFORMW ………
-;PRINTFORMW ……
-;PRINTFORMW 
+@SLAVE_ENDING_K69
+DRAWLINE
+PRINTFORMW ―――단독 엔딩 조건 달성―――
+;린노스케가 남자
+IF TALENT:120
+    PRINTFORMW …………
+    PRINTFORMW ………
+    PRINTFORMW ……
 
-;PRINTFORMW 
-;PRINTFORMW         ―― Ending No.{1000+NO:TARGET}i (%CALLNAME:TARGET% 노예 엔딩)
+;린노스케가 남자가 아님
+ELSE
+    PRINTFORMW …………
+    PRINTFORMW ………
+    PRINTFORMW ……
+    PRINTFORMW 
+    PRINTFORMW 처음 봤을때의 모습은 ―외면도 내면도― 전혀 남지 않은 모습으로 완전히 타락해버린 그녀는
+    PRINTFORMW 주인이 돌아오길 기다리며 먼지만 쌓여가는 자신의 가게나 자신이 돌아오길 기다리는 사람들이 있다는 것도
+    PRINTFORMW 지식을 추구하던 예전의 자신이나 바깥 세계를 향한 동경이나 호기심조차
+    PRINTFORMW 모두 %조사처리(CALLNAME:MASTER,"가")% 주는 쾌락에 전부 녹아내려서, 잊어버린채
+    PRINTFORMW 흐리고 탁한 눈으로 %CALLNAME:MASTER%에게 매달리며 안아달라고 보챌뿐이였다
+    PRINTFORMW 
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 오늘도 그녀를 가지고 놀며
+    PRINTFORMW 린노스케가 바라는대로 육욕을 채우는 도구로만 사용하고 있다…
+ENDIF
 
-;RETURN 0
+PRINTFORMW 
+PRINTFORMW         ―― Ending No.{1000+NO:TARGET}i (%CALLNAME:TARGET% 노예 엔딩)
+RETURN 0
