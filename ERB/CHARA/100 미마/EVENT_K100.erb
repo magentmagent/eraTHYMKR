@@ -688,7 +688,7 @@ IF SELECTCOM == 0
 ENDIF
 
 ;-------------------------------------------------
-;;커닐링구스 CFLAG:7102
+;커닐링구스 CFLAG:7102
 ;-------------------------------------------------
 IF SELECTCOM == 1
     ;처음
@@ -1373,7 +1373,7 @@ IF SELECTCOM == 7
                     CFLAG:7117 = 5
                 ;연모
                 ELSEIF TALENT:150 == 1 && (CFLAG:7117 <= 3 || FLAG:11 == 2)
-                    PRINTFORMW 「아, 좋아!　기분 좋아섯!」
+                    PRINTFORMW 「아, 좋아!　기분 좋아서!」
                     PRINTFORMW 손가락을 움직일 때에, 미마의 비순에서 애액이 분출했다
                     CFLAG:7117 = 4
                 ;자위 중독 Lv3 이상
@@ -1894,7 +1894,7 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
 ENDIF
 
 ;-------------------------------------------------
-;정상 위 CFLAG:7161
+;정상위 CFLAG:7161
 ;처녀 판정 CFLAG:7609
 ;-------------------------------------------------
 IF SELECTCOM == 20
@@ -2165,11 +2165,11 @@ IF SELECTCOM == 24
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7165 <= 4 || FLAG:11 == 2)
             IF RAND:2 == 0
-            PRINTFORMW 「아핫! 정말, 매웃! 기분, 앗! 좋앗!」
-            PRINTFORMW 허리를 움직일 때 마다, 미마는 고함과 비슷한 교성을 냈다
+                PRINTFORMW 「아핫! 정말, 매웃! 기분, 앗! 좋앗!」
+                PRINTFORMW 허리를 움직일 때 마다, 미마는 고함과 비슷한 교성을 냈다
             ELSE
-            PRINTFORMW 「크힛！？　앗、잠깐！　내가、움직일거니까！」
-            PRINTFORMW 「%조사처리(CSTR:90,"는")%、가만히 있엇！　앗！　아앗！　가만히、있으라곳！」
+                PRINTFORMW 「크힛！？　앗、잠깐！　내가、움직일거니까！」
+                PRINTFORMW 「%조사처리(CSTR:90,"는")%、가만히 있엇！　앗！　아앗！　가만히、있으라곳！」
             ENDIF
             RETURN 1
             CFLAG:7165 = 5
@@ -2201,7 +2201,7 @@ IF SELECTCOM == 25
     IF CFLAG:7166 == 0
         ;연모
         IF TALENT:150 == 1
-            PRINTFORMW 「읏, 하아, 큿!　금방, 쌀거 같네」
+            PRINTFORMW 「읏, 하아, 큿! 금방, 쌀거 같네」
         ;그 이외
         ELSE
             PRINTFORMW 「너무해……이제 놔주지 않을거야」
@@ -2212,11 +2212,11 @@ IF SELECTCOM == 25
     ELSE
         ;연모
         IF TALENT:150 == 1 && (CFLAG:7166 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「아긋, 이렇게 세게 넣으면, 참을수갓!」
+            PRINTFORMW 「아긋, 이렇게, 세게 넣으면, 참을수가!」
             CFLAG:7166 = 3
         ;그 이외
         ELSEIF CFLAG:7166 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「앗, 큿, 꽤, 능숙, 하넷!」
+            PRINTFORMW 「앗, 큿, 꽤, 능숙, 하네!」
             CFLAG:7166 = 2
         ENDIF
             RETURN 0
@@ -2243,7 +2243,7 @@ IF SELECTCOM == 26
                         PRINTFORMW 「마리사, 괜찮은 거야?　잘 할 수 있겠지?」
                         PRINTFORMW 『미마님, 나라고 언제까지나 아이는 아니야. 나는 오늘부터, 한 사람 분의 여자이니까』
                         PRINTFORMW 마리사는 %CALLNAME:MASTER%에 걸쳐, 느긋하게 허리를 내렸다.
-                        PRINTFORMW 「핫, 큿! 읏, 어때?　기분 좋아? 」
+                        PRINTFORMW 「핫, 큿! 읏, 어때? 기분 좋아? 」
                     ;그 이외
                     ELSE
                         PRINTFORMW 『아, 아무리 그래도 그것은!』
@@ -2258,7 +2258,7 @@ IF SELECTCOM == 26
                     IF TALENT:ASSI:150 == 1
                         PRINTFORMW 『겨우 받아주는구나?　……그렇지만, 미마님 앞에서는 부끄러운데』
                         PRINTFORMW 「마리삿, 잘 생각해봣! 뭘 해야할지 알고 있을거잖아……」
-                        PRINTFORMW 미마는 마리사를 설득하려 했지만, 마리사는 고개를 가로 저을 뿐이었다.                        
+                        PRINTFORMW 미마는 마리사를 설득하려 했지만, 마리사는 고개를 가로 저을 뿐이었다.
                         PRINTFORMW 『미마님, 나는 한 사람 분의 여자에요. 확실히, 봐주세요』
                         PRINTFORMW 「마리사……!」
                         PRINTFORMW 미마에게 보란듯이 과시하며, 마리사는 처녀를%CALLNAME:MASTER%에 바쳤다
@@ -2268,7 +2268,7 @@ IF SELECTCOM == 26
                         PRINTFORMW 마리사의 간청을 무시하듯, %조사처리(CALLNAME:MASTER,"는")% 가차 없이 육봉을 찔러 넣었다
                         PRINTFORMW 『아앗!? 깊잇! 긋, 웃, 우와앗!』
                         PRINTFORMW 『아팟! 아파! 그만, 아아아앗!』
-                        PRINTFORMW 「마리사!　이잇……!」
+                        PRINTFORMW 「마리사! 이잇……!」
                         SIF TEQUIP:41 == 0
                             PRINTFORMW 미마는 살기 어린 시선으로 %조사처리(CALLNAME:MASTER,"를")% 주시하며, 입술을 세게 깨물었고 그곳에서부터 피가 흘렀다.
                     ENDIF
@@ -2503,7 +2503,7 @@ IF SELECTCOM == 28
 ENDIF
 
 ;-------------------------------------------------
-;정상 위 애널 CFLAG:7181
+;정상위 애널 CFLAG:7181
 ;-------------------------------------------------
 IF SELECTCOM == 30
     ;처음
@@ -2533,8 +2533,8 @@ IF SELECTCOM == 30
             PRINTFORMW 「큿、핫！　그것、잘햇!」
             PRINTFORMW 「거기、비벼져섯！　후아앗！」
             ELSE
-            PRINTFORMW 「어、엉덩잇、뜨거워섯！　히이잉！」
-            PRINTFORMW 「그만、허、허리갓、멈추지 않앗！」
+            PRINTFORMW 「어、엉덩잇、뜨거워서！　히이잉！」
+            PRINTFORMW 「그만、허、허리가、멈추지 않아！」
             ENDIF
             RETURN 1
             CFLAG:7181 = 6
@@ -2595,7 +2595,7 @@ IF SELECTCOM == 31
         IF TALENT:173 == 1 && TALENT:150 == 1 && (CFLAG:7182 <= 5 || FLAG:11 == 2)
             IF RAND:2 == 0
             PRINTFORMW 「핫、앗！　좀 더、넣어줫!」
-            PRINTFORMW 「나를、망가뜨려줫！」
+            PRINTFORMW 「나를、망가뜨려줘！」
             ELSE
             PRINTFORMW 「히잇! 거깃、너무 기분 좋앗！」
             ENDIF
@@ -3610,6 +3610,49 @@ IF SELECTCOM == 112
             PRINTFORMW 「…변태! 색골! 음마! 그런걸 또 잘라서 뭘 어쩌려는 거야! 아우…」
             PRINTFORMW 보기 드물게도 제모 내내 변태니 색골이니 뭐니 하며 얼굴을 벌겋게 물들이며 꺄꺄 거렸다.
             PRINTFORMW 전에도 그러더니 이번에는 몇개가 더 붙었다. 앞으로 매번 이렇게 하는걸까?
+            CFLAG:7211 = 3
+        ;그 외의 경우
+        ELSEIF CFLAG:7211 <= 1 || FLAG:11 == 2
+            PRINTFORMW 「………」
+            PRINTFORMW 「부끄러워서 죽어버릴것 같단 말이야……」
+            PRINTFORMW 미마는 아예 얼굴을 홍당무처럼 물들이며 시선을 피하고 있다.
+            CFLAG:7211 = 2
+        ENDIF
+        RETURN 0
+    ENDIF
+ENDIF
+
+;-------------------------------------------------
+;털뽑기 CFLAG:7212
+;-------------------------------------------------
+IF SELECTCOM == 113
+    ;처음
+    IF CFLAG:7212 == 0
+        ;연모
+        IF TALENT:150 == 1
+            PRINTFORMW 「…앗 따거!」
+            PRINTFORMW 「진짜로 뽑는거야? …살살 해줘…」    
+            PRINTFORMW 미마는 쭈뼛거리면서 얼굴을 벌겋게 물들였다.
+        ;그 외의 경우
+        ELSE
+            PRINTFORMW 「…읏…큿…」
+            PRINTFORMW 미마는 털이 뽑히는 따가움을 참으면서도 날카롭게 %조사처리(CALLNAME:MASTER,"를")% 노려보고 있다.
+            PRINTFORMW 하지만 얼굴을 붉히고 있는걸로 볼때 부끄러운걸 참고 있는지도.
+        ENDIF
+            CFLAG:7211 = 1
+            RETURN 0
+    ;2번째 이후
+    ELSE
+        ;음란하다
+        IF TALENT:170 && (CFLAG:7211 <= 3 || FLAG:11 == 2)
+            PRINTFORMW 「이런거 좋아하나봐?」
+            PRINTFORMW 「아이처럼 되는걸 좋아하다니……후후」
+            PRINTFORMW 미마는 이 다음이 기대된다는양 뽑혀나가는 자신의 음모를 바라보고 있다.
+            CFLAG:7211 = 4
+        ;연모
+        ELSEIF TALENT:150 == 1 && (CFLAG:7211 <= 2 || FLAG:11 == 2)
+            PRINTFORMW 「…읏! 따가워! 살-살! 하란! 아우…」
+            PRINTFORMW 털을 뽑을 때 마다 미마는 미묘하게 몸을 움찔거리고 있다.
             CFLAG:7211 = 3
         ;그 외의 경우
         ELSEIF CFLAG:7211 <= 1 || FLAG:11 == 2
@@ -6892,6 +6935,30 @@ IF TFLAG:200 == 80
 ENDIF
 
 ;-------------------------------------------------
+;[음핵]취득
+;-------------------------------------------------
+IF TFLAG:200 == 81
+    ;음란
+    IF TALENT:170 == 1
+        PRINTFORMW 「%CALLNAME:MASTER%…」
+        PRINTFORMW 「여기… 좀 더 만져줄 순 없는거야?」
+        PRINTFORMW 클리토리스가 주는 쾌락에 빠져버렸는지 미마는 %CALLNAME:MASTER%에게 달라붙어있다.
+    ;연모
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「…읏 %CSTR:90%…」
+        PRINTFORMW 미마의 반응이 뭔가 이상하다.
+        PRINTFORMW 아까부터 손으로 음두를 계속 만지고 있다.
+        PRINTFORMW 「여기… 좀 더 만져줘. 핥아줘, 빨아줬으면 좋겠어…」
+    ;그 외의 경우
+    ELSE
+        PRINTFORMW 「읏… 어째서…」
+        PRINTFORMW 조교가 끝났음에도 미마는 아까부터 손으로 음두를 계속 만지고 있다.
+        PRINTFORMW (나 도대체 왜 이러지…?)
+        PRINTFORMW (손이…멈추지 않아…)
+    ENDIF
+ENDIF
+
+;-------------------------------------------------
 ;[음유]취득
 ;-------------------------------------------------
 IF TFLAG:200 == 84
@@ -8990,6 +9057,67 @@ IF TFLAG:200 == 310
 ENDIF
 
 ;-------------------------------------------------
+;기억소거약 사용 CFLAG:7622
+;-------------------------------------------------
+IF TFLAG:200 == 324
+    ;첫회
+    IF TFLAG:99 == 1
+        ;기억을 잃기 전에는 연모
+        IF TALENT:150
+            PRINTFORMW 「이걸 마시라는 거지? 알았어.」
+            PRINTFORMW 미마는 %조사처리(CALLNAME:MASTER,"를")% 의심하지도 않고 단숨에 그 약을 마셨다.
+            PRINTFORMW 「근데 무슨 약이야?」
+            PRINTFORMW 「…%CSTR:90%? %CSTR:90%……」
+            PRINTFORMW 「뭐야… 머리가…」
+            PRINTFORMW 미마는 원인 모를 감각에 저항하려는듯 비틀거린다.
+            PRINTFORMW 「%CSTR:90%? 나한테 무슨 약을 먹인거야?」
+            PRINTFORMW 「기억이… 사라져가?」
+            PRINTFORMW 「이 약 설마…」
+            PRINTFORMW 아무래도 미마는 약의 효과를 눈치챈 것 같다.
+            PRINTFORMW 하지만 이미 늦었다. 머지않아 미마는 그대로 잠에 빠져버렸다
+            PRINTFORMW 다시 만날쯤엔 모든걸 잊었겠지.
+            CFLAG:7622 = 2
+        ;그 외
+        ELSE
+            PRINTFORMW 「왜 이런걸 주는거야?」
+            PRINTFORMW 미마는 의심 가득한 눈으로 %조사처리(CALLNAME:MASTER,"를")% 보면서도 약을 마셨다.
+            PRINTFORMW 「뭐야… 머리가…」
+            PRINTFORMW 미마는 원인 모를 감각에 저항하려는듯 비틀거린다.
+            PRINTFORMW 얼마후 전원이 나간듯 픽. 하고 쓰러졌다.
+            PRINTFORMW 다시 만날쯤엔 모든걸 잊었겠지.
+            CFLAG:7622 = 1
+        ENDIF
+    ;2회째 이후
+    ELSE
+        ;기억을 잃기 전에는 연모
+        IF TALENT:150
+            PRINTFORMW 「응. 알았어」
+            PRINTFORMW 미마는 당연하다는듯 %조사처리(CALLNAME:MASTER,"가")% 주는 약을 그대로 마셨고…
+            PRINTFORMW 「어…라?」
+            PRINTFORMW 「……%CSTR:90%? %CSTR:90% 맞…지?」
+            PRINTFORMW 약을 먹고 잠시 시간이 지나자 미마는 머리를 부여잡고 인상을 찟푸린다.
+            PRINTFORMW 조금씩 기억이 희미해져 가는것에 혼란해 하고 있는것 같다.
+            PRINTFORMW 「뭔가, 이상해…」
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 기억이 사라져가는 미마를 뒤로한다.
+            PRINTFORMW 「%CSTR:90%? 어디로 가는거야?」
+            PRINTFORMW 「%CSTR:90%? %CSTR:90%?? 잠깐 기다…」
+            PRINTFORMW …
+            PRINTFORMW 더 이상 목소리가 들리지 않는다. 기억 제거는 성공적이었던 모양이다.
+            CFLAG:7622 = 2
+        ;그 외
+        ELSE
+            PRINTFORMW 「왜 이런걸 주는거야?」
+            PRINTFORMW 미마는 의심 가득한 눈으로 %조사처리(CALLNAME:MASTER,"를")% 보면서도 약을 마셨다.
+            PRINTFORMW 「뭐야… 머리가…」
+            PRINTFORMW 미마는 원인 모를 감각에 저항하려는듯 비틀거린다.
+            PRINTFORMW 얼마후 전원이 나간듯 픽. 하고 쓰러졌다.
+            PRINTFORMW 다시 만날쯤엔 모든걸 잊었겠지.
+            CFLAG:7622 = 1
+        ENDIF
+    ENDIF
+ENDIF
+
+;-------------------------------------------------
 ;곁잠
 ;-------------------------------------------------
 IF TFLAG:200 == 400
@@ -9047,9 +9175,20 @@ IF (TFLAG:200 == 401 && GET_NIGHT_KOJO() == 2)
 ;-------------------------------------------------
 IF (TFLAG:200 == 401 && GET_NIGHT_KOJO(0) == 3)
     DRAWLINE
-    PRINTFORMW 「(으. 오늘은 왠지 못하겠어… 그냥 이 정도로 끝내자…)」
-    DRAWLINE
-ENDIF
+    ;랜덤분기:3
+    IF RAND:3 == 0
+        PRINTFORMW 「(…난 뭘 하고 있는 거야…)」
+        PRINTFORMW 「(포기하자…)」
+    ;2번째
+    ELSEIF RAND:2 == 0
+        PRINTFORMW 「(…오늘은 못하겠네)」
+        PRINTFORMW 「(여기까지 해놓고 왜……)」
+    ;3번째
+    ELSE
+        PRINTFORMW 「(으. 오늘은 왠지 못하겠어… 그냥 이 정도로 끝내자…)」
+    ENDIF
+        DRAWLINE
+    ENDIF
 
 ;-------------------------------------------------
 ;덥침 기승위(자위)
@@ -9080,6 +9219,157 @@ IF (TFLAG:200 == 401 && GET_NIGHT_KOJO(0) == 4)
         ENDIF
     ENDIF
     DRAWLINE
+ENDIF
+
+;-------------------------------------------------
+;곁잠 성공
+;-------------------------------------------------
+IF TFLAG:200 == 402
+    DRAWLINE
+    ;연모 보유
+    IF TALENT:150
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「%CSTR:90%…」
+            PRINTFORMW 미마는 별다른 말은 없다.
+            PRINTFORMW 그러나 잠옷차림, 손에든 베게, %CALLNAME:MASTER%…
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 미마가 뭘 원하는지 알기에 이불을 들어 올려 이리와, 라고 말했다.
+            PRINTFORMW 「고마워, %CSTR:90%…」
+            PRINTFORMW 미마는 얼굴을 살짝 붉히면서 %CALLNAME:MASTER%의 이불에 향했다.
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「%CSTR:90%, 같이 자도 될까?」
+            PRINTFORMW 짧고 굵은 말이었지만 %CALLNAME:MASTER%에게 거절할 이유는 없다.
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 이불을 들어 올려 이리와, 라고 말했다.
+            PRINTFORMW 「고마워, %CSTR:90%. 그럼…」
+            PRINTFORMW 미마는 옅은 미소와 함께 %CALLNAME:MASTER%의 이불에 파고들었다.
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「%CSTR:90%, 어리광이라고 생각하지만… 같이 자도 될까?」
+            PRINTFORMW 왠일인지 미마가 찾아왔다. %조사처리(CALLNAME:MASTER,"는")% 빨리 자고 싶었기에 그렇게 해. 라며 태연하게 말했다.
+            PRINTFORMW 「정말이지? 딴 말 하기 없기야!」
+            PRINTFORMW 미마는 옅은 미소와 함께 %CALLNAME:MASTER%의 이불에 파고들었다.
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「저기, %CSTR:90%, 침대 같이 써도 될까?」
+            PRINTFORMW 「침대가 너무 넓어서…」
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 침대가 넓다는건 핑계라는걸 단숨에 알아챘고, 그렇게 해, 라고 말했다.
+            PRINTFORMW 「정말이지? 응, 알았어.」
+            PRINTFORMW 미마는 얼굴을 살짝 붉히면서 %CALLNAME:MASTER%의 이불로 향했다.
+        ;5번째
+        ELSE
+            PRINTFORMW 「%CSTR:90%, 내가 방해했나?」
+            PRINTFORMW 밤중에 갑자기 찾아온 미마. 잠옷 차림에 배게를 볼 때, 같이 자러 온것일지도 모른다.
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 아니, 이리와. 라며 미마를 이끌었다.
+            PRINTFORMW 「응… 그럼 그쪽으로 갈게.」
+            PRINTFORMW 긴 말은 필요없다. 미마는 %CALLNAME:MASTER%와 함께 잠을 청했다.
+        ENDIF
+        DRAWLINE
+    ;그 외
+    ELSE
+        DRAWLINE
+        ;랜덤분기:6
+        IF RAND:6 == 0
+            PRINTFORMW 「그… 어쩔 수 없다고…」
+            PRINTFORMW 「온기가 좀… 필요할 뿐이니까…」
+            PRINTFORMW 비록 쭈뼛거리지만 %조사처리(CALLNAME:MASTER,"는")% 미마가 뭘 원하는지 알기에 이리와, 라고 말했다.
+            PRINTFORMW 「그럼 실례할게.」
+        ELSEIF RAND:5 == 0
+            PRINTFORMW 「…그저 침대가 넓었을 뿐이니까…」
+            PRINTFORMW 「그래서 같이 자주는 거야…」
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 미마의 말이 핑계라는걸 간파했지만, 못들은 척 하고 이불을 내어줬다.
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「혼자서 자는거 익숙한가봐?」
+            PRINTFORMW 「그래도… 그…」
+            PRINTFORMW 긴 말은 필요없다. %조사처리(CALLNAME:MASTER,"는")% 잔말 말고 이리와. 라며 미마를 불렀다.
+            PRINTFORMW 「그래… 알았어…」
+            PRINTFORMW 미마는 쭈뼛거렸지만 %CALLNAME:MASTER%의 곁으로 향했다.
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「%CALLNAME:MASTER%. 같이 자도 될까?」
+            PRINTFORMW 「이건… 그… 아무튼!」
+            PRINTFORMW 싫다고 해도 될 일이지만, %조사처리(CALLNAME:MASTER,"는")% 마음대로 해. 라며 미마를 불렀다.
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「(…내가 왜 여기에…)」
+            PRINTFORMW 갑작스러운 상황이었지만 %조사처리(CALLNAME:MASTER,"는")% 자괴감을 느껴 쭈뼛거리는 미마를 불렀다.
+            PRINTFORMW 「!!」
+            PRINTFORMW 흠칫 떨던 미마는 결국 %CALLNAME:MASTER%의 곁으로 향했다.
+        ;5번째
+        ELSE
+            PRINTFORMW 「행운인줄 알라고… 같이 자주러 온거니까」
+            PRINTFORMW 차마 솔직하게 말하지 못하는 미마.
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 잔말 말고 이리와. 라며 미마를 불렀다.
+        ENDIF
+        DRAWLINE
+    ENDIF
+    RETURN 1
+ENDIF
+
+;-------------------------------------------------
+;곁잠 실패
+;-------------------------------------------------
+IF TFLAG:200 == 403
+    DRAWLINE
+    ;연모 보유
+    IF TALENT:150
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「%CSTR:90%… 저기, 그… 미안!」
+            PRINTFORMW 「아무것도 아니야!」
+            PRINTFORMW 미마는 마치 도망치는것 처럼 방을 빠져나갔다.
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…이런 한밤중에 미안」
+            PRINTFORMW 「아무것도 아니야.」
+            PRINTFORMW 미마는 바람과 같이 사라졌다.
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「(혼자는 익숙하다고 생각했는데…)」
+            PRINTFORMW 「(나도 많이 변해버린거 같네…)」
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…%CSTR:90%, 방해해서 미안!」
+            PRINTFORMW 미마는 달리는 것을 바람과 같이 하며 사라졌다.
+        ;5번째
+        ELSE
+            PRINTFORMW 「(난 바보인가…)」
+            PRINTFORMW 자기 방 침대로 돌아와 누운 미마는 그렇게 생각했다.
+        ENDIF
+        DRAWLINE
+    ;그 외
+    ELSE
+        DRAWLINE
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「…그냥 못 본걸로 해줘」
+            PRINTFORMW 미마는 얼굴을 가리면서 자신의 방으로 도망쳤다.
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「저기, 그… 아무것도 아니야!」
+            PRINTFORMW 미마는 마치 도망치는것 처럼 방을 빠져나갔다.
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「(혼자는 익숙할텐데…)」
+            PRINTFORMW 「(내가 왜 이러는거지…)」
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「(…내가 왜 여기에…)」
+            PRINTFORMW 갑작스러운 상황이었지만 %조사처리(CALLNAME:MASTER,"는")% 자괴감을 느껴 쭈뼛거리는 미마를 불렀다.
+            PRINTFORMW 「……아니! 그냥 없던 일로 해줘.」
+            PRINTFORMW 흠칫 떨던 미마는 자신의 방으로 도망쳤다.
+        ;5번째
+        ELSE
+            PRINTFORMW 「행운인줄 알라고… 같이 자주러 온거니까」
+            PRINTFORMW 차마 솔직하게 말하지 못하는 미마.
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 정말로 잘건가? 하고 물어봤다.
+            PRINTFORMW 「그야………」
+            PRINTFORMW 그러나 말을 잇지 못한 미마는 그대로 도망치고 말았다.
+        ENDIF
+        DRAWLINE
+    ENDIF
+    RETURN 1
 ENDIF
 
 ;-------------------------------------------------
@@ -9167,10 +9457,112 @@ IF TFLAG:200 == 405
 ENDIF
 
 ;-------------------------------------------------
+;노예 주체의 덥침
+;EVENT_NIGHT1.ERB의 지문을 보면서 쓰는 것을 추천합니다
+;-------------------------------------------------
+IF TFLAG:200 == 480
+SELECTCASE GET_NIGHT_KOJO(0)
+    ;역강간
+    CASE 100
+        DRAWLINE
+        IF ARG:1 == 3
+            PRINTFORMW 「읏, 하아, 큿! 금방, 쌀거 같네」
+            PRINTFORMW 「그대로, 안에!」
+        ELSE
+            PRINTFORMW 「절대로… 놔주지 않을거야…」
+            PRINTFORMW 「앗! 응, 흐으응, 웃, 흥…… 허리가 멈추지 않아…」
+        DRAWLINE
+        ENDIF
+    ;역애널 강간
+    CASE 200
+        DRAWLINE
+        IF ARG:1 == 3
+            PRINTFORMW 「안이, 뜨거워서! 타버릴거 같아!」
+        ELSE
+            PRINTFORMW 「앗, 큿, 꽤, 능숙, 하네!」
+            PRINTFORMW 「이쪽으로、이렇게 느끼게 된건、으읏！」
+            PRINTFORMW 「전부 %CALLNAME:MASTER% 탓이니까……」
+        DRAWLINE
+        ENDIF
+    ;강제 스마타
+    CASE 300
+        DRAWLINE
+        IF ARG:1 == 3
+            PRINTFORMW 「하읏, 흐읏…읏…」
+        ELSE
+            PRINTFORMW 「으……으읏……히얏, 아앗!」
+        DRAWLINE
+        ENDIF
+    ;커닐링구스 강제＆자위
+    CASE 302
+        DRAWLINE
+        IF ARG:1 == 3
+        ;커닐링구스
+            PRINTFORMW 「히얏, 아앗!」
+            PRINTFORMW 날카롭게 비명을 지르면서도, 미마는 저항하지 않는다.
+        DRAWLINE
+        ;커닐링구스와 가슴 자위
+        ELSE
+            PRINTFORMW 「응, 좋아……좀더……」
+            PRINTFORMW 미마는 %CALLNAME:MASTER%의 혀를 받아들였다.
+            PRINTFORMW 그와 동시에 스스로 가슴도 애무하기 시작했다…
+            PRINTFORMW 「하앗, 흐앗……손이… 안 멈춰…」
+        DRAWLINE
+        ENDIF
+ENDSELECT
+ENDIF
+
+;-------------------------------------------------
+;주인 주체의 덥침
+;EVENT_NIGHT1.ERB의 지문을 보면서 쓰는 것을 추천합니다
+;-------------------------------------------------
+IF TFLAG:200 == 481
+SELECTCASE GET_NIGHT_KOJO(0)
+    ;섹스 한다
+    CASE 110
+        DRAWLINE
+        PRINTFORMW 「…너, 넣었다간, %조사처리(CSTR:90,"는")% 하앙♪」
+    ;가리켜 넣고
+    CASE 115
+        DRAWLINE
+        PRINTFORMW 「…손가락이, 들어와… 하앗, 흐앗…」
+    ;자위 강제(장대 없음)
+    CASE 119
+        DRAWLINE
+        PRINTFORMW 「하, 아앗! 심술쟁이! 아, 좋아! 기분 좋아!」
+        PRINTFORMW 「손가락이, 멈추지 않아…!」
+    ;애널 섹스 한다
+    CASE 210
+        DRAWLINE
+        PRINTFORMW 「핫、앗！ 좀 더, 나를、망가뜨려줘…!」
+    ;애널 애무해 준다
+    CASE 215
+        DRAWLINE
+        PRINTFORMW 「핫!, 아ー앗！, 히잇!……아아앗」
+    ;애널 자위 강제
+    CASE 219
+        DRAWLINE
+        PRINTFORMW 「응…아, 엉덩이로 이렇게 느끼다니… 기분 좋아!…」
+    ;애무해 준다
+    CASE 311
+        DRAWLINE
+        PRINTFORMW 「아앙! 거기, 좋아……!」
+    ;가슴 자위 강제
+    CASE 319
+        DRAWLINE
+        PRINTFORMW 「힛, 읏…… 유두로 느끼고 있어…」
+        PRINTFORMW 「하앗, 흐앗…」
+ENDSELECT
+DRAWLINE
+ENDIF
+
+;-------------------------------------------------
 ;3P
 ;-------------------------------------------------
 IF TFLAG:200 == 406
     IF RAND:2 == 0
+        PRINTFORMW 미마「셋이 같이 하는것도 좋아…」
+    ELSEIF RAND:2 == 0
         PRINTFORMW 미마「%CSTR:90%, 몸이 달아올랐으니까 함께 괴롭혀줘…」
     ELSE
         PRINTFORMW 미마「오늘도 왔어… 참을 수가 없어서…」
@@ -9181,7 +9573,10 @@ ENDIF
 ;많은 사람 PT 난교 (3인 이상)
 ;-------------------------------------------------
 IF TFLAG:200 == 408
-    IF RAND:2 == 0
+    IF RAND:3 == 0
+        PRINTFORMW 미마「역시 혼자가 아니었네…」
+        PRINTFORMW 미마「그래도 지지 않을거니까!」
+    ELSEIF RAND:2 == 0
         PRINTFORMW 미마「혼자 왔는줄 알았는데 이렇게나 많이…」
         PRINTFORMW 미마「지지 않으려면 힘내야겠네♪」
     ELSE
@@ -9337,10 +9732,12 @@ IF TFLAG:200 == 411
         ELSE
             PRINTFORMW 「악, 아파앗… 응, 괜찮아. 사양 말고… 때려도 돼…」
         ENDIF
+            DRAWLINE
         RETURN 0
     ;그 외의 경우
     ELSE
         ;마조끼 Lv3 이상
+        DRAWLINE
         IF ABL:21 >= 3
             PRINTFORMW 「하앗, 아읏♪ 으아… 기다려… 더 이상 맞으면…♪」
             PRINTFORMW 상당히 강하게 맞을 때마다 미마의 표정은 황홀로 물들어 간다.
@@ -9351,8 +9748,8 @@ IF TFLAG:200 == 411
         ELSE
             PRINTFORMW 「하읏, 끄으읏…, 좀 더 세게 팡팡해 줘… 햐그읏!」
         ENDIF
+        DRAWLINE
     ENDIF
-    DRAWLINE
 ENDIF
 
 ;-------------------------------------------------
@@ -9450,7 +9847,7 @@ IF TFLAG:200 == 412
             PRINTFORMW 라는 말과 함께. 마리사의 채찍질이 시작됬다.
             PRINTFORMW 「아읏! 아팟! 잠깐!」
             PRINTFORMW 『미마님! 제자의 커다란 도약을 위해 몸소 희생해주세요! ^-^』
-            PRINTFORMW     그곳에는 가학적인 쾌락을 얻으며 섬득하게 웃는 마리사와 비명을 지르는 미마만이 있을 뿐이었다……    
+            PRINTFORMW 그곳에는 가학적인 쾌락을 얻으며 섬득하게 웃는 마리사와 비명을 지르는 미마만이 있을 뿐이었다……    
         ENDIF
     ;그 외의 경우
     ELSE
@@ -9590,6 +9987,7 @@ IF TFLAG:200 == 601
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 그렇다고 하자 미마는 미리 만들어놓은 모양인지 아직 식지 않은 요리를 보였다.
                 PRINTFORMW 「%조사처리(CSTR:90,"가")% 맛있게 먹는걸 보니까 왠지 행복하달까? 꼭 그런것만 같아.」
                 PRINTFORMW 미마는 여지껏 보인적 없는 자애로운 미소로 음식을 먹는 %조사처리(CALLNAME:MASTER,"를")% 바라보고 있었다.
+                DRAWLINE
             ENDIF
         ;그 외의 경우
         ELSE
@@ -9600,6 +9998,7 @@ IF TFLAG:200 == 601
                 PRINTFORMW 「실력이 늘었다고 생각하지만 여전히 미각의 기준을 잘 모르겠달까.」
                 PRINTFORMW 「이 정도까지 숙달됬지만 요리라는건 아직도 어렵다고 생각하고 있어.」
                 PRINTFORMW 「아직 갈 길이 멀지만, %조사처리(CSTR:90,"가")% 맛있게 먹어준다면 그것도 기합으로 어떻게든 될지도?」
+                DRAWLINE
             ENDIF
         ENDIF
     ;굴복각인LV3+요리기능 LV3 이상
