@@ -525,7 +525,7 @@ ELSEIF TALENT:150 == 1 && FLAG:11 == 2
     ELSE
         PRINTFORMW 「겨우 왔다……」
         PRINTFORMW 문을 열자, 미마는 희미하게 뺨을 붉게 물들이면서 다가왔다.
-        PRINTFORMW 「이제 않오는건 아닐까 하고, 걱정 하고 있었어……」
+        PRINTFORMW 「이제 안오는건 아닐까 하고, 걱정 하고 있었어……」
         PRINTFORMW 미마는 %CALLNAME:MASTER%의 목에 손을 감고, 뜨거운 입맞춤을 주고 받았다
     ENDIF
     RETURN 1
@@ -7071,6 +7071,7 @@ ENDIF
 ;야외 라이브
 ;-------------------------------------------------
 IF TFLAG:200 == 110
+DRAWLINE
     ;실패
     IF TFLAG:99 == 0
         ;연모
@@ -7089,7 +7090,6 @@ IF TFLAG:200 == 110
         ENDIF
     ;성공
     ELSEIF TFLAG:99 == 1
-        DRAWLINE
         ;연모, 가창기능 3, 인기, 3분기
         IF TALENT:150 == 1 && ABL:72 >= 3 && TALENT:94 == 1
             IF RAND:3 == 0
@@ -7174,7 +7174,6 @@ ENDIF
 ;야외 라이브(인기 취득)
 ;-------------------------------------------------
 IF TFLAG:200 == 110
-    DRAWLINE
     ;인기 취득, 남자, 연모.
     IF TFLAG:99 == 2 && TALENT:150 == 1 && TALENT:MASTER:120
         PRINTFORMW 세상이 떠나가라할 만큼의 열기와 함께 미마의 무대는 끝이 났다. 그런데……
@@ -8504,6 +8503,7 @@ ENDIF
 ;임신
 ;-------------------------------------------------
 IF TFLAG:200 == 170
+    DRAWLINE
     ;연모+모성
     IF TALENT:142 == 1 && TALENT:150 == 1
         PRINTFORMW 「또 아이가 생겼어…%CSTR:90%」
@@ -8520,6 +8520,7 @@ IF TFLAG:200 == 170
         PRINTFORMW 「이젠……나도 모르겠어……」
         PRINTFORMW 정신이 나간건지 미마는 알아들을 수 없는 말을 중얼거리며 텅 빈 눈동자로 %CALLNAME:MASTER%를 보고 있다
     ENDIF
+    DRAWLINE
 ENDIF
 
 ;----------------------------------------------------------------
@@ -8830,6 +8831,71 @@ IF TFLAG:200 == 215
         PRINTFORMW 수치로 더욱 쾌감을 얻었는지 미마의 비소에서 외골의 애액이 실처럼 늘어졌다….
     ENDIF
     RETURN 0
+ENDIF
+
+;-------------------------------------------------
+;애액입수시 이벤트
+;-------------------------------------------------
+IF TFLAG:200 == 212
+    ;연모 보유
+    IF TALENT:150
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「…왜 그런걸 수집하는 거야?」
+            PRINTFORMW 미마는 붉게 상기된 얼굴로 애액을 병에 넣는 %조사처리(CALLNAME:MASTER,"를")% 보고 있다.
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…그런 거 남기지 않아도 원한다면 얼마든지 해줄게」
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「수집한다니… 민망해지잖아…」
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「(이런걸 남겨둬서 뭘 하려는 걸까?)」
+        ;5번째
+        ELSE
+            PRINTFORMW 「…하려면 빨리 해.」
+            PRINTFORMW 민망한 모양인지 미마는 붉게 상기된 얼굴로 다른데로 시선을 돌리고 있다.
+        ENDIF
+    ;반발 보유
+    ELSEIF MARK:9
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「…한심해」
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…변태」
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…정말 봐줄만한 취미네」
+            PRINTFORMW 말은 이렇게 해도 미마의 시선과 태도는 그렇게 보이지 않는다.
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 미마는 마치 쓰레기를 보는것 같은 시선으로 %조사처리(CALLNAME:MASTER,"를")% 노려보고 있다.
+        ;5번째
+        ELSE
+            PRINTFORMW 「……이유 따위 말하지 마. 뻔하니까」
+        ENDIF
+    ;그 외
+    ELSE
+        ;랜덤분기:5
+        IF RAND:5 == 0
+            PRINTFORMW 「…아직 저주 같은건 내리지 않았는데 미친거야?」
+        ;2번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…왜 그런걸 모아?」
+        ;3번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…그러고 있으면 무슨 생각 안들어?」
+        ;4번째
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「…그거 당장 버려줬으면 좋겠어」
+        ;5번째
+        ELSE
+            PRINTFORMW 「…제정신이 아니네」
+        ENDIF
+    ENDIF
+    RETURN 1
 ENDIF
 
 ;-------------------------------------------------
@@ -9278,7 +9344,7 @@ IF TFLAG:200 == 411
         IF ABL:21 >= 3
             PRINTFORMW 「하앗, 아읏♪ 으아… 기다려… 더 이상 맞으면…♪」
             PRINTFORMW 상당히 강하게 맞을 때마다 미마의 표정은 황홀로 물들어 간다.
-            PRINTFORMW 이걸 바라보는 %조사처리(CALLNAME:MASTER,"는")% 당혹감을 감추지 못 하면서도 계속해서 미마의 엉덩이를 때리고 있다.
+            PRINTFORMW 정작 이걸 행하는 당사자는 당혹감을 감추지 못 했으나 일단 계속해서 미마의 엉덩이를 때리고 있다.
             PRINTFORMW 「아읏♪ 아앗! 맞아서, 가버, 흐아아아앙♪」
             PRINTFORMW 마지막에 혼신의 힘으로 엉덩이를 때리자 미마는 새된 소리를 지르며 물을 마구 뿌렸다….
         ;그 외의 경우
@@ -9511,6 +9577,7 @@ ENDIF
 ;식후 반응
 ;-------------------------------------------------
 IF TFLAG:200 == 601
+    DRAWLINE
     ;연모
     IF TALENT:150 == 1
         ;요리기능 Lv5
@@ -9556,6 +9623,7 @@ IF TFLAG:200 == 601
             PRINTFORMW 「한그릇 더 라던가 외쳐도 안해줄거야. 각자 먹을거 뿐인지라.」
             PRINTFORMW 「…덕분에 음식 안먹어도 되는 나도 이걸 먹게 됬고.」
         ENDIF
+        DRAWLINE
     ENDIF
         RETURN 0
 ENDIF
