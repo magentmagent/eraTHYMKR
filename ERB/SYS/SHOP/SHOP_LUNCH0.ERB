@@ -2880,12 +2880,7 @@ IF FLAG:3 != 1
 ENDIF
 
 ;LOCAL = 요리의 종류
-IF TALENT:MASTER:831 && ABL:MASTER:70 >= 5 && FLAG:574 > 0
-    ;야채 요리의 풀 코스
-    LOCAL = FLAG:574
-    LOCAL:3 = RAND:LOCAL
-    FLAG:574 -= LOCAL:3
-ELSEIF LOCAL == 0 && ABL:MASTER:70 >= 4
+IF LOCAL == 0 && ABL:MASTER:70 >= 4
     ;향유 고래의 타츠다튀김
     LOCAL:3 = 666
 ELSEIF LOCAL == 1 || LOCAL == 15
@@ -2955,9 +2950,7 @@ PRINTW      ・
 PRINTW       ！
 PRINTL 
 PRINTFORM %조사처리(CALLNAME:MASTER,"는")% 
-IF TALENT:MASTER:831 && ABL:MASTER:70 >= 5
-    TSTR:5 = 야채 요리 풀 코스
-ELSEIF LOCAL == 0 && ABL:MASTER:70 >= 4
+IF LOCAL == 0 && ABL:MASTER:70 >= 4
     ;G. T.!　G. T.!
     TSTR:5 = 향유 고래의 타츠타튀김
 ELSEIF LOCAL == 1 || LOCAL == 15
