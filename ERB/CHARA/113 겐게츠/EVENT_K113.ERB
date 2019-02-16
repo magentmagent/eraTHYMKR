@@ -731,7 +731,7 @@ ELSEIF TALENT:123 && TALENT:33
     RETURN 1
 
 ;반발각인Lv1
-ELSEIF MARK:3 == 1
+ELSEIF MARK:9 == 1
     DRAWLINE
     IF !RAND:25 && TALENT:36
         PRINTFORMW 「아, 그렇지」
@@ -755,7 +755,7 @@ ELSEIF MARK:3 == 1
         PRINTW ・・・・・・・・・
         PRINTW ・・・・・・
         PRINTW ・・・
-        PRINTFORMW ★★★%조사처리9CALLNAME:MASTER,"은")% 죽어 버렸다★★★
+        PRINTFORMW ★★★%조사처리(CALLNAME:MASTER,"은")% 죽어 버렸다★★★
         PRINTFORMW
         QUIT
     ELSE
@@ -765,7 +765,7 @@ ELSEIF MARK:3 == 1
     RETURN 1
 
 ;반발각인Lv2
-ELSEIF MARK:3 == 2
+ELSEIF MARK:9 == 2
     DRAWLINE
     IF !RAND:10 && TALENT:36
         PRINTFORMW 「끝? 그럼, 거기에 좀 앉아봐. 바이바이의 키스를 해 줄게」
@@ -807,7 +807,7 @@ ELSEIF MARK:3 == 2
     RETURN 1
 
 ;반발각인Lv3
-ELSEIF MARK:3 == 3
+ELSEIF MARK:9 == 3
     DRAWLINE
     IF !RAND:2 && TALENT:36
         PRINTFORMW 「아! 잠깐 기다려」
@@ -4808,7 +4808,7 @@ IF SELECTCOM == 602
         ;연모+조수조교
         IF TALENT:150 && ASSI > 0 && ASSIPLAY && (CFLAG:9602 <= 5 || FLAG:11 == 2)
             PRINTFORMW 「아하♪ %CALLNAME:ASSI%의 즙, 엄청 맛있네. 내 건 어떨까나?」
-            PRINTFORMW 겐게츠와 %CALLNAME:ASSI,"는")%, 서로의 성기에서 분비되는 액체를 소리를 내며 홀짝이고 있다.
+            PRINTFORMW 겐게츠와 %조사처리(CALLNAME:ASSI,"는")%, 서로의 성기에서 분비되는 액체를 소리를 내며 홀짝이고 있다.
             CFLAG:9602 = 6
         ;연모
         ELSEIF TALENT:150 && (CFLAG:9602 <= 4 || FLAG:11 == 2)

@@ -56,6 +56,8 @@
 ;CFLAG:6831 설교 회수 카운트 플래그,CFLAG:6832 특수한 상황에서의 설교 카운트 플래그
 ;++엔딩 분기용 CFLAG++
 ;CFLAG:6833 분기 플래그, 특정한 경우에만 쓰이고, 재활용도 됨. CFLAG:6834 설교 이벤트 완수여부(0=미완수 1=완수 2=설교 이벤트 오프)
+;++++
+;CFLAG:6900 특정 시츄에이션에서 스탯 리셋 금지용 플래그
 ;==================================================
 ;간이력은 간 2개(살)분
 ;==================================================
@@ -125,6 +127,21 @@ RETURN 1
 @SET_CHARA_KOJO_EXTRA_K36
 IF CFLAG:5020 == 0
     DRAWLINE
+    PRINTL 특정 상황에서 에이키의 능력, 경험, 소질 등의 변화가 생기게 합니까?
+    PRINTL 변화하게 할 경우 주로 삽입계 커맨드 실행시 조교의 난이도가 대폭 상승합니다.
+    PRINTL 다만, 일부 긍정적인 변화도 사라집니다.
+    PRINTL [0] 예
+    PRINTL [1] 아니오
+    INPUT
+    IF RESULT == 0
+        PRINTW 일부 상황에서 특정 커맨드 실행시 변화가 일어납니다.
+        PRINTL 
+        CFLAG:6900 = 0
+    ELSEIF RESULT == 1
+        PRINTW 변화가 일어나지 않습니다.
+        PRINTL 
+        CFLAG:6900 = 1
+    ENDIF
     PRINTL 설교 이벤트를 실행하시겠습니까?
     PRINTL [설명:설교 이벤트 실행시 에이키의 고유 커맨드인 설교 커맨드로 이벤트를 일으킬 수 있습니다]
     PRINTL [설명:설교 이벤트는 조교자가 남자임을 가정해서 쓴것으로, 조교자가 여성일때도 완수가 가능하지만, 내용은 변하지 않습니다.]
@@ -176,13 +193,14 @@ ENDIF
 ;-------------------------------------------------
 @K36_MESSAGE_START_1
 IF CFLAG:5201 == 0
-    IF  CFLAG:4900 >= 1
+    IF CFLAG:4900 >= 1
+        IF CFLAG:6900 == 0
         PRINTFORML 
         PRINTFORML 
         PRINTFORMW 그러나… 약은 만능이 아니며, 지울 수 없는 기억도 있다.
         PRINTFORMW 반발각인 레벨 3 취득
         PRINTFORMW 공포각인 레벨 3 취득
-        PRINTFORMW 부정의 구슬　10000 취득
+        PRINTFORMW 부정의 구슬 10000 취득
         PRINTFORMW 봉사쾌락경험 완전하게 리셋
         PRINTFORMW 욕정이 0이 되었다.
         PRINTFORMW 스트레스가 10000 상승
@@ -196,7 +214,6 @@ IF CFLAG:5201 == 0
                 TALENT:11 = 1
             ELSE
             ENDIF
-        
             MARK:9 = 3
             MARK:8 = 3
             JUEL:100 += 10000
@@ -204,6 +221,15 @@ IF CFLAG:5201 == 0
             ABL:11 = 0
             CFLAG:65 += 10000
             CFLAG:4900 += 1
+        ELSE
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 앞으로 할 일에 대해 이야기하자 에이키는 %조사처리(CALLNAME:MASTER,"를")% 노려보았다.
+        PRINTFORMW 「당신이 무엇을 하려는 건지. 알고는 있는 것입니까.
+        PRINTFORMW 알겠습니까…지금, 당신이 하려고 하려는 것은… 어라?」
+        PRINTFORMW 에이키는 갑자기 말문이 막힌 채 %조사처리(CALLNAME:MASTER,"를")% 잠시 멍하니 바라보다가 다시 입을 열었다.
+        PRINTFORMW 「어째선지 이런 얘기를 했던게 처음이 아닌 듯한 기분이…」
+        PRINTFORMW 의문에 빠진 에이키를 두고 %조사처리(CALLNAME:MASTER,"는")% 조교를 시작하기 위해 에이키에게 다가갔다.
+        CFLAG:4900 += 1
+        ENDIF
     ELSE
     DRAWLINE
     PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 방에 들어가자 에이키는 %조사처리(CALLNAME:MASTER,"를")% 노려보았다.
@@ -610,7 +636,7 @@ ELSEIF MARK:2 == 0 && TALENT:150 == 0 && FLAG:11 == 2
             PRINTFORMW 일방적인 것으로 돌이킬 수도 없는데…」
         ELSEIF A == 1
             PRINTFORMW 「당신은…언제까지 무의미한 짓을 계속할 생각입니까.
-            PRINTFORMW 당신이라면, 그 밖에도 할 수 있는 것이 많이 있겠지요에…」
+            PRINTFORMW 당신이라면, 그 밖에도 할 수 있는 것이 많이 있겠지요…」
         ELSEIF A == 2
             PRINTFORMW 「하늘이 푸르네요… 하지만…여기는…」
             PRINTFORMW 에이키는%조사처리(CALLNAME:MASTER,"가")% 들어 오자 뒤돌아 보았다…
@@ -628,8 +654,11 @@ ELSEIF MARK:2 == 0 && TALENT:150 == 0 && FLAG:11 == 2
         IF CFLAG:6831 >= 1
             PRINTFORMW 「………」
             PRINTFORMW 에이키는 말없이 무표정했지만, 설교로 간신히 위산과다증이 나아진 것 같다
+            IF CFLAG:6900 == 0
             PRINTFORMW 스트레스가 10 감소
                 CFLAG:65 -= 10
+            ELSE
+            ENDIF
         ELSE
             PRINTFORMW 「………」
             PRINTFORMW 에이키는 시종 무언인 채… 준비를 시작했다.
@@ -706,10 +735,16 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 0 && FLAG:11 == 2
         IF CFLAG:6831 >= 1
             IF D == 0
                 PRINTFORMW 에이키는 설교를 한 것에 의해 조금이지만 기분이 풀린 것 같다.
+                IF CFLAG:6900 == 0
                     CFLAG:65 -= 4
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 에이키는 전회에 비하면 조금이나마 스트레스가 줄어든 느낌이 든다.
+                IF CFLAG:6900 == 0
                     CFLAG:65 -= 3
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             PRINTFORMW 에이키는 시종 고개를 숙인채로, 명령되는 대로 옷을 벗기 시작했다
@@ -1256,7 +1291,7 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 0
     B = RAND:6
     IF CFLAG:4900 == 0
         IF B == 0
-            PRINTFORMW 「이제… 괜찮은 겁니까?　그렇습니까…알았습니다」
+            PRINTFORMW 「이제… 괜찮은 겁니까? 그렇습니까…알았습니다」
             PRINTFORMW 에이키는 ,%조사처리(CALLNAME:MASTER,"가")% 나가자…
             PRINTFORMW 「우…웃우웃… 이,이런 건…으윽…」
             PRINTFORMW 침대에 가로누워, 끊임없이 울먹이고 있다…
@@ -1282,8 +1317,11 @@ ELSEIF MARK:2 == 3 && TALENT:150 == 0
         IF CFLAG:6831 >= 1
             PRINTFORMW 「………후우…」
             PRINTFORMW 에이키는 간신히 위산과다증이 수그러든 것 같지만…한밤 중까지 설교는 계속되었다
+            IF CFLAG:6900 == 0
             PRINTFORMW 스트레스 10 감소
                 CFLAG:65 -= 10
+            ELSE
+            ENDIF
         ELSE
             PRINTFORMW 「그렇…습니까. 만족…했습니까…」
             PRINTFORMW 에이키는 힘없는 소리로 중얼거리고… 눈물을 흘리며, 그저 울고 있을 뿐이었다.
@@ -1748,7 +1786,7 @@ ENDIF
     ENDIF
     ELSE
     PRINTFORMW 「에? 페니스가 갑자기…」
-    PRINTFORMW 꺄! 도데체…당신은…인내를 모릅니까?」
+    PRINTFORMW 꺄! 도대체…당신은…인내를 모릅니까?」
     ENDIF
 
 ;-------------------------------------------------
@@ -2534,7 +2572,9 @@ IF CFLAG:70 == 1
     ELSE
         PRINTFORMW 예기치 못한 임신에 에이키는 눈물을 흘렸다.
         ;현재 연모 이외의 말도 사고중
-        QUIT
+        ;QUIT
+        ;이부분 미작성 같아서 QUIT은 스킵하게 만들었습니다. 미연모 임신 패널티라면 부정적인 소질 붙는걸로 충분하지 않는지
+        ;꼴랑 한줄 나오고 게임이 꺼지다니 버그 제보 들어올만한 수준
     ENDIF
 ;주인 이외
 ELSE
@@ -2544,6 +2584,7 @@ ENDIF
 ;출산시
 ;-------------------------------------------------
 @K36_MESSAGE_EVENT_171
+IF TALENT:150 == 1
     PRINTFORMW 「읏…크윽…배가…으, 으으윽…」
     ;에이린이 노예내역 중 있는지를 검색
     A = GETCHARA(29)
@@ -2608,10 +2649,13 @@ ENDIF
         PRINTFORMW 「하아하아…태어났네요…저의 사랑스러운 아이가…」
         PRINTFORMW 에이키는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다… 
     ENDIF
+ELSE
+ENDIF
 ;-------------------------------------------------
 ;아이가 어머니에게서 독립
 ;-------------------------------------------------
 @K36_MESSAGE_EVENT_172
+IF TALENT:150 == 1
     PRINTFORMW 「………」
     PRINTFORMW 에이키는 성장한 아이를 상냥한 눈으로 응시하고 있었다.
     PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 근처로 가자
@@ -2621,14 +2665,19 @@ ENDIF
     PRINTFORMW 「이 아이가 어떤 길을 갈 지는 모릅니다만… 모친인 나는 이 아이를 항상 지켜볼 뿐입니다.
     PRINTFORMW 너는, 자신의 길을 갈 테니까… 걱정은 하지 않을게」
     PRINTFORMW 에이키는, 자신의 아이에게 말을 건네고 꼭 껴안았다.
+ELSE
+ENDIF
 ;-------------------------------------------------
 ;육아 방들이
 ;-------------------------------------------------
 @K36_MESSAGE_EVENT_173
+IF TALENT:150 == 1
     PRINTFORMW 「……서방님」
     PRINTFORMW 에이키는 크게 부푼 배를 어루만지면서 %CALLNAME:MASTER%에게 말했다
     PRINTFORMW 「이렇게 배가 부풀어서…저는 당분간 쉬겠습니다…
     PRINTFORMW 가끔, 얼굴 정도는 보여 주세요. 솔직히 임신중엔 불안해서…」
+ELSE
+ENDIF
 ;-------------------------------------------------
 ;유모가 된다
 ;-------------------------------------------------
@@ -2686,10 +2735,14 @@ ENDIF
 ;해방되고 떠나는 노예(해방 직후) 
 ;-------------------------------------------------
 @K36_MESSAGE_EVENT_196
-    PRINTFORMW 「……」
-    PRINTFORMW 「당신은 사후에 반드시 재판을 받습니다. 그것이 인과응보라는 것…
-    PRINTFORMW 하지만… 선행을 확실히 실시하면 그것도 감안됩니다. 잘 생각해 보세요…
-    PRINTFORMW 그럼, 안녕히…」
+IF MARK:9 == 3
+PRINTFORMW 에이키의 찌를 듯한 눈빛이 아무리 멀어져도 등 뒤로 계속 느껴지는 듯하다…
+ELSE
+PRINTFORMW 「……」
+PRINTFORMW 「당신은 사후에 반드시 재판을 받습니다. 그것이 인과응보라는 것…
+PRINTFORMW 하지만… 선행을 확실히 실시하면 그것도 감안됩니다. 잘 생각해 보세요…
+PRINTFORMW 그럼, 안녕히…」
+ENDIF
 ;==================================================
 ;밤이벤트 말
 ;TFLAG:200으로 분기 하는 이벤트 말
@@ -3023,8 +3076,14 @@ PRINTFORMW 「이것으로 증거는 모였어…발뺌은 할 수 없어요,
 ;TFLAG:99로 페라 경험 증가량을 취득 가능
 ;-------------------------------------------------
 @K36_MESSAGE_EVENT_140
-    PRINTFORMW 「츄릅…쪽…츄르릅……
-    PRINTFORMW 서방님, 좋은 아침입니다. 서방님의 페니스가 답답해보였는데… 아침부터 건강하네요, 서방님의 것은」
+    PRINT 「츄릅…쪽…츄르릅……
+    IF TALENT:150
+        PRINTL 
+        PRINTW 서방님, 좋은 아침입니다. 서방님의 페니스가 답답해보였는데… 아침부터 건강하네요, 서방님의 것은」
+    ELSE
+        PRINTL 」
+        PRINTFORMW 에이키는 마치 %조사처리(CALLNAME:MASTER, "가")% 없는 사람마냥 봉사에 열중했다.
+    ENDIF
 
 ;-------------------------------------------------
 ;아침 파이즈리
@@ -3250,9 +3309,9 @@ ELSE
             ELSE
                 PRINTSINGLEFORM 　　　「……여기에 있어 발렌타인은 무의미하군요…」
             ENDIF
-        ;히나마쯔리
+        ;히나마츠리
         ELSEIF DAY:5 == 3 && DAY:6 == 3
-            PRINTSINGLEFORM 　　　「오늘은 히나마쯔리군요… 하지만, 갇혀 있는 나에게는…」
+            PRINTSINGLEFORM 　　　「오늘은 히나마츠리군요… 하지만, 갇혀 있는 나에게는…」
         ELSEIF  BASE:0 < 600
             PRINTSINGLEFORM 　　　「몸이 피곤해…오늘은 쉬게 해 주세요」
         ELSEIF A == 0
@@ -4324,14 +4383,17 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「………」
         PRINTFORMW 에이키는 시종 말없이 있었다…
-        PRINTFORMW 스트레스가 20 상승
-            IF CFLAG:2 == 0
-            ELSE
+        IF CFLAG:6900 == 0
+            PRINTFORMW 스트레스가 20 상승
+                IF CFLAG:2 == 0
+                ELSE
                 PRINTFORMW 호감도 30 감소
-                    CFLAG:2 -= 30
-            ENDIF
-        PRINTFORMW 쾌B의 주가 500 감소
+                CFLAG:2 -= 30
+                ENDIF
+            PRINTFORMW 쾌B의 구슬이 500 감소
             JUEL:3 -= 500
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「응아…아앙, 서방님… 나의 가슴은 작아서… 주물러줘도 기분 좋지는…」
         PRINTFORMW ……
@@ -4432,7 +4494,7 @@ ELSE
             PRINTFORMW 「응…읏~읏∼」
             PRINTFORMW 에이키는 키스로부터 피하려 하고 있다.
         ELSEIF A == 1
-            PRINTFORMW 「응흣!　응~으으응∼…푸하아…」
+            PRINTFORMW 「응흣! 응~으으응∼…푸하아…」
             PRINTFORMW 「가, 가슴이 답답할 뿐입니다!」
         ELSEIF A == 2
             PRINTFORMW 「나, 나의… 처음이 이런 사람하고라니…으응…」
@@ -4574,8 +4636,11 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「에…휴식?」
         PRINTFORMW %CALLNAME:MASTER%의 배려(?)로 에이키는 마음의 휴식을 조금 얻었다…
-        PRINTFORMW 스트레스가  4내렸다
-            CFLAG:65 -= 4
+        IF CFLAG:6900 == 0
+        PRINTFORMW 스트레스가 4내렸다
+        CFLAG:65 -= 4
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         C = RAND:10
         IF C == 0
@@ -4770,6 +4835,7 @@ IF RESULT:1 == 1
             PRINTFORMW 독설같은 말의 내용이 멋쩍은지 미소가 어색하게 졌다.
             PRINTFORMW 「그… 처음엔 얼굴을 보는 것조차 견딜 수 없었습니다. 」
             PRINTFORMW 「하지만, 지금은 …」
+                ;6833 플래그 충족
                 IF CFLAG:6833 == 1
                 PRINTFORMW 「지금은…」
                 PRINTFORMW 「너무나 사랑스럽습니다…」
@@ -4811,6 +4877,8 @@ IF RESULT:1 == 1
                 PRINTFORMW 기쁨의 눈물인가, 슬픔의 눈물인가
                 PRINTFORMW 다만, 죄인과 재판관이 서로를 안았다는 이야기는
                 PRINTFORMW 거짓이 아니었다.
+                ;긍정적인 변화도, 변화 금지 플래그 체크
+                IF CFLAG:6900 == 0
                         EXP:21 += 115
                     IF TALENT:12 == 0
                     ELSE
@@ -4818,6 +4886,9 @@ IF RESULT:1 == 1
                     ENDIF
                     CFLAG:2 += 2000
                     TALENT:13 = 1
+                ELSE
+                ENDIF
+                ;6833 플래그 미충족
                 ELSE
                 PRINTFORMW 「지금은 괜찮습니다…」
                 PRINTFORMW 에이키는 상냥하게 입맞춤을 했다…
@@ -4829,19 +4900,23 @@ IF RESULT:1 == 1
                 PRINTFORMW 「응…하아…서방님, 와주세요. 저의 소중한 것을…서방님에게…」
             PRINTFORML
             PRINTFORML
-            PRINTFORMW 호감도 2000 상승했습니다.
-            PRINTFORMW 【순수】의 소질을 취득
+            ;긍정적인 (이하략)
+            IF CFLAG:6900 == 0
+            PRINTFORMW 호감도가 2000 상승했습니다.
+            PRINTFORMW 【솔직함】소질을 취득
                     IF TALENT:12 == 0
                         PRINTFORMW 에이키는 상냥하게 미소지었다
                     ELSE
                         PRINTFORMW 에이키는 상냥하게 미소지었다.
-                        PRINTFORMW 【기장】소실
-                        ;기장의 소실
+                        PRINTFORMW 【꿋꿋함】소실
+                        ;꿋꿋함의 소실
                         TALENT:12 = 0
                     ENDIF
                     ;숫처녀를 끈기 강하게 공략 하면 반드시…
                     CFLAG:2 += 2000
                     TALENT:13 = 1
+            ELSE
+            ENDIF
                 ENDIF
         ;그 이외
         ELSE
@@ -4854,6 +4929,7 @@ IF RESULT:1 == 1
             PRINTFORMW 「그, 그만해…부탁입니다…으아아아아앗!」
             PRINTFORMW 페니스가 단번에 질내에 접어들자 에이키는 소리를 질렀다.
             PRINTFORMW 감미로운 소리가 아니고…공포와 고통으로 가득 찬 소리를…
+            IF CFLAG:6900 == 0
             PRINTFORML
             PRINTFORML
             PRINTFORML
@@ -4861,7 +4937,7 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 4000 상승 *
-            PRINTFORML *부정의 주　6000 획득         *
+            PRINTFORML *부정의 구슬 6000 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
             PRINTFORML *---------------------------*
@@ -4870,6 +4946,8 @@ IF RESULT:1 == 1
                         JUEL:100 += 6000
                         MARK:9 = 3
                         MARK:8 = 3
+            ELSE
+            ENDIF
                         ;억지로 처녀를 빼앗았는지 어떠했는지.
                         CFLAG:4900 += 1
         ENDIF
@@ -4884,13 +4962,14 @@ IF RESULT:1 == 1
             IF CFLAG:4900 >= 1
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 눈도 깜박이지 않고 천정을 바라보고 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다쳐… 도려내져 간다…
                 PRINTFORMW 스트레스가 1500 상승
                 PRINTFORMW 호감도가 0이 되었다
-                PRINTFORMW 쿄우준·욕정·굴복의 주가 0이 되었다.
+                PRINTFORMW 순종·욕정·굴복의 구슬이 0이 되었다.
                 PRINTFORMW 쾌락·굴복의 각인이 0이 되었다.
                     CFLAG:2 = 0
                     CFLAG:65 += 1500
@@ -4899,6 +4978,8 @@ IF RESULT:1 == 1
                     JUEL:14 = 0
                     MARK:1 = 0
                     MARK:2 = 0
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「큭…이번엔, 이런 것까지 빼앗습니까!」
             ENDIF
@@ -4917,40 +4998,55 @@ ELSE
             IF A == 0
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 아까부터 숨을 몰아쉬고 있지만… 시종일관 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨으 흘리고 있지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우. 이제… 싫습니다」
                 PRINTFORMW 에이키는 울음을 흘릴 뿐으로 되는 대로 멍하니 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
-                PRINTFORMW 에이키는 옆으로 누워 가랑이를 열지만, 시종일관 말없이  있었다.
+                PRINTFORMW 에이키는 옆으로 누워 가랑이를 열지만, 시종일관 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             ;굴복 각인 레벨 3
@@ -4993,6 +5089,7 @@ IF RESULT:1 == 1
             PRINTFORMW 「시, 싫어…그만두세요… 그, 그것만큼은…아, 안 돼…」
             PRINTFORMW 에이키는, 눈물을 띄워 간청했지만, %조사처리(CALLNAME:MASTER,"는")% 무자비하게 흘려 들었다…
             PRINTFORMW 「아…히…아얏…싫어…어, 어째서…으아아아…」
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML 
@@ -5000,7 +5097,7 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 4500 상승 *
-            PRINTFORML *부정의 주　6000 획득         *
+            PRINTFORML *부정의 구슬 6000 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
             PRINTFORML *---------------------------*
@@ -5009,6 +5106,8 @@ IF RESULT:1 == 1
                     JUEL:100 += 6000
                     MARK:9 = 3
                     MARK:8 = 3
+            ELSE
+            ENDIF
                     ;억지로 처녀를 빼앗았는지 어떠했는지.
                     CFLAG:4900 += 1
         ENDIF
@@ -5023,6 +5122,7 @@ IF RESULT:1 == 1
             IF CFLAG:4900 >= 1
                 PRINTFORMW 「…………우우우…」
                 PRINTFORMW 에이키는, 단지 울음소리를 흘리고 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML 
@@ -5034,6 +5134,8 @@ IF RESULT:1 == 1
                     ABL:13 = 0
                     CFLAG:2 = 0
                     CFLAG:4900 += 1
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「그, 그런…추접스러운 것을 나의 질내에 집어넣지 말아 주세요」
                 PRINTFORMW 에이키는 저항하며, %CALLNAME:MASTER%의 팔을 풀어 버리려고 했다.
@@ -5057,40 +5159,55 @@ ELSE
             IF A == 0
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는아까부터 숨을 몰아쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨은 흘리지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우, 이제…싫습니다」
                 PRINTFORMW 에이키는 울음소리를 낼 뿐 되는 대로 가만있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로 %조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
-                PRINTFORMW 에이키는 납죽 엎드렸지만, 시종 말없이  있었다.
+                PRINTFORMW 에이키는 납죽 엎드렸지만, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ;억지로 처녀를 빼앗지 않고 연모 이외
         ELSE
@@ -5129,6 +5246,7 @@ IF RESULT:1 == 1
             PRINTFORMW 남자를 모르는 비소에 페니스를 단번에 묻었다.
             PRINTFORMW 「읍~으으으읍~읍~읍∼」
             PRINTFORMW 에이키는 눈물을 줄줄 흘렸다…
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML 
@@ -5136,10 +5254,10 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 5000 상승 *
-            PRINTFORML *부정의 주　6500 획득         *
+            PRINTFORML *부정의 구슬 6500 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
-            PRINTFORML *【저항】　(을)를 취득했다       *
+            PRINTFORML *【저항】을 취득했다       *
             PRINTFORML *---------------------------*
                     ;억지로 빼앗은 대상. 숫처녀를 억지로 하면(자)…
                     CFLAG:65 += 4000
@@ -5147,6 +5265,8 @@ IF RESULT:1 == 1
                     MARK:9 = 3
                     MARK:8 = 3
                     TALENT:34 = 1
+            ELSE
+            ENDIF
                     ;억지로 처녀를 빼앗았는지 어떠했는지.
                     CFLAG:4900 += 1
         ENDIF
@@ -5163,19 +5283,22 @@ IF RESULT:1 == 1
             IF CFLAG:4900 >= 1
                 PRINTFORMW 「……부디……」
                 PRINTFORMW 에이키는 힘없이 억양이 없는 소리로 중얼거렸다.
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다…그리고 한층 더 도려내져 간다.
                 PRINTFORML 스트레스가 1000 상승
                 PRINTFORML 호감 도는 0이 되었다.
-                PRINTFORML 부정의 주　1200 취득
+                PRINTFORML 부정의 구슬 1200 취득
                 PRINTFORML 순종이 0이 되었다.
                     CFLAG:65 += 1000
                     CFLAG:2 = 0
                     JUEL:100 += 1200
                     ABL:10 = 0
                     CFLAG:4900 += 1
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「키, 키스 하면서 넣는다니…농담이 지나치군요…」
                 PRINTFORMW 「다, 당신이라는 사람은… 어디까지 사람을…」
@@ -5197,40 +5320,55 @@ ELSE
             IF A == 0
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 아까부터 숨을 내쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨을 내쉬지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우, 이제(벌써)…싫습니다」
                 PRINTFORMW 에이키는 울음소리를 낼 뿐 되는 대로 가만히 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
                 PRINTFORMW 에이키는 조용히 당신에게 안겨왔지만, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             ;굴복 각인 레벨 3
@@ -5271,6 +5409,7 @@ IF RESULT:1 == 1
             PRINTFORMW 서, 설마… 안 돼! 안됩니다! 그것만큼은 안됩니다」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그 말을 무시하고 에이키의 비밀장소에 찌르기 시작했다
             PRINTFORMW 「읏! 아, 안 돼… 싫어! 싫어! 제, 제발 그만해∼~」
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML
@@ -5278,7 +5417,7 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 6000 상승 *
-            PRINTFORML *부정의 주　6000 획득         *
+            PRINTFORML *부정의 구슬 6000 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
             PRINTFORML *---------------------------*
@@ -5287,6 +5426,8 @@ IF RESULT:1 == 1
                     JUEL:100 += 6000
                     MARK:9 = 3
                     MARK:8 = 3
+            ELSE
+            ENDIF
                     ;억지로 처녀를 빼앗았는지 어떠했는지.
                     CFLAG:4900 += 1
         ENDIF
@@ -5304,18 +5445,21 @@ IF RESULT:1 == 1
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 말하는 대로 다리를 열고, 당신에게 몸을 맡겼지만
                 PRINTFORMW 시종 말없이 있어, 눈을 맞추려고 하지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML 
                 PRINTFORML
                 PRINTFORMW 
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다, 그리고 한층 더 도려내져 간다.
-                PRINTFORMW 스트레스　1000 상승
+                PRINTFORMW 스트레스 1000 상승
                 PRINTFORMW 봉사 정신이 0이 되었다.
                 PRINTFORMW 호감도가 0이 되었다
                     CFLAG:65 += 1000
                     ABL:13 = 0
                     CFLAG:2 = 0
                     CFLAG:4900 += 1
+                ELSE
+                ENDIF
             ELSE
             PRINTFORMW 가슴을 주무르기 시작하자 에이키는 의아한 얼굴로…
             PRINTFORMW 「넣으면서 비비다니…당신이라고 하는 사람은…
@@ -5344,40 +5488,55 @@ ELSE
             IF A == 0
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨을 내쉬지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우, 이제…싫습니다」
                 PRINTFORMW 에이키는울음소리를 낼 뿐 되는 대로 몸을 맡기고 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
-                PRINTFORMW 에이키는 당신에게 기대어 앉지만, 시종 말없이  있었다.
+                PRINTFORMW 에이키는 당신에게 기대어 앉지만, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             ;굴복 각인 레벨 3
@@ -5429,6 +5588,7 @@ IF RESULT:1 == 1
             PRINTFORMW 「잠깐…그, 그만두세요. 다, 당신은 무엇을 하려고…
             PRINTFORMW 하고 있는 것인지 알고… 싫, 아앗아아아」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 무리하게 아래로부터 에이키의 비소에 페니스를 쳐 올렸다…
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML 
@@ -5436,8 +5596,8 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 7000 상승 *
-            PRINTFORML *부정의 주　10000 획득        *
-            PRINTFORML *【저항】　(을)를 취득           *
+            PRINTFORML *부정의 구슬 10000 획득        *
+            PRINTFORML *【저항】을 취득           *
             PRINTFORML *【반항적】을 취득           *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
@@ -5450,6 +5610,8 @@ IF RESULT:1 == 1
                     TALENT:11 = 1
                     MARK:9 = 3
                     MARK:8 = 3
+            ELSE
+            ENDIF
                     ;억지로 처녀를 빼앗았는지 어떠했는지.
                     CFLAG:4900 += 1
         ENDIF
@@ -5466,18 +5628,21 @@ IF RESULT:1 == 1
                 PRINTFORMW 에이키는…말없이 %CALLNAME:MASTER%의 위에 걸터앉았다.
                 PRINTFORMW 「………」
                 PRINTFORMW 질내에 접어들었을 때에 간신히 소리를 냈지만…눈을 떼고 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORMW 
                 PRINTFORMW 에이키의 마음은 깊게 다쳐, 한층 더 도려내져 간다.
-                PRINTFORML 호감도　0이 되었다.
+                PRINTFORML 호감도 0이 되었다.
                 PRINTFORML 스트레스가 2000 증가
                 PRINTFORML 욕망 레벨이 0이 되었다.
                     CFLAG:4900 += 1
                     CFLAG:2 = 0
                     CFLAG:65 += 2000
                     ABL:11 = 0
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「말해 온다고는 예상하고 있었습니다만… 다, 당신이라는 사람은…」
                 PRINTFORMW 에이키는, 이마에 손을 댄 채 눈을 감고 한숨을 쉬고는 머리를 좌우로 흔들었다…
@@ -5502,40 +5667,55 @@ ELSE
             IF A == 0
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨을 내쉬지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우, 이제…싫습니다」
                 PRINTFORMW 에이키는 울음소리를 낼 뿐 되는 대로 가만히 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
-                PRINTFORMW 에이키는 올라탄 채 페니스를 받아들이지만, 시종 말없이  있었다.
+                PRINTFORMW 에이키는 올라탄 채 페니스를 받아들이지만, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             PRINTFORMW 「어찌 됐든 괜찮습니다만…당신도 질리지도 않는군요… 빨리 시작해볼까요…」
@@ -5579,6 +5759,7 @@ IF RESULT:1 == 1
             PRINTFORMW 에이키는 갑작스럽게 일어난 일로 무엇이 어떻게 됐는지 깨닫지 못했다…
             PRINTFORMW 「어, 어째서…이, 이런 심한 짓을…으윽…」
             PRINTFORMW 에이키는, 포옹된 채로 울었다…
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML 
@@ -5589,7 +5770,7 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 7000 상승 *
-            PRINTFORML *부정의 주　16000 획득         *
+            PRINTFORML *부정의 구슬 16000 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
             PRINTFORML *---------------------------*
@@ -5598,6 +5779,8 @@ IF RESULT:1 == 1
                         JUEL:100 += 16000
                         MARK:9 = 3
                         MARK:8 = 3
+            ELSE
+            ENDIF
                         ;억지로 처녀를 빼앗았는지 어떠했는지.
                         CFLAG:4900 += 1
         ENDIF
@@ -5617,18 +5800,21 @@ IF RESULT:1 == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 되는 대로 몸을 맡겼지만…
                 PRINTFORMW 눈에는 빛이 없고, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORMW 에이키의 마음의 상처는 깊고, 한층 더 도려내져 간다
-                PRINTFORMW 스트레스　5000 상승
+                PRINTFORMW 스트레스 5000 상승
                 PRINTFORMW 호감도 0이 되었다.
-                PRINTFORMW 봉사 쾌락 경험　0이 되었습니다.
+                PRINTFORMW 봉사 쾌락 경험 0이 되었습니다.
                         CFLAG:65 += 5000
                         CFLAG:2 = 0
                         EXP:20 = 0
                         CFLAG:4900 += 1
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「또 이상한 짓을…당신…좀 더 생산적인 것을 생각할 수는 없습니까?」
                 PRINTFORMW 에이키는 기가 막힌 어조로 말했다…
@@ -5649,41 +5835,56 @@ ELSE
             A = RAND:10
             IF A == 0
                 PRINTFORMW 「………」
-                PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이  있었다.
+                PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
+                PRINTFORMW 에이키의 마음의 상처는 깊다… 호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨을 내쉬지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
-                PRINTFORMW 「우…우우우, 이제…싫습니다」
-                PRINTFORMW 에이키는울음소리를 낼 뿐 되는 대로 가만히 있다.
+                PRINTFORMW 「우…우우우, 이제… 싫습니다」
+                PRINTFORMW 에이키는 울음소리를 낼 뿐 되는 대로 가만히 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
-                PRINTFORMW 에이키는 등에 기대 안겨왔지만, 시종 말없이  있었다.
+                PRINTFORMW 에이키는 등에 기대 안겨왔지만, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             PRINTFORMW 「또입니까…당신도 질리지 않는군요…」
@@ -5700,7 +5901,7 @@ IF RESULT:1 == 1
         ;연모
         IF TALENT:150 == 1
             PRINTFORMW 「손을…벽에 대고 엉덩이를 내미는 겁니까…
-            PRINTFORMW 완전히…서방님의 머리속을 보고 싶네요…
+            PRINTFORMW 완전히…서방님의 머리속을 보고 싶네요…」
                         ;관리 3번째
                         IF CFLAG:6800 == 2
                             CFLAG:6800 += 1
@@ -5716,6 +5917,7 @@ IF RESULT:1 == 1
             PRINTFORMW 「………당신이라는 사람은…얼마나…」
             PRINTFORMW 에이키는 자신에게 어떤 일이 일어날지 예상할 수 있었다…
             PRINTFORMW 에이키의 눈에는 한줄기의 눈물이 흘렀다…
+            IF CFLAG:6900 == 0
             PRINTFORML 
             PRINTFORML 
             PRINTFORML 
@@ -5723,7 +5925,7 @@ IF RESULT:1 == 1
             PRINTFORML *---------------------------*
             PRINTFORML *        Information        *
             PRINTFORML *에이키 님의 스트레스가 4000 상승 *
-            PRINTFORML *부정의 주　6000 획득         *
+            PRINTFORML *부정의 구슬 6000 획득         *
             PRINTFORML *반발 각인 레벨 3 취득      *
             PRINTFORML *공포 각인 레벨 3 취득      *
             PRINTFORML *---------------------------*
@@ -5732,6 +5934,8 @@ IF RESULT:1 == 1
                         JUEL:100 += 6000
                         MARK:9 = 3
                         MARK:8 = 3
+            ELSE
+            ENDIF
                         ;억지로 처녀를 빼앗았는지 어떠했는지.
                         CFLAG:4900 += 1
         ENDIF
@@ -5746,20 +5950,23 @@ IF RESULT:1 == 1
             IF CFLAG:4900 >= 1
                 PRINTFORMW 「…………알았습니다…부디…좋을대로…」
                 PRINTFORMW 에이키는 당신을 살의로 가득 찬 눈으로 노려보며 벽에 손을 붙었다
+                IF CFLAG:6900 == 0
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORML 
                 PRINTFORMW 에이키의 마음은 깊게 다쳤고, 한층 더 도려내져 간다
                 PRINTFORMW 스트레스가 1500 상승
-                PRINTFORMW 부정의 주　5000 취득
-                PRINTFORMW 욕망　0이 되었다.
-                PRINTFORMW 순종　0이 되었다.
-                PRINTFORMW 호감도　0이 되었다.
+                PRINTFORMW 부정의 구슬 5000 취득
+                PRINTFORMW 욕망 0이 되었다.
+                PRINTFORMW 순종 0이 되었다.
+                PRINTFORMW 호감도 0이 되었다.
                     CFLAG:65 += 1500
                     JUEL:100 += 5000
                     ABL:10 = 0
                     ABL:11 = 0
                     CFLAG:2 = 0
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「이번에는 어떤 거죠?」
                 PRINTFORMW 「하아? 당신이라는 사람은… 쓸데없는 것만 생각하는군요」
@@ -5786,41 +5993,56 @@ ELSE
             A = RAND:10
             IF A == 0
                 PRINTFORMW 「………」
-                PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이  있었다.
+                PRINTFORMW 에이키는 아까부터 숨을 몰아쉬지만…시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…호감도 100 감소
                 CFLAG:2 -= 100
+                ELSE
+                ENDIF
             ELSEIF A == 1
                 PRINTFORMW 「…………」
                 PRINTFORMW 에이키는 아까부터 한숨을 내쉬지만 시선을 맞추지 않는다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음의 상처는 깊다…스트레스 100 증가
                 CFLAG:65 += 100
+                ELSE
+                ENDIF
             ELSEIF A == 2 && ABL:13 > 0
                 PRINTFORMW 「우…우우우. 이제…싫습니다」
                 PRINTFORMW 에이키는 울음소리를 낼 뿐 되는 대로 가만히 있다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
                 PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 봉사 정신 레벨 0에 다운.
                 ABL:13 = 0
+                ELSE
+                ENDIF
             ELSEIF A == 3
                 PRINTFORMW 「………」
                 PRINTFORMW 에이키는 살의로 가득 찬 눈으로%조사처리(CALLNAME:MASTER,"를")% 흘겨본다…
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 주　3000 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 부정의 구슬 3000 취득
                 JUEL:100 += 3000
+                ELSE
+                ENDIF
             ELSE
                 PRINTFORMW 「……부디」
                 PRINTFORMW 에이키는 손을 벽에 대고 엉덩이를 쑥 내민 채, 시종 말없이 있었다.
+                IF CFLAG:6900 == 0
                 PRINTFORML
                 PRINTFORML
-                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스　50 증가 호감도　10 감소 부정의 주　20 취득
+                PRINTFORMW 에이키의 마음은 깊게 다치고 있다. 스트레스 50 증가 호감도 10 감소 부정의 구슬 20 취득
                 CFLAG += 50
                 CFLAG:2 -= 10
                 JUEL:100 += 20
+                ELSE
+                ENDIF
             ENDIF
         ELSE
             PRINTFORMW 「몇 번이건 몇 번이건… 질리지도 않는군요, 당신은…
@@ -6350,11 +6572,14 @@ IF RESULT:1 == 1
         PRINTFORMW 「………」
         PRINTFORMW 에이키는 힘없이 늘어져 있었다. %조사처리(CALLNAME:MASTER,"는")% 에이키의 항문에 페니스를 찔러 간다…
         PRINTFORMW 「읏…아, 아파요…으윽…」하고 힘 없게 중얼거리며 울었다…
+        IF CFLAG:6900 == 0
         PRINTFORMW 스트레스 350 상승
-        PRINTFORMW 호감도　100 감소
+        PRINTFORMW 호감도 100 감소
                     CFLAG:65 += 350
                     CFLAG:2 -= 100 
                     CFLAG:4900 += 1
+        ELSE
+        ENDIF
     ;그 이외
     ELSE
         IF TALENT:150 == 1 && TALENT:0 == 1
@@ -6376,7 +6601,6 @@ IF RESULT:1 == 1
             PRINTFORMW 「찌, 찢어져 버립니다. 그, 그런…시, 싫어」
             PRINTFORMW 페니스가 항문에 들어가자, 에이키는 아픔으로 절규했다.
         ENDIF
-        
     ENDIF
 ;2번째 이후
 ELSE
@@ -6385,12 +6609,15 @@ ELSE
         PRINTFORMW 「………」
         PRINTFORMW 「마음대로 하세요…」
         PRINTFORMW 에이키는 증오로 가득 찬 시선으로 중얼거렸다…
-        IF CFLAG:2 ==0
-            PRINTFORMW 스트레스 100 증가
-            CFLAG:65 += 100
+        IF CFLAG:6900 == 0
+            IF CFLAG:2 ==0
+                PRINTFORMW 스트레스 100 증가
+                CFLAG:65 += 100
+            ELSE
+                PRINTFORMW 호감도 100 감소
+                CFLAG:2 -= 100
+            ENDIF
         ELSE
-            PRINTFORMW 호감도　100 감소
-            CFLAG:2 -= 100
         ENDIF
                     
     ;그 이외
@@ -6446,9 +6673,10 @@ IF RESULT:1 == 1
         PRINTFORMW 에이키는 무언인 채 납죽 엎드렸다…
         PRINTFORMW 「…아얏…」
         PRINTFORMW 에이키는, 중얼거렸지만…되는 대로 가만히 있었다.
+        IF CFLAG:6900 == 0
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스가 200 상승
-                PRINTFORMW 욕정의 주가 200 감소
+                PRINTFORMW 욕정의 구슬이 200 감소
                     CFLAG:65 += 200
                     JUEL:13 -= 200
             ELSE
@@ -6457,6 +6685,8 @@ IF RESULT:1 == 1
                     CFLAG:65 += 250
                     CFLAG:2 -= 150
             ENDIF
+        ELSE
+        ENDIF
     ELSE
         ;처녀 한편 연모
         IF TALENT:0 == 1 && TALENT:150 == 1
@@ -6484,21 +6714,24 @@ ELSE
             PRINTFORMW 「응… 아양…하아하아……」
             PRINTFORMW 에이키는, 때때로, 한숨을 내쉬었지만…
             PRINTFORMW 그 외에는 무언이었다.
+            IF CFLAG:6900 == 0
                 IF CFLAG:2 == 0
                     PRINTFORMW 스트레스 40 상승
-                    PRINTFORMW 욕정의 주 60개 감소
-                    PRINTFORMW 쾌A의 주 200개 감소
+                    PRINTFORMW 욕정의 구슬 60개 감소
+                    PRINTFORMW 쾌A의 구슬 200개 감소
                         CFLAG:65 += 40
                         JUEL:13 -= 60
                         JUEL:2 -= 200
                 ELSE
                     PRINTFORMW 호감도 20 감소
                     PRINTFORMW 스트레스 40 상승
-                    PRINTFORMW 쾌A의 주 200개 감소
+                    PRINTFORMW 쾌A의 구슬 200개 감소
                         CFLAG:2 -= 20
                         CFLAG:65 += 60
                         JUEL:2 -= 200
                 ENDIF
+            ELSE
+            ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
             PRINTFORMW 「완전히…서방님은 엉덩이에 넣는 걸 너무 좋아하는군요…
@@ -6522,25 +6755,28 @@ IF RESULT:1 == 1
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「………」
         PRINTFORMW 에이키는 무언인 채 힘없는 채로…
-        ;스테이터스 변동 처리
-        ;호감도가 0 때
-        IF CFLAG:2 == 0
-            PRINTFORMW 순종이 0이 되었다.
-            PRINTFORMW 스트레스가 300 상승
-            PRINTFORMW 굴복의 주가 0이 되었다
-                ;순종·스트레스·굴복의 주의 변동 처리
-                ABL:10 = 0
-                CFLAG:65 += 300
-                JUEL:14 = 0
-        ;호감도가 0은 아니다
+        IF CFLAG:6900 == 0
+            ;스테이터스 변동 처리
+            ;호감도가 0 때
+            IF CFLAG:2 == 0
+                PRINTFORMW 순종이 0이 되었다.
+                PRINTFORMW 스트레스가 300 상승
+                PRINTFORMW 굴복의 구슬이 0이 되었다
+                    ;순종·스트레스·굴복의 구슬의 변동 처리
+                    ABL:10 = 0
+                    CFLAG:65 += 300
+                    JUEL:14 = 0
+            ;호감도가 0은 아니다
+            ELSE
+                PRINTFORMW 호감도가 120 감소
+                PRINTFORMW 스트레스가 300 상승
+                PRINTFORMW 순종의 구슬이 0이 되었다.
+                    ;호감도·스트레스·순종의 구슬의 변동 처리
+                    CFLAG:2 -= 120
+                    CFLAG:65 += 300
+                    JUEL:12 = 0
+            ENDIF
         ELSE
-            PRINTFORMW 호감도가 120 감소
-            PRINTFORMW 스트레스가 300 상승
-            PRINTFORMW 쿄우준의 주가 0이 되었다.
-                ;호감도·스트레스·쿄우준의 주의 변동 처리
-                CFLAG:2 -= 120
-                CFLAG:65 += 300
-                JUEL:12 = 0
         ENDIF
     ELSE
         ;처녀로 연모
@@ -6569,14 +6805,15 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「이제, 마음대로 해 주세요…」
         PRINTFORMW 에이키는, 시선을 맞추지 않고 중얼거렸다…
+        IF CFLAG:6900 == 0
             ;마이너스 스테이터스 처리
             ;호감도 0 때
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스가 50 상승
-                PRINTFORMW 쿄우준의 주가 50 감소
-                PRINTFORMW 굴복의 주가 30 감소
-                PRINTFORMW 쿄우준·굴복 0에…
-                    ;스트레스·쿄우준의 주·굴복의 주·쿄우준·굴복의 파라미터 처리
+                PRINTFORMW 순종의 구슬이 50 감소
+                PRINTFORMW 굴복의 구슬이 30 감소
+                PRINTFORMW 순종·굴복 0에…
+                    ;스트레스·순종의 구슬·굴복의 구슬·순종·굴복의 파라미터 처리
                     CFLAG:65 += 50
                     JUEL:12 -= 50
                     JUEL:14 -= 30
@@ -6587,14 +6824,16 @@ ELSE
                 PRINTFORMW 호감도 50 감소
                 PRINTFORMW 봉사 쾌락 경험 0에…
                 PRINTFORMW 스트레스 50 상승
-                PRINTFORMW 쿄우준·굴복이 0에…
-                    ;호감도·봉사 쾌락 경험·스트레스·쿄우준·굴복 파라미터 처리
+                PRINTFORMW 순종·굴복이 0에…
+                    ;호감도·봉사 쾌락 경험·스트레스·순종·굴복 파라미터 처리
                     CFLAG:2 -= 50
                     CFLAG:65 += 50
                     EXP:20 = 0
                     PALAM:12 = 0
                     PALAM:14 = 0
             ENDIF
+        ELSE
+        ENDIF
     ;그 이외
     ELSE
         ;연모
@@ -6612,7 +6851,7 @@ ELSE
     ENDIF
 ENDIF
 ;-------------------------------------------------
-;배면자위 어널
+;배면좌위 어널
 ;배면자위로 어널? 들어가는 건가인…
 ;CFLAG:4900 가산 있어(위기 커맨드 1)
 ;-------------------------------------------------
@@ -6624,12 +6863,13 @@ IF RESULT:1 == 1
         PRINTFORMW 「!!!!」
         PRINTFORMW 에이키는 살의로 가득 찬 눈으로 노려보았지만,%조사처리(CALLNAME:MASTER,"는")% 신경쓰지 않고 억지로, 에이키의 어널에 페니스를 비틀어 넣었다…
         PRINTFORMW 「읏…아아…아, 아프다…」
+        IF CFLAG:6900 == 0
             ;마이너스 스테이터스로 CFLAG:4900 가산 첨부 변동 처리
             ;호감도 0 때
             IF CFLAG:2 == 0
                 PRINTFORMW 에이키의 마음은 한층 더 도려내져 간다…
                 PRINTFORMW 스트레스 600 상승
-                PRINTFORMW 윤활·욕정·쿄우준·굴복·치정·고통의 파라미터 0에…
+                PRINTFORMW 윤활·욕정·순종·굴복·치정·고통의 파라미터 0에…
                 PRINTFORMW 억울·반감·불쾌의 파라미터가 30000에
                 PRINTFORMW A감각·봉사 정신이 0에
                     ;마이너스 스테이터스 처리
@@ -6660,9 +6900,9 @@ IF RESULT:1 == 1
                 PRINTFORMW 에이키의 마음은 한층 더 도려내져 간다…
                 PRINTFORMW 호감 도는 0이 되었다
                 PRINTFORMW 스트레스 600 상승
-                PRINTFORMW 윤활·욕정·쿄우준·굴복·치정·고통의 파라미터가 0에…
+                PRINTFORMW 윤활·욕정·순종·굴복·치정·고통의 파라미터가 0에…
                 PRINTFORMW 억울·반감·불쾌의 파라미터가 30000에
-                PRINTFORMW 윤활·욕정·쿄우준·굴복·치정·고통의 주가 0에
+                PRINTFORMW 윤활·욕정·순종·굴복·치정·고통의 구슬이 0에
                     ;스테이터스 처리·CFLAG:4900 가산 첨부
                     ;CFLAG:4900 가산
                     CFLAG:4900 += 1
@@ -6691,6 +6931,9 @@ IF RESULT:1 == 1
                     JUEL:14 = 0
                     JUEL:15 = 0
             ENDIF
+        ELSE
+        CFLAG:4900 += 1
+        ENDIF
     ;그 이외
     ELSE
         ;처녀로 연모
@@ -6722,12 +6965,13 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「읏!」
         PRINTFORMW 에이키는 살의가 담긴 눈으로%조사처리(CALLNAME:MASTER,"를")% 노려보았다.
+        IF CFLAG:6900 == 0
             ;스테이터스 변동 처리
             ;호감도 0 때
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스가 100 상승
-                PRINTFORMW 쾌A의 주가 0에…
-                PRINTFORMW 부정의 주가 1000개 획득
+                PRINTFORMW 쾌A의 구슬이 0에…
+                PRINTFORMW 부정의 구슬이 1000개 획득
                     ;스트레스 처리
                     CFLAG:65 += 100
                     ;주의 처리
@@ -6737,7 +6981,7 @@ ELSE
             ELSE
                 PRINTFORMW 호감도 0에…
                 PRINTFORMW 스트레스 100 상승
-                PRINTFORMW 부정의 주가 1000개 획득
+                PRINTFORMW 부정의 구슬이 1000개 획득
                     ;스테이터스 변동 처리
                     ;스트레스·호감도 처리
                     CFLAG:65 += 100
@@ -6745,6 +6989,8 @@ ELSE
                     ;주의 처리
                     JUEL:100 += 1000
             ENDIF
+        ELSE
+        ENDIF
     ;그 이외
     ELSE
         ;연모
@@ -6773,11 +7019,12 @@ IF RESULT:1 == 1
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 단번에 항문에 페니스를 비틀어 넣었다
         PRINTFORMW 「응앗…아…아, 아파…」
         PRINTFORMW 에이키는 눈물을 띄우면서 중얼거렸다
+        IF CFLAG:6900 == 0
             ;스테이터스 변동 처리
             ;호감도 0때 스트레스 상승
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스가 200 상승
-                PRINTFORMW 쿄우준　50 감소
+                PRINTFORMW 순종 50 감소
                 CFLAG:65 += 200
                 PALAM:12 -= 50
             ;호감도 감소
@@ -6787,6 +7034,8 @@ IF RESULT:1 == 1
                 CFLAG:2 -=100
                 CFLAG:65 += 100
             ENDIF
+        ELSE
+        ENDIF
     ELSE
         IF TALENT:150 == 1 && TALENT:0 == 1
             PRINTFORMW 「서,  서방님…그, 그것은 조금 무리입니다…」
@@ -6821,6 +7070,7 @@ ELSE
         PRINTFORMW 「응…앗…」
         PRINTFORMW 에이키는 조금 얼굴을 찌푸렸지만, 시종 눈을 돌리고,
         PRINTFORMW 때때로 소리를 흘렸지만 시종 말없이 있었다.
+        IF CFLAG:6900 == 0
             ;스테이터스 변동 처리
             ;우호도 0 때 스트레스 감소
             IF CFLAG:2 == 0
@@ -6828,9 +7078,11 @@ ELSE
                 CFLAG:65 += 100
             ;우호도 감소
             ELSE
-                PRINTFORMW 호감도　100 감소
+                PRINTFORMW 호감도 100 감소
                 CFLAG:2 -= 100
             ENDIF
+        ELSE
+        ENDIF
     ELSE
         ;연모
         IF TALENT:150 == 1
@@ -6859,6 +7111,7 @@ IF RESULT:1 == 1
         PRINTFORMW 에이키는, 그대로 뒤로 넘어질 것 같았다… %조사처리(CALLNAME:MASTER,"는")% 서둘러 지지했다…
         PRINTFORMW 「……감사…합니다…」
         PRINTFORMW 에이키는 힘없이 말했다…
+        IF CFLAG:6900 == 0
         ;선택사항을 넣을까 넣지 않는가는 생각중, 우선 현행 위의까지 갈 생각…
             ;스테이터스 변동 처리
             ;호감도 0 때
@@ -6872,6 +7125,8 @@ IF RESULT:1 == 1
                     CFLAG:65 += 50
                     CFLAG:2 += 1
             ENDIF
+        ELSE
+        ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「이 상태에서는…무리라고 생각합니다만…
@@ -6891,6 +7146,7 @@ ELSE
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 에이키의 1/f을 느끼면서, 단번에 어널에 페니스를 찔러간다…
         PRINTFORMW 「응…아…깊어…아…응읏…」
         PRINTFORMW 에이키는, 힘없는 소리로 중얼거렸다…
+        IF CFLAG:6900 == 0
             ;스테이터스 변동 처리
             ;호감도 0 때
             IF CFLAG:2 == 0
@@ -6907,6 +7163,8 @@ ELSE
                     CFLAG:2 -= 20
                     EXP:2 = 0
             ENDIF
+        ELSE
+        ENDIF
     ;연모
     ELSEIF TALENT:150
         PRINTFORMW 「서방님의 얼굴이 잘 보여서…괜찮습니다만…
@@ -6933,7 +7191,8 @@ IF RESULT:1 == 1
         PRINTFORMW 에이키는 말해졌던 대로 벽에 기대어 엉덩이를 내몄다.
         PRINTFORMW 「웅…아얏…」
         PRINTFORMW 에이키는, 눈초리에 눈물을 띄우면서 시종 말없이  있었다…
-            ; 스테이터스 변동 처리
+        IF CFLAG:6900 == 0
+            ;스테이터스 변동 처리
             ;호감도 0 때
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스 130 상승
@@ -6955,6 +7214,8 @@ IF RESULT:1 == 1
                     PALAM:2 = 0
                     PALAMLV:2 = 0
             ENDIF
+        ELSE
+        ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「마치…동물의 교미 같아 부끄럽습니다…
@@ -6968,7 +7229,8 @@ ELSE
     ;억지로 처녀를 빼앗았다
     IF CFLAG:4900 >= 1&& TALENT:150 == 0
         PRINTFORMW 「……응으읏…」
-        PRINTFORMW 에이키는 때때로, 소리를 흘렸지만…시종 말없이  있었다…
+        PRINTFORMW 에이키는 때때로, 소리를 흘렸지만…시종 말없이 있었다…
+        IF CFLAG:6900 == 0
             ;이번은 첫회와 2번째는 같다! 때로는 괜찮지요…
             ; 스테이터스 변동 처리
             ;호감도 0 때
@@ -6992,6 +7254,8 @@ ELSE
                     PALAM:2 = 0
                     PALAMLV:2 = 0
             ENDIF
+        ELSE
+        ENDIF
     ;연모
     ELSEIF TALENT:150
         PRINTFORMW 「응큿…안쪽까지 들어가서…자궁에 영향을 줍니다…
@@ -7030,16 +7294,17 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
         IF CFLAG:4900 >= 1 && TALENT:150 == 0
             PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
             PRINTFORMW 싫어하는 에이키에게 억지로%조사처리(CALLNAME:MASTER,"는")% 배란유발제를 먹였다.
+            IF CFLAG:6900 == 0
                 CFLAG:4900 += 1
                 IF CFLAG:2 == 0
                     PRINTFORMW 스트레스가 1000 상승
-                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                    PRINTFORMW C감각·쾌V의 주가 리셋
-                    PRINTFORMW B감각·쾌B의 주가 리셋
-                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW A경험·A감각·쾌A의 구슬이 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 구슬이 리셋
+                    PRINTFORMW C감각·쾌V의 구슬이 리셋
+                    PRINTFORMW B감각·쾌B의 구슬이 리셋
+                    PRINTFORMW 순종·굴복·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                    PRINTFORMW 반감의 구슬이 10000·억울이 10000
                         CFLAG:65 += 1000
                         ABL:2 = 0
                         ABL:0 = 0
@@ -7061,13 +7326,13 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
                 ELSE
                     PRINTFORMW 호감도 0이 되었다
                     PRINTFORMW 스트레스가 1000 상승
-                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                    PRINTFORMW C감각·쾌V의 주가 리셋
-                    PRINTFORMW B감각·쾌B의 주가 리셋
-                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW A경험·A감각·쾌A의 구슬이 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 구슬이 리셋
+                    PRINTFORMW C감각·쾌V의 구슬이 리셋
+                    PRINTFORMW B감각·쾌B의 구슬이 리셋
+                    PRINTFORMW 순종·굴복·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                    PRINTFORMW 반감의 구슬이 10000·억울이 10000
                         CFLAG:2 = 0
                         CFLAG:65 += 1000
                         ABL:2 = 0
@@ -7088,6 +7353,9 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
                         MARK:9 = 3
                         MARK:8 = 3
                 ENDIF
+            ELSE
+            CFLAG:4900 += 1
+            ENDIF
         ELSEIF TALENT:153 ||TALENT:152
             PRINTFORMW 「네? 그 약…확실히 갖고 싶습니다만…약이라고 하는 것은 조금 씁슬하군요」
         ELSEIF TALENT:150 == 1
@@ -7100,16 +7368,17 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
         IF CFLAG:4900 >= 1 && TALENT:150 == 0
             PRINTFORMW 「!!!!! 당신이라는 사람은! 싫습니다. 싫어! 싫어엇!」
             PRINTFORMW 싫어하는 에이키에 %조사처리(CALLNAME:MASTER,"는")% 억지로 배란유발제를 먹였다.
+            IF CFLAG:6900 == 0
                 CFLAG:4900 += 1
                 IF CFLAG:2 == 0
                     PRINTFORMW 스트레스가 1000 상승
-                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                    PRINTFORMW C감각·쾌V의 주가 리셋
-                    PRINTFORMW B감각·쾌B의 주가 리셋
-                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW A경험·A감각·쾌A의 구슬이 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 구슬이 리셋
+                    PRINTFORMW C감각·쾌V의 구슬이 리셋
+                    PRINTFORMW B감각·쾌B의 구슬이 리셋
+                    PRINTFORMW 순종·굴복·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                    PRINTFORMW 반감의 구슬이 10000·억울이 10000
                         CFLAG:65 += 1000
                         ABL:2 = 0
                         ABL:0 = 0
@@ -7131,13 +7400,13 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
                 ELSE
                     PRINTFORMW 호감도 0이 되었다
                     PRINTFORMW 스트레스가 1000 상승
-                    PRINTFORMW A경험·A감각·쾌A의 주가 리셋
-                    PRINTFORMW V경험·V감각·쾌V의 주가 리셋
-                    PRINTFORMW C감각·쾌V의 주가 리셋
-                    PRINTFORMW B감각·쾌B의 주가 리셋
-                    PRINTFORMW 순종·굴복·쿄우준의 주가 리셋
+                    PRINTFORMW A경험·A감각·쾌A의 구슬이 리셋
+                    PRINTFORMW V경험·V감각·쾌V의 구슬이 리셋
+                    PRINTFORMW C감각·쾌V의 구슬이 리셋
+                    PRINTFORMW B감각·쾌B의 구슬이 리셋
+                    PRINTFORMW 순종·굴복·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 10000·억울이 10000
+                    PRINTFORMW 반감의 구슬이 10000·억울이 10000
                         CFLAG:2 = 0
                         CFLAG:65 += 1000
                         ABL:2 = 0
@@ -7158,6 +7427,8 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
                         MARK:9 = 3
                         MARK:8 = 3
                 ENDIF
+            ELSE
+            ENDIF
         ELSEIF TALENT:153 ||TALENT:152
             PRINTFORMW 「아이를 갖고 싶은 것은 저 역시입니다. 그렇지만, 약은…예, 알고 있습니다」
         ELSEIF TALENT:150 == 1
@@ -7294,19 +7565,22 @@ ENDIF
 IF TEQUIP:32 == 0
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「하아하아…우웃…」
+        IF CFLAG:6900 == 0
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스 240 상승
-                PRINTFORMW 억울의 주　300 취득
+                PRINTFORMW 억울의 구슬 300 취득
                     CFLAG:65 += 240
                     JUEL:22 += 300
             ELSE
                 PRINTFORMW 호감도 0
                 PRINTFORMW 스트레스 240 상승
-                PRINTFORMW 억울의 주　300 취득
+                PRINTFORMW 억울의 구슬 300 취득
                     CFLAG:2 = 0
                     CFLAG:65 += 240
                     JUEL:22 += 300
             ENDIF
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「응앗! 서, 서방님! 갑작스럽게 뽑지 말아 주세요!」
     ELSE
@@ -7317,16 +7591,17 @@ ELSEIF RESULT:1 == 1
     ;무리하게 처녀를 빼앗아 연모 없음
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「그, 그만해…히익…!」
-        PRINTFORMW 에이키는, 옹 몸으로, 진심으로 거부했지만 %조사처리(CALLNAME:MASTER,"는")% 듣는 척도 하지 않았다.
+        PRINTFORMW 에이키는, 온 몸으로, 진심으로 거부했지만 %조사처리(CALLNAME:MASTER,"는")% 듣는 척도 하지 않았다.
+        IF CFLAG:6900 == 0
             ;CFLAG:4900 가산
             CFLAG:4900 += 1
                 ;호감도 없음
                 IF CFLAG:2 == 0
                     PRINTFORMW 스트레스가 3000 상승
                     PRINTFORMW C감각·C조율·요도 개발 경험·U확장 경험이 리셋
-                    PRINTFORMW 순종·굴복의 주·쿄우준의 주가 리셋
+                    PRINTFORMW 순종·굴복의 구슬·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 30000·억울이 40000
+                    PRINTFORMW 반감의 구슬이 30000·억울이 40000
                         ;스테이터스 변동 처리
                             ;스트레스 변동 처리
                                 CFLAG:65 += 3000
@@ -7337,7 +7612,7 @@ ELSEIF RESULT:1 == 1
                                 EXP:34 = 0
                                 EXP:41 = 0
                                 EXP:46 = 0
-                            ;굴복·C감각·쿄우준의 주리셋
+                            ;굴복·C감각·순종의 구슬리셋
                                 JUEL:0 = 0
                                 JUEL:12 = 0
                                 JUEL:14 = 0
@@ -7352,9 +7627,9 @@ ELSEIF RESULT:1 == 1
                     PRINTFORMW 호감도 0에
                     PRINTFORMW 스트레스가 3000 상승
                     PRINTFORMW C감각·C조율·요도 개발 경험·U확장 경험이 리셋
-                    PRINTFORMW 순종·굴복의 주·쿄우준의 주가 리셋
+                    PRINTFORMW 순종·굴복의 구슬·순종의 구슬이 리셋
                     PRINTFORMW 반발·공포 각인이 레벨 3
-                    PRINTFORMW 반감의 주가 30000·억울이 40000
+                    PRINTFORMW 반감의 구슬이 30000·억울이 40000
                         ;스테이터스 변동 처리
                             ;스트레스·호감도 변동 처리
                                 CFLAG:2 = 0
@@ -7366,7 +7641,7 @@ ELSEIF RESULT:1 == 1
                                 EXP:34 = 0
                                 EXP:41 = 0
                                 EXP:46 = 0
-                            ;굴복·C감각·쿄우준의 주리셋
+                            ;굴복·C감각·순종의 구슬리셋
                                 JUEL:0 = 0
                                 JUEL:12 = 0
                                 JUEL:14 = 0
@@ -7377,6 +7652,9 @@ ELSEIF RESULT:1 == 1
                                 MARK:9 = 3
                                 MARK:8 = 3
                 ENDIF
+        ELSE
+        CFLAG:4900 += 1
+        ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「에…그것은, 본래 의료용으로 사용하는…이런 일에 사용하는 것이 아닙니다」
@@ -7389,13 +7667,14 @@ ELSE
     ;무리하게 처녀를 빼앗아 연모가 아니다
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「아, 아파…!」
+        IF CFLAG:6900 == 0
             ;호감도가 0때
             IF CFLAG:2 == 0
                 PRINTFORMW 스트레스가 300 상승
                 PRINTFORMW C감각·C조율·요도 개발 경험·U확장 경험이 리셋
-                PRINTFORMW 순종·굴복의 주·쿄우준의 주가 리셋
+                PRINTFORMW 순종·굴복의 구슬·순종의 구슬이 리셋
                 PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
+                PRINTFORMW 반감의 구슬이 10000·억울이 10000
                     ;스테이터스 변동 처리
                         ;스트레스 변동 처리
                             CFLAG:65 += 300
@@ -7406,7 +7685,7 @@ ELSE
                             EXP:34 = 0
                             EXP:41 = 0
                             EXP:46 = 0
-                        ;굴복·C감각·쿄우준의 주리셋
+                        ;굴복·C감각·순종의 구슬리셋
                             JUEL:0 = 0
                             JUEL:12 = 0
                             JUEL:14 = 0
@@ -7421,9 +7700,9 @@ ELSE
                 PRINTFORMW 호감도가 0에
                 PRINTFORMW 스트레스가 200 상승
                 PRINTFORMW C감각·C조율·요도 개발 경험·U확장 경험이 리셋
-                PRINTFORMW 순종·굴복의 주·쿄우준의 주가 리셋
+                PRINTFORMW 순종·굴복의 구슬·순종의 구슬이 리셋
                 PRINTFORMW 반발·공포 각인이 레벨 3
-                PRINTFORMW 반감의 주가 10000·억울이 10000
+                PRINTFORMW 반감의 구슬이 10000·억울이 10000
                     ;스테이터스 변동 처리
                         ;호감도·스트레스 변동 처리
                             CFLAG:2 = 0
@@ -7435,7 +7714,7 @@ ELSE
                             EXP:34 = 0
                             EXP:41 = 0
                             EXP:46 = 0
-                        ;굴복·C감각·쿄우준의 주리셋
+                        ;굴복·C감각·순종의 구슬리셋
                             JUEL:0 = 0
                             JUEL:12 = 0
                             JUEL:14 = 0
@@ -7446,6 +7725,8 @@ ELSE
                             MARK:9 = 3
                             MARK:8 = 3
             ENDIF
+        ELSE
+        ENDIF
     ;연모로 매저키스트 레벨 4이상
     ELSEIF TALENT:150 == 1 && ABL:21 >= 4
         PRINTFORMW 「응…요도에…이물감이…하아하아… 그래도, 그것이 좋은 거네요」
@@ -7563,17 +7844,20 @@ IF RESULT:1 == 1
 ELSE
     IF CFLAG:4900>=1 && TALENT:150 == 0
         PRINTFORMW 「응…흐윽…」
-        PRINTFORMW 에이키는, 혀의 감촉 때문에 때때로 소리를 흘렸지만 말없이  있었다.
-        ;마이너스 스테이터스 처리
-        ;호감도 0때
-        IF CFLAG:2 == 0
-            PRINTFORMW 스트레스가  10올랐다.
-            ;스트레스 10 상승
-            CFLAG:65 += 10
-        ;호감도 0은 아니다면 10 감소
+        PRINTFORMW 에이키는, 혀의 감촉 때문에 때때로 소리를 흘렸지만 말없이 있었다.
+        IF CFLAG:6900 == 0
+            ;마이너스 스테이터스 처리
+            ;호감도 0때
+            IF CFLAG:2 == 0
+                PRINTFORMW 스트레스가 10올랐다.
+                ;스트레스 10 상승
+                CFLAG:65 += 10
+            ;호감도 0은 아니다면 10 감소
+            ELSE
+                PRINTFORMW 호감도가 10내렸다
+                CFLAG:2 -= 10
+            ENDIF
         ELSE
-            PRINTFORMW 호감도가  10내렸다
-            CFLAG:2 -= 10
         ENDIF
     ;연모
     ELSEIF TALENT:150 == 1
@@ -7601,7 +7885,7 @@ IF RESULT:1 == 1
     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 에이키를 억지로 엎드리게 해 엉덩이를 크게 벌리고 주름을 세기 시작했다
 ;2번째 이후
 ELSE
-    PRINTFORMW ( 이제…부끄러워서 어떻게 되버릴 것 같아… 빨리 끝내 주세요…)
+    PRINTFORMW (이제…부끄러워서 어떻게 되버릴 것 같아… 빨리 끝내 주세요…)
 ENDIF
 ;-------------------------------------------------
 ;유두 로터
@@ -7641,18 +7925,21 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「…」
         PRINTFORMW 에이키는%CALLNAME:MASTER%로부터 눈을 돌리고 있었다.
+        IF CFLAG:6900 == 0
             ;마이너스 스테이터스 처리
             ;호감도 0때
             IF CFLAG:2 == 0
-                PRINTFORMW 스트레스가  20올랐다
+                PRINTFORMW 스트레스가 20올랐다
                     ;스트레스 20 상승
                     CFLAG:65 += 20
             ;호감도 0이 아니다면  10내린다
             ELSE
-                PRINTFORMW 호감도가  10내렸다
+                PRINTFORMW 호감도가 10내렸다
                     ;호감도 10 감소
                     CFLAG:2 -= 10
             ENDIF
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         PRINTFORMW 「응… 서, 서방님…하아하아…좀 더 강하게 부탁합니다…」
     ELSE
@@ -7693,18 +7980,21 @@ ELSE
     IF CFLAG:4900 >= 1 && TALENT:150 == 0
         PRINTFORMW 「큿…」
         PRINTFORMW 에이키는 아픔으로, 때때로 눈을 감았다
+        IF CFLAG:6900 == 0
             ;마이너스 스테이터스 처리
             ;호감도 0때
             IF CFLAG:2 == 0
-                PRINTFORMW 스트레스가  40올랐다
+                PRINTFORMW 스트레스가 40올랐다
                     ;스트레스 40 상승
                     CFLAG:65 += 40
             ;호감도 0이 아닌 유행 감도 30 감소
             ELSE
-                PRINTFORMW 호감도  30내렸다
+                PRINTFORMW 호감도 30내렸다
                     ;호감도 30 감소
                     CFLAG:2 -= 30
             ENDIF
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         B = RAND:5
         IF B == 0
@@ -7828,6 +8118,7 @@ ELSE
         PRINTFORMW 「………
         PRINTFORMW 기분 나쁜…것입니다…」
         PRINTFORMW 에이키는 되는 대로 상태로 눈을 뗀 상태로 중얼거렸다.
+        IF CFLAG:6900 == 0
             ;마이너스 스테이터스 처리
             ;호감도 0때
             IF CFLAG:2 == 0
@@ -7844,6 +8135,8 @@ ELSE
                     EXP:44 -= 50
                     CFLAG:65 -= 30
             ENDIF
+        ELSE
+        ENDIF
     ELSEIF TALENT:150 == 1
         C = RAND:3
         IF C == 0
@@ -9352,7 +9645,7 @@ ELSEIF CFLAG:6831 == 18 && CFLAG:6833 == 2
                 PRINTFORMW 타인에 대해서 생각한다, 이것은 공기를 읽는다는 것 뿐만이 아닙니다. 상대의 기분을 생각한다고 하는 일도 물론 포함됩니다.
                 PRINTFORMW ……
                 PRINTFORMW …
-                PRINTFORMW 도데체가… 당신은 내가 어떤 기분으로, 이러한 일을 하고 있는지 생각해 본 일이 있습니까?
+                PRINTFORMW 도대체가… 당신은 내가 어떤 기분으로, 이러한 일을 하고 있는지 생각해 본 일이 있습니까?
                 PRINTFORMW 전의 기승위 때도 그렇습니다. 봉사 정신이 있었기 때문에 한 것이 아닙니다.
                 PRINTFORMW 나는 …어쩔 수 없이 하고 있는 거에요. 어떤 것을 봉사 정신이 있다고 판단하는 것은 너무 비상식적입니다.
                 PRINTFORMW ………

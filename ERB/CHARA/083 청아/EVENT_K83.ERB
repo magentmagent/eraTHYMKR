@@ -6,7 +6,7 @@
 ;이 파일내에서 다른 함수를 호출하는 처리가 있는 함수는, 삭제하지 않고 남기는 것을 추천 합니다.
 ;≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 ;==============================================================
-;곽청아(청아낭들) 말
+;곽청아(청아냥냥) 말
 ;체력:1600 / 기력:1800
 ;프라이드 높은 / 자제심 / 호기심 / 낙관적 / 눈에 띄고 싶어해 / 정조무구애 / 수치 얇은 / 조제 지식 / 금단의 지식 / 더러운 무시 /
 ;도착적 / 중독 선동 / 소악마 / 구현 / 요리 이익 / 선인
@@ -34,9 +34,9 @@ RETURN 1
 ;========================================================
 @SET_CHARA_KOJO_EXTRA_K83
 IF CFLAG:5020 == 0
-    PRINTL 청아 냥냥은 이래뵈도 처녀？
+    PRINTL 청아 냥냥은 이래 봬도 처녀？
     PRINTL [0] 비록 유부녀였다곤 하지만 그런 일엔 관심이 없었을 것 같다
-    PRINTL [1] 설마 그럴리가
+    PRINTL [1] 설마 그럴리가 (구상은 이쪽에 대응하고 있습니다)
     $INPUT_LOOP
     INPUT
     IF RESULT == 0
@@ -152,92 +152,92 @@ RETURN 1
 ;연모+반발 각인 Lv3
 IF TALENT:150 && MARK:9 == 3
     IF RAND:2 == 0
-        PRINTFORMW 「사랑스러움 남아 미움 백배는, 이런 기분을 가리키군요」
-        PRINTFORMW 「당신은 정말 좋아해요. 그것은 이제(벌써) 시체로 해 영구히 보존해 두고 싶을 정도 」
-        PRINTFORMW 「실행할지 어떨지는, 당신의 앞으로의 실시하는 대로이지만」
+        PRINTFORMW 「사랑이 지나치면 미움이 백배라는건, 이런 기분을 가리키는 거군요」
+        PRINTFORMW 「당신은 정말 좋아해요. 시체로 만들어서 영구히 보존해 두고 싶을 정도로 말이죠」
+        PRINTFORMW 「실행할지 어떨지는, 당신이 앞으로 어떻게 할 지에 달렸지만」
     ELSE
-        PRINTFORMW 「여기서 당신을 죽이면, 나중에는 이상적인 『남편분』만이 남는다」
-        PRINTFORMW 「다행히, 나는 그 시체를 종자로서 조종할 수도 있고,
-        PRINTFORMW   도가의 방술의 일종선으로서 영혼마다 속박 하는 것이라도 가능해요」
-        PRINTFORMW 「그렇게 되고 싶지 않다면, 좀 더 나 사랑에 상냥하게 응해 주실 수  없어?」
+        PRINTFORMW 「만약 여기서 당신을 죽인다면 이상적인 『서방님』만이 남겠네요」
+        PRINTFORMW 「거기다 나는 그 시체를 종자로서 조종할 수도 있고,
+        PRINTFORMW   도가의 방술의 일종선으로서 영혼까지 속박 하는 것이라도 가능해요」
+        PRINTFORMW 「그렇게 되고 싶지 않다면, 좀 더 저의 사랑에 상냥하게 응해 주실 수 있을까요?」
     ENDIF
     RETURN 1
 ;연모 1회째
 ELSEIF CFLAG:5201 < 8 && TALENT:150
-    PRINTFORMW 「아무래도 내 패배 같구나. 아직 분한 기분은 다소 있지만…」
-    PRINTFORMW 「그렇다 치더라도, 정말로 굉장하구나, 당신. 이 나를 여기까지 바꿔버리다니…」
+    PRINTFORMW 「아무래도 나의 패배 같은걸. 아직 분한 기분은 다소 있지만…」
+    PRINTFORMW 「그렇다 해도 정말로 굉장하구나, 당신은. 이 나를 여기까지 바꿔버리다니…」
     PRINTFORML 「결혼해서 지금의 성을 얻었을 때조차도 이런 감정을 품은 적은 없었어
-    PRINTFORML   한 때 남편이었던 사람에겐  마음 깊은 곳에서 사과하고 있어도, 자신은 도사가 될 거라고
+    PRINTFORML   한 때 남편이었던 사람에겐 마음 깊은 곳에서 사과하고 있어도, 자신은 도사가 될 거라고
     PRINTFORMW   사랑이 없는 여자라고, 그렇게 말해주곤 했었죠」
-    PRINTFORMW 「그런 나에게, 사랑하는 사람과 함께하는 '여자'의 기쁨을 불러일으켜 준 건 다름아닌 당신」
+    PRINTFORMW 「그런 나에게, 사랑하는 사람과 함께하는 '여자'의 기쁨을 불러일으켜 준 건 다름 아닌 당신」
     PRINTFORMW 
-    PRINTFORMW 「예, 알고 있어요. 이 마음도 몸도, 이미 당신의 것」
+    PRINTFORMW 「네, 알고 있어요. 이 마음도 몸도, 이미 당신의 것」
     PRINTFORMW 「이 곽청아, 지금부터는 거짓말도 잔꾀도 없이, 온 몸 온 마음 다할 것을」
-    PRINTFORMW 「새로운 『서방님』에게, 이 영혼을 바칠게요. 영원히 오래도록, 당신의 곁에…」
+    PRINTFORMW 「새로운 『서방님』에게 이 영혼을 바칠게요. 영원히 오래도록, 당신의 곁에…」
     CFLAG:5201 = 8
     RETURN 1
 ;연모 2번째 이후
 ELSEIF TALENT:150
     IF RAND:4 == 0
-        PRINTFORMW 「여기의 기분도, 익숙해져 오면 그다지 불쾌하지도 않네요」
-        PRINTFORMW 「이래, 여기는 당신이 나를 위해서(때문에) 나누어준 방인걸」
-        PRINTFORMW 「누구에게도 방해받지 않는, 2명을 위한 사랑의 보금자리라고 생각하면, 어디도 쾌적하게 되어요」
+        PRINTFORMW 「이 방의 분위기도 익숙해지면 그다지 불쾌하지 않네요」
+        PRINTFORMW 「그야, 여기는 당신이 나를 위해서 준 방인걸」
+        PRINTFORMW 「누구에게도 방해받지 않는 2명을 위한 사랑의 보금자리라고 생각하면 어디라도 쾌적한 기분이에요」
     ELSEIF RAND:3 == 0
-        PRINTFORMW 「좀 더 일상 생활 용품이 있으면(자) 살아난다 하지만…」
-        PRINTFORMW 「당신을 맞아들이는에 해당되어, 그만한 생각은 정돈해 두고 싶어」
-        PRINTFORMW 「사치일지도 모르지만, 절대로 여기는 『녀의 방』이니까」
-        PRINTFORMW 「그…당신에게 보이게 해 부끄러운 방에는, 하고 싶지 않아…」
+        PRINTFORMW 「좀 더 일상 생활 용품이 있으면 좋겠다고 생각하지만…」
+        PRINTFORMW 「당신을 맞이하기 전에 어느정도는 정돈해 두고 싶어」
+        PRINTFORMW 「사치일지도 모르지만, 일단 여기는 우선 『여자의 방』이니까」
+        PRINTFORMW 「그…당신에게 보이기에 부끄러운 방에서는, 하고 싶지 않아…」
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「어서 오십시오 와 주셨습니다, 남편분」
-        PRINTFORMW 「후후, 가끔 씩은 이런 취향도 좋은 것으로 짊어져?」
-        PRINTFORMW 「당신이 오는 것을 기다리고 있는 동안, 나도 다양하게 시행 착오 했었던 것」
-        PRINTFORMW 「, 남편분. 오늘은 이 청아를 사기에 사용해 주십니까…?」
+        PRINTFORMW 「어서 오세요, 와 주셨군요. 서방님」
+        PRINTFORMW 「후후, 가끔씩은 이런 취향도 마음에 들어요?」
+        PRINTFORMW 「당신이 오는 것을 기다리고 있는 동안, 나도 다양한 시행착오를 거치고 있었으니까」
+        PRINTFORMW 「서방님, 오늘은 이 청아를 마음껏 사용해 주시겠습니까…?」
     ELSE
-        PRINTFORMW 「당신도 도교를 시작할 생각은 없어?  그래, 유감이구나」
-        PRINTFORMW 「함께 있어지는 시간이 조금이라도 길어지면 좋다고 생각했다 하지만…」
+        PRINTFORMW 「당신도 도교를 믿어볼 생각은 없어?  그래, 유감인걸」
+        PRINTFORMW 「함께 있을 수 있는 시간이 조금이라도 길어지면 좋겠다고 생각했지만…」
         PRINTFORMW 「말할 수 있는 째라고, 지금을 힘껏 즐길까요」
     ENDIF
     RETURN 1
 ;반발 각인 Lv3
 ELSEIF MARK:9 == 3
     IF RAND:2 == 0
-        PRINTFORMW 「당신에게는 용이하게 죽음을 주는 것조차 미지근하네요」
-        PRINTFORMW 「라고 해서 복속시켜 옆에 두는 것도 추접하다」
-        PRINTFORMW 「어째서 줄까…후후」
+        PRINTFORMW 「당신에게라면 간단하게 죽음을 주는 것조차 미지근하군요」
+        PRINTFORMW 「그렇다고 해서 복속시켜서 옆에 두기엔 추접해」
+        PRINTFORMW 「그럼 어떻게 해줄까…후후」
     ELSE
-        PRINTFORMW 「여기를 나올 수 있었다고 해도, 곧바로 돌아와 주어요」
-        PRINTFORMW 「지금의 나의 기분을 부디 당신에게 나눠주고 싶은거야」
-        PRINTFORMW 「예, 나는 절대로 사선등으로 불리는 몸이므로」
-        PRINTFORMW 「외도로 불려도 어쩔 수 없는 것도, 주저는 하지 않아요」
-        PRINTFORMW 「그런 여자가 주는, 죽음이나 예속보다 괴로운 고통」
-        PRINTFORMW 「이봐요, 상상하는 것만으로 두근두근 할까요?」
+        PRINTFORMW 「여기를 나갈 수 있다고 해도, 곧바로 돌아와 주겠어요」
+        PRINTFORMW 「지금의 내 기분을 무슨 일이 있어도 당신에게 나눠주고 싶으니까요」
+        PRINTFORMW 「나는 사선(邪仙)으로 불리는 몸이므로」
+        PRINTFORMW 「외도로 불릴만한 어떤 일에도 주저 하지 않아요」
+        PRINTFORMW 「그런 여자가 줄 죽음이나 예속보다 괴로운 고통」
+        PRINTFORMW 「어때요, 상상하는 것만으로 두근두근 하죠?」
     ENDIF
     RETURN 1
 ;굴복 각인 Lv1
 ELSEIF MARK:2 == 1
-    PRINTFORMW 「조금은 할 수 있는 것 같지만, 나는 이 대로 평상심」
-    PRINTFORMW 「결국 당신 힘은 그 정도였던 것. 점잖게 단념하세요」
-    PRINTFORMW 「가장 지금, 고개를 숙여 사과해졌다고 해도, 허락할 생각은 전혀 없습니다만」
+    PRINTFORMW 「약간은 노력 한 것 같아보여도, 나는 여전히 평상심」
+    PRINTFORMW 「결국 당신 힘은 그 정도였던 것이니 점잖게 단념하세요」
+    PRINTFORMW 「바로 지금, 고개를 숙여 사과한다고 해도 용서할 생각은 전혀 없지만」
     RETURN 1
 ;굴복 각인 Lv2
 ELSEIF MARK:2 == 2
-    PRINTFORMW 「몇 번이라도 말합니다. 당신의 손으로 나를 바꾸는 것은 할 수 없다」
-    PRINTFORMW 「이대로 계속해도, 당신은 머지않아 살해당해 그 몸이 썩을 때까지 사역될 수 밖에 없다」
-    PRINTFORMW 「그렇게 되기 전에 거래를 합시다?  만약 해방해 주면(자), 지금까지의 일은 없었던 것으로 합니다」
+    PRINTFORMW 「몇 번이라도 말합니다. 당신의 손으로 나를 바꾸는 것은 할 수 없어요」
+    PRINTFORMW 「이대로 계속해도 당신은 머지않아 살해당해서 그 몸이 썩을 때까지 사역될 수 밖에 없습니다」
+    PRINTFORMW 「그렇게 되기 전에 거래를 하죠?  만약 해방시켜주면, 지금까지의 일은 없었던 것으로 하겠어요」
     PRINTFORMW 
-    PRINTFORMW 「응할 생각은 없는 것 같구나…」
+    PRINTFORMW 「응할 생각은 없어보이네…」
     RETURN 1
 ;굴복 각인 Lv3
 ELSEIF MARK:2 == 3
-    PRINTFORMW 「간 원이군요…여기까지 한다고 생각하지 않았다」
-    PRINTFORMW 「진심으로 나를 타로 하고 싶구나. 당신의 노예로」
-    PRINTFORMW 「그 (*기상)의기, 확실히 받아 들였습니다. 어느 쪽이 먼저 끈기에 짐 하는지, 끝까지 교제해 줍시다」
+    PRINTFORMW 「대단하군요… 여기까지 할 수 있다곤 생각하지 않았는데」
+    PRINTFORMW 「진심으로 나를 당신의 노예로 하고 싶은 거구나」
+    PRINTFORMW 「그 기상, 확실히 받아 들였습니다. 어느 쪽이 먼저 포기할지 끝까지 어울려주겠어요」
     RETURN 1
 ;그 외
 ELSE
-    PRINTFORMW 「어때?  무엇인가 반응은 느껴졌는지 해들?」
-    PRINTFORMW 「그런은 두 없어요. 내가 당신에 굴하는 것 등 있을 수 없는 것이니까」
-    PRINTFORMW 「지금 해방하면, 아직 죽이는 것만으로 끝마쳐 주어요?」
+    PRINTFORMW 「뭐? 뭔가 느껴졌었냐고? 그럴 일은 없어」
+    PRINTFORMW 「내가 당신에 굴복하는건 있을 수 없는 일이니까」
+    PRINTFORMW 「지금 해방해준다면 아직은 죽이는 것만으로 끝내주겠어요」
 ENDIF
 
 ;========================================================
@@ -270,55 +270,56 @@ TRYCALL K83_MESSAGE_END
 @K83_MESSAGE_END
 ;연모+반발 각인 Lv3
 IF TALENT:150 == 1 && MARK:9 == 3
-    PRINTFORMW 「당신도 지쳤겠지요?  여기서 자 가면 좋은데」
-    PRINTFORMW 「다음에 눈을 떴을 때, 매우 멋진 상태로 일어날 수 있어요」
-    PRINTFORMW 「괜찮아. 나는 시체라도 의사가 없는 괴뢰라도 사랑 다투는 여자이니까」
+    PRINTFORMW 「당신도 지쳤겠지요?  여기서 자고 가면 좋을텐데」
+    PRINTFORMW 「다음에 눈을 떴을 땐 매우 멋진 상태로 일어날 수도 있어요」
+    PRINTFORMW 「괜찮아. 나는 시체도 의사가 없는 인형도 사랑할 수 있는 여자니까」
 ;연모
 ELSEIF TALENT:150 == 1
     ;체력 500 미만
     IF BASE:0 < 500
-        PRINTFORMW 「 이제(벌써), 변함 없이 굉장하기 때문에…」
-        PRINTFORMW 「 그렇지만 과연 조금 지쳐 버렸다 원. 이대로 잠있을까요」
-        PRINTFORMW 「무슨 말해?  물론 당신도 함께, 후후」
+        PRINTFORMW 「정말, 변함 없이 굉장한걸…」
+        PRINTFORMW 「그렇지만 역시 조금 지쳐 버렸어, 이대로 자버릴까」
+        PRINTFORMW 「무슨 말이야? 물론 당신도 함께지. 후훗」
     ;그 외
     ELSEIF RAND:3 == 0
-        PRINTFORMW 「벌써 끝나?  오늘은 피로 까?」
-        PRINTFORMW 「무리는 하지 않도록. 당신이 건강하지 않으면 굳이 시작되지 않기 때문에」
-        PRINTFORMW (이번 자양 강장의 약이라도 조제 해 줄까…? )
+        PRINTFORMW 「벌써 끝이야? 오늘은 피곤했던걸까?」
+        PRINTFORMW 「무리는 하지말아줘. 당신이 건강하지 않으면 굳이 시작되지 않기 때문에」
+        PRINTFORMW (언제 자양 강장의 약이라도 조제해둘까…? )
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「이 욕망, 언젠가 풍치이님 곳에 닿을지도 모르네요」
-        PRINTFORMW 「 나는 상관없어요. "여자"의 행복을 그 (분)편에게도 가르쳐 드리고 싶고」
-        PRINTFORMW 「악취미?  그것은 피차일반이 아니다」
+        PRINTFORMW 「이 욕망, 언젠가 미코에게도 닿을지도 모르겠네요」
+        PRINTFORMW 「나는 상관없어요. '여자'의 행복을 그녀에게도 가르쳐 주고 싶으니」
+        PRINTFORMW 「악취미라구? 그건 피차일반이 아닐까」
     ELSE
-        PRINTFORMW 「너무 다른 아이에게 넣고 자세한 있고로?  나라면 괜찮기 때문에」
-        PRINTFORMW 「이상할 것 같은 얼굴 하지 않고. 오늘도 묘하게 빨랐다가 아니다」
-        PRINTFORMW (질투인가…. 이런 기분이 되다니 정말로 어떻게든 해 버렸어. 나)
+        PRINTFORMW 「자꾸 다른 아이에게 가거나 하지말고, 나라면 언제나 반겨줄테니까」
+        PRINTFORMW 「그런 이상한 얼굴 하지마. 오늘도 묘하게 빨리 돌아가려고 하는걸」
+        PRINTFORMW (질투인가…. 이런 기분이 되다니 정말로 어떻게 돼버렸어. 나)
     ENDIF
 ;반발 각인 Lv3
 ELSEIF MARK:9 == 3
-    PRINTFORMW 「자주(잘) 피한 원이군요」
-    PRINTFORMW 「그 비녀는, 딱딱한 벽에도 간단하게 구멍을 뚫어 버리는 뛰어나고 것이야」
-    PRINTFORMW 「여기의 벽에는 효과가 없는 것 같지만, 살아있는 몸으로 박히면 당신이라도 무사한 것은 미안할 것입니다?」
-    PRINTFORMW 「이 방에 있는 한, 언제 노려지는지 모르는 것을 가슴 속 깊이 새겨 두세요」
+    PRINTFORMW 「잘도 피했군요」
+    PRINTFORMW 「그 비녀는 딱딱한 벽에도 간단하게 구멍을 뚫어 버리는 뛰어난 물건이야」
+    PRINTFORMW 「여기의 벽에는 효과가 없는 것 같지만, 살아있는 몸으로 박히면 당신이라도 무사할 리는 없다고?」
+    PRINTFORMW 「이 방에 있는 한, 언제 노려질지 모른다는 것을 가슴 속 깊이 새겨 두세요」
 ;굴복 각인 Lv1
 ELSEIF MARK:2 == 1
-    PRINTFORMW 「당신을 갖고 싶은 것은, 여자를 팔아 손에 들어 오는 추레한 돈이지요?」
-    PRINTFORMW 「이라면 빨리 나를 팔아, 여기에서 내 주시지 않을까」
-    PRINTFORMW 「물론 나를"산"놈은 이 세상의 사람은 아니게 되어요. 그 후는…알네요?」
+    PRINTFORMW 「당신이 갖고 싶은 것은 여자를 팔아서까지 손에 쥘 추레한 돈이죠?」
+    PRINTFORMW 「그렇다면 빨리 나를 팔아서, 여기에서 내보내 주지 않으려나」
+    PRINTFORMW 「물론 나를 '산' 놈은 이 세상의 사람은 아니게 될겁니다. 그 후는… 알겠지요?」
 ;굴복 각인 Lv2
 ELSEIF MARK:2 == 2
-    PRINTFORMW 「여자로서 태어난 이상, 어느 정도 몸이 반응해 버리는 것은 어쩔 수 없는 것」
-    PRINTFORMW 「그렇다고 해서, 당신의 생각 했던 대로에 일이 진행되고 있는 것도 아니다」
-    PRINTFORMW 「예의 범절과는 끈기 자주(잘), 한편 철저하게 계속하는 것?  그 점, 당신은 아직도 미지근하다」
+    PRINTFORMW 「여자로서 태어난 이상, 어느 정도 몸이 반응해 버리는 것은 어쩔 수 없는 일」
+    PRINTFORMW 「그렇다고 해서 당신이 생각했던 대로 일이 진행되고 있는 것도 아닙니다」
+    PRINTFORMW 「예의 범절을 가르칠때는 끈기있게, 그리고 철저하게 계속하는 것이 중요하지요
+    PRINTFORMW	 그런 점에서는 당신은 아직도 미지근해」
 ;굴복 각인 Lv3
 ELSEIF MARK:2 == 3
-    PRINTFORMW (이것이…내가 지금까지 해 온 것에의, 벌인가 해들…)
-    PRINTFORMW 「 그렇지만 아직…아직 나는"나"를 유지하고 있다…」
-    PRINTFORMW 「몸은 아무래도 좋아요…. 마음마저 굴없으면, 언젠가는…」
+    PRINTFORMW (이것이… 내가 지금까지 해 왔던 일의 벌일지도…)
+    PRINTFORMW 「그렇지만 아직…아직 나는 '나'를 유지하고 있어…」
+    PRINTFORMW 「몸은 아무래도 좋아요…. 마음만은 굴복하지 않는다면, 언젠가는…」
 ;그 외
 ELSE
-    PRINTFORMW 「끝났어?  그러면 안녕」
-    PRINTFORMW 「할 수 있으면 두 번 다시 오지 않고 주시는 것일까」
+    PRINTFORMW 「끝났어? 그러면 안녕」
+    PRINTFORMW 「가능하다면 두 번 다시 오지 않았으면 하네」
 ENDIF
 
 ;========================================================
@@ -386,11 +387,11 @@ IF TALENT:150 == 1
     RETURN 0
 ;로션으로 적셨다
 ELSEIF SELECTCOM == 60
-    PRINTFORMW 「위…베토 베토 해 이상한 느낌…」
+    PRINTFORMW 「윽…끈적끈적하고 이상한 느낌…」
 ;그 외
 ELSE
-    PRINTFORMW 「인가, 마음대로 나온다 것. 어쩔 수 없지 않다」
-    PRINTFORMW (아…몸의 안쪽이…뜨겁다…)
+    PRINTFORMW 「이런거, 마음대로 나오는 것이니까, 어쩔 수 없잖아」
+    PRINTFORMW (아…몸 안쪽이…뜨거워…)
 ENDIF
 CFLAG:5330 = 1
 
@@ -403,11 +404,11 @@ IF TALENT:150 == 1
     RETURN 0
 ;미약으로 흥분시켰다
 ELSEIF SELECTCOM == 61
-    PRINTFORMW (몸이 불 비쳐 온…그 약의 탓? )
+    PRINTFORMW (몸이 달아오르는 게… 그 약의 탓? )
 ;그 외
 ELSE
-    PRINTFORMW (몸이 갖고 싶어해 버리는…그 감각을…)
-    PRINTFORMW (남자에의 욕구는, 벌써 버리고 갔을 것인데…)
+    PRINTFORMW (몸이 갖고 싶어하는… 그 감각이…)
+    PRINTFORMW (성욕같은건 벌써 버려버렸을 것인데…)
     PRINTFORMW 「응, 하아…하아…」
 ENDIF
 CFLAG:5333 = 1
@@ -416,7 +417,7 @@ CFLAG:5333 = 1
 ;처음으로 치정이 LV2 넘은 CFLAG:5335
 ;-------------------------------------------------
 @K83_MESSAGE_OVERLV2_15
-PRINTFORMW 「혐…이런 모습, 보지 마…. 부탁이니까…」
+PRINTFORMW 「윽…이런 모습, 보지 마…. 부탁이니까…」
 CFLAG:5335 = 1
 
 ;-------------------------------------------------
@@ -436,15 +437,15 @@ CFLAG:5335 = 1
 @K83_MESSAGE_ORGASM_0
 ;처음
 IF CFLAG:5300 == 0
-    PRINTFORMW 「거기, 다, 째!  병이나 …응 아!」
+    PRINTFORMW 「거기, 핫, 하아! 아앗… 웃 아!」
     CFLAG:5300 = 1
 ;2번째 이후
 ELSE
     ;이번 조교에서의 C절정이 50이상
     IF EX:0 >= 50
-        PRINTFORMW 「거기, 뿐, 이지메…아!」
+        PRINTFORMW 「거기, 만, 괴롭히는…아앗!」
     ELSE
-        PRINTFORMW 「그만두어 거기는…는!」 
+        PRINTFORMW 「그만둬, 거기는…아!」 
     ENDIF
 ENDIF
 
@@ -454,16 +455,16 @@ ENDIF
 @K83_MESSAGE_ORGASM_1
 ;처음
 IF CFLAG:5301 == 0
-    PRINTFORMW 「있고, 구!  말해버린다, 는, 아, 아!」
-    PRINTFORMW (아…이 느껴 언제 이래일까)
+    PRINTFORMW 「싫엇, 윽! 가버렷, 앙, 아, 앗!」
+    PRINTFORMW (아…이 느낌 얼마만일까…)
     CFLAG:5301 = 1
 ;2번째 이후
 ELSE
     ;이번 조교에서의 V절정이 50이상
     IF EX:1 >= 50
-        PRINTFORMW 「 이제(벌써), 휘젓는거야, 그리고 , 언덕 끄는, 되는 응!」
+        PRINTFORMW 「얼마나, 하는거야, 아앗, 그만해, 우웃!」
     ELSE
-        PRINTFORMW 「안이 개, , 응 아!」
+        PRINTFORMW 「후으, 흐, 우응, 아앙!」
     ENDIF
 ENDIF
 
@@ -473,15 +474,15 @@ ENDIF
 @K83_MESSAGE_ORGASM_2
 ;처음
 IF CFLAG:5302 == 0
-    PRINTFORMW 「이나, 혐!  , 곳, 익, 나!  」
+    PRINTFORMW 「싫어, 그런 곳인데! 앗, 아아, 앗!」
     CFLAG:5302 = 1
 ;2번째 이후
 ELSE
     ;이번 조교에서의 A절정이 50이상
     IF EX:2 >= 50
-        PRINTFORMW 「들 , 째…!  거기는…기분 좋게 , 들 째등의!」
+        PRINTFORMW 「아, 안돼…! 거기는… 그런 곳이 아닌데엣!」
     ELSE
-        PRINTFORMW 「있고, 구…안된 트코로 , 말해버리는!」
+        PRINTFORMW 「거긴, 아…안돼, 가버렷!」
     ENDIF
 ENDIF
 
@@ -491,15 +492,15 @@ ENDIF
 @K83_MESSAGE_ORGASM_3
 ;처음
 IF CFLAG:5303 == 0
-    PRINTFORMW 「, 해…가슴만으로, 구, 응!」
+    PRINTFORMW 「설마… 가슴만으로, 가는, 하앗!」
     CFLAG:5303 = 1
 ;2번째 이후
 ELSE
     ;이번 조교에서의 B절정이 50이상
     IF EX:3 >= 50
-        PRINTFORMW 「젖가슴, 이제(벌써) 손대면……또, 있고, 구!」
+        PRINTFORMW 「가슴, 더 이상 손대면…… 또, 가버렷, 앙!」
     ELSE
-        PRINTFORMW 「이제 이지등 없고 …가슴은 안 됨, 하아…아!」
+        PRINTFORMW 「이제 더는… 가슴은 안 돼, 하아… 앗!」
     ENDIF
 ENDIF
 
@@ -511,29 +512,29 @@ ENDIF
 IF CFLAG:5304 == 0
     ;연모
     IF TALENT:150 == 1
-        PRINTFORMW 「, 젖가슴이…!」
-        PRINTFORMW 「이것이 나와도 (일)것은, 네라고 기대해도 좋은 것일까?」
+        PRINTFORMW 「가슴이…!」
+        PRINTFORMW 「모유가 나오게 됐다는 건, 기대해도 좋은 걸까?」
     ;그 이외
     ELSE
-        PRINTFORMW 「이것은, 설마…거짓말」
-        PRINTFORMW 「있고, 싫어요…거짓말이지요?  나, 몸 깃들이고 있었어…?」
+        PRINTFORMW 「이건, 설마… 거짓말…」
+        PRINTFORMW 「말도 안돼, 싫어… 거짓말이죠?  나, 아이가 깃들었다는 거야…?」
     ENDIF
         CFLAG:5304 = 1
 ;2번째 이후
 ELSE
     ;연모
     IF TALENT:150 == 1
-        PRINTFORMW 「아…가득…♪」
-        PRINTFORMW 「마셔…달라붙어서 놓지 않아 …」
+        PRINTFORMW 「아… 가득 나오네…♪」
+        PRINTFORMW 「마셔봐… 진득하게 달라붙어서 떨어지지 않아…」
         CFLAG:5304 = 4
     ;굴복 각인 Lv3
     ELSEIF MARK:2 == 3
-        PRINTFORMW 「많이 흘러넘쳐 오는…과 목표 없네요…」
-        PRINTFORMW 「, 조금. 하지만 붙지 말아 …」
+        PRINTFORMW 「많이 흘러넘치네… 관심없지만…」
+        PRINTFORMW 「조금, 끈적거려…」
         CFLAG:5304 = 3
     ;그 이외
     ELSE
-        PRINTFORMW 「어디까지 사람의 몸을 바꾸면 기분이 내켜, 구…!」
+        PRINTFORMW 「어디까지 사람의 몸을 바꿔대야 내키는거야…!」
         CFLAG:5304 = 2
     ENDIF
 ENDIF
@@ -547,24 +548,24 @@ ENDIF
 @K83_MESSAGE_ORGASM_11
 ;처음
 IF CFLAG:5305 == 0
-    PRINTFORMW 「여자의 나부터, 남자의 백탁이…」
-    PRINTFORMW (아…드디어 여기까지…)
+    PRINTFORMW 「여자인 나에게, 남자의 백탁이…」
+    PRINTFORMW (아… 드디어 여기까지…)
     CFLAG:5305 = 1
 ;2번째 이후
 ELSE
     ;연모
     IF TALENT:150 == 1
-        PRINTFORMW 「으로, 나오고 있는. 가득, 뷰뷰라고!」
-        PRINTFORMW 「응은…기분이 좋다. 좀 더, 좀 더 사정하고 싶다…. 수상한 것 가득…」
+        PRINTFORMW 「으응, 나오고 있어. 가득, 븃븃하고!」
+        PRINTFORMW 「우웃… 기분 좋아. 좀 더, 좀 더 사정하고 싶어… 이런 이상한 건데 가득…」
         CFLAG:5305 = 4
     ;굴복 각인 Lv3
     ELSEIF MARK:2 == 3
-        PRINTFORMW 「이나, 나온다!  또 나와버린다!」
-        PRINTFORMW (%CALLNAME:MASTER%는, 언제나 이렇게 기분 좋은거야…? )
+        PRINTFORMW 「아, 나온다! 나오고 있어!」
+        PRINTFORMW (%조사처리(CALLNAME:MASTER,"는")%, 언제나 이렇게 기분 좋아지는 거야…? )
         CFLAG:5305 = 3
     ;그 이외
     ELSE
-        PRINTFORMW 「이런 것…내가 내는 것도 아니면서, 응!」
+        PRINTFORMW 「이런 것… 내가 원했던 것도 아닌데, 아앗!」
         CFLAG:5305 = 2
     ENDIF
 ENDIF
@@ -594,25 +595,25 @@ IF TFLAG:35
     ;연모
     IF TALENT:150
         IF RAND:3 == 0
-            PRINTFORMW 「안쪽에 흘러 들어가!  가득 사정해!」
+            PRINTFORMW 「안쪽에 흘러 들어와! 가득 사정해줘!」
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「아…안이 다랑어 다랑어…♪」
+            PRINTFORMW 「아…안이 따끈 따끈…♪」
         ELSE
-            PRINTFORMW 「따뜻한 것이 안에 스며들어 간다…. 이만큼에서도 기분이 좋다…♪」
+            PRINTFORMW 「따뜻한 것이 안에 스며들어 가… 기분 좋아…♪」
         ENDIF
     ;굴복 각인 Lv3
     ELSEIF MARK:2 == 3
         IF RAND:2 == 0
-            PRINTFORMW 「이렇게 나오면(자), 아기가…」
+            PRINTFORMW 「이렇게 내보내면, 아기가…」
         ELSE
-            PRINTFORMW 「뭐, 아직 나오는 거야…?  정말 바닥이 없음인 것」
+            PRINTFORMW 「뭐야, 아직도 나오는 거야…?  정말 바닥이 없네」
         ENDIF
     ;그 외
     ELSE
         IF RAND:2 == 0
-            PRINTFORMW 「, 안은 그만두어!  아이 할 수 있어버린다!」
+            PRINTFORMW 「안은 그만둬! 아이가 생겨버린다고!」
         ELSE
-            PRINTFORMW (예상하고 있었던이라고 해도, 실제로 되면(자) 괴로운 것이 있어요…)
+            PRINTFORMW (예상하고 있었던 일이라 해도, 실제로 일어나니 괴롭네…)
         ENDIF
     ENDIF
 ;그 이외
@@ -629,22 +630,22 @@ IF TFLAG:35
     ;연모
     IF TALENT:150
         IF RAND:3 == 0
-            PRINTFORMW 「아, 갖고 싶은 것은 그쪽도 아니면서」
+            PRINTFORMW 「아, 갖고 싶은 건 그쪽도 아니면서…」
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「뜨거운 것이 자꾸자꾸 오고 있는 원. 장이 타버릴 그렇게…」
+            PRINTFORMW 「뜨거운 것이 자꾸자꾸 나오고 있어. 이러다 장이 타버릴지도…」
         ELSE
-            PRINTFORMW 「정액의 따뜻함이 느낄 뿐(만큼)이라면, 여기 쪽이 좋을지도…」
+            PRINTFORMW 「정액의 따뜻함을 느낄 뿐이라면, 이쪽이 좋을지도…」
         ENDIF
     ;굴복 각인 Lv3
     ELSEIF MARK:2 == 3
         IF RAND:2 == 0
-            PRINTFORMW 「배에 모여 가요…. 천천히」
+            PRINTFORMW 「배에 모이고 있어… 천천히…」
         ELSE
-            PRINTFORMW 「응, 뜨겁다…. 얼마나 냈어요」
+            PRINTFORMW 「응, 뜨거워…. 얼마나 낸거야」
         ENDIF
     ;그 외
     ELSE
-        PRINTFORMW 「엉덩이가 좋으면 가축의 짐승에서도 사용하고 있으면 좋은데」
+        PRINTFORMW 「엉덩이가 좋으면 가축이나 짐승을 사용하는걸로 충분할텐데」
     ENDIF
 ;그 이외
 ELSE
@@ -658,18 +659,18 @@ ENDIF
 ;연모+정액 중독 Lv2 이상
 IF TALENT:150 && ABL:31 >= 2
     IF RAND:2 == 0
-        PRINTFORMW 「이것, 다음에 씻지 않으면 안 됨?」
+        PRINTFORMW 「이거, 앞으로 씻지 않으면 안 될까?」
         PRINTFORMW 「어떤 비누도 이 향기에는 이길 수 없는데…심술쟁이」
     ELSE
-        PRINTFORMW 「머리카락에 스며들어, 냄새가 잡히지 않게 될지도 모르네요」
-        PRINTFORMW 「 나로서는 바라는 곳(중)이지만」
+        PRINTFORMW 「머리카락에 스며들어서, 냄새가 배어버릴지도 모르겠네요」
+        PRINTFORMW 「나는 좋은 일이지만」
     ENDIF
 ;연모
 ELSEIF TALENT:150
-    PRINTFORMW 「 이제(벌써), 모처럼 당신을 위해서(때문에), 매일 깨끗이 해 …」
+    PRINTFORMW 「정말, 모처럼 당신을 위해서 매일 깨끗이 하는건데…」
 ;그 외
 ELSE
-    PRINTFORMW 「이나, 머리카락와 깨어 붙어버리는 원…」
+    PRINTFORMW 「아, 머리카락에 붙어버렸어…」
 ENDIF
 
 ;-------------------------------------------------
@@ -678,13 +679,13 @@ ENDIF
 ;@K83_MESSAGE_EJAC_PLAYER_14
 ;연모+정액 중독 Lv2 이상
 ;IF TALENT:150 && ABL:31 >= 2
-;    PRINTFORMW 「(…)…좋은 냄새」
+;    PRINTFORMW 「…좋은 냄새」
 ;연모
 ;ELSEIF TALENT:150
-;    PRINTFORMW 「…. 이렇게 내 버려서, 빠져버릴 그렇게」
+;    PRINTFORMW 「…. 이렇게 내 버리면, 빠져버릴지도 몰라요」
 ;그 외
 ;ELSE
-;    PRINTFORMW 「눈에 들어오면 어떻게 해…싶고」
+;    PRINTFORMW 「눈에 들어오면 어떻게 될까… 싶은데」
 ;ENDIF
 
 ;-------------------------------------------------
@@ -696,24 +697,24 @@ IF GROUPMATCH(SELECTCOM, 41, 54, 230, 303, 304, 601, 602, 604, 610)
     ;연모+정액 중독 Lv2 이상
     IF TALENT:150 && ABL:31 >= 2
         IF RAND:2 == 0
-            PRINTFORMW 「응∼♪ …후후」
-            PRINTFORMW 「넣은 깨지고 …♪ 응, (코쿡」
+            PRINTFORMW 「우웅∼♪ …후후」
+            PRINTFORMW 「잔뜩 내줘…♪ 훗, 쿠쿡」
         ELSE
-            PRINTFORMW 「응구, 진하고 …,. 후후, 맛있다」
-            PRINTFORMW 「술과 갑을 붙이기 어려워요. 응, 좀 더 먹이며…♪」
+            PRINTFORMW 「후웃, 진하고 …. 후후, 맛있네요」
+            PRINTFORMW 「술이랑 비교해도 어느쪽이 더 좋을지 모르겠네요. 앙, 좀 더 먹여줘…♪」
         ENDIF
     ;연모
     ELSEIF TALENT:150
-        PRINTFORMW 「응…!  응, 자만…, …」
-        PRINTFORMW 「미안해요. 풍부하는 …」
-        PRINTFORMW 「모처럼 많이 나왔는데, 과분해요. 다시 한번 줘?」
+        PRINTFORMW 「응…!  웃, 후우……」
+        PRINTFORMW 「미안해요. 너무 많았나…」
+        PRINTFORMW 「모처럼 많이 나왔는데, 넘쳐버렸어. 다시 한번 줄래?」
     ;정액 중독 Lv2 이상
     ELSEIF ABL:31 >= 2
-        PRINTFORMW 「응, 응구…응응. 하아…, 하아…」
-        PRINTFORMW (입이 마음대로 감추어 붐비어 간다…. 갖고 싶어해, 말하는 일 (듣)묻지 않는다…)
+        PRINTFORMW 「응, 우웃… 후웃. 하아…, 하아…」
+        PRINTFORMW (입이 마음대로 움직이고 있어, 갖고 싶어져서…. 다른 생각같은건 들지 않아…)
     ;그 외
     ELSE
-        PRINTFORMW 「, 근심…. 목에 관련되어 멀어지지 않아요…」
+        PRINTFORMW 「으윽…. 목에 달라붙어서 떨어지지 않아요…」
     ENDIF
 
 ;-------------------------------------------------
@@ -723,20 +724,20 @@ ELSE
 ;연모+정액 중독 Lv2 이상
     IF TALENT:150 && ABL:31 >= 2
         IF RAND:2 == 0
-            PRINTFORMW 「이봐요 봐, 골짜기에 많이 모여있는 원」
-            PRINTFORMW 「어머나, 유감. 흘러넘쳐 버렸다」
+            PRINTFORMW 「이것봐, 골짜기에 잔뜩 모여있는걸」
+            PRINTFORMW 「어머나, 유감이네. 흘러넘쳐 버렸어요」
         ELSE
-            PRINTFORMW 「이것을 이렇게…가슴 전체에 발라 빼앗아」
-            PRINTFORMW 「후후, 표시를 할 수 있고 있는 것 같아, 몹시 흥분해버린다…」
+            PRINTFORMW 「이렇게…가슴 전체에 펴발라버리면」
+            PRINTFORMW 「후후, 표시를 남기는 것 같아서, 엄청 흥분하게 되네요…」
         ENDIF
     ;연모
     ELSEIF TALENT:150
-        PRINTFORMW 「대강, 이렇게 가득 내 버려서」
-        PRINTFORMW 「 나의 젖가슴 좋았었지요?」
+        PRINTFORMW 「정말, 이렇게 가득 내 버렸네」
+        PRINTFORMW 「젖가슴이 그렇게 기분 좋았어요?」
     ;그 외
     ELSE
-        PRINTFORMW 「그런 곳에 걸쳐 어떻게 해. 당신이 접하지 않게 될 뿐(만큼)이 아니다」
-        PRINTFORMW 「그 편이 형편상 좋기 때문에, 별로 좋지만」
+        PRINTFORMW 「…이런 곳에 묻히다니」
+        PRINTFORMW 「당신과 접할바에는 이러는게 차라리 나으니 아무래도 좋지만」
     ENDIF
 ENDIF
 
@@ -759,21 +760,21 @@ ENDIF
 ;연모+정액 중독 Lv2 이상
 IF TALENT:150 && ABL:31 >= 2
     IF RAND:2 == 0
-        PRINTFORMW 「아, 아깝다…」
-        PRINTFORMW 「응…, …」
+        PRINTFORMW 「아, 아깝네…」
+        PRINTFORMW 「우웅……」
     ELSE
         ;소림사 권법의 하나, 독수주먹의 영향. 중국의 선인이고, 냥냥도 지비치겠지요.
-        PRINTFORMW 「이렇게 하고 있으면 언젠가, 손으로부터 자연스럽게 정액의 풍미가 나오게 될지도 몰라」
-        PRINTFORMW 「…좋네요, 그것.  어?  당신은 싫어?」
+        PRINTFORMW 「이렇게 하고 있으면 언젠가, 손에서 자연스럽게 정액의 풍미가 나오게 될지도 몰라요」
+        PRINTFORMW 「…좋네요, 그것도. 응? 당신은 싫어?」
     ENDIF
 ;연모
 ELSEIF TALENT:150
     PRINTFORMW 「정말 성장해요 , 이것」
-    PRINTFORMW 「니체니체 해, 켠 참마 보고 싶다」
+    PRINTFORMW 「미끈미끈한게, 간 참마가 생각나네」
 ;그 외
 ELSE
-    PRINTFORMW 「이 나의 손에, 이런…」
-    PRINTFORMW 「물을 정대. 씻어내지 않으면 안된다…」
+    PRINTFORMW 「이 나의 손에, 이런걸…」
+    PRINTFORMW 「물을 준비해줘. 씻어내야 하니까…」
 ENDIF
 
 ;-------------------------------------------------
@@ -783,13 +784,13 @@ ENDIF
 ;연모
 IF TALENT:150
     IF RAND:2 == 0
-        PRINTFORMW 「…. 거기는 자궁까지 가 주지 않아요」
+        PRINTFORMW 「…. 거기에 내보내서는 자궁까지 가지 못해요」
     ELSE
-        PRINTFORMW 「어머나, 나와 버렸어…. 다음은 안으로 부탁이군요」
+        PRINTFORMW 「어머나, 나와 버렸네…. 다음은 안쪽으로 부탁해요」
     ENDIF
 ;그 외
 ELSE
-    PRINTFORMW (안에 나오지 않았던 것 뿐, 아직 좋다고 생각해야 하는 것인가 해들…)
+    PRINTFORMW (안에 나오지 않았던 것뿐, 아직은 괜찮다고 생각해야 하는 것일까…)
 ENDIF
 
 ;-------------------------------------------------
@@ -799,13 +800,13 @@ ENDIF
 ;연모
 IF TALENT:150
     IF RAND:2 == 0
-        PRINTFORMW 「이나…. 거기는 내는 곳(중)…」
+        PRINTFORMW 「흐응…. 거기는 나오는 곳이지만…」
     ELSE
-        PRINTFORMW 「끝0 틴으로 임신시키고 싶은거야?  미안하지만, 과연 그것은 무리가 있어요」
+        PRINTFORMW 「그 쪽으로 임신시켜보고 싶은거야? 미안하지만, 아무래도 그건 무리네요」
     ENDIF
 ;그 외
 ELSE
-    PRINTFORMW 「 이제(벌써) 어느 쪽의 정액인가, 모르게 되어 왔어요…」
+    PRINTFORMW 「이제 어느 쪽의 정액인가, 모르게 돼버렸군요…」
 ENDIF
 
 ;-------------------------------------------------
@@ -826,18 +827,18 @@ ENDIF
 @K83_MESSAGE_EJAC_PLAYER_19
 ;연모+새디즘기분 Lv3 이상
 IF TALENT:150 && ABL:20 >= 3
-    PRINTFORMW 「대강, 더러워져 버렸다 원이군요」
-    PRINTFORMW 「 나의 예쁜 다리, 노래진 국물로 누트누트로 해 버려서…어째서 줄까?」
+    PRINTFORMW 「하아, 더러워져버리고 말았군요」
+    PRINTFORMW 「나의 예쁜 다리를, 하얀 국물로 끈적하게 해버렸으니… 어떻게 해줄까?」
 ;연모
-    PRINTFORMW 「, 정말 다리로 좋았어?」
+    PRINTFORMW 「으음, 정말 다리로 좋았어?」
 ;새디즘기분 Lv3 이상
 ELSEIF ABL:20 >= 3
-    PRINTFORMW 「야무지지 못한 얼굴 해…그렇게 좋았어?」
-    PRINTFORMW 「후후후, 평상시 나를 이지메치0포나, 이렇게 되면 면목없음이군요」
-    PRINTFORMW (…이 정복감. 조금 즐거울지도 모른다)
+    PRINTFORMW 「야무지지 못한 얼굴을 하고… 그렇게 좋았어?」
+    PRINTFORMW 「후후후, 평상시엔 나를 괴롭혀오던 자지주제에, 이렇게 된건 꼴불견이군요」
+    PRINTFORMW (…이 정복감. 조금 즐거울지도 모르겠네)
 ;그 외
 ELSE
-    PRINTFORMW 「다리가 베토 베토가 되어 버렸잖아. 싶고…」
+    PRINTFORMW 「다리가 끈적끈적… 더러워져 버렸잖아」
 ENDIF
 
 ;-------------------------------------------------
@@ -845,9 +846,9 @@ ENDIF
 ;-------------------------------------------------
 @K83_MESSAGE_EJAC_PLAYER_14
 IF RAND:2 == 0
-    PRINTFORMW 「이만큼으로 달한다 라고, 무슨 일이야…?」
+    PRINTFORMW 「키스만으로도 그만큼 달아오르다니, 가능한거야…?」
 ELSE
-    PRINTFORMW 「너무 흥분해요. 입맞춤만으로 이는」
+    PRINTFORMW 「너무 흥분했어요. 입맞춤만으로 이런 꼴은」
 ENDIF
 
 ;-------------------------------------------------
@@ -896,38 +897,38 @@ NEXT
 ;고통 각인 취득 CFLAG:5310
 ;-------------------------------------------------
 @K83_MESSAGE_MARK0_1
-PRINTFORMW 「이 정도의 아픔으로 복속시키자는, 상당히 나메것이군요」
-PRINTFORMW 「그런 것은, 내가 인간이었던 무렵의 낡은 생각이야」
+PRINTFORMW 「이 정도의 아픔으로 복속시키려 하는건 상당히 어설픈 생각이군요」
+PRINTFORMW 「그런건, 내가 인간이었던 무렵에나 떠올릴법한 낡은 생각이야」
 CFLAG:5310 = 1
 
 @K83_MESSAGE_MARK0_2
-PRINTFORMW (타도록(듯이) 아픈, 도와…누군가…)
-PRINTFORMW 「언젠가, 수천배로 해 돌려주기 때문에 …구」
+PRINTFORMW (타는 것 같이 아파…! 도와줘… 누구든지…)
+PRINTFORMW 「언젠가, 수천배로 돌려줄테니까… 크윽」
 CFLAG:5310 = 2
 
 @K83_MESSAGE_MARK0_3
 IF TFLAG:40 == 3 && CFLAG:5310 < 3
     ;연모+반발 각인 Lv3
     IF TALENT:150 == 1 && MARK:9 == 3
-        PRINTFORMW 「다음에, 같은 장소에, 하아…하아…같은 것을, 새겨 주어요…」
-        PRINTFORMW 「그러면 함께…응!  당신과 함께, 될 수 있는 것…후후, 우후 후후후」
+        PRINTFORMW 「다음에, 같은 장소에, 하아…하아…같은 고통을, 새겨 주겠어요…」
+        PRINTFORMW 「그러면 함께…응!  당신과 함께, 할 수 있는 것…후후, 우후 후후후」
     ;연모
     ELSEIF TALENT:150 == 1
         ;매저키스트기분 Lv3 이상
         IF ABL:21 >= 3
-            PRINTFORMW 「응, 구…」
-            PRINTFORMW 「좋아요…좀 더, 계속해…. 아픔도 자국도 새기며…」
-            PRINTFORMW 「전부…당신의 전부를 받아들인다 라고, 결정했으니까 …!」
+            PRINTFORMW 「응, 우…」
+            PRINTFORMW 「좋아요…좀 더, 계속해…. 아픔도 흉터도 새겨줘…」
+            PRINTFORMW 「전부…당신의 전부를 받아들이겠다고, 결정했으니까 …!」
         ;그 외의 경우
         ELSE
-            PRINTFORMW 「있고, 아 아″″――――!」
-            PRINTFORMW 「미안해요, 허락해…. 됨됨이가 나 노예로 미안해요!」
-            PRINTFORMW 「이런 건은, 아픈 것은 혐…」
+            PRINTFORMW 「아아, 아앗――――!」
+            PRINTFORMW 「미안해요, 용서해주세요…. 앞으로 노예처럼 굴테니까!」
+            PRINTFORMW 「이런 건, 이런 아픈 건 제발 그만…」
         ENDIF
     ;그 외
     ELSE
-        PRINTFORMW 「부탁…그만두어, 너무 해요…. …」
-        PRINTFORMW (이런 생각을 할 정도로라면, 죽는 편이 마시…)
+        PRINTFORMW 「부탁이야… 그만, 너무해요…. 흑…」
+        PRINTFORMW (이런 생각을 할 정도로라면, 죽는 편이 나아…)
     ENDIF
     CFLAG:5310 = 3
 ENDIF
@@ -946,14 +947,14 @@ ENDIF
 @K83_MESSAGE_MARK1_3
 ;연모
 IF TALENT:150 == 1
-    PRINTFORMW 「…견딜 수 없다…. 이 기분 좋음, 쭉 맛봐 아프다…」
+    PRINTFORMW 「…견딜 수 없어…. 이렇게 기분 좋은건, 쭉 맛보고 싶어요…」
 ;굴복 각인 Lv3
 ELSEIF MARK:2 == 3
-    PRINTFORMW (군데군데로 느껴 버리는 것은 어쩔 수 없다. 적어도 빠지지 않고 있으려고 생각하고 있었다)
-    PRINTFORMW (에서도, 그것도 한계군요…. 지금의로 날아 가 버린 것. 다양하게)
+    PRINTFORMW (느껴 버리는 것 자체는 어쩔 수 없다. 적어도 거기에 빠지지 않겠다고 생각하고 있었어)
+    PRINTFORMW (하지만, 그것도 한계군요…. 방금 그 다짐이 날아가 버렸어…)
 ;그 외의 경우
 ELSE
-    PRINTFORMW (더 이상 되면(자) 마즈 있고 원…. 몸을 제어할 수 없게 된다)
+    PRINTFORMW (더 이상 이렇게 당하다보면…. 몸이 쾌락에 져버리게 될지도)
 CFLAG:5311 = 3
 ENDIF
 
@@ -965,11 +966,11 @@ ENDIF
 ;CFLAG:5312 = 1
 
 @K83_MESSAGE_MARK2_2
-PRINTFORMW 「그렇게까지 해, 나를 물건으로 하고 싶은거야…?」
+PRINTFORMW 「그렇게까지 해서, 나를 물건으로 만들고 싶은거야…?」
 CFLAG:5312 = 2
 
 @K83_MESSAGE_MARK2_3
-PRINTFORMW 「 이제(벌써), 저항은 무의미한…. 내가"나"를 잃는 것도, 반드시 시간의 문제…」
+PRINTFORMW 「이제, 저항은 무의미해…. 내가 '나'를 잃는 것도, 반드시 시간 문제…」
 CFLAG:5312 = 3
 
 ;-------------------------------------------------
@@ -1001,12 +1002,12 @@ CFLAG:5312 = 3
 @K83_MESSAGE_MARK4_3
 ;연모
 IF TALENT:150
-    PRINTFORMW 「아무리 당신이라도, 이것만 입었을 뿐 없어요」
-    PRINTFORMW 「사랑하고 있으니야말로, 배신당했을 때의 반동은 강해…?」
+    PRINTFORMW 「아무리 당신이라도, 이런 것 까지 참아주지는 않아요」
+    PRINTFORMW 「사랑하고 있는 만큼 배신당했을 때의 반동은 강한걸…?」
 ;그 외
 ELSE
-    PRINTFORMW 「생명은 아깝지 않게…」
-    PRINTFORMW 「후후, , 우후 후후 후후………」
+    PRINTFORMW 「생명은 소중히 해야…」
+    PRINTFORMW 「후후, 우후 후후 후후………」
 CFLAG:5314 = 3
 ENDIF
 
@@ -1059,55 +1060,55 @@ IF TALENT:모성
     ;PRINTFORMW 
 ;그 외
 ELSE
-    PRINTFORML 「와…일어나, %CALLNAME:MASTER%. 응, 응은 정말」
-    PRINTFORML 「(프르풀) …이제(벌써), 일어나 주세요, 밥이 식어버린다겠지!」
-    PRINTFORMW 「…싶고, 전은 이렇게 불규칙한 생활하고 있지 않았는데 」
+    PRINTFORML 「어서…일어나, %CALLNAME:MASTER%. 응, 정말」
+    PRINTFORML 「…이제, 일어나 주세요. 식사가 식어버린다구요!」
+    PRINTFORMW 「…정말, 이전엔 이렇게 불규칙한 생활을 하고 있진 않았는데 」
     PRINTFORML 
-    PRINTFORML 큰 소리를 내도, 요 들이마셔도, 조금 두드려 봐도, 좀처럼 일어나지 않는 이 남자.
-    PRINTFORML 조금 의식은 각성 하고 있는 것 같지만, 좀 더라고 말하면서 다시 이불을 쓴다.
-    PRINTFORML 부끄럽지만, 이것이 나의 남편이다. 보기 흉한도 참 짝이 없다.
-    PRINTFORMW 에서도 이런 때, 이 사람을 일으키는데 안성맞춤의 대사가 있다.
-    PRINTFORMW 「앞으로 10초 이내에 일어나지 않으면 영원히 자면서 움직이게 되어요…?」
-    PRINTFORML 이것을 귓전으로 보소리라고 중얼거리는 것만으로……이봐요, 일어났다.
-    PRINTFORML 보기에도 졸린 듯한 표정으로, 머리를 보리보리라든지 오면서, 간신히 무거운 엉덩이를 든다.
-    PRINTFORMW 「안녕♪ 그러면, 갈아입어 빨리 와. 5분 이내에」
-    PRINTFORML 내가 말하면(자), 섣불리 신빙성이 있는 분 , 남편도 생명의 위기를 느끼는 것 같다.
-    PRINTFORML 진심으로 할 생각은 없지만, 만일 당신이 시체가 되었다고 해도,
-    PRINTFORML 나는 지금까지 대로 사랑해 계속되는데.
-    PRINTFORMW 이기 때문에 더욱 할 수도 있는 , 은 일일까…?
+    PRINTFORML 큰 소리를 내도, 이불을 들어올려도, 두드려 깨워봐도, 좀처럼 일어나지 않는 이 남자.
+    PRINTFORML 약간은 깨어 있는 것 같지만, 좀 더 라고 말하면서 다시 이불을 뒤집어 쓴다.
+    PRINTFORML 부끄럽지만 이게 나의 남편이다. 그야말로 보기 흉하기 짝이 없다.
+    PRINTFORMW 하지만 이런 때, 이 사람을 일으키는데엔 안성맞춤의 대사가 있다.
+    PRINTFORMW 「앞으로 10초 이내에 일어나지 않으면 영원히 잠든 채로 움직이게 될거에요…?」
+    PRINTFORML 이것을 귓전으로 조용히 중얼거리는 것만으로…… 봐요, 일어났네요.
+    PRINTFORML 한 눈에 보기에도 졸린 듯한 표정으로 머리를 북북 긁으면서 간신히 무거운 엉덩이를 든다.
+    PRINTFORMW 「좋은 아침♪ 그러면 빨리 갈아 입고 와요. 5분 이내에」
+    PRINTFORML 농담으로 할법한 말이라도 내가 말한다면 남편이라도 생명의 위기를 느끼는 것 같다.
+    PRINTFORML 진심으로 할 생각은 없지만, 만일 당신이 시체가 되었다고 해도
+    PRINTFORML 나는 지금까지 했던 것처럼 계속 사랑할 수 있는데.
+    PRINTFORMW 상대가 그니까, 그걸로 더욱 사랑할 수 있는 걸까.
     PRINTFORML
-    PRINTFORML 어쩐지 나른한 듯이  거실에 내려 온 남편도, 아침 식사가 좋은 향기로 활력을 되찾는다.
-    PRINTFORML 결혼 이래 정착한, 우리 집의 기본 스타일의 풍경.
-    PRINTFORML 아직 어색한 곳은 있지만, 사랑하는 사람을 위해서(때문에) 이렇게 노력하고 있으면(자),
-    PRINTFORMW 자연과 미소가 넘쳐 흐름이라고 끝낸다. 본래, 아내 (와)는 이런 것인지도.
-    PRINTFORMW 「오늘 휴가였어?  어딘가 나갑시다」
-    PRINTFORML 애정 넘치는 손요리를 일심 불란에 뺨 펴는 남편에게 만족하면서, 오늘의 예정을 묻는다.
-    PRINTFORML 최근의 휴일은 언제나 이렇게, 아침 식사를 취하면서 2명이 계획을 세우고 있다.
-    PRINTFORMW 외출기피인 남편을 끌기 시작하는데는 고생하지만, 함께 이것저것 생각하는 것은 정말 즐겁다.
+    PRINTFORML 어쩐지 나른한 듯이 거실에 내려온 남편도 아침 식사의 좋은 향기로 활력을 되찾는다.
+    PRINTFORML 결혼이래 정착한 우리 집의 기본 스타일인 풍경.
+    PRINTFORML 아직 어색한 부분은 있지만 사랑하는 사람을 위해서 이렇게 노력하고 있으니
+    PRINTFORMW 자연스레 미소가 넘쳐 흐르게 된다. 본래, 아내라는게 이런 것인지도.
+    PRINTFORMW 「오늘은 쉬는 날이지? 그럼 어딘가 놀러 가죠」
+    PRINTFORML 애정 넘치는 요리를 일심불란하게 입에 넣는 남편에게 만족하면서, 오늘의 예정을 묻는다.
+    PRINTFORML 최근의 휴일은 언제나 이렇게 아침 식사를 하면서 2명이서 계획을 세우곤 한다.
+    PRINTFORMW 외출을 기피하는 남편을 끌어 내는데는 고생하지만, 함께 이것저것 생각하는 것은 정말 즐겁다.
     PRINTFORML 
-    PRINTFORML 문득 남편의 눈이, 1매의 광고지에 못부가 된다.
-    PRINTFORML 그것은 최근마을에 개점했다고 하는, 어린이용품을 취급하는 가게의 것.
-    PRINTFORMW 나도 정면으로부터 얼굴을 내밀어, 무심코 훔쳐 보고를 해 버린다.
-    PRINTFORMW 「그렇게 말하면, 아직이었던 원이군요…. 아이」
-    PRINTFORML 서두르는 것은 아니고, 밤낮 묻지 않고, 부부로서 제대로 하는 것은 하고 있다.
-    PRINTFORMW 에서도 이상하게, 지금까지 남편과의 사이에는 아이를 낳았던 적은 없었다.
-    PRINTFORMW 「흥미 있는 거야…?  그, 부모가 된다는 것에…」
-    PRINTFORML 아침부터 아름답게 물든 회화이지만, 남편은 확실히 수긍했다.
-    PRINTFORML 확실히 쉽사리는 할 수 있는 것이 아니고, 마음의 준비도 필요.
-    PRINTFORMW 에서도, 이 사람이 그렇게 말해 준다면, 나에게도 주저 있고는 없다.
-    PRINTFORML 「그러면 오늘은, 그 가게에 가 봅시다. 예비 조사를 겸해」
-    PRINTFORML 「그 후는…으응, 아무것도 아니다」
-    PRINTFORMW 이런 일은 말해 말하는 것이 아니다. 자연과 그러한 흐름이 되어 줄 것.
-    PRINTFORML "부부"로부터"가정"으로 옮길 때는, 조만간에 온다.
-    PRINTFORML 지금의 나에게 할 수 있는 것은, 그 때에 슬픔 없게 그것을 기뻐할 수 있는 환경을 정돈하는 것.
-    PRINTFORML 그렇게 결심한 나는, 수줍고 은폐와 같이 다시 아침 식사를 외모 보기 시작한 남편을 후목에,
-    PRINTFORMW 조속히나갈 준비를 시작했던 것이었다.
+    PRINTFORML 문득 남편의 눈이, 1매의 광고지에 사로잡힌다.
+    PRINTFORML 그것은 최근 마을에 개점했다고 하는, 어린이 용품을 취급하는 가게의 광고지.
+    PRINTFORMW 나도 앞을 바라보던 얼굴을 돌려, 무심코 무얼 보고 있나 훔쳐 보게 된다.
+    PRINTFORMW 「그러고 보면, 아직이네요…. 아이」
+    PRINTFORML 서두르는 것은 아니지만, 밤낮을 따지지 않고 부부로서 제대로 하는 일은 하고 있다.
+    PRINTFORMW 그런데도 이상하게, 지금까지 남편과의 사이에서 아이를 낳았던 적은 없었다.
+    PRINTFORMW 「흥미 있어…? 그, 부모가 된다는 일에…」
+    PRINTFORML 아침부터 아름답게 물든 회화지만, 남편은 확실히 수긍했다.
+    PRINTFORML 확실히 쉽사리 할 수 있는 것은 아니고, 마음의 준비도 필요하지만.
+    PRINTFORMW 그래도, 이 사람이 그렇게 말해 준다면, 나도 주저할 필요는 없다.
+    PRINTFORML 「그러면 오늘은, 이 가게에 가 볼까요. 예비 조사를 겸해서」
+    PRINTFORML 「그 후는… 으응, 아무것도 아니야」
+    PRINTFORMW 이런 일은 말하는 것으로 이루어지는 일이 아니다. 자연스럽게 그러한 흐름이 되어 줄 것.
+    PRINTFORML '부부'로부터 '가정'으로 변할 때는, 조만간 온다.
+    PRINTFORML 지금의 내가 할 수 있는 것은, 그 때 후회하지 않도록 기뻐할 수 있는 환경을 준비하는 것.
+    PRINTFORML 그렇게 결심한 나는 다시 아침 식사를 시작한 남편을 두고,
+    PRINTFORMW 조속히 나갈 준비를 시작했다.
     PRINTFORML 
-    PRINTFORMW 과거에 한 번 혼인을 묶은 몸이면서, 그것을 스스로 멸로 한 어리석은 과거.
-    PRINTFORMW 녀로서 아내로서 사는 것을 방폐해, 당신이 욕구를 위해서(때문에) 많은 희생을 낳은 과거.
-    PRINTFORMW 그것을 넘고…아니오, 받아들여, 간신히"보통"의 부부의 행복을 손에 넣은 것.
-    PRINTFORMW 그 위에 지금의 자신이 있다. 이번이야말로, 그것을 손떼기는 하지 않는다.
-    PRINTFORMW 어디까지나 따라 간다. 어디까지나 모두 걷는다.
+    PRINTFORMW 과거에 한 번 혼인에 묶였던 몸이면서, 그것을 스스로 끊어낸 어리석은 과거.
+    PRINTFORMW 여자로서 아내로서 사는 것을 포기해, 자신의 욕구를 위해서 많은 희생을 낳았던 과거.
+    PRINTFORMW 그것을 넘어… 아니, 받아들여서 간신히 '보통'의 부부의 행복을 손에 넣은 것.
+    PRINTFORMW 그 위에 지금의 자신이 있다. 이번이야말로 끊어낼 일은 하지 않는다.
+    PRINTFORMW 어디까지나 따라 간다. 어디까지나 함께 걷는다.
     PRINTFORMW 진심으로 사랑하는 사람과 함께….
     PRINTFORML 
     PRINTFORMW 　　　　　　　　―― Ending No. 1083-A (청아정실 엔드)
@@ -1119,7 +1120,7 @@ RETURN 0
 ;단체 엔드 후에 「계속한다」를 선택했을 때에 출력합니다
 ;-------------------------------------------------
 @SINGLE_ENDING_AFTER_K83
-PRINTFORMW 「오히려 실전은 지금부터. 앞으로도 잘 부탁해」
+PRINTFORMW 「오히려 실전은 지금부터야. 앞으로도 잘 부탁해」
 RETURN 0
 
 ;-------------------------------------------------
@@ -1373,10 +1374,10 @@ TRYCALLFORM KOJO_83_TRAIN_MESSAGE_S_COM_{SELECTCOM}
 IF RESULT:1 == 1
     ;굴복 각인 Lv2 이상
     IF MARK:2 >= 2
-        PRINTFORMW 「이나, 거기 손대면…」
+        PRINTFORMW 「싫엇, 그런 곳에 손대는 건…」
     ;그 외
     ELSE
-        PRINTFORMW 「거리낌 없게 손대지 말아 주시는 것일까. 추접스럽다」
+        PRINTFORMW 「거리낌 없이 손대지 말아 주시죠. 추접스러우니」
     ENDIF
 
 ;2번째 이후
@@ -1384,33 +1385,33 @@ ELSE
     ;연모+C감각 Lv3 이상+B감각 Lv3 이상
     IF TALENT:150 && ABL:C감각 >= 3 && ABL:B감각 >= 3
         IF RAND:2 == 0
-            PRINTFORMW 「응, 좀 더 손대며…」
-            PRINTFORMW 「 나의 몸, 좋아할 뿐(만큼) 어루만지고 돌려 주세요…!」
+            PRINTFORMW 「응, 좀 더 만져줘…」
+            PRINTFORMW 「나의 몸, 마음에 드는 만큼 만져주세요…!」
         ELSE
-            PRINTFORMW 「어느 쪽도 기분이 좋은…젖가슴도, 음핵도…」
-            PRINTFORMW 「아, 앙, 응은…♪」
+            PRINTFORMW 「어느 쪽도 기분이 좋아… 가슴도, 클리도…」
+            PRINTFORMW 「아, 앙, 우웃…♪」
         ENDIF
     ;연모+C감각 Lv3 이상
     ELSEIF TALENT:150 && ABL:C감각 >= 3
-        PRINTFORMW 「아…♪ , 거기…」
-        PRINTFORMW 「그 끝(쪽) 만지작거려지면(자), 아무것도 생각할 수 없고…아」
+        PRINTFORMW 「아…♪ 앗, 거기…」
+        PRINTFORMW 「거기를 만지작거리면, 아무것도 생각할 수 없어… 아」
     ;연모
     ELSEIF TALENT:150
-        PRINTFORMW 「당신에게 조금 접할 수 있는 것만으로, 곧바로 반응해 버린다…」
-        PRINTFORMW 「몸이 기억해 버렸군요. 나안의"여자"를 상기시키는 사람의 손을」
+        PRINTFORMW 「당신에게 조금 접할 수 있는 것만으로, 곧바로 반응해 버려요…」
+        PRINTFORMW 「몸이 기억해 버렸군요. 내 안의 '여자'를 상기시키는 사람의 손을」
     ;굴복 각인 Lv3+C감각 Lv3 이상
     ELSEIF MARK:2 == 3 && ABL:C감각 >= 3
-        PRINTFORMW 「타목, 접하지 말고 …당신의 손은 나를 미치게 해 버린다…」
-        PRINTFORMW 「그만두어 꺄, …」
+        PRINTFORMW 「싫어, 손대지 마… %CALLNAME:MASTER%의 손은 나를 미치게 만들어 버려…」
+        PRINTFORMW 「그만둬 꺄, 아앙…」
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「과연 본업이군요…. 어머나, 칭찬하지 않아요?」
-        PRINTFORMW (이것이 일 이라고 단언하는 근처, 상응하는 기술은 가지고 있군요)
-        PRINTFORMW (기분으로 어떻게든 유지하고 있지만, 이대로는 언젠가…)
+        PRINTFORMW 「과연 본업이군요…. 어머나, 칭찬이라곤 하진 않았어요?」
+        PRINTFORMW (이것이 일이라고 단언하는 것에 상응하는 기술은 가지고 있군요)
+        PRINTFORMW (정신은 어떻게든 유지하고 있지만, 이대로라면 언젠가…)
     ;그 외
     ELSE
-        PRINTFORMW 「자주(잘) 싫증도 하지 않고, 그런 일을…」
-        PRINTFORMW 「이제 될 것입니다?  너무 서툴러 조금도 분위기를 살리지 않는다 것」
+        PRINTFORMW 「잘도 싫증 내지 않고, 그런 일을…」
+        PRINTFORMW 「이제 적당히 끝내죠?  너무 서툴러서 조금도 분위기가 살아나지 않는데」
     ENDIF
 ENDIF
 
@@ -1422,41 +1423,41 @@ ENDIF
 IF RESULT:1 == 1
     ;굴복 각인 Lv2 이상
     IF MARK:2 >= 2
-        PRINTFORMW 「싫지 않아?  그런 곳 빨며…」
-        PRINTFORMW 「그렇게, 요즈음의 교제에서는 이것이 보통인 것」
+        PRINTFORMW 「싫진 않아? 그런 곳 빠는 것…」
+        PRINTFORMW 「그런가, 요즈음의 교제는 이런 것이 보통인가」
     ;그 외
     ELSE
-        PRINTFORMW 「대강, 나의 개가 된다고 하는 의사 표시일까?」
-        PRINTFORMW 「예, 알고 있는 원이야. 당신의 눈은 그런 기색조차 느끼게 하지 않는다」
+        PRINTFORMW 「아마 이건, 나의 개가 된다고 하는 의사 표시일까?」
+        PRINTFORMW 「아니, 알고 있었어. 당신의 눈은 그런 기색조차 느껴지지 않으니」
     ENDIF
 ;2번째 이후
 ELSE
     ;연모+C감각 Lv3 이상
     IF TALENT:150 && ABL:C감각 >= 3
         IF RAND:2 == 0
-            PRINTFORMW 「거기, …♪ 좋다…」
-            PRINTFORMW 「혀로 눌러, 좀 더 강하고, 부탁…!」
+            PRINTFORMW 「거기, 하아…♪ 좋아…」
+            PRINTFORMW 「혀로 눌러줘, 좀 더 강하게, 부탁이야…!」
         ELSE
-            PRINTFORMW 「그렇게 빨면…멈추는거야, 응」
-            PRINTFORMW 「와 버리는 , 날름날름 되어, 나, 이제(벌써) …」
+            PRINTFORMW 「그렇게 빨면… 그만해요, 앙」
+            PRINTFORMW 「가 버렷, 할짝할짝해서, 나, 이제…」
         ENDIF
     ;연모
     ELSEIF TALENT:150
-        PRINTFORMW 「할 수 있으면 키스는 위의 입으로 하고 갖고 싶은, 일까」
-        PRINTFORMW 「그…거기는 응시할 수 있으면(자), 조금 부끄러우니까…」
+        PRINTFORMW 「가능하면 키스는 위의 입으로 하고 싶은, 거지만」
+        PRINTFORMW 「그… 거기는 빤히 보고 있으면, 조금 부끄러워…」
     ;굴복 각인 Lv3+C감각 Lv3 이상
     ELSEIF MARK:2 == 3 && ABL:C감각 >= 3
-        PRINTFORMW 「, 응…, 거기는 약한, 의에…」
-        PRINTFORMW 「혀가 맞아…나 , 꽉 누릅니다…」
+        PRINTFORMW 「아, 응… 거기는 약해, 그만…」
+        PRINTFORMW 「혀가 닿아서… 앗, 꽉 눌러줘…」
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「당신은 나를 타로 하고 싶은거야?  다하고 싶은거야?」
-        PRINTFORMW 「보통으로 생각하면, 당신은 굴욕을 느껴도 괜찮을 것인데」
-        PRINTFORMW 「…뭐든지 없어요. 기분이 내킬 때까지 계속하시며」
+        PRINTFORMW 「당신은 나를 섬기고 싶은거야? 굴복시키고 싶은거야?」
+        PRINTFORMW 「평범하게 생각하면, 이건 당신이 굴욕을 느낄만한 일인 것 같은데」
+        PRINTFORMW 「…뭐 됐어요. 기분이 내킬 때까지 계속하시죠」
     ;그 외
     ELSE
-        PRINTFORMW 「감탄해요. 축생의 흉내는 정말로 능숙하구나」
-        PRINTFORMW 「매우 나에게는 할 수 있을 것 같게 없지 않아요」
+        PRINTFORMW 「감탄스럽네요. 축생 흉내가 정말로 능숙한걸」
+        PRINTFORMW 「나는 할 수 있을 것 같지 않네요」
     ENDIF
 ENDIF
 
@@ -1468,12 +1469,12 @@ ENDIF
 IF RESULT:1 == 1
     ;굴복 각인 Lv2 이상
     IF MARK:2 >= 2
-        PRINTFORMW 「거기는 용도가 다를 생각이 드는데…」
-        PRINTFORMW 「아무래도 손대고 싶은거야?  , 그렇게…」
+        PRINTFORMW 「거기는 용도가 다른 곳이란 생각이 드는데…」
+        PRINTFORMW 「그렇게나 손대고 싶은거야? 거기에…」
     ;그 외
     ELSE
-        PRINTFORMW 「히, , 어디 손대어!」
-        PRINTFORMW 「그만두어, 거기는 부정의…, 구!」
+        PRINTFORMW 「히, 잇, 어디 손대는거야!」
+        PRINTFORMW 「그만둬요, 거기는 부정한… 곳, 윽!」
     ENDIF
 ;2번째 이후
 ELSE
@@ -1481,44 +1482,44 @@ ELSE
     ;연모+A감각 Lv3 이상+윤활 Lv2 이상
     IF TALENT:150 && LOCAL >= PALAMLV:2 && ABL:2 >= 3
         IF RAND:2 == 0
-            PRINTFORMW 「엉덩이가, 조금 전부터 갖고 싶어해 어쩔 수 없는거야…」
-            PRINTFORMW 「그체그체에 뒤, 중을 묻어는 시끄러워」
-            PRINTFORMW 「이 맹, 진정시켜 주시는 것일까…?」
+            PRINTFORMW 「엉덩이가, 조금 전부터 갖고 싶어서 어쩔 수 없을만큼…」
+            PRINTFORMW 「움찔움찔하고 있어, 시끄러울 정도로」
+            PRINTFORMW 「이거, 진정시켜 줄 수 있을까…?」
         ELSE
-            PRINTFORMW 「응, 히…!  들어가, 온다」
-            PRINTFORMW 「 좀 더, 좀 더 깊게까지…!」
-            PRINTFORMW 「 나의 엉덩이, 형편없게 부수어!」
+            PRINTFORMW 「웃, 히잇…!  들어와, 오고 있어」
+            PRINTFORMW 「좀 더, 좀 더 깊게까지…!」
+            PRINTFORMW 「내 엉덩이, 쓸모 없어질만큼 괴롭혀줘!」
         ENDIF
     ;연모+A감각 Lv3 이상+윤활 Lv2 미만
     ELSEIF TALENT:150 && LOCAL < PALAMLV:2 && ABL:2 >= 3
-        PRINTFORMW 「 이제(벌써), 성급하니까…. 몸은 『 아직 』이라고 말하고 있는데도」
-        PRINTFORMW 「괜찮습니다. 계속하고 있으면 곧 , , 응」
+        PRINTFORMW 「정말, 성급하잖아…. 몸은『아직』이라고 말하고 있는데」
+        PRINTFORMW 「괜찮아요. 계속하고 있으면 곧, 괜찮아 질, 거야, 웃」
     ;연모+윤활 Lv2 이상
     ELSEIF TALENT:150 && LOCAL >= PALAMLV:2
-        PRINTFORMW 「분명하게 적셔 주었군요. 후후, 배려에 감사를」
-        PRINTFORMW 「네, 그러세요. 나도 빨리 여기서 좋아지고 싶으니까…」
+        PRINTFORMW 「확실하게 적셔 주었군요. 후후, 배려에 감사를」
+        PRINTFORMW 「나도 빨리 여기로 기분 좋아지고 싶으니까…」
     ;연모+윤활 Lv2 미만
     ELSEIF TALENT:150 && LOCAL < PALAMLV:2
         PRINTFORMW 「상냥하게 부탁해요. 거기는 서투르기 때문에…」
-        PRINTFORMW 「응, 응응…!」
-        PRINTFORMW (…아프다. 그렇지만, 참지 않으면…)
+        PRINTFORMW 「응, 으응…!」
+        PRINTFORMW (…아프다. 그렇지만, 참아야 해…)
     ;굴복 각인 Lv3+A감각 Lv3 이상+윤활 Lv2 이상
     ELSEIF MARK:2 == 3 && ABL:2 >= 3 && LOCAL >= PALAMLV:2
-        PRINTFORMW 「하아…, 응은…」
-        PRINTFORMW 「더러운 곳인데…, 어째서…몸이 」
-        PRINTFORMW ( 이제(벌써), 돌아올 수 없게 되어버린다…아…)
+        PRINTFORMW 「하아… 아, 하앗…」
+        PRINTFORMW 「더러운 곳인데… 어,어째서… 몸이 」
+        PRINTFORMW ( 더 이상 돌아올 수 없게 되어버려…아…)
     ;굴복 각인 Lv3+A감각 Lv3 이상+윤활 Lv2 미만
     ELSEIF MARK:2 == 3 && ABL:2 >= 3 && LOCAL < PALAMLV:2
-        PRINTFORMW 「기다려, 거기는 아직 준비가…열린다!」
-        PRINTFORMW 「몸이 따라붙지 않기 때문에, 적어도, 적셔 …」
+        PRINTFORMW 「기다려, 거기는 아직 준비가… 아팟!」
+        PRINTFORMW 「몸이 따라가질 못하니까. 적어도, 적셔서…」
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「구, 응, …」
-        PRINTFORMW (이런 송구스러운…이제(벌써), 죽어 버리고 싶다…)
+        PRINTFORMW 「우, 웃, 으으…」
+        PRINTFORMW (이런 끔찍한… 이제, 죽어 버리고 싶어…)
     ;그 외
     ELSE
-        PRINTFORMW 「그만두어라는 말비치겠지요!  다음에 얼얼 해 아파!」
-        PRINTFORMW 「이상해요…이런 건, 절대」
+        PRINTFORMW 「그만두라는 말 안들려요! 얼얼해… 아파…」
+        PRINTFORMW 「이상해요… 이런 일, 절대」
     ENDIF
 ENDIF
 
@@ -1530,11 +1531,11 @@ ENDIF
 IF RESULT:1 == 1
     ;굴복 각인 Lv2 이상
     IF MARK:2 >= 2
-        PRINTFORMW 「이것이 신경이 쓰였기 때문에 짊어져?  쭉」
-        PRINTFORMW 「여자가 상대를 끌어당기는 최대의 무기. 당신에게도 효과는 있도록(듯이)」
+        PRINTFORMW 「이게 그렇게나 신경쓰여?」
+        PRINTFORMW 「여자가 상대를 끌어당기는 최대의 무기지. 당신에게도 효과는 있나보네」
     ELSE
-        PRINTFORMW 「완전히, 어느 놈도 진한 개도 이것만…」
-        PRINTFORMW 「여기를 만지작거리면 여자가 반드시 허덕인다고 생각하고 있다. 남자 중심의 경박한 자부군요」
+        PRINTFORMW 「참 나, 어떤 놈들도 이것만…」
+        PRINTFORMW 「여기를 만지작거리면 어떤 여자도 반드시 허덕인다고 생각하고 말이에요. 남자 중심의 경박한 생각이군요」
     ENDIF
 ;2번째 이후
 ELSE
@@ -1543,74 +1544,74 @@ ELSE
         ;연모+B감각 Lv3 이상
         IF TALENT:150 && ABL:B감각 >= 3
             IF RAND:2 == 0
-                PRINTFORMW 「…. 의 젖가슴, 반죽하고 돌려지고 있다…♪」
-                PRINTFORMW 「이만큼은 안타까워요…. 좀 더 강하고, 만지작거려!」
+                PRINTFORMW 「나의 가슴, 주물주물, 돌려대고 있네…♪」
+                PRINTFORMW 「이 정도로는 안타까워요…. 좀 더 강하게, 만져줘!」
             ELSE
-                PRINTFORMW 「따뜻해요…당신의 손. 상냥한데, 매우 강력하다」
-                PRINTFORMW 「 나의 약한 곳을 다 알아 , 이지메 뽑은 손인데…」
-                PRINTFORMW 「견딜 수 없는거야…. 당신에게 손대어지면(자), 몸의 깊은 곳이, 좀 더 해 주었으면 한다고 쑤시는 것 …!」
+                PRINTFORMW 「따뜻하네요… 당신의 손. 상냥하고, 매우 강력해」
+                PRINTFORMW 「나의 약한 곳을 다 아는, 짓궂은 손인데…」
+                PRINTFORMW 「견딜 수 없어져…. 당신이 손대면 몸의 깊은 곳이 좀 더 해 주었으면,하고 쑤셔와…!」
             ENDIF
         ;연모
         ELSEIF TALENT:150
             IF RAND:3 == 0
-                PRINTFORMW 「이만큼 크면 얼굴이 않고 째등원이군요」
-                PRINTFORMW 「개-들. 하지만 붙지 않는거야. 젖가슴은 어디에도 도망치지 않아요」
-                PRINTFORMW 「응, 그렇게. 상냥하게…. 좋은 아이 좋은 아이」
+                PRINTFORMW 「이만큼 큰 가슴이면 얼굴에 대보지 않고는 못견디는 걸까」
+                PRINTFORMW 「그렇게 붙지 말아요. 가슴은 어디에도 도망치지 않아요」
+                PRINTFORMW 「응, 그렇게요. 상냥하게…. 착한 아이 착한 아이」
             ELSEIF RAND:2 == 0
-                PRINTFORMW 「질식해 그렇게?  응도 , 당신이 이렇게 하고 싶게 키에…」
-                PRINTFORMW 「그런 일 말하는 아이는, 이렇게 해 준다」
-                PRINTFORMW 「후후, 행복하겠지요?  정말 좋아하는 젖가슴의 중량감을 느껴지며」
+                PRINTFORMW 「질식해 버릴지도? 후훗, 당신이 이렇게 하고 싶다면야…」
+                PRINTFORMW 「그런 일 말하는 아이는, 이렇게 해 주겠어요」
+                PRINTFORMW 「후후, 행복하지요? 정말 좋아하는 가슴의 중량감을 느껴지는게」
             ELSE 
                 PRINTFORMW 「당신 취향의 크기가 될 수 있던 것은 기뻐요」
-                PRINTFORMW 「 그렇지만 조금, 자극이 완만하게 느껴요. 손의 따스함도」
-                PRINTFORMW 「전에는 신경에 직접 영향을 주고 있는  것이 아닌가는 정도로, 기분 좋았지만…」
+                PRINTFORMW 「그렇지만 조금, 자극이 약간 둔하게 느껴지네요. 손의 따스함도」
+                PRINTFORMW 「전에는 신경에 직접 영향을 주고 있는 것이 아닐까 싶을 정도로, 기분 좋았지만…」
             ENDIF
         ;굴복 각인 Lv3+B감각 Lv3 이상
         ELSEIF MARK:2 == 3 && ABL:B감각 >= 3
-            PRINTFORMW 「아, 흔들리고 있다…. 억지로 크게 여겨진 젖가슴, 흔들려 …」
-            PRINTFORMW (이래서야 부족한…, 좀 더, 강한 자극을…)
-            PRINTFORMW (안 됨…!  그런 일, 나의 입으로부터 말할 수 있는 것이…! )
+            PRINTFORMW 「아, 흔들리고 있어…. 억지로 커지게 만들어진 가슴이, 흔들려…」
+            PRINTFORMW (이래서야 부족해… 아아, 좀 더, 강한 자극을…)
+            PRINTFORMW (안 돼…! 그런건, 내 입으로 말할 수 있는 것이 아냐…! )
         ;굴복 각인 Lv2 이상
         ELSEIF MARK:2 >=2
-            PRINTFORMW 「촉감 마음은 좋겠지요. 나본래의 모습은 아니지만」
-            PRINTFORMW 「마음 탓인지 감도가 무디어진 것 같지 않아도, 는, 무슨 말을 하게 해…」
+            PRINTFORMW 「촉감은 좋겠지요. 내 본래의 모습은 아니지만」
+            PRINTFORMW 「마음 탓인지 감도가 무디어진 것 같아서, 아니, 무슨 말을 한거지…」
         ;그 외
         ELSE
-            PRINTFORMW 「사람의 몸을 마음대로 바꾸었다고 생각하면, 이런 일에 사용하기 (위해)때문에는…」
-            PRINTFORMW 「정말로 욕망의 배출구로 밖에 생각하지 않구나, 여자를」
+            PRINTFORMW 「사람의 몸을 마음대로 바꿔놓고는, 이런 일에 사용하는게 전부…」
+            PRINTFORMW 「정말 욕망의 배출구로 밖에 생각하지 않는구나, 여자를」
         ENDIF        
     ;그 외
     ELSE
         ;연모+B감각 Lv3 이상
         IF TALENT:150 && ABL:B감각 >= 3
             IF RAND:2 == 0
-                PRINTFORMW 「아, 좋다…!  젖가슴 기분이 좋은 것…!」
-                PRINTFORMW 「손댈 뿐(만큼)은, 아니…. 기분이 좋은 일, 가득 해…!」
+                PRINTFORMW 「아, 좋아…! 가슴이, 기분 좋아…!」
+                PRINTFORMW 「손대고 싶은 만큼, 좋아…. 기분 좋아지는 일, 잔뜩 해줘…!」
             ELSE
-                PRINTFORMW 「쓰다듬고 있을 뿐(만큼)은, 심해요…!」
-                PRINTFORMW 「 이제(벌써), 그러면 만족할 수 없는 것!」
+                PRINTFORMW 「쓰다듬고 있을 뿐인건, 너무해요…!」
+                PRINTFORMW 「더는, 그 정도로는 만족할 수 없어!」
             ENDIF
         ;연모
         ELSEIF TALENT:150
             IF RAND:2 == 0
-                PRINTFORMW 「이봐요, 와. 응석부리게 해 준다」
+                PRINTFORMW 「그래요, 이리 와. 응석부리게 해 줄게」
                 PRINTFORMW 「좋아 좋아. 후후, 사랑스럽다…♪」
             ELSE
-                PRINTFORMW 「당신이 바란다면, 약에 의지해도 좋아?」
+                PRINTFORMW 「당신이 원한다면, 약에 의지해도 좋아?」
                 PRINTFORMW 「이 가슴은, 당신의 전부를 싸 줄 수 있을 것 같지 않으니까…」
             ENDIF
         ;굴복 각인 Lv3+B감각 Lv3 이상
         ELSEIF MARK:2 == 3 && ABL:B감각 >= 3
-            PRINTFORMW 「앙…, 가슴뿐, 아니…」
-            PRINTFORMW 「그렇게 되면(자)…느껴, 끝낸다 …」
+            PRINTFORMW 「아…앙, 가슴만, 만지고…」
+            PRINTFORMW 「그렇게 만져대니까… 느껴져, 적당히 해…」
         ;굴복 각인 Lv2 이상
         ELSEIF MARK:2 >=2
-            PRINTFORMW 「좋아하게 손대면 좋아요. 이 정도는 상정하고 있었기 때문에」
-            PRINTFORMW 「 그렇지만 아프게 하면(자) 화내요」
+            PRINTFORMW 「마음에 든다면 손대도 돼요. 그 정도 일은 상정하고 있었으니까」
+            PRINTFORMW 「그렇지만 아프게 하면 화낼거에요」
         ;그 외
         ELSE
-            PRINTFORMW 「필시 당신은 마음 좋겠지요. 여자의 부드러운 살갗을 희롱하는 것이 되어있고」
-            PRINTFORMW 「그렇게, 나는 조금도 즐겁지 않아요」
+            PRINTFORMW 「필시 당신은 기분 좋겠지요. 여자의 부드러운 살갗을 맘껏 희롱할 수 있고」
+            PRINTFORMW 「그래봤자, 나는 조금도 즐겁지 않아요」
         ENDIF
     ENDIF
 ENDIF
@@ -1623,85 +1624,85 @@ ENDIF
 IF RESULT:1 == 1
     ;굴복 각인 Lv2 이상
     IF MARK:2 >= 2
-        PRINTFORMW 「거기는, 가능한 한 정중하게 취급하며…」
-        PRINTFORMW 「당신도 분이나 비칠까요?  여기가 여자에게 있어 얼마나 소중한 부위인가는」
+        PRINTFORMW 「거기는, 가능한 한 정중하게 취급하세요…」
+        PRINTFORMW 「당신이 알기나 할까요? 여기가 여자에게 있어 얼마나 소중한 부위인지」
     ELSE
-        PRINTFORMW 「구, …!  그만두어 , 중요한 곳에 상처가 나겠지요!」
-        PRINTFORMW 「숫처녀가 아니고 끊어, 거기는 기분을 허락한 사람 밖에 손대게 한 구 없는 곳이야!」
+        PRINTFORMW 「윽…!  그만둬! 중요한 곳에 상처가 나면 어쩔거야!」
+        PRINTFORMW 「숫처녀가 아니더라도, 거기는 허락한 사이가 아니면 손대게 한 적 없는 곳이야!」
     ENDIF
 ;2번째 이후
 ELSE
     ;연모+V감각 Lv3 이상
     IF TALENT:150 && ABL:1 >= 3
         IF RAND:2 == 0
-            PRINTFORMW 「당신에게 만지작거려진다 라고 생각한 순간에, 이제(벌써) 이렇게 다랑어 다랑어에…」
-            PRINTFORMW 「 이제(벌써), 몇개라도 들어가요…. 그 손가락으로, 유지 변통해!」
+            PRINTFORMW 「당신이 만질거라고 생각한 것만으로, 벌써 이렇게 질척질척하게…」
+            PRINTFORMW 「이젠, 몇개라도 들어가요…. 그 손가락으로, 엉망으로 만들어 줘!」
         ELSE
-            PRINTFORMW 「손가락은 이제(벌써), 나 , …!」
-            PRINTFORMW 「 좀 더, 굵은 것을 갖고 싶다!  단단하고, 큰 것이!」
+            PRINTFORMW 「손가락은 이제 그만, 나, 아앙…!」
+            PRINTFORMW 「좀 더, 굵은 것을 갖고 싶어! 단단하고, 큰 걸로!」
         ENDIF
     ;연모
     ELSEIF TALENT:150
-        PRINTFORMW 「거리낌은 하지 않아 좋아요. 모두는 당신의 마음껏, 이군요」
-        PRINTFORMW 「몸이 심지로부터 불타고 번창하는 그 감각, 생각나게 해 줄래…?」
+        PRINTFORMW 「거리낄 필요는 없어요. 전부 다 당신이 원하는 만큼 마음껏, 해줘요」
+        PRINTFORMW 「몸이 심지부터 불타고 퍼져나가는 그런 감각, 떠오르게 해줄래…?」
     ;굴복 각인 Lv3+V감각 Lv3 이상
     ELSEIF MARK:2 == 3 && ABL:1 >= 3
-        PRINTFORMW 「손가락만, 인데…!  이런 건, 안 돼요 …!」
-        PRINTFORMW (머리가, 돌지 않게…되어. 안돼, 녹아버린다! )
+        PRINTFORMW 「손가락뿐, 인데도…! 이런 건, 안 돼요 …!」
+        PRINTFORMW (머리가, 아무 생각도 안들어…. 안돼, 녹아버려!)
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「 이제(벌써) 거기는, 손대지 않는, 그리고…!」
-        PRINTFORMW 「여자의 제일 중요한 곳, 그렇게 하지 말고!」
+        PRINTFORMW 「더 이상 거기엔, 손대지 마, 그리고…!」
+        PRINTFORMW 「여자의 제일 중요한 곳에, 그런 식으로 하지마!」
     ;그 외
     ELSE
-        PRINTFORMW 「구!  있고, …!」
-        PRINTFORMW 「죽인다…!  절대 죽여준다인가, 들 …!」
+        PRINTFORMW 「으윽! 그만둬, 큭…!」
+        PRINTFORMW 「죽인다…! 절대로 죽여버릴 줄 알아, 이 자식…!」
     ENDIF
 ENDIF
 
 ;-------------------------------------------------
-;페라한다
+;펠라한다
 ;-------------------------------------------------
 @KOJO_83_TRAIN_MESSAGE_S_COM_5
 ;첫회 실행시
 IF RESULT:1 == 1
     ;연모
     IF TALENT:150
-        PRINTFORMW 「이렇게 기분이 좋은 일, 나에게 숨기고 있었던은…」
-        PRINTFORMW 「좋아요, 당신의 입마0코, 싫어 해(정도)만큼 범해 준다 …」
+        PRINTFORMW 「이렇게 기분이 좋은 일을 내겐 숨기고 있었던거야…」
+        PRINTFORMW 「좋아요, 당신의 입○지, 괴로워 할때까지 범해 준다 …」
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「응…이나…, 그만두어 …!」
-        PRINTFORMW 「이것은, 다르다!  나의 것이 아닌 것!」
+        PRINTFORMW 「응… 싫어… 아, 그만둬…!」
+        PRINTFORMW 「이건, 아냐! 내 것이 아닌데!」
     ELSE
-        PRINTFORMW 「, 그런 취미가 있다면, 남자를 찾으면 좋을 것입니다!」
-        PRINTFORMW 「어째서…어째서 이런 것이, 나에게…」
+        PRINTFORMW 「하아, 그런 취미가 있다면 남자를 찾으면 되잖아!」
+        PRINTFORMW 「어째서… 어째서 이런 것이, 나에게…」
     ENDIF
 ;2번째 이후
 ELSE
     ;연모
     IF TALENT:150
         IF RAND:2 == 0
-            PRINTFORMW 「 좀 더, 좀 더 빨아…!」
-            PRINTFORML 「보통 여자에서는 얻을 수 없는 이 쾌락….
-            PRINTFORMW  아, 매우 이상해…탐미로…, 흥분해버리는…♪」
+            PRINTFORMW 「좀 더, 좀 더 빨아줘…!」
+            PRINTFORML 「평범한 여자로서는 얻을 수 없는 이 쾌락….
+            PRINTFORMW  아, 이런 이상한 상황… 탐미로… 흥분해버려…♪」
         ELSE
             PRINTFORMW 「좋아…?  좋아요…?  당신에게 뿌려도, 좋아…!」
-            PRINTFORMW 「…!  이구, 정액 가득 나오는 것!」
+            PRINTFORMW 「웃…! 아아, 정액 가득 나와버려!」
         ENDIF
     ;굴복 각인 Lv3+욕망 Lv3 이상
     ELSEIF MARK:2 == 3 && ABL:욕망 >= 3
-        PRINTFORMW 「이런 건 다른데, 응…그것, 기분, 좋다…」
-        PRINTFORMW 「으로, 내자…!  아레가 나와버릴 그렇게…!」
-        PRINTFORMW (끝0 틴은, 이렇게 기분 좋아질 수 있는 것이었구나 …)
+        PRINTFORMW 「이런 건 이상한데, 아… 거기, 기분, 좋아…」
+        PRINTFORMW 「안돼, 그러면…! 그게 나와버려…!」
+        PRINTFORMW (자○란거, 이렇게 기분 좋아질 수 있는 거였구나 …)
     ;굴복 각인 Lv2 이상
     ELSEIF MARK:2 >= 2
-        PRINTFORMW 「은…, 응은……」
-        PRINTFORMW (이것 다메…, 일단발개와 제어가 효과가 있는거야, 응응! )
+        PRINTFORMW 「웃… 아, 우웅……」
+        PRINTFORMW (여기는 그만… 아, 일단 발개와 제어가 효과가 있는거야, 응응! )
     ;그 외
     ELSE
-        PRINTFORMW 「적당히 해…, 이제(벌써) 나의 몸으로 노는 것은 그만두어…!」
-        PRINTFORMW (이런 몸은, 사당에도 돌아갈 수 없다…. 모두에게 맞는 모습이 아니어요…)
+        PRINTFORMW 「적당히 해… 더 이상 나의 몸을 가지고 노는 것은 그만해…!」
+        PRINTFORMW (이런 몸으론 사당에도 돌아갈 수 없어…. 이런 모습을 모두에게 보일 수는…)
     ENDIF
 ENDIF
 
@@ -3205,20 +3206,20 @@ IF TFLAG:99 == 0 ;노예가 배란유도제 사용
     ;연모
     IF TALENT:150
         IF RAND:2 == 0
-            PRINTFORMW 「이것을 마시면, 아이를 내려 주실 수 있을지도 모르구나…」
-            PRINTFORMW 「그것을 나에게 주신다고 하는 것은, 당신도 그것을 바래 주고 있다, 라고」
-            PRINTFORMW 「이라면 싶은 일은 아무것도 없다. 그것을 쭉 기대하고 있었어로부터…(코쿡)」
+            PRINTFORMW 「이걸 마시면, 아이를 내려 주실 수도 모르겠는걸…」
+            PRINTFORMW 「그걸 나에게 준다고 하는 것은, 당신도 그걸 바라고 있다, 라는거지」
+            PRINTFORMW 「그럼 피하고 싶은 것은 아무것도 없어. 그걸 쭉 기대하고 있었어… 후훗」
         ELSE
-            PRINTFORMW 「약의 일이라면 어느 정도의 지식은 있지만…. 정말로 효과가 있을까?」
-            PRINTFORMW 「응…. 그렇지만 자리 해 무료 기다리는 것보다는, 상당히 좋네요」
-            PRINTFORMW 「빨리 할 수 있으면 좋네요. 저희들의 사랑스러운 아이…」
-            PRINTFORMW 「 그렇지만 그 때문에(위해)는, 오모토가 되는 자식이 필요. 어떤 의미인가는, 알네요?」
+            PRINTFORMW 「약이라면 어느 정도 지식은 있지만…. 정말로 효과가 있을까?」
+            PRINTFORMW 「응…. 그렇지만 무료하게 기다리는 것보다는, 훨씬 좋겠지요」
+            PRINTFORMW 「빨리 생긴다면 좋겠네요. 저희들의 사랑스러운 아이가…」
+            PRINTFORMW 「그럼 그 후에는, 오모토(궁녀)가 될 자식이 필요할지도. 어떤 의미인가는, 알지요?」
         ENDIF
     ;그 외
     ELSE
-        PRINTFORMW 「…!  응구, , 무엇을 먹인 것!」
-        PRINTFORMW 「네, 어…?  그런, 그러면…나…」
-        PRINTFORMW 「그만두어 , 여기에 오지 않고!  지금 되면(자), 나는…!」
+        PRINTFORMW 「…! 우웃, 욱, 뭘 먹인 거야!」
+        PRINTFORMW 「응, 뭐…? 그런, 그랬다간… 나…」
+        PRINTFORMW 「그만둬, 오지마! 지금 했다간, 나는…!」
     ENDIF
 ELSEIF TFLAG:99 == 1 ;조수가 배란유도제 사용
     ;PRINTFORMW 「조수 배란유도제 대사입니다」
@@ -3343,7 +3344,7 @@ ENDIF
 @KOJO_83_TRAIN_MESSAGE_S_COM_90
 ;해제시
 IF TEQUIP:59 == 0
-    ;서로 사랑함
+    ;상애
     IF TALENT:153
         IF RAND:2 == 0
             PRINTFORMW 「이것도 결혼 생활의 묘미 (참다운 즐거움)이죠. 후후, 즐거웠어요」
@@ -9785,103 +9786,103 @@ ENDIF
 ;약혼 반지 사용시
 ;-------------------------------------------------
 @KOJO_83_MESSAGE_SUB_EVENT_SCENE200
-PRINTFORML 최근, 조련사로서의 자신이 요동하고 있다.
-PRINTFORML 지금까지 몇 사람이나의 소녀를 우수한 성 노예로 만들어 내 고객에게 제공해 왔다.
-PRINTFORML 이미 황상향의 이 업계에 있어, 이름을 알지 않는 사람은 없다.
-PRINTFORMW 이 사람에게 맡기면, 어떤 여자도 저속해진다. 그런 명성을 얻은 이 자신이, 다.
-PRINTFORML 확실히 지금도, 곧바로 팔아에 낼 수 있는 노예는 있다.
-PRINTFORML 게다가, 지금까지 목의"상품"에도 뒤떨어지지 않는 최고급품이다. 이것에 대해서는 보증 할 수 있다.
-PRINTFORML 이지만 자신은 아무래도 그것을 손놓을 생각으로는 될 수  없었다.
-PRINTFORML 가 아니면, 방금전부터 책상 위에 놓여져 있는, 코레에 대한 설명이 붙지 않는다.
-PRINTFORML 자신은 어째서 끝냈는가…. 일에 전혀 관계가 없는 것에 큰돈을 터는 등….
-PRINTFORML 모야모야와 골똘히 생각하고 있는 동안에, 잠시 전 호출해 둔 인물로부터 소리가 걸린다.
+PRINTFORML 최근, 조련사로서의 자신이 흔들리고 있다.
+PRINTFORML 지금까지 소녀들을 몇명이나 우수한 성 노예로 만들어 고객에게 제공해 왔다.
+PRINTFORML 이미 환상향의 이 업계에선 내 이름을 모르는 사람은 없다.
+PRINTFORMW 이 사람에게 맡기면 어떤 여자도 저속해진다. 그런 명성을 얻은 자신이다.
+PRINTFORML 확실히 지금도, 곧바로 팔아버릴 수 있는 노예는 있다.
+PRINTFORML 게다가, 지금까지의 어떤 '상품'에도 뒤떨어지지 않는 최고급품이다. 그건 확실히 보증 할 수 있다.
+PRINTFORML 하지만 자신은 아무래도 그것을 손에서 놓을 생각이 없었다.
+PRINTFORML 그게 아니면, 방금전부터 책상 위에 놓여져 있는 '그것'에 대한 설명이 되지 않는다.
+PRINTFORML 자신이 어째서 일에 전혀 관계가 없는 것에 큰 돈을 쓴건지….
+PRINTFORML 떨떠름한 기분으로 골똘히 생각하고 있는 동안에, 방금 전 호출해 둔 인물이 왔다.
 PRINTFORMW 「%CALLNAME:MASTER%~, 들어가요―？」
-PRINTFORML 정직, 능숙하게 표정을 만들 수 있는 자신도 없었지만, 손질하도록(듯이) 킥과 눈을 보고 열면(자),
-PRINTFORMW 초조를 숨기도록(듯이), 조용하게 그녀를 맞아들였다.
+PRINTFORML 능숙하게 숨길 자신은 없었지만 표정에 신경을 쓰면서
+PRINTFORMW 최대한 초조함을 숨기고, 조용하게 그녀를 맞아들였다.
 PRINTFORML 
-PRINTFORMW 「왜?  바뀌어 버려서. 이상해♪」
-PRINTFORML 평상시 좀처럼 입실이 허가되지 않는 이 방에 들어가, 청아는 조금 기쁜 듯했다.
-PRINTFORML 끊임없이 근처를 둘러봐, 드문 일상 생활 용품을 찾아내면(자) 흥미로운 듯이  바라보고 있다.
-PRINTFORML 그 중에서책상에 놓여진 작은 상자에도 깨닫았다.
-PRINTFORML 열어도 좋을까 (들)물어 순간에 승낙해 버린다.
-PRINTFORMW 여기까지 오면(자) 이제(벌써), 퇴보 등 할 수 없다. 어차피 조만간에 건네주는 것이다.
-PRINTFORML 「원……깨끗한 반지군요. 이것, 당신이 샀어?」
-PRINTFORMW 긍정한다. 동시에, 그것은 너에게 줄 생각이다, 라고도.
-PRINTFORML 「네, 예!  좋은거야?  이런 높은 것 같은 것, 내가 받아 버려서도」
-PRINTFORMW 「기뻐요. 쭉 소중히 해요!  그리고, 오늘의 주제는 그것?」
-PRINTFORML 여기로부터가 실전. 고동등당연히 높아지고 있다.
-PRINTFORML 떨려 버릴 것 같은 소리를 살그머니 정돈해 그 진심을 천천히 이야기를 시작했다.
+PRINTFORMW 「왜 여기로 부른거야? 평소랑은 다르니 이상한걸♪」
+PRINTFORML 평상시엔 좀처럼 입실이 허가되지 않는 이 방에 들어온게 청아는 조금 기쁜 듯했다.
+PRINTFORML 끊임없이 근처를 둘러보며, 일상 생활 용품을 찾아내면 흥미로운 듯이 바라본다.
+PRINTFORML 그 중에서도 책상에 놓여진 작은 상자를 깨달았다.
+PRINTFORML 열어도 좋을까를 물어보자 순간 승낙해버렸다.
+PRINTFORMW 여기까지 왔으면 더 이상 물러날 수는 없다. 어차피 조만간 건네줄 것이였다.
+PRINTFORML 「와……예쁜 반지네요. 이건, %조사처리(CALLNAME:MASTER,"가")% 샀어?」
+PRINTFORMW 고개를 끄덕였다. 동시에 그건 너에게 줄 생각이다, 이라고도.
+PRINTFORML 「네, 알았어요! 괜찮은거지? 이런 비싸 보이는 걸, 내가 받아버려도?」
+PRINTFORMW 「기쁜걸. 그럼 쭉 소중히 할게요! 그리고, 오늘의 주제는 그것?」
+PRINTFORML 여기로부터가 실전. 심장 고동은 당연하게 높아지고 있다.
+PRINTFORML 떨려 버릴 것 같은 목소리를 살그머니 정돈하고 그 진심을 천천히 이야기를 시작했다.
 PRINTFORMW 
-PRINTFORML 반지를 받은 직후는 소뛰어 할 것 같을 만큼(정도) 까불며 떠들고 있던 청아이지만,
-PRINTFORML 이쪽이 이야기를 시작하면(자) 끄떡도 않게 되어, 눈감으면서 조용하게 들어 들어가 있었다.
-PRINTFORML 이지만 그 뺨은 홍조 해, 어깨를 흔들어, 호흡은 점차 철같은 소리를 연주하기 시작한다.
-PRINTFORML 마지막으로, 청아가 가지고 있던 반지를 한 번 받은 데다가, 왼손을 살그머니 잡았다.
-PRINTFORML 생애에 건너 모두 걷고 싶으면 너를 사랑해 버렸다고.
-PRINTFORML 네가 받아들여 준다면, 이것을 그 약손가락에 낀다.
+PRINTFORML 반지를 받은 직후는 펄쩍 뛸만큼 까불며 떠들고 있던 청아이지만,
+PRINTFORML 이쪽이 이야기를 시작하자 끄떡도 않으며, 눈을 감고 조용하게 듣기 시작했다.
+PRINTFORML 곧 그 뺨은 빨갛게 물들며, 어깨를 떨고, 호흡은 점차 가쁘게 변하기 시작한다.
+PRINTFORML 마지막으로 청아가 가지고 있던 반지를 한 번 돌려 받고선, 왼손을 살그머니 잡았다.
+PRINTFORML 나의 생애 전부를 걸고 너와 함께 걷고 싶을 만큼 너를 사랑해 버렸다고.
+PRINTFORML 네가 받아들여 주겠다면, 이걸 그 약지 손가락에 껴달라고.
 PRINTFORMW 그것이, 이 반지를 건네주는 진정한 의미이다, 라고.
-PRINTFORML 「…진심으로, 말해?  당신이 그렇게 말한다면, 나는…」
-PRINTFORML 그렇지 않다. 이것은 지시에서도 명령에서도, 하물며 강제도 아니다.
-PRINTFORML 군이 지금의 자신의 말을 듣고 느낀, 솔직한 기분만을 알고 싶다.
+PRINTFORML 「…진심으로, 말하는거야?  당신이 그렇게 하라고 말한다면, 나는…」
+PRINTFORML 그렇지 않다. 이것은 지시도 명령도, 하물며 강제도 아니다.
+PRINTFORML 네가 지금 나의 말을 듣고 느낀 솔직한 기분을 알고 싶다.
 PRINTFORMW 「………」
-PRINTFORML 청아는 망설이도록(듯이), 오른손을 입에 대어 숙여 버린다.
-PRINTFORML 역시 안된가….
-PRINTFORML 만남으로부터 해 이미 온당한 것은 아니고, 또 지금까지의 처사도 생각하면,
-PRINTFORMW 받아들여져야할 없었던 구상. 하지만 전할 수가 있던 것만으로도……
-PRINTFORML 「반지, 빌려 주어…?」
-PRINTFORML 손가락끝으로 집고 있던 반지가, 문득 사라진다.
-PRINTFORMW 반 억지로 빼앗긴 모습의 소레는, 다음의 순간에는, 이제(벌써) 왼손의 약손가락에 들어가고 있었다.
-PRINTFORML 「완전히…. 갑자기 사람을 호출했는지라고 생각하면, 이것을 한다, 이야기를 들을 수 있다」
-PRINTFORML 「마음대로 긴장해, 낙담해…. 그렇게 표정 풍부한 사람이었는지 해들 」
-PRINTFORML 싫증같게 단언하는 청아의 소리는, 크게 떨고 있었다.
-PRINTFORMW 그 눈에 가득 채운 우는, 마루에 웅덩이를 만들 듯이 기세로, 너덜너덜흘러넘치고 떨어지고 있다.
-PRINTFORML 「일과 사정을 혼동 해, 당신 정말로 조련사야?  정말, 바보같으니까…」
-PRINTFORML 「결과의 끝에는, 이런 언제 배반한다고도 모르는 더러워진 사선에 반했다라고…」
-PRINTFORMW 반지가 빠져 있던 왼손을 이쪽에 늘려, 얼굴의 형태를 확인하도록(듯이), 천천히 어루만진다.
-PRINTFORML 「그리고, 이런 최저의 랑자자에게 사랑을 한 나는, 좀 더 바보…」
-PRINTFORMW 어느새인가, 오른손이 허리로 돌고 있었다. 강하고, 히 해와 포, 동작도 잡히지 않는다.
-PRINTFORMW 「기분, 받습니다…」
-PRINTFORMW 「노예도 선인도 아닌, 당신의 아내로서 모두, 걷는…!」
-PRINTFORMW 「옛 내가 손에 넣을 수  없었던 행복을, 주세요…!  쭉 사랑해 주세요!」
-PRINTFORMW 「그것이, 내가 당신에게 안은 구상, 진심으로의 소원입니다…」
-PRINTFORMW 조금 움직이는 목을, 전력으로 세로에 거절한다.
+PRINTFORML 청아는 망설이다가, 오른손을 입에 대고 고개를 숙여 버린다.
+PRINTFORML 역시 안되는 건가….
+PRINTFORML 만났을때부터 이미 제대로 된 만남은 아니였고, 또 지금까지의 처사도 생각하면
+PRINTFORMW 받아들여질 수가 없었던 일. 하지만 이 마음을 전할 수가 있던 것만으로도……
+PRINTFORML 「반지, 끼워줄래…?」
+PRINTFORML 손가락 끝으로 집고 있던 반지가, 문득 사라진다.
+PRINTFORMW 반쯤 억지로 빼앗긴 반지는 다음 순간, 벌써 왼손 약지 손가락에 들어가고 있었다.
+PRINTFORML 「정말…. 갑자기 사람을 불러내고는, 이런걸 주고, 이야기를 하고」
+PRINTFORML 「거기에 마음대로 긴장하고, 낙담하고…. 그렇게 표정이 풍부했던 사람이었던거야?」
+PRINTFORML 화를 내는 듯한 청아의 목소리는, 크게 떨고 있었다.
+PRINTFORMW 그 눈을 가득 채운 눈물은, 마루에 웅덩이를 만들 듯한 기세로, 주룩주룩 흘러넘쳐 떨어지고 있다.
+PRINTFORML 「일과 사심을 혼동하고, 당신 정말로 조교사야? 정말, 바보같아…」
+PRINTFORML 「거기다 그 결과의 끝은 이런 언제 배반할지도 모르는 더러워진 사선에 반했다라니…」
+PRINTFORMW 반지가 빠진 왼손을 이쪽에 뻗어 얼굴의 형태를 확인하듯이, 천천히 어루만진다.
+PRINTFORML 「그리고, 이런 최저의 랑자자를 사랑하게 된 나는, 좀 더 바보…」
+PRINTFORMW 어느새인가, 오른손이 허리를 감싸고 있었다. 강하고, 히 해와 포, 동작도 잡히지 않는다.
+PRINTFORMW 「그 마음, 받을게요…」
+PRINTFORMW 「노예도 선인도 아닌, 당신의 아내로서 쭉, 걷는…!」
+PRINTFORMW 「옛날의 내가 손에 넣을 수 없었던 행복을, 주세요…!  쭉 사랑해 주세요!」
+PRINTFORMW 「그것이 내가 당신에게 품은 마음, 그리고 진심의 소원입니다…」
+PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 전력으로 고개를 끄덕였다.
 PRINTFORMW 오늘, 이 때, 이 순간.
-PRINTFORMW 꺼림칙하고 오물 투성이가 된 과거를 가지는 2명은, 간신히 진실의 사랑을 손에 넣었다.
+PRINTFORMW 꺼림칙하고 오물 투성이가 된 과거를 가진 둘은, 간신히 진실의 사랑을 손에 넣었다.
 
 ;-------------------------------------------------
 ;붉은 개목걸이 사용시
 ;-------------------------------------------------
 @KOJO_83_MESSAGE_SUB_EVENT_SCENE201
-PRINTFORML 생각하면, 상당히 긴 일조련사를 왔다.
-PRINTFORML 개성적으로 취급하기 어려운 황상향의 놈등에는 여전히 고전을 강요당하지만,
-PRINTFORMW 어떻게든 1 재산을 쌓아 올리는 정도에는, 일도 궤도에 오르고 있다.
-PRINTFORML 억지로 부족한 것이 있다고 하면, 그것은 자신을 위해서(때문에) 존재하는 노예일까.
-PRINTFORML 자신은 지금까지 소비자의 요구에 맞추어 대상의 육체는 커녕 성격·사상까지 바꾸어 왔다.
-PRINTFORML 왜일까 라고 (들)묻으면 그것이 생업이며, 끝은 생활의 양식이 되기 때문이라고 밖에 말할 수 없지만,
-PRINTFORML 한편으로 팔리고 가는 여자들의 모습에, 생각하는 곳(중)이 없는 것은 아니다.
-PRINTFORML 자신이 손수 돌봐 굴복 시킨 노예를, 보지 않고 모르는 놈에게 공급하지 않으면 안 되는 건이다.
-PRINTFORMW 수중에 남는 돈뭉치는, 과연"상품"의 대가로 해서 어울리고 있는지, 라고.
+PRINTFORML 생각해보면, 상당히 긴 시간 동안 조련사를 해왔다.
+PRINTFORML 개성적이고 취급하기 어려운 환상향의 놈들에게는 여전히 고전을 면치 못하지만,
+PRINTFORMW 어떻게든 재산을 쌓아 올리는 것이나 일은 궤도에 오르고 있다.
+PRINTFORML 어떻게든 부족한 것을 찾아본다고 하면, 그건 자신을 위해서 존재하는 노예일까.
+PRINTFORML 자신은 지금까지 소비자의 요구에 맞추어 대상의 육체는 물론 성격과 사상까지 바꾸어 왔다.
+PRINTFORML 왜냐고 물으면 그게 생업이며, 끝은 생활의 양식이 되기 때문이라고 밖에 말할 수 없지만
+PRINTFORML 한편으로 팔려 가는 여자들의 모습에 생각하게 되는 점도 없는 것은 아니다.
+PRINTFORML 자신이 손수 돌보고 굴복시킨 노예를, 본 적도 없고 누군지도 모르는 놈에게 공급해야 하는 것이다.
+PRINTFORMW 수중에 남는 돈뭉치는, 과연 '상품'의 대가에 어울리고 있는걸까 하고.
 PRINTFORML 
-PRINTFORML 눈앞에 있는"그것"은 상도 변함없이 아름답고, 회초리들로서 조교 주로 빌려주어 수행이라고 있었다.
-PRINTFORML 만약 수중에 놓아둔다고 하면 진한 개인가…와 사색 하고 있었는데,
+PRINTFORML 눈앞에 있는 '그것'은 조금도 변함없이 아름답고, 빌려준 회초리를 조수로서 수행이라 들고 있었다.
+PRINTFORML 만약 수중에 놓아두게 된다면 이녀석일까… 라고 사색에 빠져 있었는데
 PRINTFORML 이쪽을 신경쓰는 것 같은 온화한 목소리가 들려 일순간 생각이 멈춘다.
-PRINTFORMW 「무엇인가 고민해 일?  조금 전부터 훨씬 험한 얼굴 하고 있는데」
-PRINTFORML "그것"의 이름은 곽청아. 과거의 대륙으로부터 온 도사이며, 힘 있는 선인이다.
-PRINTFORML 이 나라에 있어도 많은 유력자와 결부되어, 도교의 사상 침투에 진력해 왔다고 한다.
-PRINTFORML 그러나 그 본질은 자기 현시욕구가 강하고, 그 힘도 사욕을 위해서(때문에) 밖에 사용하지 않는 독부다.
-PRINTFORMW 필요와 악행에 손을 대는 일도 있던 것 같고, 오로지 사선등으로 불리고 있다.
-PRINTFORML 이지만 여기에 와 능력을 봉쇄되어 거듭되는 조교를 받은 결과, 반항심을 상실.
-PRINTFORML 지금은 온순하고 추잡한 성 노예로서 그 몸을 바치게 되었다.
-PRINTFORML 원래 타인을 희롱하는 나쁜 버릇이 있던 반면, 스스로가 그 대상이 되면(자) 맞고 약하고,
-PRINTFORML 력이 강한 사람에게 영합 하는 기질이 있던 것도 다행히 해, 다른 딸(아가씨)의 조교에도 협력적이 되었다.
-PRINTFORML 그 태도가 공포심때문인지, 외경의 생각때문인지, 단순하게 육체적인 쾌락을 추구한 일인가,
-PRINTFORML 혹은 또 머지않아 허를 찌르는 것을 목론응이다 위에서의 연기인가는 본인만 아는 곳(중)이지만,
-PRINTFORMW 그런데도 지금의 청아는 노예로서 세련 되고 있어 타인에게 주기에는  아까운 존재다.
+PRINTFORMW 「뭔가 고민되는 일이 있어? 조금 전부터 엄청 험한 얼굴 하고 있는데」
+PRINTFORML '그것'의 이름은 곽청아. 과거 대륙에서 온 도사이며, 힘 있는 선인이다.
+PRINTFORML 이 나라에 있으면서 많은 유력자와 결부되어, 도교 사상 침투에 진력해 왔다고 한다.
+PRINTFORML 그러나 그 본질은 자기 현시욕구가 강하고, 그 힘도 사욕을 위해서 밖에 사용하지 않는 악녀다.
+PRINTFORMW 필요와 악행에 손을 대는 일도 있었던 탓에 지금은 사선등으로 불리고 있다.
+PRINTFORML 하지만 여기에서 능력을 봉쇄당하고 거듭되는 조교를 받은 결과, 반항심을 상실.
+PRINTFORML 지금은 온순하고 추잡한 성노예로서 그 몸을 바치게 되었다.
+PRINTFORML 원래 타인을 희롱하는 나쁜 버릇이 있었던 터라 자신이 괴롭힘 당하는 대상이 된 일에는 약하다.
+PRINTFORML 힘이 강한 사람에게 아첨하는 기질도 있던 기에, 다른 소녀들의 조교에도 협력적으로 되었다.
+PRINTFORML 그 태도가 공포심 때문인지, 경외의 생각 때문인지, 단순하게 육체적인 쾌락을 추구한 일인 것인지,
+PRINTFORML 혹은 머지않아 허를 찌르기 위한 연기인지는 본인만 아는 것이겠지만.
+PRINTFORMW 그런데도 지금의 청아는 노예로서는 세련되어서, 타인에게 주기에는 아까운 존재다.
 PRINTFORML 
 PRINTFORMW 「%CALLNAME:MASTER%……?」
-PRINTFORML 언제 용무를 명령할 수 있어도 좋도록 옆에 앞두고 있는 청아도,
-PRINTFORML 자신을 응시한 채로 끄떡도 않는 주의 모습에, 불안인 표정을 띄우고 있다.
-PRINTFORML 혹시, 드디어 자신에게 구매자가 뒤따라 버렸는지라고 생각하고 있을지도 모른다.
-PRINTFORMW 말한다면 빠른이 좋을 것이다. 장난에 노예를 공포 시키는 것은 삼류의 조련사가 할 것이다.
+PRINTFORML 언제든 용무를 명령할 수 있도록 옆에 뒀던 청아도
+PRINTFORML 자신을 응시한 채로 끄떡도 않는 주인의 모습에, 불안한 표정을 띄우고 있다.
+PRINTFORML 어쩌면, 드디어 자신에게도 구매자가 나타나버렸을지도 모른다고 생각하고 있을지도 모른다.
+PRINTFORMW 말할것이라면 빠르게 말하는 좋을 것이다. 장난으로 노예를 겁에 질리게 하는 것은 삼류 조련사가 할 법한 일이다.
 PRINTFORML 좋은 것을 한다. 그렇게 말해 조용히 일어서, 집무용의 책상을 향한다.
 PRINTFORML 지금까지 주고 받아 온 수많은 납품서를 지불면서, 목적의 물건을 손으로 더듬어 찾는다.
 PRINTFORML 그 모습을 표면상은 냉정함을 손질하면서 지켜보는 청아였지만,
@@ -10162,15 +10163,15 @@ PRINTFORMW 결국 그 사선을 수중에 넣었다고 하는 만족감에, 잠�
 ;연모
 IF TALENT:150
     IF RAND:3 == 0
-        PRINTFORMW 「미안해요. 당신에게 배려를 하게 해 버리며…」
+        PRINTFORMW 「미안해요. 당신이 배려를 해야 하게 해버리고…」
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「…, 침착해요. 싫은 일도 잊을 수 있는 그렇게…」
+        PRINTFORMW 「후우… 침착해지네요. 싫은 일도 잊을 수 있을 것처럼 그렇게…」
     ELSE
-        PRINTFORMW 「차는 이상해요. 이 가득해 마음이 놓인다 것」
+        PRINTFORMW 「이 차는 이상해요. 왠지 마음이 놓이는 것」
     ENDIF
 ;그 외
 ELSE
-    PRINTFORMW (왜일까 해들…. 이것을 마시면(자), 마음이 가볍게 되어 갈 생각이 든다…)
+    PRINTFORMW (왜일까…. 이걸 마시면, 마음이 가볍게 되는 듯한 느낌이 든다…)
 ENDIF
 
 ;-------------------------------------------------
@@ -10180,15 +10181,15 @@ ENDIF
 ;연모
 IF TALENT:150
     IF RAND:3 == 0
-        PRINTFORMW 「지쳤을 때에는 단 것이 제일이군요. 그렇지만 할 수 있으면 과자가 좋았지」
+        PRINTFORMW 「지쳤을때에는 단 것이 제일이군요. 가능하다면 과자가 더 좋았겠지만」
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「약학을 즐기는 사람에게 있어, 이 효과는 경탄의 것. 굉장한 시대군요 」
+        PRINTFORMW 「약학을 즐기는 사람에게 있어선 이런 효과는 경탄이 나올 정도. 굉장한 시대네요.」
     ELSE
-        PRINTFORMW 「오늘은 지구전?  후후, 좋아요. 몇회에서도」
+        PRINTFORMW 「오늘은 지구전? 후후, 좋아요. 몇번이라도」
     ENDIF
 ;그 외
 ELSE
-    PRINTFORMW 「 나도 이런 약을 만들 수 있으면, 사선은 인정되지 않았던 것일까 해들…」
+    PRINTFORMW 「나도 이런 약을 만들 수 있었다면, 사선으로 인정되지 않았을지도…」
 ENDIF
 
 ;-------------------------------------------------
