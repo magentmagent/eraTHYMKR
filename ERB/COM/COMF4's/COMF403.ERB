@@ -17,8 +17,8 @@ SIF FLAG:2 & 1
 ;Ｖ경험レベルが0일 경우, 이상계 조교 필터가 오프되어 있지 않으면 불가
 SIF FLAG:2 & 4 && EXP:0 < EXPLV:1
     RETURN 0
-;조교자가 아키 자매가 아니면 불가
-SIF NO:PLAYER != 37 && NO:PLAYER != 38
+;조교자가 아키 자매か[야채의 연금술사]でないとダメ
+SIF NO:PLAYER != 37 && NO:PLAYER != 38 && TALENT:PLAYER:831 == 0
     RETURN 0
 ;승마 중에는 불가
 SIF TEQUIP:43

@@ -11,8 +11,11 @@ SIF DITEMTYPE:999:418 > 0
 ;캐릭터 전용 커맨드를 유효로 하지 않으면 불가
 SIF (FLAG:15 & 16384) == 0
     RETURN 0
-;咲夜さん · 輝夜姫専用
-IF NO:PLAYER != 9 && NO:PLAYER != 30
+;YASAIモードか, 咲夜さん · 輝夜姫専用
+IF TALENT:PLAYER:831
+    SIF FLAG:574 < 3000
+        RETURN 0
+ELSEIF NO:PLAYER != 9 && NO:PLAYER != 30
     RETURN 0
 ENDIF
 ;実行者の기력이 100이하だと実行できない
@@ -30,7 +33,31 @@ RETURN 1
 ;커맨드 본체
 ;--------------------------------------------------
 @COM418
-IF NO:PLAYER == 9
+IF TALENT:PLAYER:831
+    IF TEQUIP:71
+        PRINTL 볼텍스
+        COM_NAME = 볼텍스
+    ELSE
+        PRINTFORML 야채 수：{FLAG:574} 
+        PRINTL 시간 정지를 실행하려면, 3000개의 야채를 소비할 필요가 있습니다.
+        PRINTL 시간 정지를 실행합니까?
+        PRINTL [0] 네
+        PRINTL [1] 아니오
+
+        $INPUT_LOOP
+        INPUT
+        IF RESULT == 1
+            RETURN 0
+        ELSEIF RESULT == 0
+            FLAG:574 -= 3000
+        ELSE
+            GOTO INPUT_LOOP
+        ENDIF
+
+        PRINTL 퀵타임
+        COM_NAME = 퀵타임
+    ENDIF
+ELSEIF NO:PLAYER == 9
     PRINTL 프라이빗 스퀘어
     COM_NAME = 프라이빗 스퀘어
 ELSEIF TEQUIP:71

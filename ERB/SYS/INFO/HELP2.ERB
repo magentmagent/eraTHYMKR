@@ -744,6 +744,14 @@ PRINTLC [543] 때는 무르익었다
 PRINTLC [555] 새 게임 개시
 PRINTLC [666] 캐릭터 정렬
 PRINTLC [777] 컨피그 설정
+IF FLAG:999 == 0
+    IF TALENT:MASTER:831
+        PRINTLC [830] 특수 노예 구입
+        PRINTLC [831] 야채 연성
+        PRINTLC [832] 밭 확장
+        PRINTLC [833] 야채 재생
+    ENDIF
+ENDIF
 PRINTLC [998] 동방조교전
 IF FLAG:999 == 0
     SIF TALENT:MASTER:998
@@ -963,6 +971,40 @@ ELSEIF RESULT == 777
     PRINTL 여러가지 항목이 있습니다만, 가급적 제일 처음에 제대로 설정해줘야 할 겁니다.
     PRINTL 또한 항목에 따라선 난이도에 커다란 변동을 줄 가능성도 있으니 주의해야 합니다.
     PRINTW 내용을 알고 싶은 경우엔 YM에 동봉된 txt 파일 참조.
+ELSEIF RESULT == 830 && FLAG:999 == 0
+    IF TALENT:MASTER:831
+        PRINTL 【특수노예구입】
+        PRINTL YASAI모드에서만 선택할 수 있는 커맨드로, 특수한 노예를 구입하기 위한 커맨드입니다.
+        PRINTW 이 소재 이해를 못하면 이해할 수 없습니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
+ELSEIF RESULT == 831 && FLAG:999 == 0
+    IF TALENT:MASTER:831
+        PRINTL 【야채연성】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTL 야채를 연성하는 커맨드입니다.야채의 수는 YASAI 모드에서는 
+        PRINTW 아주 중요한 요소이니, 이 커맨드는 자주 사용하게 될 겁니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
+ELSEIF RESULT == 832 && FLAG:999 == 0
+    IF TALENT:MASTER:831
+        PRINTL 【밭 확장】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTL 돈을 써서 밭을 확장할 수 있는 커맨드입니다.밭의 넓이는 수확할 수 있는 
+        PRINTW 야채의 수와 직결되므로 아주 중요합니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
+ELSEIF RESULT == 833 && FLAG:999 == 0
+    IF TALENT:MASTER:831
+        PRINTL 【야채재생】
+        PRINTL [야채의 연금술사]를 지닌 주인만이 선택할 수 있는 커맨드입니다.
+        PRINTW 야채를 소비해서 체력을 회복시키는 커맨드입니다.
+    ELSE
+        GOTO INPUT_LOOP
+    ENDIF
 ELSEIF RESULT == 998
     PRINTL 【동방조교전】
     PRINTL SHOP 커맨드와 용어설명을 하기 위한 커맨드입니다. 랄까 지금 보고 있잖수.

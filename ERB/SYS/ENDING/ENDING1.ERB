@@ -2182,7 +2182,7 @@ FLAG:4063 |= 1
 CALL GAME_CONTINUE, 1, 63
 CALL GET_GENSOUKYOU
 ;지옥의 훈장(별명：헤루코 구입할 권리)
-SIF TALENT:MASTER:834 == 0
+SIF TALENT:MASTER:831 == 0 && TALENT:MASTER:834 == 0
     CALL NEWTERM_TALENT_MASTER, 834
 
 ;--------------------------------------------------

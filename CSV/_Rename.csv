@@ -1350,6 +1350,7 @@ TALENT:PLAYER:264 , 素質:調教者:看板娘
 TALENT:PLAYER:265 , 素質:調教者:常連客
 TALENT:PLAYER:266 , 素質:調教者:傾倒
 TALENT:PLAYER:830 , 素質:調教者:拒絶
+TALENT:PLAYER:831 , 素質:調教者:野菜の錬金術師
 TALENT:PLAYER:998 , 素質:調教者:Debug
 
 ;●素質:主人へ変換
@@ -1528,6 +1529,7 @@ TALENT:MASTER:264 , 素質:主人:看板娘
 TALENT:MASTER:265 , 素質:主人:常連客
 TALENT:MASTER:266 , 素質:主人:傾倒
 TALENT:MASTER:830 , 素質:主人:拒絶
+TALENT:MASTER:831 , 素質:主人:野菜の錬金術師
 TALENT:MASTER:998 , 素質:主人:Debug
 
 ;●素質:助手へ変換

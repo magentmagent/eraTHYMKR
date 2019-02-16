@@ -11,8 +11,8 @@ SIF DITEMTYPE:999:405 > 0
 ;캐릭터 전용 커맨드를 유효로 하지 않으면 불가
 SIF (FLAG:15 & 16384) == 0
     RETURN 0
-;조교자가 아키 자매가 아니면 불가
-SIF NO:PLAYER != 37 && NO:PLAYER != 38
+;조교자가 아키 자매か[야채의 연금술사]でないとダメ
+SIF NO:PLAYER != 37 && NO:PLAYER != 38 && TALENT:PLAYER:831 == 0
     RETURN 0
 ;이상계 조교 필터가 오프되어 있지 않으면 불가
 SIF FLAG:2 & 4
