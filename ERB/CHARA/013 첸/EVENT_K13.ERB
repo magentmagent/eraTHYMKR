@@ -194,61 +194,61 @@ IF ASSI == 1
     CALL RANSAMATOISSYO
 ELSEIF CFLAG:7010 == 1
     IF CHARANUM == 2
-        PRINTFORMW 「約束どうり…他の娘と別れてくれたんだね！」
-        PRINTFORMW 「ありがとう!これからはチェンとずっと一緒だね！！」
-        PRINTFORMW 「チェン…%CALLNAME:MASTER%のこと好きになって良かった」
+        PRINTFORMW 「약속대로..다른 여자와 헤어져 주었구나！」
+        PRINTFORMW 「고마워! 이제부터 첸과 계속 함께네！！」
+        PRINTFORMW 「첸…%CALLNAME:MASTER%를 좋아하게 되어서 다행이야」
         TALENT:152 = 1
         CFLAG:14 |= 4
         TALENT:153 = 1
         CFLAG:14 |= 8
         CFLAG:7010 = 3
     ELSEIF CHARANUM >= 3
-        PRINTFORMW 「………まだ、他の娘と別れてくれてないの？」
-        PRINTFORMW 「早く…別れてよ」
-        PRINTFORMW 「それまでチェンは…相手しないからっ！」
-        PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
-        PRINTFORMW 橙の体力が1になりました
+        PRINTFORMW 「………아직 다른 여자들과 헤어지지 않았어？」
+        PRINTFORMW 「빨리..헤어져」
+        PRINTFORMW 「그때까지 첸은..상대하지 않으니까！」
+        PRINTFORMW 억지로 조교하려 하자 첸은 혀를 깨물려고 했다.
+        PRINTFORMW 첸의 체력이 1이 되었습니다
         BASE:0 = 1
     ENDIF
 ELSEIF CFLAG:7010 == 3 && CHARANUM >= 3
-    PRINTFORMW 「…だれ………その娘…」
-    PRINTFORMW 「まぁ誰でもいいけど…%CALLNAME:MASTER%から離れてよ！！」
-    PRINTFORMW 「%CALLNAME:MASTER%も…早くその娘から離れてよ…」
-    PRINTFORMW 「それまでチェンは…%CALLNAME:MASTER%のこと無視するから…」
-    PRINTFORMW 無理に調教しようとすると橙は舌をかみ切ろうとした
-    PRINTFORMW 橙の体力が1になりました
+    PRINTFORMW 「…누구..……그 여자…」
+    PRINTFORMW 「뭐 누구라도 좋지만…%CALLNAME:MASTER%떨어져！！」
+    PRINTFORMW 「%CALLNAME:MASTER%..빨리 그 여자랑 떨어져…」
+    PRINTFORMW 「그때까지 첸은…%CALLNAME:MASTER%를 무시할 테니까…」
+    PRINTFORMW 억지로 조교하려 하자 첸은 혀를 깨물려고 했다.
+    PRINTFORMW 첸의 체력이 1이 되었습니다
     BASE:0 = 1
 ;屈服刻印Lv1
 ELSEIF CFLAG:7000 == 0 && MARK:2 == 1
     DRAWLINE
-    PRINTFORMW 「ウ"　また来たの！？　またチェン…ひどい事されるの…？」
-    PRINTW 橙は怯えているようだ。
-    PRINTW （怖いよ…助けて、藍しゃま…紫しゃまぁ…)
+    PRINTFORMW 「우... 또 왔어!? 첸... 또 험한 꼴을 당하는 거야...？」
+    PRINTW 첸은 겁먹은 것 같아.
+    PRINTW (무서워...도와줘 아이샤마..무라사키샤마..)
     CFLAG:7000 = 1
 
 ;屈服刻印Lv2
 ELSEIF CFLAG:7001 == 0 && MARK:2 == 2
     DRAWLINE
-    PRINTFORMW 「また…来たんだ…」
-    PRINTFORMW 橙からは抵抗する気力さえ感じられない
+    PRINTFORMW 「또..왔구나..」
+    PRINTFORMW 첸에서는 저항할 기력조차 느끼지 못한다。
     CFLAG:7001 = 1
 
 ;屈服刻印Lv3
 ELSEIF CFLAG:7002 == 0 && MARK:2 == 3 && TALENT:150 == 0
     DRAWLINE
-    PRINTFORMW 「また来たね、今日も色々されるんでしょ」
-    PRINTFORMW 橙は四肢をぐったりさせ、すべてをあきらめたかのように%CALLNAME:MASTER%を受け入れた。
+    PRINTFORMW 「또 왔네, 오늘도 여러가지 하시는거지?」
+    PRINTFORMW 첸은 사지를 비틀어 모든 것을 포기한 것처럼 % CALLNAME: MASTER%를 받아냈다。
     CFLAG:7002 = 1
     
 ;恋慕
 ELSEIF CFLAG:7003 == 0 && TALENT:150 == 1
     DRAWLINE
-    PRINTFORMW 「やっほ！今日はどんなことをするの？」
-    PRINTFORMW 橙は笑顔で%CALLNAME:MASTER%を迎え入れる。
-    PRINTFORMW その笑顔に陰りは無く、部屋に入る%CALLNAME:MASTER%を欲するかのようだ。
-    PRINTFORM %CALLNAME:MASTER%が部屋に入ると、橙は抱きつき、上目遣いをする。
-    PRINTFORMW 「一緒に、気持ちよくなろ！」
-    PRINTFORMW その様子は、行為そのものよりも、%CALLNAME:MASTER%とする事を望むかのようだ
+    PRINTFORMW 「야호! 오늘은 어떤 일을 할 거야?」
+    PRINTFORMW 첸은 웃는 얼굴로%CALLNAME:MASTER%을 맞았다。
+    PRINTFORMW 그 웃는 얼굴에 그늘은 없고, 방에 들어가는 %CALLNAME: MASTER%를 바라는 것 같다。
+    PRINTFORM %CALLNAME:MASTER%방 안에 들어서자 첸은 부둥켜안고 눈을 치장한다。
+    PRINTFORMW 「함께、기분좋아져！」
+    PRINTFORMW 그 모습은 행위 그 자체보다도 %CALLNAME: MASTER%로 하는 것을 바라는 것 같다.
     CFLAG:7003 = 1
 
 ;-------------------------------------------------
@@ -259,56 +259,56 @@ ELSEIF CFLAG:7003 == 0 && TALENT:150 == 1
 ;反発刻印Lv3
 ELSEIF MARK:9 == 3
     DRAWLINE
-        PRINTFORMW 「来るなぁぁぁ！！！」
+        PRINTFORMW 「왔네……」
         PRINTFORM 「フゥゥゥゥゥゥー」
-        PRINTFORMW それでも近づく%CALLNAME:MASTER%を橙は引掻こうとするが、
-        PRINTFORMW その手をつかまれ、押さえ込まれてしまう。
+        PRINTFORMW 그래도 다가오는%CALLNAME:MASTER%를 내보내려 하지만、
+        PRINTFORMW 그 손을 붙잡혀서 눌려 버리다。
 
 ;屈服刻印Lv0
 ELSEIF MARK:2 == 0
     DRAWLINE
-    PRINTFORM 橙はまだ、ここでの立場も状況もわかっていない様だ。
-    PRINTFORMW 橙はただ、本能的な恐怖のみを感じている。
+    PRINTFORM 첸은 아직、여기에서의 입장도 상황도 모르는 듯하다。
+    PRINTFORMW 첸은 단지 본능적인 공포만을 느끼고 있다。
 
 ;屈服刻印Lv1
 ELSEIF MARK:2 == 1
     DRAWLINE
-    PRINTFORMW 「もう、やめてぇ！」
-    PRINTFORMW 橙は手足をばたつかせて抵抗しているが、爪や牙は使わない
+    PRINTFORMW 「그만해！」
+    PRINTFORMW 첸은 손발을 동동 구르며 저항하고 있지만, 손톱이나 은은 사용하지 않는다
 
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2
     DRAWLINE
-    PRINTFORMW 「来たんだ…」
-    PRINTFORMW 橙からは、抵抗する気配が感じられない。
-    PRINTFORMW そして、橙は%CALLNAME:MASTER%のなすがままとなっていく。
+    PRINTFORMW 「왔어?…」
+    PRINTFORMW 첸에게서는 저항할 기미가 보이지 않는다。
+    PRINTFORMW 그리고 첸은 %CALLNAME:MASTER%의 본성이 되어가고있다。
 
 ;屈服刻印Lv3のみ
 ELSEIF MARK:2 == 3 && TALENT:150 == 0 && TALENT:160 == 0
     DRAWLINE
-    PRINTFORMW 「また来たね。今日は何をするの？」
-    PRINTFORMW 橙は、自ら服を脱いでいき%CALLNAME:MASTER%を受け入れる。
+    PRINTFORMW 「또 왔네。오늘은 뭐할거야？」
+    PRINTFORMW 첸은 스스로 옷을 벗고 %CALLNAME: MASTER%를 받아 들인다。
 
 ;処女+恋慕
 ELSEIF TALENT:0 == 1 && TALENT:150 == 1
     DRAWLINE
     ;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
     IF RAND:4 == 0
-        PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
-        PRINTFORMW 橙は抱きつき目を輝かせる。
+        PRINTFORMW 「왔어？잔뜩 H한일 하자！」
+        PRINTFORMW 첸은 서로 얼싸안고 눈을 반짝인다。
     ELSEIF RAND:3 == 0
-        PRINTFORMW 「大好き！」
-        PRINTFORMW そういいながら橙は飛びついてきた。
+        PRINTFORMW 「너무 좋아！」
+        PRINTFORMW 그러면서 첸은 달려들었다。
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「あの…そのぉ……」
-        PRINTFORMW 橙はもじもじとしている。
-        PRINTFORMW そして、一呼吸置くと、意を決したように、%CALLNAME:MASTER%をまっすぐ見つめる。
-        PRINTFORMW 「%CALLNAME:MASTER%に…チェンのはじめて……もらってほしいの…」
-        PRINTFORMW それだけ言うと、橙は顔を真っ赤に染めて、向こうを向いてしまった。
+        PRINTFORMW 「저기…저……」
+        PRINTFORMW 첸은 주춤하고 있다。
+        PRINTFORMW 그리고、한숨 놓으며、뜻을 정한 것처럼、%CALLNAME: MASTER%를 똑바로 응시한다。
+        PRINTFORMW 「%CALLNAME:MASTER%…첸의 처음……받아주었으면 해…」
+        PRINTFORMW 그렇게 말하며、첸은 얼굴을 붉히며 시선을 피했다。
     ELSE
-        PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
-        PRINTFORMW 橙は、ゆっくりと抱きついてくる。
-        PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
+        PRINTFORMW 「첸은、%CALLNAME:MASTER%와 하나가 될수 있어 기뻐！」
+        PRINTFORMW 첸은 천천히 안아왔다.。
+        PRINTFORMW 그 얼굴은 기쁨과 부끄러움이 뒤섞여 있다。
     ENDIF
 ;恋慕
 ELSEIF TALENT:150 == 1
@@ -317,52 +317,52 @@ ELSEIF TALENT:150 == 1
     
     
     IF RAND:3 == 0
-        PRINTFORMW 「やっ！来てくれたね。いっぱいＨなことして！」
-        PRINTFORMW 橙は抱きつき目を輝かせる。
+        PRINTFORMW 「왔어？잔뜩 H한일 하자！」
+        PRINTFORMW 첸은 얼싸안고 눈을 반짝인다。
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「大好き！」
-        PRINTFORMW そういいながら橙は飛びついてきた。
+        PRINTFORMW 「너무 좋아！」
+        PRINTFORMW 그러면서도 첸은 달려들었다。
     ELSE
-        PRINTFORMW 「チェンね、%CALLNAME:MASTER%と一緒になれて本当にうれしいの！」
-        PRINTFORMW 橙は、ゆっくりと抱きついてくる。
-        PRINTFORMW その顔は、うれしさと恥ずかしさが入り混じっていた。
+        PRINTFORMW 「첸은、%CALLNAME:MASTER%와 하나가 될수 있어서 정말로 기뻐！」
+        PRINTFORMW 첸은 천천히 안겨왔다。
+        PRINTFORMW 그 얼굴은 기쁨과 부끄러움이 뒤섞여 있다。
     ENDIF
 ;屈服刻印Lv3+服従
 ELSEIF MARK:2 == 3 && TALENT:160 == 1
     DRAWLINE
     ;ランダムで口上が変化する（使わない場合はすべて同じにすればよい）
     IF RAND:3 == 0
-        PRINTFORMW 「こんにちは。%CALLNAME:MASTER%。今日もチェンをちょーきょーしてください！」
-        PRINTFORMW 橙は服を脱ぐと、体を寄せてきた。
+        PRINTFORMW 「안녕。%CALLNAME:MASTER%。오늘도 첸을 기쁘게 해줘！」
+        PRINTFORMW 첸은 옷을 벗고 기대어 왔다。
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「チェン、%CALLNAME:MASTER%の理想どうりの奴隷になれるように、がんばりますっ」
-        PRINTFORMW 橙は服を脱ぐと、抱きついてきた。
+        PRINTFORMW 「첸、%CALLNAME:MASTER%의 이상적인 노예가 되도록 노력하겠습니다。」
+        PRINTFORMW 첸은 옷을 벗고 안겨왔다。
     ELSE
-        PRINTFORMW 部屋に入ると、橙は裸で待っていた。
-        PRINTFORMW 「%CALLNAME:MASTER%、チェンのこと暖めて下さい」
+        PRINTFORMW 방에 들어서자、첸은 알몸으로 기다리고 있었다。
+        PRINTFORMW 「%CALLNAME:MASTER%、첸을 따뜻하게 해 주세요」
     ENDIF
 ENDIF
 
 @RANSAMATOISSYO
 IF NO:ASSI == 21 && TALENT:170 && CFLAG:7002 == 1 && TALENT:ASSI:150 != 1 && TALENT:ASSI:160 != 1 && TALENT:ASSI:170 != 1
-    PRINTFORMW 『チェン…こんな主ですまない…でも、もうこの方には逆らえないんだ』
-    PRINTFORMW 「何言ってるんですか、藍しゃま？」
-    PRINTFORMW 「チェンも藍しゃまとおんなじですよ…一緒に気持ち良くなりましょう」
-    PRINTFORMW 『あっ…あぁそうだな…』
-    PRINTFORMW 《どうせ助からないのなら、いっそ順応してしまった方が楽なのかもしれないな…》
+    PRINTFORMW 『첸…미안해…하지만 이제 주인님께는 거역할수 없어。』
+    PRINTFORMW 「무슨 소리에요 란님？」
+    PRINTFORMW 「첸도 나랑 똑같아요…같이 기분좋아집시다。」
+    PRINTFORMW 『아아…그렇군…』
+    PRINTFORMW 《어차피 살아나지 않는다면、차라리 순응해 버리는 편이 편할지 모르겠다…》
     CFLAG:7002 = 2
 ELSEIF NO:ASSI == 21 && TALENT:150 == 1 && TALENT:ASSI:150 == 1
-    PRINTFORMW 「藍しゃまっ！一緒に気持ち良くなりましょう！」
-    PRINTFORMW 『あぁ。だけどこの方の心を射止めるのは私だ。いくら橙でもこれだけは譲れないぞ』
-    PRINTFORMW 「それは私もですよ藍しゃま！チェンだって、絶対負けません！！」
+    PRINTFORMW 「란님！함께 기분좋아져요！」
+    PRINTFORMW 『아。하지만 주인님의 마음을 사로잡는건 나야。아무리 첸이라도 이건 양보할수 없어。』
+    PRINTFORMW 「마찬가지에요。 란님！첸도 질수 없어요！！」
 ELSEIF NO:ASSI == 21 && MARK:2 <= 2 && TALENT:167 == 0
-    PRINTFORMW 「やめて！お前なんか藍しゃまがやっつけちゃうんだからぁ」
-    PRINTFORMW 「…えっうそ………」
-    PRINTFORMW 『ごめんな…橙…私はもうこの方には逆らえないんだ』
-    PRINTFORMW 『せめて…痛みを感じないようにやさしくしてやるからな…』
-    PRINTFORMW 「うそ…う、そ……こんな、の………う…そ……」
-    PRINTFORMW 完全に屈服した藍を目の前にして橙は壊れたかのように『うそ』という単語を繰り返すだけになった
-    PRINTFORMW 橙の精神は崩壊したようだ
+    PRINTFORMW 「그만해！너따위 란님이 해치워 버릴테니까」
+    PRINTFORMW 「에…거짓말………」
+    PRINTFORMW 『미안해…첸…이분은 거역할수 없어。』
+    PRINTFORMW 『적어도…아픔을 느끼지 않도록 쉽게 해 줄 테니까…』
+    PRINTFORMW 「거밋말…우、에……그게、으………우…으……」
+    PRINTFORMW 완전히 굴복한 란을 눈앞에 두고 첸은 부서진 듯이 '거짓말'이라는 단어만 반복하게 되었다.
+    PRINTFORMW 첸의 정신은 붕괴된 것 같다
     TALENT:167 = 1
     CFLAG:7013 = 1
 ENDIF
@@ -397,21 +397,21 @@ TRYCALL K13_MESSAGE_END
 ;--------------------------------------------------
 @K13_MESSAGE_END
 IF CFLAG:7013 == 1
-    PRINTFORMW 「………うっ」
-    PRINTFORMW 「藍しゃまが……あんな………」
-    PRINTFORMW 「ううん…そんなはず……ない…」
-    PRINTFORMW 「あれは…きっと……夢…」
-    PRINTFORMW 「そう……全部…夢…夢……ゆめ………ゆ、め…」
-    PRINTFORMW 橙は今までの屈服した藍は、自分が見た夢だと思い込むことで、精神を保たせたようだ
+    PRINTFORMW 「………욱」
+    PRINTFORMW 「란님이……저런………」
+    PRINTFORMW 「아니…그럴리……없어…」
+    PRINTFORMW 「이건…이건……꿈일거야…」
+    PRINTFORMW 「그래……전부…꿈…꿈……꿈………ㄲ…ㅜ…ㅁ…」
+    PRINTFORMW 첸은 지금까지의 굴복한 란은 자신이 본 꿈이라고 믿어 정신을 유지시킨 것 같다
     TALENT:167 = 0
     CFLAG:7013 = 0
 ;反発刻印Lv3 一回のみ
 ELSEIF MARK:9 == 3 && CFLAG:7004 == 0
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
-    PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、緊張の糸が切れ、震えながら泣き始めた。
-    PRINTFORMW 橙は【回復早い】を失った。
-    PRINTFORMW 橙は【抵抗】【回復遅い】を得た。
+    PRINTFORMW %CALLNAME:MASTER%가 손을 떼는 것과 동시에、첸은 %CALLNAME:MASTER%와 떨어지며、%CALLNAME:MASTER%를 위협하고 있다。
+    PRINTFORMW %CALLNAME:MASTER%가 방에서 나가자、첸은 떨면서 울기 시작했다。
+    PRINTFORMW 첸은 【회복이 빠름】을 잃었다。
+    PRINTFORMW 첸은 【저항】【회복이 느림】을 얻었다。
     TALENT:137 =0
     TALENT:34 = 1
     TALENT:138 = 1
@@ -420,15 +420,15 @@ ELSEIF MARK:9 == 3 && CFLAG:7004 == 0
 ;反発刻印Lv0 一回のみ(反発刻印LV3になった後のみ発生）
 ELSEIF MARK:9 == 0 && CFLAG:7004 == 1
     DRAWLINE
-    PRINTFORMW 「少し前まで、すごく怖くてイヤだったけど…」
-    PRINTFORMW 「でも、最近はそうでもないかな……」
+    PRINTFORMW 「조금전까지、굉장히 무서워서 싫었는데…」
+    PRINTFORMW 「지금은 아무렇지도 않아……」
     IF MARK:2 != 3
-        PRINTFORMW 「あっもちろん、されたいとか、何しても平気ってわけじゃないよっ」
+        PRINTFORMW 「아 물론 뭘 해도 아무렇지도 않아」
     ELSEIF MARK:2 == 3
-        PRINTFORMW 「だから、その…チェンは%CALLNAME:MASTER%のものだから、何されても……いいよ」
+        PRINTFORMW 「그러니까、첸은 %CALLNAME:MASTER%의 노예니까、뭘해도……괜찮아」
     ENDIF
-    PRINTFORMW 橙は【抵抗】【回復遅い】を失った。
-    PRINTFORMW 橙は【回復早い】を得た。
+    PRINTFORMW 첸은 【저항】【회복이 느림】을 잃었다。
+    PRINTFORMW 첸은 【회복이 빠름】을 얻었다。
     TALENT:34 = 0
     TALENT:138 = 0
     TALENT:137 = 1
@@ -440,42 +440,42 @@ ELSEIF MARK:9 == 0 && CFLAG:7004 == 1
 ELSEIF CFLAG:7005 <= 1 && MARK:1 ==3 && MARK:2 ==3 && MARK:9 == 0 && ABL:10 == 5 && ABL:11 == 5 && ABL:12 ==5 && EXP:4 >= 10 && EXP:20 >= 500
     DRAWLINE
     IF CFLAG:7005 == 0
-        PRINTFORMW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
-        PRINTFORMW 「痛くないようにできると思うんだけど、その…お口でしてもいい？」
-        PRINTFORMW 「まだヘタクソで、あんまり気持ち良くは…無いかもしれないけど」
+        PRINTFORMW 「첸、%CALLNAME:MASTER%를 기분좋게 해주고 싶어서、입으로 하는 거、많이、연습했어…」
+        PRINTFORMW 「아프지 않게 할수있다고 생각하지만…해도 될까？…」
+        PRINTFORMW 「아직 잘못해서、기분좋지는…암ㅎ을지도 모르지만…」
     ELSEIF CFLAG:7005 == 1
-        PRINTW 「チェンね、%CALLNAME:MASTER%に気持ちよくなってもらいたいから、お口でするの、いっぱい、いっぱい練習したんだよ…」
-        PRINTW 「ねぇ、おねがい！痛くしないようにするから、チェンにお口でさせて！」
-        PRINTW 「%CALLNAME:MASTER%の精液、直接味わいたいのっ！」
+        PRINTW 「첸、%CALLNAME:MASTER%를 기분좋게 해주고 싶어서、입으로 하는 거、많이、연습했어…」
+        PRINTW 「있잖아、부탁이야！아프지 않게 할테니까、첸에게 입으로 하게 해줘！」
+        PRINTW 「%CALLNAME:MASTER%의 정액 직접 맛보고 싶어！」
     ENDIF
-        PRINTFORML [0]じゃあ頼む
-        PRINTFORML [1]いや、結構
+        PRINTFORML [0]그럼 부탁할게
+        PRINTFORML [1]아니、괜찮아
             IF CFLAG:7005 == 1
-            PRINTFORML [2]二度と聞くな
+            PRINTFORML [2다시 묻지 않는다
             ENDIF
         $INPUT_LOOP
         INPUT 
             IF RESULT != 0 && RESULT != 1 && RESULT != 2
                 GOTO INPUT_LOOP
             ELSEIF RESULT == 0 
-                PRINTFORMW 「うん！チェンがいっぱいがんばって、いっぱい気持ちよくしてあげる！」
+                PRINTFORMW 「응！첸이 잔뜩 기분좋게 해줄게！」
                     IF CFLAG:7005 == 0
-                        PRINTFORMW 橙は【猫舌】【習得遅い】を失った。
+                        PRINTFORMW 첸은 【고양이혀】【습득느림】을 잃었다。
                         TALENT:51 = 0
                         TALENT:54 = 0
                     ELSEIF CFLAG:7005 == 1
-                        PRINTFORMW 橙は【猫舌】を失った。
+                        PRINTFORMW 첸은 【고양이혀】를 잃었다。
                         TALENT:54 = 0
                         CFLAG:7005 = 1
                     ENDIF
-                PRINTFORMW 橙の技巧がLv4に下がった。
+                PRINTFORMW 첸의 기교가 Lv4가 되었다。
                 ABL:12 =4
                 CFLAG:7005 = 2
             ELSEIF RESULT == 1 
-                PRINTFORMW 「うぅ…そんなぁ……」
-                PRINTFORMW （でも、もっと練習したら、お口でさせてくれるかもしれない……）
+                PRINTFORMW 「우우…그래……」
+                PRINTFORMW （하지만、더 연습하면、입으로 하게해줄지도 몰라……）
                     IF CFLAG:7005 == 0
-                        PRINTFORMW 橙は【習得遅い】を努力で克服した
+                        PRINTFORMW 첸은 【습득느림】을 노력으로 극복했다
                         CFLAG:7005 = 1
                         TALENT:51 = 0
                     ENDIF
@@ -483,11 +483,11 @@ ELSEIF CFLAG:7005 <= 1 && MARK:1 ==3 && MARK:2 ==3 && MARK:9 == 0 && ABL:10 == 5
                 IF CFLAG:7005 == 0
                     GOTO INPUT_LOOP
                 ELSEIF CFLAG:7005 == 1
-                    PRINTFORMW 「練習…がんばったのにぃ…」
-                    PRINTFORMW 「ごめん、なさい…もう…きかない……ｸﾞｽ」
-                    PRINTFORMW （チェンの努力って…意味……ないのかなぁ…？）
-                    PRINTFORMW 橙は泣き出した。
-                    PRINTFORMW 橙の【習得遅い】が復活した。
+                    PRINTFORMW 「연습…열심히 했는데…」
+                    PRINTFORMW 「죄송、합니다…이제…얘기안할게……우으…」
+                    PRINTFORMW （첸의 노력은 …의미……없는걸까…？）
+                    PRINTFORMW 첸은 울기 시작했다。
+                    PRINTFORMW 첸의 【습득느림】이 다시 생겼다。
                     TALENT:51 = 1
                     CFLAG:7005 = 2
                 ENDIF
@@ -496,57 +496,57 @@ ELSEIF CFLAG:7005 <= 1 && MARK:1 ==3 && MARK:2 ==3 && MARK:9 == 0 && ABL:10 == 5
 ;反発刻印Lv3
 ELSEIF MARK:9 == 3
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのき、%CALLNAME:MASTER%を威嚇している。
-    PRINTFORMW %CALLNAME:MASTER%が部屋から、出て行くと、橙は、震えながら泣き始めた。
+    PRINTFORMW %CALLNAME:MASTER%가 손을 떼는 것과 동시에、첸은 %CALLNAME:MASTER%와 떨어지며、%CALLNAME:MASTER%를 위협하고 있다。
+    PRINTFORMW %CALLNAME:MASTER%가 방에서 나가자、첸은 떨면서 울기 시작했다。
 
 ;屈服刻印Lv1以下
 ELSEIF MARK:2 <= 1
     DRAWLINE
-    PRINTFORMW %CALLNAME:MASTER%が手を離すと同時に、橙は%CALLNAME:MASTER%から飛びのいた。
+    PRINTFORMW %CALLNAME:MASTER%가 손을 떼는 것과 동시에、첸은 %CALLNAME:MASTER%와 거리를 벌렸다。
 
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2
     DRAWLINE
-    PRINTFORMW 「はぁ………」
-    PRINTFORMW （やっと終わった……）
+    PRINTFORMW 「하아………」
+    PRINTFORMW （겨우 끝났다……）
 
 ;屈服刻印Lv3
 ELSEIF MARK:2 == 3 && TALENT:150 == 0
     DRAWLINE
-    PRINTFORMW 「終わり…ですか？」
-    PRINTFORMW 橙は%CALLNAME:MASTER%が調教終了を告げると、そっと離れた。
+    PRINTFORMW 「끝…입니까？」
+    PRINTFORMW 橙は%CALLNAME:MASTER%가 조교종료를 말하자、슬그머니 떠났다。
 
 ;屈服刻印Lv3＋恋慕＋体力500未満
 ;ELSEIF MARK:2 == 3 && TALENT:150 == 1 && BASE:0 < 500
     DRAWLINE
-    PRINTFORMW 「はぁ…はぁ…気持ちよかったよ」
-    PRINTFORMW 「でも…動けないよ…」
+    PRINTFORMW 「하아…하아…기분좋았어…」
+    PRINTFORMW 「하지만…움직일수가 없어…」
 
 ;恋慕＋処女
 ELSEIF TALENT:150 == 1 && TALENT:0 == 1
     DRAWLINE
-    PRINTFORMW 「今日も、本番してくれなかった…」
-    PRINTFORMW 橙は、恨めしそうに%CALLNAME:MASTER%を見つめている。
-    PRINTFORMW 「でも、来てくれるだけでも、うれしいよ！」
-    PRINTFORMW 「また来てね！約束だよ！」
+    PRINTFORMW 「오늘도、본격적으로 해주지 않았어…」
+    PRINTFORMW 첸은、원망하듯이 %CALLNAME:MASTER%를 보고있다。
+    PRINTFORMW 「그래도 와주는 것만으로도 기뻐！」
+    PRINTFORMW 「또와！약속이야！」
 
 ;屈服刻印Lv3＋服従＋体力500未満
 ELSEIF MARK:2 == 3 && TALENT:160 == 1 && BASE:0 < 500
     DRAWLINE
-    PRINTFORMW 「ごめんなさい…%CALLNAME:MASTER%。チェンはもう、動けません………」
-    PRINTFORMW 「次はちゃんと、耐えられるようにがんばります…」
+    PRINTFORMW 「미안해요…%CALLNAME:MASTER%。첸은 이제、움직일수 없어요………」
+    PRINTFORMW 「다음은 제대로、견딜수 있도록 노력할게요…」
 
 ;屈服刻印Lv3＋恋慕
 ELSEIF MARK:2 == 3 && TALENT:150 == 1
     DRAWLINE
-    PRINTFORMW 「もう終わりぃ、もっとしよ！」
-    PRINTFORMW 「また来てね！約束だよ！」
+    PRINTFORMW 「끝내지마、더하자！」
+    PRINTFORMW 「또와！약속이야！」
 
 ;屈服刻印Lv3＋服従
 ELSEIF MARK:2 == 3 && TALENT:160 == 1
     DRAWLINE
-    PRINTFORMW 「今日もチェンをちょーきょーしていただきありがとうございます」
-    PRINTFORMW 「また来てくださいね！チェンはいつでも準備オッケーですからっ」
+    PRINTFORMW 「오늘도 첸을 보러와 주셔서 감사합니다！」
+    PRINTFORMW 「또와주세요！첸은 언제라도 좋으니까。」
 ENDIF
 
 ;========================================================
@@ -596,39 +596,39 @@ NEXT
 IF TFLAG:2
     ;恋慕＋従順Lv5
     IF TALENT:150 == 1 && ABL:10 >= 5
-        PRINTFORMW 「チェンの初めて…もらって……」
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 「ｸﾞｽ…痛いよぅ……痛いけど、うれしい…%CALLNAME:MASTER%が、初めてでチェンは、幸せ…♪」
+        PRINTFORMW 「첸은 처음…이라……」
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 「그래도…아파……아프지만、기쁘다… 첸은 %CALLNAME:MASTER%가 처음이라서、행복해…♪」
     ;服従＋従順Lv5
     ELSEIF TALENT:160 == 1 && ABL:10 >= 5
-        PRINTFORMW 「チェンのはじめてを…ささげます」
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 「これでチェンは、もう%CALLNAME:MASTER%だけのものですよ…」
+        PRINTFORMW 「첸의 처음을…받으세요」
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 「이것으로  첸은、이제%CALLNAME:MASTER%만의 것입니다…」
     ELSE
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
-        PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
-        PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 떨어지는 처녀의 증펴를 보고 、첸의 얼굴이 새파래졌다。
+        PRINTFORMW （첸…처음을、이딴 녀석에세 빼앗겨 버렸다……）
+        PRINTFORMW （처음에는 좋아하는 사람이라고、란님이 말씀하셨는데…지금까지 계속 지켜 왔는데…）
     ENDIF
 ;それ以外
 ELSE
     ;恋慕＋従順Lv5
     IF TALENT:150 == 1 && ABL:10 >= 5
-        PRINTFORMW 「チェンの初めて…もらって……」
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 「%CALLNAME:MASTER%に貰ってもらえたのはうれしいけど…でも、初めてのときはやっぱりちゃんとしてほしかったなぁ…」
+        PRINTFORMW 「첸의 처음을…받아서……」
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 「%CALLNAME:MASTER%가 처음인건 기쁘지만…그래도、처음은 조금더 낭만적일거라 생각했는데…」
     ;服従＋従順Lv5
     ELSEIF TALENT:160 == 1 && ABL:10 >= 5
-        PRINTFORMW 「チェンのはじめてを…ささげます」
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 「これでチェンは、もう完全に%CALLNAME:MASTER%だけのものですよ…」
-        PRINTFORMW 「でも、できれば、ちゃんとして欲しかったですけど…」
+        PRINTFORMW 「첸의 처음을…받으세요」
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 「이걸로 첸은、이제 완전히%CALLNAME:MASTER%만의 것이에요…」
+        PRINTFORMW 「그래도、가능하면、조금더 낭만적이었으면 좋았는데…」
     ;それ以外
     ELSE
-        PRINTFORMW 「痛っ…ぅぅぅ」
-        PRINTFORMW 滴り落ちる処女の証を見て、チェンの顔が青ざめた。
-        PRINTFORMW （チェン…はじめてを、こんなやつに奪われちゃった……）
-        PRINTFORMW （初めては好きな人にって、藍しゃまに言われて…今までずっと守ってきたのに…）
+        PRINTFORMW 「아프다…우우우……」
+        PRINTFORMW 떨어지는 처녀의 증펴를 보고 、첸의 얼굴이 새파래졌다。
+        PRINTFORMW （첸…처음을、이딴 녀석에세 빼앗겨 버렸다……）
+        PRINTFORMW （처음에는 좋아하는 사람이라고、란님이 말씀하셨는데…지금까지 계속 지켜 왔는데…）
     ENDIF    
 ENDIF
 
@@ -644,20 +644,20 @@ ENDIF
 IF TALENT:150 == 1
     ;ローションを使った場合
     IF SELECTCOM == 60
-        PRINTFORMW 「これ…変な感じぃ…」
+        PRINTFORMW 「이거…이상한 느낌…」
     ;それ以外
     ELSE
-        PRINTFORMW 「えっ濡れてる…チェンおもらししちゃった…ごめんなさい、ごめんなさい、ごめんなさい」
-        PRINTFORMW 「気持ちよくなってる証拠？うん、チェン…気持ちいいよ」
+        PRINTFORMW 「흠뻑 젖었다…지려버렸다…죄송해요、죄송해요、죄송해요……」
+        PRINTFORMW 「기분좋아진 증거？응、첸…기분좋아……」
     ENDIF
 ;それ以外
 ELSE
     ;ローションを使った場合
     IF SELECTCOM == 60
-        PRINTFORMW 「これ変！気持ち悪いの！やめてぇ！」
+        PRINTFORMW 「이상해！기분나빠！하지마！」
     ;それ以外
     ELSE
-        PRINTFORMW 「えっチェンおもらし？うそ…そんなことチェン…おもらしなんて……」
+        PRINTFORMW 「에！첸이 지려버려？그런…그런건 첸…그런 기억따윈……」
     ENDIF
 ENDIF
 CFLAG:5330 = 1
@@ -668,11 +668,11 @@ CFLAG:5330 = 1
 @K13_MESSAGE_OVERLV2_13
 ;媚薬を使った場合
 IF SELECTCOM == 61
-    PRINTFORMW 「やぁぁ…体が熱いよぉ……」
-    PRINTFORMW （あの薬…なんだったの？）
+    PRINTFORMW 「하아아…몸이 뜨거워요……」
+    PRINTFORMW （그 약…뭐였지？）
 ;それ以外
 ELSE
-    PRINTFORMW （あれ？　体の奥が熱い…）
+    PRINTFORMW （어라？　몸속이 뜨겁다…）
 ENDIF
 CFLAG:5333 = 1
 
@@ -680,15 +680,15 @@ CFLAG:5333 = 1
 ;初めて恥情がLV2超えた CFLAG:5335
 ;-------------------------------------------------
 @K13_MESSAGE_OVERLV2_15
-PRINTFORMW 「うぅ……恥ずかしい…こんなの……藍しゃまに見られたりしたら……」
-PRINTFORMW チェンは顔を真っ赤に染めている。
+PRINTFORMW 「우우……부끄러워…이런거……란님에게 들키면……」
+PRINTFORMW 첸은 얼굴을 새빨갛게 물들이고 있다。
 CFLAG:5335 = 1
 
 ;-------------------------------------------------
 ;初めて恐怖がLV2超えた CFLAG:5337
 ;-------------------------------------------------
 @K13_MESSAGE_OVERLV2_17
-PRINTFORMW 「いやぁぁ…怖いよ…怖いよぉぉ…助けて！藍しゃまぁぁ！紫しゃまぁぁぁ！！」
+PRINTFORMW 「아니…무서워…무서워…도와줘！란님！유카리님！！」
 CFLAG:5337 = 1
 
 ;----------------------------------------------------------
@@ -702,30 +702,30 @@ CFLAG:5337 = 1
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PRINTFORMW 「아 안돼…체、첸…이상해져버려…응아아아……」
+    PRINTFORMW 첸은 첫 절정에 당황하고 있다。 
     PALAM:17 = PALAM:17 + 30
     CFLAG:5300 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5300 == 0 && ( CFLAG:5301 == 1 || CFLAG:5302 == 1 || CFLAG:5303 == 1)
-    PRINTFORMW 「何？なにぃ？…チ、チェンの…お豆…おかしっ、んあぁぁぁ」
-    PRINTFORMW 橙はクリトリスで絶頂したことに驚いている。
+    PRINTFORMW 「응？뭐야？…체、첸의…콩…이상해、응아아아……」
+    PRINTFORMW 첸은 클리토리스로 절정한 것에 놀라고 있다。
     CFLAG:5300 = 1
 ;２回目以降
 ELSE
     ;四重絶頂
     IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
-        PRINTFORMW 「あぁぁぁぁ全部っゼンブイッちゃうぅ…」
-        PRINTFORMW 「ふああああぁぁぁぁぁぁぁぁぁぁ」
-        PRINTFORMW 「…っは……はぁ……はぁ…」
+        PRINTFORMW 「아아아아…전부！전부에서！！」
+        PRINTFORMW 「후아아아아아아아아아아아아아아아」
+        PRINTFORMW 「…하……하아……하아…」
     ;絶頂50以上
     ELSEIF EXP:2 >= 50
-        PRINTFORMW 「あっ、イ、イっっちゃう…ふあぁぁぁぁぁぁぁぁぁ」
-        PRINTFORMW 「はぁ…はぁ……気持ち…いい……」
+        PRINTFORMW 「앗、이、이이、가버려…후아아아아아아아아」
+        PRINTFORMW 「하아…하아……기분…좋아……」
     ELSE
-        PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
-        PRINTFORMW 「…はっ…ぁ…あっ………」
-        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        PRINTFORMW 「앗、하지…흐앗…햣…가버…첸、날아가버려、아아아아아」
+        PRINTFORMW 「…헉……하…하아……」
+        PRINTFORMW 첸은 계속된 절정으로 호흡이 힘든것 같다。
         BASE:0 = BASE:0 - 20
     ENDIF
 ENDIF
@@ -738,14 +738,14 @@ CFLAG:7015 = TIME
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PRINTFORMW 「아 안돼…체、첸…이상해져버려…응아아아……」
+    PRINTFORMW 첸은 첫 절정에 당황하고 있다。 
     PALAM:17 = PALAM:17 + 30
     CFLAG:5301 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5301 == 0 && ( CFLAG:5300 == 1 || CFLAG:5302 == 1 || CFLAG:5303 == 1)
-    PRINTFORMW 「チェン、おかしくなっちゃう……ダメッダメェ…アァァァァァァァァァ」
-    PRINTFORMW 橙はヴァギナで絶頂したことに驚いている。
+    PRINTFORMW 「첸、이상해져버려……아 안돼…아아악아아아아……」
+    PRINTFORMW 첸은 질에서 절정을 한 것에 놀라고 있다。
     CFLAG:5301 = 1
 ;２回目以降
 ELSE
@@ -753,22 +753,22 @@ ELSE
         ;四重絶頂
     IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
     ELSEIF CFLAG:7015 == TIME - 1 && (SELECTCOM == 20 || SELECTCOM == 21 || SELECTCOM == 22 || SELECTCOM == 23 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 28) && (PREVCOM == 20 || PREVCOM == 21 || PREVCOM == 22 || PREVCOM == 23 || PREVCOM == 24 || PREVCOM == 27 || PREVCOM == 28)
-        PRINTFORMW 「ダメェェ　イッてるイッてるのに…またイッちゃうぅぅ」
-        PRINTFORMW 「ダメッダメェェ…にゃぁぁぁぁぁぁぁぁぁぁぁぁ」
-        PRINTFORMW 橙は連続絶頂のあまり、猫そのものの叫び声をあげて果てた。
+        PRINTFORMW 「안돼는데…… 또？…또 가버렷！」
+        PRINTFORMW 「안…안돼…냐아아아아아아아아아아아아아」
+        PRINTFORMW 첸은 연속절정의 나머지、고양이의 소리를 내며 가버렸다。
     ELSEIF EXP:2 <= 49
-        PRINTFORMW 「あっ、ダメッダメッダメェッ…チェン、飛んじゃっ、あぁぁぁぁぁ」
-        PRINTFORMW 「…はっ…ぁ…あっ………」
-        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        PRINTFORMW 「앗、안…안돼…안돼……첸、날아가버려、아아아아아아……」
+        PRINTFORMW 「…헉…하…하아………」
+        PRINTFORMW 첸은 계속된 절정으로 호흡이 힘든것 같다。
         BASE:0 = BASE:0 - 20
     ELSEIF TALENT:150 == 1
         IF SELECTCOM == 24
-            PRINTFORMW 「あっ…だめっイっちゃう…チェンが気持ちよくしてあげたいのにぃ…」
-            PRINTFORMW 「ダメっ…もうダメっ…イっちゃっ…ふあぁぁぁぁぁぁぁぁぁ」
+            PRINTFORMW 「아…안돼…첸도 기분좋게 해주고 싶은데…」
+            PRINTFORMW 「안돼…이젠안돼…으아아아…후아아아아아」
         ENDIF
     ;絶頂50以上
     ELSEIF EXP:2 >= 50
-        PRINTFORMW 「あっいくっいくよ…いくよぉ……ふあぁぁぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 「앗…가버렷…가버렷！…」        PRINTFORMW「후아아아아……」
     ENDIF
 ENDIF
 
@@ -779,14 +779,14 @@ ENDIF
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0
-    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-    PRINTFORMW 橙は初めての絶頂に、戸惑っている。 
+    PRINTFORMW 「앗 안되…체、첸…이상해져버려…응아아아……」
+    PRINTFORMW 첸은 첫 절정에 당황하고 있다。 
     PALAM:17 = PALAM:17 + 30
     CFLAG:5302 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5302 == 0 && ( CFLAG:5300 == 1 || CFLAG:5301 == 1 || CFLAG:5303 == 1)
-    PRINTFORMW 「えっうそ…チェン、お尻の穴で…気持ちよくなっちゃう…飛んじゃうぅぅぅ」
-    PRINTFORMW 橙はアナルで絶頂したことに驚いている。
+    PRINTFORMW 「엣…거짓말…첸、엉덩이 구멍으로…기분좋아져 버려…날아가버려」
+    PRINTFORMW 첸은 어널로 절정한 것에 놀라고 있다。
     CFLAG:5302 = 1
 ;２回目以降
 ELSE
@@ -794,11 +794,11 @@ ELSE
     IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
     ;絶頂50以上
     ELSEIF EXP:2 >= 50
-        PRINTFORMW 「いいっお尻気持ちいいのぉ……チェン、いっちゃぁぁぁぁぁぁ」
+        PRINTFORMW 「엉덩이 기분좋아……첸、가버렷」
     ELSE
-        PRINTFORMW 「ダメッお尻でなんて変なのにぃぃ…んあぁぁぁぁぁぁ」
-        PRINTFORMW 「…はっ…ぁ…あっ………」
-        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        PRINTFORMW 「안돼…엉덩이가…이상해……응아아아……」
+        PRINTFORMW 「…헉…하…하아………」
+        PRINTFORMW 첸은 계속된 절정으로 호흡이 힘든것 같다。
         BASE:0 = BASE:0 - 20
     ENDIF
 ENDIF
@@ -810,14 +810,14 @@ ENDIF
 ;初めて
 ;絶頂したことが無い
 IF CFLAG:5300 == 0 && CFLAG:5301 == 0 && CFLAG:5302 == 0 && CFLAG:5303 == 0    
-    PRINTFORMW 「あっダメぇ…チ、チェン…変になっちゃうぅぅ…んあぁぁぁ」
-    PRINTFORMW 橙は初めての絶頂に、戸惑っている。
+    PRINTFORMW 「앗…안돼…체、첸…이상해져버려…응아아아……」
+    PRINTFORMW 첸은 첫 절정에 당황하고 있다。
     PALAM:17 = PALAM:17 + 30
     CFLAG:5303 = 1
 ;他の絶頂は経験済み
 ELSEIF CFLAG:5303 == 0 && ( CFLAG:5300 == 1 || CFLAG:5301 == 1 || CFLAG:5302 == 1)
-    PRINTFORMW 「いやぁ…チェンのおっぱい、おかしくなるぅぅぅぅ」
-    PRINTFORMW 橙は胸で絶頂したことに驚いている。
+    PRINTFORMW 「아…첸의 가슴、이상해져버려」
+    PRINTFORMW 첸은 가슴으로 절정한 것에 놀라고 있다。
     CFLAG:5303 = 1
 ;２回目以降
 ELSE
@@ -825,11 +825,11 @@ ELSE
     IF TFLAG:180 == 1 && TFLAG:181 == 1 && TFLAG:182 == 1 && TFLAG:183 == 1
     ;絶頂50以上
     ELSEIF EXP:2 >= 50
-        PRINTFORMW 「いいのぉ…おっぱい気持ちいい…ダメぇ…あぁぁぁぁぁぁぁぁ」
+        PRINTFORMW 「좋아…가슴…기분좋아…안돼…하아아아아아아아아……」
     ELSE
-        PRINTFORMW 「おかしいのぉ…チェン、おっぱいが変なのぉ…あぁぁぁぁぁぁぁ」
-        PRINTFORMW 「…はっ…ぁ…あっ………」
-        PRINTFORMW 橙はなれない絶頂で、呼吸が苦しそうだ。
+        PRINTFORMW 「이상해…첸、가슴 이상해…하아아아아아아아……」
+        PRINTFORMW 「…헉…하…하아………」
+        PRINTFORMW 첸은 계속된 절정으로 호흡이 힘든것 같다。
         BASE:0 = BASE:0 - 20
     ENDIF
 ENDIF
@@ -840,16 +840,16 @@ ENDIF
 @K13_MESSAGE_ORGASM_10
 ;初めて
 IF CFLAG:5304 == 0
-    PRINTFORMW 「あっ…チェン…なんで、おっぱい出てるのぉ」
+    PRINTFORMW 「아…첸…왜、왜 잔뜩 나오는 거야？」
     CFLAG:5304 = 1
 ;２回目以降
 ELSE
     IF TALENT:150 == 1 || TALENT:160 == 1 || TALENT:170 == 1
-        PRINTFORMW 「やっおっぱい出ちゃう…」
+        PRINTFORMW 「앗…가슴…나와버렷…」
     ELSEIF MARK:9 == 3
-        PRINTFORMW 「チェンの体…元に戻せっ！」
+        PRINTFORMW 「첸의 몸…원래대로 돌려줘！」
     ELSE
-        PRINTFORMW 「なにこれぇ…」
+        PRINTFORMW 「이게 뭐야……」
     ENDIF
 ENDIF
 
@@ -877,45 +877,45 @@ SIF SELECTCOM == 111 || SELECTCOM == 620
     RETURN 0
 ;初回のみ
 IF CFLAG:5306 == 0
-    PRINTFORMW 「おねがい…おトイレ、行かせて…」
-    PRINTFORMW 「あっダメッ…チェン、もう我慢できなっあぁぁぁぁぁぁぁ」
+    PRINTFORMW 「부탁이야…화장실、화장실 가게해줘…」
+    PRINTFORMW 「앗…안돼…첸、더는 못참아……」
     PRINTFORML 　
-    PRINTFORMW 「ｸﾞｽ…チェン…おもらし……しちゃった……」
-    PRINTFORMW 橙は泣き出した。
+    PRINTFORMW 「우우…첸…오줌……지려버렸어……」
+    PRINTFORMW 첸은 울기 시작했다。
     CFLAG:5306 = 1
 ;２回目以降
 ELSE
     ;恋慕+おもらし癖+ベビープレイ
     IF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:58
-        PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
-        PRINTFORMW 「チェン…おむつのまんま、好きな人の目の前で……あかちゃんみたいに、おしっこしてるのぉぉ」
-        PRINTFORMW 「チェンのおしっこ……おむつから…あふれちゃったのに……それなのに…とまんないよぉ……」
+        PRINTFORMW 「나와…！오줌나와…하아아아아아……」
+        PRINTFORMW 「첸…좋아하는 사람앞에서、기저귀차고 보여지면서……아기처럼、오줌싸고있어……」
+        PRINTFORMW 「첸의 오줌……기저귀에서…넘쳤는데……그런데도…말도 안돼……」
         PRINTFORML 　
-        PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
-        PRINTFORMW 「チェンのおしっこで……おむつ、ぐしょぐしょにしちゃった……」
-        PRINTFORMW 「その…おまんこ……拭いてくれる？」
-            PRINTFORML [0]いいよ
-            PRINTFORML [1]なめてやるよ
-            PRINTFORML [2]自分でしろ
-            PRINTFORML [3]そのままにしておけ
+        PRINTFORMW 「…하아…하아…오줌、끝났어……그…첸…기분좋았어……」
+        PRINTFORMW 「첸의 오줌으로……기저귀、다 젖어버렸네……」
+        PRINTFORMW 「그…보지……닦아줄래？」
+            PRINTFORML [0]좋아
+            PRINTFORML [1]핥아줄게
+            PRINTFORML [2]스스로 해
+            PRINTFORML [3]그대로 나둬
             $INPUT_LOOP
             INPUT 
 
             IF RESULT != 0 && RESULT != 1 && RESULT != 2 && RESULT != 3
             GOTO INPUT_LOOP
             ELSEIF RESULT == 0
-                PRINTFORMW 「あっ……や…ん……」
-                PRINTFORMW （拭いてもらってるだけなのに……触れられると…気持ちいいよぉ…）
+                PRINTFORMW 「아……아…응……」
+                PRINTFORMW （닦아주는데……닫으면…기분좋아…）
                 PALAM:0 = PALAM:0 + 500
             ELSEIF RESULT == 1
-                PRINTFORMW 「えっ？そんなの…汚いよ…？」
-                PRINTFORMW 「チェンのなら汚くない…？……その、そんな…恥ずかしいけど…うれしい」
+                PRINTFORMW 「엣？첸의…더럽지 않아…？」
+                PRINTFORMW 「첸이라면 더럽지 않아…？……그、그런…부끄럽지만…기뻐」
                 PRINTFORMW 好感度+5
                 CFLAG:2 = CFLAG:2 + 5
             ELSEIF RESULT == 2
-                PRINTFORMW 「……わかった」
+                PRINTFORMW 「……알았어」
             ELSEIF RESULT == 3
-                PRINTFORMW 「うぅ…気持ち悪いよぉ……」
+                PRINTFORMW 「우우…기분나쁘네……」
                 SOURCE:12 += 50
                 SOURCE:19 += 200
                 SOURCE:22 += 250
@@ -923,90 +923,90 @@ ELSE
     ;恋慕＋おもらし癖＋シャワー
     ELSEIF TALENT:150 == 1 &&TALENT:45 == 1 && TEQUIP:54
         IF RAND:2 == 0
-            PRINTFORMW 「やぁぁ…おしっこ……出ちゃっ…」
-            PRINTFORMW 橙のおしっことシャワーの水が混ざり合って排水溝に流れて行った
+            PRINTFORMW 「아아아…오줌……나와버려…」
+            PRINTFORMW 첸의 오줌과 물이 서로 섞이며 배수구로 흘러갔다
         ELSE
-            PRINTFORMW 「やっ…おしっこ……出ちゃっ…やぁぁ」
-            PRINTFORMW 放尿する橙の尿道にシャワーをあてると橙は体を震わせながら尿の勢いを増した
-            PRINTFORMW 「うぅ……いじわる…」
+            PRINTFORMW 「앗…오줌……나와버려…아아아아」
+            PRINTFORMW 방뇨중의 요도에 샤워기를 갔다대자 첸은 몸을 떨며 오줌의 기세를 더했다
+            PRINTFORMW 「우우……힘들어…」
         ENDIF
     ;恋慕＋おもらし癖＋コスプレ（エプロン・スク水を除く）
     ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:59 >= 3
-        PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
+        PRINTFORMW 「앗…나와…첸、오줌나와…하아아아아아……」
         PRINTFORMW 　
-        PRINTFORMW 「お洋服…汚しちゃった…ごめんなさい……」
-        PRINTFORMW 「でも、気持ち…よくって…つい…」
+        PRINTFORMW 「옷…더러워져버렸다…죄송해요…우으…」
+        PRINTFORMW 「그래도、기분…좋았어……」
     ;恋慕＋おもらし癖＋お風呂場プレイ
     ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:53
-        PRINTFORMW 「やぁ………んっ……」
-        PRINTFORMW 橙の体が小さく震えたかと思うとお湯が黄色く染まっていった
-        PRINTFORMW 橙は水中であることを利用しおもらしを隠そうと考えたようだ。
-        PRINTFORMW 「うぅ……だって%CALLNAME:MASTER%に知られたら…恥ずかしかったんだもん……」
-        PRINTFORMW 隠そうとしたことを叱ると橙は小さくうなだれた
+        PRINTFORMW 「아아………응……」
+        PRINTFORMW 첸의 몸이 작게 떨린다고 생각하니 물이 누렇게 물들어 갔다
+        PRINTFORMW 첸은 물속인걸 이용해서 감추려고 한것같다。
+        PRINTFORMW 「우우……그치만 %CALLNAME:MASTER%한테 들키면…부끄러운걸……」
+        PRINTFORMW 숨기려던 것을 야단치자 첸은 작게 고개를 숙였다
     ;恋慕+おもらし癖+野外プレイ
     ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && TEQUIP:52
-        PRINTFORMW 「あっでる…！おしっこ出る…あぁぁぁぁぁぁ」
-        PRINTFORMW 「チェン…お外で、好きな人の目の前で……どーぶつみたいに、おしっこしてるのぉぉ」
+        PRINTFORMW 「안돼…！오줌나와…하아아아아……」
+        PRINTFORMW 「첸…밖에서、사랑하는 사람앞에서……오줌싸고있어……」
         PRINTFORML 　
-        PRINTFORMW 「…はぁ…はぁ…おしっこ、おわったよ……その…チェンね…気持ちよかったよ……」
+        PRINTFORMW 「…하아…하아…오줌、끝났네……그…첸…기분좋았어……」
     ;恋慕+おもらし癖＋騎乗位又は対面座位又は対面立位(ヴァギナ、アナル問わず)
     ELSEIF TALENT:150 == 1 && TALENT:45 == 1 && (SELECTCOM == 22 || SELECTCOM == 24 || SELECTCOM == 27 || SELECTCOM == 32 || SELECTCOM == 34 || SELECTCOM == 37)
-        PRINTFORMW 「あっでる…！おしっこ出る…」
-        PRINTFORMW 「だめっ%CALLNAME:MASTER%にかかっちゃうよぉ」
-        PRINTFORMW 「だめっ早くどいてっもう出ちゃっ…あぁぁぁぁぁ」
-        PRINTFORMW 「出ちゃってるのぉ…チェン、%CALLNAME:MASTER%をおしっこまみれにしちゃってるのぉ」
-        PRINTFORMW 「…………ごめん」
-        PRINTFORMW 「怒って…る……よね…ホントに…ごめん」
-        PRINTFORMW 橙は耳と尻尾をうなだれさせて、涙目で怯えながら謝っている
+        PRINTFORMW 「안돼…！오줌 나와버렷…」
+        PRINTFORMW 「안돼 %CALLNAME:MASTER%에게 보여져 버려」
+        PRINTFORMW 「안돼…벌써 나와버렸어……하아아아아……」
+        PRINTFORMW 「나와버렸어…첸、%CALLNAME:MASTER%에게 오줌을 갈기고 있어……」
+        PRINTFORMW 「…………미안…」
+        PRINTFORMW 「화났…어……그치…정말…미안」
+        PRINTFORMW 첸은 귀와 꼬리를 축 늘어뜨리고、겁먹은 눈으로 사과하고 있다
     ;恋慕+おもらし癖
     ELSEIF TALENT:150 == 1 && TALENT:45 == 1
-        PRINTFORMW 「あっ…でるよ…チェン、おしっこ出しちゃうよっ…あぁぁぁぁぁぁぁ」
+        PRINTFORMW 「앗…나와…첸、오줌나와…하아아아아아……」
         PRINTFORML 　
-        PRINTFORMW 「チェンね…その…%CALLNAME:MASTER%に、見られながら、おしっこするのね……その…癖になっちゃいそう……」
+        PRINTFORMW 「첸…그…%CALLNAME:MASTER%한테、보여지면서、오줌누는거……그…버릇이 될거같아……」
     ;服従+おもらし癖+野外プレイ
     ELSEIF TALENT:160 == 1 && TALENT:45 == 1 && TEQUIP:52
-        PRINTFORMW 「あっでます…！おしっこ出します…あぁぁぁぁぁぁ」
-        PRINTFORMW 「チ、チェンは…お外で…%CALLNAME:MASTER%の前で……どーぶつみたいに、おしこしてるんですぅぅ」
+        PRINTFORMW 「앗…안돼…！오줌나와…하아아아아아……」
+        PRINTFORMW 「체、첸…밖에서…%CALLNAME:MASTER%앞에서……오줌싸고 있어……」
         PRINTFORML 　
-        PRINTFORMW 「…はぁ…はぁ…おしっこ、全部出しちゃいました…チェン……これ、気持ちよくって…うれしいです…」
+        PRINTFORMW 「…하아…하아…오줌、다 눴어…첸……이거、기분좋아…기뻐…」
     ;服従+おもらし癖
     ELSEIF TALENT:160 == 1 && TALENT:45 == 1
-        PRINTFORMW 「あっ…でます…おしっこ……出ちゃいますぅ…あぁぁぁぁぁぁぁぁぁ」
-        PRINTFORMW 「チェン…%CALLNAME:MASTER%の前で……おもらししちゃってるんですぅぅぅぅ」
+        PRINTFORMW 「앗…나와…오줌……나와버려…하아아아아아……」
+        PRINTFORMW 「첸…%CALLNAME:MASTER%앞에서……느껴 버려요」
         PRINTFORML 　
-        PRINTFORMW 「チェンの……おもらし……見てもらえましたか……？」
+        PRINTFORMW 「첸의……오줌……봐주셨어요……？」
     ;露出癖Lv5
     ELSEIF ABL:14 >= 5
-        PRINTFORMW 「あっ…おもらし…しちゃう……チェン…今から……おしっこ出すから…見ててぇ…あっあぁぁぁぁぁぁぁ」
-        PRINTFORMW 「あはぁ…チェン、おもらし…見られてる…見られながら…おしっこ……気持ちいいよぉ……」
+        PRINTFORMW 「앗…오줌…나와버린다……첸…지금부터……오줌눌테니까…지켜봐줘…앗……아아아아」
+        PRINTFORMW 「아하아…첸、오줌…보여…보여져…오줌……기분좋아……」
         PRINTFORML 　
-        PRINTFORMW 「あっ…終わっちゃった……チェン…見られながら……おしっこ…すきぃ」
+        PRINTFORMW 「아…끝나버렸다……첸…보여지면서……오줌…좋아」
     ;恋慕
     ELSEIF TALENT:150 == 1
-        PRINTFORMW 「そっその…やっぱ何でもない…」
-        PRINTFORMW （おトイレなんて恥ずかしくて言えないよぉ…）
+        PRINTFORMW 「저기…아…아냐…」
+        PRINTFORMW （민망해서 화장실가고싶다고는 말못하겠어…）
     ;野外プレイ
     ELSEIF TEQUIP:52
-        PRINTFORMW 「えっやっ…ダメ…こんな、お外でなんて……誰か…いるかも…知れないのに……」
-        PRINTFORMW 「うぅ…もうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
-        PRINTFORMW 「こんなの…こんな…お外で……おもらしなんて…お願い…早く止まってぇぇ…」
+        PRINTFORMW 「에엣…안돼…이런、밖에서라니……누군가…있을지도…몰라……」
+        PRINTFORMW 「우우…이젠 안돼、못참아…아…안돼、안돼、안돼………」
+        PRINTFORMW 「이런…이런…밖에서……오줌이라니…제발…빨리 멈추고 싶어…」
         PRINTFORML 　
-        PRINTFORMW 「こんなの…ひどっ……お…外で……おし…っこ………なんて…だれ…みてるかも…しれなぃの……」
-        PRINTFORMW 橙は大泣きした。これより後は、言葉が聞き取れなかった。
+        PRINTFORMW 「이런…너무해……우…밖에서……오줌………이런…누가…보고있을…지도……」
+        PRINTFORMW 첸은 크게 울었다。뒤로는 알아들을수 없었다。
     ;それ以外
     ELSE
-        PRINTFORMW 「えっ…いやっ…おしっこ、ダメェ…お願い……出ないで…おもらし……ダメなのぉ…」
-        PRINTFORMW 「あっもうダメ、我慢できない…あっダメ、ダメ、ダメェェェェェェ」
+        PRINTFORMW 「엣…싫어…오줌、안돼…제발……나오지마…오줌……안돼…」
+        PRINTFORMW 「아…안돼、못참아…아、안돼…더는、안돼……」
         PRINTFORML 　
-        PRINTFORMW 「チェン…また……おもらし…しちゃった……我慢……しないと…だめなのにぃ…」
-        PRINTFORMW 橙は泣き出した。
+        PRINTFORMW 「첸…또……오줌…나와버렸다……참아야……해야…안되는데…」
+        PRINTFORMW 첸은 울기 시작했다。
     ENDIF
 ENDIF
 
 IF ASSI >= 0
     IF NO:ASSI == 21
-        PRINTFORMW 「うぅ…藍しゃまごめんなさい……」
-        PRINTFORMW 放尿を藍に見られたのがショックなようだ
+        PRINTFORMW 「우우…란님 죄송해요……」
+        PRINTFORMW 방뇨를 란에게 보인것에 충격받은것 같다
         SOURCE:28 = SOURCE:28 + 300
     ENDIF
 ENDIF
@@ -1016,11 +1016,11 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_8
 IF TALENT:152 == 1 && TALENT:153 == 1 && RAND:3 == 0
-    PRINTFORMW 「うぅ…中に欲しかったのにぃ…チェン…%CALLNAME:MASTER%との子供が欲しいの……」
+    PRINTFORMW 「우우…안에 받고 싶었는데…첸…%CALLNAME:MASTER%의 아이를 갖고싶어……」
 ELSEIF TALENT:150 == 1
-    PRINTFORMW 「うぅ…中に欲しかったのにぃ……」
+    PRINTFORMW 「우우…안에 받고 싶었는데……」
 ELSE
-    PRINTFORMW （あっ…良かった中に出されてない……）
+    PRINTFORMW （앗…안에 내줬으면 했는데……）
 ENDIF
 
 ;-------------------------------------------------
@@ -1030,7 +1030,7 @@ ENDIF
 ;主人のペニス
 IF TFLAG:35
     IF TALENT:150 == 1
-        PRINTFORMW 「あっ…おしりの中……あったかい…」
+        PRINTFORMW 「아…엉덩이 속이……따뜻하다…」
     ENDIF
 ;それ以外
 ELSE
@@ -1056,42 +1056,42 @@ ENDIF
 IF TALENT:150 == 1
     ;イラマチオ
     IF SELECTCOM == 230
-        PRINTFORMW 「うぅ………」
-        PRINTFORMW 直接食道に射精すると橙は苦しそうにうめき声をあげた
-        PRINTFORMW 「ゲホゲホッ…ひどいよ…もう…」
-        PRINTFORMW 橙は涙目で睨んでいる
-        PRINTFORMW 「反省してるなら、チェンのこと…その……気持ち良くして…」
+        PRINTFORMW 「우우………」
+        PRINTFORMW 식도에 직접 사정하자 첸은 괴로운듯 신음소리를 냈다
+        PRINTFORMW 「콜록콜록…너무해…우우…」
+        PRINTFORMW 첸은 눈물을 흘리며 노려보고 있다
+        PRINTFORMW 「반성하고 있으면、첸을…그……기분좋게 해줘…」
     ELSEIF TFLAG:35 == 2
         IF RAND:3 == 0
-            PRINTFORMW 「ゴクゴク…うっ…」
-            PRINTFORMW 「……ぁ………ぅ…」
-            PRINTFORMW 橙は精液を飲み切れずのどに詰まらせたようだ
-            PRINTFORMW 橙の背中をたたいて精液を吐き出させた
-            PRINTFORMW 「ゲホッゲホッ……うぅ…飲み切れなくて…ゴメン」
-            PRINTFORMW 「せっかく%CALLNAME:MASTER%が…チェンのために出してくれたのに…」
+            PRINTFORMW 「콜록콜록…우으…」
+            PRINTFORMW 「……아………우…」
+            PRINTFORMW 첸은 정액을 마시다 목에 걸린것 같다
+            PRINTFORMW 첸의 등을 두드려 정액을 토해내게 했다
+            PRINTFORMW 「켈록켈록……우우…다 못마셨어…미안」
+            PRINTFORMW 「모처럼 %CALLNAME:MASTER%가…첸을 위해서 내줬는데…」
         ELSEIF RAND:2 == 0
-            PRINTFORMW 「ごほ、ゲホゲホ…」
-            PRINTFORMW 「こんな量…飲みきれないよぉ……」
-            PRINTFORMW 橙は口からあふれた精液を手ですくい必死に飲み干そうとしている
+            PRINTFORMW 「콜록、켈록켈록…」
+            PRINTFORMW 「이렇게나…다 못마셔……」
+            PRINTFORMW 첸은 입으로 역류하는 정액을 필사적으로 삼키려 하고 있다
         ELSE
-            PRINTFORMW 「うっ…ゴクゴク…ゴグ…」
-            PRINTFORMW 「…ぷはぁ……全部飲めたよ…」
-            PRINTFORMW 「すごい量だったけど…でも、あなたのだから……」
-            PRINTFORMW ほめてやると橙はうれしそうにはにかんだ
+            PRINTFORMW 「우으…꿀꺽꿀걱…꿀꺽…」
+            PRINTFORMW 「…후와아……다마셨어…」
+            PRINTFORMW 「굉장한양이지만…그래도、당신이니까……」
+            PRINTFORMW 칭찬해 주니 첸은 기뻐하며 수줍어 했다
         ENDIF
     ELSE
-        PRINTFORMW 「ゴグゴク……」
-        PRINTFORMW 橙は喉を鳴らして精液を飲み干した
-        PRINTFORMW 「えへへ…おいしい」
+        PRINTFORMW 「꿀껄꿀꺽……」
+        PRINTFORMW 첸은 꾹 참고 정액을 다 마셨다
+        PRINTFORMW 「우에에…맛있어」
     ENDIF
 ELSE
     IF RAND:2 == 0
-        PRINTFORMW 「うえ……」
-        PRINTFORMW 橙は口の中にある精液を必死に吐き出した
+        PRINTFORMW 「우에……」
+        PRINTFORMW 첸은 입에 남아있는 정액을 필사적으로 토했다
     ELSE
-        PRINTFORMW 「うえ……っ！」
-        PRINTFORMW 橙が口の中の精液を吐き出そうとしたので%CALLNAME:MASTER%は橙の口を押さえ無理やり飲み込ませた
-        PRINTFORMW 「うぅ…気持ち悪い……」
+        PRINTFORMW 「우에……에！」
+        PRINTFORMW 첸이 입안의 정액을 토해내려고 하기에 %CALLNAME:MASTER%는 첸의 입을 막고 억지로 먹였다
+        PRINTFORMW 「우우…기분나빠……」
     ENDIF
 ENDIF
 
@@ -1099,14 +1099,14 @@ ENDIF
 IF TFLAG:10 > 0
     IF TALENT:150 == 1
         IF RAND:2 == 0
-            PRINTFORMW 「んっ…ペロペロペロ……」
-            PRINTFORMW 「%CALLNAME:MASTER%の精液…おいしい」
-            PRINTFORMW 橙は一物をきれいにすると、尿道内に残った精液を吸いだそうと、しゃぶりついてきた
+            PRINTFORMW 「응…핥짝핥짝핥짝……」
+            PRINTFORMW 「%CALLNAME:MASTER%의 정액…맛있어」
+            PRINTFORMW 첸은 물건을 깨끗이 하고 요도에 남은 정액을 빨아들이려고 달라붙어 왔다
         ELSE
-            PRINTFORMW 「んっ…ペロペロペロ……」
-            PRINTFORMW 「はいっきれいになったよっ！」
-            PRINTFORMW 「あっ…せっかくきれいにしたのに、また出てきた…もう、しょうがないなぁ」
-            PRINTFORMW 橙は呆れたように奉仕を再開してきたが、笑顔を全く隠せていない
+            PRINTFORMW 「응…핥짝핥짝핥짝……」
+            PRINTFORMW 「이제 깨끗해 졌어！」
+            PRINTFORMW 「아…모처럼 깨끗이 했는데、또나왔다…뭐、이젠 어쩔수 없네」
+            PRINTFORMW 첸은 기가 막힌듯 봉사를 재개했지만、웃는 얼굴을 감추지 못했다
         ENDIF
     ENDIF
 ENDIF
@@ -1117,19 +1117,19 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_12
 ;奉仕精神Lv5＋恋慕
 IF ABL:13 >= 5 && TALENT:150 == 1
-    PRINTFORMW 「せーえき、いっぱい。おいしい…」
-    PRINTFORMW 橙の表情は緩み、体についた精液をなめている。
-    PRINTFORMW 「でも、美味しいのは、これが、%CALLNAME:MASTER%のせーえきだからだよ…」
+    PRINTFORMW 「응、정액…많아。맜있어…」
+    PRINTFORMW 첸은 표정을 느슨하게 하고 몸에 묻은 정액을 맛보고 있다。
+    PRINTFORMW 「그래도、맛있는 거는、이게、%CALLNAME:MASTER%의 정액이기 때문이야…」
 ;奉仕精神Lv5
 ELSEIF ABL:13 >= 5
-    PRINTFORMW 「いっぱいでたね。チェンもっともっと、がんばるよ」
-    PRINTFORMW 橙は張り切っている。
+    PRINTFORMW 「많이 쌋네。첸이 더 열심히 할게」
+    PRINTFORMW 첸은 의욕이 가득차 있다。
 ;奉仕精神Lv3
 ELSEIF ABL:13 >= 3
-    PRINTFORMW 「うわぁ…せーえきいっぱい…満足してくれた？」
+    PRINTFORMW 「와아…정액가득…기분좋았어？」
 ;それ以外
 ELSE
-    PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
+    PRINTFORMW 「우으…이상한 냄세…끈적끈적…끈적거려서 기분나빠…」
 ENDIF
 
 ;-------------------------------------------------
@@ -1138,14 +1138,14 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_14
 IF TALENT:150 == 1
     IF RAND:3 == 0
-        PRINTFORMW 「キスで感じてくれたの？チェンとおんなじだね」
-        PRINTFORMW 橙は%CALLNAME:MASTER%の手を秘所へと導いた。
-        PRINTFORMW 橙のそこは洪水を起こしたかのように濡れていた。
+        PRINTFORMW 「키스로 느껴준거야？첸하고 똑같네」
+        PRINTFORMW 첸은 %CALLNAME:MASTER%의 손을 비소로 인도했다。
+        PRINTFORMW 첸의 그곳은 홍수를 일으킨것처럼 젖어 있었다。
     ELSEIF RAND:2 == 0
-        PRINTFORMW 「キスだけで出しちゃったの？…エッチ」
+        PRINTFORMW 「키스로만 가버려？…변태」
     ELSE
-        PRINTFORMW 「もう出しちゃったの？中に欲しかったのにぃ」
-        PRINTFORMW 橙は頬を膨らませて不満を表している
+        PRINTFORMW 「벌써 나왔어？안에 갖고싶었는데……」
+        PRINTFORMW 첸은 볼을 부풀리며 불만을 드러내고 있다
     ENDIF
 ENDIF
 
@@ -1155,13 +1155,13 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_15
 IF TALENT:150 == 1
     IF RAND:2 == 0
-        PRINTFORMW 「むぅ…中に欲しかったのにぃ」
-        PRINTFORMW 「チェンも、もう我慢できないから…今度はちゃんと…ね」
-        PRINTFORMW 橙は自らの秘所を指で開き、誘っている
+        PRINTFORMW 「무우…안에 받고 싶었는데」
+        PRINTFORMW 「첸도 이젠 못참으니까…이번에는…제대로……」
+        PRINTFORMW 첸은 자신의 비소를 손가락으로 열고 유혹하고 있다
     ELSE
-        PRINTFORMW 「先に出しちゃうなんてずるいよぉ…」
-        PRINTFORMW 「チェンももっと気持ちよくなりたいのにぃ」
-        PRINTFORMW そういうと橙は、今まで以上の力で、一物に秘所を押し付け腰を動かし始めた
+        PRINTFORMW 「먼전 내다니…치사해…」
+        PRINTFORMW 「첸도 더 기분좋아지고 싶은데……」
+        PRINTFORMW 첸은 지금까지 이상의 힘으로 물건에 비소를 가져다 대고 허리를 움직이기 시작했다
     ENDIF
 ENDIF
 
@@ -1171,7 +1171,7 @@ ENDIF
 @K13_MESSAGE_EJAC_PLAYER_16
 IF TALENT:150 == 1
     PRINTFORMW 「もぅ…これ後で落とすの大変なんだよっ！」
-    PRINTFORMW 橙は頬を膨らませて怒っている
+    PRINTFORMW 첸은 볼을 부풀리며 화를 냈다
 ENDIF
 
 ;-------------------------------------------------
@@ -1179,11 +1179,11 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_17
 IF TALENT:150 == 1
-    PRINTFORMW 「あ～%CALLNAME:ASSI%ずるいっ！チェンの中に出してもうはずだったのにぃ！」
+    PRINTFORMW 「아～%CALLNAME:ASSI%그만해줘！첸 이미 안에 냈는데！」
 ELSE
     PRINTFORMW 「………」
-    PRINTFORMW （もし今やられてるのがチェンだったら…中に出されてたんだ……）
-    PRINTFORMW 橙の表情が青ざめた
+    PRINTFORMW （만약 지금 당하고있는게 첸이라면…첸의 안에 나왔었어……）
+    PRINTFORMW 첸의 표정이 밝아졌다
 ENDIF
 
 ;YM口上まとめ作者註
@@ -1194,9 +1194,9 @@ ENDIF
 ;-------------------------------------------------
 ;@K13_MESSAGE_EJAC_PLAYER_18
 ;IF TALENT:170 == 1
-;    PRINTFORMW 「あはぁ…中で出されるの気持ちいいょぉ」
-;    PRINTFORMW 「もっと！もっとちょうだい！！」
-;    PRINTFORMW 橙はさらに激しく腰を振り始めた
+;    PRINTFORMW 「아하아…안에 나오는거 기분좋아」
+;    PRINTFORMW 「더！더 주세요！！」
+;    PRINTFORMW 첸은 더욱 격력하게 움직이기 시작했다
 ;ENDIF
 
 ;-------------------------------------------------
@@ -1222,9 +1222,9 @@ ENDIF
 ;-------------------------------------------------
 @K13_MESSAGE_EJAC_PLAYER_29
 IF TALENT:150 == 1
-    PRINTFORMW 「チェンのおっぱいで気持ち良くなってくれたんだ…えへへ、なんかうれしいな…」
+    PRINTFORMW 「첸의 가슴 기분좋아졌구나…에헤헤、왠지 기쁘네…」
 ELSE
-    PRINTFORMW 「うっ…変なにおい…べたべたねばねばで気持ち悪い…」
+    PRINTFORMW 「우…이상한 냄새…끈적끈적…끈적거려서 기분나빠……」
 ENDIF
 
 ;========================================================
@@ -1262,7 +1262,7 @@ NEXT
 ;苦痛刻印取得 CFLAG:5310
 ;-------------------------------------------------
 @K13_MESSAGE_MARK0_1
-PRINTFORMW 「痛……」
+PRINTFORMW 「아파……」
 CFLAG:5310 = 1
 
 @K13_MESSAGE_MARK0_2
@@ -1271,9 +1271,9 @@ CFLAG:5310 = 2
 
 @K13_MESSAGE_MARK0_3
 IF TALENT:150 == 1
-    PRINTFORMW 「痛いけど…でも、うれしいのっ」
+    PRINTFORMW 「아프지만…그래도、기뻐……」
 ELSE
-    PRINTFORMW 「痛い…痛いよ……やめてぇ」
+    PRINTFORMW 「아파…아프다고……그만해………」
 ENDIF
 CFLAG:5310 = 3
 
@@ -1290,9 +1290,9 @@ CFLAG:5311 = 2
 
 @K13_MESSAGE_MARK1_3
 IF TALENT:150 == 1
-    PRINTFORMW 「気持ちいいの、好きぃ…%CALLNAME:MASTER%にしてもらうの…すごく気持ちいい」
+    PRINTFORMW 「기분좋아、좋아…%CALLNAME:MASTER%가 해 주는거…아주 기분좋아……」
 ELSE
-    PRINTFORMW 「気持ちいいの、好きぃ…」
+    PRINTFORMW 「기분좋아、좋아…」
 ENDIF
 CFLAG:5311 = 3
 
@@ -1300,19 +1300,19 @@ CFLAG:5311 = 3
 ;屈服刻印取得 CFLAG:5312
 ;-------------------------------------------------
 @K13_MESSAGE_MARK2_1
-PRINTFORMW （ここで抵抗しても…余計痛くされるだけなのかなぁ……）
+PRINTFORMW （여기서 저항해도…아프게 되는거 뿐일까……）
 CFLAG:5312 = 1
 
 @K13_MESSAGE_MARK2_2
-PRINTFORMW 「逆らわないっ…逆らわないから、痛いことしないでぇ…」
+PRINTFORMW 「거역하지 않아…반항하지 않을테니까、아프게는 하지말아줘…」
 CFLAG:5312 = 2
 
 @K13_MESSAGE_MARK2_3
 IF TALENT:150 == 1
-    PRINTFORMW 「チェンは…%CALLNAME:MASTER%の物になれて……幸せ……です」
+    PRINTFORMW 「첸은…%CALLNAME:MASTER%の의 물건이 될수 있어서……행복……합니다……」
 ELSE
-    PRINTFORMW 「はい……チェンは…%CALLNAME:MASTER%の、物です」
-    PRINTFORMW （ごめんなさい…藍しゃま、チェンはもう…この人には逆らえません…）
+    PRINTFORMW 「네……첸은…%CALLNAME:MASTER%의、물건입니다……」
+    PRINTFORMW （미안해요…란님、첸은 이제…이사람에게는 거역할수 없습니다…）
 ENDIF
 CFLAG:5312 = 3
 
@@ -1335,20 +1335,20 @@ CFLAG:5313 = 3
 ;反発刻印取得 CFLAG:5314
 ;-------------------------------------------------
 @K13_MESSAGE_MARK4_1
-PRINTFORMW 「何されたってチェンは、絶対屈しないよ」
+PRINTFORMW 「무슨 일이 있어도 첸은 절대 굴복하지 않을 거야！」
 CFLAG:5314 = 1
 
 @K13_MESSAGE_MARK4_2
-PRINTFORMW 「ウウウゥゥゥゥゥゥゥ」
-PRINTFORMW 橙は獣そのものな、うなり声を上げて%CALLNAME:MASTER%を睨んでいる
+PRINTFORMW 「우우우우우우우………」
+PRINTFORMW 첸은 짐승 그자체의 신음소리를 내며、%CALLNAME:MASTER%를 노려보고 있다
 CFLAG:5314 = 2
 
 @K13_MESSAGE_MARK4_3
 IF TALENT:150 == 1
-    PRINTFORMW 「%CALLNAME:MASTER%が、好きなのか、嫌いなのか…チェン、わかんなくなっちゃたよぅ」
+    PRINTFORMW 「%CALLNAME:MASTER%가 좋은지、싫은지…첸、나도 모르게 됐어……」
 ELSE
-    PRINTFORMW 橙は%CALLNAME:MASTER%を睨んでいる。
-    PRINTFORMW （いつか、絶対に仕返ししてやる…）
+    PRINTFORMW 첸은%CALLNAME:MASTER%를 노려보고 있다。
+    PRINTFORMW （언젠가、반드시 복수하겠어…）
 ENDIF
 CFLAG:5314 = 3
 
@@ -1408,6 +1408,15 @@ IF CFLAG:7900 == 0
     CALL SELF_KOJO_K13_RR
     RETURN 0
 ENDIF
+;眠ってる場合は戻る
+SIF EQUIP:14
+    RETURN 0
+;調教中かつ口枷つきも戻る
+SIF TFLAG:999 && TEQUIP:42
+    RETURN 0
+;調教中かつ気絶中も戻る
+SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
+    RETURN 0
 
 ;イベント口上呼び出し
 TRYCALLFORM K13_MESSAGE_EVENT_{(TFLAG:200)}
@@ -1422,10 +1431,10 @@ SIF CFLAG:7900 == 0
     RETURN 0
 IF TALENT:150 == 1
     PRINTFORMW 「………」
-    PRINTFORMW 橙は顔を赤らめ、照れている
+    PRINTFORMW 첸은 얼굴이 빨게진 채로 수줍어 하고 있다
 ELSE
     PRINTFORMW 「………」
-    PRINTFORMW 橙は目をそらしている
+    PRINTFORMW 첸은 눈을 피하고 있다
 ENDIF
 
 
@@ -1439,23 +1448,23 @@ SIF CFLAG:7900 == 0
     RETURN 0
 IF TALENT:150 == 1
     IF RAND:6 == 0
-        PRINTFORML 「%CALLNAME:MASTER%ともっと一緒にいれたらなぁ…」
+        PRINTFORML 「%CALLNAME:MASTER%와 더 함께 있고싶어…」
     ELSEIF RAND:5 == 0
-        PRINTFORML 「早くチェンのところに来てくれないかな…」
+        PRINTFORML 「빨리 첸의 옆으로 돌아와줘…」
     ELSEIF RAND:4 == 0
-        PRINTFORML 「%CALLNAME:MASTER%…次はいつ来てくれるんだろ…」
+        PRINTFORML 「%CALLNAME:MASTER%…다음엔 언제 와줄까…」
     ELSEIF RAND:3 == 0
-        PRINTFORML 「次にエッチする時はどんなことしようかなぁ…」
+        PRINTFORML 「다음엔 어떤걸 할까…」
     ELSEIF RAND:2 == 0
-        PRINTFORML 「はぁ……なんか…もやもやするなぁ…」
+        PRINTFORML 「하아……왠지…몽롱해져…」
     ELSE
-        PRINTFORML 「次のために練習しておかなきゃ！」
+        PRINTFORML 「다음을 위해서 연습해 둬야해！」
     ENDIF
 ELSE
     IF RAND:2 == 0
-        PRINTFORML 「うぅ…早く帰りたいよぉ……」
+        PRINTFORML 「우우…빨리 돌아가고 싶어요……」
     ELSE
-        PRINTFORML 「藍しゃま…助けてぇ……」
+        PRINTFORML 「란님…도와주세요……」
     ENDIF
 ENDIF
 
@@ -1472,34 +1481,34 @@ IF CFLAG:7900 == 0
     RETURN 0
 ENDIF
 DRAWLINE
-PRINTFORMW 「きれい…これ、チェンに?」
-PRINTFORMW 俺がうなずくと同時に橙は%CALLNAME:MASTER%の胸に飛びついてきた。
-PRINTFORMW 「チェン知ってるよ…指輪…結婚したい人に渡すんでしょ」
-PRINTFORMW 俺がうなずくと橙は、%CALLNAME:MASTER%の体から離れ、今までで一番の笑顔と共に、話し始めた。
-PRINTFORMW 「チェンね。昔は誰かが好きって言うの、よくわからなかった…」
-PRINTFORMW 「でもね、今は、はっきりわかるよ。好きな人と一緒にいると…胸がどきどきして、頭がポワ～ンってするの！」
-PRINTFORMW 「それを教えてくれた人っていうのが、その…チェンの好きな人で、」
-PRINTFORMW 「その人は、ちょっと無口で、怖そうでね、昔はチェンが嫌がることを、したりもしたけど…」
-PRINTFORMW 「でも、本当はすっごく、やさしい人でね、チェンをやさしく…愛してくれる人…」
-PRINTFORMW 「………あ～もう、ダメだ！こういうのやっぱりチェンだと、上手くいかないっ！」
-PRINTFORMW 「だから、もう難しいのは抜きにして、はっきりいうね…」
-PRINTFORMW 橙は一呼吸置くと、はっきりといった。
-PRINTFORMW 「チェンは…%CALLNAME:MASTER%のことが大好きです。だから、その、結婚…しよう！」
-PRINTFORMW 橙は一息に言い切ると、再び抱きついてきた。
-PRINTFORMW そして、俺は結婚ともう一つ、約束をした。
-PRINTFORMW それは、俺がこの仕事をやめ、橙の亭主に相応しい人間になるということだ。
-PRINTFORMW そして、俺は今まで橙にしてきた、数々の事を心から謝った。
-PRINTFORMW すると、橙は「最初はすごい嫌だったけど…でも、怒ってなんか無いよ」
-PRINTFORMW 「嫌いで、怒りたくなる人となんか、結婚しないもん」と笑顔で許してくれた。
-PRINTFORMW その夜、%CALLNAME:MASTER%と橙は、初めて、調教ではない、愛し合うためのセックスをするのだった。
+PRINTFORMW 「예쁘다…이거、첸에게?」
+PRINTFORMW 내가 대답하자 첸은 %CALLNAME:MASTER%의 가슴에 달려들었다。
+PRINTFORMW 「첸 알고있어…반지…결혼하고 싶은 사람한테 주는거지?」
+PRINTFORMW 고개를 끄덕이자、첸은 %CALLNAME:MASTER%의 몸에서 떨어지며、지금까지보다 가장 웃는 얼굴로 함께 이야기를 시작했다。
+PRINTFORMW 「첸。옛날에는 누군가가 좋다고 말하는 걸 잘 몰랐어…」
+PRINTFORMW 「하지만、지금은、확실히 알아。좋아하는 사람과 함께 있으면…가슴이 두근거려、머리가 퓨웅～하고 울리고 있어！」
+PRINTFORMW 「그것을 가르쳐준 사람이、그…첸이 좋아하는 사람인데、」
+PRINTFORMW 「그사람은、말없이、무서운것 같아서、예전에는 첸이 싫어하는 것을、하기도 했지만…」
+PRINTFORMW 「하지만、실은 엄정、상냥한 사람、첸을 상냥하게…사랑해주는 사람…」
+PRINTFORMW 「………아～벌써、안돼！어려운건 역시 첸한테 안맞아！」
+PRINTFORMW 「그러니까、이제 어려운건 빼고、확실히 말할게…」
+PRINTFORMW 첸은 한두호흡정도 쉬고 확실히 말했다。
+PRINTFORMW 「첸은…%CALLNAME:MASTER%를 아주 좋아해요。그러니까、그、결혼…해요！」
+PRINTFORMW 첸은 단숨에 말하고 다시 안겨왔다。
+PRINTFORMW 그리고、나는 결혼과 또하나의 약속을 했다。
+PRINTFORMW 내가 이 일을 그만두고 첸의 남편다운 사람이 된다는 것이다。
+PRINTFORMW 나는 첸에게 지금까지 해온 여러가지 일을 진심으로 사과했다。
+PRINTFORMW 그러자、첸은「처음에는 굉장히 싫었는데…그래도、화난건 없어」
+PRINTFORMW 「싫어하는、화내는 사람과는、결혼하지 않을거야」라며 웃는 얼굴로 허략해 주었다。
+PRINTFORMW 그날밤、%CALLNAME:MASTER%와 첸은、처음으로、조교가 아닌사랑을 위한 섹스를 하는 것이었다。
 DRAWLINE
-PRINTFORMW ―――単体エンド条件達成―――
+PRINTFORMW ―――단체엔딩조건달성―――
 PRINTFORMW …………
 PRINTFORMW ………
 PRINTFORMW ……
 ;PRINTFORMW 
 PRINTFORMW  
-PRINTFORMW 　　　　　　　　―― Ending No.1013A (橙とラブラブ結婚エンド)
+PRINTFORMW 　　　　　　　　―― Ending No.1013A (첸과 러브러브 결혼 엔딩)
 RETURN 0
 ;-------------------------------------------------
 ;@KOJO_X_MESSAGE_SINGLE_ENDING_AFTER関係
@@ -1508,15 +1517,15 @@ RETURN 0
 @SINGLE_ENDING_AFTER_K13
 SIF CFLAG:7900 == 0
     RETURN 0
-PRINTFORMW あれから、数年がたち、橙も少しずつ成長してきた。
-PRINTFORMW しかし、それにも問題はあった。
-PRINTFORMW 橙は化け猫なので、そこそこまで年を重ねると、本能が刺激され、子孫繁栄を促すらしい。
-PRINTFORMW まぁ早い話が『発情期』だ。
-PRINTFORMW 昨晩、橙の様子がおかしいので聞いてみたら、そういう説明をされた。
-PRINTFORMW 何でも、時期の間はＨなことしか考えられないほどで、しかも、愛情より刺激を求めるので、ハードじゃないと満たされないと。
-PRINTFORMW そして決めたのが、橙の発情期中は、、橙を昔のように調教すること。
-PRINTFORMW もちろん、あのころとは、目的は違うが、やることは同じだ。
-PRINTFORMW さて、そろそろ橙も、待っているだろうし、淫乱な日々を再開させるとしよう……
+PRINTFORMW 그로부터 몇년이 지난 뒤、첸도 조금씩 성장했다。
+PRINTFORMW 그러나、문제가 생겼다。
+PRINTFORMW 첸은 고양이 요괴이므로、나이를 먹으면서、본능이 자극되어 아이만들기를 재촉하는 것같다。
+PRINTFORMW 속히 말하는『발정기』다。
+PRINTFORMW 어잿밤、첸의 모습이 이상해서 물었더니、이런 설명을 들었다。
+PRINTFORMW 무엇보다도、이 시기에는 H밖에 생각할수 없을 정도로、게다가、애정보다 자극을 추구하기 때문에、하드한 플레이가 아니면 채워지지 않았다。
+PRINTFORMW 그리고 결정한 것이、첸이 발정기일때는、예전과 같이、첸을 조교하는 것。
+PRINTFORMW 물론、그때와 목적은 다르지만、하는일은 같다。
+PRINTFORMW 자、이제 발정기도 기다리고 있을테고、음란한 날을 재개하도록 하자……
 RETURN 0
 
 ;-------------------------------------------------
@@ -1529,7 +1538,7 @@ IF CFLAG:7900 == 0
     RETURN 0
 ENDIF
 DRAWLINE
-PRINTFORMW ―――奴隷エンド条件達成―――
+PRINTFORMW ―――노예앤딩조건달성―――
 PRINTFORMW …………
 PRINTFORMW ………
 PRINTFORMW ……

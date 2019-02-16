@@ -166,7 +166,7 @@ ELSE
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORML %CALLNAME:TARGET%는 시체지만 불쾌한 냄새는 전혀 나지 않고 오히려 페로몬이 %CALLNAME:MASTER%를 홀릴 정도다
+                PRINTFORML %CALLNAME:TARGET%는 시체지만 불쾌한 냄새는 전혀 나지 않고 오히려 페로몬이 %조사처리(CALLNAME:MASTER,"를")% 홀릴 정도다
                 PRINTFORMW %CALLNAME:TARGET%를 일으킨 술사는 상당한 기술을 가진 게 분명하다 생각하며 클리토리스를 공략했다…
             ELSE
                 PRINTFORM 「앗…
@@ -542,7 +542,7 @@ IF TEQUIP:20 == 1 && TEQUIP:25 == 1
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%는 시행착오를 겪으면서도 %CALLNAME:MASTER%를 유혹하듯 스스로 바이브를 쑤셔대고 있다…
+                PRINTFORMW %CALLNAME:TARGET%는 시행착오를 겪으면서도 %조사처리(CALLNAME:MASTER,"를")% 유혹하듯 스스로 바이브를 쑤셔대고 있다…
             ENDIF
         ELSE
             IF (ABL:1 >= 3 && ABL:2 >= 3) || ABL:30 >= 3
@@ -733,7 +733,7 @@ ELSEIF TEQUIP:20 == 1
                 PRINTFORM %UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW 완전히 자위에 빠져버린 %CALLNAME:TARGET%는 %CALLNAME:MASTER%를 거들떠보지도 않으며 열심히 바이브로 질벽을 긁어대면서 쾌락을 얻고 있다…
+                PRINTFORMW 완전히 자위에 빠져버린 %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"를")% 거들떠보지도 않으며 열심히 바이브로 질벽을 긁어대면서 쾌락을 얻고 있다…
             ;V感度３以上
             ELSEIF ABL:1 >= 3
                 PRINTFORM 「에헤헤
@@ -753,7 +753,7 @@ ELSEIF TEQUIP:20 == 1
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%를 유혹하듯 자신의 성기를 드러낸 채 바이브를 꽂다 뺐다 하며 유혹해왔다…
+                PRINTFORMW %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"를")% 유혹하듯 자신의 성기를 드러낸 채 바이브를 꽂다 뺐다 하며 유혹해왔다…
             ;それ以外
             ELSE
                 PRINTFORML 「이…이렇게 하는 건ー가ー…？」
@@ -852,7 +852,7 @@ ELSEIF TEQUIP:25 == 1
             PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%는 애널에 느껴지는 쾌락의 포로가 되버린 것 같이 %CALLNAME:MASTER%가 보고 있는데도 불구하고 열심히 바이브를 흔들어대고 있다…
+            PRINTFORMW %CALLNAME:TARGET%는 애널에 느껴지는 쾌락의 포로가 되버린 것 같이 %조사처리(CALLNAME:MASTER,"가")% 보고 있는데도 불구하고 열심히 바이브를 흔들어대고 있다…
         ;それ以外
         ELSEIF CFLAG:7002 == 1
             PRINTFORML 「이런 느낌인건가ー…？」
@@ -895,7 +895,7 @@ ELSEIF TEQUIP:25 == 1
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%는 자위에 완전히 푹 빠져서 %CALLNAME:MASTER%가 방 안에 있다는 것도 잊고서 열심히 바이브로 장벽을 자극하고 있다…
+                PRINTFORMW %CALLNAME:TARGET%는 자위에 완전히 푹 빠져서 %조사처리(CALLNAME:MASTER,"가")% 방 안에 있다는 것도 잊고서 열심히 바이브로 장벽을 자극하고 있다…
             ;A感度３以上
             ELSEIF ABL:2 >= 3
                 PRINTFORM 「부조캐…
@@ -940,7 +940,7 @@ ELSEIF TEQUIP:25 == 1
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORMW %CALLNAME:TARGET%는 자위의 쾌락에 완전히 빠져서 %CALLNAME:MASTER%를 쳐다보지도 않고 바이브로 후장을 쑤셔대고 있다…
+                PRINTFORMW %CALLNAME:TARGET%는 자위의 쾌락에 완전히 빠져서 %조사처리(CALLNAME:MASTER,"를")% 쳐다보지도 않고 바이브로 후장을 쑤셔대고 있다…
             ELSEIF ABL:2 >= 3
                 PRINTFORM 「응…
                 SETCOLOR 0xFF0000
@@ -1182,7 +1182,7 @@ IF TEQUIP:20 == 0
                 PRINTFORML 」
                 PRINTFORML %CALLNAME:TARGET%의 안…자궁에 박혀있는 바이브를 잡아뽑자 중간에 딱 움직임이 멈춰버렸다
                 PRINTFORMW 자궁구가 바이브를 물어뜯듯이 잡아물고 있는 것 같다…
-                PRINTFORML %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 자궁을 끌어내버릴 기세로 팔에 힘을 모아 단숨에 뽑아냈다
+                PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 자궁을 끌어내버릴 기세로 팔에 힘을 모아 단숨에 뽑아냈다
                 PRINTFORML 그러자 %CALLNAME:TARGET%의 몸이 크게 튀어오르며, 퐁 하는 소리와 함께 바이브가 모습을 드러냈다
                 PRINTFORMW 함께 끌려나온 자궁이 평소보다 크게 밑으로 내려와있고, %CALLNAME:TARGET%는 눈을 희번덕거리며 움찔움찔 경련을 일으키고 있다…
                 PRINTFORM 「아힛
@@ -1340,7 +1340,7 @@ ELSE
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW %CALLNAME:MASTER%는 바이브를 갈라진 틈새로 박아넣었고, 짐승같은 소리를 지르며 %CALLNAME:TARGET%는 발광했다
+                    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 바이브를 갈라진 틈새로 박아넣었고, 짐승같은 소리를 지르며 %CALLNAME:TARGET%는 발광했다
                     PRINTFORML 확실히 %CALLNAME:TARGET%의 복부는 바이브의 흉악함이 눈에 보일 정도로 부풀어올랐고
                     PRINTFORML 바이브를 움직일 때마다 질벽이 같이 끌려나와 %CALLNAME:TARGET%를 괴롭히고 있다…
                     PRINTFORM 「됴햐아…
@@ -1364,7 +1364,7 @@ ELSE
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML %CALLNAME:MASTER%가 바이브에 손을 뻗자 가장 굵은 바이브의 맛을 기억한 %CALLNAME:TARGET%는 그것을 졸라댔다…
+                    PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 바이브에 손을 뻗자 가장 굵은 바이브의 맛을 기억한 %CALLNAME:TARGET%는 그것을 졸라댔다…
                     PRINTFORM 「히그읏
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
@@ -1417,7 +1417,7 @@ ELSE
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML %CALLNAME:MASTER%이 바이브 쪽으로 손을 뻗자 완전히 바이브로 자궁을 괴롭히는 맛을 알아버린 %CALLNAME:TARGET%는 긴 바이브를 원해왔다…
+                    PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 바이브 쪽으로 손을 뻗자 완전히 바이브로 자궁을 괴롭히는 맛을 알아버린 %CALLNAME:TARGET%는 긴 바이브를 원해왔다…
                     PRINTFORM 「히기잇
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
@@ -1548,7 +1548,7 @@ IF TEQUIP:25 == 0
                 PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%%UNICODE(0x2665)%%UNICODE(0x2665)%
                 RESETCOLOR
                 PRINTFORML 」
-                PRINTFORML %CALLNAME:MASTER%가 %CALLNAME:TARGET%의 애널에 박힌 흉악한 굵기의 바이브를 뽑으려 하자
+                PRINTFORML %조사처리(CALLNAME:MASTER,"가")% %CALLNAME:TARGET%의 애널에 박힌 흉악한 굵기의 바이브를 뽑으려 하자
                 PRINTFORML 바이브에 조금이지만 장벽이 체외로 끌려나와 노출됐고, 유달리 굵은 부분에서 조금 저항이 있었지만 뽕 소리를 내며 빠져 나왔다…
                 PRINTFORMW 그 순간 %CALLNAME:TARGET%는 눈을 희번득거리며 혀를 내밀고 짐승같은 소리를 지르며 절정에 달했다
                 CFLAG:7037 = 0
@@ -1701,8 +1701,8 @@ ELSE
                     PRINTFORM %UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORML %CALLNAME:MASTER%가 바이브에 손을 뻗자 %CALLNAME:TARGET%는 가장 굵은 바이브로 엉덩이를 찔러대는 게 완전히 버릇이 된 건지
-                    PRINTFORMW 그걸 원한다는 듯 %CALLNAME:MASTER%를 바라보고 있다…
+                    PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 바이브에 손을 뻗자 %CALLNAME:TARGET%는 가장 굵은 바이브로 엉덩이를 찔러대는 게 완전히 버릇이 된 건지
+                    PRINTFORMW 그걸 원한다는 듯 %조사처리(CALLNAME:MASTER,"를")% 바라보고 있다…
                     PRINTFORM 「가아으으으읏
                     SETCOLOR 0xFF0000
                     PRINTFORM %UNICODE(0x2665)%
@@ -1712,7 +1712,7 @@ ELSE
                     PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
                     RESETCOLOR
                     PRINTFORML 」
-                    PRINTFORMW 소망에 따라, %CALLNAME:MASTER%는 %CALLNAME:TARGET%가 원하는 대로 두꺼운 바이브를 엉덩이에 꽂아주었다…
+                    PRINTFORMW 소망에 따라, %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%가 원하는 대로 두꺼운 바이브를 엉덩이에 꽂아주었다…
                     CFLAG:7033 += 1
                 ENDIF
                 CFLAG:7037 = 1
@@ -1739,11 +1739,11 @@ ELSE
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORMW %CALLNAME:TARGET%는 응석부리며 다가와서 %CALLNAME:MASTER%가 애널에 바이브를 넣기 쉽도록 허리를 높이 들고 엉덩이에 손을 얹어 구멍을 벌렸다…
+            PRINTFORMW %CALLNAME:TARGET%는 응석부리며 다가와서 %조사처리(CALLNAME:MASTER,"가")% 애널에 바이브를 넣기 쉽도록 허리를 높이 들고 엉덩이에 손을 얹어 구멍을 벌렸다…
         ;感度変化ON
         ELSEIF CFLAG:7002 == 1
             PRINTFORML 「어ー엉덩이로 느낄 수 있게 하는 특훈인가ー？응…」
-            PRINTFORMW %CALLNAME:MASTER%이 넣기 쉽도록 %CALLNAME:TARGET%는 허리를 높이 들고 엉덩이를 손가락으로 벌려서 구멍을 드러냈다…
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 넣기 쉽도록 %CALLNAME:TARGET%는 허리를 높이 들고 엉덩이를 손가락으로 벌려서 구멍을 드러냈다…
         ;イベントON
         ELSEIF CFLAG:7001 == 1
             PRINTFORML 「잘 안 들어오는건가ー？」
@@ -1902,10 +1902,10 @@ IF CFLAG:9005 == 0
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 꼬추 넣어주는 건가ー？아픈지 어떨지 모르겠지만…어쩐지 기쁘다…」
-        PRINTFORMW %CALLNAME:MASTER%가 페니스를 집어넣기 쉽도록 %CALLNAME:TARGET%는 매우 뻣뻣한 다리를 벌려 %CALLNAME:MASTER%를 받아들였다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 페니스를 집어넣기 쉽도록 %CALLNAME:TARGET%는 매우 뻣뻣한 다리를 벌려 %조사처리(CALLNAME:MASTER,"를")% 받아들였다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「오ー, 뭔가ー그 쪽을 건드린 거냐ー？」
-        PRINTFORML %CALLNAME:MASTER%는 감각이 있는지 보기 위해서 %CALLNAME:TARGET%의 보지를 페니스로 자극하고 있지만
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 감각이 있는지 보기 위해서 %CALLNAME:TARGET%의 보지를 페니스로 자극하고 있지만
         PRINTFORMW 역시 다른 부위랑 똑같이 감각이 없는 것 같다…
     ELSEIF TALENT:150 == 1
         PRINTFORM 「에헤헤
@@ -1920,7 +1920,7 @@ IF CFLAG:9005 == 0
         PRINTFORMW 자신이 시체라는 걸 인식하고 자학했지만 %CALLNAME:TARGET%의 보지는 살아있는 사람의 그것과 다름없이 움찔거리며 %CALLNAME:MASTER%의 페니스를 오매불망 기다리고 있다…
     ELSE
         PRINTFORML 「그ー만ー둬ー」
-        PRINTFORMW 바둥바둥 몸을 움직이며 저항하는 %CALLNAME:TARGET%를 %CALLNAME:MASTER%는 짓눌러서 페니스를 꽂아넣었다…
+        PRINTFORMW 바둥바둥 몸을 움직이며 저항하는 %CALLNAME:TARGET%를 %조사처리(CALLNAME:MASTER,"는")% 짓눌러서 페니스를 꽂아넣었다…
     ENDIF
     CFLAG:9005 = 1
 ELSEIF CFLAG:7001 == 1 || (TALENT:150 == 1 && CFLAG:7001 == 0)
@@ -1979,10 +1979,10 @@ ELSEIF CFLAG:7001 == 1 || (TALENT:150 == 1 && CFLAG:7001 == 0)
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:TARGET%의 아직 감각이 없는 질을 %CALLNAME:MASTER%는 박박 문지르며 자극했다…
+        PRINTFORMW %CALLNAME:TARGET%의 아직 감각이 없는 질을 %조사처리(CALLNAME:MASTER,"는")% 박박 문지르며 자극했다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체를 범하기나 하다니, 네꾸로피리아？인가ー？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 질을 집중적으로 공략했지만 딱히 느끼진 못하는 것 같다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 질을 집중적으로 공략했지만 딱히 느끼진 못하는 것 같다…
     ELSEIF ABL:1 <= 2 && CFLAG:7001 == 0
         PRINTFORM 「히그읏
         SETCOLOR 0xFF0000
@@ -2020,7 +2020,7 @@ ELSE
         PRINTFORMW %CALLNAME:TARGET%는 보지를 집요하게 괴롭히자 쾌락으로 열띤 비명을 질렀다…
     ELSE
         PRINTFORML 「그ー만ー둬ー, 만ー지ー지ー마ー」
-        PRINTFORMW 바둥바둥 날뛰는 %CALLNAME:TARGET%의 팔을 억지로 누르고 %CALLNAME:MASTER%는 질을 도려내듯 허리를 움직였다…
+        PRINTFORMW 바둥바둥 날뛰는 %CALLNAME:TARGET%의 팔을 억지로 누르고 %조사처리(CALLNAME:MASTER,"는")% 질을 도려내듯 허리를 움직였다…
     ENDIF
 ENDIF
 
@@ -2032,9 +2032,9 @@ IF CFLAG:9005 == 0
     IF CFLAG:7002 == 1
         PRINTFORML 「뒤에서인가ー？」
             IF RAND:2 == 0
-                PRINTFORML %CALLNAME:TARGET%의 관절은 거의 굽어지지 않기 때문에 침대에 상체를 엎드린 상태로 하도록 %CALLNAME:MASTER%는 지시했다
+                PRINTFORML %CALLNAME:TARGET%의 관절은 거의 굽어지지 않기 때문에 침대에 상체를 엎드린 상태로 하도록 %조사처리(CALLNAME:MASTER,"는")% 지시했다
             ELSE
-                PRINTFORML %CALLNAME:TARGET%의 발을 잡고 수레를 미는 자세를 %CALLNAME:MASTER%는 취했다…
+                PRINTFORML %CALLNAME:TARGET%의 발을 잡고 수레를 미는 자세를 %조사처리(CALLNAME:MASTER,"는")% 취했다…
             ENDIF
         PRINTFORM 「에헤헤
         SETCOLOR 0xFF0000
@@ -2045,7 +2045,7 @@ IF CFLAG:9005 == 0
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORMW 」
-        PRINTFORML %CALLNAME:MASTER%는 아직 느끼지 못하는 %CALLNAME:TARGET%의 질내를 천천히 파고들었다…
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 아직 느끼지 못하는 %CALLNAME:TARGET%의 질내를 천천히 파고들었다…
         PRINTFORML 푹 하고 질 안쪽에서 페니스가 자궁 입구를 가볍게 두드리자 %CALLNAME:TARGET%의 몸이 약간 흔들렸다
         PRINTFORML 「이제 나도 기분 좋아질 수 있는 건가ー」
         PRINTFORMW 그러는 %CALLNAME:TARGET%는 『에헤헤』거리며 수줍게 얼굴을 붉혔다
@@ -2132,7 +2132,7 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
         PRINTFORMW %CALLNAME:TARGET%는 질로 쾌락을 맛 볼 걸 기대하고 있다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체를 범하다니, 네꾸로 피리아？인가ー？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 질을 뒤에서부터 범하고 있지만 딱히 느끼진 못하는 모양이다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 질을 뒤에서부터 범하고 있지만 딱히 느끼진 못하는 모양이다…
     ELSEIF ABL:1 <= 2 && CFLAG:7001 == 0
         PRINTFORM 「아핫
         SETCOLOR 0xFF0000
@@ -2168,7 +2168,7 @@ ELSE
         PRINTFORML %CALLNAME:TARGET%은 뒤에서부터 격렬하게 찔리면서 쾌락으로 이성이 녹아버린 것 같다…」
     ELSE
         PRINTFORML 「넣ー지ー마ー라ー！！」
-        PRINTFORMW 버둥버둥 날뛰는 %CALLNAME:TARGET%를 침대에 억지로 넘어뜨리고 %CALLNAME:MASTER%는 거칠게 허리를 흔들기 시작했다…
+        PRINTFORMW 버둥버둥 날뛰는 %CALLNAME:TARGET%를 침대에 억지로 넘어뜨리고 %조사처리(CALLNAME:MASTER,"는")% 거칠게 허리를 흔들기 시작했다…
     ENDIF
 ENDIF
 ;-------------------------------------------------
@@ -2197,14 +2197,14 @@ IF CFLAG:9005 == 0
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%로 가볍게 입맞춤을 해왔다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%로 가볍게 입맞춤을 해왔다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「원하는 보ー지가 이건ー가？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 질을 자극해봤지만 역시 다른 부위와 마찬가지로 쾌감을 느끼지 못하는 것 같다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 질을 자극해봤지만 역시 다른 부위와 마찬가지로 쾌감을 느끼지 못하는 것 같다…
     ELSEIF TALENT:150 == 1
         PRINTFORML 「이 자세ー편한거다ー」
         PRINTFORML %CALLNAME:TARGET%는 %CALLNAME:MASTER%에게 걸친 다리를 진자처럼 흔들거렸다
-        PRINTFORM 「게다가 눈 앞엔 %CALLNAME:MASTER%가…
+        PRINTFORM 「게다가 눈 앞엔 %조사처리(CALLNAME:MASTER,"가")%…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
@@ -2249,7 +2249,7 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML %CALLNAME:TARGET%는 %CALLNAME:MASTER%를 마주보고 껴안은 채
+            PRINTFORML %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"를")% 마주보고 껴안은 채
                 IF RAND:2 == 0
                     PRINTFORML 완전히 넋이 나간 표정으로 %CALLNAME:MASTER%의 허리에 다리를 둘러 단단히 고정시키고 놓지 않았다
                 ELSE
@@ -2305,7 +2305,7 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
         RESETCOLOR
         PRINTFORML 」
         PRINTFORML %CALLNAME:TARGET%는 %CALLNAME:MASTER%에게 조교받으며 느끼기 시작했던 건지 육봉으로 몇 번 쑤셔주자 몸을 떨며 느끼고 있다…
-        PRINTFORMW %CALLNAME:MASTER%은 장난기가 솟아 일정한 리듬으로 움직이던 걸 벗어나 불규칙하고 격렬하게 쑤시기 시작했다
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 장난기가 솟아 일정한 리듬으로 움직이던 걸 벗어나 불규칙하고 격렬하게 쑤시기 시작했다
         PRINTFORM 「힛
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
@@ -2329,11 +2329,11 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 어서…　기분 좋게 되고 싶은 거…다…」
-        PRINTFORML %CALLNAME:MASTER%는 %CALLNAME:TARGET%를 껴안고 부드럽게 피스톤질을 시작했지만
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%를 껴안고 부드럽게 피스톤질을 시작했지만
         PRINTFORMW 아직 조교가 부족해서인지 느끼지 못하는 것 같다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체나 범하다니, 네꾸로…피리아？였던가ー？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%를 끌어안고 질의 안쪽까지 찔러보았지만 느끼지는 못하는 것 같다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%를 끌어안고 질의 안쪽까지 찔러보았지만 느끼지는 못하는 것 같다…
     ELSEIF ABL:1 <= 2 && CFLAG:7001 == 0
         PRINTFORM 「응휴읏
         SETCOLOR 0xFF0000
@@ -2368,7 +2368,7 @@ ELSE
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORML %CALLNAME:MASTER%는 %CALLNAME:TARGET%를 강제로 마주보듯 안아버린 뒤 그 상태로 질벽을 도려내듯 벅벅 긁어대자
+        PRINTFORML %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%를 강제로 마주보듯 안아버린 뒤 그 상태로 질벽을 도려내듯 벅벅 긁어대자
         PRINTFORMW 입으로는 싫어하면서도 %CALLNAME:TARGET%는 느껴대기 시작했다…
     ELSE
         PRINTFORML 「그ー만ー둬ー！！」
@@ -2447,19 +2447,19 @@ IF CFLAG:9005 == 0
         PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%의 위에 걸터앉아서, 아직 느끼지 못하는 질로 페니스를 삼켰다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체를 몸 위에서 춤 추게 하다니…변태인건가ー？」
-        PRINTFORMW %CALLNAME:TARGET%는 느끼질 못하는 질로 음경을 덮어씌운 뒤 허리를 상하로 움직이며 %CALLNAME:MASTER%를 내려다보고 있다…
+        PRINTFORMW %CALLNAME:TARGET%는 느끼질 못하는 질로 음경을 덮어씌운 뒤 허리를 상하로 움직이며 %조사처리(CALLNAME:MASTER,"를")% 내려다보고 있다…
     ELSEIF TALENT:150 == 1
         PRINTFORM 「에헤헤
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
-        PRINTFORM 내가 도와줄테니까 %CALLNAME:MASTER%는 많이 많이 짜내는 거다ー
+        PRINTFORM 내가 도와줄테니까 %조사처리(CALLNAME:MASTER,"는")% 많이 많이 짜내는 거다ー
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
         PRINTFORML %CALLNAME:TARGET%가 %CALLNAME:MASTER%의 위에 앉아선
-        PRINTFORMW 아직 조교가 끝나지 않은 질로 %CALLNAME:MASTER%를 꽉 꽉 조여물고 있다…
+        PRINTFORMW 아직 조교가 끝나지 않은 질로 %조사처리(CALLNAME:MASTER,"를")% 꽉 꽉 조여물고 있다…
         PRINTFORM 「읏
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
@@ -2469,7 +2469,7 @@ IF CFLAG:9005 == 0
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW 그리고 %CALLNAME:TARGET%는 허리를 비비꼬며 %CALLNAME:MASTER%가 느낄 수 있도록 넣었다 뺐다를 반복하고 있다…
+        PRINTFORMW 그리고 %CALLNAME:TARGET%는 허리를 비비꼬며 %조사처리(CALLNAME:MASTER,"가")% 느낄 수 있도록 넣었다 뺐다를 반복하고 있다…
     ELSE
         PRINTFORML 「원하는 대로 찔러달라니…　변태인가ー？」
     ENDIF
@@ -2526,16 +2526,16 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM 이 자세ー…　%CALLNAME:MASTER%를 자유롭게 하는 거구나ー
+            PRINTFORM 이 자세ー…　%조사처리(CALLNAME:MASTER,"를")% 자유롭게 하는 거구나ー
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
-            PRINTFORM 응햐앗　앗, %CALLNAME:MASTER%는 조흔건가…
+            PRINTFORM 응햐앗　앗, %조사처리(CALLNAME:MASTER,"는")% 조흔건가…
             SETCOLOR 0xFF0000
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 」
-            PRINTFORML %CALLNAME:MASTER%는 능글능글한 표정을 지으며 여유롭게 %CALLNAME:TARGET%를 밑에서부터 찔러 올렸다
+            PRINTFORML %조사처리(CALLNAME:MASTER,"는")% 능글능글한 표정을 지으며 여유롭게 %CALLNAME:TARGET%를 밑에서부터 찔러 올렸다
             PRINTFORMW 그녀의 이성은 날아가버린듯 하다…
         ENDIF
     ELSEIF CFLAG:7002 == 2
@@ -2545,11 +2545,11 @@ ELSEIF CFLAG:7001 == 1 || TALENT:150 == 1
         RESETCOLOR
         PRINTFORML 빨리…기분 좋게 해주는거다…」
         PRINTFORML %CALLNAME:TARGET%는 허리를 움직여 질을 자극해 한껏 느끼고 있다
-        PRINTFORMW 그 곳에 %CALLNAME:MASTER%는 불시에 찔러넣었다
+        PRINTFORMW 그 곳에 %조사처리(CALLNAME:MASTER,"는")% 불시에 찔러넣었다
         PRINTFORML 「오오, 안 되는거다ー？ 부서지는 거다ー」
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체를 범하다니, 네꾸로─피리아？인건가ー？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 질을 아래에서부터 꿰뚫어올렸지만 딱히 느끼진 못하는 것 같다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 질을 아래에서부터 꿰뚫어올렸지만 딱히 느끼진 못하는 것 같다…
     ELSEIF ABL:1 <= 2 && CFLAG:7001 == 0
         PRINTFORM 「읏…
         SETCOLOR 0xFF0000
@@ -2584,7 +2584,7 @@ ELSE
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:TARGET%는 강한 척 하면서도 %CALLNAME:MASTER%가 불시에 갑자기 찔러올리면 열띤 신음을 토해낸다…
+        PRINTFORMW %CALLNAME:TARGET%는 강한 척 하면서도 %조사처리(CALLNAME:MASTER,"가")% 불시에 갑자기 찔러올리면 열띤 신음을 토해낸다…
     ELSE
         PRINTFORML 「오오ー, 이렇게 들어가는 건가ー」
     ENDIF
@@ -2681,7 +2681,7 @@ IF CFLAG:9006 == 0
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 애널에 페니스를 갖다대고 괄약근을 가르며 내부로 파고들었다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 애널에 페니스를 갖다대고 괄약근을 가르며 내부로 파고들었다…
         PRINTFORM 「히잇…응기잇…
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
@@ -2727,7 +2727,7 @@ ELSEIF CFLAG:7001 == 1 || (TALENT:150 == 1 && CFLAG:7001 == 0)
         PRINTFORM %UNICODE(0x2665)%%UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW 그리곤 %CALLNAME:MASTER%가 괴롭히는 속도를 점점 올려가자 %CALLNAME:TARGET%는 짐승같이 울부짖었다…
+        PRINTFORMW 그리곤 %조사처리(CALLNAME:MASTER,"가")% 괴롭히는 속도를 점점 올려가자 %CALLNAME:TARGET%는 짐승같이 울부짖었다…
     ELSEIF CFLAG:7012 >= 1 || (ABL:2 >= 3 && CFLAG:7001 == 0)
         PRINTFORM 「힛그읏
         SETCOLOR 0xFF0000
@@ -2745,7 +2745,7 @@ ELSEIF CFLAG:7001 == 1 || (TALENT:150 == 1 && CFLAG:7001 == 0)
         PRINTFORML %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 」
-        PRINTFORMW %CALLNAME:TARGET%의 아직 감각이 없는 엉덩이를 %CALLNAME:MASTER%는 한껏 괴롭혔다…
+        PRINTFORMW %CALLNAME:TARGET%의 아직 감각이 없는 엉덩이를 %조사처리(CALLNAME:MASTER,"는")% 한껏 괴롭혔다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체의 엉덩이나 괴롭히고, 변태인건가ー？」
         PRINTFORMW %CALLNAME:TARGET%의 애널을 집요하게 괴롭혔지만 느끼질 못하는 모양이다…
@@ -2820,7 +2820,7 @@ IF CFLAG:9006 == 0
         RESETCOLOR
         PRINTFORML 」
         PRINTFORML %CALLNAME:TARGET%의 애널은 한계까지 넖혀져서 %CALLNAME:MASTER%의 페니스를 삐걱대며 물어뜯듯 조여들고 있다
-        PRINTFORMW 그리고 천천히 허리를 흔들기 시작한 %CALLNAME:TARGET%…%CALLNAME:MASTER%는 그 자극을 잠시 즐겼지만 차츰차츰 감질나기 시작했기에 아래에서부터 찔러올렸다…
+        PRINTFORMW 그리고 천천히 허리를 흔들기 시작한 %CALLNAME:TARGET%…%조사처리(CALLNAME:MASTER,"는")% 그 자극을 잠시 즐겼지만 차츰차츰 감질나기 시작했기에 아래에서부터 찔러올렸다…
         PRINTFORM 「히읏
         SETCOLOR 0xFF0000
         PRINTFORM %UNICODE(0x2665)%
@@ -2872,10 +2872,10 @@ ELSEIF CFLAG:7001 == 1 && (CFLAG:7002 == 1 || CFLAG:7002 == 4) || TALENT:150 == 
         PRINTFORM %UNICODE(0x2665)%
         RESETCOLOR
         PRINTFORML 어…어ー때…？기분…좋을까…？」
-        PRINTFORMW %CALLNAME:TARGET%는 아직 애널로는 느끼지 못하지만 %CALLNAME:MASTER%가 느낄 수 있도록 허리를 비비꼬면서 음경을 자극하고 있다…
+        PRINTFORMW %CALLNAME:TARGET%는 아직 애널로는 느끼지 못하지만 %조사처리(CALLNAME:MASTER,"가")% 느낄 수 있도록 허리를 비비꼬면서 음경을 자극하고 있다…
     ELSEIF CFLAG:7001 == 1
         PRINTFORML 「시체를 자기 위에서 춤추게 만들고, 거기다 엉덩이를 괴롭히기나 하고… 구원할 도리가ー없단 거다ー？」
-        PRINTFORMW %CALLNAME:MASTER%는 %CALLNAME:TARGET%의 엉덩이를 아래에서부터 괴롭혔지만 아무래도 느끼질 못하는 것 같다…
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% %CALLNAME:TARGET%의 엉덩이를 아래에서부터 괴롭혔지만 아무래도 느끼질 못하는 것 같다…
     ELSEIF ABL:2 <= 2 && CFLAG:7001 == 0
         PRINTFORM 「읏…
         SETCOLOR 0xFF0000
@@ -2921,7 +2921,7 @@ ELSE
         PRINTFORMW 입으론 그리 말하고 있어도 몸은 솔직하게 느낄 때마다 움찔거리고 있다…
     ELSE
         PRINTFORML 「엉덩이로 한ー다는 건가…　구제불능ー인거다ー…」
-        PRINTFORMW %CALLNAME:TARGET%는 한숨을 내쉬면서도 %CALLNAME:MASTER%을 위해 몸을 흔들었다…
+        PRINTFORMW %CALLNAME:TARGET%는 한숨을 내쉬면서도 %조사처리(CALLNAME:MASTER,"를")% 위해 몸을 흔들었다…
     ENDIF
 ENDIF
 ;-------------------------------------------------
@@ -2951,7 +2951,7 @@ IF CFLAG:9007 == 0
             PRINTFORM %UNICODE(0x2665)%
             RESETCOLOR
             PRINTFORML 꼬추 기분 좋게 되는건가ー어떠냐ー？」
-            PRINTFORMW %CALLNAME:TARGET%는 낯설어하면서도 %CALLNAME:MASTER%을 기분 좋게 만들어주기 위해 음경을 만지작거리며 봉사를 계속하고 있다…
+            PRINTFORMW %CALLNAME:TARGET%는 낯설어하면서도 %조사처리(CALLNAME:MASTER,"를")% 기분 좋게 만들어주기 위해 음경을 만지작거리며 봉사를 계속하고 있다…
         ELSE
             PRINTFORML 「이번에는 이걸 잡고… 조금 잡아당겨봐도…？」
         ENDIF
@@ -3029,10 +3029,10 @@ ELSE
     IF TALENT:150 == 1
         IF ABL:13 >= 3
             PRINTFORML 「에헤헤 %UNICODE(0x2665)% 여기인건ー가ー%UNICODE(0x2665)%」
-            PRINTFORMW %CALLNAME:TARGET%는 귀두 끝의 갈라진 부분을 공격해 %CALLNAME:MASTER%를 사정하게 만들려는 것 같다…
+            PRINTFORMW %CALLNAME:TARGET%는 귀두 끝의 갈라진 부분을 공격해 %조사처리(CALLNAME:MASTER,"를")% 사정하게 만들려는 것 같다…
         ELSE
             PRINTFORML 「에헤헤…%UNICODE(0x2665)% 여기인ー건가ー？」
-            PRINTFORMW %CALLNAME:TARGET%는 %CALLNAME:MASTER%가 느끼는 부분을 중점적으로 핥고 있다…
+            PRINTFORMW %CALLNAME:TARGET%는 %조사처리(CALLNAME:MASTER,"가")% 느끼는 부분을 중점적으로 핥고 있다…
         ENDIF
     ELSE
         IF ABL:13 >= 3

@@ -920,12 +920,12 @@ ENDIF
 ;………………………………………………
 ;だぜ
 IF NO:ARG == 2 || NO:ARG == 107
-    CSTR:ARG:13 = くれ
-    CSTR:ARG:14 = ぜ
+    ;CSTR:ARG:13 = くれ
+    ;CSTR:ARG:14 = ぜ
 ;고풍
 ELSEIF NO:ARG == 19 || NO:ARG == 26 || NO:ARG == 70 || NO:ARG == 74
-    CSTR:ARG:13 = くれ
-    CSTR:ARG:14 = 
+    ;CSTR:ARG:13 = くれ
+    ;CSTR:ARG:14 = 
     ;조교 완료 묭
     IF NO:ARG == 19 && MARK:ARG:2 > 1
         CSTR:ARG:12 = 당신
@@ -936,16 +936,16 @@ ELSEIF NO:ARG == 19 || NO:ARG == 26 || NO:ARG == 70 || NO:ARG == 74
     ENDIF
 ;리카
 ELSEIF NO:ARG == 101
-    CSTR:ARG:13 = です
-    CSTR:ARG:14 = わ
+    ;CSTR:ARG:13 = です
+    ;CSTR:ARG:14 = わ
 ;よ
 ELSEIF CFLAG:ARG:43 == 2
-    CSTR:ARG:13 = よね
-    CSTR:ARG:14 = よ
+    ;CSTR:ARG:13 = よね
+    ;CSTR:ARG:14 = よ
 ;わ
 ELSEIF CFLAG:ARG:43 < 10
-    CSTR:ARG:13 = ね
-    CSTR:ARG:14 = わ
+    ;CSTR:ARG:13 = ね
+    ;CSTR:ARG:14 = わ
 ENDIF
 
 IF STRLENS(MASTERNAME:ARG) > 0
@@ -1080,24 +1080,24 @@ ENDIF
 ;………………………………………………
 ;だぜ
 IF NO:MASTER == 2 || NO:MASTER == 107
-    CSTR:ARG:18 = くれ
-    CSTR:ARG:19 = ぜ
+    ;CSTR:ARG:18 = くれ
+    ;CSTR:ARG:19 = ぜ
 ;고풍
 ELSEIF NO:MASTER == 19 || NO:MASTER == 26 || NO:MASTER == 70 || NO:MASTER == 74
-    CSTR:ARG:18 = くれ
-    CSTR:ARG:19 = 
+    ;CSTR:ARG:18 = くれ
+    ;CSTR:ARG:19 = 
 ;리카
 ELSEIF NO:MASTER == 201
-    CSTR:ARG:18 = です
-    CSTR:ARG:19 = わ
+    ;CSTR:ARG:18 = です
+    ;CSTR:ARG:19 = わ
 ;よ
 ELSEIF CFLAG:ARG:44 == 2
-    CSTR:ARG:18 = よね
-    CSTR:ARG:19 = よ
+    ;CSTR:ARG:18 = よね
+    ;CSTR:ARG:19 = よ
 ;わ
 ELSEIF CFLAG:ARG:44 < 10
-    CSTR:ARG:18 = ね
-    CSTR:ARG:19 = わ
+    ;CSTR:ARG:18 = ね
+    ;CSTR:ARG:19 = わ
 ENDIF
 
 ;-------------------------------------------------

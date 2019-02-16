@@ -4628,7 +4628,7 @@ ELSEIF MARK:2 <= 1 && CHECK_MASTERS_CHILD(TARGET) == 1
                 PRINTFORMW 밝은 표정으로 손을 흔드는 사랑스러운 %조사처리(CALLNAME:TARGET,"를")% 뒤로 하고 방을 나섰다.
             ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 3
                 PRINTFORML 「새삼 안녕이라고 하려니까 낯부끄럽다…킥킥」
-                PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 약간 쑥스러운듯 웃으며 %조사처리(CALLNAME:TARGET,"를")% 배웅했다.
+                PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 약간 쑥스러운듯 웃으며 %조사처리(CALLNAME:MASTER,"를")% 배웅했다.
             ENDIF
         ELSE
             IF CFLAG:3005 == 3
@@ -25404,7 +25404,7 @@ IF SELECTCOM == 346 && NO == 149
             PRINTFORMW 「나 있잖아…몇가지 깨닫게 된 게 있어」
             PRINTFORMW 「첫째로는 정말 나는 아무것도 할 줄 모르는 계집애에 불과했다는 거」
             PRINTFORMW 멋적은 듯 히힛 웃으며 %조사처리(CALLNAME:TARGET,"는")% 자기 머리를 꽁 때렸다.
-            PRINTFORMW 「하지만 어린애라서 그런 거고, 난 분명히 더 좋은 여자애가 될거야, 암은」
+            PRINTFORMW 「하지만 어린애라서 그런 거고, 난 분명히 더 좋은 여자애가 될거야, 음」
             PRINTFORMW 「그리고 둘째로는…마냥 좋기만 했던 엄마도 좀 그렇다는 걸까」
             PRINTFORMW 「전에도 얘기했지만 남자 보는 눈이 진짜 끝장으로 없어, 응」
             PRINTFORMW 거기까지 말한 %조사처리(CALLNAME:TARGET,"는")% 왜인지 잠시 말을 끊었다.
@@ -25556,7 +25556,7 @@ IF SELECTCOM == 346 && NO == 149
             CFLAG:14 |= 4
             CALL FALLEN_SLAVE_COUNTER
             PRINTFORMW ※이제부터 [밖에서 즐긴다] 커맨드는 통상 커맨드로 복귀합니다.
-            PRINTFORMW ※또한 %CALLNAME:TARGET%에 한해서 메인 메뉴의 [164] 돈을 벌어온다가 낮시간에 한해 활성화 되어 있습니다.
+            ;PRINTFORMW ※또한 %CALLNAME:TARGET%에 한해서 메인 메뉴의 [164] 돈을 벌어온다가 낮시간에 한해 활성화 되어 있습니다.
             PRINTFORMW ※또한 같은 성격의 소녀는 뉴게임을 하기 전까지는 다시 공략할 수 없습니다.
             CFLAG:7000 = 0
             CFLAG:7005 = 1

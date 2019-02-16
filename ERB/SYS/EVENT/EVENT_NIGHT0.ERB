@@ -165,6 +165,11 @@ ELSE
         ELSEIF EXIST_PENIS(LOCAL:10) && MARK:(LOCAL:10):9 == 3 && TALENT:MASTER:120 == 0
             LOCAL:2 = 7
         ENDIF
+    ELSE
+        SIF LOCAL:20 == 3
+            LOCAL:12 = TFLAG:402
+        SIF LOCAL:20 >= 2
+            LOCAL:11 = TFLAG:401
     ENDIF
 ENDIF
 
