@@ -95,7 +95,7 @@ IF CFLAG:5001 == 0
     PRINTFORMW 「 나는 이바라키 카센, 단순한 선인입니다. 폐가 되지 않는다면 가르쳐 주실 수 있는지…」
     PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 소망대로, 카센이 %CALLNAME:MASTER% 앞으로 팔렸단 이야기를 전했다.
     PRINTFORMW 「으음, 여성에게 말하는 농담으론 별로인데요」
-    PRINTFORMW %CALLNAME:MASTER%이 잠에서 깬 뒤 악질적인 농담을 하는 것이라 여긴건지, 
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 잠에서 깬 뒤 악질적인 농담을 하는 것이라 여긴건지, 
     PRINTFORMW %CALLNAME:MASTER%의 행동에 카센은 기가 막힌 얼굴이였다.
     PRINTFORMW 아직까진, 카센은 아직 %CALLNAME:MASTER%의 말에 현실성을 느끼지 못했던것 같다.
     PRINTFORML 
@@ -851,7 +851,7 @@ IF SELECTCOM == 3
         IF TALENT:150 && (CFLAG:9003 <= 3 || FLAG:11 == 2)
             IF RAND:4 == 0
                 PRINTFORMW 「후후, 완전히 응석꾸러기네요……」
-                PRINTFORMW 카센은 자신의 가슴을 붙잡고 조물조물 만지고있는 %CALLNAME:MASTER%를 무릎배개 해주고있다.
+                PRINTFORMW 카센은 자신의 가슴을 붙잡고 조물조물 만지고있는 %조사처리(CALLNAME:MASTER,"를")% 무릎배개 해주고있다.
                 PRINTFORMW 「가슴을 좋아하시나 봐요?」
                 PRINTFORMW 왠만한건.
             ELSEIF RAND:3 == 0
@@ -2336,13 +2336,13 @@ IF SELECTCOM == 612
         ;연모
         IF TALENT:150
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 침대 위에 앉아, 자신 위에 등을 돌려서 앉도록 카센에게 명령했다
-            PRINTFORMW 「……합니까?」
+            PRINTFORMW 「……하는 겁니까?」
             PRINTFORMW 카센은 열정적인 시선으로 %조사처리(CALLNAME:MASTER,"를")% 응시한다
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 대답을 돌려주지 않았지만, 카센은 그것을 긍정이라고 받은 것 같다
             PRINTFORMW 카센은 아주 조금 허리를 띄워%CALLNAME:MASTER%의 노장을 자신의 비소로 이끈다
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 카센의 체중을 지지해 허리가 천천히 내리도록 보조했다
             PRINTFORMW 「……아…응」
-            PRINTFORMW 「응!」
+            PRINTFORMW 「읏!」
             PRINTFORMW 짧은 신음소리와 함께, 카센이 %CALLNAME:MASTER%의 머리를 한층 더 강하게 껴안았다
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 카센의 비소로부터, 파과의 피가 시트 위에 떨어지는 것을 보았다
         ;그 이외
@@ -2352,7 +2352,7 @@ IF SELECTCOM == 612
             PRINTFORMW 카센은 특별히 반항하는 일도 없고, %CALLNAME:MASTER%의 허벅지 위에 앉는다
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 배후로부터 카센의 가슴을 비비기 시작했다
             PRINTFORMW 「응……」
-            PRINTFORMW 「그렇게 젖가슴을 좋아합니까……?」
+            PRINTFORMW 「그렇게 젖가슴이 좋은 겁니까……?」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 집요하게 카센의 가슴을 몰아세운다
             PRINTFORMW 「응……아……」
             PRINTFORMW 카센의 숨이 난폭해지는 기회를, %조사처리(CALLNAME:MASTER,"는")% 가늠한다
@@ -2362,12 +2362,12 @@ IF SELECTCOM == 612
             PRINTFORMW 카센은 잠시 멍청히 해, 무엇이 일어났는지 모르는 모습이었다
             PRINTFORMW 「당신, 뭘 한겁니까……?」
             PRINTFORMW 카센의 얼굴이 시퍼렇게 되어 간다
-            PRINTFORMW 「……어서 뽑지 않으면, 어째서…!」
+            PRINTFORMW 「……어서 빼내지 않으면, 어째서…!」
             PRINTFORMW 카센은 눈에 굵은 눈물이 고여 떨어진다
-            PRINTFORMW 「무슨 생각으로 이런 일을 합니까! 나에게 무슨 원한이 있어서!」
-            PRINTFORMW 「심해, 심하다!」
+            PRINTFORMW 「무슨 생각으로 이런 일을 한거죠! 나에게 무슨 원한이 있어서!」
+            PRINTFORMW 「너무해요, 심하다고요!」
             PRINTFORMW 하지만 %조사처리(CALLNAME:MASTER,"는")% 멈추지 않고 격렬하게 허리를 위아래로 튕기기 시작했다
-            PRINTFORMW 「히익! 아프다! 그만둬!」
+            PRINTFORMW 「히익! 아팟! 그만둬!」
         ENDIF
         CFLAG:9612 = 1
         RETURN 0
@@ -2455,7 +2455,7 @@ IF SELECTCOM == 24
             ;그 이외
             ELSE
                 PRINTFORMW 「싫어요, 그런 것!」
-                PRINTFORMW 「당신같은 것에……처음을 바치라니. 그런 일 절대 할 수 없습니다……」
+                PRINTFORMW 「당신같은 자에게……처음을 바치라니. 그런 일 절대 할 수 없습니다……」
                 PRINTFORMW 카센은 %CALLNAME:MASTER%의 명령에 따르는 모습은 없는 것 같다
                 PRINTFORMW 그러나 카센은 계속된 조교로 몸도 마음도 피폐해졌다.
                 PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 위협하는 강한 어조로, 명령을 반복했다
@@ -2897,7 +2897,7 @@ IF SELECTCOM == 31
                 PRINTFORMW 「무슨 기분 좋은 것 같은, 위화감이 있는 것 같아서 오싹오싹 하는…………」
                 PRINTFORMW 방금전까지의 분노가 거짓말과 같이, 카센은 뺨을 붉혀 미지의 쾌감에 취해 있었다
             ELSE
-                PRINTFORMW 잠시 후 인내의 한계가 온 %CALLNAME:MASTER%는, 설교를 계속하는 카센을 밀어 넘어뜨렸다
+                PRINTFORMW 잠시 후 인내의 한계가 온 %조사처리(CALLNAME:MASTER,"는")%, 설교를 계속하는 카센을 밀어 넘어뜨렸다
                 PRINTFORMW 「꺄!」
                 PRINTFORMW 침대 위에 누운 카센의 엉덩이를 잡아
                 PRINTFORMW 「힉, 조금! 나 지금 젖어……」
@@ -6562,9 +6562,57 @@ ENDIF
 ;-------------------------------------------------
 ;약혼 반지 사용시
 ;-------------------------------------------------
-;IF TFLAG:200 == 200
-;    PRINTFORMW 
-;ENDIF
+IF TFLAG:200 == 200
+    PRINTFORMW 「……그건?」
+    PRINTFORMW 방에 들어서서 자신에게 뻗은 %CALLNAME:MASTER%의 손을 보고
+    PRINTFORMW 카센은 고개를 갸우뚱거렸다.
+    PRINTFORMW 세간에서는 반지라고 불리는 물건이야, 라고 농을 건넸지만
+    PRINTFORMW 카센의 입가엔 웃음기조차 담기지 않았다.
+    PRINTFORMW 머쓱해진 손을 가만 두기 뭐했기에 
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 그 손끝을 흔들며 카센을 재촉했다.
+    PRINTFORMW 그 움직임에, 카센은 한숨을 푹 쉬곤
+    PRINTFORMW 엄지와 검지 사이에 있는 것을 가져갔다.
+    PRINTFORMW 「정말이지……이번엔 무슨 속셈인건지.」
+    PRINTFORMW 그렇게 말하며 손가락을 쫙 펴고, 붕대에 감긴 약지 위로 반지를 집어넣는 카센.
+    PRINTFORMW ……붕대?
+    PRINTFORMW 반지를 끼운 카센은 팔을 뻗어 손가락에 끼인 반지가 어떻게 보이는 지 확인하려 했고
+    PRINTFORMW 그 손가락 사이로 카센의 시야에 들어온 %조사처리(CALLNAME:MASTER,"는")% 고개를 저었다.
+    PRINTFORMW 카센은 그런 %조사처리(CALLNAME:MASTER,"를")% 이상하다는 듯 바라보더니
+    PRINTFORMW 이윽고, 순식간에 그녀의 머리색과 비견될만큼
+    PRINTFORMW 빠르게 얼굴을 붉혔다.
+    PRINTFORMW 「저, 저기……오른손에 끼는 게 아니라면……?」
+    PRINTFORMW 말 없이 고개를 끄덕이는 %CALLNAME:MASTER%.
+    PRINTFORMW 카센은 붉어진 얼굴로 허둥대며
+    PRINTFORMW 연신 %조사처리(CALLNAME:MASTER, "과")% 자신의 손가락을 반복해 쳐다보았다.
+    PRINTFORMW 고개를 얼마나 휘돌려댔을까. 결국 정신을 차린 카센은
+    PRINTFORMW 붕대가 벗겨지지 않도록 조심스럽게
+    PRINTFORMW 그러나 당황한 게 눈에 보일 정도로 신속하게 반지를 빼냈다.
+    PRINTFORMW 「우, 우으……」
+    PRINTFORMW 왼손에 든 것을 %CALLNAME:MASTER%에게 내민 채
+    PRINTFORMW 붕대를 감은 손으론 얼굴을 감싸는 카센.
+    PRINTFORMW 손가락 사이로 보이는 얼굴은 붉게 물들어 있었다.
+    PRINTFORMW 「어, 그, 저기……이! 이런 물건은 받을 수 없습니다! 왜, 저기, 저는 수행 중인 몸이고……!」
+    PRINTFORMW 변명을 늘어놓는 카센.
+    PRINTFORMW 그런 카센을 바라보던 %조사처리(CALLNAME:MASTER,"는")% 미소를 띄곤
+    PRINTFORMW 카센이 내민 반지를 받아선 다시금 엄지와 검지 사이에 들고
+    PRINTFORMW 천천히, 그것을 밀어넣었다.
+    PRINTFORMW 「……!」
+    PRINTFORMW 카센의 눈에 차오르는 것은 기쁨일까, 슬픔일까, 놀라움일까.
+    PRINTFORMW 그것을 알려주길 바라면서, %조사처리(CALLNAME:MASTER,"는")% 조용히 기다렸다.
+    PRINTFORMW 자신의 뺨에 흐르는 것을, 붕대를 감은 팔로 닦아내는 카센.
+    PRINTFORMW 「고마워요,  %CALLNAME:MASTER%……제게 이런 걸 주셔서.」
+    PRINTFORMW 그 목소리에 흐느낌은 없었다.
+    PRINTFORMW 「저는 %CALLNAME:MASTER%, 의 마음이, 기뻐서……」
+    PRINTFORMW 말을 잇지 못하는 카센과,
+    PRINTFORMW %CALLNAME:MASTER%.
+    PRINTFORMW 자신이 원하던 답을 들은 %조사처리(CALLNAME:MASTER,"는")%
+    PRINTFORMW 정말, 진심이냐며 카센에게 질문을 던졌다.
+    PRINTFORMW 그 말에, 카센은 눈물을 닦던 손을 쓸어내리며 미소지었다.
+    PRINTFORMW 「…는 거짓말을 하지 않지요. 정말이에요, %CALLNAME:MASTER%……」
+    PRINTFORMW 잠시간이지만 입가를 스치고 지나간 오른팔.
+    PRINTFORMW 그 덕분에 카센의 말은 어두가 잘려있었지만
+    PRINTFORMW 호기심보다도 앞선 감정에, %조사처리(CALLNAME:MASTER,"는")% 그저 카센을 얼싸안았다……
+ENDIF
 
 ;-------------------------------------------------
 ;붉은 개목걸이 사용시
@@ -6579,18 +6627,102 @@ RETURN 0
 ;-------------------------------------------------
 ;@단독 엔딩 관계(X1, X2를 캐릭터 번호에 치환한다)
 ;-------------------------------------------------
-;@SINGLE_ENDING_KX1
-;DRAWLINE
-;PRINTFORMW ―――단독 엔딩 조건 달성―――
-;PRINTFORMW …………
-;PRINTFORMW ………
-;PRINTFORMW ……
-;PRINTFORMW 
+@SINGLE_ENDING_K80
+DRAWLINE
+;봉래인, 오니 등이 아닐 것
+IF TALENT:TARGET:152 && TALENT:MASTER:49 == 0 && TALENT:MASTER:214 == 0 
+    PRINTFORMW ―――단독 엔딩 조건 달성―――
+    PRINTFORMW …………
+    PRINTFORMW ………
+    PRINTFORMW ……
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 인간이다.
+    PRINTFORMW 그 점에 대해선 %CALLNAME:MASTER%도
+    PRINTFORMW 카센도 잘 알고 있었다.
+    PRINTFORMW 살기 위해선 호흡을 해야한다는 걸 알 정도로 당연하게.
+    PRINTFORMW 그리고 인간은 당연히 선인보다 오래 살 수 없다.
+    PRINTFORMW 그 부분에 대해서도 이미 알고 있었기에 
+    PRINTFORMW %CALLNAME:MASTER%도 카센도 수명이 짧은 점에 대해
+    PRINTFORMW 같이 있을 시간이 얼마 남지 않은 점에 대해 한탄하진 않았다.
+    PRINTFORMW 한탄할 시간에 서로를 탐한다.
+    PRINTFORMW 서로에게 욕정한다.
+    PRINTFORMW 핥고 물고 비튼다. 닿고 껴안고 섞인다.
+    PRINTFORMW 육욕과 애욕의 나날.
+    PRINTFORMW 짐승처럼 탐하고 부처처럼 사랑했다.
+    PRINTL
+    PRINTFORMW ……그렇기에, 카센이 받을 수 있던 건 하나뿐이었다.
+    PRINTFORMW 「……이럴 줄 알았으면, 차라리.」
+    PRINTFORMW 그러나 그 다음 말을 내뱉을 순 없었다.
+    PRINTFORMW 현실과는 너무도 동떨어진 말.
+    PRINTFORMW 애초에 첫 만남부터 정상적이지 않았던 사이가 아닌가.
+    PRINTFORMW %조사처리(CALLNAME:MASTER,"를")% 사랑하는 자신이 이상한 거라고
+    PRINTFORMW 카센은 스스로 되뇌었다.
+    PRINTFORMW ─그럼에도 불구하고
+    PRINTFORMW 어째서인지, 그녀는 상실감을 느꼈다.
+    PRINTFORMW 그 마음만이 %조사처리(CALLNAME:MASTER,"가")% 카센에게 준, 마지막 선물이었다.
+    ;카센이 공작 명인이나 광기를 가지고 있음
+    IF TALENT:TARGET:158 || TALENT:TARGET:195 || FLAG:73 & 1
+        PRINTFORMW 「……」
+        PRINTFORMW 카센은 손을 뻗었다.
+        PRINTFORMW 붕대로 감긴 팔이 딸려 올라간다.
+        PRINTFORMW 붙잡을 곳도 없는 허공을 그저 매만질 뿐.
+        PRINTFORMW 손가락을 놀리던 그녀는, 왼손을 들어
+        PRINTFORMW 그녀의 오른팔을 중간에서 붙잡았다.
+        PRINTFORMW ……손아귀에 힘이 가해졌다.
+        PRINTFORMW 우득, 우드득. 점점 강해지던 악력에, 붕대의 모양이 어그러지고
+        PRINTFORMW 살점이 참지 못하고 튀어오르려던 그 찰나에.
+        PRINTFORMW 「……!」
+        PRINTFORMW 카센은 왼손에 들어간 힘을 풀었다.
+        PRINTFORMW 방금 전까지 바스러질듯 조여졌던 팔은
+        PRINTFORMW 그 강한 힘이 무색하게도 혈흔조차 없었다.
+        PRINTFORMW ─아마 붕대를 풀어보더라도, 멍조차 들어있지 않을 것이다.
+        PRINTFORMW 카센의 팔은, 이미 생명활동이 멈춘 상태니까.
+        PRINTFORMW 천천히 썩어가고 있는 팔. 그것을 막기위해
+        PRINTFORMW 그녀가 가지고 있는 귀물, 이바라키 백약승에 술을 담아 마시곤 했다.
+        PRINTFORMW 그래, 그랬었다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 죽고 난 후 어떤 조치도 취하지 않은 채
+        PRINTFORMW 그대로 썩게 내버려두고 있었기 때문이다.
+        PRINTFORMW 상실감이 고통을 이긴 것일까.
+        PRINTFORMW 아니면 원래부터 고통이 없던 것일까.
+        PRINTFORMW 카센은 멍하니 자신의 팔을 내려다보았다.
+        PRINTFORMW ……풀려있던 동공이 다시금 조여진 것은
+        PRINTFORMW 그녀가 일어나 움직이기 시작하면서였다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 그녀가 향한 곳은 %CALLNAME:MASTER%의 시체가 안치된 방이었다.
+        PRINTFORMW 아직 부패가 시작되지 않은 상태였지만, 그것은 어디까지나
+        PRINTFORMW 카센이 술법을 부려놓았기 때문이었다.
+        PRINTFORMW 이미 생명을 가지고 있지 않은 %CALLNAME:MASTER%에게
+        PRINTFORMW 카센은 손을 뻗었다.
+        PRINTFORMW 생기 없는 %CALLNAME:MASTER%의 입술에 그녀의 손이 닿았다.
+        PRINTFORMW 그녀는 거기서부터 손가락을 미끄러뜨려, 볼을 타고 흘러가 귀 밑을 지나
+        PRINTFORMW 구레나룻을 훑곤 뒤통수와 바닥의 틈 사이에 손가락을 집어넣었다.
+        PRINTFORMW 반대쪽 손을 %CALLNAME:MASTER%의 다리를 향해 뻗은 그녀는
+        PRINTFORMW %CALLNAME:MASTER%의 사체를 들어올리곤
+        PRINTFORMW 방 밖을 향해 걸음을 옮겼다.
+        PRINTFORMW 방에 남은 것은 없었다.
+        PRINTFORMW ─그리고, 오랜 시간이 지나도 방은 비어있는 그대로였다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 「……%CALLNAME:MASTER%, 듣고 계시나요.」
+        PRINTFORMW 「당신이 제게 준 것은 하나뿐인 줄 알고 계시겠죠.」
+        PRINTFORMW 「…이젠, 아니랍니다.」
+        PRINTFORMW 카센은 조용히 웃었다.
+        PRINTFORMW 그녀의 시선은 붕대로 감긴 팔을 바라보고 있었다.
+        PRINTFORMW 조용히, 카센은 자신의 손등에 키스했다.
+        PRINTFORMW 이전과는 다르게 부패하지 않는 팔.
+        PRINTFORMW 카센은 그것을 되새기며, 조용히 주먹을 쥐었다.
+        PRINTFORMW 「─영원히 함께에요, %CALLNAME:MASTER%.」
+        PRINTL 
+        PRINTFORMW 　　　　　　　　―― Ending No. 1080 카센 엔딩 『양완유각의 사선』
+    ELSE
+        PRINTFORMW 
+        PRINTFORMW 　　　　　　　　―― Ending No. 1080 (카센 엔딩)
+    ENDIF
+ENDIF
 
-;PRINTFORMW 
-;PRINTFORMW 　　　　　　　　―― Ending No. 1080 (00 엔딩)
-
-;RETURN 0
+RETURN 0
 
 ;-------------------------------------------------
 ;@노예 엔딩 관계(X1, X2를 캐릭터 번호에 치환한다)
