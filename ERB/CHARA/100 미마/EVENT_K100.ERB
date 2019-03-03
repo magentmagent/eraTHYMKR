@@ -9388,7 +9388,7 @@ IF TFLAG:200 == 321 && TFLAG:99 == 1
         ;보통→빈유
         ELSEIF TALENT:111
             PRINTFORML 
-            PRINTFORMW 「오 안돼…… 내 가슴이… 이렇게나 작아지다니……」
+            PRINTFORMW 「오, 안돼…… 내 가슴이… 이렇게나 작아지다니……」
             PRINTFORMW 도저히 믿기지가 않는지 가슴을 만지작 거리는 미마. 이번껀 충격이 더 큰것 같다.
         ;빈유→절벽
         ELSEIF TALENT:110
@@ -9904,31 +9904,44 @@ IF TFLAG:200 == 405
         DRAWLINE
     ;소극적인 경우
     ELSEIF GET_NIGHT_KOJO(0) == 2
-        PRINTFORMW 「……이건, 그 뭐랄까… 그렇게 빤히 보지 마!」
-        PRINTFORMW 「왠지 몸이 달아올라서 어쩔 수 없으니까…」
-        DRAWLINE
+        IF RAND:2 == 0
+            PRINTFORMW 「…착각하지 마!」
+            PRINTFORMW 「이건… 그러니까… 잠깐! 뭐하는-- 응, 웃!」
+            PRINTFORMW 
+        ELSE
+			PRINTFORMW 「……이건, 그 뭐랄까… 그렇게 빤히 보지 마!」
+			PRINTFORMW 「왠지 몸이 달아올라서 어쩔 수 없으니까…」
+        ENDIF
+			DRAWLINE
     ;적극적인 경우
     ELSEIF GET_NIGHT_KOJO(0) == 3
-        IF RAND:4 == 0
-            PRINTFORMW 「%CSTR:90%, 날 안아줘…」
-            PRINTFORMW 「왠지 잠을 잘 수가 없으니까♪」
+        IF RAND:5 == 0
+            PRINTFORMW 「…안돼!」
+            PRINTFORMW 쿠당탕! 하고 미마는 %조사처리(CALLNAME:MASTER,"를")% 넘어뜨렸다.
+            PRINTFORMW 「내가 여기까지 온건 전부 %CSTR:90% 때문이니까…」
+            PRINTFORMW 「그러니까 몸으로 책임져줘!」
+        ELSEIF RAND:4 == 0
+            PRINTFORMW 「%CSTR:90%, 날 안아줄래?」
+            PRINTFORMW 「이유는…… 알고 있을거라고 생각해♪」
+            PRINTFORMW 말이 끝나기 무섭게 옷을 벗어던지는 미마.
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 육봉이 커짐과 동시에 그 이유를 알아챘다.
         ;2번째 경우
         ELSEIF RAND:3 == 0
-            PRINTFORMW 「%조사처리(CSTR:90,"는")%, 지나갈(잠들) 수 없다!」
-            PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 그게 뭐야? 라고 물으니 돌아온 대답은 이랬다.
-            PRINTFORMW 「그야 요바이니까 잠들 수 없는걸 비유한거야♪」
+            PRINTFORMW 「%CSTR:90%, 잘려고?」
+            PRINTFORMW 「꿈도 야무져♪ 그렇지?」
+            PRINTFORMW 잠자리에 들기 직전, 갑자기 %CALLNAME:MASTER% 앞에 나타난 미마는 마치 보란듯이 알몸을 보이고 있다.
+            PRINTFORMW 그 결과, %CALLNAME:MASTER%의 육봉은 한계까지 치솟았다.
         ;3번째 경우
         ELSEIF RAND:2 == 0
-            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 장막을 들추고(이부자리를 준비하고)
-            PRINTFORMW 미래를(수면을) 엿보았지만(준비했지만) 거기엔 오직…망각(미마) 뿐이었어…
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 평범하게 이부자리를 준비하고
+            PRINTFORMW 수면을 준비하던 그곳에는 오직… 미마 뿐이었다.
             PRINTFORMW 「%CSTR:90%! 오늘 잠은 다 잤다고 생각하면 될거야. 후후♪」
-            PRINTFORMW 때로는 망각도 좋다고 생각하는 %CALLNAME:MASTER%였다…
+            PRINTFORMW 때로는 이것도 좋다고 생각하는 %CALLNAME:MASTER%였다…
         ;4번째 경우
         ELSE
-            PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 장막을 들추고(이부자리를 준비하고) 미래를(수면을) 엿보았지만(준비했지만) 거기엔 오직………
-            PRINTFORMW 망각(옷 하나 안입은 미마) 뿐이었다.
-            PRINTFORMW 「또 왔어, %CSTR:90%. 오늘도 재우지 않을거야… 날 만족시켜 줄 때 까지는!♪」
-            PRINTFORMW %CALLNAME:MASTER%에게 망각 말고 다른게 올 날은 있는걸까…?
+            PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 잠들려 준비하는 도중, 갑자기 방문이 열리며 제 3자가 나타났다.
+            PRINTFORMW 「%CSTR:90%, 오늘 밤은… 내 마음대로 하게 해줘!」
+            PRINTFORMW 기습 비슷한 상황이지만 %조사처리(CALLNAME:MASTER,"는")% 미마의 목적을 알기에 그대로 받아들였다.
         ENDIF
             DRAWLINE
     ;기승위로 자신의 처녀를 꿰뚫어버렸을 때의 대사.
