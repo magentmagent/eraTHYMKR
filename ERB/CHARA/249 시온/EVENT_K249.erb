@@ -61,7 +61,7 @@ IF CFLAG : 5020 == 0
         PRINTFORMW 「축하해.」
         PRINTFORMW 「네가 환상향에서 가장 미움받는 자야.」
         DRAWLINE
-        TALENT : 41 == 1
+        TALENT : 41 = 1
     ELSE
         GOTO INPUT_STLOOP_2
     ENDIF
@@ -78,7 +78,7 @@ IF CFLAG : 5020 == 0
         DRAWLINE
         PRINTFORMW 「가난을 겁내며 죽어라!」
         DRAWLINE
-        TALENT : 17 == 0
+        TALENT : 17 = 0
     ENDIF
 ENDIF    
 CFLAG : 5020 = 1
