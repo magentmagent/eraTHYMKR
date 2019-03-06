@@ -79,6 +79,8 @@ IF CFLAG : 5020 == 0
         PRINTFORMW 「가난을 겁내며 죽어라!」
         DRAWLINE
         TALENT : 17 = 0
+    ELSE
+        GOTO INPUT_STLOOP_3
     ENDIF
 ENDIF    
 CFLAG : 5020 = 1
@@ -172,7 +174,7 @@ IF ASSINO() == 248
     ENDIF
 ELSE
     ;시온 첫 대면 남
-    IF TALENT:120 && ASSI == 0
+    IF TALENT:120
         DRAWLINE 
         PRINTFORMW %조사처리(CALLNAME:MASTER,"은")% 문을 열고 방에 들어왔다.
         PRINTFORML 침대위에는 남색머리카락과 압류딱지가 붙어있는 옷을입고 있는 소녀였었던 하는 소년 요리가미 시온이 누워있었다.
@@ -287,7 +289,7 @@ IF ASSINO() == 248 && CFLAG:5202 == 0 && (TALENT : 150 || TALENT : 160)
     RETURN 1
 ELSEIF ASSINO() == 248 && CFLAG:5202 == 0
     DRAWLINE 
-     PRINTFORMW 시온은 문넘어의 인기척을 경계하기 시작했다.
+    PRINTFORMW 시온은 문넘어의 인기척을 경계하기 시작했다.
     PRINTFORML 문이 열리고 누군가가 들어오기 시작했다.
     PRINTFORMW 「!!!!!」
     PRINTFORML 들어온 것은 온몸을 화려한 옷가지과 보석으로 치장한 소녀였다.
@@ -612,6 +614,8 @@ FOR LOCAL, 0, 50
     SIF NOWEX:LOCAL
         TRYCALLFORM K249_MESSAGE_ORGASM_{LOCAL}
 NEXT
+;다중 절정 대사 호출
+TRYCALL K249_MESSAGE_MULTIPLE_ORGASM
 ;사정시켰다
 FOR LOCAL, 8, 30
     SIF TFLAG:LOCAL
@@ -725,23 +729,23 @@ CFLAG:5337 = 1
 ;처음
 IF CFLAG:5300 == 0
     ;조온이 조수(시온 남OR 후타)
-   IF ASSIPLAY && ASSINO() == 248 && (TALENT:120 || TALENT:121)
+    IF ASSIPLAY && ASSINO() == 248 && (TALENT:120 || TALENT:121)
         DRAWLINE  
         PRINTFORML 「조온!.....잠시!....멈춰....!...읏!」
         PRINTFORMW 『기분 좋았어?』
         DRAWLINE
-;조온 조수 (시온여)
+    ;조온 조수 (시온여)
     ELSEIF ASSIPLAY && ASSINO() == 248
         DRAWLINE
         PRINTFORML 「앗?...아앗! 이거 뭐야!...그만해!」
         PRINTFORMW 『겁먹지 말고 가버리라고~♥』
         DRAWLINE
-;남자 혹은 후타(남성의 절정은 C절정판정)
+    ;남자 혹은 후타(남성의 절정은 C절정판정)
     ELSEIF TALENT:120 || TALENT:121
         DRAWLINE
         PRINTFORMW 「잠시만.....!, 멈춰...... 으읏!」
         DRAWLINE
-;그외
+    ;그외
     ELSE
         DRAWLINE
         PRINTFORMW 「앗?...아앗! 이거 뭐야!...그만해!」
@@ -751,8 +755,8 @@ IF CFLAG:5300 == 0
     RETURN 1
 ;2회째 이후
 ELSEIF CFLAG:5300 == 1 && NOWEX:1 == 0 && NOWEX:0 >= 1 && NOWEX:3 == 0 && NOWEX:2 == 0
-   CFLAG:8001 = 0
-   CFLAG:8000 = 0
+    CFLAG:8001 = 0
+    CFLAG:8000 = 0
     ;C감 4 친 망
     IF ABL:0 >= 4 && (TALENT : 151 || TALENT : 152)
         DRAWLINE 
@@ -1029,6 +1033,7 @@ ENDIF
 ;----------------------
 ;다중절정
 ;----------------------
+@K249_MESSAGE_MULTIPLE_ORGASM
 ;-------[모코우 구상에서 참고 했습니다.]-----------
 Q = 0
 Q += (NOWEX:0) ?  1 # 0
@@ -1041,58 +1046,58 @@ IF Q == 4
     ;사중절정 두번째
     IF CFLAG:8000 == 1
         DRAWLINE
-            PRINTFORMW 「안돼! 온다.....와버ㄹㅕ────!!!!!」
-            PRINTFORMW 시온은 한계치까지 등을 젖히면서 소리없는 비명을 질렀다.
-            PRINTFORMW 「제....제발.....이제....머리.....바보가.....될거같아...」
-            CFLAG:8001 = 0
-            DRAWLINE
-        ELSE
-            DRAWLINE
-            PRINTFORMW 「─────!!!」
-            PRINTFORMW 시온은 전신을 경련시키며 평소에는 맛보지 못할 절정을 맛보고있다 .
-            PRINTFORMW 「.....으읏......이...이....런거....다음번에는.....부서져....버려.....」
-            CFLAG:8001 = 0
-            CFLAG:8000 = 1
-            DRAWLINE
-        ENDIF
-    ELSEIF Q == 3
-        IF CFLAG:8001 == 1
-            DRAWLINE
-            PRINTFORMW 「가...간닷!───엄청난거 오고 있어!──가아아아앗!」
-            PRINTFORMW 시온은 군침을 흘리며 자신에게 찾아온 쾌감만을 느끼고있다.
-            CFLAG:8000 = 0
-            DRAWLINE
-        ELSEIF TALENT : 152 || TALENT : 151
-            DRAWLINE
-            PRINTFORMW 「으읏─!!!────이거...뭐야──!...엄청난거....오고있어!」
-            PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 %CALLNAME:MASTER%에게 속삭였다.
-            PRINTFORMW 「방금....그거.....다시.....한번만♥」
-            CFLAG:8001 = 1 
-            CFLAG:8000 = 0
-            DRAWLINE
-        ELSEIF TALENT : 150 || TALENT : 160
-            DRAWLINE
-            PRINTFORMW 「으읏─!!!────이거...뭐야──!...엄청난거....오고있어!」
-            PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 몸을 경련시키고 있다..
-            PRINTFORMW 「괴....굉장했어.....」
-            CFLAG:8001 = 1 
-            CFLAG:8000 = 0
-            DRAWLINE
-        ELSE
-            DRAWLINE
-            PRINTFORMW 「으읏─!!!────이.....이거...뭐야──?!」
-            PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 몸을 경련시키고 있다.
-            CFLAG:8001 = 1
-            CFLAG:8000 = 0
-            DRAWLINE 
-        ENDIF 
-    ELSEIF Q == 2
-        DRAWLINE
-        PRINTFORMW 「아───앗? 평소보다....더?」
+        PRINTFORMW 「안돼! 온다.....와버ㄹㅕ────!!!!!」
+        PRINTFORMW 시온은 한계치까지 등을 젖히면서 소리없는 비명을 질렀다.
+        PRINTFORMW 「제....제발.....이제....머리.....바보가.....될거같아...」
         CFLAG:8001 = 0
+        DRAWLINE
+    ELSE
+        DRAWLINE
+        PRINTFORMW 「─────!!!」
+        PRINTFORMW 시온은 전신을 경련시키며 평소에는 맛보지 못할 절정을 맛보고있다 .
+        PRINTFORMW 「.....으읏......이...이....런거....다음번에는.....부서져....버려.....」
+        CFLAG:8001 = 0
+        CFLAG:8000 = 1
+        DRAWLINE
+    ENDIF
+ELSEIF Q == 3
+    IF CFLAG:8001 == 1
+        DRAWLINE
+        PRINTFORMW 「가...간닷!───엄청난거 오고 있어!──가아아아앗!」
+        PRINTFORMW 시온은 군침을 흘리며 자신에게 찾아온 쾌감만을 느끼고있다.
         CFLAG:8000 = 0
         DRAWLINE
- ENDIF
+    ELSEIF TALENT : 152 || TALENT : 151
+        DRAWLINE
+        PRINTFORMW 「으읏─!!!────이거...뭐야──!...엄청난거....오고있어!」
+        PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 %CALLNAME:MASTER%에게 속삭였다.
+        PRINTFORMW 「방금....그거.....다시.....한번만♥」
+        CFLAG:8001 = 1 
+        CFLAG:8000 = 0
+        DRAWLINE
+    ELSEIF TALENT : 150 || TALENT : 160
+        DRAWLINE
+        PRINTFORMW 「으읏─!!!────이거...뭐야──!...엄청난거....오고있어!」
+        PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 몸을 경련시키고 있다..
+        PRINTFORMW 「괴....굉장했어.....」
+        CFLAG:8001 = 1 
+        CFLAG:8000 = 0
+        DRAWLINE
+    ELSE
+        DRAWLINE
+        PRINTFORMW 「으읏─!!!────이.....이거...뭐야──?!」
+        PRINTFORMW 시온은 절정에 여운에서 벗어나지 못한체 몸을 경련시키고 있다.
+        CFLAG:8001 = 1
+        CFLAG:8000 = 0
+        DRAWLINE 
+    ENDIF 
+ELSEIF Q == 2
+    DRAWLINE
+    PRINTFORMW 「아───앗? 평소보다....더?」
+    CFLAG:8001 = 0
+    CFLAG:8000 = 0
+    DRAWLINE
+ENDIF
 ;-------------------------------------------------
 ;분유 CFLAG:5304
 ;-------------------------------------------------

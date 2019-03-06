@@ -15,12 +15,12 @@
 ;조교 커맨드 거부 대사
 ;-------------------------------------------------
 @K248_MESSAGE_EVENT_1
-IF ASSINO() == 30
-PRINTFORMW 「언니라도 이런일은 용납못해!」
-PRINTFORMW 시온이 어떻게든 해보려 했지만 조온은 거칠게 반항했다.
+IF ASSINO() == 249
+    PRINTFORMW 「언니라도 이런일은 용납못해!」
+    PRINTFORMW 시온이 어떻게든 해보려 했지만 조온은 거칠게 반항했다.
 ELSE
-PRINTFORMW 「손 떼! 만지지마!」
-PRINTFORMW 조온은 명령을 거칠게 거부했다.
+    PRINTFORMW 「손 떼! 만지지마!」
+    PRINTFORMW 조온은 명령을 거칠게 거부했다.
 ENDIF
 
 ;-------------------------------------------------
@@ -84,15 +84,15 @@ ENDIF
 ;실신 상태에서 회복
 ;-------------------------------------------------
 @K248_MESSAGE_EVENT_12
-;고통1이상,공포1이상 둘중하나
-IF PALAM:16 >= PALAMLV:1 || PALAM:17 >= PALAMLV:1
-PRINTFORML 「……아, 아……파……,」
 ;고통과 공포가 둘다 있을때
-ELSEIF PALAM:16 >= PALAMLV:1 && PALAM:17 >= PALAMLV:1
-PRINTFORMW 「꾸……, 꿈이 아냐……?」
+IF PALAM:16 >= PALAMLV:1 && PALAM:17 >= PALAMLV:1
+    PRINTFORMW 「꾸……, 꿈이 아냐……?」
+;고통1이상,공포1이상 둘중하나
+ELSEIF PALAM:16 >= PALAMLV:1 || PALAM:17 >= PALAMLV:1
+    PRINTFORMW 「……아, 아……파……,」
 ;기타
 ELSE
-PRINTFORMW 「……? 자고 있었나……?」
+    PRINTFORMW 「……? 자고 있었나……?」
 ENDIF
 
 ;-------------------------------------------------
@@ -645,10 +645,10 @@ PRINTFORMW 「그냥 죽어버렸으면……,」
 ;-------------------------------------------------
 @K248_MESSAGE_EVENT_124
 IF CFLAG:5201 == 0
-PRINTFORMW 조온은 잠들어 있다.
-PRINTFORMW 앞으로 벌어질 일에 대해 짐작도 못한채……
+    PRINTFORMW 조온은 잠들어 있다.
+    PRINTFORMW 앞으로 벌어질 일에 대해 짐작도 못한채……
 ELSE
-PRINTFORMW 「시……, 싫어……,」
+    PRINTFORMW 「시……, 싫어……,」
 ENDIF
 ;-------------------------------------------------
 ;비대음핵 취득
@@ -1177,15 +1177,15 @@ PRINTFORMW 「네 소중한걸 가지러 갈께……,」
 IF TFLAG:99 == 130
     ;연모 친애 상애
     IF TALENT:150 || TALENT:152 || TALENT:153
-    PRINTFORMW 「팔려……, 내가……?」
-    PRINTFORMW 「그래……,」
-    PRINTFORMW 「……이 집에서의 삶…… 즐겁진 않았지만……,」
-    PRINTFORMW 조온의 목소리가 멀어져간다……
+        PRINTFORMW 「팔려……, 내가……?」
+        PRINTFORMW 「그래……,」
+        PRINTFORMW 「……이 집에서의 삶…… 즐겁진 않았지만……,」
+        PRINTFORMW 조온의 목소리가 멀어져간다……
     ELSE
-    PRINTFORMW 「팔려……, 내가……?」
-    PRINTFORMW 「이번엔……, 어디로 가지……?」
-    PRINTFORMW 「……기다려……! 대답해……!」
-    PRINTFORMW 조온의 목소리가 멀어져간다……
+        PRINTFORMW 「팔려……, 내가……?」
+        PRINTFORMW 「이번엔……, 어디로 가지……?」
+        PRINTFORMW 「……기다려……! 대답해……!」
+        PRINTFORMW 조온의 목소리가 멀어져간다……
     ENDIF
 ;광기 탈주한 매각시
 ELSEIF TFLAG:99 == 180
@@ -1201,23 +1201,23 @@ ELSEIF TFLAG:99 == 196
     ;조교 한번도 안됬을때
     IF CFLAG:5201 == 0
         IF TALENT:150 || TALENT:152 || TALENT:153
-        PRINTFORMW 조온은 무거운 발걸음을 떼며 길을 나섰다.
-        PRINTFORMW 「고마웠어……, 그리고……,」
-        PRINTFORMW 「잊지 않을꺼야……,」
+            PRINTFORMW 조온은 무거운 발걸음을 떼며 길을 나섰다.
+            PRINTFORMW 「고마웠어……, 그리고……,」
+            PRINTFORMW 「잊지 않을꺼야……,」
         ELSE
-        PRINTFORMW 조온은 영문도 모르는 채 길을 나섰다.
-        PRINTFORMW 「뭐였지……, 그나저나 내 돈은 어디에 흘렸지?」
-        PRINTFORMW 「다시 모으면 되겠지……,」
+            PRINTFORMW 조온은 영문도 모르는 채 길을 나섰다.
+            PRINTFORMW 「뭐였지……, 그나저나 내 돈은 어디에 흘렸지?」
+            PRINTFORMW 「다시 모으면 되겠지……,」
         ENDIF
     ;연모 친애 상애
     ELSEIF TALENT:150 || TALENT:152 || TALENT:153
-    PRINTFORMW 조온은 무거운 발걸음을 떼며 길을 나섰다.
-    PRINTFORMW 「고마웠어……, 그리고……,」
-    PRINTFORMW 「잊지 않을꺼야……,」
+        PRINTFORMW 조온은 무거운 발걸음을 떼며 길을 나섰다.
+        PRINTFORMW 「고마웠어……, 그리고……,」
+        PRINTFORMW 「잊지 않을꺼야……,」
     ELSE
-    PRINTFORMW 드디어 자신의 상황을 깨닳은 조온은 신나서 방방 뛰어다녔다.
-    PRINTFORMW 「자유야! 자유야!」
-    PRINTFORMW 「빨리 돈을 모을꺼야! 그리고……, 그리고……!」
+        PRINTFORMW 드디어 자신의 상황을 깨닳은 조온은 신나서 방방 뛰어다녔다.
+        PRINTFORMW 「자유야! 자유야!」
+        PRINTFORMW 「빨리 돈을 모을꺼야! 그리고……, 그리고……!」
     ENDIF
 ENDIF
 
@@ -1228,20 +1228,20 @@ ENDIF
 ;조교 한번도 안함
 IF CFLAG:5201 == 0
     IF TALENT:150 || TALENT:152 || TALENT:153
-    PRINTFORMW 「이상한 사람이네……,」
-    PRINTFORMW 「차라리 원하는 대로 능욕이라도 하지……,」
-    PRINTFORMW 멀어져가는 조온의 목소리가 들린다……
+        PRINTFORMW 「이상한 사람이네……,」
+        PRINTFORMW 「차라리 원하는 대로 능욕이라도 하지……,」
+        PRINTFORMW 멀어져가는 조온의 목소리가 들린다……
     ELSE
-    PRINTFORMW 「노예……?, 그나저나 내 돈 못봤어?」
-    PRINTFORMW 멀어져가는 조온의 목소리가 들린다……
+        PRINTFORMW 「노예……?, 그나저나 내 돈 못봤어?」
+        PRINTFORMW 멀어져가는 조온의 목소리가 들린다……
     ENDIF
 ;연모 친애 상애
 ELSEIF TALENT:150 || TALENT:152 || TALENT:153
     PRINTFORMW 「가고 싶지 않지만……,」
     PRINTFORMW 멀어져가는 조온의 목소리가 들린다……
 ELSE
-PRINTFORMW 「정말이야……? 나, 자유가 된거야……?」
-PRINTFORMW 멀어져가는 조온의 목소리가 들린다…
+    PRINTFORMW 「정말이야……? 나, 자유가 된거야……?」
+    PRINTFORMW 멀어져가는 조온의 목소리가 들린다…
 ENDIF
 
 ;-------------------------------------------------
@@ -1595,9 +1595,9 @@ IF TFLAG:99 == 0
 ELSEIF TFLAG:99 == 1
     ;조교 한번도 안됬을때
     IF CFLAG:5201 == 0
-    PRINTFORMW 「왜 이런 맛없는 걸 주는거지?」
+        PRINTFORMW 「왜 이런 맛없는 걸 주는거지?」
     ELSE
-    PRINTFORMW 「맛없어……, 따뜻해……,」
+        PRINTFORMW 「맛없어……, 따뜻해……,」
     ENDIF
     
 ENDIF
@@ -1610,13 +1610,13 @@ IF TFLAG:99 == 0
 ELSEIF TFLAG:99 == 1
     ;조교 한번도 안됬을때
     IF CFLAG:5201 == 0
-    PRINTFORMW 「이거 뭐야?」
+        PRINTFORMW 「이거 뭐야?」
     ELSE
         ;연모 친애 상애
         IF TALENT:150 || TALENT:152 || TALENT:153
-        PRINTFORMW 「먹고 힘낼께……!」
+            PRINTFORMW 「먹고 힘낼께……!」
         ELSE
-        PRINTFORMW 「더 심한 짓을 하지는 않겠지……,」
+            PRINTFORMW 「더 심한 짓을 하지는 않겠지……,」
         ENDIF
     ENDIF
 ENDIF
@@ -1812,12 +1812,12 @@ ENDIF
 ;-------------------------------------------------
 @K248_MESSAGE_EVENT_339
 IF TALENT:120
-PRINTFORMW 「원래대로 돌아왔어……,」
-PRINTFORMW 조온은 다시 돌아온 몸에 안도한 듯 하다.
+    PRINTFORMW 「원래대로 돌아왔어……,」
+    PRINTFORMW 조온은 다시 돌아온 몸에 안도한 듯 하다.
 ELSE
-PRINTFORMW 「어……?」
-PRINTFORMW 「……어, 어……? 어? 어?!」
-PRINTFORMW 조온은 자신의 몸에 생긴 변화에 충격을 받은 듯 하다.
+    PRINTFORMW 「어……?」
+    PRINTFORMW 「……어, 어……? 어? 어?!」
+    PRINTFORMW 조온은 자신의 몸에 생긴 변화에 충격을 받은 듯 하다.
 ENDIF
 
 ;-------------------------------------------------
