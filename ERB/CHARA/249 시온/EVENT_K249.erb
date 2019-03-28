@@ -1932,7 +1932,7 @@ ELSE
     ELSEIF EXP:41 >=50 && (ABL:0 >=2 || PALAM:0>= PALAMLV:2) && (TALENT:150 || TALENT : 160 )    
             DRAWLINE 
             PRINTFORMW 「앗!──거기!....기분좋아!...더..쌔게!...」
-            PRINTFORMW 시온은 %CALLNAMElMASTER%의 뒤통수에 손을 올리고 느끼고 있다.
+            PRINTFORMW 시온은 %CALLNAME:MASTER%의 뒤통수에 손을 올리고 느끼고 있다.
             DRAWLINE 
     ELSEIF ASSIPLAY 
         IF ASSINO() == 248
@@ -2111,7 +2111,7 @@ IF RESULT : 1 == 1
         ELSE
             DRAWLINE
             PRINTFORMW 「가슴...기분좋아?」
-            PRINTFORMW 시온은  자신의 가슴을 만지고 있는 %CALLNAME:MASTE%을 보며 얼굴을 붉히며 말했다.
+            PRINTFORMW 시온은  자신의 가슴을 만지고 있는 %CALLNAME:MASTER%을 보며 얼굴을 붉히며 말했다.
             DRAWLINE 
         ENDIF
     ;굴복 2 이하
@@ -2132,7 +2132,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「하아....하아.....이제...」
-            PRINTFORMW 시온은 %CALLNAME;ASSI%의 손을 느끼고 있다.
+            PRINTFORMW 시온은 %CALLNAME:ASSI%의 손을 느끼고 있다.
             DRAWLINE 
         ENDIF   
     ;B쾌락경험 50이상,B감각 2이상 혹은 B쾌 2
@@ -2330,7 +2330,7 @@ IF ASSIPLAY
         PRINTFORMW 「조온...이거...뺴줘」
         PRINTFORMW 『방치플레이는 취향이 아닌가봐?』
         DRAWLINE 
-    ELSIF ASSINO() == 248 && PALAM:13 >= PALAMLV:3 
+    ELSEIF ASSINO() == 248 && PALAM:13 >= PALAMLV:3 
         DRAWLINE 
         PRINTFORMW 「조온....뭐라도...」
         PRINTFORMW 『뭘 해주길 바라는걸까──?』
@@ -2579,7 +2579,7 @@ IF RESULT : 1 == 1 && TEQUIP:20 == 1
             DRAWLINE
             PRINTFORMW 「........너....기대하는게....좋을거야」
             PRINTFORMW 「내가 왜 최흉최악인지 알려주지....」
-            PRINTFORMW %조사처리(CALLNAME:ASSI%,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
+            PRINTFORMW %조사처리(CALLNAME:ASSI,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
             DRAWLINE
         ;주인이 직접
         ;연모
@@ -2981,7 +2981,7 @@ IF RESULT : 1 == 1
             DRAWLINE
             PRINTFORMW 「........너....기대하는게....좋을거야」
             PRINTFORMW 「내가 왜 최흉최악인지 알려주지....」
-            PRINTFORMW %조사처리(CALLNAME:ASSI%,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
+            PRINTFORMW %조사처리(CALLNAME:ASSI,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
             DRAWLINE
         ;주인이 직접
         ;연모
@@ -3038,14 +3038,14 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
     ELSEIF EXP:42 >=50 && (ABL:1 >=3 || PALAM:1 >= PALAMLV:3) && (TALENT:150 || TALENT : 160 )    
         DRAWLINE 
         PRINTFORMW 「하앗...아앗....주인님...더 쌔게 찔러줘....」
-        PRINTFORMW 시온은 다리로 %CALLNAME:MASTER&의 허리를 휘감고 있다. 
+        PRINTFORMW 시온은 다리로 %CALLNAME:MASTER%의 허리를 휘감고 있다. 
         DRAWLINE 
     ELSEIF ASSIPLAY 
         IF ASSINO() == 248
@@ -3086,7 +3086,7 @@ IF RESULT : 1 == 1
             DRAWLINE
             PRINTFORMW 「........너....기대하는게....좋을거야」
             PRINTFORMW 「내가 왜 최흉최악인지 알려주지....」
-            PRINTFORMW %조사처리(CALLNAME:ASSI%,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
+            PRINTFORMW %조사처리(CALLNAME:ASSI,"은")% 시온의 경고에 겁먹은 표정을 짖고있다
             DRAWLINE
         ;주인이 직접
         ;연모
@@ -3140,14 +3140,14 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
     ELSEIF EXP:42 >=50 && (ABL:1 >=3 || PALAM:1 >= PALAMLV:3) && (TALENT:150 || TALENT : 160 )    
         DRAWLINE 
         PRINTFORMW 「하앗...아앗!....이거...안쪽까지....」
-        PRINTFORMW %조사처리(CALLNAME:MASTER."가")% 자신의 물건을 찔러 넣을때 마다 시온의 허리는 활처럼 휘며 몸을 경련시키고 있다. . 
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 자신의 물건을 찔러 넣을때 마다 시온의 허리는 활처럼 휘며 몸을 경련시키고 있다. . 
         DRAWLINE 
     ELSEIF ASSIPLAY 
         IF ASSINO() == 248
@@ -3206,7 +3206,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
@@ -3230,7 +3230,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF
@@ -3271,7 +3271,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE  
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
@@ -3294,7 +3294,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF
@@ -3334,7 +3334,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
@@ -3358,7 +3358,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF 
@@ -3447,7 +3447,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF
@@ -3533,7 +3533,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
@@ -3557,7 +3557,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF
@@ -3598,7 +3598,7 @@ ELSE
         ELSE
             DRAWLINE 
             PRINTFORMW 「아앗!...하앙!...주인님이외에 사람이랑....시러어어....」
-            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+            PRINTFORMW 시온은 %조사처리(CALLNAME:ASSI,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
             DRAWLINE 
         ENDIF   
     ;V조율경험 50이상,V감각 2이상 혹은 V쾌 2 연모
@@ -3621,7 +3621,7 @@ ELSE
     ELSE
         DRAWLINE
         PRINTFORMW 「으으....이딴놈 이랑...이런식으로....」
-        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
+        PRINTFORMW 시온은 눈을감고 %조사처리(CALLNAME:MASTER,"가")%주는 쾌락을 인정하기 싫다는듯 쾌감을 참고있다.
         DRAWLINE
     ENDIF
 ENDIF
@@ -5087,7 +5087,7 @@ IF (TALENT : 150 || TALENT : 151 || TALENT : 160 || TALENT : 152) && ABL:35 >= 3
     PRINTFORMW 「주인!....잠시!....내 말조..ㅁ....으읍!」
     PRINTFORMW 촉수들은 시온이 마지막으로 뱉을 말조차 끝까지 허락하지 않고 그녀의 몸을 즐기기 시작했다.
     PRINTFORMW 「으읍!.....으읍!.....읍!......우..............」
-    PRINTFORMW %CALLNAME:MATER%은 촉수와 시온의 경계가 사라진걸 확인하고 방을 나갔다.
+    PRINTFORMW %CALLNAME:MASTER%은 촉수와 시온의 경계가 사라진걸 확인하고 방을 나갔다.
     DRAWLINE
 ;연망친복 총경o
 ELSEIF (TALENT : 150 || TALENT : 151 || TALENT : 160 || TALENT : 152) && EXP:53 >= 1
