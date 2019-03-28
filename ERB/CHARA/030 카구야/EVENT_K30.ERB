@@ -3,41 +3,33 @@
 ;Ａの輝夜口上のアレンジ移植です
 ;Ａの方には無かった口上もあれば, 逆に削除された口上もあるので
 ;興味が出たらＡの方も是非
-;
-;-------------------------------------------------
-
+;;-------------------------------------------------
 ;コンセプトって訳じゃないけど, 恋慕付けたら主人を愛するようにはなる
 ;でも快楽に非常に貪欲になったり, 射精狂いになったりと本人は幸せだけど他人から見れば異常という状態になるパターンが多め
-
 ;豊姫が輝夜を虐めて色欲情狂いにしてしまう口上を追加してみよう
 ;依姫も絡ませてみよう
-
 ;加筆とか改筆とかＯＫだけど, まだ加筆しますよ
 ;多分
 ;-------------------------------------------------
 ;(Ver0.80で追加)加筆と改筆について
 ;自由です。でも以下の事を守ってほしいな
-
 ;加筆する場合は, 加筆した事が分かるようにした上で元のReadmeも同梱してください。
 ;加筆版を元にして加筆された部分を, 少し改変しながら新しいVerを出す場合もあると思うので
 ;加筆版には加筆した部分を, 改造してもいいかどうかを記載してもらえると嬉しいです。
 ;改筆の場合も同じようにお願いします。
-
 ;簡単に言うと元の口上があるというのは分かるようにしてほしいです。
-
 ;-------------------------------------------------
 ;口上設定雛形
 ;30と030をキャラ番号に置換し, Y1を助手のキャラ番号に置換する。
 ;ただし, キャラ番号が3桁未満のキャラの場合, 30,Y1は1, 030は001のように変える必要がある
-;そしてコマンド内の適当な条件の下のPRINTFORMWの後ろに半角スペースを置いてセリフを追加してください。
+;そしてコマンド内の適当な条件の下のPRINTFORMW の後ろに半角スペースを置いてセリフを追加してください。
 ;テンプレートが更新された際には, 新しいテンプレをベースにして, 
-;該等する条件のPRINTFORMWの行をコピー＆ペーストしていくことをお勧めします。（手間はかかるが, エラーは起こりえない）
+;該等する条件のPRINTFORMW の行をコピー＆ペーストしていくことをお勧めします。（手間はかかるが, エラーは起こりえない）
 ;口上を追加しないコマンドには行頭に『;』をつけましょう。後で追加した際に初めての口上が出ないなどの弊害が起こります。
 ;また, 口上を追加したコマンドの『;』をきちんと外しましょう。これだと条件を満たしても口上がでません
 ;条件の追加や変更は自由ですが, その際には随時テストをしていくとよいでしょう。（エラーの原因は, ほぼ確実に手を加えた部分にあるため）
 ;最後にできればread meも読んで下さい
 ;-------------------------------------------------
-
 ;--------------------------------------------------
 ;エキストラモード構文　CFLAG:5020を使用(暫定)
 ;はいを選択した時に初調教時に口上設定用の素質に変更できます
@@ -133,17 +125,14 @@
 ;口上の存在判定（YM版）
 @TRY_30
 RETURN 1
-
 @EVENTTRAIN
 #PRI
 ;FLAG:1030 = 1
 SIF FLAG:11 == 0
 FLAG:11 = 2
-
 @EVENTEND
 #LATER
 ;FLAG:1030 = 0
-
 ;--------------------------------------------------
 ;EVENTTRAIN関係（30をキャラ番号に置換）
 ;調教開始時のセリフ CFLAG 201～219を使用
@@ -164,7 +153,6 @@ IF CFLAG:8999 >= 1 && TALENT:0 == 0
     DRAWLINE
     WAIT
 ENDIF
-
 ;--------------------------------------------------
 ;特定助手, 主人時に特殊助手口上を呼び出す(Y1を特定助手, 30を主人のキャラ番号に置換）
 ;--------------------------------------------------
@@ -189,29 +177,24 @@ ENDIF
 ;-------------------------------------------------
 ;初調教時 CFLAG5001
 ;-------------------------------------------------
-
 ;媚薬のビットフラグの掃除
 SIF CFLAG:5101 & 4
     CFLAG:5101 -= 4
 SIF CFLAG:5101 & 16
     CFLAG:5101 -= 16
-
 ;一時的な能力上昇も削除
 IF CFLAG:5101 & 8
     CFLAG:5101 -= 8
     ABL:30 -= 1
 ENDIF
-
 ;寸止め継続回数も掃除
 IF CFLAG:5110 >= 1
     CFLAG:5110 = 0
 ENDIF
-
 ;調教終了時の口上分岐の記憶も消去
 IF CFLAG:5118 != 0
     CFLAG:5118 = 0
 ENDIF
-
 ;何らかのバグでCFLAG:5100が狂った場合, ここで再修正します
 IF CFLAG:5100 >= 2
     DRAWLINE
@@ -231,7 +214,6 @@ IF CFLAG:5100 >= 2
         CFLAG:5100 = 0
     ENDIF
 ENDIF
-
 IF CFLAG:5001 == 0
     DRAWLINE
     ;主人があなた＆妹紅が陥落していない
@@ -389,11 +371,9 @@ IF CFLAG:5001 == 0
     ENDIF
     CFLAG:5001 = 1
     RETURN 1
-
 ;-------------------------------------------------
 ;調教開始時（一回のみ） CFLAG5001
 ;-------------------------------------------------
-
 ;幼児退行
 ELSEIF TALENT:159 && CFLAG:8022 == 0
     DRAWLINE
@@ -407,7 +387,6 @@ ELSEIF TALENT:159 && CFLAG:8022 == 0
     PRINTFORMW 카구야는 환하고 명랑하게 웃는 얼굴로 %CALLNAME:MASTER%를 응시했다
     PRINTFORMW 본래의 카구야의 인격은 어딘가 멀리가 버린 것일까……
     CFLAG:8022 = 1
-
 ;屈服刻印Lv1
 ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
     DRAWLINE
@@ -471,7 +450,6 @@ ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
     ENDIF
     CFLAG:5001 = 2
     RETURN 1
-
 ;屈服刻印Lv2
 ELSEIF CFLAG:5001 < 3 && MARK:2 == 2
     DRAWLINE
@@ -533,7 +511,6 @@ ELSEIF CFLAG:5001 < 3 && MARK:2 == 2
     ENDIF
     CFLAG:5001 = 3
     RETURN 1
-
 ;屈服刻印Lv3
 ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:TARGET:150 == 0
     DRAWLINE
@@ -594,7 +571,6 @@ ELSEIF CFLAG:5001 < 4 && MARK:2 == 3 && TALENT:TARGET:150 == 0
     ENDIF
     CFLAG:5001 = 4
     RETURN 1
-
 ;淫乱
 ELSEIF !(CFLAG:5102 & 4) == 1 && TALENT:TARGET:170
     DRAWLINE
@@ -794,7 +770,6 @@ ELSEIF !(CFLAG:5102 & 4) == 1 && TALENT:TARGET:170
     ENDIF
     CFLAG:5102 |= 4
     RETURN 1
-
 ;恋慕
 ELSEIF CFLAG:5001 < 5 && TALENT:150
     DRAWLINE
@@ -948,19 +923,15 @@ ELSEIF TALENT:158 && CFLAG:2 < 1 && EXP:50 >= 5 && MARK:97 >= 3 && MARK:96 >= 3 
         RESETCOLOR
         CALL BADEND_COMMON
     ENDIF
-
 ;助手の有無をチェック（いない場合は二回目以降へ飛ぶ）
 ELSEIF ASSI < 0 
     CALL K30_KOJO2
-
 ;-------------------------------------------------
 ;簡易助手口上（Y1を助手のキャラ番号に置換, 30をキャラ番号に変更する) CFLAG5002
 ;掛け合いをするキャラを増やす場合は, コピー＆ペーストをして, CFLAGの数を5003, 5004と増やす
 ;-------------------------------------------------
 ;助手
-;
-
-;助手が永琳でなおかつ
+;;助手が永琳でなおかつ
 ;輝夜が恋慕＆の動物性愛経験が40以上だと発生
 ELSEIF NO:ASSI == 29 && EXP:56 >= 40 && TALENT:150 && CFLAG:5100 == 1 && CFLAG:5122 == 0
     DRAWLINE
@@ -1116,7 +1087,7 @@ ELSEIF NO:ASSI == 47 && CFLAG:5112 == 1 && CFLAG:4900 & 1 && TALENT:200
 ;        ;さすがに居ないだろｗこれ見れた人が居たらすごい…と思う
 ;        IF CFLAG:5114 >= 200 && CFLAG:5115 >= 4 && TALENT:MASTER:56 && ABL:30 >= 5 && TALENT:49
 ;            PRINTFORML 「앗……후아앗……」
-;            PRINTFORMW 카구야는 황홀헌 표정을 지으며 아래와 위에서 침을 흘리고 그냥 자위에 빠져 있다
+;            PRINTFORMW 카구야는 황홀한 표정을 지으며 아래와 위에서 침을 흘리고 그냥 자위에 빠져 있다
 ;            PRINTFORMW 발은 아무렇게나 내던져져, 비부가 이쪽으로부터도 보일듯 말듯 하고 있었다
 ;            PRINTFORML 『……너무 많이해요,그래서 자위하지 말라고 했는데……』
 ;            PRINTFORMW 스타-는 기가 막힌 표정을 하고 있다
@@ -1152,7 +1123,7 @@ ELSEIF NO:ASSI == 47 && CFLAG:5112 == 1 && CFLAG:4900 & 1 && TALENT:200
             PRINTFORMW 카구야는 빛을 켜지 않는 흐린 눈으로 만면에 미소를 지었다……
             PRINTFORML 
             PRINTFORMW 카구야의 소중한 무언가가 부서진 것 같다....
-            PRINTFORMW 카구야는[정조 관념][프라이드 높은]을 잃고,[유치][프라이드 낮은][정조무구애]를 얻었다
+            PRINTFORMW 카구야는[정조 관념][프라이드 높은]을 잃고,[유치][프라이드 낮은][정조관둔감]를 얻었다
             TALENT:30 = 0
             TALENT:16 = 0
             TALENT:131 = 1
@@ -1547,35 +1518,28 @@ ELSEIF NO:ASSI == 29
 ELSE
     CALL K30_KOJO2
 ENDIF
-
-
 ;-------------------------------------------------
 ;調教開始時（2回目以降, 30をキャラ番号に変更する） CFLAGなし 
 ;-------------------------------------------------
 @K30_KOJO2
-
 ;睡眠薬作用時はスキップ
 IF EQUIP:14 >= 1
     RETURN 0
 ENDIF
-
 ;媚薬のビットフラグの掃除
 SIF CFLAG:5101 & 4
     CFLAG:5101 -= 4
 SIF CFLAG:5101 & 16
     CFLAG:5101 -= 16
-
 ;一時的な能力上昇も削除
 IF CFLAG:5101 & 8
     CFLAG:5101 -= 8
     ABL:30 -= 1
 ENDIF
-
 ;寸止め継続回数も掃除
 IF CFLAG:5110 >= 1
     CFLAG:5110 = 0
 ENDIF
-
 ;記憶喪失+妖精時のエンディングを見た後
 IF CFLAG:5106 & 1
     IF CFLAG:5106 & 2
@@ -1591,7 +1555,6 @@ IF CFLAG:5106 & 1
         CFLAG:5106 |= 2
     ENDIF
 ENDIF
-
 ;深い媚薬状態で処女を失うと反発刻印の取得がここまで引き延ばされます
 IF CFLAG:5101 & 64
     
@@ -1674,7 +1637,6 @@ ELSE
         ENDIF
     ENDIF
 ENDIF
-
 ;抑圧消滅記念イベント
 ;…記念？　まあイベントが発生した方が面白いよね, 難易度が高めだから堕ちるまで時間がかかるし
 IF CFLAG:5103 & 1
@@ -1761,7 +1723,6 @@ ELSE
         RETURN 0
     ENDIF
 ENDIF
-
 ;前回の調教で初めて媚薬を使った＆抑圧を持っている
 IF CFLAG:5101 & 2
     ;いわゆるダミー分岐, つまり一度イベントが起こった場合こっちに誘導されるのでイベントがもう一回起こることがなくなる
@@ -1825,7 +1786,6 @@ ELSE
         RETURN 0
     ENDIF
 ENDIF
-
 ;おもらし癖を取得した次の調教開始時に発生するイベント
 IF CFLAG:5103 & 2
     ;いわゆるダミー分岐, つまり一度イベントが起こった場合こっちに誘導されるのでイベントがもう一回起こることがなくなる
@@ -1856,7 +1816,6 @@ ELSE
         RETURN 0
     ENDIF
 ENDIF
-
 ;乳が張って眠れなかった
 ;口上が上乗せされます。うざいかも
 IF (CFLAG:5104 & 1) && TIME == 0
@@ -1889,7 +1848,6 @@ IF (CFLAG:5104 & 1) && TIME == 0
     CFLAG:5104 -= 1
     DRAWLINE
 ENDIF
-
 ;薬物刻印
 ;薬が決まっててヤバいって状態, 夜伽見てたらふとイメージが…
 IF MARK:3 >= 1
@@ -2022,8 +1980,6 @@ ELSEIF TALENT:159
         PRINTFORMW 카구야는 귀엽게 고개를 갸웃거린다
         PRINTFORMW 마치 퇴행 하지 않는 것 같은 말이었지만,  행동을 보면 그렇지 않는 것 같다
     ENDIF
-
-
 ;狂気
 ;幻覚で幸せにいるというシチュエーションのやるせなさをここに
 ELSEIF TALENT:158
@@ -2050,7 +2006,6 @@ ELSEIF MARK:9 == 3 && FLAG:11 == 2
     DRAWLINE
     PRINTFORMW 「뭐야 ,  또 왔어?　이 쓰레기가」
     RETURN 1
-
 ;薬で猫化した
 ELSEIF CFLAG:5122
     ;調教30回以上
@@ -2077,7 +2032,6 @@ ELSEIF CFLAG:5122
         PRINTFORML 「나, 나, 별로 아직 고양이가 된게 아니니까!」
         PRINTFORMW 조금 고양이처럼 되어 가는 느낌이 났다
     ENDIF
-
 ;恋慕
 ELSEIF TALENT:150 && FLAG:11 == 2
     DRAWLINE
@@ -2335,7 +2289,6 @@ ELSEIF TALENT:150 && FLAG:11 == 2
         ENDIF
     ENDIF
     RETURN 1
-
 ;屈服刻印Lv3＋恋慕無し
 ELSEIF MARK:2 == 3 && TALENT:TARGET:150 == 0 && FLAG:11 == 2
     DRAWLINE
@@ -2385,7 +2338,6 @@ ELSEIF MARK:2 == 3 && TALENT:TARGET:150 == 0 && FLAG:11 == 2
         ENDIF
     ENDIF
     RETURN 1
-
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2 && FLAG:11 == 2
     DRAWLINE
@@ -2435,8 +2387,6 @@ ELSEIF MARK:2 == 2 && FLAG:11 == 2
         ENDIF
     ENDIF
     RETURN 1
-
-
 ;屈服刻印Lv1
 ELSEIF MARK:2 == 1 && FLAG:11 == 2
     DRAWLINE
@@ -2489,8 +2439,6 @@ ELSEIF MARK:2 == 1 && FLAG:11 == 2
         ENDIF
     ENDIF
     RETURN 1
-
-
 ;屈服刻印Lv0
 ELSEIF MARK:2 == 0 && FLAG:11 == 2
     DRAWLINE
@@ -2528,7 +2476,6 @@ ELSEIF MARK:2 == 0 && FLAG:11 == 2
     RETURN 1
 ENDIF
 RETURN 0
-
 ;-------------------------------------------------
 ;EVENTEND関係（30をキャラ番号に置換）
 ;調教終了時のセリフ
@@ -2553,17 +2500,14 @@ SIF NO:TARGET != 30
 ;--------------------------------------------------
 ;調教終了時のセリフ
 ;--------------------------------------------------
-
 ;寸止め継続回数を掃除
 IF CFLAG:5110 >= 1
     CFLAG:5110 = 0
 ENDIF
-
 ;尿意ゲージ増加フラグをリセット
 IF     CFLAG:5121 == 1
     CFLAG:5121 = 0
 ENDIF
-
 ;薬物刻印
 ;薬が決まっててヤバいって状態, 夜伽見てたらふとイメージが…
 IF MARK:3 >= 3
@@ -2644,7 +2588,6 @@ ELSEIF TALENT:159
         PRINTFORMW 「내가 지쳐보여?　그런가……뭐 상관없다 ,  또 와♪」
         PRINTFORMW 카구야는 외로운 것 같은 표정을 띄웠다
     ENDIF
-
 ;反発刻印Lv3
 ELSEIF MARK:9 == 3
     DRAWLINE
@@ -2686,7 +2629,6 @@ ELSEIF MARK:9 == 3
         ENDIF
     ENDIF
     RETURN 1
-
 ;恋慕＋体力500未満
 ELSEIF TALENT:150 && BASE:0 < 500
     DRAWLINE
@@ -2776,7 +2718,6 @@ ELSEIF TALENT:150
         PRINTFORMW 카구야는%CALLNAME:MASTER%에게 웃는 얼굴을 향하면서 말했다
     ENDIF
     RETURN 1
-
 ;屈服刻印Lv3
 ELSEIF MARK:2 == 3 && TALENT:TARGET:150 == 0
     DRAWLINE
@@ -2847,7 +2788,6 @@ ELSEIF MARK:2 == 3 && TALENT:TARGET:150 == 0
         ENDIF
     ENDIF
     RETURN 1
-
 ;屈服刻印Lv2
 ELSEIF MARK:2 == 2
     DRAWLINE
@@ -2915,8 +2855,6 @@ ELSEIF MARK:2 == 2
         ENDIF
     ENDIF
     RETURN 1
-
-
 ;屈服刻印Lv1以下
 ELSEIF MARK:2 <= 1
     DRAWLINE
@@ -2978,12 +2916,8 @@ ELSEIF MARK:2 <= 1
         ENDIF
     ENDIF
     RETURN 1
-
-
-
 ENDIF
 RETURN 0
-
 ;--------------------------------------------------
 ;@KOJO_MESSAGE_COM関係（30をキャラ番号に置換）
 ;コマンド実行時に出力されます
@@ -2992,17 +2926,14 @@ RETURN 0
 ;助手が調教した時に口上をスキップする（好みに応じて使う, 行頭の;を消すとスキップするようになる）
 ;SIF ASSI > 0 && ASSIPLAY
 ;    RETURN 0 
-
 ;電極を付けた状態だと変態度が+2
 IF TEQUIP:20 == 4 || TEQUIP:25 == 4 || TEQUIP:30 == 4 || TEQUIP:30 == 6 || TEQUIP:32 == 4 || TEQUIP:35 == 4
     CFLAG:5111 += 2
 ENDIF
-
 ;野外プレイ中に自慰を行うと変態度が+1
 IF TEQUIP:52 >= 1 && SELECTCOM == 7
     CFLAG:5111 += 1
 ENDIF
-
 ;尿垂れ流し状態の場合, 尿意ゲージは常に20000に
 IF CFLAG:5121 == 1
     BASE:4 = 20000
@@ -3010,8 +2941,6 @@ IF CFLAG:5121 == 1
     NOWEX:12 += 1
     EX:12 += 1
 ENDIF
-
-
 ;触手調教中＆豊姫が主人で依姫が助手
 IF NO:MASTER == 53 && NO:ASSI == 54 && TEQUIP:90
     ;初めて
@@ -3035,7 +2964,6 @@ IF NO:MASTER == 53 && NO:ASSI == 54 && TEQUIP:90
     ENDIF
     PRINTFORML 
 ENDIF
-
 ;ボールギャグ・猿轡(?)・触手口屈辱・触手強制飲酒時には口上をスキップする（OFFだと口を塞いでるのに喋りまくる）
 ;;少し改造して口上を表示させるようにしてみます
 ;;ここに来るのはコマンド毎の口上が表示されない場合の口上となります…多分
@@ -3205,19 +3133,16 @@ IF EQUIP:14 || TFLAG:899 > 0
     ENDIF
     RETURN 0
 ENDIF
-
 ;精神崩壊を得ている場合は口上がこちらに置換されます
 IF TALENT:167
     CALL K30_SEISINHOUKAI_KOJO
     RETURN 0
 ENDIF
-
 ;狂気を得ている場合は口上がこちらに置換されます
 IF TALENT:158
     CALL K30_KYOUKI_KOJO
     RETURN 0
 ENDIF
-
 ;--------------------------------------------------
 ;特定助手, 主人時に特殊助手口上を呼び出す(Y1を特定助手, 30を主人のキャラ番号に置換）
 ;--------------------------------------------------
@@ -3735,7 +3660,6 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;クンニ CFLAG9001
 ;岩清水 CFLAG9611
@@ -4162,7 +4086,6 @@ IF SELECTCOM==611||(SELECTCOM==1&&TEQUIP:56)
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;アナル愛撫 CFLAG9002
 ;-------------------------------------------------
@@ -4473,7 +4396,6 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;自慰 CFLAG9007
 ;シャワーオナニー CFLAG8801
@@ -4749,7 +4671,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
                     ENDIF
                 ELSEIF !RAND:2
                     PRINTFORML 「하아읏……아우웃……아읏……」
-                    PRINTFORML %CALLNAME:MASTER%과 카메라 앞에서 광야는 가슴과 음핵을 만지고 있다.
+                    PRINTFORML %CALLNAME:MASTER%과 카메라 앞에서 카구야는 가슴과 음핵을 만지고 있다.
                     PRINTFORMW 자위에 몰두하고 있는 카구야는 젖꼭지가 뾰족해지고 음핵도 커지기 시작하고 있다
                 ELSE
                     PRINTFORML 「으읏……안돼……하아아아앙……꺄으우웃！　아응 아아아……！」
@@ -4805,7 +4727,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
             ELSEIF (TALENT:150 || TALENT:170) && (CFLAG:9007 <= 3 || FLAG:11 == 2)
                 IF !RAND:2
                     PRINTFORML 「이거, 번갈아서……이렇게 빼놓으면.....멈추지않아아아앗♪」
-                    PRINTFORMW  광야는 몸을 젖히면서 바이브를 빼내고 있다.
+                    PRINTFORMW  카구야는 몸을 젖히면서 바이브를 빼내고 있다.
                 ELSE
                     PRINTFORML 「하아아아！　응그으으으아아아앗！　멈추지않아아……멈추지않아아앗♪」
                     PRINTFORMW 카구야는 쾌감에 입을 벌리고 침을 흘리고 있다.
@@ -4863,7 +4785,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
                             PRINTFORMW 요염하게 거울의 자신과 입을 맞추며 자위하며, 발밑에서 애액이 물웅덩이를 만든다
                         ELSE
                             PRINTFORML 「하아……우우우우우……기분……절대로 좋지않다구……♪」
-                            PRINTFORMW 광야는 눈을 부라리며 땀과 침으로 옷을 더럽혔다
+                            PRINTFORMW 카구야는 눈을 부라리며 땀과 침으로 옷을 더럽혔다
                         ENDIF
                     ELSEIF !RAND:5 && ABL:30 >= 4
                         PRINTFORML 「우응, 아읏, 좋앙♪」
@@ -5055,7 +4977,6 @@ ELSEIF SELECTCOM == 7 && TEQUIP:54
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;フェラする(ふたなり/オトコのみ) CFLAG9005
 ;-------------------------------------------------
@@ -5094,7 +5015,7 @@ IF SELECTCOM == 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9005 <= 2 || FLAG:11 == 2)
             PRINTFORML 「아웅, 아아아아앗, 후왓……앗……아읏……앗♪」
-            PRINTFORMW 광야는 뺨을 붉히고 음욕에서 오는 쾌락을 참고 있다
+            PRINTFORMW 카구야는 뺨을 붉히고 음욕에서 오는 쾌락을 참고 있다
             CFLAG:9005 = 3
         ;それ以外
         ELSEIF CFLAG:9005 <= 1 || FLAG:11 == 2
@@ -5104,7 +5025,6 @@ IF SELECTCOM == 5
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;胸愛撫 CFLAG9003
 ;-------------------------------------------------
@@ -5248,7 +5168,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         PRINTFORML 「우아……앗……후아앗……」
                         PRINTFORML 『아하하, 내 손으로 기분 좋아지다니 기쁘네』
                         PRINTFORML 「아..…뭐....얏..…가슴이……」
-                        PRINTFORMW  모코우가 반짝이는 가슴을 부드럽게 문지르자, 휘야는 허벅다리를 벌벌 떨게 하고 스쳐가는 소리를 냈다.
+                        PRINTFORMW  모코우가 반짝이는 가슴을 부드럽게 문지르자, 카구야는 허벅다리를 벌벌 떨게 하고 스쳐가는 소리를 냈다.
                     ELSEIF !RAND:2
                         PRINTFORML 「모코우의 손 따뜻해...…」……」
                         PRINTFORML 『카구야…..나의 손으로 좋다면 난 기뻐...…』
@@ -5358,7 +5278,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORML 「아응, 하웃……하아……흐윽……♪」
                             PRINTFORML 『기분은 좋지? 좀 더 만져 줄게♪』
                             PRINTFORML 「우웅 아읏.... 헤에에♪」
-                            PRINTFORMW 토요히메에게 가슴을 주물러져버린 광야는, 기분 좋다는 표정을 띄워 입가에 침을 흘리며 헐떡이고 있다.
+                            PRINTFORMW 토요히메에게 가슴을 주물러져버린 카구야는, 기분 좋다는 표정을 띄워 입가에 침을 흘리며 헐떡이고 있다.
                         ELSE
                             PRINTFORML 「아으응, 하우, 아읏, 꺄으응♪　앗, 앗, 후우우……♪」
                             PRINTFORMW  카구야는 토요히메에게 가슴을 만져지면서 달콤한 소리를 내고 있다.
@@ -5384,7 +5304,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORML 「아웅, 아으읏, 앙……」
                             PRINTFORML 『훗, 이제 가슴에 푹 빠졌나？』
                             PRINTFORML 「우아핫♪　응, 앗, 하으, 아니야..... 이상해에엣……♪」
-                            PRINTFORMW 에이린이 광야 뒤에 손을 돌려 가슴을 두근거리자, 카구야는 얼굴에 풀린 듯한 달콤한 목소리를 냈다
+                            PRINTFORMW 에이린이 카구야 뒤에 손을 돌려 가슴을 두근거리자, 카구야는 얼굴에 풀린 듯한 달콤한 목소리를 냈다
                         ENDIF
                     ;調教者が妹紅
                     ELSEIF NO:PLAYER == 31
@@ -5469,7 +5389,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         ;欲情が2000以上
                         IF !RAND:3 && PALAM:13 >= 2000
                             PRINTFORML 「아읏……하아아으응……」
-                            PRINTFORML 광야는 거친 숨을 몰아쉬며 젖은 눈으로 에이린을 바라보고 있다
+                            PRINTFORML 카구야는 거친 숨을 몰아쉬며 젖은 눈으로 에이린을 바라보고 있다
                             PRINTFORML 『어머, 그렇게 기분이 좋았어? 더 기분 좋게 해줄게』
                             PRINTFORML 「앗, 야, 야유, 에잇, 린..…! 헉! 끄응……！」
                             PRINTFORMW 에이린가 젖꼭지를 꼬집자, 카구야의 몸에 달콤한 전류가 퍼지고 몸을 튀겼다
@@ -5573,7 +5493,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORML 「아으..…응! 당신이 그럴 생각이라면 나도 저항을...…아으윽！」
                             PRINTFORML 『시간 낭비라고 생각해? 그레도 도망가지 않는 편이 체력을 소모하지는 않을거라고 생각한다고?』
                             PRINTFORML 「앗！　 그, 그럴 수……하아아……」
-                            PRINTFORMW  휘야은 모코우의 손을 가슴에서 멀어지게 하려고 몸을 비틀고 있다.
+                            PRINTFORMW  카구야은 모코우의 손을 가슴에서 멀어지게 하려고 몸을 비틀고 있다.
                         ELSE
                             PRINTFORML 「하아……하앙…아웃, 아읏, 앗, 머, 모코우, 그만……」
                             PRINTFORML 『상당히 느끼고 있는 것처럼 보이는데, 기분 좋아?』
@@ -5651,7 +5571,6 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;キス CFLAG9006
 ;-------------------------------------------------
@@ -5665,7 +5584,7 @@ IF SELECTCOM == 6
         ;それ以外
         ELSE
             PRINTFORML 「응읏...흐읍....으읍！」
-            PRINTFORMW 휘야는 싫어하면서 양손을 사용해서 %CALLNAME:MASTER%의 입을 떼어내려고 했다
+            PRINTFORMW 카구야는 싫어하면서 양손을 사용해서 %CALLNAME:MASTER%의 입을 떼어내려고 했다
         ENDIF
             CFLAG:9006 = 1
             RETURN 0
@@ -5729,7 +5648,7 @@ IF SELECTCOM == 6
                     ELSEIF NO:PLAYER == 31
                         PRINTFORML 「하아!……히그읏..…! 모코우, 모코우우,…… 쉬지 않고……더 키스하고 싶어.....!」
                         PRINTFORML 『조금도 쉬게 하지 않을거니깐...…응』
-                        PRINTFORMW  광야가 마침내 입을 뗄 때, 모코우는 황홀한 표정을 짓고 있다
+                        PRINTFORMW  카구야가 마침내 입을 뗄 때, 모코우는 황홀한 표정을 짓고 있다
                     ELSE
                         PRINTFORML 「하아……%CALLNAME:MASTER%……더어……뎌어어……」
                         PRINTFORMW 요염한 숨을 내쉬면서 카구야는 몽롱한 의식으로 %CALLNAME:MASTER%의 이름을 계속 불렀다.
@@ -5811,7 +5730,6 @@ IF SELECTCOM == 6
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;何もしない CFLAG9009
 ;-------------------------------------------------
@@ -5977,10 +5895,10 @@ IF SELECTCOM == 9
                         PRINTFORMW                ・
                         PRINTFORMW %CALLNAME:MASTER%이0 카구야를 발견했을 때, 거기에는 거친 숨을 몰아쉬며 쓰러져 있는 카구야와 아가씨들의 모습이 있었다.
                         IF CFLAG:5100 == 1
-                            PRINTFORML 絶頂経験 + 5
-                            PRINTFORML %PALAMNAME:13%の珠 + 5300
-                            PRINTFORML %PALAMNAME:14%の珠 + 4300
-                            PRINTFORMW %PALAMNAME:15%の珠 + 2800
+                            PRINTFORML 절정경험 + 5
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 5300
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 4300
+                            PRINTFORMW %PALAMNAME:15%의 구슬 + 2800
                             EXP:2 += 5
                             JUEL:13 += 5300
                             JUEL:14 += 4300
@@ -5990,10 +5908,10 @@ IF SELECTCOM == 9
                         PRINTFORMW 화들짝 놀란 표정을 짓고 그 자리에 앉아 있는 카구야에게 그녀들은 키스를 하고 떠나갔다
                         PRINTFORMW 「하아아……기분 좋았어……」
                         IF CFLAG:5100 == 1
-                            PRINTFORML 絶頂経験 + 1
-                            PRINTFORML %PALAMNAME:13%の珠 + 2400
-                            PRINTFORML %PALAMNAME:14%の珠 + 2200
-                            PRINTFORMW %PALAMNAME:15%の珠 + 1900
+                            PRINTFORML 절정경험 + 1
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 2400
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 2200
+                            PRINTFORMW %PALAMNAME:15%의 구슬 + 1900
                             EXP:2 += 1
                             JUEL:13 += 2400
                             JUEL:14 += 2200
@@ -6024,12 +5942,12 @@ IF SELECTCOM == 9
                             PRINTFORML 「응！　하아악！　하앗！　아응, 죠아！　부탁이야！　쪼금더어어어어어엇！」
                             PRINTFORMW 마침내 쾌락에 비틀거리기 시작한 카구야는 절정에까지 도달했다
                             PRINTFORML 「아앗! 이미, 이쿳, 기분조아아……히야아앗…… 응아아아아아아아아！」
-                            PRINTFORMW 몸을 거칠게 날려서 절정에 이른 광야를 보고 만족했는지 그녀들은 떠났다
-                            PRINTFORMW 휘야의 심신에 이 쾌락이 새겨져 있다는 것은 말할 것도 없었다.
+                            PRINTFORMW 몸을 거칠게 날려서 절정에 이른 카구야를 보고 만족했는지 그녀들은 떠났다
+                            PRINTFORMW 카구야의 심신에 이 쾌락이 새겨져 있다는 것은 말할 것도 없었다.
                             IF CFLAG:5100 == 1
                                 PRINTFORML 카구야는 [억압]을 잃었다
                                 IF ABL:11 < 2
-                                    PRINTFORMW 欲望がLv2になった
+                                    PRINTFORMW 욕망이 Lv2가 됐다
                                 ELSE
                                     PRINTFORMW 
                                 ENDIF
@@ -6043,10 +5961,10 @@ IF SELECTCOM == 9
                             PRINTFORMW 나중에는 체액으로 온몸을 적셔 쓰러져 있는 카구야만이 남아있었다.
                             PRINTFORMW （나……이런거 처음이야……하으……）
                             IF CFLAG:5100 == 1
-                                PRINTFORML 絶頂経験 + 1
-                                PRINTFORML %PALAMNAME:13%の珠 + 1000
-                                PRINTFORML %PALAMNAME:14%の珠 + 900
-                                PRINTFORMW %PALAMNAME:15%の珠 + 700
+                                PRINTFORML 절정경험 + 1
+                                PRINTFORML %PALAMNAME:13%의 구슬 + 1000
+                                PRINTFORML %PALAMNAME:14%의 구슬 + 900
+                                PRINTFORMW %PALAMNAME:15%의 구슬 + 700
                                 EXP:2 += 1
                                 JUEL:13 += 1000
                                 JUEL:14 += 900
@@ -6058,14 +5976,14 @@ IF SELECTCOM == 9
                         PRINTFORML %CALLNAME:MASTER%가 없는 것으로 기분이 정체가 되어 있는걸까, 혹은 밤의 광기에 노출되었는가?
                         PRINTFORMW 그 중 하나는 알 수 없지만 카구야는 양손을 내밀어 그녀에게 포옹을 하면서 쾌락을 누리고 있다.
                         PRINTFORMW 「응! 응! 이봐, 벌써, 나가버려！」
-                        PRINTFORMW 휘야는 몸을 크게 젖히고 절정에 이르렀다
+                        PRINTFORMW 카구야는 몸을 크게 젖히고 절정에 이르렀다
                         PRINTFORMW 그것을 보고 만족한 그녀들은, 괜찮다면 우리 그룹에 들어와도 괜찮은 거야라는 말만 남기고 떠났다
                         PRINTFORMW 나중에는 체액으로 온몸을 적셔 만족스러운 미소를 띄우고 쓰러져 있는 카구야만이 남아 있었다.
                         IF CFLAG:5100 == 1
-                            PRINTFORML 絶頂経験 + 1
-                            PRINTFORML %PALAMNAME:13%の珠 + 1400
-                            PRINTFORML %PALAMNAME:14%の珠 + 1200
-                            PRINTFORMW %PALAMNAME:15%の珠 + 1000
+                            PRINTFORML 절정경험 + 1
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 1400
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 1200
+                            PRINTFORMW %PALAMNAME:15%의 구슬 + 1000
                             EXP:2 += 1
                             JUEL:13 += 1400
                             JUEL:14 += 1200
@@ -6087,17 +6005,17 @@ IF SELECTCOM == 9
                         PRINTFORML 「와...…내가 그 추녀들과 같은 종류...…그런 까닭은 없으니까...」
                         PRINTFORMW 그 후 타이밍 좋게 %CALLNAME:MASTER%이 와서, 원래의 장소로 되돌아갔다.
                         IF CFLAG:5100 == 1
-                            PRINTFORML 絶頂経験 + 1
-                            PRINTFORML %PALAMNAME:13%の珠 + 700
-                            PRINTFORML %PALAMNAME:14%の珠 + 600
-                            PRINTFORMW %PALAMNAME:15%の珠 + 500
+                            PRINTFORML 절정경험 + 1
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 700
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 600
+                            PRINTFORMW %PALAMNAME:15%의 구슬 + 500
                             EXP:2 += 1
                             JUEL:13 += 700
                             JUEL:14 += 600
                             JUEL:15 += 500
                         ENDIF
                     ELSE
-                        PRINTFORML 그러나 찬란한 기세 탓인지 쾌락을 전혀 드러내지 않은 광야를 보고 실망한 딸들은
+                        PRINTFORML 그러나 찬란한 기세 탓인지 쾌락을 전혀 드러내지 않은 카구야를 보고 실망한 딸들은
                         PRINTFORMW 질려서 다른 장소로 떠났다
                         PRINTFORML 「뭐야, 그 아가씨들...…뭘까요」
                         PRINTFORMW  그 후 타이밍 좋게 %CALLNAME:MASTER%가 와서, 원래의 장소로 되돌아갔다.
@@ -6142,10 +6060,10 @@ IF SELECTCOM == 9
                 ENDIF
                 ;淫壷か恋慕か淫魔がついてる
                 IF TALENT:180 == 1 || TALENT:172 == 1 || TALENT:150
-                    PRINTFORMW 그러나, 그런 광야의 모습에 눈도 주지 않고, 남자들은 카구야의 몸을 누르고, 비소와 입에 육봉을 삽입해 갔다...…
+                    PRINTFORMW 그러나, 그런 카구야의 모습에 눈도 주지 않고, 남자들은 카구야의 몸을 누르고, 비소와 입에 육봉을 삽입해 갔다...…
                 ;それ以外
                 ELSE
-                    PRINTFORMW 그러나, 그런 광야의 모습에 눈도 주지 않고, 남자들은 광야의 몸을 누르고, 비소에 육봉을 삽입해 갔다...…
+                    PRINTFORMW 그러나, 그런 카구야의 모습에 눈도 주지 않고, 남자들은 카구야의 몸을 누르고, 비소에 육봉을 삽입해 갔다...…
                 ENDIF
                 ;淫魔
                 IF TALENT:180 == 1
@@ -6155,17 +6073,17 @@ IF SELECTCOM == 9
                     PRINTFORMW 하지만, 카구야은 여전히 피곤한 기색 없이, 오히려 계속해서 쾌락을 즐겼다.
                     PRINTFORMW 그리고 마지막 한 사람이 사정하고 카구야의 입안에 정액을 뽑아내면서 그 자리에 쓰러졌다.
                     PRINTFORMW 「헤? 이미 끝이야? ...…너무 연약해....」
-                    PRINTFORMW 잠시 후 돌아온 %CALLNAME:MASTER%은 카구야의 주위의 모습을 보고 조금 경탄하고, 휘야와 함께 그 자리를 떠났다.
+                    PRINTFORMW 잠시 후 돌아온 %CALLNAME:MASTER%은 카구야의 주위의 모습을 보고 조금 경탄하고, 카구야와 함께 그 자리를 떠났다.
                     ;淫魔まで付けたらもう上げる能力ないだろうし少し大胆に
                     IF CFLAG:5100 == 1
-                        PRINTFORML Ｖ経験 + 40
-                        PRINTFORML 絶頂経験 + 30
-                        PRINTFORML 精液経験 + 30
-                        PRINTFORML フェラ経験 + 40
+                        PRINTFORML Ｖ경험 + 40
+                        PRINTFORML 절정경험 + 30
+                        PRINTFORML 정액경험 + 30
+                        PRINTFORML 펠라경험 + 40
                         ;手に入る珠：快Ｖ, 欲情, 屈服
-                        PRINTFORML %PALAMNAME:1%の珠 + 10000
-                        PRINTFORML %PALAMNAME:13%の珠 + 8000
-                        PRINTFORML %PALAMNAME:14%の珠 + 12000
+                        PRINTFORML %PALAMNAME:1%의 구슬 + 10000
+                        PRINTFORML %PALAMNAME:13%의 구슬 + 8000
+                        PRINTFORML %PALAMNAME:14%의 구슬 + 12000
                         EXP:0 += 40
                         EXP:2 += 30
                         EXP:4 += 30
@@ -6177,24 +6095,24 @@ IF SELECTCOM == 9
                 ;淫壷
                 ELSEIF TALENT:172 == 1
                     PRINTFORMW 「기분좋아아아앗.... 읍! 움....츄우우....으읍! 하으응!」
-                    PRINTFORMW  휘야는 완전히 개발되어 온 비소에서 쾌락을 느끼고, 콧숨을 거칠게 하여 흐물흐물한 목소리를 흘렸다.
+                    PRINTFORMW  카구야는 완전히 개발되어 온 비소에서 쾌락을 느끼고, 콧숨을 거칠게 하여 흐물흐물한 목소리를 흘렸다.
                     PRINTFORMW  몇번이나 몸이 조금씩 떨리고 있어서, 아무래도 몇번이나 가버리고 있는 것 같다.
                     PRINTFORML 「하아……흐읏, 하아……조금더♪　조금더, 아기 씨앗 받고싶어엇♪」
-                    PRINTFORMW 입으로부터 육봉이 뽑혔을 때, 휘야는 완전히 녹아버린 표정이 되어 있어, 입으로부터 침과 정액이 섞인 액체를 흘렸다.
+                    PRINTFORMW 입으로부터 육봉이 뽑혔을 때, 카구야는 완전히 녹아버린 표정이 되어 있어, 입으로부터 침과 정액이 섞인 액체를 흘렸다.
                     PRINTFORMW  그러나 여전히 비소에 삽입이 이뤄지고 있기 때문에 황홀한 표정으로 쉴새없이 헐떡였다
                     PRINTFORML 「응! 아응! 안되!…머리가 하얗게 되버려어어어엇...…응 무리이이이이잇！ 아무것도 생각이 안나아아.... 하아아악!!」
                     PRINTFORML 「응아아아아아아아앗！」
                     PRINTFORMW  음란하게 계속 목소리를 내는 카구야의 입구에 다시 육봉이 박힌 후, 다시 한 번 절정에 다다랐다
                     PRINTFORMW 이 소동은 %CALLNAME:MASTER% 오기 직전까지 행해진 것 같다...…
                     IF CFLAG:5100 == 1
-                        PRINTFORML Ｖ経験 + 20
-                        PRINTFORML 絶頂経験 + 10
-                        PRINTFORML 精液経験 + 10
-                        PRINTFORML フェラ経験 + 15
+                        PRINTFORML Ｖ경험 + 20
+                        PRINTFORML 절정경험 + 10
+                        PRINTFORML 정액경험 + 10
+                        PRINTFORML 펠라경험 + 15
                         ;手に入る珠：快Ｖ, 欲情, 屈服
-                        PRINTFORML %PALAMNAME:1%の珠 + 3500
-                        PRINTFORML %PALAMNAME:13%の珠 + 2500
-                        PRINTFORML %PALAMNAME:14%の珠 + 2500
+                        PRINTFORML %PALAMNAME:1%의 구슬 + 3500
+                        PRINTFORML %PALAMNAME:13%의 구슬 + 2500
+                        PRINTFORML %PALAMNAME:14%의 구슬 + 2500
                         EXP:0 += 20
                         EXP:2 += 10
                         EXP:4 += 10
@@ -6210,18 +6128,18 @@ IF SELECTCOM == 9
                     PRINTFORML （앗, 아! %CALLNAME : MASTER%...…후아！）
                     PRINTFORMW （안돼……빨리.... 구하러 와줘어어어어.....）
                     PRINTFORML 「응우우우우우웃！　……하아……하아……하……」
-                    PRINTFORMW  절정에 달한 광야는 육봉을 뽑히면서, 볼을 붉히면서도 눈은 텅 비었다
+                    PRINTFORMW  절정에 달한 카구야는 육봉을 뽑히면서, 볼을 붉히면서도 눈은 텅 비었다
                     PRINTFORML 「에……？ ...…응♪ 후아！」
                     PRINTFORMW 그런 카구야의 비소에 다시 육봉이 삽입되어, 순식간에 정욕에 물들어 갔다...…
                     IF CFLAG:5100 == 1
-                        PRINTFORML Ｖ経験 + 15
-                        PRINTFORML 絶頂経験 + 10
-                        PRINTFORML 精液経験 + 10
-                        PRINTFORML フェラ経験 + 10
+                        PRINTFORML Ｖ경험 + 15
+                        PRINTFORML 절정경험 + 10
+                        PRINTFORML 정액경험 + 10
+                        PRINTFORML 펠라경험 + 10
                         ;手に入る珠：快Ｖ, 欲情, 屈服
-                        PRINTFORML %PALAMNAME:1%の珠 + 2500
-                        PRINTFORML %PALAMNAME:13%の珠 + 2000
-                        PRINTFORML %PALAMNAME:14%の珠 + 2000
+                        PRINTFORML %PALAMNAME:1%의 구슬 + 2500
+                        PRINTFORML %PALAMNAME:13%의 구슬 + 2000
+                        PRINTFORML %PALAMNAME:14%의 구슬 + 2000
                         EXP:0 += 15
                         EXP:2 += 10
                         EXP:4 += 10
@@ -6239,17 +6157,17 @@ IF SELECTCOM == 9
                         PRINTFORML 「하아……하아……, 후아아, 느끼지 않는다고……」
                         PRINTFORMW 그러나 말과는 달리 조금씩  몸에 열이 가해져 간다.
                         PRINTFORML 「하아……하아……으으, 이 이상 당하면...…얏!！」
-                        PRINTFORMW 휘야는 위독하게 목소리를 내면서 등을 젖히고 몸을 떨게 했다
+                        PRINTFORMW 카구야는 위독하게 목소리를 내면서 등을 젖히고 몸을 떨게 했다
                         PRINTFORMW 「정말로…… 이런거 싫어어...」
-                        PRINTFORMW 눈에 눈물을 글썽이고 있는 광야를 뒤로 끌고가서 남자들은 다시 몸을 범하기 시작했다...…
+                        PRINTFORMW 눈에 눈물을 글썽이고 있는 카구야를 뒤로 끌고가서 남자들은 다시 몸을 범하기 시작했다...…
                         IF CFLAG:5100 == 1
-                            PRINTFORML Ｖ経験 + 6
-                            PRINTFORML 絶頂経験 + 3
-                            PRINTFORML 精液経験 + 2
+                            PRINTFORML Ｖ경험 + 6
+                            PRINTFORML 절정경험 + 3
+                            PRINTFORML 정액경험 + 2
                             ;手に入る珠：快Ｖ, 欲情, 屈服
-                            PRINTFORML %PALAMNAME:1%の珠 + 1300
-                            PRINTFORML %PALAMNAME:13%の珠 + 800
-                            PRINTFORML %PALAMNAME:14%の珠 + 1000
+                            PRINTFORML %PALAMNAME:1%의 구슬 + 1300
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 800
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 1000
                             EXP:0 += 6
                             EXP:2 += 3
                             EXP:4 += 2
@@ -6269,13 +6187,13 @@ IF SELECTCOM == 9
                         PRINTFORML 
                         PRINTFORMW 한 번 도달한 후에도 몇 번이나 저지르고 남자들이 떠나갈 무렵에는 카구야가 그 자리에서 기절했다.
                         IF CFLAG:5100 == 1
-                            PRINTFORML Ｖ経験 + 10
-                            PRINTFORML 絶頂経験 + 6
-                            PRINTFORML 精液経験 + 4
+                            PRINTFORML Ｖ경험 + 10
+                            PRINTFORML 절정경험 + 6
+                            PRINTFORML 정액경험 + 4
                             ;手に入る珠：快Ｖ, 欲情, 屈服
-                            PRINTFORML %PALAMNAME:1%の珠 + 1800
-                            PRINTFORML %PALAMNAME:13%の珠 + 1400
-                            PRINTFORML %PALAMNAME:14%の珠 + 1600
+                            PRINTFORML %PALAMNAME:1%의 구슬 + 1800
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 1400
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 1600
                             EXP:0 += 10
                             EXP:2 += 6
                             EXP:4 += 4
@@ -6287,11 +6205,11 @@ IF SELECTCOM == 9
                 ;それ以外
                 ELSE
                     PRINTFORML 「쿠웃…아파..…아앗！」
-                    PRINTFORML 광야는 분명히 혐오스러운 표정을 짓고 있었다
+                    PRINTFORML 카구야는 분명히 혐오스러운 표정을 짓고 있었다
                     PRINTFORMW 「그만둬, 이런 짓을 해도 아무것도 얻지 않아」
                     ;Ｂ感覚Lv3以上
                     IF ABL:3 >= 3
-                        PRINTFORMW 아파하는 광야를 보고, 남자들 중 한 명은 카구야의 가슴을 비비기 시작했다.
+                        PRINTFORMW 아파하는 카구야를 보고, 남자들 중 한 명은 카구야의 가슴을 비비기 시작했다.
                         PRINTFORMW 「아아! 응♪  모두, 그만, 그만해에에...…얏！」
                         PRINTFORMW 자신도 모르게 환희의 소리를 내뱉은 카구야는, 신체가 욕정해 왔는지 무의식중에 스스로 허리를 흔들기 시작했다.
                         PRINTFORMW 「하-! 아아! 안돼! 안대에에 안대에에엣, 하으으으으으응！」
@@ -6300,14 +6218,14 @@ IF SELECTCOM == 9
                         PRINTFORMW 「하아……이제 싫어...…어째서 이렇게...…아니..…느꼈어..…흑……흑.....으하아앙.......」
                         PRINTFORMW 카구야은 %CALLNAME:MASTER%가 올 때까지 초점이 맞지 않는 눈으로 눈물을 흘리면서 그 자리에 쓰러져 있었다
                         IF CFLAG:5100 == 1
-                            PRINTFORML Ｖ経験 + 2
-                            PRINTFORML 絶頂経験 + 1
-                            PRINTFORML 精液経験 + 2
+                            PRINTFORML Ｖ경험 + 2
+                            PRINTFORML 절정경험 + 1
+                            PRINTFORML 정액경험 + 2
                             ;手に入る珠：快Ｖ, 快Ｂ, 欲情, 屈服
-                            PRINTFORML %PALAMNAME:1%の珠 + 1000
-                            PRINTFORML %PALAMNAME:3%の珠 + 1000
-                            PRINTFORML %PALAMNAME:13%の珠 + 600
-                            PRINTFORML %PALAMNAME:14%の珠 + 700
+                            PRINTFORML %PALAMNAME:1%의 구슬 + 1000
+                            PRINTFORML %PALAMNAME:3%의 구슬 + 1000
+                            PRINTFORML %PALAMNAME:13%의 구슬 + 600
+                            PRINTFORML %PALAMNAME:14%의 구슬 + 700
                             EXP:0 += 2
                             EXP:2 += 1
                             EXP:4 += 2
@@ -6326,11 +6244,11 @@ IF SELECTCOM == 9
                         PRINTFORMW 「하아……최악……」
                         PRINTFORMW  그 남자들은 그 후 카구야를 을 두고 떠났다
                         IF CFLAG:5100 == 1
-                            PRINTFORML Ｖ経験 + 2
-                            PRINTFORML 絶頂経験 + 1
-                            PRINTFORML 精液経験 + 1
+                            PRINTFORML Ｖ경험 + 2
+                            PRINTFORML 절정경험 + 1
+                            PRINTFORML 정액경험 + 1
                             ;手に入る珠：快Ｖ
-                            PRINTFORML %PALAMNAME:1%の珠 + 800
+                            PRINTFORML %PALAMNAME:1%의 구슬 + 800
                             EXP:0 += 2
                             EXP:2 += 1
                             EXP:4 += 1
@@ -6386,7 +6304,7 @@ IF SELECTCOM == 9
                 ELSEIF LOCAL:0 == 1
                     PRINTFORML 「......아...... 이것으로 끝이야？」
                     PRINTFORML 「이래서야 아직 부족 해……」
-                    PRINTFORMW 카구야는 쾌락으로 몸을 비틀며 정욕에 젖은 눈으로 %CALLNAME:MATER%를 바라보고 있다.
+                    PRINTFORMW 카구야는 쾌락으로 몸을 비틀며 정욕에 젖은 눈으로 %CALLNAME:MASTER%를 바라보고 있다.
                 ENDIF
                 CFLAG:9009 = 5
             ;恋慕
@@ -6421,7 +6339,7 @@ IF SELECTCOM == 9
                         PRINTFORMW 비벼주고 있는 허벅지 밑에서는 애액이 스며들고 있다.
                         PRINTFORMW （하아우우..…이제, 머리가 멍해서 아무 것도 생각할 수 없어...…）
                         PRINTFORML 「안 돼...…오지 마..…아……」
-                        PRINTFORMW  휘야는 윤기 흐르는 목소리로 아니라고 하면서도, 젖은 뜨거운 눈동자로 %CALLNAME:MASTER%을 바라보고 있다.
+                        PRINTFORMW  카구야는 윤기 흐르는 목소리로 아니라고 하면서도, 젖은 뜨거운 눈동자로 %CALLNAME:MASTER%을 바라보고 있다.
                     ;それ以外
                     ELSE
                         PRINTFORML 「하아……하아……」
@@ -6447,7 +6365,7 @@ IF SELECTCOM == 9
                     ;それ以外
                     ELSE
                         PRINTFORML 「하응……핫..…」
-                        PRINTFORML 휘야은 숨을 헐떡이며 가느다란 소리를 내뱉고 있다. 
+                        PRINTFORML 카구야은 숨을 헐떡이며 가느다란 소리를 내뱉고 있다. 
                         PRINTFORMW 아무래도 소리를 내는것이 힘들정도로 가슴이 두근거리고있는것같다.
                         PRINTFORMW （이상해에... 기분만 이상한게 아니야아앗）
                         PRINTFORMW （벌써 전신이 저려서...…왜 이러지...?…나의 몸이…）
@@ -6499,10 +6417,10 @@ IF SELECTCOM == 9
                     ;それ以外
                     ELSE
                         PRINTFORML 「하이으……네……음……」
-                        PRINTFORMW  휘야는 숨을 헐떡이며 허벅지를 맞부딪치고 있다.
+                        PRINTFORMW  카구야는 숨을 헐떡이며 허벅지를 맞부딪치고 있다.
                         PRINTFORMW （아으으…싫은데, 몸이 맘대로 욕정하고……）
                         PRINTFORML 「...…아니야..…응..…이런 일로 느끼고 욕정하거나 따윈..…아휴..…」
-                        PRINTFORMW 비소에 자극이 올 때마다 신음소리를 누설해 몸을 휘청거리게 하는 휘야
+                        PRINTFORMW 비소에 자극이 올 때마다 신음소리를 누설해 몸을 휘청거리게 하는 카구야
                         PRINTFORMW 그 눈동자는 분명히 정욕의 빛을 띠기 시작하고 있었다...…
                     ENDIF
                 ;欲情がLv4以上
@@ -6534,7 +6452,7 @@ IF SELECTCOM == 9
                     ;それ以外
                     ELSE
                         PRINTFORML 「하아……하아……」
-                        PRINTFORMW 광야는 숨쉬는 것 같은 꾸준한 조교 때문에 몸이 쾌락을 얻기 시작하는 것 같다
+                        PRINTFORMW 카구야는 숨쉬는 것 같은 꾸준한 조교 때문에 몸이 쾌락을 얻기 시작하는 것 같다
                         PRINTFORMW 호흡이 거칠고 거칠어지면서 가슴이 쿵쿵 뛴다
                         PRINTFORMW （뭐야 이거..…가슴이 뜨거워서...…뷸이 붙을 것 같은）
                         PRINTFORMW （이런 녀석 상대로 욕정...…? 그런...…싫은걸……）
@@ -6555,7 +6473,6 @@ IF SELECTCOM == 9
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;ローター CFLAG9010
 ;-------------------------------------------------
@@ -6564,17 +6481,17 @@ IF SELECTCOM == 10
     IF CFLAG:TARGET:9010 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「できれば%CALLNAME:MASTER%の手の方がよかったわね」
-            PRINTFORMW 「なぜって？　そっちの方が暖かいからよ」
+            PRINTFORMW 「가능하다면 %CALLNAME:MASTER%의 손이 더 좋아요」
+            PRINTFORMW 「왜냐고요？　그쪽이 더 따뜻하기 때문이죠」
         ;主人が豊姫＆屈服刻印Lv2以下
         ELSEIF NO:MASTER == 53 && ASSIPLAY == 0 && MARK:2 <= 2
-            PRINTFORMW 『私の手よりは……道具の方がいいのかしらね？』
-            PRINTFORMW 豊姫はそう言ってローターを輝夜の秘豆に押し付けた
-            PRINTFORMW 「な, 何を言って……んっ……るのよっ……」
-            PRINTFORMW 輝夜は痒さを覚えて股を震わせた
+            PRINTFORMW 『내 손보다……도구쪽이 더 좋은걸까?？』
+            PRINTFORMW 토요히메는 그렇게 말하고 로터를 카구야의 비밀스러운 콩에 갔다대었다
+            PRINTFORMW 「무, 무슨 말을……응……하는거야……」
+            PRINTFORMW 카구야는 가려움으로 가랑이를 떨었다
         ;それ以外
         ELSE
-            PRINTFORMW 「そんな道具に頼るなんて, まだまだ甘いわね」
+            PRINTFORMW 「그런 도구에 의존하다니, 아직 멀었네요」
         ENDIF
             CFLAG:TARGET:9010 = 1
             RETURN 0
@@ -6592,12 +6509,12 @@ IF SELECTCOM == 10
             ELSEIF TALENT:170
                 LOCAL:0 = 1
             ENDIF
-            ;主人が豊姫
+            ;主人が토요히메
             IF NO:MASTER == 53 && ASSIPLAY == 0
                 PRINTFORMW 「ひゃっ, ぁ앗, んんっ♪　もっと, おしつけてくださぁぃっ♪」
                 PRINTFORMW 『こうかしら？　そんなに悦んで貰えて嬉しいわ……』
                 PRINTFORML 「ふぁいっ♪　ひゃっ, ああああぁ앗♪」
-                PRINTFORMW 豊姫が秘豆に強くローターを押しつけると, 輝夜は腰を跳ねさせて股を震わせた
+                PRINTFORMW 토요히메が秘豆に強くローターを押しつけると, 輝夜は腰を跳ねさせて股を震わせた
             ELSEIF LOCAL:0 == 0
                 PRINTFORMW 「これ, すごいですね……ふぁ……」
             ELSEIF LOCAL:0 == 1
@@ -6613,18 +6530,18 @@ IF SELECTCOM == 10
                 PRINTFORML 「ふっ, ふああっ, ああっ♪」
                 PRINTFORMW 輝夜は鼻がかった息を出し, 快楽で肌を上気させている
             ELSEIF !RAND:2
-                PRINTFORML 「하아……앗……あぁんっ……」
-                PRINTFORMW 輝夜の陰核に震えるローターを当てると, 輝夜は目をきつく瞑って目尻に涙を浮かべた
+                PRINTFORML 「하아……앗……아항……」
+                PRINTFORMW 카구야의 클리토리스에 떨리는 로터를 맞대면, 카구야는 눈을 바짝 감아 눈꼬리에 눈물을 글썽였다
                 IF TALENT:32
-                    PRINTFORML 「んんぅっ……앗……くぅぅっ……」
-                    PRINTFORMW %CALLNAME:MASTER%がローターの当てる場所を変えても, 輝夜は表情をしかめるばかりで状況は変わらなかった
+                    PRINTFORML 「흐윽……앗……크읏……」
+                    PRINTFORMW %CALLNAME:MASTER%이 로터를 대는 위치를 바꿔도 카구야는 표정을 찡그릴 뿐 상황은 변하지 않았다
                 ELSE
-                    PRINTFORML 「あ……하아……ぁんっ……」
-                    PRINTFORMW 輝夜はうっとりとした表情を浮かべ, 하아하아と荒い息をついて快楽に浸っている
+                    PRINTFORML 「아……하아……하아……」
+                    PRINTFORMW 카구야는 황홀한 표정을 지으며 하아하아 거친 숨을 쉬고 쾌락에 젖어있다
                 ENDIF
             ;それ以外
             ELSE
-                PRINTFORMW 「んぅ！　……いや, こんなのって, 別に感じてなんか……ぁあん！」
+                PRINTFORMW 「하읏! ...... 아니, 이런 것은 ,별로 기분이 어쩐지 ...... 아흑！」
             ENDIF
             CFLAG:9010 = 3
         ;それ以外
@@ -6634,21 +6551,20 @@ IF SELECTCOM == 10
                 PRINTFORMW 「んっ……くうっ……」
                 PRINTFORMW 『さすがの姫様もこれには口閉じちゃうの？』
                 PRINTFORML 「くっ……道具に頼るだなんて, 余程下手なのねっ……んんっ……」
-                PRINTFORMW 豊姫がローターを押しつけている間, 輝夜は口を閉じて堪えていた
+                PRINTFORMW 토요히메がローターを押しつけている間, 輝夜は口を閉じて堪えていた
             ELSEIF ABL:0 >= 3
-                PRINTFORML 「んんっ……くぅ……」
-                PRINTFORMW 輝夜はローターが与える刺激に太股をよじっている
-                PRINTFORML 「あ, ふぅ……感じてないわよ……んっ……」
-                PRINTFORMW 額に汗を掻いており, 輝夜の身体に快楽で熱が溜まっている事が想像できる
+                PRINTFORML 「하으으……크읏……」
+                PRINTFORMW 카구야는 로터가 주는 자극에 허벅지를 비틀고있다
+                PRINTFORML 「아, 후우 ...... 느끼지 않아요 ...... 응 ......」
+                PRINTFORMW 이마에 땀을 맺혀있어 카구야의 신체에 쾌락의 열이 쌓여있는 것을 상상할 수 있다
             ELSE
-                PRINTFORMW 「こんな事くらい道具に頼らずに自分の力でやりなさいよ」
+                PRINTFORMW 「이런 것 정도는 도구에 의지하지 않고 자신의 힘으로 하라구」
             ENDIF
             CFLAG:9010 = 2
         ENDIF
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;バイブ CFLAG9012　CFLAG8811
 ;-------------------------------------------------
@@ -6690,7 +6606,7 @@ IF SELECTCOM == 12 && TEQUIP:20
                 IF PALAM:10 >= 5000
                     PRINTFORML 엄청난 애액이 배어, 손가락으로 가볍게 만지면 찔꺽찔꺽 물소리를 내는 비소에 바이브를 넣었다.
                     PRINTFORML 「아악...…한 번 더….. 꺄응..…♪」
-                    PRINTFORMW 바이브는 순조롭게 삽입되었고, 휘야는 발뒤꿈치를 벌이며 달콤한 소리를 냈다
+                    PRINTFORMW 바이브는 순조롭게 삽입되었고, 카구야는 발뒤꿈치를 벌이며 달콤한 소리를 냈다
                 ELSE
                     PRINTFORML 비록 질내는 충분히 젖지 않았지만 지금까지 개발해온 질은 바이브를 그리 아프게 하지 않고 받아들였다
                     PRINTFORML 「하아아……으……하우우....」
@@ -6698,7 +6614,7 @@ IF SELECTCOM == 12 && TEQUIP:20
                 ENDIF
             ELSEIF !RAND:2
                 PRINTFORML 「음..…설마 오랜 세월 지켜온 여기가 가장 민감했다니……」
-                PRINTFORMW  카구야의 질에 바이브를 넣자, 삽입할수록 휘황찬란한 표정을 띄워가면서 %CALLNAME:MATER%를 응시했다.
+                PRINTFORMW  카구야의 질에 바이브를 넣자, 삽입할수록 휘황찬란한 표정을 띄워가면서 %CALLNAME:MASTER%를 응시했다.
             ELSE
                 PRINTFORML 「아아응……！　하앙..！　이 물건, 엄청나♪」
                 PRINTFORMW 질 안에 삽입된 바이브는 가차 없이 카구야를 느끼게 하면서 바로 몸을 튕기게 했다 
@@ -6716,7 +6632,7 @@ IF SELECTCOM == 12 && TEQUIP:20
                     PRINTFORML 애액으로 젖은 질은 끈적끈적거리는 물소리를 내며 바이브를 삼키고 간다
                     PRINTFORML 「후...앗……하우으……♪　아앙……아읏……」
                     PRINTFORML 질에서 달콤한 전류가 몸속에 흐르고 %CALLNAME:MASTER%가 어깨에 걸친 팔을 내리면
-                    PRINTFORMW 몸에 힘이 완전히 풀려버린 광야는 그 자리에 털썩 주저앉았다
+                    PRINTFORMW 몸에 힘이 완전히 풀려버린 카구야는 그 자리에 털썩 주저앉았다
                 ELSE
                     PRINTFORML 아직 충분히 젖지 않은 질은 바이브를 받아들이는 데 약간 저항이 있었다
                     PRINTFORML 「응...…아, 좋아…응..……♪」
@@ -6760,7 +6676,7 @@ IF SELECTCOM == 12 && TEQUIP:20
         ;V感覚Lv3以上
         ELSEIF ABL:1 >= 3 && (CFLAG:9012 <= 2 || FLAG:11 == 2)
             IF !RAND:2
-                PRINTFORMW %CALLNAME:MASTER%는 바이브를 꽂기 전에 광야비열에 손가락을 펴서 구멍을 뚫기 시작했다.
+                PRINTFORMW %CALLNAME:MASTER%는 바이브를 꽂기 전에 카구야의 비열에 손가락을 펴서 구멍을 뚫기 시작했다.
                 PRINTFORML 「하아……하아……하앗……」
                 PRINTFORMW 개발된 질에서 나오는 강한 쾌락으로 요염한 목소리를 내며 허리를 흔드는 카구야
                 IF TALENT:32
@@ -6822,7 +6738,6 @@ ELSEIF SELECTCOM == 12 && TEQUIP:20 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;Ｅマッサージャ CFLAG9011
 ;-------------------------------------------------
@@ -6839,7 +6754,7 @@ IF SELECTCOM == 11
             PRINTFORMW 「…알고있는데, 그래서 어쩔 생각이야?」
             PRINTFORMW 『이렇게에~』
             PRINTFORML 「 잠깐...…응..…얏, 하아앗……」
-            PRINTFORMW  토요히메가 찬란한 밤 가랑이 사이로 전기 안마를 맞히자, 휘야는 지체를 떨게 했다
+            PRINTFORMW  토요히메가 찬란한 밤 가랑이 사이로 전기 안마를 맞히자, 카구야는 지체를 떨게 했다
         ;それ以外
         ELSE
             PRINTFORMW 「그거 마사지기라고? 달의 도시에 그런거 사용했었어」
@@ -7025,7 +6940,6 @@ IF SELECTCOM == 11
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;アナルバイブ CFLAG9013　CFLAG8812
 ;-------------------------------------------------
@@ -7190,7 +7104,6 @@ ELSEIF SELECTCOM == 13 && TEQUIP:25 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;クリキャップ CFLAG9014　CFLAG8813
 ;-------------------------------------------------
@@ -7285,7 +7198,6 @@ ELSEIF SELECTCOM == 14 && TEQUIP:30 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;ニプルキャップ CFLAG9015　CFLAG8814
 ;-------------------------------------------------
@@ -7392,7 +7304,6 @@ ELSEIF SELECTCOM == 15 && TEQUIP:35 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;搾乳機(母乳体質のみ) CFLAG9191　CFLAG8861
 ;-------------------------------------------------
@@ -7437,7 +7348,6 @@ ELSEIF SELECTCOM == 16 && TEQUIP:35 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;オナホール(ふたなり/オトコのみ) CFLAG9016　CFLAG8815
 ;-------------------------------------------------
@@ -7482,7 +7392,6 @@ ELSEIF SELECTCOM == 16 && TEQUIP:30 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;正常位 CFLAG9020
 ;-------------------------------------------------
@@ -7751,7 +7660,6 @@ IF SELECTCOM == 20
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;後背位 CFLAG9021
 ;-------------------------------------------------
@@ -7785,7 +7693,6 @@ IF SELECTCOM == 21
                 PRINTFORMW 「엎드리라니요？」
                 PRINTFORMW 「알겠어요、무？　뒤를 보지 말라니？　알겠지만 그걸로 무슨……시, 싫어！　안 돼！　그것만큼은 안 되에！」
             ENDIF
-
         ;非処女
         ELSE
             ;恋慕
@@ -7875,7 +7782,6 @@ IF SELECTCOM == 21
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;対面立位 CFLAG9027
 ;-------------------------------------------------
@@ -8087,7 +7993,6 @@ IF SELECTCOM == 27
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;背面立位 CFLAG9028
 ;わざわざ野外に出てこれ選ぶ人とか居なさそうな気もするけどねえ…
@@ -8313,7 +8218,6 @@ IF SELECTCOM == 28
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;正常位アナル CFLAG9030
 ;-------------------------------------------------
@@ -8431,7 +8335,6 @@ IF SELECTCOM == 30
         RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;後背位アナル CFLAG9031
 ;-------------------------------------------------
@@ -8546,8 +8449,6 @@ IF SELECTCOM == 31
         RETURN 0
     ENDIF
 ENDIF
-
-
 ;-------------------------------------------------
 ;逆レイプ CFLAG9025
 ;(主人が非オトコ、奴隷がオトコ/ふたなりのみ)
@@ -8677,7 +8578,6 @@ IF SELECTCOM == 40
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;フェラチオ CFLAG9041
 ;-------------------------------------------------
@@ -8880,7 +8780,6 @@ IF SELECTCOM == 41
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;パイズリ CFLAG9042
 ;-------------------------------------------------
@@ -8995,7 +8894,6 @@ IF SELECTCOM == 42
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;素股 CFLAG9043
 ;-------------------------------------------------
@@ -9087,7 +8985,6 @@ IF SELECTCOM == 43
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;騎乗位 CFLAG9024
 ;-------------------------------------------------
@@ -9256,7 +9153,6 @@ IF SELECTCOM == 24
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;スパンキング CFLAG9220
 ;-------------------------------------------------
@@ -9369,7 +9265,6 @@ IF SELECTCOM == 220
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;鞭 CFLAG9221
 ;-------------------------------------------------
@@ -9487,7 +9382,6 @@ IF SELECTCOM == 221
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;針 CFLAG9222
 ;-------------------------------------------------
@@ -9605,7 +9499,6 @@ IF SELECTCOM == 222
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;アイマスク CFLAG9225　CFLAG:8871
 ;-------------------------------------------------
@@ -9680,7 +9573,6 @@ ELSEIF SELECTCOM == 225 && TEQUIP:41 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;縄 CFLAG9224　CFLAG:8872
 ;-------------------------------------------------
@@ -9737,7 +9629,6 @@ ELSEIF SELECTCOM == 224 && TEQUIP:40 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;ボールギャグ CFLAG9226　CFLAG:8873
 ;-------------------------------------------------
@@ -9794,7 +9685,6 @@ ELSEIF SELECTCOM == 226 && TEQUIP:42 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;浣腸 CFLAG9174
 ;-------------------------------------------------
@@ -9835,7 +9725,6 @@ IF SELECTCOM == 174 && TEQUIP:25
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;排泄 CFLAG8851
 ;-------------------------------------------------
@@ -9875,7 +9764,6 @@ IF TEQUIP:25 == 0 && SELECTCOM == 174
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;ローション使用 CFLAG9060
 ;-------------------------------------------------
@@ -9923,7 +9811,6 @@ IF SELECTCOM == 60
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;媚薬使用 CFLAG9061
 ;-------------------------------------------------
@@ -10058,7 +9945,6 @@ IF SELECTCOM == 61
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;お酒を飲ませる CFLAG9348
 ;-------------------------------------------------
@@ -10127,7 +10013,6 @@ IF SELECTCOM == 348
     ENDIF
     CFLAG:5117 = 0
 ENDIF
-
 ;-------------------------------------------------
 ;ビデオ撮影（ビデオカメラ使用） CFLAG9100
 ;-------------------------------------------------
@@ -10176,7 +10061,6 @@ IF SELECTCOM == 100 && TEQUIP:50
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;야외 플레이 CFLAG9104　CFLAG:8821
 ;-------------------------------------------------
@@ -10280,7 +10164,6 @@ ELSEIF SELECTCOM == 104 && TEQUIP:52 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;剃毛 CFLAG9112
 ;何度も行うコマンドじゃないと思うので、分岐もあっさりと
@@ -10320,7 +10203,6 @@ IF SELECTCOM == 112
     ENDIF
     RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;焦らしプレイ CFLAG9120
 ;焦らし開始時のみ
@@ -10405,7 +10287,6 @@ IF SELECTCOM == 120 && TEQUIP:68
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;助手を犯す CFLAG9026
 ;-------------------------------------------------
@@ -10437,7 +10318,6 @@ IF SELECTCOM == 26
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;イラマチオ CFLAG9260
 ;-------------------------------------------------
@@ -10473,7 +10353,6 @@ IF SELECTCOM == 230
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;フィストファック CFLAG9231
 ;-------------------------------------------------
@@ -10551,7 +10430,6 @@ IF SELECTCOM == 231
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;アナルフィスト CFLAG9232
 ;-------------------------------------------------
@@ -10632,7 +10510,6 @@ IF SELECTCOM == 232
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;両穴フィスト CFLAG9233
 ;余程の事が無いと慣れないコマンドだと思うので分岐は控えめに
@@ -10694,8 +10571,6 @@ IF SELECTCOM == 233
             RETURN 0
     ENDIF
 ENDIF
-
-
 ;-------------------------------------------------
 ;触手召喚 CFLAG9500　CFLAG:8901
 ;-------------------------------------------------
@@ -10762,7 +10637,6 @@ ELSEIF SELECTCOM == 500 && TEQUIP:90 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手クリ責め CFLAG9503　CFLAG:8902
 ;触手愛撫もここに
@@ -10985,7 +10859,6 @@ ELSEIF SELECTCOM == 503 && TEQUIP:30 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手乳首責め CFLAG:9504 CFLAG:8903
 ;-------------------------------------------------
@@ -11242,7 +11115,6 @@ ELSEIF SELECTCOM == 504 && TEQUIP:35 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手アナル挿入 CFLAG:9505 CFLAG:8904
 ;-------------------------------------------------
@@ -11505,7 +11377,6 @@ ELSEIF SELECTCOM == 502 && TEQUIP:25 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手挿入 CFLAG:9506 CFLAG:8905
 ;-------------------------------------------------
@@ -11783,7 +11654,6 @@ ELSEIF SELECTCOM == 501 && TEQUIP:20 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手ペニス責め CFLAG:9507 CFLAG:8906
 ;-------------------------------------------------
@@ -12020,7 +11890,6 @@ ELSEIF SELECTCOM == 505 && TEQUIP:30 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手催眠 CFLAG:9550 CFLAG:8907
 ;-------------------------------------------------
@@ -12091,7 +11960,6 @@ ELSEIF SELECTCOM == 550 && TEQUIP:92 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;-------------------------------------------------
 ;触手Ｇスポ責め CFLAG:9520
 ;-------------------------------------------------
@@ -12257,11 +12125,9 @@ IF SELECTCOM == 520
         ENDIF
     ENDIF
 ENDIF
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・通常版
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
-
 ;-------------------------------------------------
 ;指挿入れ CFLAG9004
 ;Gスポット刺激 CFLAG9600
@@ -12286,7 +12152,7 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                 IF NO:PLAYER == 29
                     PRINTFORML 「에이린...…후아..…만지는 방법이 상냥하네...…응..…」
                     PRINTFORML 『행복한 표정을 짓고 있네요...…사랑해요, 카구야』
-                    PRINTFORMW 에이린이 약점을 쓸 때마다 광야는 달콤한 소리를 흘렸다.
+                    PRINTFORMW 에이린이 약점을 쓸 때마다 카구야는 달콤한 소리를 흘렸다.
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
                     PRINTFORML 「んぁう！　妹紅……この中が, 熱くなってきたわ……」
@@ -12510,7 +12376,6 @@ IF SELECTCOM == 4 || SELECTCOM == 600
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;シャワー CFLAG9351
 ;-------------------------------------------------
@@ -12542,7 +12407,6 @@ IF SELECTCOM == 351 && TEQUIP:54
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;対面座位 CFLAG9022
 ;-------------------------------------------------
@@ -12551,10 +12415,10 @@ IF SELECTCOM == 22
     IF CFLAG:9022 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「%CALLNAME:MASTER%の顔を見ながらできるなんて, とっても幸せなの」
+            PRINTFORMW 「%CALLNAME:MASTER%의 얼굴을 보면서 할 수 있다니, 엄청 행복해요」
         ;それ以外
         ELSE
-            PRINTFORMW 「こんな体形なんて厭らしいわ……」
+            PRINTFORMW 「이런 자세로 하는건 싫어……」
         ENDIF
             CFLAG:TARGET:9022 = 1
             RETURN 0
@@ -12582,15 +12446,15 @@ IF SELECTCOM == 22
                     LOCAL:0 = 0
                 ENDIF
                 IF LOCAL:0 == 0
-                    PRINTFORML 「あっ……んっ……はあっ……すっごく暖かい……」
-                    PRINTFORMW 輝夜はうっとりとした目で%CALLNAME:MASTER%を見つめた
+                    PRINTFORML 「아읏……응……하아……괸장히 따뜻해……」
+                    PRINTFORMW 카구야는 황홀한 눈으로 %CALLNAME:MASTER%를 응바라보았다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORML 「あっ, あうっ, ひゃぅん！　하아……ぁぁ……あぅん！」
-                    PRINTFORMW 「%CALLNAME:MASTER%の顔を見ながら, ひゃぅ！　できるなんて幸せなの……」
-                    PRINTFORMW 輝夜は快楽によって濁った目で幸せそうに微笑みながら%CALLNAME:MASTER%を見つけた
+                    PRINTFORML 「아, 아웃, 히! 하아 ...... 아아 ...... 흐읏！」
+                    PRINTFORMW 「%CALLNAME:MASTER%의 얼굴을 보면서, 흐읏！　할 수 있다니 행복해요……」
+                    PRINTFORMW 카구야는 쾌락에 의해 흐린 눈으로 행복하게 미소 지으며 %CALLNAME:MASTER%를 바라보았다
                 ELSEIF LOCAL:0 == 2
-                    PRINTFORML 「ああっ……하아……んぅ……%CALLNAME:MASTER%……%CALLNAME:MASTER%……」
-                    PRINTFORMW 輝夜は開発された膣によって得られる強い快楽によって蕩けた声を出しながら%CALLNAME:MASTER%に強く抱きついた
+                    PRINTFORML 「아아……하아……흐읏……%CALLNAME:MASTER%……%CALLNAME:MASTER%……」
+                    PRINTFORMW 輝카구야는 개발 된 질에 의해 얻어지는 강한 쾌락에 의해 녹은 소리를 내면서 %CALLNAME:MASTER%에 강하게 달라 붙었다
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 LOCAL:0 = RAND:3
@@ -12599,51 +12463,50 @@ IF SELECTCOM == 22
                     LOCAL:0 = 0
                 ENDIF
                 IF LOCAL:0 == 0
-                    PRINTFORML 「んぁ！　身体が熱いよぉ！　もっと突いてぇ！」
-                    PRINTFORMW 輝夜は熱い吐息を出しながら%CALLNAME:MASTER%に強く抱きついている
+                    PRINTFORML 「하아! 몸이 뜨거 으읏! 더 찔러줘！」
+                    PRINTFORMW 카구야는 뜨거운 한숨을 내쉬면서 % CALLNAME : MASTER %에 강하게 달라 붙었다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORML 「んふっ, んぁぅん！　胸ももっと弄ってぇ！」
-                    PRINTFORMW 輝夜は熱い吐息を出しながら%CALLNAME:MASTER%に強く抱きついている
+                    PRINTFORML 「응 흐읏, 하아앗! 가슴도 더 만져줘！」
+                    PRINTFORMW 카구야는 뜨거운 한숨을 내쉬면서 % CALLNAME : MASTER %에 강하게 달라 붙었다
                 ELSEIF LOCAL:0 == 2
-                    PRINTFORML 「あっ, あ앗, あぁぁ！」
-                    PRINTFORMW 輝夜は快楽によって蕩けた身体で必死に%CALLNAME:MASTER%に抱きついてより強く感じようとした
+                    PRINTFORML 「아아, 앗, 아아아！」
+                    PRINTFORMW 카구야는 쾌락에 의해 녹은 몸으로 필사적으로 % CALLNAME : MASTER %에 달라 붙어 강하게 느끼려고 한다
                 ENDIF
             ENDIF
             CFLAG:9022 = 6
         ;媚薬二重状態
         ELSEIF CFLAG:5101 & 16 && (CFLAG:9022 < 2 || FLAG:11 == 2) && LOCAL:0 == 1
-            PRINTFORML 「あっ, あぅん！　あぁん……」
-            PRINTFORMW 輝夜は腰を突かれる度に甘い声を漏らして背を反らした
+            PRINTFORML 「아, 하앗！　아앙……」
+            PRINTFORMW 카구야는 허리를 찔릴때마다 달콤한 목소리를 흘리고 고개를 젖히고있다
         ;屈服刻印Lv3＋V感覚Lv3以上
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9022 <= 4 || FLAG:11 == 2)
-            PRINTFORML 「んぁ！　だめぇ！　胸と中が同時に熱くなっちゃうぅ……」
-            PRINTFORM 輝夜は
+            PRINTFORML 「아！　안돼！　가슴과 속이 동시에 뜨거워지는 우우……」
+            PRINTFORM 카구야는 
             ;抑圧持ち
             IF TALENT:32 == 1
                 
             ELSE
-                PRINTFORM 強く抱きつきながら
+                PRINTFORM 강하게 끌어안으며 
             ENDIF
-            PRINTFORMW 身体を反らした
+            PRINTFORMW 몸을 젖혔다
             CFLAG:9022 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9022 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「하아……早く終わってよ……」
+            PRINTFORMW 「하아……빨리 끝내줘요……」
             CFLAG:9022 = 4
         ;Ｖ感覚Lv3以上
         ELSEIF ABL:1 >= 3 && CFLAG:9022 <= 2 || FLAG:11 == 2
-            PRINTFORML 「あぁ……って違う！　私こんな奴と抱きつきたくなんかない！」
-            PRINTFORMW 輝夜は慌てて手を首から離して振りほどいた
+            PRINTFORML 「아아……아니야！　내가 이런 놈을 껴안고 싶을리없어！」
+            PRINTFORMW 카구야는 당황해서 목에 두른 손을 놓으려했다
             CFLAG:9022 = 3
         ;それ以外
         ELSEIF CFLAG:9022 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「早く降ろして……」
+            PRINTFORMW 「빨리 끝내줘요……」
             CFLAG:9022 = 2
         ENDIF
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;背面座位 CFLAG9023
 ;乱れ牡丹 CFLAG9612
@@ -12654,10 +12517,10 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
     IF CFLAG:TARGET:9023 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「うあっ, ゾクゾクっときちゃう！」
+            PRINTFORMW 「아흑, 오싹오싹한게 와버려！」
         ;それ以外
         ELSE
-            PRINTFORMW 「こんな体形なんて厭らしいわ……」
+            PRINTFORMW 「이런 자세로하는건 싫어……」
         ENDIF
             CFLAG:TARGET:9023 = 1
             RETURN 0
@@ -12685,14 +12548,14 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
                     LOCAL:0 = 0
                 ENDIF
                 IF LOCAL:0 == 0
-                    PRINTFORML 「んふ……身体が痺れてきちゃった……」
-                    PRINTFORMW 輝夜は熱い吐息を出している
+                    PRINTFORML 「응 후후 ...... 몸이 저려와……」
+                    PRINTFORMW 카구야는 뜨거운 한숨을 내고있다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORMW 「……っ！　あぁ, はうっ……%CALLNAME:MASTER%の背中, 借りさせてもらうわね……」
+                    PRINTFORMW 「……읏！　아아, 하읏……%CALLNAME:MASTER%의 등 좀 빌릴게……」
                 ELSEIF LOCAL:0 == 2
-                    PRINTFORML 「ひゃっ！　あぁ……はぅ……！」
-                    PRINTFORML 輝夜は背を%CALLNAME:MASTER%の胸に預けて倒れ込み, 突く度に背を痙攣させた
-                    PRINTFORMW どうやら強く感じているようだ
+                    PRINTFORML 「히익！　아아……하우……！」
+                    PRINTFORML 카구야는 %CALLNAME: MASTER%의 가슴에 몸을 맡기고 쓰러진 후 쿡쿡 찌를 때마다 등을 경련시켰다
+                    PRINTFORMW 아무래도 강하게 느끼고 있는 것 같다
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 LOCAL:0 = RAND:3
@@ -12701,39 +12564,39 @@ IF SELECTCOM == 23 && TEQUIP:56 == 0
                     LOCAL:0 = 0
                 ENDIF
                 IF LOCAL:0 == 0
-                    PRINTFORML 「ひゃぁん！　すごい！　すごく気持ちよくってぇ！　んぁぁ！」
-                    PRINTFORMW 輝夜は身体を大きく反らしながら黒い髪を振り乱した
+                    PRINTFORML 「하으！　대단해！　엄청 기분 좋아！　하아아！」
+                    PRINTFORMW 카구야는 몸을 크게 휘저으며 검은 머리를 흔들었다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORML 「あっ, ひゃっ, はぅぅ！　あっ, あっ, あ앗♪」
-                    PRINTFORMW 輝夜の意識は快楽によって塗り潰されているようだ
+                    PRINTFORML 「아으, 흐읏, 하우우！　아아, 아앙, 아앗♪」
+                    PRINTFORMW 카구야의 의식은 쾌락에 의해 채워진 것 같다
                 ELSEIF LOCAL:0 == 2
-                    PRINTFORML 「あっ, あぁぁ, 하아！　あっ, もっと, もっとぉ！」
-                    PRINTFORML 輝夜は背を反らしてひたすらに喘いだ
-                    PRINTFORMW 口から発される声はもはや意味を為していない
+                    PRINTFORML 「아읏, 아아아, 하아！　아으, 좀더, 좀더！」
+                    PRINTFORML 카구야는 고개를 젖히고 오로지 허덕였다
+                    PRINTFORMW 입에서 나온 음성은 더 이상 의미를 가지지 않는다
                 ENDIF
             ENDIF
             CFLAG:9023 = 6
         ;媚薬二重状態
         ELSEIF CFLAG:5101 & 16 && (CFLAG:9023 < 2 || FLAG:11 == 2) && LOCAL:0 == 1
-            PRINTFORML 「はっ, はぅ, はぅん！」
-            PRINTFORMW 輝夜は突かれる度に痙攣したかのように背を仰け反らした
+            PRINTFORML 「하읏, 하우, 하아앙！」
+            PRINTFORMW 카구야는 찔릴 때마다 경련하는 것처럼 등을 휘저었다
         ;屈服刻印Lv3＋V感覚Lv3以上
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9023 <= 4 || FLAG:11 == 2)
-            PRINTFORML 「んあっ！　やめて……感じたくないから……」
-            PRINTFORMW 輝夜は身体を反らすのを必死に堪えようとしている
+            PRINTFORML 「흐아앙！　안돼애……느끼기 싫어어……」
+            PRINTFORMW 카구야는 몸을 젖히는 것을 필사적으로 견디려 하고 있다
             CFLAG:9023 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9023 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「入れるのだけはやめてくれない？」
+            PRINTFORMW 「넣는 것만은 그만두지 않겠어？」
             CFLAG:9023 = 4
         ;Ｖ感覚Lv3以上
         ELSEIF ABL:1 >= 3 && CFLAG:9023 <= 2 || FLAG:11 == 2
-            PRINTFORML 「ひぃ, ひぃん！　ちょっと, こんな姿勢で突かないでっ！」
-            PRINTFORMW 輝夜は嬌声を上げながらも抵抗した
+            PRINTFORML 「히읏, 흐으읏！　이봐요, 이런 자세로 찌르지 마！」
+            PRINTFORMW 카구야는 교성을 지르면서 저항했다
             CFLAG:9023 = 3
         ;それ以外
         ELSEIF CFLAG:9023 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もういや……こんな姿勢でごまかそうとしたってそうはいかないんだから」
+            PRINTFORMW 「이이제 싫어...…이런 자세로 얼버무리려고 해도 그렇게는 안 되니까」
             CFLAG:9023 = 2
         ENDIF
             RETURN 0
@@ -12780,8 +12643,6 @@ IF SELECTCOM == 612 || (SELECTCOM == 23 && TEQUIP:56)
     ENDIF
 ENDIF
 [SKIPEND]
-
-
 ;-------------------------------------------------
 ;助手を犯す CFLAG9026
 ;-------------------------------------------------
@@ -12813,49 +12674,49 @@ IF SELECTCOM == 26
                 CFLAG:9026 = 1
             ;助手が永琳
             ELSEIF NO:ASSI >0 && NO:ASSI == 29
-                PRINTFORMW 「え……え……？　今, 何と言ったの……？」
-                PRINTFORMW %CALLNAME:MASTER%が言った事が信じられないのか, 輝夜はしきりに瞬きをして戸惑いの表情を見せている
-                PRINTFORMW 『私は, 今からご主人様と交わるんですよ……』
-                PRINTFORMW 永琳は\@ TALENT:ASSI:0 == 1 ? 半ば諦めた様子で # \@%CALLNAME:MASTER%の元へ寄った
-                PRINTFORMW そして, %CALLNAME:MASTER%は永琳を膝に座らせ, 永琳の秘裂を肉棒で突いた
+                PRINTFORMW 「에……에……？　지금, 뭐라고했어?……？」
+                PRINTFORMW %CALLNAME:MASTER%가 한 말을 믿을 수 없는지, 카구야는 자꾸 눈을 깜빡이며 당혹스러운 표정을 짓고 있다.
+                PRINTFORMW 『저는 지금부터 주인님과 어울려요……』
+                PRINTFORMW 에이린\@ TALENT:ASSI:0 == 1 ? 거의 포기한 것 같이 # \@%CALLNAME:MASTER%의 곁으로 온다
+                PRINTFORMW 그리고, %CALLNAME:MASTER%는 에이 린을 무릎에 앉히고 에이 린의 균열을 페니스로 찔렀다
                 ;助手が処女持ちかどうか
                 IF TALENT:ASSI:0 == 1
-                    PRINTFORMW 『あぁ……がぁ……いた……ぃ……』
-                    PRINTFORMW 永琳は苦悶に満ちた表情を浮かべ, 息が詰まりそうな声をあげている
-                    PRINTFORMW 「そん……な……」
-                    PRINTFORMW 輝夜は動けない自らの状況を呪い, 
+                    PRINTFORMW 『아아……크으……아파……으……』
+                    PRINTFORMW 에이린은 괴로운 표정을 지으며 숨이 막힐 듯 목소리를 높인다
+                    PRINTFORMW 「으응……나……」
+                    PRINTFORMW 카구야는 움직일 수없는 자신의 상황을 저주했다 
                     ;輝夜のマゾっ気ががLv2以上
                     IF ABL:21 >= 2
-                        PRINTFORMW そして, そんな状況にも関わらず潤いを得ている股間を恥ずかしく思った
-                        PRINTFORMW 「んん……하아……ん……」
-                        PRINTFORMW （わ……私もあのように犯されてしまうの……んん……）
-                        PRINTFORMW 輝夜は吐く息を荒くし, 無意識の内に太股を擦り合わせいた
+                        PRINTFORMW 그리고는 그런 상황에도 불구하고 습기를 얻고 있는 사타구니를 부끄럽게 생각했다
+                        PRINTFORMW 「흐으……하아……흑……」
+                        PRINTFORMW （으……나도 저렇게 범해 버리는……으응……）
+                        PRINTFORMW 카구야는 숨을 몰아쉬며 무의식 중에 허벅지를 비벼댔다.
                     ;それ以外
                     ELSE
-                        PRINTFORMW そして, この屋敷を牛耳っている%CALLNAME:MASTER%を恨めしく思った
-                        PRINTFORMW （隙を見計らって討ってやるわ……絶対に……）
+                        PRINTFORMW 그리고, 이 저택을 좌지우지하고 있는 %CALLNAME:MASTER%를 원망스럽게 생각했다
+                        PRINTFORMW （틈을 봐서 갚아 줄게……반드시……）
                     ENDIF
                 ;それ以外
                 ELSE
-                    PRINTFORMW 『あ앗……んんっ……ひゃぁぁんっ……♪』
-                    PRINTFORMW 『もっと！　もっと突いてっ！』
-                    PRINTFORMW 永琳は腰を跳ねさせ, 艶のある声をあげて%CALLNAME:MASTER%に突かれた
-                    PRINTFORMW 突かれる感覚に意識を持っていかれ, 目の前にいる姫君のことは蚊帳の外になっている
+                    PRINTFORMW 『아앗……흐으읏……히야아앗……♪』
+                    PRINTFORMW 『좀더！　좀더 찔러줘！』
+                    PRINTFORMW 에이린은 허리를 흔들고 고함을 지르며 % CALLNAME : MASTER %에게 찔린다
+                    PRINTFORMW 찔리는 느낌에 의식을 빼앗기고, 눈앞에 있는 공주에 대한 것은 이미 눈 밖이다
                     ;輝夜の抑圧がない&アイマスクをかけている
                     IF !TALENT:32 && TEQUIP:41 == 1
-                        PRINTFORMW 「ん……하아……ぁ……」
-                        PRINTFORML 視界が遮られている輝夜は, 永琳の艶やかな声と, 身体同士が打ち付けられる音を聞いて
-                        PRINTFORMW 鋭くなった聴覚は頭の中であられもない想像を作り上げていく……
-                        PRINTFORML 聴こえる喘ぎ声は, 普段見知っている従者の姿が乱れるを想像させ, 
-                        PRINTFORMW そして, 打ち付けられる音は輝夜の肌に響き, まるで自らが犯されているかのような錯覚を与え始めた
-                        PRINTFORMW %CALLNAME:MASTER%によって性欲をこじ開けられている輝夜は, 太股を擦り合わせ始め, 
-                        PRINTFORMW そして, 切なさそうに小さく声を漏らし始めた
-                        PRINTFORMW 淫らに小さく腰を揺らす様子は, はたから見れば暗闇の中誰かを求めているように見える
-                        PRINTFORMW 「하아……ん……うぁ……」
-                        PRINTFORMW 「べ, 別に, 하아っ……求めてなんか……하아……んん……」
-                        PRINTFORMW そんな輝夜に%CALLNAME:MASTER%は一本の棒を差し出して輝夜の股間を抑えつけると, 股間が水音を立たせた
-                        PRINTFORMW 「んぁ……ぁ……そ, そんな……淫らじゃないのにっ……くぅぅっ……」
-                        PRINTFORMW 濡れている事実を指摘すると, 輝夜は身じろぎをして腰を揺らした
+                        PRINTFORMW 「흣……하아……아……」
+                        PRINTFORML 시야가 막혀있는 카구야는 에이린의 요란한 목소리와 몸끼리 부딪히는 소리를 듣고
+                        PRINTFORMW 날카로워진 청각은 머릿속에서 답지 않은 상상을 만들어간다……
+                        PRINTFORML 들리는 신음 소리는 평소 알고 있던 종자의 모습이 흐트러지는 것을 상상하게 하고
+                        PRINTFORMW 그리고 나서, 부딪치는 소리는 카구야의 피부에 울려, 마치 자신이 범해지고 있는 것처럼 착각하게 만들었다
+                        PRINTFORMW %CALLNAME:MASTER%에 의해서 성욕을 자극받은 카구야는, 허벅지를 비비기 시작했다
+                        PRINTFORMW 그리고 애달픈 목소리를 내기 시작했다
+                        PRINTFORMW 음란하게 몸을 약간 흔드는 모습이 캄캄한 어둠 속에서 누군가를 찾고 있는 것처럼 보인다
+                        PRINTFORMW 「하아……흐……우아……」
+                        PRINTFORMW 「큿, 별로, 하아……원하지않아……하아……흐읏……」
+                        PRINTFORMW 그런 카구야에게 %CALLNAME:MASTER%는 한 개의 막대기를 꺼내서 카구야의 사타구니를 꽉 조이자, 사타구니가 물소리를 냈다.
+                        PRINTFORMW 「하앗……아……그, 그런……음란하지않아……크으읏……」
+                        PRINTFORMW 젖어있는 사실을 지적하자, 카구야는 몸을 비틀며 허리를 흔들었다
                     ;欲望がLv3以上
                     ELSEIF ABL:11 >= 3
                         PRINTFORMW 
@@ -12908,8 +12769,6 @@ IF SELECTCOM == 26
         ENDIF
     ENDIF
 ENDIF
-
-
 ;-------------------------------------------------
 ;泡踊り CFLAG9352
 ;-------------------------------------------------
@@ -12945,7 +12804,6 @@ IF SELECTCOM == 352
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;利尿剤 CFLAG9062
 ;-------------------------------------------------
@@ -13008,7 +12866,6 @@ IF SELECTCOM == 62
         CFLAG:9062 = 1
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;羞恥プレイ CFLAG9103 解除 CFLAG8822
 ;-------------------------------------------------
@@ -13108,7 +12965,6 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;お風呂場プレイ CFLAG9350 解除 CFLAG8824
 ;-------------------------------------------------
@@ -13166,7 +13022,6 @@ ELSEIF SELECTCOM == 350 && TEQUIP:53 == 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;,裸エプロン(新妻プレイ) CFLAG9090 解除 CFLAG8823
 ;-------------------------------------------------
@@ -13233,7 +13088,6 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;放尿 CFLAG9111
 ;強制放尿 CFLAG9620
@@ -13289,11 +13143,9 @@ IF SELECTCOM == 111 || SELECTCOM == 620
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・アナル関連
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
-
 ;-------------------------------------------------
 ;アナル舐め CFLAG9180
 ;-------------------------------------------------
@@ -13367,7 +13219,6 @@ IF SELECTCOM == 180
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;アナルビーズ 開始時CFLAG9172 終了時CFLAG8852
 ;-------------------------------------------------
@@ -13377,7 +13228,7 @@ IF SELECTCOM == 172 && TEQUIP:25
     IF CFLAG:TARGET:9172 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORML 「その珠をお尻に入れるのね……どのような感覚を味わえるの？」
+            PRINTFORML 「そ의 구슬をお尻に入れるのね……どのような感覚を味わえるの？」
         ;それ以外
         ELSE
             PRINTFORMW 「こんなのお尻に入れるの？　へえ, 悪趣味もいいところね」
@@ -13462,7 +13313,6 @@ ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
     ENDIF
         RETURN 0
 ENDIF
-
 ;------------------------------------------------
 ;正常位アナル CFLAG9030
 ;-------------------------------------------------
@@ -13501,7 +13351,6 @@ ENDIF
 ;            RETURN 0
 ;    ENDIF
 ;ENDIF
-
 ;-------------------------------------------------
 ;後背位アナル CFLAG9031
 ;-------------------------------------------------
@@ -13540,7 +13389,6 @@ ENDIF
 ;            RETURN 0
 ;    ENDIF
 ;ENDIF
-
 ;-------------------------------------------------
 ;対面座位アナル CFLAG9032
 ;-------------------------------------------------
@@ -13581,7 +13429,6 @@ IF SELECTCOM == 32
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;背面座位アナル CFLAG9033
 ;-------------------------------------------------
@@ -13622,7 +13469,6 @@ IF SELECTCOM == 33
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;騎乗位アナル CFLAG9034
 ;-------------------------------------------------
@@ -13663,7 +13509,6 @@ IF SELECTCOM == 34
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;空気浣腸 開始時CFLAG9175 終了時CFLAG8855
 ;-------------------------------------------------
@@ -13720,7 +13565,6 @@ ELSEIF SELECTCOM == 175 && TEQUIP:25 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;拡張バルーン 開始時CFLAG9173 終了時CFLAG8853
 ;-------------------------------------------------
@@ -13777,7 +13621,6 @@ ELSEIF SELECTCOM == 173 && TEQUIP:25 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;アナル電極 開始時CFLAG9171 終了時CFLAG8851
 ;-------------------------------------------------
@@ -13834,7 +13677,6 @@ ELSEIF SELECTCOM == 171 && TEQUIP:25 == 0
         RETURN 0
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;アナル奉仕強制 CFLAG9044
 ;-------------------------------------------------
@@ -13874,7 +13716,6 @@ IF SELECTCOM == 44
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;追加コマンド・胸関連（Ｂ系拡張コマンド）
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
@@ -14016,7 +13857,6 @@ IF SELECTCOM == 200
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;乳首責め CFLAG9201
 ;-------------------------------------------------
@@ -14090,7 +13930,6 @@ IF SELECTCOM == 201
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;指チュパ CFLAG9327
 ;-------------------------------------------------
@@ -14170,7 +14009,6 @@ IF SELECTCOM == 327
         CFLAG:9327 = 1
     ;それ以外
     ELSE
-
         ;恋慕
         IF TALENT:150
             ;メイド服を着ている
@@ -14342,7 +14180,6 @@ IF SELECTCOM == 327
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;首筋耳裏舐め CFLAG9328
 ;-------------------------------------------------
@@ -14413,14 +14250,9 @@ IF SELECTCOM == 328
         ENDIF
     ENDIF
 ENDIF
-
-
-
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;獣姦コマンド CFLAG9381以降を使用
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
-
 ;-------------------------------------------------
 ;犬に犯させる CFLAG9381
 ;-------------------------------------------------
@@ -14561,7 +14393,6 @@ IF SELECTCOM == 381
         RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;豚に犯させる CFLAG9383
 ;-------------------------------------------------
@@ -14691,7 +14522,6 @@ IF SELECTCOM == 383
         RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;馬に犯させる CFLAG9386
 ;-------------------------------------------------
@@ -14813,15 +14643,9 @@ IF SELECTCOM == 386
             RETURN 0
     ENDIF
 ENDIF
-
-
-
-
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;レズ調教コマンド（デフォ主人公でも可能なもの） CFLAG9610以降を使用
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
-
 ;-------------------------------------------------
 ;３P CFLAG9610
 ;-------------------------------------------------
@@ -15020,7 +14844,6 @@ IF SELECTCOM == 610
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;シックスナイン CFLAG9602
 ;-------------------------------------------------
@@ -15063,25 +14886,9 @@ IF SELECTCOM == 602
     ENDIF
 ENDIF
 [SKIPEND]
-
-
-
-
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
 ;拷問系コマンド　多分主人が狂気を持ってないと使えないコマンドだけが入る予定
 ;～～～～～～～～～～～～～～～～～～～～～～～～～
-
-
-
-
-
-
-
-
-
-
-
-
 ;-------------------------------------------------
 ;杭 CFLAG9243
 ;-------------------------------------------------
@@ -15172,7 +14979,6 @@ IF SELECTCOM == 243
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;ナイフ CFLAG9244
 ;-------------------------------------------------
@@ -15252,17 +15058,6 @@ IF SELECTCOM == 244
         ENDIF
     ENDIF
 ENDIF
-
-
-
-
-
-
-
-
-
-
-
 ;-------------------------------------------------
 ;@KOJO_MESSAGE_PALAMCNG関係（30をキャラ番号に置換）
 ;パラメータ変動をトリガーにした口上
@@ -15322,7 +15117,6 @@ IF P > PALAMLV:2 && CFLAG:TARGET:8001 == 0
     ENDIF
         CFLAG:TARGET:8001 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めて欲情がLV2超えた CFLAG8002
 ;-------------------------------------------------
@@ -15354,7 +15148,6 @@ IF P > PALAMLV:2 && CFLAG:8002 == 0
     ENDIF
         CFLAG:8002 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めて恥情がLV2超えた CFLAG8003
 ;-------------------------------------------------
@@ -15372,7 +15165,6 @@ IF P > PALAMLV:2 && CFLAG:8003 == 0
     ENDIF
         CFLAG:8003 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めて恐怖がLV2超えた CFLAG8004
 ;-------------------------------------------------
@@ -15389,7 +15181,6 @@ IF P > PALAMLV:2 && CFLAG:8004 == 0
     ENDIF
         CFLAG:8004 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めてC絶頂 CFLAG8005
 ;-------------------------------------------------
@@ -15427,7 +15218,6 @@ IF NOWEX:0 > 0 && CFLAG:8005 == 0
         CFLAG:8005 = 1
         CFLAG:5113 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めてV絶頂 CFLAG8006
 ;-------------------------------------------------
@@ -15457,7 +15247,6 @@ IF NOWEX:1 > 0 && CFLAG:8006 == 0
         CFLAG:8006 = 1
         CFLAG:5113 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めてA絶頂 CFLAG8007
 ;-------------------------------------------------
@@ -15496,7 +15285,6 @@ IF NOWEX:2 > 0 && CFLAG:8007 == 0
         CFLAG:TARGET:8007 = 1
         CFLAG:5113 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;初めてB絶頂 CFLAG8008
 ;-------------------------------------------------
@@ -15526,7 +15314,6 @@ IF NOWEX:3 > 0 && CFLAG:8008 == 0
         CFLAG:TARGET:8008 = 1
         CFLAG:5113 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;処女喪失(処女のみ) CFLAG8009
 ;-------------------------------------------------
@@ -15608,7 +15395,6 @@ IF TFLAG:0 > 0 && CFLAG:8009 == 0
     ENDIF
         CFLAG:TARGET:8009 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;セックスで射精させた CFLAG8010 CFLAG8011
 ;-------------------------------------------------
@@ -15655,7 +15441,7 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
                 ELSEIF LOCAL:0 == 1
                     PRINTFORMW 「아하아……괴물의 정액 따뜻해에에……」
                 ENDIF
-            ;豊姫が主人
+            ;토요히메が主人
             ELSEIF NO:MASTER == 53 && ASSIPLAY == 0
                 LOCAL:0 = RAND:2
                 IF LOCAL:0 == 0
@@ -15697,7 +15483,6 @@ IF TFLAG:9 > 0 || TFLAG:10 > 0
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;手で射精させた CFLAG8012
 ;-------------------------------------------------
@@ -15719,7 +15504,6 @@ IF TFLAG:12 > 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;口で射精させた CFLAG8013 CFLAG8014
 ;-------------------------------------------------
@@ -15820,7 +15604,6 @@ IF TFLAG:11 > 0
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;髪の毛で射精させた CFLAG6003
 ;-------------------------------------------------
@@ -15870,12 +15653,11 @@ IF TFLAG:16 > 0
         CFLAG:5116 = 1000000
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;絶頂寸前
 ;絶頂口上の前に表示します
 ;-------------------------------------------------
-PRINTFORML
+PRINTFORML 
 IF CFLAG:5113 == 0
     ;全箇所絶頂
     IF NOWEX:0 && NOWEX:1 && NOWEX:2 && NOWEX:3
@@ -16132,7 +15914,6 @@ IF CFLAG:5113 == 0
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;絶頂　CFLAG:6000
 ;焦らし寸止め　CFLAG:6001
@@ -16142,17 +15923,14 @@ ENDIF
 IF NOWEX:41 || NOWEX:42
     CFLAG:5110 = 0
 ENDIF
-
 ;すごく強い絶頂で変態度が+1
 IF NOWEX:0+NOWEX:1+NOWEX:2+NOWEX:3 >= 5
     CFLAG:5111 += 1
 ENDIF
-
 ;睡眠中に絶頂すると更に+1
 IF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3 && EQUIP:14 >= 1
     CFLAG:5111 += 1
 ENDIF
-
 ;耐えかねて自慰して絶頂してしまった
 ;とりあえず恋慕だけ対応
 IF NOWEX:42 && TALENT:150 && TALENT:167 == 0
@@ -16169,10 +15947,10 @@ IF NOWEX:42 && TALENT:150 && TALENT:167 == 0
     ;手系
     ELSEIF SELECTCOM == 0 || SELECTCOM == 2 || SELECTCOM == 4 || SELECTCOM == 10 || SELECTCOM == 11 || SELECTCOM == 190 || SELECTCOM == 200 || SELECTCOM == 201 || SELECTCOM == 344 || SELECTCOM == 413 || SELECTCOM == 414 || SELECTCOM == 417 || SELECTCOM == 431 || SELECTCOM == 434 || SELECTCOM == 600 || SELECTCOM == 620 || SELECTCOM == 626
         PRINTFORML 「아우……안돼……%CALLNAME:MASTER%……」
-        PRINTFORMW 휘야은 %CALLNAME:MASTER%의 손을 잡고, 당신이 애무를 하던 장소로 가져갔다
+        PRINTFORMW 카구야은 %CALLNAME:MASTER%의 손을 잡고, 당신이 애무를 하던 장소로 가져갔다
         PRINTFORML 「이제, 초조하게 하는 것은 그만둬……」
         PRINTFORML 「나..…더 이상 참을 수 없어……」
-        PRINTFORMW 그렇게 말하고, 휘야는 %CALLNAME: MASTER%의 손을 몸에 붙이고 자위를 시작했다.
+        PRINTFORMW 그렇게 말하고, 카구야는 %CALLNAME: MASTER%의 손을 몸에 붙이고 자위를 시작했다.
         PRINTFORML 「하으읏！　햐아아앙, 좋하아아아앗！」
         PRINTFORML 「아윽,아아아아아읏！ 하아아아♪」
         PRINTFORML 카구야는 몸을 뒤집으면서 열린 입에서 혀를 내밀고 달콤한 목소리를 높이며
@@ -16181,10 +15959,10 @@ IF NOWEX:42 && TALENT:150 && TALENT:167 == 0
     ;地の文がコンパチなのでこちらもコンパチ
     ELSEIF SELECTCOM == 47 || SELECTCOM == 410 || SELECTCOM == 654
         PRINTFORML 「응..…안돼..…%CALLNAME:MASTER%....」
-        PRINTFORMW 당신은 %CALLNAME:MATER%의 다리를 잡고 %CALLNAME:MASTER%가 애무하던 곳에 밀어붙였다.
+        PRINTFORMW 당신은 %CALLNAME:MASTER%의 다리를 잡고 %CALLNAME:MASTER%가 애무하던 곳에 밀어붙였다.
         PRINTFORML 「이제, 초조하게 하는 것은 그만둬……」
         PRINTFORML 「나..…더 이상 참을 수 없어……」
-        PRINTFORMW 그렇게 말하고, 휘야는 %CALLNAME: MASTER%의 손을 몸에 붙이고 자위를 시작했다.
+        PRINTFORMW 그렇게 말하고, 카구야는 %CALLNAME: MASTER%의 손을 몸에 붙이고 자위를 시작했다.
         PRINTFORML 「하으읏！　햐아아앙, 좋하아아아앗！」
         PRINTFORML 「아윽,아아아아아읏！ 하아아아♪」
         PRINTFORML 카구야는 등을 젖히면서 칠칠맞게 연 입에서 혀를 내밀어 달콤한 소리를 지르면서
@@ -16197,7 +15975,7 @@ IF NOWEX:42 && TALENT:150 && TALENT:167 == 0
         PRINTFORML 「하아앙……가！　드디어……가버려어어어어엇！　하아아아아읏……!!!」
         PRINTFORMW 그리고 카구야 몸을 떨면서 몇 번이나 %CALLNAME:MASTER%의 얼굴을 문질러 쾌락을 탐했다
         PRINTFORML 「죠아!! 죠아아아앙! 또 가버려어엇！ 생각이、날아가버려엇……♪」
-        PRINTFORMW 그리고 사랑스러운 달콤한 교성을 지르며 광야는 절정에 이르렀다.
+        PRINTFORMW 그리고 사랑스러운 달콤한 교성을 지르며 카구야는 절정에 이르렀다.
     ;二人でフェラする
     ELSEIF SELECTCOM == 331
         PRINTFORML 「또 나를 사정 못하게 할꺼야...…？」
@@ -16211,7 +15989,7 @@ IF NOWEX:42 && TALENT:150 && TALENT:167 == 0
     ELSE
         PRINTFORML 「...…기분좋은것이 필여해...…엣」
         PRINTFORMW  정욕으로 인해 허망한 눈으로 초점이 방황하고 있고, 의식이 몽롱한 카구야
-        PRINTFORMW  참을 수 없게 되었을까, 휘야은 자신의 손을 사타구니에 가지고 와서 만지기 시작했다
+        PRINTFORMW  참을 수 없게 되었을까, 카구야은 자신의 손을 사타구니에 가지고 와서 만지기 시작했다
         PRINTFORML 「아아! 히응! 후아♪」
         PRINTFORMW 몸을 날리게 하여, 겨우 맛본 쾌락에 몸 전체가 환희의 소리를 높인다.
         PRINTFORMW 반쯤 되어 혀가 나와 있는 입에서 나오는 한숨이 하얗게 보이는 듯 하다.
@@ -16230,14 +16008,14 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
             PRINTFORMW 절정을 정지당해, 쾌락이 온몸을 날뛰고 다니는 카구야는 음란한 신체를 저질러 괴로운 듯이 헐떡이고 있다.
             PRINTFORML 「아아, 아으읏……제발……가게해줘.…♪」
             PRINTFORML 「아그읏……」
-            PRINTFORMW  카구야는 여유가 없는듯한 다급한 소리로 %CALLNAME:MATER%에 간청했다.
+            PRINTFORMW  카구야는 여유가 없는듯한 다급한 소리로 %CALLNAME:MASTER%에 간청했다.
             CFLAG:6002 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && TALENT:32 == 0 && (CFLAG:6002 < 4 || FLAG:11 == 2)
             ;寸止め累積数が8以上
             IF EX:20+EX:21+EX:22+EX:23 >= 8
                 PRINTFORML 「아, 응! 이제 못 참아아앗！」
-                PRINTFORMW %CALLNAME:MASTER%은 몸을 떨며 강한 절정에 이르려던 광야를 정지시켰다.
+                PRINTFORMW %CALLNAME:MASTER%은 몸을 떨며 강한 절정에 이르려던 카구야를 정지시켰다.
                 PRINTFORML 「아, 아아아……」
                 PRINTFORML 「이제……냐아 못참겠셔어어엉...!!!!」
                 PRINTFORML 「부탁해...…하앗♪ 제바아아알...…훗..…하응..…」……」
@@ -16259,7 +16037,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
             IF EX:20+EX:21+EX:22+EX:23 >= 10
                 PRINTFORML 「아, 아아! 강한 것이...…아！」
                 PRINTFORML 「……아, 아직……아닌데엣……」
-                PRINTFORMW 절정을 멈춘 후, 휘야은 열을 띤 숨을 내쉬면서 허벅지를 마주치기 시작했다.
+                PRINTFORMW 절정을 멈춘 후, 카구야은 열을 띤 숨을 내쉬면서 허벅지를 마주치기 시작했다.
                 PRINTFORML 「부디……마지막까지이이……」
                 PRINTFORML 「보내줘……나를……가게해줘어엇……」
                 PRINTFORMW 카구야는 이성을 잃은 눈으로 계속 부탁만 하고 있다
@@ -16267,7 +16045,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
             ELSE
                 PRINTFORML 「아아앙! 후아응♪ 이야, 강한게...…！」
                 PRINTFORML 「……하웃, 하아……?.....왜 그만두는 거야……」
-                PRINTFORMW  절정을 멈춘 후, 휘야은 열을 띤 숨을 내쉬면서 허벅지를 마주치기 시작했다.
+                PRINTFORMW  절정을 멈춘 후, 카구야은 열을 띤 숨을 내쉬면서 허벅지를 마주치기 시작했다.
                 PRINTFORMW 「아니야..…난 쾌락같은건 원하지 않아...…!」
             ENDIF
             CFLAG:6002 = 3
@@ -16303,7 +16081,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
         IF TALENT:150 && (CFLAG:6001 < 5 || FLAG:11 == 2)
             PRINTFORML 「아앗~♪ 나……하앙♪!!…」
             PRINTFORML 「안돼...…도중에 그만두지말고...…초조하게 하지마...!」
-            PRINTFORMW  %CALLNAME:MASTER%이 행위를 멈춘 후, 휘야은 몸을 비틀며 요란한 목소리로 떼를 썼다.
+            PRINTFORMW  %CALLNAME:MASTER%이 행위를 멈춘 후, 카구야은 몸을 비틀며 요란한 목소리로 떼를 썼다.
             PRINTFORML 「아아♪　%CALLNAME:MASTER%이 하고 싶은거 다 해줄게에에, 다시해줘어어엇……」
             PRINTFORMW 「그러니까...…아니..…제발……」
             CFLAG:6001 = 6
@@ -16312,7 +16090,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
             ;寸止め累積数が8以上
             IF EX:20+EX:21+EX:22+EX:23 >= 8 && (CFLAG:6001 < 5 || FLAG:11 == 2)
                 PRINTFORML 「히국, 하으으으그윽！　아읏！　……후앙？」
-                PRINTFORML 카구야가 절정에 달하기 전에 %CALLNAME:MASTER%가 행위를 멈추자, 휘야는 거친 숨을 몰아쉬며 허벅지를 마주치기 시작했다.
+                PRINTFORML 카구야가 절정에 달하기 전에 %CALLNAME:MASTER%가 행위를 멈추자, 카구야는 거친 숨을 몰아쉬며 허벅지를 마주치기 시작했다.
                 PRINTFORMW 이미 정신이 닳아서 한계에 가까운 듯, 눈살을 찌푸리며 괴로운 듯 비명을 지르고 있다.
                 PRINTFORML 「아읏……더는……정말로……미쳐버....려엇」
                 PRINTFORML 「살려줘…..나를.....바보취급……」
@@ -16322,7 +16100,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
             ELSE
                 PRINTFORML 「아굿, 아읏, 하으응 꺄아아아아읏……에？」
                 PRINTFORML 「하아하아……」
-                PRINTFORMW 광야가 달하기 전에 %CALLNAME:MASTER%가 행위를 멈추자, 휘야는 거친 숨을 몰아쉬며 허벅지를 마주치기 시작했다.
+                PRINTFORMW 카구야가 달하기 전에 %CALLNAME:MASTER%가 행위를 멈추자, 카구야는 거친 숨을 몰아쉬며 허벅지를 마주치기 시작했다.
                 PRINTFORML （이제..…온몸이 쑤셔서...…멈추지 않아……）
                 PRINTFORMW 「너어어, 왜……그만...둔거야아아!」
             ENDIF
@@ -16335,7 +16113,7 @@ ELSEIF NOWEX:20 || NOWEX:21 || NOWEX:22 || NOWEX:23 && TALENT:167 == 0
                 PRINTFORML 「아아…부탁이야..…멈추지 않고……」
                 PRINTFORMW 카구야가 가냘픈 목소리로 말하는 바람에, %CALLNAME:MASTER%는 구체적으로 밝히라고 명령했다
                 PRINTFORML 「아으응！　나를……하아아……주인님의 자지로오옷……가게해주세요오옷……!!」
-                PRINTFORMW 휘야는 때때로 몸을 팽팽히 떨면서 간청했다
+                PRINTFORMW 카구야는 때때로 몸을 팽팽히 떨면서 간청했다
                 CFLAG:5109 += 1
             ELSE
                 PRINTFORML 「아우우우웃!!..... 하아앙！......　하으……하？」
@@ -16595,11 +16373,9 @@ ELSEIF NOWEX:0 || NOWEX:1 || NOWEX:2 || NOWEX:3 && CFLAG:5113 == 0 && TALENT:167
     PRINTFORML 카구야는 잠시 숨을 멈추더니 곧 몸을 단속적으로 떨기 시작했다
     PRINTFORMW 아무래도 절정에 이른 것 같다
 ENDIF
-
 IF CFLAG:5113 == 1
     CFLAG:5113 = 0
 ENDIF
-
 ;-------------------------------------------------
 ;射精した(ふたなり/オトコのみ) CFLAG8015
 ;-------------------------------------------------
@@ -16709,7 +16485,7 @@ IF TFLAG:30 > 0
                 PRINTFORML 『그렇게 우뚝 솟게 하지 않아도, 기분 좋은 걸까...?』
                 PRINTFORMW 「……！　아, 아니야…… 그런거...」
             ELSE
-                PRINTFORML 「ひっ, あぁぁ, 아읏！　ああああっ！」
+                PRINTFORML 「힛, 아아아, 아읏！　아아아앗！」
                 PRINTFORMW （……나, 방금순간 의식 날아갈뻔……?...）
             ENDIF
             ;欲情と屈服のソースが手に入ります
@@ -16739,7 +16515,6 @@ IF TFLAG:30 > 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;噴乳した(母乳体質のみ) CFLAG8016
 ;隷属が無いので一気に味気ない構文に
@@ -16919,7 +16694,6 @@ IF TFLAG:31 > 0
             RETURN 0
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;Ｃ感覚Lv5でＣ絶頂50以上 CFLAG8017
 ;-------------------------------------------------
@@ -16951,7 +16725,6 @@ IF ABL:0 >= 5 && EX:0 >= 50 && NOWEX:0 > 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;Ｖ感覚Lv5でＶ絶頂50以上 CFLAG8018
 ;-------------------------------------------------
@@ -16983,7 +16756,6 @@ IF ABL:1 >= 5 && EX:1 >= 50 && NOWEX:1 > 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;Ａ感覚Lv5でＡ絶頂50以上 CFLAG8019
 ;-------------------------------------------------
@@ -17015,7 +16787,6 @@ IF ABL:2 >= 5 && EX:2 >= 50 && NOWEX:2 > 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;Ｂ感覚Lv5でＢ絶頂50以上 CFLAG8020
 ;-------------------------------------------------
@@ -17047,7 +16818,6 @@ IF ABL:3 >= 5 && EX:3 >= 50 && NOWEX:3 > 0
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;放尿 CFLAG8021
 ;-------------------------------------------------
@@ -17278,7 +17048,6 @@ SIF TEQUIP:14 || TFLAG:899 > 0
 ;        RETURN 0
 ;    ENDIF
 ;ENDIF
-
 ;-------------------------------------------------
 ;調教中に体力0になった場合
 ;-------------------------------------------------
@@ -17344,7 +17113,6 @@ IF BASE:0 <= 0
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;苦痛刻印Lv3取得 CFLAG8097
 ;-------------------------------------------------
@@ -17357,20 +17125,19 @@ IF TFLAG:40 == 3 && CFLAG:8097 == 0
     ENDIF
         CFLAG:8097 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;快楽刻印Lv3取得 CFLAG8098
 ;-------------------------------------------------
 IF TFLAG:41 == 3 && CFLAG:8098 == 0
     ;恋慕
     IF TALENT:150
-        ;調教者が豊姫＆助手が依姫
+        ;調教者が토요히메＆助手が依姫
         IF NO:PLAYER == 53 && NO:ASSI == 54
             PRINTFORMW 「ひゃぅんっ……！？　앗……♪　ん앗……」
             PRINTFORMW 『あら, 気絶してしまったのかしら……』
             PRINTFORMW 『安心してください, お姉様。悶えているだけです』
             PRINTFORMW 『そう……よね。それなら少し待ちましょう』
-        ;調教者が豊姫
+        ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
             PRINTFORMW 「あっ, あ하아……♪　お姉さまぁ……きもちいい, れすぅ……」
             PRINTFORMW 『そう？　悦んでもらえて, 嬉しいわぁ♪』
@@ -17396,17 +17163,17 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
             ENDIF
         ENDIF
     ELSE
-        ;調教者が豊姫＆助手が依姫
+        ;調教者が토요히메＆助手が依姫
         IF NO:PLAYER == 53 && NO:ASSI == 54
             PRINTFORMW 「あうぅぅんッ！？　なっ, 하아っ……なにが起きたというの……」
             PRINTFORMW 『姫様の身体が悦んでくれたわ。この調子で頑張りましょ』
             PRINTFORMW 『はいっ, お姉さま♪』
-        ;調教者が豊姫
+        ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
             PRINTFORMW 「んやぁんッ！？　하아っ, 하아……な, 何よ, これは……」
             PRINTFORMW 『身体はもう正直なのね。気持ちよかったでしょ？』
             PRINTFORML 「い, やっ……そんな事ないわよ。私が……ん앗！」
-            PRINTFORMW 輝夜が話している最中に豊姫は輝夜の陰核を抓んだ
+            PRINTFORMW 輝夜が話している最中に토요히메は輝夜の陰核を抓んだ
             PRINTFORMW 『ほうら, これでも感じてないとでも言うつもり？　これが嫌なら少しは言う事聞きなさい。分かったわね？』
             PRINTFORMW 「……くぅっ」
             PRINTFORMW 輝夜の心の中に強い快楽が刻み込まれたようだ
@@ -17436,7 +17203,6 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
     ENDIF
         CFLAG:8098 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;屈服刻印Lv3取得 CFLAG8299
 ;-------------------------------------------------
@@ -17472,15 +17238,15 @@ IF TFLAG:42 == 3 && CFLAG:8099 == 0
                 PRINTFORMW 「だから, あっ, んふっ, もうひどいことしないでぇ！」
                 PRINTFORMW その瞬間, 輝夜の目の輝きが薄くなっていくのを%CALLNAME:MASTER%は見た
             ENDIF
-        ;調教者が豊姫＆助手が依姫
+        ;調教者が토요히메＆助手が依姫
         ELSEIF NO:PLAYER == 53 && NO:ASSI == 54
             PRINTFORMW 「んっ……」
             PRINTFORMW 『まだ堕ちないのね……依姫, 用意をしなさい。”トドメ”を刺すのよ』
             PRINTFORMW 『分かりました……』
-            PRINTFORMW 依姫は輝夜を上に寝かし, 豊姫が輝夜の上に乗った
+            PRINTFORMW 依姫は輝夜を上に寝かし, 토요히메が輝夜の上に乗った
             PRINTFORMW 「な……何よ……私を二人で挟むなんて, 馬鹿みたい……」
             PRINTFORMW 『まだそんな事言えるのね。まあいいわ, もうそんな事言えなくなるから』
-            PRINTFORMW 豊姫は輝夜の陰豆に自分の陰豆を擦りつけるようにして身体を擦り付け始め, 
+            PRINTFORMW 토요히메は輝夜の陰豆に自分の陰豆を擦りつけるようにして身体を擦り付け始め, 
             PRINTFORMW それと同時に依姫は背後から輝夜の胸を乳首を主にして揉みしだき始めた
             PRINTFORMW 「んッ！？　んんぅ！　ふぁ……ぁくんッ！　んっ……くうっ……！」
             PRINTFORMW 輝夜ははあはあと荒い息をついて, 喘ぎ声を噛み殺した
@@ -17492,31 +17258,31 @@ IF TFLAG:42 == 3 && CFLAG:8099 == 0
             PRINTFORMW 胸の感度がよくなったのか, 輝夜はくぐもった声を漏らしつつ口の端から涎を垂らし始めた
             PRINTFORMW 『ふふっ, 気持ちいいんでしょ？　ほら, イきなさいよ♪』
             PRINTFORMW 「あっ아읏！　もうっ, だめぇ……ふぁああああ아읏！」
-            PRINTFORMW 豊姫が激しく輝夜の豆に擦りつけると, 輝夜は背を反らして絶頂した
+            PRINTFORMW 토요히메が激しく輝夜の豆に擦りつけると, 輝夜は背を反らして絶頂した
             PRINTFORMW 「하아っ……하아っ……」
             PRINTFORMW 『んー甘いっ♪　姫様, 気持ちよかったわよね？』
-            PRINTFORMW 豊姫は恍惚とした表情を浮かべて放心状態になっている輝夜の涎を指ですくうと, それを舐めた
+            PRINTFORMW 토요히메は恍惚とした表情を浮かべて放心状態になっている輝夜の涎を指ですくうと, それを舐めた
             PRINTFORMW 「は……はひぃ……お……ねぇ……さま……きもち……よかった……れすぅ……」
             PRINTFORMW 『そう？　よかった♪』
             PRINTFORMW 『お姉さまのお役に立てて, 嬉しいです……』
-            PRINTFORMW 豊姫は満足そうな笑顔を浮かべた
-        ;調教者が豊姫
+            PRINTFORMW 토요히메は満足そうな笑顔を浮かべた
+        ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
             PRINTFORMW 「하아っ……」
-            PRINTFORMW 能力が封じられており, しかも長寿な月人である豊姫を前に為す術は無く
+            PRINTFORMW 能力が封じられており, しかも長寿な月人である토요히메を前に為す術は無く
             PRINTFORMW その上自分の身体が開発され, 少しの刺激に大きな悦楽を返すこの身体では普通の生活なんて送れる訳もなく……
             PRINTFORMW 輝夜は失望して目の輝きを無くし, 心が空っぽになった
             PRINTFORML 『どうしたのよ？　元気が無いわねえ……えいっ♪』
-            PRINTFORMW 輝夜が押し黙ってしまったのを見て, 豊姫は輝夜の陰核を指で弄り始めた
+            PRINTFORMW 輝夜が押し黙ってしまったのを見て, 토요히메は輝夜の陰核を指で弄り始めた
             PRINTFORML 「……앗……んっ……하아っ……ふぁ……」
             PRINTFORMW 空っぽになっていた輝夜の心に快楽が満たされ始める……
             PRINTFORMW 『私に従えばもう何も考えなくても済む気持ちいい世界に住めるわ, どう？』
             PRINTFORMW 「――いっ……」
             PRINTFORMW 『えっ？』
             PRINTFORML 「気持ち……いいのっ……お姉さまっ……もっと, 弄って……っ！」
-            PRINTFORMW 輝夜は擦れた声を出し, 豊姫の気を惹いた
+            PRINTFORMW 輝夜は擦れた声を出し, 토요히메の気を惹いた
             PRINTFORMW 『あら, やっと素直になったのね？　いいわよ, ご褒美にたくさん弄ってあげる♪』
-            PRINTFORMW 豊姫は輝夜の陰核を両手で握り, 強く擦り始めた
+            PRINTFORMW 토요히메は輝夜の陰核を両手で握り, 強く擦り始めた
             PRINTFORML 「ああっ！　ふぁ앗！　すごひのっ！　豆が気持ちよくってっ！　イくっ！　ひクーっ！」
             PRINTFORMW 輝夜は大きな媚声をあげ, 背を反らして股間から潮を吹いた
             PRINTFORMW 輝夜の心に再び光が灯り始める……
@@ -17587,7 +17353,6 @@ IF TFLAG:42 == 3 && CFLAG:8099 == 0
     ENDIF
         CFLAG:8099 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;反発刻印Lv3取得 CFLAG8100
 ;-------------------------------------------------
@@ -17608,7 +17373,6 @@ IF TFLAG:44 == 3 && CFLAG:8100 == 0
     ENDIF
         CFLAG:8100 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;コマンド後のイベント集
 ;-------------------------------------------------
@@ -17649,12 +17413,10 @@ ENDIF
 IF CFLAG:5104 & 256
     TALENT:107 = 1
 ENDIF
-
 ;-------------------------------------------------
 ;イベント口上集（30, 030をキャラ番号に置換する） FLAG(TFLAG200の中身＋8100)
 ;-------------------------------------------------
 @SELF_KOJO_K30
-
 ;-------------------------------------------------
 ;料理を作る CFLAG8211
 ;屋台経営の口上を適当にごまかして移植
@@ -17689,7 +17451,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                 CALL K30_RANDAM_RYOURI_MENU
                 PRINTFORML 인데, 어때？」
                 PRINTFORMW 이거 개량의 여지가 있……을까？
-            ;豊姫が主人
+            ;토요히메が主人
             ELSEIF !RAND:8 && NO:MASTER == 53
                 PRINTFORMW 『자, 요리를 만드세요』
                 PRINTFORMW 「우읏, 그래도 사람이 지나가는 앞에서 이런 모습이라니……」
@@ -17722,7 +17484,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                 PRINTFORMW 카구야가 내쉬는 숨이 점차 뜨거워 지면서, 마침내 몸을 떨며 절정에 달했다
                 PRINTFORMW 완전히 뾰족해진 젖꼭지에서 젖이 터져 나오며, 요리 위에 쏟아졌다……
                 PRINTFORMW 「으아아아앙!　나, 나의 밀크가 요리에 섞여버렸어어어！」
-                ;絶頂経験と噴乳経験と快Ｂの珠を入手
+                ;절정경험と噴乳経験と快Ｂ의 구슬を入手
                 IF CFLAG:5100 == 1
                     EXP:2 += 1
                     EXP:5 += 1
@@ -17751,7 +17513,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                 PRINTFORMW 결국 견디지 못한 카구야는, 몸을 떨고 절정에 이르러, 힘 없이 그 자리에 무릎을 꿇었다
                 PRINTFORMW 「하아ー……아아……도시락 완성이 늦어져도 책임은 당신에게 있으니까요……」
                 PRINTFORMW 절정의 여운이 남아 있는 듯, 카구야는 뜨거운 숨을 몰아쉬면서 눈을 치뜨며 %CALLNAME:MASTER%를 바라보았다
-                ;絶頂経験と快Ｃの珠を入手
+                ;절정경험と快Ｃ의 구슬を入手
                 IF CFLAG:5100 == 1
                     EXP:2 += 1
                     JUEL:3 += 1000
@@ -17941,7 +17703,6 @@ ELSEIF TFLAG:200 == 111 && TALENT:158 == 1
         PRINTFORMW ……나중에 스스로 다시 만들어야겠다
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;食後の運動 CFLAG8212
 ;-------------------------------------------------
@@ -18053,7 +17814,6 @@ IF TFLAG:200 == 112
         CFLAG:8212 = 2
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;食後の自慰 CFLAG8213
 ;-------------------------------------------------
@@ -18170,7 +17930,6 @@ IF TFLAG:200 == 113
         CFLAG:8213 = 2
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;調教後自慰 CFLAG8251
 ;-------------------------------------------------
@@ -18216,7 +17975,7 @@ IF TFLAG:200 == 151 && TALENT:158 == 0 && TALENT:167 == 0
             ELSEIF TALENT:170
                 LOCAL:0 = 1
             ENDIF
-            ;豊姫が主人
+            ;토요히메が主人
             IF NO:MASTER == 53
                 IF TALENT:170 && CFLAG:5118 == 1
                     PRINTFORMW 「후, 쿠으, 후아아아앗♪」
@@ -18276,7 +18035,7 @@ IF TFLAG:200 == 151 && TALENT:158 == 0 && TALENT:167 == 0
                     PRINTFORMW 「아앗, 읏, 뜨거웟, 몸잇, 뜨거워욧♪」
                     PRINTFORMW 몸이 비이상적 상태에 놓여 있는 것으로의 이상감을 미끼로 카구야는 자위에 몰두했다
                 ENDIF
-            ;豊姫が主人
+            ;토요히메が主人
             ELSEIF NO:MASTER == 53
                 IF MARK:2 >= 3
                     PRINTFORMW 「앗, 하아앗, 언니 앗♪　빨리 돌아와 줘요♪」
@@ -18311,7 +18070,7 @@ IF TFLAG:200 == 151 && TALENT:158 == 0 && TALENT:167 == 0
                 PRINTFORMW 「읏, 읏, 우웃……」
                 PRINTFORMW （하앗……무슨 상스러운 모습을 하고 있는 걸까……）
                 PRINTFORMW 옷을 풀어헤친채 선정적인 모습을 드러내고 있는 자신의 모습에, 카구야는 자신의 인식을 조금씩 다시 칠하기 시작했다
-            ;豊姫が主人
+            ;토요히메が主人
             ELSEIF NO:MASTER == 53
                 IF MARK:2 >= 3
                     PRINTFORMW 「응……하앗……」
@@ -18354,7 +18113,6 @@ ELSEIF  TFLAG:200 == 151 && TALENT:158 == 1
         PRINTFORMW 카구야는 공허한 눈을 하고 조교에 의한 열을 발산하기 위해 자위에 빠져있다
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;レズプレイ CFLAG8254
 ;-------------------------------------------------
@@ -18379,7 +18137,6 @@ IF TFLAG:200 == 154
     ENDIF
 ENDIF
 [SKIPEND]
-
 ;-------------------------------------------------
 ;朝フェラ CFLAG8240
 ;-------------------------------------------------
@@ -18405,7 +18162,6 @@ IF TFLAG:200 == 140
         CFLAG:8240 = 1
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;調教後セックス CFLAG8250
 ;-------------------------------------------------
@@ -18458,7 +18214,6 @@ IF TFLAG:200 == 150
         CFLAG:8250 = 1
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;調教後夜這い　 CFLAG8258
 ;-------------------------------------------------
@@ -18481,7 +18236,6 @@ IF TFLAG:200 == 158
         CFLAG:8258 = 1
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;触手催眠中
 ;-------------------------------------------------
@@ -18531,7 +18285,6 @@ IF TFLAG:200 == 8
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;売却
 ;-------------------------------------------------
@@ -18610,7 +18363,7 @@ IF TFLAG:200 == 130
         ENDIF
         PRINTFORMW 「뭐야 이게……라니, 벌써 잊으셨나요？　공주님이에요, 공・주・님」
         PRINTFORML 「……그렇네, 목소리를 들려주면 생각 날지도 모르겠군요」
-        PRINTFORMW 豊姫は懐からリモコンを取り出し, ボタンを押した
+        PRINTFORMW 토요히메는 주머니에서 리모콘을 꺼내, 버튼을 눌렀다
         ;ボールギャグとアイマスクを持っている
         IF ITEM:31 && ITEM:30
             PRINTFORML 「오ー읏, 웃, 으웁,으우ー읏！」
@@ -18740,7 +18493,7 @@ IF TFLAG:200 == 130
         PRINTFORMW 그게 당신을 조교해서 성욕 투성이인 아가씨로 만들어 팔려고 생각한 이유』
         PRINTFORMW 『애초에, 당신을 달의 사자를 죽이면서까지 숨겼던 것은 나의 실험 자금의 돈줄로 쓰기 위해서 였어』
         PRINTFORMW 『그런 점, 제대로 생각하세요』
-        PRINTFORMW 에이린은 넌더리가 난듯한 어조로 카구야에게 열변했다。輝夜は카구야는 눈물을 머금어, 금방이라도 흘러내릴 것 같다
+        PRINTFORMW 에이린은 넌더리가 난듯한 어조로 카구야에게 열변했다。카구야는 눈물을 머금어, 금방이라도 흘러내릴 것 같다
         PRINTFORML 「너……너무해……너무하네요……그렇겠죠, 이렇게 방자한 나를 좋아해 줄 사람이 있을리가 없지요」
         PRINTFORMW 「하하……하……제길……히쿠……」
         PRINTFORML 「죽고 싶어……이제 이런 인생……싫어요」
@@ -18849,9 +18602,9 @@ IF TFLAG:200 == 130
                     PRINTFORMW 시선을 이쪽으로 향하지 않은 채 %CALLNAME:MASTER%를 부른 카구야
                     PRINTFORMW 들키기 전에 상인에게 데려가라고 했다……
                 ENDIF
-            ;助手が豊姫+永琳を入手してない
+            ;助手が토요히메+永琳を入手してない
             ;すごく変な電波が通りがかったので
-            ;豊姫が好きな人, ごめんなさい
+            ;토요히메が好きな人, ごめんなさい
             ;フェムトファイバーって便利ですね
             ELSEIF ASSI > 0 && NO:ASSI == 53 && ITEM:129 == 0
                 PRINTFORML 『저기, 주인님？』
@@ -18947,7 +18700,7 @@ IF TFLAG:200 == 130
         PRINTFORMW 「이제부터는 모코우와 사이좋게 지내 볼까, 왜냐면 %CALLNAME:MASTER%를 찾아 죽여버리는 것을 목표로 살아가면 재밌을 것 같거든요」
     ;それ以外
     ELSE
-        ;絶頂経験150以上
+        ;절정경험150以上
         IF EXP:2 >= 150
             PRINTFORMW 「나 참……당신은 나에게 무엇을 하고 싶은 거에요？」
             PRINTFORMW 「나에게 이런 이런 모욕을 준 죄는 커요, 각오해 두세요」
@@ -18962,8 +18715,6 @@ IF TFLAG:200 == 130
         ENDIF
     ENDIF
 ENDIF
-
-
 ;-------------------------------------------------
 ;酒恥肉倫（博麗神社・参拝客の男達が相手） 
 ;酒恥肉倫（紅魔館・メイド妖精達が相手） 
@@ -19106,11 +18857,9 @@ IF TFLAG:200 == 9
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;記憶消去薬　CFLAG4900
 ;-------------------------------------------------
-
 IF TFLAG:200 == 324
     ;妖精になっている
     IF TALENT:200 == 1
@@ -19118,7 +18867,6 @@ IF TFLAG:200 == 324
     ENDIF
     CFLAG:(LOCAL@SELF_KOJO):5112 = CFLAG:5112
 ENDIF
-
 ;-------------------------------------------------
 ;触手陵辱　CFLAG:8525
 ;-------------------------------------------------
@@ -19179,7 +18927,6 @@ ELSE
         ENDIF
     ENDIF
 ENDIF
-
 ;=============================================================================
 ;夜イベント拡張テンプレなるもの
 ;=============================================================================
@@ -19191,7 +18938,6 @@ IF TFLAG:200 == 400
     PRINTFORMW 「그러니까 오늘은 함께 자줬으면 좋겠어요……」
     PRINTFORMW 「후와아ー……그럼, 안녕히 주무세요……쿠울……」
 ENDIF
-
 ;-------------------------------------------------
 ;眠っている主人に勝手にエッチ口上
 ;-------------------------------------------------
@@ -19227,7 +18973,6 @@ IF TFLAG:200 == 401
         PRINTFORMW 「이것……방해에요……하아, %CALLNAME:MASTER%……어서 일어나……아아, 하우……」
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;幼稚持ちのキャラの甘えん坊の添い寝。
 ;反抗的, 気丈, プライド高い持ちのキャラは地の文がツンデレ風味になるので注意してください
@@ -19236,7 +18981,6 @@ IF TFLAG:200 == 402
     PRINTFORMW 「%CALLNAME:MASTER%가 매일 혼자서 잠자리에 드는 것은 서운하지 않을까, 라고 생각해서 왔어요」
     PRINTFORMW 「%CALLNAME:MASTER%도 이것으로 훌륭한 귀족의 반열이네」
 ENDIF
-
 ;-------------------------------------------------
 ;添い寝失敗　幼稚キャラのみ書き込む。でも幼児退行でも呼び出されるので, 大人のお姉さんでも一応
 ;-------------------------------------------------
@@ -19250,7 +18994,6 @@ IF TFLAG:200 == 403
         PRINTFORMW 「언니와 함께 자고싶었는데……무서워요오……」
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;嫁との一夜口上。相愛を持った時の専用の口上です。レアの部類です
 ;-------------------------------------------------
@@ -19271,7 +19014,6 @@ IF TFLAG:200 == 404
         PRINTFORMW 카구야는 쑥스러워 얼굴을 숙였다, 뺨은 빨갛게 물들어 있다
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;通常の夜這い関連。ここにはV行為の無い可能性のある無難な口上を書き込んでください
 ;-------------------------------------------------
@@ -19297,7 +19039,6 @@ IF TFLAG:200 == 405
         PRINTFORMW 「그러니까, %CALLNAME:MASTER%도 나를 팔 생각하지 말아줘……」
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;３Ｐ関連。レズっ気Lv1以上で, 相性の良い奴隷（101以上のこと）を連れてきて３Ｐをねだります
 ;相手の奴隷は{M}の中に格納されています。例えば霊夢なら以下のように組めば相手によって条件分岐できます
@@ -19420,7 +19161,6 @@ IF TFLAG:200 == 406
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;襲撃レズプレイ
 ;レズッ気Lv3以上で, 相性の良い奴隷がいれば襲撃してレズプレイします。
@@ -19436,7 +19176,6 @@ IF TFLAG:200 == 407
         PRINTFORMW 「둘이서 함께 기분 좋게 됩시다♪」
     ENDIF
 ENDIF
-
 ;※相手か, こちらがふたなりだと, セックスへと発展します。
 ;口上の量が増えてしまい面倒なことになるので, こちら側は気に入った方以外放置しましょう
 ;もしこちら側を埋めるつもりなら, 上のIF～ENDIFの7行はばっさり消してください
@@ -19464,7 +19203,6 @@ IF TFLAG:200 == 407
         ENDIF
     ENDIF
 ENDIF
-
 ;-------------------------------------------------
 ;乱交口上　奴隷が4人押しかけてきたときの口上です。
 ;4人全員の口上を参照しますので１行だけで済ませ, 括弧の前には名前を入れて無難な内容を挿入してください。
@@ -19475,7 +19213,6 @@ ENDIF
 IF TFLAG:200 == 408
     PRINTFORMW 카구야「저기……나부터 먼저 안아주지 않는 거야？」
 ENDIF
-
 ;-------------------------------------------------
 ;覗き見オナニー　奴隷と主人の行為を覗き見しておかずにします。恋慕が付いていたらその場で嫉妬オナニーになります
 ;一応%CALLNAME:GET_CHARA_G()%で相手の名前を参照できますが, 相手は相性の良い奴隷に限らないのでおすすめはできません
@@ -19489,7 +19226,7 @@ IF TFLAG:200 == 409
         ;部屋に帰っておかずにオナニー
         ELSE
             PRINTFORMW 「앗, 아읏, 히잇……몸이……뜨거……뜨거웟……」
-            PRINTFORMW 「あんなの……ふあぁ♪　見るんじゃなかったわ……」
+            PRINTFORMW 「저런 거……흐아아♪　보지 말걸……」
         ENDIF
     ;貞操帯が付いている場合の口上。普通のプレイでは滅多に表示されることは無いと思います。
     ELSE
@@ -19504,8 +19241,6 @@ IF TFLAG:200 == 409
         ENDIF
     ENDIF
 ENDIF
-
-
 ;-------------------------------------------------
 ;奴隷解放時
 ;-------------------------------------------------
@@ -19556,7 +19291,6 @@ IF TFLAG:200 == 196
         ENDIF
     ENDIF
 ENDIF
-
 ;反発刻印Lv3持ってるけど陥落もしてる
 ;殺そうとするけど思い留まる
 IF TFLAG:200 == 192
@@ -19595,7 +19329,6 @@ IF TFLAG:200 == 191
     PRINTFORMW 「내가 머무는 집……그래, 영원정에서 아주 적지만 돈을 몰래 훔쳐왔어요」
     PRINTFORMW 「괜찮다면 이 돈 보태서 쓰세요」
 ENDIF
-
 ;-------------------------------------------------
 ;手遅れ
 ;幽閉から派生, 触手に吸収される, ちなみに恋慕か親愛が付いてる場合のみ口上は発生
@@ -19609,12 +19342,11 @@ IF TFLAG:200 == 256
     PRINTFORMW （그럼……안녕……ㄴ……ㅏ……이젠……아무것도……생각……나……지……）
     PRINTFORMW 이것이 카구야의 인간으로서의 마지막 의사가 됐다……
 ENDIF
-
 ;-------------------------------------------------
 ;触手生贄
 ;-------------------------------------------------
 IF TFLAG:200 == 257
-    ;豊姫が主人+恋慕
+    ;토요히메が主人+恋慕
     IF TALENT:150 && NO:MASTER == 53
         PRINTFORMW 『……』
         PRINTFORML 「언……니？」
@@ -19680,7 +19412,6 @@ IF TFLAG:200 == 257
         PRINTFORMW 그 몸은 양분을 짜내기만 하는 존재일 뿐……
     ENDIF
 ENDIF
-
 ;=============================================================================
 ;売却後エピソード
 ;=============================================================================
@@ -19693,12 +19424,9 @@ ENDIF
 ;売却するとキャラデータが削除されるので, どのキャラを売ってどのエピソードになるかを削除される前にFLAGに記録しておく
 ;RETURNに入力したエピソード番号が記録される
 ;RETURN 0にした場合はエピソード番号は記録されない（売却後エピソードが無い状態と同じになる）
-
 ;対象を退避してTFLAG:710を対象にする。
 LOCAL = TARGET
 TARGET = TFLAG:710
-
-
 ;薬物刻印Lv3
 IF MARK:3 >= 3
     LOCAL:1 = 4
@@ -19708,7 +19436,7 @@ ELSEIF TALENT:146
 ;妖精時＆洗脳モード＆阿求を買ってない
 ELSEIF TALENT:200 == 1 && CFLAG:5112 >= 1 && ITEM:148 == 0
     LOCAL:1 = 7
-;豊姫が助手の状態で売却
+;토요히메が助手の状態で売却
 ELSEIF ASSI > 0 && NO:ASSI == 53
     LOCAL:1 = 9
 ;Ａ感覚がLv5以上+Ａ拡張経験が5以上
@@ -19727,18 +19455,15 @@ ELSEIF MARK:9 == 3
 ELSE
     LOCAL:1 = 5
 ENDIF
-
 ;退避した対象を元に戻す
 TARGET = LOCAL
 RETURN LOCAL:1
-
-
-@SHOW_SLAVE_AFTERWARDS_KX1, ARG, ARG:1
+@SHOW_SLAVE_AFTERWARDS_K30, ARG, ARG:1
 ;エピソード表示
 ;関数内で変更禁止変数    Y(エンディング番号に使用)
 ;エピソード番号0の場合, この関数は呼ばれないはず
 DRAWLINE
-PRINTFORMW 　輝夜のその後
+PRINTFORMW 　카구야의 그 후
 DRAWLINE
 ;永琳が既に主人の手元を介した場合
 IF ARG == 9 && ITEM:129
@@ -19850,7 +19575,7 @@ ELSEIF ARG == 8
     PRINTFORMW ……비디오는 여기서 끝났다
     PRINTFORMW 일부분의 음성이 계속 끊어지는 것을 보니, 아마도 촬영 기구의 상태가 나빴겠지
     PRINTFORMW 마지막에 카구야가 주사를 맞고 있었지만 정말 괜찮은 걸까……
-;永琳をまだ手に入れてない&豊姫が助手のまま売却
+;永琳をまだ手に入れてない&토요히메が助手のまま売却
 ELSEIF ARG == 9
     PRINTFORMW 결국, 그때부터 카구야를 구속하고 있던 밧줄은 끊어졌다
     PRINTFORMW 하지만, 줄이 끊어지는 동안, 카구야의 정신은 쾌락에 의해 완전히 불 타버린것 같다……
@@ -19878,8 +19603,6 @@ ELSE
 ENDIF
 DRAWLINE
 RETURN 0
-
-
 ;-------------------------------------------------
 ;エンゲージリング使用時
 ;-------------------------------------------------
@@ -19887,7 +19610,6 @@ RETURN 0
 ;    PRINTFORMW 
 ;ENDIF
     TFLAG:200 = 0
-
 ;-------------------------------------------------
 ;ランダム料理メニュー
 ;一部の口上で使用
@@ -20059,7 +19781,6 @@ ELSEIF LOCAL:1 == 18
 ENDIF
 PRINTFORM 味付けした料理
 RETURN 0
-
 ;-------------------------------------------------
 ;@精神崩壊時の口上
 ;-------------------------------------------------
@@ -20086,7 +19807,6 @@ ELSE
     ENDIF
 ENDIF
 RETURN 0
-
 ;-------------------------------------------------
 ;@酔いレベル判定
 ;LOCAL変数は持ってくるのが非推奨だと思うので, こちら側で計算
@@ -20102,7 +19822,6 @@ ELSEIF TALENT:221
 ENDIF
 CFLAG:5117 = (BASE:ARG:8 *100) / LOCAL:0
 RETURN 0
-
 ;-------------------------------------------------
 ;@狂気時の口上
 ;-------------------------------------------------
@@ -20274,8 +19993,6 @@ ELSE
         ENDIF
     ENDIF
 ENDIF
-
-
 ;道具取り付け系の口上
 IF LOCAL:1 == 1
     LOCAL:0 = RAND:3
@@ -20327,7 +20044,6 @@ ELSEIF LOCAL:1 == 4
     LOCAL:1 = 0
 ENDIF
 RETURN 0
-
 ;-------------------------------------------------
 ;@奴隷エンディング関係
 ;-------------------------------------------------
@@ -20539,7 +20255,7 @@ IF NO:MASTER == 53
     PRINTFORMW 『그건 그렇지만。그, 그마안……아앗……！』
     PRINTFORML 
     PRINTFORMW 그리고, 달의 수도에 빛이 돌아오는 일은 없었다……
-    PRINTFORMW 　　　　　　　　―― Ending No.130 EX (豊姫×輝夜エンド)
+    PRINTFORMW 　　　　　　　　―― Ending No.130 EX (토요히메×카구야 엔드)
 ;妖精のまま記憶焼失した
 ;この後もゲームが続くこととか微塵も考えてないよ！
 ;一応フォローはするけど穴がとても多いよ！
@@ -21091,11 +20807,9 @@ RETURN 0
 @SENTAKUSHI_K30,ARG:0
 INPUT
 IF RESULT > (ARG:0 - 1)
-    PRINTL 옳바른 입력이 아닙니다
+    PRINTL 올바른 입력이 아닙니다
     RESTART
 ELSE
     RETURN RESULT
 ENDIF
-
 ;3択用
-
