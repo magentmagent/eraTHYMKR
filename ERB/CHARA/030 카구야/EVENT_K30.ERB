@@ -2942,7 +2942,7 @@ IF CFLAG:5121 == 1
     EX:12 += 1
 ENDIF
 ;触手調教中＆豊姫が主人で依姫が助手
-IF NO:MASTER == 53 && NO:ASSI == 54 && TEQUIP:90
+IF NO:MASTER == 53 && ASSINO() == 54 && TEQUIP:90
     ;初めて
     IF CFLAG:6004 == 0
         PRINTFORMW 『저기 요리히메. 당신의 능력을 사용해 공주님을 달래 줄래?』
@@ -12000,27 +12000,27 @@ IF SELECTCOM == 520
             ELSEIF ABL:1 >= 3 && ABL:35 >= 2 && (CFLAG:9520 <= 2 || FLAG:11 == 2)
                 ;抑圧
                 IF TALENT:32 == 1
-                    PRINTFORML 「あっ, んっ, ううっ……！」
-                    PRINTFORML 「하아……하아……하아っ……」
-                    PRINTFORMW 膣内を擦られる強い快楽に, 輝夜は歯を食いしばって表面上は耐えていても
-                    PRINTFORMW 内側から精神を蝕まれていった
+                    PRINTFORML 「앗, 응, 으읏……！」
+                    PRINTFORML 「하아……하아……하앗……」
+                    PRINTFORMW 질 내를 긁는 강한 쾌락에, 카구야는 이를 악물고 견디는 것 같지만
+                    PRINTFORMW 속으로는 정신이 침식돼 갔다
                 ELSE
-                    PRINTFORML 「ふぁ, ぁ, んぅっ……」
-                    PRINTFORML 「あっ, ふや앗, んっ, あうんっ……♪」
-                    PRINTFORMW 触手の虜となった輝夜は, 触手のぬるぬるした感触に心地いい浮遊感を感じながら媚声をあげた
-                    PRINTFORMW 口の端からは涎が垂れている
+                    PRINTFORML 「흐아, 아, 으응……」
+                    PRINTFORML 「앗, 흐얏, 응, 아응……♪」
+                    PRINTFORMW 촉수의 포로가 된 카구야는 촉수의 칙칙한 느낌에 기분 좋은 부유감을 느끼며 신음을 울렸다
+                    PRINTFORMW 입 끝에선 침이 늘어져 있다
                 ENDIF
                 CFLAG:9520 = 3
             ;それ以外
             ELSEIF CFLAG:9520 <= 1 || FLAG:11 == 2
                 ;抑圧
                 IF TALENT:32 == 1
-                    PRINTFORML 「……！？　ひっ……んんっ……やめっ……」
-                    PRINTFORML 挿入されている触手が壁を擦り始めたことを感じた輝夜は
-                    PRINTFORMW 恐怖で額に冷や汗を流した
+                    PRINTFORML 「……！？　힛……으응……그만……」
+                    PRINTFORML 삽입된 촉수가 벽을 긁기 시작한 걸 느낀 카구야는
+                    PRINTFORMW 공포로 이마에서 식은 땀을 흘렸다
                 ELSE
-                    PRINTFORML 「하아……んぅ！？　いやっ, んんぅ！？」
-                    PRINTFORMW 膣内を擦る感覚に翻弄され始めたのか, 輝夜はただ声をあげて身体を揺らしていた
+                    PRINTFORML 「하아……으응！？　싫엇, 으응！？」
+                    PRINTFORMW 질 내를 긁는 감각에 농락되기 시작했는지, 카구야는 그저 소리 높이며 몸을 흔들었다
                 ENDIF
                 CFLAG:9520 = 2
             ENDIF
@@ -12035,13 +12035,13 @@ IF SELECTCOM == 520
             IF TALENT:150 && ABL:1 >= 3 && ABL:35 >= 2 && (CFLAG:9520 <= 4 || FLAG:11 == 2)
                 LOCAL:0 = RAND:2
                 IF LOCAL:0 == 0
-                    PRINTFORML 「んぁ앗……くぅんっ♪　あっあぁ……んぁああああっ♪」
-                    PRINTFORML 触手が膣内を擦る度に, 輝夜は声をあげて身体を痙攣させた
-                    PRINTFORMW 股間からは愛液が滴り落ちている
+                    PRINTFORML 「응아앗……끄응♪　아아앗……응아아아아앗♪」
+                    PRINTFORML 촉수가 질 내를 긁을 때마다, 카구야는 소리를 높이며 몸을 떨었다
+                    PRINTFORMW 고간에서 애액이 방울져 떨어지고 있다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORML 「ん하아아あああっ！？　ひゃめぇ, ひゃぅんっ♪」
-                    PRINTFORML 「こころがくだけちゃうよぉ……♪」
-                    PRINTFORMW 輝夜は腰をびくびくと震わせて言葉にならない声を張り上げた
+                    PRINTFORML 「응하아아아아앗！？　그먄, 햐아응♪」
+                    PRINTFORML 「마음이 부서질 것 같아……♪」
+                    PRINTFORMW 카구야는 허리를 덜덜 떨며 말로 표현할 수 없는 소리를 질렀다
                 ENDIF
                 ;侵食のパラメーターが上昇します
                 IF CFLAG:5100 == 1
@@ -12052,13 +12052,13 @@ IF SELECTCOM == 520
             ELSEIF TALENT:150 && (CFLAG:9520 <= 3 || FLAG:11 == 2)
                 LOCAL:0 = RAND:2
                 IF LOCAL:0 == 0
-                    PRINTFORML 「하아……ぅんっ……んぁぁ！？」
-                    PRINTFORML 「ひゃ앗……ひゃめぇ！　壊れるぅ！？」
-                    PRINTFORMW 敏感な部分を責められる事によって輝夜は腰を跳ねさせて艶やかな声をあげた
+                    PRINTFORML 「하아……으응……응아아！？」
+                    PRINTFORML 「햐앗……그만헤에！　부서져어！？」
+                    PRINTFORMW 민감한 부위를 괴롭히자 카구야는 허리를 들썩이며 요염한 소리를 냈다
                 ELSEIF LOCAL:0 == 1
-                    PRINTFORML 「んっ……앗……んんぅ♪」
-                    PRINTFORML 「優しくっ……ん앗……してぇ……♪」
-                    PRINTFORMW 弱点を責められることによる快楽で, 輝夜はだらしない表情をして口から涎を垂らした
+                    PRINTFORML 「응……앗……으응♪」
+                    PRINTFORML 「부드럽게……응앗……해 줘……♪」
+                    PRINTFORMW 약점을 공략당하는 쾌감에, 카구야는 얼빠진 표정을 하며 입에서 침을 흘렸다
                 ENDIF
                 ;侵食のパラメーターが上昇します
                 IF CFLAG:5100 == 1
@@ -12069,10 +12069,10 @@ IF SELECTCOM == 520
             ELSEIF ABL:1 >= 3 && ABL:35 >= 2 && (CFLAG:9520 <= 2 || FLAG:11 == 2)
                 ;抑圧
                 IF TALENT:32 == 1
-                    PRINTFORML 「하아……っ……ぅんっ……」
-                    PRINTFORML 「んっ……んぅっ……んんぅ……」
-                    PRINTFORMW 心とは反対に, 触手の行為に悦びを感じるようになっていた身体は
-                    PRINTFORMW 触手が膣を擦る度に腰を跳ねさせ, 股間から愛液を垂らした
+                    PRINTFORML 「하아……읏……으응……」
+                    PRINTFORML 「응……응으읏……으응……」
+                    PRINTFORMW 마음과는 달리, 촉수 행위에 즐거움을 느끼게 된 몸은
+                    PRINTFORMW 촉수가 질을 애무할 때마다 허리를 들썩이며 고간에서 애액을 흘렸다
                     ;侵食のパラメーターが上昇します
                     IF CFLAG:5100 == 1
                         PALAM:31 += 50
@@ -12080,17 +12080,17 @@ IF SELECTCOM == 520
                 ELSE
                     ;欲情がLv4以上
                     IF PALAM:13 >= PALAMLV:4
-                        PRINTFORML 「ああっ, 아읏, ひゃっ, はっ, ぅんっ……」
-                        PRINTFORMW 輝夜は身体を何度も痙攣させて, 半開きになった口から粘り気のある唾液を垂らしている
+                        PRINTFORML 「아앗, 아읏, 햐앗, 하앗, 으응……」
+                        PRINTFORMW 카구야는 몸을 자꾸 떨며, 반쯤 열린 입에서 끈적한 침을 흘리고 있다
                         ;侵食のパラメーターが上昇します
                         IF CFLAG:5100 == 1
                             PALAM:31 += 50
                         ENDIF
                     ;それ以外
                     ELSE
-                        PRINTFORML 「ああっ, んっ……はっ, 아읏……♪」
-                        PRINTFORML 「らめっ, こんなことでぇっ……ひゃぅんっ♪」
-                        PRINTFORMW 輝夜は熱が籠り始めている目をして, 快楽に対して悦びの声をあげ始めた
+                        PRINTFORML 「아앗, 응……하앗, 아읏……♪」
+                        PRINTFORML 「안 댓, 그런 데……햐으응♪」
+                        PRINTFORMW 카구야는 열띤 눈을 하고, 쾌락에 기쁨의 목소리를 높이기 시작했다
                         ;侵食のパラメーターが上昇します
                         IF CFLAG:5100 == 1
                             PALAM:31 += 50
@@ -12102,21 +12102,21 @@ IF SELECTCOM == 520
             ELSEIF CFLAG:9520 <= 1 || FLAG:11 == 2
                 ;抑圧
                 IF TALENT:32 == 1
-                    PRINTFORML 「ひっ, んっ……やめっ……」
-                    PRINTFORMW 輝夜は頬を引きつらせている
+                    PRINTFORML 「힛, 응……그만……」
+                    PRINTFORMW 카구야는 뺨을 부여잡고 괴로워하고 있다
                 ELSE
                     ;欲情がLv4以上
                     IF PALAM:13 >= PALAMLV:4
-                        PRINTFORML 「……っ, 하아……ぁんっ……하아……っ」
-                        PRINTFORMW 欲情し頬を赤くしている輝夜は, 弱点から来る快楽で息を荒くしている
+                        PRINTFORML 「……끄, 하아……아응……하아……읏」
+                        PRINTFORMW 욕정에 뺨을 붉힌 카구야는, 약점에서 오는 쾌락에 숨이 거칠어졌다
                         ;侵食のパラメーターが上昇します
                         IF CFLAG:5100 == 1
                             PALAM:31 += 50
                         ENDIF
                     ;それ以外
                     ELSE
-                        PRINTFORML 「んっ……앗……ひぃっ……」
-                        PRINTFORMW 快楽を堪え切れないのか, 輝夜は時々切なそうな声を漏らした
+                        PRINTFORML 「응……앗……히잇……」
+                        PRINTFORMW 쾌락을 참지 못 하는지, 카구야는 때때로 아쉬운 듯한 소리를 흘렸다
                     ENDIF
                 ENDIF
                 CFLAG:9520 = 2
@@ -12155,29 +12155,29 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                     PRINTFORMW 에이린이 약점을 쓸 때마다 카구야는 달콤한 소리를 흘렸다.
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 「んぁう！　妹紅……この中が, 熱くなってきたわ……」
-                    PRINTFORML 『本当か？　ならもっと熱くしてやるよ』
-                    PRINTFORML 「ふぁぁ……嬉しいわぁ……」
-                    PRINTFORMW 輝夜は歓喜の表情を浮かべて妹紅の指を受け入れている
+                    PRINTFORML 「응아으！　모코우……이 안이, 뜨거워졌어……」
+                    PRINTFORML 『정말인가？　그럼 더 뜨겁게 해 주지』
+                    PRINTFORML 「흐아아……행복해……」
+                    PRINTFORMW 카구야는 환희의 표정으로 카구야 손가락을 받아들이고 있다
                 ELSE
-                    PRINTFORML 「んひゃっ！　%CALLNAME:MASTER%……そこ, もっとやって……」
-                    PRINTFORMW 輝夜は弛ませた表情で快楽を感じ取っている
+                    PRINTFORML 「응햣！　%CALLNAME:MASTER%……거기, 더 해 줘……」
+                    PRINTFORMW 카구야는 느슨해진 표정으로 쾌락을 느끼고 있다
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 ;調教者が永琳
                 IF NO:PLAYER == 29
-                    PRINTFORML 「ふぁぁぁん！　永琳, もっと擦ってぇ！　もっと, もっとぉ！」
-                    PRINTFORML 『気持ちよさそうね……もっと擦ってあげるわ』
-                    PRINTFORMW 永琳が弱点を擦る度に輝夜は黒い髪を振り乱しながら身体を跳ねさせた
+                    PRINTFORML 「흐아아앙！　에이린, 더 문질러 줘！　좀 더, 좀 더어！」
+                    PRINTFORML 『기분 좋나 보네요……더 문질러 줄게요』
+                    PRINTFORMW 에이린이 약점을 문지를 때마다 카구야는 검은 머리를 흩날리며 몸을 펄떡였다
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 「あぁん！　すごい, すごいのっ！　こんな感覚, 癖になっちゃう！」
-                    PRINTFORML 『ここまでなるか, ふふっ……輝夜, お前は指だけでイっちゃう変態なのか？』
-                    PRINTFORML 「하아い！　そうですぅ！　もう指だけでイっちゃうのに何も抵抗も感じません！」
-                    PRINTFORMW 輝夜は華奢な身体を跳ねさせて喘ぎ声を上げながら激しく乱れた
+                    PRINTFORML 「아앙！　굉장해, 굉장해엣！　이 감각, 버릇 들 것 같아！」
+                    PRINTFORML 『이렇게까지 되다니, 후훗……카구야, 너 손가락만으로 가 버리는 변태인가？』
+                    PRINTFORML 「네！　맞아요！　이제 손가락만으로 가도 전혀 거리낄 게 없어요！」
+                    PRINTFORMW 카구야는 가녀린 몸을 펄떡이며 격렬한 신음과 함께 음탕함을 표출했다
                 ELSE
-                    PRINTFORML 「하아아っ！　そこっ, もっと擦ってぇ♪」
-                    PRINTFORMW 輝夜は全身を赤らめながら蕩けた表情で快楽を貪った
+                    PRINTFORML 「하아앗！　거기, 더 문질러 줘엇♪」
+                    PRINTFORMW 카구야는 온몸을 붉힌 채 녹을 듯한 표정으로 쾌락을 취했다
                 ENDIF
             ENDIF
             CFLAG:9600 = 4
@@ -12187,36 +12187,36 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             IF TALENT:32 == 1
                 ;調教者が永琳
                 IF NO:PLAYER == 29
-                    PRINTFORML 「하아……はあ……ちょっと, そこ感じすぎちゃ, うぅん！」
-                    PRINTFORML 『ここ気持ちいいでしょ？　もっと擦ってあげる』
-                    PRINTFORML 「や, やぁめ, ふぁぁ！　ひゃぁん！」
-                    PRINTFORMW 永琳が弱点を擦る度に輝夜は甘い声を漏らした
+                    PRINTFORML 「하아……하아……잠깐, 거기 너무 느껴, 으응！」
+                    PRINTFORML 『여기가 기분 좋죠？　더 문질러 줄게요』
+                    PRINTFORML 「그, 그마안, 흐아아！　햐앙！」
+                    PRINTFORMW 에이린이 약점을 후빌 때마다 카구야는 달콤한 신음을 흘렸다
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 「あ, 頭の中が真っ白になってきちゃった……ぁ」
-                    PRINTFORML 『そろそろ我慢するのをやめたらどうだ？』
-                    PRINTFORML 「嫌よ, 私はまだ大丈夫……大丈夫よ」
-                    PRINTFORMW 輝夜は首を横に振って否定している
+                    PRINTFORML 「아, 머릿속이 새하얘져……」
+                    PRINTFORML 『슬슬 그만 참는 게 어때？』
+                    PRINTFORML 「싫어, 난 아직 괜찮아……괜찮다고」
+                    PRINTFORMW 카구야는 고개를 저으며 부정하고 있다
                 ELSE
-                    PRINTFORML 「駄目ぇ, そこっ, 敏感すぎるからぁ, あぁああん！」
-                    PRINTFORMW 輝夜は喘ぎ声を上げながらも感じてしまっていることを否定しているようだ
+                    PRINTFORML 「안 돼에, 거기, 너무 민감하니까, 아아아앙！」
+                    PRINTFORMW 카구야는 신음하면서도 느끼는 걸 부정하는 것 같다
                 ENDIF
             ELSE
                 ;調教者が永琳
                 IF NO:PLAYER == 29
-                    PRINTFORML 「あふぅ……えい, りん……もうだめぇ……意識が……意識がぁ……」
-                    PRINTFORML 『あらあら, 擦っただけでイってしまうの？』
-                    PRINTFORML 「だって……だってぇ……んぁぁ！　そこ……敏感すぎるのよぉ……ひゃぁん！」
-                    PRINTFORMW 輝夜は蕩けた顔をして永琳が弱点を擦る度に身体を跳ねさせて感じている
+                    PRINTFORML 「아흐으……에이, 린……더는 안 돼……정신이……정신이……」
+                    PRINTFORML 『어머, 문지르는 것만으로 가는 거예요？』
+                    PRINTFORML 「그게……그게……응아아！　거기……너무 민감해서……햐앙！」
+                    PRINTFORMW 카구야는 느슨한 표정을 한 채 에이린이 약점을 긁을 때마다 몸을 움찔거렸다
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 「하아う！　だめ……これ, 耐えられない……っ！」
-                    PRINTFORML 『身体がビクビクしてるな, ちょっと弾いてやるか』
-                    PRINTFORML 「ふぁ, ぁぁん！　くぅん！　こ, これくらい, んぅ！　耐えてみせるんだからぁ……」
-                    PRINTFORMW 輝夜は何も抵抗をせず, ただゆっくりと腰を動かした
+                    PRINTFORML 「하아으！　안 돼……거기, 못 참겠어……！」
+                    PRINTFORML 『몸이 움찔거리네, 좀 문질러 볼까』
+                    PRINTFORML 「흐아, 아앙！　끄응！　이, 이 정도는, 으응！　견뎌낼 거야……」
+                    PRINTFORMW 카구야는 전혀 저항하지 않고, 그저 천천히 허리를 움직였다
                 ELSE
-                    PRINTFORML 「んぁん！　やめてぇ！　私, おかしくなっちゃいそうなのっ！　ひゃぁん！」
-                    PRINTFORMW 輝夜は蕩けた顔をしながら身体を跳ねさせて快楽を受け入れている
+                    PRINTFORML 「응아응！　그만해에！　나, 이상해질 것 같아！　햐앙！」
+                    PRINTFORMW 카구야는 풀어진 얼굴로 몸을 움찔거리며 쾌락을 받아들이고 있다
                 ENDIF
             ENDIF
             CFLAG:9600 = 3
@@ -12226,34 +12226,34 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             IF TALENT:32 == 1
                 ;調教者が永琳
                 IF NO:PLAYER == 29
-                    PRINTFORML 「どうして同じところばかり擦るのよ……ぁぁ……」
-                    PRINTFORML 『こういうやり方もあるのよ, まあ直に分かるわ』
-                    PRINTFORMW 弱点ばかり責められているので輝夜は必死に堪えている
+                    PRINTFORML 「왜 같은 곳만 쑤시는 거야……아아……」
+                    PRINTFORML 『이런 방식도 있어요, 뭐 직접적으로 알 거예요』
+                    PRINTFORMW 약점만 후비는 것에 카구야는 필사적으로 버티고 있다
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 『気持ちいいか？　私も少しは上手くなったと思うんだが』
-                    PRINTFORML 「くぅ……何ともないじゃないの……っ！」
-                    PRINTFORMW 輝夜は身を震わせながらも何とかして堪えている
+                    PRINTFORML 『기분 좋나？　내가 보기에도 좀 잘 돼 가는 것 같은데』
+                    PRINTFORML 「끄으……아무렇지도 않아……읏！」
+                    PRINTFORMW 카구야는 몸을 떨면서도 어떻게든 버티고 있다
                 ELSE
-                    PRINTFORML 「弱点？　ある訳無いじゃないの, 何を馬鹿なことを……」
-                    PRINTFORMW 輝夜は微かに息を荒くしている
+                    PRINTFORML 「약점？　있을 리가 없잖아, 무슨 헛수고를……」
+                    PRINTFORMW 카구야는 희미하게 숨을 몰아 쉬고 있다
                 ENDIF
             ELSE
                 ;調教者が永琳
                 IF NO:PLAYER == 29
-                    PRINTFORML 「ふぅぅ……くぅ……うぅん……」
-                    PRINTFORML 『ちょっと顔赤くなってきたんじゃない？』
-                    PRINTFORML 「い, やぁ……そんな訳ないの, んぅ！　無いのよ……」
-                    PRINTFORMW 輝夜は無意識の内に快楽を受け入れてぐったりとして頬を赤らめている
+                    PRINTFORML 「흐으으……끄으……으응……」
+                    PRINTFORML 『좀 얼굴이 붉어졌네요？』
+                    PRINTFORML 「아, 냐……그럴 리 없어, 으응！　없다고……」
+                    PRINTFORMW 카구야는 무의식 중에 쾌감을 받아 미약하게 뺨을 붉히고 있다
                 ;調教者が妹紅
                 ELSEIF NO:PLAYER == 31
-                    PRINTFORML 「ふぁう！　くぅぅ……この感覚, 何なのよ」
-                    PRINTFORML 『気持ちよくなってきたんだろう？　そろそろ正直になろうじゃないか』
-                    PRINTFORMW 「嫌よ……どうして身体がこんなに熱くなっちゃうの……」
-                    PRINTFORMW 輝夜は弱点を擦られていくごとに身体を赤く染めて火照らせていった
+                    PRINTFORML 「흐아으！　끄으으……이 감각, 뭐야」
+                    PRINTFORML 『기분 좋게 됐나？　슬슬 정직해지지 않을까』
+                    PRINTFORMW 「싫어…… 왜 이렇게 몸이 뜨거운 거야……」
+                    PRINTFORMW 카구야는 약점을 긁힐 때마다 몸을 붉게 물들인 채 열기를 띠었다
                 ELSE
-                    PRINTFORML 「ひ앗……弱点の意味, 分かってきたわ」
-                    PRINTFORMW 輝夜は頬を赤らめてはいるが平然を装っている
+                    PRINTFORML 「히앗……약점의 의미를, 알 것 같아」
+                    PRINTFORMW 카구야는 뺨을 붉히고는 있지만, 태연한 척하고 있다
                 ENDIF
             ENDIF
             CFLAG:9600 = 2
@@ -12267,18 +12267,18 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             IF TALENT:TARGET:0 == 1
                 ;恋慕
                 IF TALENT:150
-                    PRINTFORMW 「んっ, んんっ, あふっ……」
-                    PRINTFORMW 輝夜は未知の感覚を受け入れ上掠った声を漏らしている
-                    PRINTFORMW これなら開発する甲斐はあるだろう
-                    PRINTFORMW そう思った%CALLNAME:MASTER%は膣内を擦り回って馴染ませた……
+                    PRINTFORMW 「응, 으응, 아흣……」
+                    PRINTFORMW 카구야는 미지의 감각에 스치는 듯한 목소리를 흘리고 있다
+                    PRINTFORMW 이렇다면 개발하는 보람이 있을 것이다
+                    PRINTFORMW 그렇게 여긴 %조사처리(CALLNAME:MASTER, "은")% 질 내를 긁으며 길들였다……
                 ;それ以外
                 ELSE
-                    PRINTFORMW 挿れた物を膣のより奥へと挿し入れていった
-                    PRINTFORMW 「くっ, ぐうっ……もうそろそろ抜いてくれない？」
-                    PRINTFORML 輝夜は焦った表情を浮かべて抜くようにお願いしたが
-                    PRINTFORMW %CALLNAME:MASTER%はそれにお構いなくより深くへと挿入した
-                    PRINTFORMW 「ああっ, ぐっ, ひいっ……あっ, あああ！」
-                    PRINTFORMW もう充分満足したので挿れた物を抜くと, そこには輝夜の破瓜の血が付いていた……
+                    PRINTFORMW 삽입된 걸 질 깊숙한 곳까지 꽂아 넣었다
+                    PRINTFORMW 「끄, 끄읏……슬슬 빼지 않을래？」
+                    PRINTFORML 카구야는 초조한 표정으로 빼라고 부탁했지만
+                    PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 그에 아랑곳 않고 가장 깊은 곳까지 넣었다
+                    PRINTFORMW 「아앗, 끄, 히익……앗, 아아아！」
+                    PRINTFORMW 충분히 만족해서 삽입된 걸 빼자, 거기엔 카구야의 파과혈이 묻어 있었다……
                 ENDIF
                     CFLAG:9004 = 1
                     RETURN 0
@@ -12286,14 +12286,14 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             ELSE
                 ;恋慕
                 IF TALENT:150
-                    PRINTFORMW 「あっ, あっ, ひゃぅん！　指なのにすっごく感じちゃうぅ！」
+                    PRINTFORMW 「앗, 앗, 햐응！　손가락인데도 너무 느껴져어！」
                 ;V感覚Lv3以上
                 ELSEIF ABL:1 >= 3
-                    PRINTFORML 「あっ, あふっ, んんぅ……！　やっ, やめへぇ……」
-                    PRINTFORMW 輝夜は口をきつく締めて甘い声をあげるのを抑えた
+                    PRINTFORML 「앗, 아흣, 으응……！　긋, 그만애……」
+                    PRINTFORMW 카구야는 입을 꼭 다물고 달달한 신음을 내는 걸 참았다
                 ;それ以外
                 ELSE
-                    PRINTFORMW 「くっ……指入れないでよ, 気持ち悪い……」
+                    PRINTFORMW 「끅……손가락 넣지 마, 불쾌하니까……」
                 ENDIF
                     CFLAG:9004 = 1
                     RETURN 0
@@ -12315,24 +12315,24 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                         LOCAL:0 = 1
                     ENDIF
                     IF LOCAL:0 == 0
-                        PRINTFORML 「んぅん……んんっ……んっ……」
-                        PRINTFORMW 膣内を指で撫でまわす度に輝夜は背を反らして甘い声を漏らした
+                        PRINTFORML 「응으응……으응……응……」
+                        PRINTFORMW 질 내를 손가락으로 쓰다듬고 휘저을 때마다 카구야는 고개를 젖히고 달콤한 신음을 흘렸다
                     ELSEIF LOCAL:0 == 1
-                        PRINTFORML 「んっ……んんぅ！　んんぅん……♪」
-                        PRINTFORMW 輝夜は軽く指を差し入れただけなのにガクガクと身体を震わして絶頂に達した
-                        PRINTFORMW すっかり身体がこの快楽に適応してしまったのかもしれない
+                        PRINTFORML 「응……으응！　응으으응……♪」
+                        PRINTFORMW 카구야는 살짝 손가락만 넣어도 몸을 덜덜거리며 절정에 달했다
+                        PRINTFORMW 몸이 완전히 쾌락에 적응했는지도 모른다
                     ENDIF
                     CFLAG:9004 = 4
                 ;V感覚Lv3以上
                 ELSEIF ABL:1 >= 3 && (CFLAG:9004 <= 2 || FLAG:11 == 2)
-                    PRINTFORML 「んんっ……んっ……んっ……んんぅ！」
-                    PRINTFORML 輝夜は目を瞑って腰を浮かせた
-                    PRINTFORMW 意思とは違って身体が快楽を感じ始めてきたようだ
+                    PRINTFORML 「으응……응……응……으응！」
+                    PRINTFORML 카구야는 눈을 감고 허리를 쳐들었다
+                    PRINTFORMW 의사와는 달리 몸을 쾌락을 느끼기 시작한 것 같다
                     CFLAG:9004 = 3
                 ;それ以外
                 ELSEIF CFLAG:9004 <= 1 || FLAG:11 == 2
-                    PRINTFORML 時々くぐもった声を漏らすが身じろぎ一つしない
-                    PRINTFORMW 頬を少し赤らめてはいるのでもう少し開発してやれば途端に感じるようになりそうだ
+                    PRINTFORML 종종 흐릿한 신음을 냈지만 꼼짝하지 않았다
+                    PRINTFORMW 뺨을 다소 붉힌 걸 보아 좀 더 개발하면 순식간에 느낄 것 같다
                     CFLAG:9004 = 2
                 ENDIF
                     RETURN 0
@@ -12353,22 +12353,22 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                         LOCAL:0 = 1
                     ENDIF
                     IF LOCAL:0 == 0
-                        PRINTFORMW 「んふっ……今度は指だけじゃなくて%CALLNAME:MASTER%のも入れてね？」
+                        PRINTFORMW 「응흣……다음엔 손가락만 말고 %CALLNAME:MASTER% 것도 넣을 거지？」
                     ELSEIF LOCAL:0 == 1
-                        PRINTFORMW 「やんっ！　あぁぁ♪　指だけでもこん, 아읏, に気持ちよくなれる, んっ, のね」
+                        PRINTFORMW 「아앙！　아아아♪　손가락만으로도 이렇게, 아읏, 기분 좋아질 수, 응, 있네」
                     ENDIF
                     CFLAG:9004 = 4
                 ;媚薬二重状態
                 ELSEIF CFLAG:5101 & 16 && (CFLAG:9004 < 2 || FLAG:7 == 11) && LOCAL:0 == 1
-                    PRINTFORMW 「あっ, あふぅ, あぅん……」
-                    PRINTFORMW 輝夜は艶めかしい声をあげながら身体をのけ反らせた
+                    PRINTFORMW 「앗, 아흐, 아응……」
+                    PRINTFORMW 카구야는 요염한 목소리와 함께 몸을 뒤틀었다
                 ;V感覚Lv3以上
                 ELSEIF ABL:1 >= 3 && (CFLAG:9004 <= 2 || FLAG:11 == 2)
-                    PRINTFORMW 「ぁふ……そこ, 擦らないでぇ……んっ……」
+                    PRINTFORMW 「아흐……거기, 문지르지 마……응……」
                     CFLAG:9004 = 3
                 ;それ以外
                 ELSEIF CFLAG:9004 <= 1 || FLAG:11 == 2
-                    PRINTFORMW 「指入れて何が楽しいのよ, 理解できないわね……」
+                    PRINTFORMW 「손가락 넣는 게 뭐가 즐거운지, 이해할 수 없네……」
                     CFLAG:9004 = 2
                 ENDIF
                     RETURN 0
@@ -12454,7 +12454,7 @@ IF SELECTCOM == 22
                     PRINTFORMW 카구야는 쾌락에 의해 흐린 눈으로 행복하게 미소 지으며 %CALLNAME:MASTER%를 바라보았다
                 ELSEIF LOCAL:0 == 2
                     PRINTFORML 「아아……하아……흐읏……%CALLNAME:MASTER%……%CALLNAME:MASTER%……」
-                    PRINTFORMW 輝카구야는 개발 된 질에 의해 얻어지는 강한 쾌락에 의해 녹은 소리를 내면서 %CALLNAME:MASTER%에 강하게 달라 붙었다
+                    PRINTFORMW 카구야는 개발 된 질에 의해 얻어지는 강한 쾌락에 의해 녹은 소리를 내면서 %CALLNAME:MASTER%에 강하게 달라 붙었다
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 LOCAL:0 = RAND:3
@@ -12823,14 +12823,14 @@ IF SELECTCOM == 62
         IF LOCAL:0 == 0
             LOCAL:0 = RAND:2
             IF LOCAL:0 == 0
-                PRINTFORMW 「んっ, くうっ……もう出てしまいそうだわ, でも, 癖になって止められないの……」
+                PRINTFORMW 「응, 끄읏……더 이상 흘리고 싶지 않은데, 버릇이 돼서 멈출 수가 없어……」
             ELSE
-                PRINTFORML 「あっ, 出るっ, 出てしまうのっ！　%CALLNAME:MASTER%, 少し離れて頂戴……っ！」
-                PRINTFORMW 輝夜は恍惚の表情を浮かべて股を擦り始めた
+                PRINTFORML 「아, 나와, 나와！　%CALLNAME:MASTER%, 좀 떨어져 있어……！」
+                PRINTFORMW 카구야는 황홀한 표정을 지으며 가랑이를 문지르기 시작했다
             ENDIF
         ELSEIF LOCAL:0 == 1
-            PRINTFORML 「あっ, 하아아……もう出ちゃう, 出ちゃうのぉ……」
-            PRINTFORMW 輝夜は恍惚の表情を浮かべて股を擦り始めた
+            PRINTFORML 「앗, 하아아……나와, 나올 것 같아……」
+            PRINTFORMW 카구야는 황홀한 표정을 지으며 가랑이를 문지르기 시작했다
         ENDIF
         CFLAG:9062 = 4
     ;恋慕
@@ -12848,21 +12848,21 @@ IF SELECTCOM == 62
         IF LOCAL:0 == 0
             LOCAL:0 = RAND:2
             IF LOCAL:0 == 0
-                PRINTFORMW 「んっ……はあっ……だめ……もう我慢できないっ……！」
+                PRINTFORMW 「응……하앗……안 돼……이제 못 참겠어……！」
             ELSE
-                PRINTFORMW 「んっ, くうっ……だめ……でちゃうぅ……！」
+                PRINTFORMW 「응, 끄읏……안 돼……나올 것 같아……！」
             ENDIF
         ELSEIF LOCAL:0 == 1
-            PRINTFORMW 「だめ……頭が真っ白になったら出てしまいそう……！」
+            PRINTFORMW 「안 돼……머리가 새하얘져서 나올 것 같아……！」
         ENDIF
         CFLAG:9062 = 3
     ;屈服刻印Lv3
     ELSEIF MARK:2 == 3 && (CFLAG:9062 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「くぅ, またなの……？　こんな私になんて恥晒しを……」
+        PRINTFORMW 「끄으, 또야……？　감히 나한테 이런 수치를……」
         CFLAG:9062 = 2
     ;それ以外
     ELSEIF CFLAG:9062 < 1 || FLAG:11 == 2
-        PRINTFORMW 「하아……하아……やめて……」
+        PRINTFORMW 「하아……하아……그만해……」
         CFLAG:9062 = 1
     ENDIF
 ENDIF
@@ -12874,15 +12874,15 @@ IF SELECTCOM == 103 && TEQUIP:56
     IF CFLAG:TARGET:9103 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「へえ……鏡の前でするのね, 良い趣味を持ってるじゃない♪」
+            PRINTFORMW 「흠……거울 앞에서 한다니, 좋은 취향이네♪」
         ;露出癖Lv3以上
         ELSEIF ABL:14 >= 3
-            PRINTFORML 「いやっ！　こんな姿見たくなんかないっ！　……はあっ」
-            PRINTFORMW 口とは裏腹に輝夜は熱っぽい息を吐きだした
+            PRINTFORML 「싫어！　이런 모습 보고 싶지 않아！　……하아」
+            PRINTFORMW 말과는 달리 카구야는 초조한 숨을 내뱉었다
         ;それ以外
         ELSE
-            PRINTFORMW 「これ……鏡じゃないの」
-            PRINTFORMW 「まさかこの前でやるってんじゃないでしょうね？　……まさか, ね」
+            PRINTFORMW 「이거……거울이잖아」
+            PRINTFORMW 「설마 이 앞에서 하는 건 아니지？　……그 설마구나」
         ENDIF
             CFLAG:TARGET:9103 = 1
             RETURN 0
@@ -12901,10 +12901,10 @@ IF SELECTCOM == 103 && TEQUIP:56
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORMW 「あぁぁ, すごく恥ずかしいぃ……でも, これ病みつきになりそう」
+                PRINTFORMW 「아아, 너무 부끄러운데도……중독성이 있어」
             ELSEIF LOCAL:0 == 1
-                PRINTFORML 「하아……はあっ, これから私がどんなことされるのか想像しただけで……♪」
-                PRINTFORMW 輝夜は頬を赤らめている自分の姿を見て息を荒げている
+                PRINTFORML 「하아……하앗, 앞으로 내가 어떻게 될지 상상만 해도……♪」
+                PRINTFORMW 카구야는 뺨을 붉힌 자기 모습을 보고 숨이 거칠어졌다
             ENDIF
             CFLAG:9103 = 5
         ;恋慕
@@ -12920,20 +12920,20 @@ IF SELECTCOM == 103 && TEQUIP:56
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORML 「鏡越しに見た%CALLNAME:MASTER%の姿もとても美しいわ……」
-                PRINTFORMW 輝夜は%CALLNAME:MASTER%の姿を見てうっとりとしている
+                PRINTFORML 「거울로 보는 %CALLNAME:MASTER% 모습도 너무 아름다워……」
+                PRINTFORMW 카구야는 %CALLNAME:MASTER% 모습을 보고 감탄하고 있다
             ELSEIF LOCAL:0 == 1
-                PRINTFORML 「私, すっごくエッチな姿をしてる……」
-                PRINTFORMW 輝夜は頬を赤らめている自分の姿を見てうっとりとしている
+                PRINTFORML 「나 참 야한 모습을 하고 있구나……」
+                PRINTFORMW 카구야는 뺨을 붉힌 자기 모습을 보고 감탄하고 있다
             ENDIF
             CFLAG:9103 = 4
         ;露出癖Lv3以上
         ELSEIF ABL:14 >= 3
-            PRINTFORMW 「私の顔が赤くなってる……そんな……」
+            PRINTFORMW 「내 얼굴이 붉어져 있어……세상에……」
             CFLAG:9103 = 3
         ;それ以外
         ELSEIF CFLAG:9103 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「いやっ……感じちゃってる私の姿なんて見たくない……」
+            PRINTFORMW 「싫어……느끼고 있는 내 모습 같은 건 보고 싶지 않아……」
             CFLAG:9103 = 2
         ENDIF
             RETURN 0
@@ -12944,10 +12944,10 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
     IF CFLAG:TARGET:8822 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「恥ずかしかったけどよかったわ……」
+            PRINTFORMW 「부끄럽긴 해도 괜찮았어……」
         ;それ以外
         ELSE
-            PRINTFORMW 「もうやめて……」
+            PRINTFORMW 「이제 그만해……」
         ENDIF
             CFLAG:TARGET:8822 = 1
             RETURN 0
@@ -12955,11 +12955,11 @@ ELSEIF SELECTCOM == 103 && TEQUIP:56 == 0
     ELSE
         ;恋慕
         IF TALENT:150 && (CFLAG:8822 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「恥ずかしかったけどよかったわ……」
+            PRINTFORMW 「부끄럽긴 해도 괜찮았어……」
             CFLAG:8822 = 3
         ;それ以外
         ELSEIF CFLAG:8822 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もうやめて……」
+            PRINTFORMW 「이제 그만해……」
             CFLAG:8822 = 2
         ENDIF
             RETURN 0
@@ -13031,11 +13031,11 @@ IF SELECTCOM == 90 && TEQUIP:59
     IF CFLAG:TARGET:9090 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORML 「なんというか, 少し……恥ずかしいわね」
+            PRINTFORML 「뭐라고 해야 할까, 좀……부끄럽네」
         ;それ以外
         ELSE
-            PRINTFORMW 「……エプロンって裸の上から着る物じゃないでしょう？」
-            PRINTFORMW 「つくつくあなたの変な考えには参るわ, まあ, これを着るだけでいいなら着てあげるけど」
+            PRINTFORMW 「……에이프런은 알몸 위에 입는 게 아니잖아？」
+            PRINTFORMW 「당신의 이상한 생각에 신물이 날 것 같아, 뭐, 이걸 입는 것만으로 만족한다면 입어 볼 만한데」
         ENDIF
             CFLAG:TARGET:9090 = 1
             RETURN 0
@@ -13045,16 +13045,16 @@ IF SELECTCOM == 90 && TEQUIP:59
         IF TALENT:150 && (CFLAG:9090 <= 2 || FLAG:11 == 2)
             LOCAL:0 = RAND:2
             IF LOCAL:0 == 0
-                PRINTFORMW 「どうして裸にエプロンなの？　普通に着た方がいいと思うのだけどね」
+                PRINTFORMW 「왜 알몸 위에 에이프런을 입혀？　평범하게 입는 게 좋을 것 같은데」
             ELSE
-                PRINTFORML 「どう？　似合ってる？　私の身体なんか細いだけだから合わないと思うんだけど……」
-                PRINTFORMW 輝夜は恥ずかしげに振舞ってエプロンをひらひらさせている
+                PRINTFORML 「어때？　어울려？　내 몸은 호리해서 안 어울릴 것 같은데……」
+                PRINTFORMW 카구야는 쑥쓰러워하면서 에이프런을 팔랑거리고 있다
             ENDIF
             CFLAG:9090 = 3
         ;それ以外
         ELSEIF CFLAG:9090 <= 1 || FLAG:11 == 2
-            PRINTFORML 「またなの？　さすがにあなたなだけあって変な趣味を持ってるのね」
-            PRINTFORMW 「それはそうとこの格好, なんか気恥かしいわ……」
+            PRINTFORML 「또야？　당신 역시 이상한 취향이라니까 」
+            PRINTFORMW 「그것도 그렇고 이 차림, 뭔가 민망해……」
             CFLAG:9090 = 2
         ENDIF
             RETURN 0
@@ -13065,11 +13065,11 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
     IF CFLAG:TARGET:8823 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORML 「もう取ってしまうの？」
-            PRINTFORMW 輝夜は上目使いで%CALLNAME:MASTER%を見つめた
+            PRINTFORML 「또 입혀 줄 거야？」
+            PRINTFORMW 카구야는 치켜뜬 눈으로 %조사처리(CALLNAME:MASTER, "을")% 바라봤다
         ;それ以外
         ELSE
-            PRINTFORMW 「もうこんな状況で着たくないわね……」
+            PRINTFORMW 「더 이상 이런 상황에선 입고 싶지 않아……」
         ENDIF
             CFLAG:TARGET:8823 = 1
             RETURN 0
@@ -13077,12 +13077,12 @@ ELSEIF SELECTCOM == 90 && TEQUIP:59 == 0
     ELSE
         ;恋慕
         IF TALENT:150 && (CFLAG:8823 <= 2 || FLAG:11 == 2)
-            PRINTFORML 「もう取ってしまうの？」
-            PRINTFORMW 輝夜は上目使いで%CALLNAME:MASTER%を見つめた
+            PRINTFORML 「또 입혀 줄 거야？」
+            PRINTFORMW 카구야는 치켜뜬 눈으로 %조사처리(CALLNAME:MASTER, "을")% 바라봤다
             CFLAG:8823 = 3
         ;それ以外
         ELSEIF CFLAG:8022 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「もうこんな状況で着たくないわね……」
+            PRINTFORMW 「더 이상 이런 상황에선 입고 싶지 않아……」
             CFLAG:8823 = 2
         ENDIF
             RETURN 0
@@ -13154,10 +13154,10 @@ IF SELECTCOM == 180
     IF CFLAG:9180 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「んぅ……そんな所舐めてくれなくてもいいのに」
+            PRINTFORMW 「응……그런 데 핥지 않아도 되는데」
         ;それ以外
         ELSE
-            PRINTFORMW 「そこを舐めるとか……自分の尻ぐらい自分で拭いてるわよ, 失礼ね」
+            PRINTFORMW 「그런 데를 핥는다니……내 엉덩이는 내가 닦는다고, 무례하긴」
         ENDIF
             CFLAG:TARGET:9180 = 1
             RETURN 0
@@ -13176,9 +13176,9 @@ IF SELECTCOM == 180
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORMW 「んふ……ふぁぁ……お尻の穴を舐められただけなのに身体がゾクゾクする……」
+                PRINTFORMW 「응흐……흐아아……항문이 핥아지는데 몸이 오싹거려……」
             ELSEIF LOCAL:0 == 1
-                PRINTFORMW 「あぁん！　お尻が敏感すぎて感じちゃうのっ！」
+                PRINTFORMW 「아앙！　엉덩이 너무 민감해져서 느껴 버려！」
             ENDIF
             CFLAG:9180 = 7
         ;恋慕
@@ -13194,26 +13194,26 @@ IF SELECTCOM == 180
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORMW 「あら, 別にそんな所舐めてくれなくてもいいのに」
+                PRINTFORMW 「어머, 별로 그런 데 핥아 주지 않아도 되는데」
             ELSEIF LOCAL:0 == 1
-                PRINTFORMW 「……本当にお尻なんかで感じられるの？」
+                PRINTFORMW 「……정말 엉덩이로 느낄 수 있는 거야？」
             ENDIF
             CFLAG:9180 = 6
         ;屈服刻印Lv3+A感覚Lv3以上
         ELSEIF MARK:2 == 3 && ABL:2 >= 3 && (CFLAG:9180 <= 4 || FLAG:11 == 2)
-            PRINTFORMW 「く, くぅん……わ, わた, あぁ……感じてなんか……っ……ないわ」
+            PRINTFORMW 「끄, 끄응……나, 난, 아아……느낄 리……읏……없어」
             CFLAG:9180 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9180 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「……好きなだけ舐めてなさいよ, この変態」
+            PRINTFORMW 「……맘대로 핥아 봐, 이 변태야」
             CFLAG:9180 = 4
         ;A感覚Lv3以上
         ELSEIF ABL:2 >= 3 && (CFLAG:9180 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 「ん, んぅ……変な感じがするわね……やめてよ」
+            PRINTFORMW 「응, 으응……이상한 느낌이 드니까……그만해」
             CFLAG:9180 = 3
         ;それ以外
         ELSEIF CFLAG:9180 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「下劣な趣味ね, 生きてて恥ずかしくないの？」
+            PRINTFORMW 「추잡한 취미네, 살아 있는 게 부끄럽지도 않아？」
             CFLAG:9180 = 2
         ENDIF
             RETURN 0
@@ -13228,10 +13228,10 @@ IF SELECTCOM == 172 && TEQUIP:25
     IF CFLAG:TARGET:9172 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORML 「そ의 구슬をお尻に入れるのね……どのような感覚を味わえるの？」
+            PRINTFORML 「그 구슬을 엉덩이에 넣는다라……무슨 감각을 맛 볼 수 있을까？」
         ;それ以外
         ELSE
-            PRINTFORMW 「こんなのお尻に入れるの？　へえ, 悪趣味もいいところね」
+            PRINTFORMW 「그걸 엉덩이에 넣는다고？　흥, 악취미에도 정도가 있지」
         ENDIF
             CFLAG:TARGET:9172 = 1
             RETURN 0
@@ -13250,11 +13250,11 @@ IF SELECTCOM == 172 && TEQUIP:25
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORML 「んふぅ……この粒, 変な感じがするわぁ……」
-                PRINTFORMW 輝夜はビーズを入れられる度に身体の力を抜いて震わせている
+                PRINTFORML 「응흐으……이 구슬, 느낌 이상해……」
+                PRINTFORMW 카구야는 비즈가 들어갈 때마다 몸에서 힘을 뺀 채 떨고 있다
             ELSEIF LOCAL:0 == 1
-                PRINTFORML 「ん하아！　あっ, でもこれじゃ物足りないよぉ……」
-                PRINTFORMW 最初のビーズを入れられた時に輝夜は身体を跳ねさせたが, 感覚に慣れていくせいか数が増すごとに少しずつ反応が薄れていった
+                PRINTFORML 「응하아！　앗, 근데 이걸론 만족할 수 없어……」
+                PRINTFORMW 첫 구슬을 넣었을 때 카구야는 몸을 움찔거렸지만, 감각에 익숙해졌는지 수가 늘어날 때마다 조금씩 반응이 줄어들었다
             ENDIF
             CFLAG:9172 = 7
         ;恋慕
@@ -13270,28 +13270,28 @@ IF SELECTCOM == 172 && TEQUIP:25
                 LOCAL:0 = 1
             ENDIF
             IF LOCAL:0 == 0
-                PRINTFORMW 「これくらいなら痛みもマシだけどね……」
+                PRINTFORMW 「이 정도라면 아픈 게 차라리 나을 텐데……」
             ELSEIF LOCAL:0 == 1
-                PRINTFORMW 「早く感じられるようになってほしいわぁ……」
+                PRINTFORMW 「빨리 느낄 수 있었으면 좋겠어……」
             ENDIF
             CFLAG:9172 = 6
         ;屈服刻印Lv3+A感覚Lv3以上＋マゾっ気Lv3以上
         ELSEIF MARK:2 == 3 && ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 4 || FLAG:11 == 2)
-            PRINTFORML 「あぅ……くぅん……こんな物入れないでぇ……」
-            PRINTFORMW ビーズを入れる度に輝夜は身体を震わせた
+            PRINTFORML 「아으……끄응……그런 거 넣지 마……」
+            PRINTFORMW 비즈가 들어갈 때마다 카구야는 몸을 떨었다
             CFLAG:9172 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9172 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 「んうっ……変な感触がするわね, まるで座薬を入れられてるみたいだわ」
+            PRINTFORMW 「으응……이상한 감촉이야, 꼭 좌약을 넣은 것처럼」
             CFLAG:9172 = 4
         ;A感覚Lv3以上＋マゾっ気Lv3以上
         ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:9172 <= 2 || FLAG:11 == 2)
-            PRINTFORML 「하아……はあっ……大丈夫よ, 何でもないわ」
-            PRINTFORMW 輝夜はビーズを入れられる度に息を荒くしていった
+            PRINTFORML 「하아……하앗……괜찮아, 아무것도 아냐」
+            PRINTFORMW 카구야는 비즈가 들어갈 때마다 숨이 거칠어졌다
             CFLAG:9172 = 3
         ;それ以外
         ELSEIF CFLAG:9172 <= 1 || FLAG:11 == 2
-            PRINTFORMW 「痛いんだけど, やめてくれないかしら？」
+            PRINTFORMW 「아프기만 한데, 그만두지 못 하겠어？」
             CFLAG:9172 = 2
         ENDIF
             RETURN 0
@@ -13300,15 +13300,15 @@ IF SELECTCOM == 172 && TEQUIP:25
 ELSEIF SELECTCOM == 172 && TEQUIP:25 == 0
     ;恋慕
     IF TALENT:150 && (CFLAG:8852 < 3 || FLAG:11 == 2)
-        PRINTFORMW 「んんぅ！　やっぱり抜かれる時は刺激が強いわね」
+        PRINTFORMW 「으응！　역시 뺄 땐 자극이 강하네」
         CFLAG:8852 = 3
     ;A感覚Lv3以上＋マゾっ気Lv3以上
     ELSEIF ABL:2 >= 3 && ABL:21 >= 3 && (CFLAG:8852 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「はうっ！　あぁ……お尻, 変になっちゃったのかも……」
+        PRINTFORMW 「하읏！　아……엉덩이, 이상해진 것 같아……」
         CFLAG:8852 = 2
     ;それ以外
     ELSEIF CFLAG:8852 < 1 || FLAG:11 == 2
-        PRINTFORMW 「あぁ……抜かれる時に変な感触が……」
+        PRINTFORMW 「아……뺄 때 이상한 감촉이……」
         CFLAG:8852 = 1
     ENDIF
         RETURN 0
@@ -14656,37 +14656,37 @@ IF SELECTCOM == 610
         IF TALENT:150
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 『さあ妹紅, 一緒に輝夜を……』
-                PRINTFORML 『分かってるって, さあ輝夜, 気持ちよくなってくれ』
-                PRINTFORML 「んぅ……怖いわ……永琳, できるだけ気持ちよくしてね」
-                PRINTFORMW 輝夜は未知の行為による恐怖に身体を震わせているが妹紅を見つめている
+                PRINTFORML 『자 모코우, 같이 카구야를……』
+                PRINTFORML 『알고 있어, 자 카구야, 기분 좋아져』
+                PRINTFORML 「응……무서워……에이린, 최대한 기분 좋게 해 줘」
+                PRINTFORMW 카구야는 알 수 없는 행위에 대한 두려움에 몸을 떨면서도 모코우를 응시하고 있다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 『輝夜, 今回は永琳も一緒なんだ』
-                PRINTFORML 『輝夜……二人同時はきついだろうけどお願いね』
-                PRINTFORML 「えぇ, 少し怖いけど, 私……頑張るわ」
-                PRINTFORMW 輝夜は未知の行為による恐怖に身体を震わせているが何かを決意した表情を浮かべている
+                PRINTFORML 『카구야, 이번엔 에이린도 함께야』
+                PRINTFORML 『카구야……둘이서 동시에 하는 건 힘들겠지만 잘 부탁해요』
+                PRINTFORML 「어, 좀 두려운데, 난……노력할게」
+                PRINTFORMW 카구야는 알 수 없는 행위에 대한 두려움에 몸을 떨면서도 뭔가 결심한 표정을 짓고 있다
             ELSE
-                PRINTFORML 「ふ, 二人なんて無理よ……いやぁ！」
-                PRINTFORMW 輝夜は喪失の恐怖と未知の行為による恐怖に震えている
+                PRINTFORML 「두, 둘이서 한다니 무리야……싫어！」
+                PRINTFORMW 카구야는 상실의 두려움과 미지의 행위로 인한 공포에 떨고 있다
             ENDIF
         ;それ以外
         ELSE
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 『さあ妹紅, あなたも輝夜を犯しなさい』
-                PRINTFORML 『ん……大丈夫なのか？　かなり嫌がってるみたいだけど』
-                PRINTFORML 「も……妹紅……助けて……」
-                PRINTFORMW 輝夜は口では威勢を張ってはいるが恐怖で身体を震わせている
+                PRINTFORML 『자 모코우, 당신도 카구야를 범해요』
+                PRINTFORML 『응……괜찮을까？　되게 싫어하는 것 같은데』
+                PRINTFORML 「모……모코우……도와 줘……」
+                PRINTFORMW 카구야는 두려움에 몸을 떨고 있다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 『永琳, お前なら輝夜と親しいよな？　一つ協力してほしいんだけど……』
-                PRINTFORML 『ええ, いいわよ。輝夜, あなたに新しい世界を教えてあげる』
-                PRINTFORML 「な, なによ, 二人がかりなんて卑怯じゃないの」
-                PRINTFORMW 輝夜は恐怖で身体を震わせている
+                PRINTFORML 『에이린, 너 카구야랑 친하지？　하나 협력하고 싶은 게 있는데……』
+                PRINTFORML 『그래, 좋아。카구야, 당신에게 새로운 세계를 가르쳐 주죠』
+                PRINTFORML 「무, 뭐야, 둘이서 동시에 한다니 비겁하잖아」
+                PRINTFORMW 카구야는 두려움에 몸을 떨고 있다
             ELSE
-                PRINTFORML 「ふ, 二人なんて無理よ……いやぁ！」
-                PRINTFORMW 輝夜は喪失の恐怖と未知の行為による恐怖に震えている
+                PRINTFORML 「두, 둘이서 한다니 무리야……싫어！」
+                PRINTFORMW 카구야는 상실의 두려움과 미지의 행위로 인한 공포에 떨고 있다
             ENDIF
         ENDIF
             CFLAG:TARGET:9610 = 1
@@ -14710,27 +14710,27 @@ IF SELECTCOM == 610
                 IF (NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29)
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
-                        PRINTFORML 「んぷぅ……んんぅ……んんっ……」
-                        PRINTFORML 『そんなに蕩けさせちゃって……幸せそうね』
-                        PRINTFORML 『身体も赤くなっていってるな, もっと幸せにしてあげるよ』
-                        PRINTFORMW 輝夜は口に入れられている物を舐めながら快楽で顔を蕩けさせている
+                        PRINTFORML 「응푸으……으응……응으읏……」
+                        PRINTFORML 『이렇게 풀어져서는……행복해 보이네요』
+                        PRINTFORML 『몸도 붉어졌군, 더 행복하게 해 주지』
+                        PRINTFORMW 카구야는 입에 들어온 물건을 빨며 쾌락에 얼굴이 느슨해졌다
                     ;尻穴と膣を同時に
-                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 1 && TFLAG:131 == 2)
-                        PRINTFORML 「하아아……二人の温もりを感じられて, 私幸せ……」
-                        PRINTFORML 『私もよ, もっと暖かくしてあげる』
-                        PRINTFORML 『永琳……もう永遠とこうしていたいよ』
-                        PRINTFORMW 気持ちよさでぐったりとしている輝夜を永琳と妹紅の二人が挟み込んだ
+                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 2 && TFLAG:131 == 1)
+                        PRINTFORML 「하아아……두 사람의 온기가 느껴져서, 나 행복해……」
+                        PRINTFORML 『나도요, 더 뜨겁게 해 줄게요』
+                        PRINTFORML 『에이린……이제 영원히 이러고 싶어』
+                        PRINTFORMW 기분 좋아서 축 늘어진 카구야를 에이린과 카구야 둘이서 범했다
                     ENDIF
                 ;それ以外
                 ELSE
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
-                        PRINTFORML 「んっ……んんぅ……んうん……」
-                        PRINTFORMW 輝夜は顔を蕩けさせながら優しい舌使いで口に入れられている物を舐めている
+                        PRINTFORML 「응……으응……응으응……」
+                        PRINTFORMW 카구야는 느슨한 얼굴로 입에 들어온 물건을 부드러운 혀놀림으로 핥았다
                     ;尻穴と膣を同時に
-                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 1 && TFLAG:131 == 2)
-                        PRINTFORML 「ふあっ……こうして二人に犯されるなんて, 私, 幸せよ……」
-                        PRINTFORMW 輝夜は幸せそうな顔をして身体をぐったりとさせた
+                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 2 && TFLAG:131 == 1)
+                        PRINTFORML 「흐앗……이렇게 둘이서 범해 주다니, 나 행복해……」
+                        PRINTFORMW 카구야는 행복한 표정으로 몸을 축 늘어뜨렸다
                     ENDIF
                 ENDIF
             ELSEIF LOCAL:0 == 1
@@ -14738,27 +14738,27 @@ IF SELECTCOM == 610
                 IF (NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29)
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
-                        PRINTFORML 「んっ……んうん……んんんんっ！　んっ！　んぅん……」
-                        PRINTFORML 『そんなに気持ちいいのか？　口から涎が垂れてるしね』
-                        PRINTFORML 『あぁう……輝夜……輝夜……もっと気持ちよくしてあげるわ』
-                        PRINTFORMW 輝夜は口に入れられている物を舐めながら快楽で顔を蕩けさせている
+                        PRINTFORML 「응……응으응……응으으응！　응！　응으응……」
+                        PRINTFORML 『그렇게 기분 좋아요？　입에서 침을 흘리네요』
+                        PRINTFORML 『아으……카구야……카구야……더 기분 좋게 해 줄게』
+                        PRINTFORMW 카구야는 입에 들어온 물건을 빨며 쾌락에 얼굴이 느슨해졌다
                     ;尻穴と膣を同時に
-                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 1 && TFLAG:131 == 2)
-                        PRINTFORML 『輝夜, そんなに気持ちいいのか？　背中かなり反ってるぞ？』
-                        PRINTFORML 『あぁ……腰の動かし方がかなり艶めかしいわぁ……』
-                        PRINTFORML 「ひゃぁう！　らめぇ！　そんなに強く動かさないでぇ！　ふぁぁん！」
-                        PRINTFORMW 二つの穴から来る快楽のあまりの強さに輝夜は顔を黒髪を振り乱しながら喘いだ
+                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 2 && TFLAG:131 == 1)
+                        PRINTFORML 『카구야, 그렇게 기분 좋아？　등을 확 젖혔네？』
+                        PRINTFORML 『아아……허리 놀림이 너무 요염해요……』
+                        PRINTFORML 「햐으！　앙 대에！　그렇게 세게 움직이지 마！　흐아앙！」
+                        PRINTFORMW 두 구멍으로 오는 지나친 쾌락에 카구야는 얼굴과 검은 머리를 흩날리며 허덕였다
                     ENDIF
                 ;それ以外
                 ELSE
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
-                        PRINTFORML 「んっ……んぅん……んーっ……んぅ……」
-                        PRINTFORMW 輝夜は艶めかしく腰を振りながら口に入れられている物をねっとりと舐めている
+                        PRINTFORML 「응……응으응……으응……응으……」
+                        PRINTFORMW 카구야는 요염하게 허리를 흔들며 입에 들어온 물건을 끈적하게 빨고 있다
                     ;尻穴と膣を同時に
-                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 1 && TFLAG:131 == 2)
-                        PRINTFORML 「あぁう！　二人に犯されてすっごく気持ちいいのっ！」
-                        PRINTFORMW 輝夜は喘ぎながら激しく腰を振った
+                    ELSEIF (TFLAG:130 == 1 && TFLAG:131 == 2) || (TFLAG:130 == 2 && TFLAG:131 == 1)
+                        PRINTFORML 「아아으！　둘이서 범하는 거 너무 기분 좋아！」
+                        PRINTFORMW 카구야는 신음하며 격렬히 허리를 흔들었다
                     ENDIF
                 ENDIF
             ENDIF
@@ -14767,77 +14767,77 @@ IF SELECTCOM == 610
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && ABL:2 >= 3 && (CFLAG:9610 <= 4 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 『輝夜, もう壊れそうでしょ？　受け入れたら気持ちよくなれるわよ』
-                PRINTFORML 『すごいな……こんなによがり狂えるなんて』
-                PRINTFORML 「ん하아！　い, いやぁ！　ふぁぁん！　すっごく感じちゃって頭がっ！　んふぁぁう！」
-                PRINTFORMW 輝夜は顔を蕩けさせて長髪が乱れるくらい頭を振りながら身体を乱れさせている
+                PRINTFORML 『카구야, 벌써 부서질 것 같아요？　받아들이면 기분 좋아질 수 있어요』
+                PRINTFORML 『대단하군……이렇게 미친 듯이 신음하다니』
+                PRINTFORML 「응하아！　시, 싫어！　흐아앙！　너무 느껴서 머리가！　응흐아아으！」
+                PRINTFORMW 카구야는 넋빠진 표정으로 긴 머리카락이 풀럭일 만큼 머리를 흔들며 몸부림쳤다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 「ひゃぅ！　だめぇ……もう頭が真っ白になっちゃうぅ……」
-                PRINTFORML 『さすがに耐えられないか, そろそろ観念すればどうだ？』
-                PRINTFORML 『そうよ, 気持ちいいこともっとやりましょうよ, ね, 輝夜』
-                PRINTFORML 「くっ……ふぁ……私は, 絶対に負けない, ひぁん！　負けないわ……」
-                PRINTFORMW 輝夜は顔を蕩けさせたが妹紅達の言葉を聞いて再び意思を強くした
+                PRINTFORML 「햐으！　안 돼……이제 머리가 하얘져……」
+                PRINTFORML 『역시 못 참는 건가, 슬슬 포기하는 게 어떠냐？』
+                PRINTFORML 『그래요, 더 기분 좋아져요, 카구야』
+                PRINTFORML 「끄으……흐아……난, 절대 안 져, 히앙！　지지 않아……」
+                PRINTFORMW 카구야는 얼굴이 느슨해졌지만 모코우 말을 듣고 다시 의지를 다졌다
             ELSE
-                PRINTFORML 「ふぅ, 하아ん！　いやぁ！　嫌なのに感じちゃ, ふぅんんん！」
-                PRINTFORMW 輝夜は快楽の余り黒髪を振り乱すほどに身体を乱れさせた
+                PRINTFORML 「흐으, 하앙！　싫어！　싫은데 느껴, 흐으으으응！」
+                PRINTFORMW 카구야는 지나친 쾌락에 흑발을 풀럭일 만큼 몸부림쳤다
             ENDIF
             CFLAG:9610 = 5
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9610 <= 3 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 「妹紅, あなたも永琳なんかに従わなくてもいいじゃないの……」
-                PRINTFORML 『いや, 私は永琳には逆らえないんだ, すまない』
-                PRINTFORML 「そ, そう……」
-                PRINTFORMW 輝夜は落胆したのか俯いている
+                PRINTFORML 「모코우, 넌 에이린을 따르지 않아도 되잖아……」
+                PRINTFORML 『아니, 난 에이린한테 거스를 수 없어, 미안해』
+                PRINTFORML 「그, 그래……」
+                PRINTFORMW 카구야는 낙담했는지 고개를 숙이고 있다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 「永琳を従えるなんて卑怯だけど……なかなかやるわね」
-                PRINTFORML 『そ, そう？　苦労したんだ』
-                PRINTFORML 「でもそれとこれとはまた別よ, 絶対に負けないんだから」
-                PRINTFORMW 輝夜は妹紅を見つめて決意を固めている
+                PRINTFORML 「에이린을 굴복시키다니 비겁하지만……꽤 하네」
+                PRINTFORML 『그, 그래？　고생 많았지』
+                PRINTFORML 「하지만 그건 별개의 문제야, 절대 지지 않겠어」
+                PRINTFORMW 카구야는 모코우를 보며 결의를 다지고 있다
             ELSE
-                PRINTFORML 「こんなことさせるのが趣味なの？　やらしいわね」
-                PRINTFORMW 輝夜は%CALLNAME:MASTER%を見て溜息を吐いた
+                PRINTFORML 「이런 걸 시키는 게 취미야？　추잡해」
+                PRINTFORMW 카구야는 %조사처리(CALLNAME:MASTER, "을")% 보고 한숨을 내쉬었다
             ENDIF
             CFLAG:9610 = 4
         ;V感覚Lv3以上＋A感覚Lv3以上
         ELSEIF ABL:1 >= 3 && ABL:2 >= 3 && (CFLAG:9610 <= 2 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 「ふ앗……だめぇ……こんな厭らしいことされてるのにっ……」
-                PRINTFORML 『感じてきたようね, 妹紅, 続けて』
-                PRINTFORML 『分かった, 輝夜, もっと感じてくれ……』
-                PRINTFORMW 輝夜は嫌がりながらも顔を赤らめている
+                PRINTFORML 「흐앗……안 돼……이런 추잡한 걸 당하는데……」
+                PRINTFORML 『느끼는 것 같네, 모코우, 계속해』
+                PRINTFORML 『그래, 카구야, 더 느껴 봐……』
+                PRINTFORMW 카구야는 싫어하면서도 얼굴을 붉히고 있다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 『顔, 赤くなってきてるわね』
-                PRINTFORML 『輝夜, 気持ちよくなってきたんじゃないか？』
-                PRINTFORML 「い, いや……ぁぅ……別に感じてなんかない, んっ！」
-                PRINTFORMW 輝夜は快楽で顔を赤らめている
+                PRINTFORML 『얼굴, 빨개졌네』
+                PRINTFORML 『카구야, 기분 좋아졌어？』
+                PRINTFORML 「아, 아냐……아으……별로 기분 좋을 리, 응！」
+                PRINTFORMW 카구야는 쾌락에 얼굴을 붉히고 있다
             ELSE
-                PRINTFORML 「ひぁう！　やっ, 感じてなんか……ひうっ！」
-                PRINTFORMW 輝夜は顔を赤らめながらも入れられている物から逃げようと腰を動かしている
+                PRINTFORML 「햐으！　아니, 느낄 리가……히읏！」
+                PRINTFORMW 카구야는 홍조를 띠면서도 들어온 물건에서 벗어나려고 허리를 요동치고 있다
             ENDIF
             CFLAG:9610 = 3
         ;それ以外
         ELSEIF CFLAG:9610 <= 1 || FLAG:11 == 2
             ;調教者が永琳＆助手が妹紅
             IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
-                PRINTFORML 『妹紅, またやりなさい』
-                PRINTFORML 『……悪いな, でも永琳には逆らえないんだ』
-                PRINTFORML 「妹紅……妹紅……」
-                PRINTFORMW 輝夜は恐怖で身体を震わせている
+                PRINTFORML 『모코우, 다시 해』
+                PRINTFORML 『……미안한데, 에이린한텐 거스를 수 없어』
+                PRINTFORML 「모코우……모코우……」
+                PRINTFORMW 카구야는 두려움에 몸을 떨고 있다
             ;調教者が妹紅＆助手が永琳
             ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 『永琳, また頼むよ』
-                PRINTFORML 『ええ, 分かったわ。さあ輝夜, もっと気持ちよくなって壊れて……』
-                PRINTFORML 「何よ, 二人合わせたらすぐに堕ちるとか考えないでよ」
-                PRINTFORMW 輝夜は口では威勢を張ってはいるが恐怖で身体を震わせている
+                PRINTFORML 『에이린, 다시 부탁해』
+                PRINTFORML 『그래, 알았어。자 카구야, 더 기분 좋아져요……』
+                PRINTFORML 「뭐야, 둘이서 협력한다고 바로 꺾일 거라 생각하지 마」
+                PRINTFORMW 카구야는 말로는 허세를 부리면서도 두려움에 몸을 떨고 있다
             ELSE
-                PRINTFORML 「ケダモノが2匹……何なのよこれ」
-                PRINTFORMW 輝夜はかなり嫌がっているようだ
+                PRINTFORML 「짐승이 2마리……이게 뭐야」
+                PRINTFORMW 카구야는 매우 싫어하는 듯하다
             ENDIF
             CFLAG:9610 = 2
         ENDIF
@@ -16595,27 +16595,27 @@ IF TFLAG:31 > 0
         ELSEIF MARK:2 == 3 && ABL:34 >= 3 && (CFLAG:8016 < 5 || FLAG:11 == 2)
             ;妊娠したことがある（これ実質的に崩壊しないと付けられないはずなので, それを前提とした口上に, 崩壊しているので使いまわし）
             IF EXP:52 >= 1 || TALENT:140 == 1
-                PRINTFORMW 「はあっ……あの事は忘れたいわ」
+                PRINTFORMW 「하앗……그 일은 잊어버리고 싶어」
             ELSE
-                PRINTFORMW 「ひぃ！　あっああああ！　はあっ, はあっ……まだしこりが残っちゃってるなんて……」
+                PRINTFORMW 「히이！　아아아아앗！　하앗, 하앗……아직도 개운치 않다니……」
                 ;今回の調教で噴乳を15回以上行った
                 IF EX:10 >= 15
-                    PRINTFORMW 「しっ……しこりじゃないわよこれ, どうなっちゃってるの……」
+                    PRINTFORMW 「개……개운하지 않잖아, 이거 어떻게 된 거야……」
                     CFLAG:5104 |= 1
                 ENDIF
                 ;Ｂ感覚Lv3以上＆欲望Lv3以上＆露出癖Lv2以上
                 IF ABL:3 >= 3 && ABL:11 >= 3 && ABL:14 >= 2
                     PRINTFORML 
-                    PRINTFORML 輝夜は赤らめた顔を俯けて荒い息をついている
-                    PRINTFORML どうやら噴乳した影響で強い快楽を感じているようだ, 今なら乳首も敏感なはず……
-                    PRINTFORML そう思った%CALLNAME:MASTER%は輝夜の胸付近に顔を近づけ, 乳首を重点的に舐めるようにしながら母乳を舐め取った
-                    PRINTFORML 「あっ, あぅん！　ひゃぁぁ！　ちょっ, やめっ, んあっ！」
-                    PRINTFORML 乳首を舐める度に輝夜は悦楽に染まった淫らな声をあげて背を反らした
+                    PRINTFORML 카구야는 붉어진 얼굴을 숙이고, 거친 숨을 쉬고 있다
+                    PRINTFORML 아무래도 모유를 뿜어낸 영향으로 강한 쾌락을 느끼고 있는 것 같다, 지금이라면 젖꼭지도 민감할 터……
+                    PRINTFORML 그렇게 생각한 %CALLNAME:MASTER%는 카구야의 가슴 부근에 얼굴을 가까이 대고, 젖꼭지를 중점적으로 빨면서 모유를 먹었다
+                    PRINTFORML 「앗, 아웅！　히야아아！　잠, 그만 둿, 으앗!」
+                    PRINTFORML 젖꼭지를 핥을 때마다 카구야는 열락이 깃든 음란한 소리를 내며, 등을 뒤로 젖혔다
                     ;快楽刻印Lv3
                     IF MARK:1 == 3
-                        PRINTFORML 快楽に依存するようになって堅い理性が失われるのも時間の問題なのかも知れない……
+                        PRINTFORML 쾌락에 의존하게 되고, 견고한 이성을 잃는 것도 시간 문제일 것이다……
                     ELSE
-                        PRINTFORML 輝夜の頭の中が快楽で満たされていっているようだ
+                        PRINTFORML 카구야의 머릿속이 쾌락으로 가득 차 가는 것 같다
                     ENDIF
                     PRINTFORMW 
                 ENDIF
@@ -17056,60 +17056,60 @@ IF BASE:0 <= 0
     IF TALENT:49 == 0
         ;輝夜が機械
         IF TALENT:206
-            PRINTFORML 「あ゛っ, がっ, がぁッ……ギィ……」
-            PRINTFORMW 輝夜はうんともすんとも言わなくなってしまった
-            PRINTFORMW おそらく駆動機関がやられてしまったのだろう
-            PRINTFORMW %CALLNAME:MASTER%にはこの故障を直す術は存在しなかった……
+            PRINTFORML 「억, 꺽, 갉……긱……」
+            PRINTFORMW 카구야는 아무 말도 하지 못 하게 됐다
+            PRINTFORMW 아마 구동 기관이 망가진 것 같다
+            PRINTFORMW %CALLNAME:MASTER%에게 이 고장을 고치는 기술은 없었다……
         ;輝夜が人形
         ELSEIF TALENT:208
-            PRINTFORML 「%CALLNAME:MASTER%……だめ……もう……壊れるっ……ッ！」
-            PRINTFORMW 輝夜は背筋をピンと反らしたかと思うと, そのままぐったりとし, 手足をあらぬ方向に曲げた
-            PRINTFORMW 精神が焼き切れて生命が抜け出てしまったのだろう……
+            PRINTFORML 「%CALLNAME:MASTER%……안 돼……더 이상은……망가져……억！」
+            PRINTFORMW 카구야는 등골을 확 젖히더니, 그대로 힘 없이 사지를 엉뚱한 방향으로 구부렸다
+            PRINTFORMW 정신이 타다 못해 생명이 빠져나간 것이다……
             PRINTFORML 
-            PRINTFORMW それ以降, %CALLNAME:MASTER%は調教を止めてしまった
-            PRINTFORMW 自分の手で伝説の女性を殺してしまった事が悔いに残ったのだろうか
-            PRINTFORMW 物置きに収納された輝夜の抜け殻の人形は, 心なしか笑っているように見えた……
+            PRINTFORMW 그 후, %조사처리(CALLNAME:MASTER, "은")% 조교를 그만뒀다
+            PRINTFORMW 자기 손으로 전설의 여인을 죽인 것이 후회로 남은 것인가
+            PRINTFORMW 헛간에 보관된 카구야의 허물 인형은, 왠지 웃고 있는 것 같았다……
         ;輝夜が霊体
         ;機械化させてから霊魂昇華余裕でした
         ELSEIF TALENT:207
-            PRINTFORMW 「……っ！　ねえ……知ってる？」
-            PRINTFORML 「霊体って……道連れが使えるのよ……っ」
-            PRINTFORMW 輝夜は%CALLNAME:MASTER%を睨んだかと思うと, 急に身体が薄く見えるようになり, やがて消滅していった
+            PRINTFORMW 「……윽！　……알고 있어？」
+            PRINTFORML 「영체는……길동무를 데리고 갈 수 있어……!」
+            PRINTFORMW 카구야는 %조사처리(CALLNAME:MASTER, "을")% 노려보더니, 갑자기 몸이 흐려지고, 곧 소멸했다
             PRINTFORML 
-            PRINTFORMW しかし, 先に消滅した%CALLNAME:MASTER%はその様子を見る事はできなかった……
+            PRINTFORMW 그러나, 먼저 소멸한 %조사처리(CALLNAME:MASTER, "은")% 그걸 볼 수 없었다……
         ;それ以外
         ;見る機会無さそう
         ELSE
-            PRINTFORML 「ぐっ, ひ゛あ゛うっ, ん゛ああああっ！」
-            PRINTFORMW 輝夜は断末魔のような叫び声を発したかと思うと, その後ぐったりとした
-            PRINTFORMW そして, %CALLNAME:MASTER%の方を向き, 静かに口を開いた
-            PRINTFORMW 「ねえ……%CALLNAME:MASTER%……こんな別れ方になるとは思わなかったけど……」
-            PRINTFORMW 「私……今幸せなの……」
-            PRINTFORMW 「うん, 分かってる……こんなに身体弄られて異常だとは分かってるんだけど……」
-            PRINTFORMW 「こうして……真っ当に人生に幕を引く事ができる日が来るなんて……思いもしなかった」
-            PRINTFORMW 「こんな日が来るなら……もっと真剣に人生を歩めばよかったな……」
-            PRINTFORML 「じゃ, %CALLNAME:MASTER%……先に……おや……す……み……」
-            PRINTFORMW 輝夜は首をがくりと垂らし, 息を途絶えた……
+            PRINTFORML 「끅, 히아윽, 응아아아악！」
+            PRINTFORMW 카구야는 단말마와 같은 비명을 지르더니, 그대로 힘이 빠졌다
+            PRINTFORMW 그리고, %CALLNAME:MASTER% 쪽을 향하고, 조용히 입을 열었다
+            PRINTFORMW 「저기……%CALLNAME:MASTER%……이런 식으로 떠나게 될 줄은 몰랐는데……」
+            PRINTFORMW 「나……지금 행복해……」
+            PRINTFORMW 「응, 알아……그렇게 몸 만지작거리는 게 이상한 짓인 건 아는데……」
+            PRINTFORMW 「이렇게……정상적으로 인생의 막을 내릴 날이 올 줄은……꿈에도 몰랐어」
+            PRINTFORMW 「이런 날이 올 줄 알았으면……더 진지하게 인생을 살걸……」
+            PRINTFORML 「그럼, %CALLNAME:MASTER%……먼저……갈……게…………」
+            PRINTFORMW 카구야는 고개를 떨구고 숨이 멎었다……
             PRINTFORML 
-            PRINTFORMW これで, 本当によかったのだろうか……？
-            PRINTFORMW %CALLNAME:MASTER%は悔やんでも悔やみきれない気持ちになり, この世界から身を退いた……
+            PRINTFORMW 이게, 정말 좋았을까……？
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 후회인지 아닌지 모를 기분을 안은 채, 그 세계에서 은퇴했다……
         ENDIF
     ;マゾっ気Lv3以上
     ELSEIF ABL:21 >= 3
-        PRINTFORML 「んあ！　ふぁ！　んぁ앗！　わらひ, 死んじゃうううううう！」
-        PRINTFORMW 輝夜の身体は糸が切れたかのようにぐったりとした
-        PRINTFORMW しかし, しばらくして輝夜が復活した時にやりすぎだと説教されてしまった
+        PRINTFORML 「응아！　흐아！　응아앗！　나, 쥬거어어어어어어！」
+        PRINTFORMW 카구야 몸은 실이 끊어진 듯 힘이 빠졌다
+        PRINTFORMW 그러나, 잠시 후 카구야는 부활하고 너무 지나치다고 설교했다
     ELSE
-        PRINTFORML 「え？　ちょっと, 駄目よ, これ以上は私死んじゃう……か……ら……ぁぁ……！」
-        PRINTFORMW 輝夜は擦れた声で悲鳴を上げ, その後身体をぐったりとさせた
-        PRINTFORML そして, しばらくしてから輝夜が復活して……
+        PRINTFORML 「어？　잠깐, 안 돼, 더 이상은 나……죽으……니까……아아……！」
+        PRINTFORMW 카구야는 흐릿한 비명을 지른 뒤, 몸에서 힘이 빠졌다
+        PRINTFORML 그리고, 잠시 뒤 카구야는 부활했다……
         ;恋慕
         IF TALENT:150
-            PRINTFORML 「ふぅ……いくら私が不死身だからって無茶させないでよ」
-            PRINTFORMW 怒られてしまった
+            PRINTFORML 「휴……아무리 내가 불사신이라도 너무 엉뚱한 건 하지 마」
+            PRINTFORMW 화를 냈다
         ELSE
-            PRINTFORML 「な……何よ……私がこうなってしまうまで続けるの？　もう……いやぁ！」
-            PRINTFORMW 輝夜は目の前を絶望に染めて今の状況を悲観した
+            PRINTFORML 「뭐……뭐야……내가 이렇게 될 때까지 계속 하겠단 거야？　더 이상은……싫어！」
+            PRINTFORMW 카구야는 눈앞을 절망으로 물들이며 지금의 상황을 비관했다
         ENDIF
     ENDIF
 ENDIF
@@ -17119,9 +17119,9 @@ ENDIF
 IF TFLAG:40 == 3 && CFLAG:8097 == 0
     ;恋慕
     IF TALENT:150
-        PRINTFORMW 「い, 痛い……っ！　これも%CALLNAME:MASTER%の愛だと言うのなら何も言わないけどつらいわ……」
+        PRINTFORMW 「아, 아파악……！　이것도 %CALLNAME:MASTER%의 사랑이라면 이의는 없는데, 괴로워……」
     ELSE
-        PRINTFORMW 「いっ……嫌っ……少し覚悟はしていたけど拷問……だけは……」
+        PRINTFORMW 「억……싫어억……어느 정도 각오는 하고 있었지만……고문만은……」
     ENDIF
         CFLAG:8097 = 1
 ENDIF
@@ -17132,72 +17132,72 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
     ;恋慕
     IF TALENT:150
         ;調教者が토요히메＆助手が依姫
-        IF NO:PLAYER == 53 && NO:ASSI == 54
-            PRINTFORMW 「ひゃぅんっ……！？　앗……♪　ん앗……」
-            PRINTFORMW 『あら, 気絶してしまったのかしら……』
-            PRINTFORMW 『安心してください, お姉様。悶えているだけです』
-            PRINTFORMW 『そう……よね。それなら少し待ちましょう』
+        IF NO:PLAYER == 53 && ASSINO() == 54
+            PRINTFORMW 「햐으응……！？　앗……♪　응앗……」
+            PRINTFORMW 『어머, 기절했나……』
+            PRINTFORMW 『안심해요, 언니。괴로워하고 있을 뿐이에요』
+            PRINTFORMW 『그렇……구나。그럼 좀 더 지켜 보자』
         ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
-            PRINTFORMW 「あっ, あ하아……♪　お姉さまぁ……きもちいい, れすぅ……」
-            PRINTFORMW 『そう？　悦んでもらえて, 嬉しいわぁ♪』
-            PRINTFORMW 輝夜は股間から勢いよく潮を噴き出して悶えている
+            PRINTFORMW 「앗, 아하아……♪　언니……기븐, 조아요……」
+            PRINTFORMW 『그래？　기꺼이 받아들여서, 행복하네♪』
+            PRINTFORMW 카구야는 고간에서 힘차게 물을 뿜으며 몸부림쳤다
         ;調教者が永琳
         ELSEIF NO:PLAYER == 29
-            PRINTFORMW 「あっ……はあっ……えい……りん……」
-            PRINTFORMW 『輝夜の身体, すっごく暖かくなってるわ』
-            PRINTFORMW 「んぅ……大好きよ……永琳……」
+            PRINTFORMW 「앗……하앗……에이……린……」
+            PRINTFORMW 『카구야 몸이, 되게 뜨거워졌어요』
+            PRINTFORMW 「으응……사랑해……에이린……」
         ;調教者が妹紅
         ELSEIF NO:PLAYER == 31
-            PRINTFORML 「ああっ……身体が熱くて……んぅん……」
-            PRINTFORML 『お互いに同じ寿命なんだ, 永遠に愛し合おう』
-            PRINTFORMW 「ええ……もうずっと永遠に……」
+            PRINTFORML 「아앗……몸이 뜨거워서……응으응……」
+            PRINTFORML 『서로 같은 수명이니까, 영원히 사랑하자』
+            PRINTFORMW 「그래……앞으로 쭉 영원히……」
         ELSE
             ;妖精のまま記憶焼失した
             IF CFLAG:4900 & 1 && TALENT:200
-                PRINTFORMW 「私, もうおかしくなっちゃったのね」
-                PRINTFORMW 「目の前が霞んでよく見えないの……」
+                PRINTFORMW 「나, 또 이상해졌어」
+                PRINTFORMW 「눈 앞이 흐릿해져서 잘 안 보여……」
             ELSE
-                PRINTFORMW 「あぁ……身体が痺れて……声も出しにくいわ……」
-                PRINTFORMW 「%CALLNAME:MASTER%, この調子でお願いね」
+                PRINTFORMW 「아아……몸이 저려……신음도 저절로 나오고……」
+                PRINTFORMW 「%CALLNAME:MASTER%, 이대로 부탁해」
             ENDIF
         ENDIF
     ELSE
         ;調教者が토요히메＆助手が依姫
-        IF NO:PLAYER == 53 && NO:ASSI == 54
-            PRINTFORMW 「あうぅぅんッ！？　なっ, 하아っ……なにが起きたというの……」
-            PRINTFORMW 『姫様の身体が悦んでくれたわ。この調子で頑張りましょ』
-            PRINTFORMW 『はいっ, お姉さま♪』
+        IF NO:PLAYER == 53 && ASSINO() == 54
+            PRINTFORMW 「아으으응！？　뭐, 하앗……어떻게 된 거야……」
+            PRINTFORMW 『공주님 몸이 쾌락을 받아들이고 있어。이대로 열심히 하자』
+            PRINTFORMW 『네, 언니♪』
         ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
-            PRINTFORMW 「んやぁんッ！？　하아っ, 하아……な, 何よ, これは……」
-            PRINTFORMW 『身体はもう正直なのね。気持ちよかったでしょ？』
-            PRINTFORML 「い, やっ……そんな事ないわよ。私が……ん앗！」
-            PRINTFORMW 輝夜が話している最中に토요히메は輝夜の陰核を抓んだ
-            PRINTFORMW 『ほうら, これでも感じてないとでも言うつもり？　これが嫌なら少しは言う事聞きなさい。分かったわね？』
-            PRINTFORMW 「……くぅっ」
-            PRINTFORMW 輝夜の心の中に強い快楽が刻み込まれたようだ
+            PRINTFORMW 「응야아앙！？　하앗, 하아……뭐, 뭐야, 이건……」
+            PRINTFORMW 『몸은 벌써 솔직해졌네。기분 좋지？』
+            PRINTFORML 「아, 니……그런 게 아녜요。내가……응앗！」
+            PRINTFORMW 카구야가 말하는 도중에 토요히메는 카구야의 클리를 잡았다
+            PRINTFORMW 『자, 이래도 느끼지 않는다고 말해 보지？　이게 싫으면 조금이라도 말하는 걸 들어。알았어？』
+            PRINTFORMW 「……끄으」
+            PRINTFORMW 카구야 마음 속에 강한 쾌락이 새겨진 것 같다
         ;調教者が永琳
         ELSEIF NO:PLAYER == 29
-            PRINTFORMW 「あぁ……んぁ……ぁぁ……」
-            PRINTFORMW 『顔蕩けてるわね, すっごく気持ち良かった？』
-            PRINTFORMW 「そっ, そんなことは……んぅ……ないぃ……」
+            PRINTFORMW 「아아……응아……아아……」
+            PRINTFORMW 『얼굴이 느슨해졌네요, 아주 기분 좋았죠？』
+            PRINTFORMW 「그, 그런 건……으응……아냐……」
         ;調教者が妹紅
         ELSEIF NO:PLAYER == 31
-            PRINTFORML 「んうっ！　も, もこぉ……あぁ……」
-            PRINTFORML 『そんなに気持ち良かった？　もっとしてあげるね』
-            PRINTFORMW 「や, やめてぇ……」
+            PRINTFORML 「응으읏！　모, 모코……아아……」
+            PRINTFORML 『그렇게 기분 좋았어？　더 해 줄게』
+            PRINTFORMW 「그, 그만해……」
         ELSE
             ;妖精のまま記憶焼失した
             IF CFLAG:4900 & 1 && TALENT:200
-                PRINTFORMW （あ……）
-                PRINTFORMW （何, このふわふわした感じぃ……）
-                PRINTFORML （こんなの……初めてよ……）
-                PRINTFORMW 輝夜は蕩けた顔をして熱い吐息を出した
+                PRINTFORMW （아……）
+                PRINTFORMW （뭐야, 이 둥실거리는 느낌……）
+                PRINTFORML （이런 거……처음이야……）
+                PRINTFORMW 카구야는 풀어진 표정으로 뜨거운 한숨을 뿜었다
             ELSE
-                PRINTFORMW （や, やだ……目の前が真っ白になっちゃう）
-                PRINTFORMW 「へえー, それで終わり？　……っ！　こんなの, まだ何ともないわ」
-                PRINTFORMW 口とは裏腹に輝夜は時々身体を震わせている
+                PRINTFORMW （시, 싫어……눈 앞이 새하얘져）
+                PRINTFORMW 「흥, 이게 끝이야？　……윽！　이 정도론, 별 일도 없어」
+                PRINTFORMW 말과는 달리 카구야는 종종 몸을 떨고 있다
             ENDIF
         ENDIF
     ENDIF
@@ -17211,93 +17211,93 @@ IF TFLAG:42 == 3 && CFLAG:8099 == 0
     IF TALENT:150
         ;妖精のまま記憶焼失した
         IF CFLAG:4900 & 1 && TALENT:200
-            PRINTFORMW 「私……記憶違いがあるだなんて認めたくなかったのかもね」
-            PRINTFORMW 「普通こんなことされたら妖精だって一発で分かってしまうのに」
-            PRINTFORMW 「私は……やっぱり……妖精です……」
-            PRINTFORMW 輝夜の目から意思の光がまた一段と暗くなった気がした
+            PRINTFORMW 「나……기억 차이가 있단 걸 인정하고 싶지 않았는지도 몰라」
+            PRINTFORMW 「보통 이렇게 되면 요정이라도 바로 알아챌 텐데」
+            PRINTFORMW 「전……역시……요정이에요……」
+            PRINTFORMW 카구야 눈의 이성의 빛이 한층 어두워진 듯했다
         ELSE
-            PRINTFORMW 「改めてよく分かったわ」
-            PRINTFORMW 「私……もう%CALLNAME:MASTER%には逆らえない……」
+            PRINTFORMW 「다시 잘 알았어」
+            PRINTFORMW 「난……더 이상 %CALLNAME:MASTER%에게 거스를 수 없어……」
         ENDIF
     ELSE
         ;妖精のまま記憶焼失した
         IF CFLAG:4900 & 1 && TALENT:200
-            PRINTFORMW 「んっ, はあっ……ぁ！」
-            PRINTFORMW （私の身体……なんか変……）
-            PRINTFORMW （こんなに私の身体が卑しい訳ない, 絶対にない……）
-            PRINTFORMW （もう何か心まで変になってきたみたい……こんな奴相手に従順になってしまうなんて……）
+            PRINTFORMW 「응, 하앗……아！」
+            PRINTFORMW （내 몸……뭔가 이상해……）
+            PRINTFORMW （이렇게 내 몸이 추잡한 이유가 없어, 전혀……）
+            PRINTFORMW （다른 뭔가가 마음까지 이상하게 만든 거야……이런 자식 상대로 순종하게 되다니……）
             ;超刷り込みモード
             IF CFLAG:5112 == 1
-                PRINTFORMW （ぅんっ, 私……輝夜じゃないの, かも……っ……じゃあ……私は……）
-                PRINTFORMW 「앗, んぅっ, わっ, 私は……輝夜じゃないです, スター……ですぅ……」
-                PRINTFORML 力無く頭を項垂れた輝夜
-                PRINTFORMW その瞬間, 輝夜の目の輝きが薄くなっていくのを%CALLNAME:MASTER%は見た
+                PRINTFORMW （아니, 난……카구야가, 아닐지도……읏……그럼……난……）
+                PRINTFORMW 「앗, 으응, 나, 저는……카구야가 아녜요, 스타……예요……」
+                PRINTFORML 힘 없이 고개를 숙인 카구야
+                PRINTFORMW 그 순간, 카구야의 눈빛이 흐려진 걸 %조사처리(CALLNAME:MASTER, "은")% 봤다
             ELSE
-                PRINTFORMW （そうよ, こんなことになるのも私が輝夜じゃなくて妖精だからよ……多分, きっとそう……）
-                PRINTFORMW 「あっ, んあ앗！　認めますっ！　私は妖精です, 妖精ですからぁ！」
-                PRINTFORMW 「だから, あっ, んふっ, もうひどいことしないでぇ！」
-                PRINTFORMW その瞬間, 輝夜の目の輝きが薄くなっていくのを%CALLNAME:MASTER%は見た
+                PRINTFORMW （그래, 이런 걸 당하는 것도 내가 카구야가 아닌 요정이기 때문이야……아마, 분명 그럴 거야……）
+                PRINTFORMW 「앗, 응아앗！　인정할게요！　전 요정이에요, 요정 맞아요！」
+                PRINTFORMW 「그러니까, 앗, 응흣, 더 이상 심한 거 하지 마세요！」
+                PRINTFORMW 그 순간, 카구야의 눈빛이 흐려진 걸 %조사처리(CALLNAME:MASTER, "은")% 봤다
             ENDIF
         ;調教者が토요히메＆助手が依姫
-        ELSEIF NO:PLAYER == 53 && NO:ASSI == 54
-            PRINTFORMW 「んっ……」
-            PRINTFORMW 『まだ堕ちないのね……依姫, 用意をしなさい。”トドメ”を刺すのよ』
-            PRINTFORMW 『分かりました……』
-            PRINTFORMW 依姫は輝夜を上に寝かし, 토요히메が輝夜の上に乗った
-            PRINTFORMW 「な……何よ……私を二人で挟むなんて, 馬鹿みたい……」
-            PRINTFORMW 『まだそんな事言えるのね。まあいいわ, もうそんな事言えなくなるから』
-            PRINTFORMW 토요히메は輝夜の陰豆に自分の陰豆を擦りつけるようにして身体を擦り付け始め, 
-            PRINTFORMW それと同時に依姫は背後から輝夜の胸を乳首を主にして揉みしだき始めた
-            PRINTFORMW 「んッ！？　んんぅ！　ふぁ……ぁくんッ！　んっ……くうっ……！」
-            PRINTFORMW 輝夜ははあはあと荒い息をついて, 喘ぎ声を噛み殺した
-            PRINTFORMW 『あらあら, 余裕が無いみたいねえ……もっと激しくしてあげましょうか, 依姫, 剣』
-            PRINTFORMW 『はいっ♪』
-            PRINTFORMW そう言うと依姫は傍らに置いてあった剣に触れると, 手にオーラを纏った
-            PRINTFORMW そしてそのオーラを纏ったまま輝夜の胸を再び揉みしだいた
-            PRINTFORMW 「あっ……くあっ……ふ앗……んッ！　あ아읏！」
-            PRINTFORMW 胸の感度がよくなったのか, 輝夜はくぐもった声を漏らしつつ口の端から涎を垂らし始めた
-            PRINTFORMW 『ふふっ, 気持ちいいんでしょ？　ほら, イきなさいよ♪』
-            PRINTFORMW 「あっ아읏！　もうっ, だめぇ……ふぁああああ아읏！」
-            PRINTFORMW 토요히메が激しく輝夜の豆に擦りつけると, 輝夜は背を反らして絶頂した
-            PRINTFORMW 「하아っ……하아っ……」
-            PRINTFORMW 『んー甘いっ♪　姫様, 気持ちよかったわよね？』
-            PRINTFORMW 토요히메は恍惚とした表情を浮かべて放心状態になっている輝夜の涎を指ですくうと, それを舐めた
-            PRINTFORMW 「は……はひぃ……お……ねぇ……さま……きもち……よかった……れすぅ……」
-            PRINTFORMW 『そう？　よかった♪』
-            PRINTFORMW 『お姉さまのお役に立てて, 嬉しいです……』
-            PRINTFORMW 토요히메は満足そうな笑顔を浮かべた
+        ELSEIF NO:PLAYER == 53 && ASSINO() == 54
+            PRINTFORMW 「응……」
+            PRINTFORMW 『아직도 굴복하지 않네…… 요리히메, 준비해。”결정타”를 찌르는 거야』
+            PRINTFORMW 『알겠습니다……』
+            PRINTFORMW 요리히메는 카구야를 눕히고, 토요히메가 카구야 위에 올라탔다
+            PRINTFORMW 「뭐……뭐야……날 둘이서 괴롭힌다니, 어리석은……」
+            PRINTFORMW 『아직도 그런 소리를 하다니。뭐 괜찮아, 이제 그런 소리는 할 수 없을 거니까』
+            PRINTFORMW 토요히메는 카구야의 클리에 자기 클리를 문지르듯이 몸을 움직였고,
+            PRINTFORMW 동시에 요리히메는 뒤에서 카구야 가슴을 유두 위주로 주무르기 시작했다
+            PRINTFORMW 「응읏！？　응으응！　흐아……아끄응！　응……끄읏……！」
+            PRINTFORMW 카구야는 하악거리면서도 신음 소리를 죽였다
+            PRINTFORMW 『어머, 여유가 없나 보네……더 세게 해 볼까, 요리히메, 칼』
+            PRINTFORMW 『네♪』
+            PRINTFORMW 그러면서 요리히메는 옆에 놓여져 있던 칼을 만지며, 손에 오오라를 둘렀다
+            PRINTFORMW 그리고 그 오오라를 두른 채 카구야의 가슴을 다시 주물럭거렸다
+            PRINTFORMW 「앗……끄앗……흐앗……흫！　아아읏！」
+            PRINTFORMW 가슴 감도가 좋아졌는지, 카구야는 흐린 신음을 내며 입가에서 침을 흘리기 시작했다
+            PRINTFORMW 『후훗, 기분 좋지？　자, 가 버려♪』
+            PRINTFORMW 「아아읏！　더는, 안 돼……흐아아아아아아읏！」
+            PRINTFORMW 토요히메가 격렬히 카구야 클리에 밀어붙이자, 카구야는 고개를 젖히며 절정했다
+            PRINTFORMW 「하앗……하앗……」
+            PRINTFORMW 『응ー달콤해♪　공주님, 기분 좋았지？』
+            PRINTFORMW 토요히메는 황홀한 표정을 지으며 넋을 놓은 카구야 침을 손가락으로 떠서 핥았다
+            PRINTFORMW 「네……녜……어……언……니……기분……조아……써요……」
+            PRINTFORMW 『그래？　다행이네♪』
+            PRINTFORMW 『언니 도움이 돼서, 기뻐요……』
+            PRINTFORMW 토요히메는 만족스러운 미소를 지었다
         ;調教者が토요히메
         ELSEIF NO:PLAYER == 53
-            PRINTFORMW 「하아っ……」
-            PRINTFORMW 能力が封じられており, しかも長寿な月人である토요히메を前に為す術は無く
-            PRINTFORMW その上自分の身体が開発され, 少しの刺激に大きな悦楽を返すこの身体では普通の生活なんて送れる訳もなく……
-            PRINTFORMW 輝夜は失望して目の輝きを無くし, 心が空っぽになった
-            PRINTFORML 『どうしたのよ？　元気が無いわねえ……えいっ♪』
-            PRINTFORMW 輝夜が押し黙ってしまったのを見て, 토요히메は輝夜の陰核を指で弄り始めた
-            PRINTFORML 「……앗……んっ……하아っ……ふぁ……」
-            PRINTFORMW 空っぽになっていた輝夜の心に快楽が満たされ始める……
-            PRINTFORMW 『私に従えばもう何も考えなくても済む気持ちいい世界に住めるわ, どう？』
-            PRINTFORMW 「――いっ……」
-            PRINTFORMW 『えっ？』
-            PRINTFORML 「気持ち……いいのっ……お姉さまっ……もっと, 弄って……っ！」
-            PRINTFORMW 輝夜は擦れた声を出し, 토요히메の気を惹いた
-            PRINTFORMW 『あら, やっと素直になったのね？　いいわよ, ご褒美にたくさん弄ってあげる♪』
-            PRINTFORMW 토요히메は輝夜の陰核を両手で握り, 強く擦り始めた
-            PRINTFORML 「ああっ！　ふぁ앗！　すごひのっ！　豆が気持ちよくってっ！　イくっ！　ひクーっ！」
-            PRINTFORMW 輝夜は大きな媚声をあげ, 背を反らして股間から潮を吹いた
-            PRINTFORMW 輝夜の心に再び光が灯り始める……
-            PRINTFORMW 快楽を根本として作られた新たな心は, 今までとは違う異常な倫理観と認識を作り上げた……
-            PRINTFORMW 「お姉……さま……きもち……よかった……ですぅ……♪」
-            PRINTFORMW 輝夜は妖悦な表情を浮かべて微笑んでいる
-            PRINTFORMW 『でしょう？　これからはもっと気持ちよくしてあげるからねー♪』
-            PRINTFORMW 「はひぃ……お願い……しますぅ……」
+            PRINTFORMW 「하앗……」
+            PRINTFORMW 능력이 봉인된 데다가, 장수한 월인인 토요히메을 앞에 두고 어찌할 방법이 없다
+            PRINTFORMW 거기다 몸이 개발돼서, 약간의 자극에도 큰 열락이 되돌아오는 이 신체로는 정상적인 삶을 보낼 수 없다……
+            PRINTFORMW 카구야는 실망하여 눈빛이 어두워지고, 마음이 공허해졌다
+            PRINTFORML 『왜 그래？　기운이 없네……에잇♪』
+            PRINTFORMW 카구야가 침묵한 걸 보고, 토요히메는 카구야의 클리를 손가락으로 만지작거리기 시작했다
+            PRINTFORML 「……앗……응……하앗……흐아……」
+            PRINTFORMW 텅 빈 카구야 마음에 기쁨이 넘치기 시작한다……
+            PRINTFORMW 『날 따르면 더 이상 아무 생각 안 해도 기분 좋은 세계에서 살 수 있어, 어때？』
+            PRINTFORMW 「――조……」
+            PRINTFORMW 『어？』
+            PRINTFORML 「기분……좋아요……언니……더, 괴롭혀요……！」
+            PRINTFORMW 카구야의 스치는 듯한 목소리가, 토요히메 마음을 사로잡았다
+            PRINTFORMW 『어머, 드디어 솔직해졌네？　좋아, 보상으로 많이 만져 줄게♪』
+            PRINTFORMW 토요히메는 카구야 클리를 양손으로 잡고, 강하게 문지르기 시작했다
+            PRINTFORML 「아앗！　흐아앗！　엄청나요！　클리 기분 좋아서！　가！　갸 버렷！」
+            PRINTFORMW 카구야는 큰 교성을 울리며 등을 젖히고 다리 사이에서 물을 뿜었다
+            PRINTFORMW 카구야 마음에 다시 빛이 돌아왔다……
+            PRINTFORMW 쾌락을 바탕으로 만들어진 새로운 마음은, 지금까지와는 다른 특이한 윤리 인식을 만들어냈다……
+            PRINTFORMW 「언……니……기분……좋아……요……♪」
+            PRINTFORMW 카구야는 요염한 표정을 지으며 미소 짓고 있다
+            PRINTFORMW 『그렇지？　앞으로 더 기분 좋게 해 줄게ー♪』
+            PRINTFORMW 「녜……부탁……해요……」
         ;調教者が永琳
         ELSEIF NO:PLAYER == 29
             ;Ａが絶頂している場合
             IF NOWEX:2 >= 1
-                PRINTFORMW 「んふぁぁあああん！　はあっ……하아……やめてぇ……」
-                PRINTFORMW 『随分と激しく乱れたわね, 輝夜, もう素直になりなさいよ』
-                PRINTFORMW 「いっ……いやぁ……身体が敏感に……痺れちゃって……でも, 受け入れたくないっ！」
+                PRINTFORMW 「응흐아아아아앙！　하앗……하아……그만해……」
+                PRINTFORMW 『몹시 거세게 몸부림을 치네요, 카구야, 더 솔직해져요』
+                PRINTFORMW 「아……아냐……몸이 민감해져서……찌릿하고……그래도, 받아들이진 않을 거야！」
             ;それ以外
             ELSE
                 PRINTFORMW 「쿠우으……어째서야……어째서, 아직 정신을 안 차리니？」
@@ -17507,7 +17507,7 @@ IF TFLAG:200 == 111 && TALENT:158 == 0 && TALENT:167 == 0
                     PRINTFORMW %CALLNAME:MASTER%는 카구야의 스커트를 넘겨, 스커트 안에 손을 넣고 속을 치우고 음부를 비비기 시작했다
                     PRINTFORMW 「으훗……잠깐, 옷 속에 손을 넣지 말아줘……」
                     PRINTFORMW 쾌락을 느끼기 시작했는지 카구야의 몸이 붉게 물들어 간다……
-                    PRINTFORML 「んぁ, あっ, んっ, あぁん！　도시락을 한창 만들고 있는 중인데 가버려엇!」
+                    PRINTFORML 「으아, 앗, 읏, 아앙！　도시락을 한창 만들고 있는 중인데 가버려엇!」
                     PRINTFORMW 조리대에 양 손을 대고 허리를 뒤로 내밀고, 입에서 혀를 내밀어 헐떡이는 모습은 매우 선정적이다
                 ENDIF
                 PRINTFORMW 결국 견디지 못한 카구야는, 몸을 떨고 절정에 이르러, 힘 없이 그 자리에 무릎을 꿇었다
@@ -18145,20 +18145,20 @@ IF TFLAG:200 == 140
     IF TALENT:TARGET:150 ==1 && (CFLAG:8240 < 3 || FLAG:11 == 2)
         LOCAL:0 = RAND:2
         IF LOCAL:0 == 0
-            PRINTFORMW 「ふふっ, 今日も元気あるじゃないの」
+            PRINTFORMW 「후훗, 오늘도 기운 넘치네」
         ELSE
-            PRINTFORMW 「ぷ하아……今日も私を気持ちよくしてね？」
+            PRINTFORMW 「푸하아…… 오늘도 기분 좋게 해 줄래？」
         ENDIF
         CFLAG:8240 = 3
     ;奉仕精神Lv5以上
     ELSEIF ABL:13 >= 5 && (CFLAG:8240 < 2 || FLAG:11 == 2)
-        PRINTFORMW 「汚らわしい物ね, さっさと切り取ってしまいたい位だわ」
-        PRINTFORMW 「まあ……身体が逆らうから無理だけど」
+        PRINTFORMW 「지저분하네, 빨리 잘라 버리고 싶을 만큼」
+        PRINTFORMW 「뭐……몸이 반대해서 무리지만」
         CFLAG:8240 = 2
     ;それ以外
     ELSEIF CFLAG:8240 < 1 || FLAG:11 == 2
-        PRINTFORMW 「なんでこんな事してるのか私にもよく分からないわ」
-        PRINTFORMW 「どうしてでしょうね？」
+        PRINTFORMW 「왜 이런 짓을 하는지 나도 모르겠어」
+        PRINTFORMW 「왜지？」
         CFLAG:8240 = 1
     ENDIF
 ENDIF
@@ -19628,29 +19628,29 @@ ELSEIF LOCAL:1 == 3
 ELSEIF LOCAL:1 == 4
     PRINTFORM 우동
 ELSEIF LOCAL:1 == 5
-    PRINTFORM そば
+    PRINTFORM 소바
 ELSEIF LOCAL:1 == 6
-    PRINTFORM お好み焼き
+    PRINTFORM 오코노미야키
 ELSEIF LOCAL:1 == 7
-    PRINTFORM 竹の子の里
+    PRINTFORM 타케노코노사토
 ;リメイクで金銀が発売されたので記念に
 ELSEIF LOCAL:1 == 8
-    PRINTFORM 富士山噴火ハンバーグ
+    PRINTFORM 후지산 분화 햄버그
 ELSEIF LOCAL:1 == 9
-    PRINTFORM 満月シャーベット
+    PRINTFORM 만월 샤벳
 ELSEIF LOCAL:1 == 10
-    PRINTFORM 輝夜特製石焼きビビンバ
+    PRINTFORM 카구야 특제 돌솥 비빔밥
 ELSEIF LOCAL:1 == 11
-    PRINTFORM 妹紅印のヴォルケイノカレー
+    PRINTFORM 모코우 표 볼케이노 카레
 ELSEIF LOCAL:1 == 12
 ;なかったことにしてやる！＝物忘れさせてやる！
-    PRINTFORM 慧音特製ミョウガの酒漬け
+    PRINTFORM 케이네 특제 양하 담금 술
 ELSEIF LOCAL:1 == 13
-    PRINTFORM 月見大福
+    PRINTFORM 달맞이 다이후쿠
 ELSEIF LOCAL:1 == 14
-    PRINTFORM ふわふわイナバのわたあめ
+    PRINTFORM 푹신푹신 토끼 솜사탕
 ELSEIF LOCAL:1 == 15
-    PRINTFORM たこ焼き
+    PRINTFORM 타코야키
 ENDIF
 IF LOCAL:1 == 4 || LOCAL:1 == 5
     LOCAL:1 = RAND:2
@@ -19658,128 +19658,128 @@ ELSE
     LOCAL:1 = RAND:3
 ENDIF
 IF LOCAL:1 == 0
-    PRINTFORM の上に
+    PRINTFORM  위에 
 ELSEIF LOCAL:1 == 1
-    PRINTFORM の下に
+    PRINTFORM  아래에 
 ELSEIF LOCAL:1 == 2
-    PRINTFORM の間に
+    PRINTFORM  사이에 
 ENDIF
 LOCAL:2 = RAND:25
 IF LOCAL:2 == 0
-    PRINTFORM 肉
+    PRINTFORM 고기를
 ELSEIF LOCAL:2 == 1
-    PRINTFORM 野菜
+    PRINTFORM 야채를
 ELSEIF LOCAL:2 == 2
-    PRINTFORM 魚
+    PRINTFORM 물고기를
 ELSEIF LOCAL:2 == 3
-    PRINTFORM あんこ
+    PRINTFORM 팥소를
 ELSEIF LOCAL:2 == 4
-    PRINTFORM 豆腐
+    PRINTFORM 두부를
 ELSEIF LOCAL:2 == 5
-    PRINTFORM 卵
+    PRINTFORM 계란을
 ELSEIF LOCAL:2 == 6
-    PRINTFORM ソーセージ
+    PRINTFORM 소세지를
 ELSEIF LOCAL:2 == 7
-    PRINTFORM きのこ
+    PRINTFORM 버섯을
 ELSEIF LOCAL:2 == 8
-    PRINTFORM 竹の子
+    PRINTFORM 죽순을
 ELSEIF LOCAL:2 == 9
-    PRINTFORM 桃
+    PRINTFORM 복숭아를
 ELSEIF LOCAL:2 == 10
-    PRINTFORM アボカド
+    PRINTFORM 아보카도를
 ELSEIF LOCAL:2 == 11
-    PRINTFORM ウニ
+    PRINTFORM 성게를
 ELSEIF LOCAL:2 == 12
-    PRINTFORM りんご
+    PRINTFORM 사과를
 ELSEIF LOCAL:2 == 13
-    PRINTFORM ふきのとう
+    PRINTFORM 머윗대를
 ELSEIF LOCAL:2 == 14
-    PRINTFORM 湯葉
+    PRINTFORM 유바를
 ELSEIF LOCAL:2 == 15
-    PRINTFORM 生クリーム
+    PRINTFORM 생크림을
 ELSEIF LOCAL:2 == 16
-    PRINTFORM おかき
+    PRINTFORM 오카키를
 ELSEIF LOCAL:2 == 17
-    PRINTFORM ひなあられ
+    PRINTFORM 히나아라레를
 ELSEIF LOCAL:2 == 18
-    PRINTFORM 八つ橋
+    PRINTFORM 야츠하시를
 ELSEIF LOCAL:2 == 19
-    PRINTFORM チョコレート
+    PRINTFORM 초콜릿을
 ELSEIF LOCAL:2 == 20
-    PRINTFORM ピーナッツバター
+    PRINTFORM 땅콩버터를
 ELSEIF LOCAL:2 == 21
-    PRINTFORM 燕の巣
+    PRINTFORM 제비집을
 ELSEIF LOCAL:2 == 22
-    PRINTFORM 危ない花びら
+    PRINTFORM 위험한 꽃잎을
 ELSEIF LOCAL:2 == 23
-    PRINTFORM ヤタピの実
+    PRINTFORM 야타비 열매를
 ELSEIF LOCAL:2 == 24
-    PRINTFORM 生キャラメル
+    PRINTFORM 생 카라멜을
 ENDIF
 LOCAL:2 = RAND:6
 IF LOCAL:2 == 0
-    PRINTFORM を茹でてから
+    PRINTFORM  삶고
 ELSEIF LOCAL:2 == 1
-    PRINTFORM を焼いてから
+    PRINTFORM  굽고
 ELSEIF LOCAL:2 == 2
-    PRINTFORM を生で
+    PRINTFORM  생으로 
 ELSEIF LOCAL:2 == 3
-    PRINTFORM を蒸してから
+    PRINTFORM  찌고
 ELSEIF LOCAL:2 == 4
-    PRINTFORM を火で炙ってから
+    PRINTFORM  불에 쬐고
 ELSEIF LOCAL:2 == 5
-    PRINTFORM を半分生の状態で
+    PRINTFORM  반쯤 익히고
 ENDIF
 IF LOCAL:1 == 0
-    PRINTFORM 乗せて
+    PRINTFORM  올려 
 ELSEIF LOCAL:1 == 1
-    PRINTFORM 入れて
+    PRINTFORM  넣어 
 ELSEIF LOCAL:1 == 2
-    PRINTFORM 挟んで
+    PRINTFORM  끼워 
 ENDIF
 LOCAL:1 = RAND:19
 IF LOCAL:1 == 0
-    PRINTFORM 塩で
+    PRINTFORM 소금으
 ELSEIF LOCAL:1 == 1
-    PRINTFORM 砂糖で
+    PRINTFORM 설탕으
 ELSEIF LOCAL:1 == 2
-    PRINTFORM ポン酢で
+    PRINTFORM 폰즈
 ELSEIF LOCAL:1 == 3
-    PRINTFORM 柚子胡椒で
+    PRINTFORM 유자후추
 ELSEIF LOCAL:1 == 4
-    PRINTFORM マヨネーズで
+    PRINTFORM 마요네즈
 ELSEIF LOCAL:1 == 5
-    PRINTFORM 七味唐辛子で
+    PRINTFORM 시치미 토우가라시
 ELSEIF LOCAL:1 == 6
-    PRINTFORM 胡椒で
+    PRINTFORM 후추
 ELSEIF LOCAL:1 == 7
-    PRINTFORM デスソースで
+    PRINTFORM 데스 소스
 ELSEIF LOCAL:1 == 8
-    PRINTFORM 永琳特製とろろ風味の科学調味料で
+    PRINTFORM 에이린 특제 참마 맛 나는 화학 조미료
 ELSEIF LOCAL:1 == 9
-    PRINTFORM 永琳特製ローションっぽい水飴で
+    PRINTFORM 에이린 특제 로션 같은 물엿으
 ELSEIF LOCAL:1 == 10
-    PRINTFORM 永琳特製身体が火照る唐辛子で
+    PRINTFORM 에이린 특제 몸이 탈 것 같은 고추
 ELSEIF LOCAL:1 == 11
-    PRINTFORM オイスターソースで
+    PRINTFORM 굴 소스
 ;2010で皆勤賞じゃなくなったので記念（？）に
 ELSEIF LOCAL:1 == 12
-    PRINTFORM 灰色熊の手のエキスで
+    PRINTFORM 회색 곰 손의 액기스
 ELSEIF LOCAL:1 == 13
-    PRINTFORM 梅酒で
+    PRINTFORM 매실주
 ELSEIF LOCAL:1 == 14
-    PRINTFORM 白ワインで
+    PRINTFORM 화이트 와인으
 ELSEIF LOCAL:1 == 15
-    PRINTFORM 料理酒で
+    PRINTFORM 맛술
 ELSEIF LOCAL:1 == 16
-    PRINTFORM チョコレートで
+    PRINTFORM 초콜릿으
 ELSEIF LOCAL:1 == 17
-    PRINTFORM 桃色天然水で
+    PRINTFORM 분홍색 천연수
 ELSEIF LOCAL:1 == 18
     ;コーラで味付けとか地雷すぎる
-    PRINTFORM ドクターペッパーで
+    PRINTFORM 닥터 페퍼
 ENDIF
-PRINTFORM 味付けした料理
+PRINTFORM 로 양념한 요리
 RETURN 0
 ;-------------------------------------------------
 ;@精神崩壊時の口上
