@@ -378,7 +378,7 @@ FOR COUNT, 100, 600
     ITEMSALES:COUNT = ITEMPRICE:COUNT
     ;IRCキャラは通常購入不可能(YASAIモード以外で主人が[地獄の勲章]持ちのときは購入可能)
     ;なお, YASAIモードの場合のこの辺のキャラは専用コマンドと処理で購入する.
-    SIF COUNT > 500 && (TALENT:MASTER:831 || TALENT:MASTER:834 == 0)
+    SIF COUNT > 500 && TALENT:MASTER:834 == 0
         ITEMSALES:COUNT = 0
 NEXT
 ;아나타와 자식 컷

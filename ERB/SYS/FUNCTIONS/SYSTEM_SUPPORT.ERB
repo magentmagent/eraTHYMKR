@@ -33,6 +33,10 @@ SIF LASTLOAD_VERSION < 3163
 SIF LASTLOAD_VERSION < 3164 
     CALL SAVE_SUPPORT_VERSION_3164
 
+;2019년 2월 10일 패치
+SIF LASTLOAD_VERSION < 3190
+    CALL SAVE_SUPPORT_VERSION_3190
+
 SIF MONEY:100 == 0
     MONEY:100 = 1000000
 
@@ -105,3 +109,18 @@ IF GLOBAL:999 < 1
     SAVEGLOBAL
 ENDIF
 RETURN 1
+
+;--------------------------------------------------
+;2019년 2월 10일 패치
+;--------------------------------------------------
+@SAVE_SUPPORT_VERSION_3190
+
+PRINTW YASAI 모드를 삭제합니다
+
+REPEAT CHARANUM
+    ;야채의 연금술사 삭제
+    TALENT:COUNT:831 = 0
+REND
+
+;채소밭 플래그 초기화
+FLAG:573 = 0;
