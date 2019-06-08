@@ -3879,7 +3879,7 @@ IF ASSI > 0 && NO == 149 && NO:ASSI == 22 && TALENT:ASSI:150 == 1 && CFLAG:7020 
                     PRINTFORMW 『게임을 잘 하는 이유? 이유라…』
                     PRINTFORM 「
                     PRINTV DAUGHTER_YUKARI_CALLNAME
-                    PRINTW 가 뭐든 잘 해버리니깐, %CALLNAME:TARGET%, 조금 이길 자신이 없어서…」
+                    PRINTFORMW 가 뭐든 잘 해버리니깐, %CALLNAME:TARGET%, 조금 이길 자신이 없어서…」
                     PRINTFORMW 『…지금 이 시점에서 이미 이겨버린 것 같은데, 욕심도 많기는』
                     PRINTFORMW 유카리는 가만히 %조사처리(CALLNAME:TARGET,"를")% 귀엽다는 듯 쓰다듬더니 부채를 입에 대고 말을 이었다
                     PRINTFORMW 『요는 계산이라는 거야, 어디로 어떻게 움직일지를 생각해서 가장 가능성이 높은 방향으로 대응하는 것』
@@ -4192,7 +4192,7 @@ IF ASSI > 0 && NO == 149 && NO:ASSI == 22 && TALENT:ASSI:150 == 1 && CFLAG:7020 
                     CFLAG:7062 = 2
                 ENDIF
             ELSE
-                IF CFLAG:7064 == 4
+                IF CFLAG:7063 == 4
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"는")% 다 정리된 %CALLNAME:MASTER%의 추억을 하나씩 보고 있다… 
                 ELSE
                     PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 쓰레기 더미에 깔려있는 앨범을 집어들었다… 
@@ -4310,7 +4310,6 @@ IF ASSI > 0 && NO == 149 && NO:ASSI == 22 && TALENT:ASSI:150 == 1 && CFLAG:7020 
                     PRINTFORMW 돌이켜 생각해 보면 지금까지 그렇게 믿었던 것만큼 형편없는 일만 있었던 것도 아니었다 
                     PRINTFORMW 그걸 깨닫게 해준 것은, 전부 %CALLNAME:TARGET%의 공일 것이다
                 ELSE
-                    PRINTFORMW %조사처리(CALLNAME:TARGET,"가")% 쓰레기 더미에 깔려있는 앨범을 집어들었다… 
                     PRINTFORMW 「이건…」
                     PRINTFORMW 버리기 위해 내놓은 쓰레기들 아래서 %조사처리(CALLNAME:TARGET,"는")% 무언가를 발견한 것 같다
                     PRINTFORMW 원래 흰색이었던 표지가 곳곳에 더러움으로 색이 변색되고 끝이 닳아빠져있다

@@ -1355,7 +1355,7 @@ IF TFLAG:200 == 70
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「…%STR:401%, 왠지 이제 부모로써가 아니라 한 \@(TALENT:MASTER:120) ? 남자 # 존재\@로써 여기고 있어」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「…이러면 좋지 않은데? 하지만 이젠 %조사처리(STR:401,"를")% 생각하면 두근거림이 멈추지 않는다%STR:403%」
+            PRINTFORMW 「…이러면 좋지 않은데? 하지만 이젠 %조사처리(STR:401,"를")% 생각하면 두근거림이 멈추지 않아%STR:403%」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「…%조사처리(STR:401,"를")% 위해서라면 모든 것을 바쳐도 좋아요」
         ELSEIF CFLAG:3005 == 6
@@ -2492,7 +2492,7 @@ IF TFLAG:200 == 111
         ELSEIF CFLAG:3005 == 1 || CFLAG:3005 == 4
             IF TALENT:150 == 1
                 IF RAND:2 == 0 && ABL:70 == 5
-                    PRINTFORMW 「좋~아! 내가 요리를 지금부터 할 것이다!」
+                    PRINTFORMW 「좋~아! 지금부터 요리를 시작하겠어!」
                     PRINTFORMW …팔을 걷고 콧김을 내뿜고 있다, 아무리 봐도 요리를 하는 기세가 아니다 
                     PRINTFORMW 앞에 있는 재료들은 별별 것들이 다 있다, 어디서들 조달해 온 건지… 
                     PRINTFORMW 「나는 요리를 별로 못 한다는 이미지였지? 아―빠」
@@ -3420,7 +3420,7 @@ IF TFLAG:200 == 121
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「…이상한 충실감이 드는데, 이거 괜찮은 거지?」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「…음, 왠지 마음이 강인해진 것 같다%STR:403%」
+            PRINTFORMW 「…음, 왠지 마음이 강인해진 것 같아%STR:403%」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「…왠지 앞으로는 더 열심히 할 수 있을 것 같아요」
         ELSEIF CFLAG:3005 == 6
@@ -6627,7 +6627,7 @@ IF TFLAG:200 == 200 || TFLAG:200 == 205
         PRINTFORMW 「고마워… %STR:400%, 정말 기뻐…흐흑, 으아…앙」
     ELSEIF CFLAG:3005 == 2
         PRINTFORMW 「이건… 아니, 괜찮아. 여자에게 환상을 보여주는 건 그간 해왔던 수법인 걸까」
-        PRINTFORMW 「이게 거짓말이 아니라면 꿈이라도 좋다%STR:403%」
+        PRINTFORMW 「이게 거짓말이 아니라면 꿈이라도 좋아%STR:403%」
         PRINTFORMW 「좋아해… %STR:401%, 정말 좋아해」
         PRINTFORMW 「계속, %STR:400%의 곁에, 있을 수 있다니…」
     ELSEIF CFLAG:3005 == 5
@@ -8779,7 +8779,7 @@ IF TFLAG:200 == 404
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「방심했네♪ 자, 확실히 기분 좋게 받아♪」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「끝인가, 도저히 참을 수 없다」
+            PRINTFORMW 「이게 끝이라면 참을 수 없어요…」
         ELSEIF CFLAG:3005 == 5
             PRINTFORMW 「%조사처리(STR:400,"라")%도, 그걸 원할 때가 있어요…」
         ELSEIF CFLAG:7005 == 1
@@ -11230,9 +11230,9 @@ IF TFLAG:200 == 1103 || TFLAG:200 == 1503
             PRINTFORMW 「어라… 흥분하고 있는 건 %STR:400%만이 아닌 것 같네요. 커져 있어요」
         ELSEIF CFLAG:3005 == 1
             PRINTFORML 「보고만 있자니, 쓸쓸하지?」
-            PRINTFORMW 「유감이지만, 추가 서비스는 없다고%STR:403%… 후앗, 으읏」
+            PRINTFORMW 「유감이지만, 추가 서비스는 없다고 %STR:403%… 후앗, 으읏」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORML 「어, 어떤가? %조사처리(STR:400,"가")% 잘 달아오르게… 앗, 아앙」
+            PRINTFORML 「어, 어때? %조사처리(STR:400,"가")% 잘 달아오르게… 앗, 아앙」
             PRINTFORMW 「그, 그래, 그쪽도 흥분해주는 것 같으니 기쁘다고… 아아앙」
         ELSEIF CFLAG:3005 == 5
             PRINTFORML 「햐앗… 으으… 부끄러워…」
@@ -11433,7 +11433,7 @@ IF TFLAG:200 == 1404
             PRINTFORMW 「앗! 아앙! …너의 그것도 꽤나 괜찮은 물건이네」
         ELSEIF CFLAG:3005 == 5
             PRINTFORML 「네, 올라탈게요…」
-            PRINTFORMW 「어떤가요? 좀 더 허리를 움직여도 괜찮다구요? 아앗」
+            PRINTFORMW 「어떤가요? 좀 더 허리를 움직여도 괜찮다구요? 아앗!」
         ELSEIF CFLAG:3005 == 6
             PRINTFORML 「그럼, 사양 않고… 어때요? %조사처리(STR:400,"가")% 무겁진 않죠?」
             PRINTFORMW 「그럼, 좋아요. 부담 없이 맛보세요♪」
@@ -11526,7 +11526,7 @@ IF TFLAG:200 == 1106 || TFLAG:200 == 1405 || (TFLAG:200 == 1506 && F != 1)
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「으아… 이걸로… 기분 좋아졌어?」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「크윽… 아… 이걸로… 어떤가? 기분 좋아지고 있나?」
+            PRINTFORMW 「크윽… 아… 이걸로… 어때? 기분 좋아?」
         ELSEIF CFLAG:3005 == 5
             PRINTFORML 「응… 으응…」
             PRINTFORMW 「%조사처리(STR:400,"는")% 당신의 것입니다… 더, 좀 더… 괴롭혀주세요」
@@ -11545,7 +11545,7 @@ IF TFLAG:200 == 1106 || TFLAG:200 == 1405 || (TFLAG:200 == 1506 && F != 1)
         ELSEIF CFLAG:3005 == 1
             PRINTFORMW 「끄윽, 아파! …어, 어땠어? 잘 모르겠지만…」
         ELSEIF CFLAG:3005 == 2
-            PRINTFORMW 「읏, 크윽… 이 느낌, 괜찮을지도… 넌 어떤가… 아팟!」
+            PRINTFORMW 「읏, 크윽… 이 느낌, 괜찮을지도… 어때…? 아팟!」
         ELSEIF CFLAG:3005 == 5
             PRINTFORML 「읏, 너무해요! 아팟! 아읏」
             PRINTFORMW 「조, 좀 더 괴롭혀주세요!」

@@ -94,7 +94,7 @@ REPEAT 20
     ELSEIF CFLAG:(LOCAL:10):4 & 1024
         PRINT ▼
         LOCAL:3 |= 16
-    ELSEIF CFLAG:(LOCAL:10):4 == 2048 || CFLAG:LOCAL:4 == 4096
+    ELSEIF CFLAG:(LOCAL:10):4 == 2048 || CFLAG:(LOCAL:10):4 == 4096
         PRINT ▽
         LOCAL:3 |= 8
     ELSE
