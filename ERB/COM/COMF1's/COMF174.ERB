@@ -119,8 +119,6 @@ IF TFLAG:99 == 2
     ;조교 대상으로 미약중독이 있으면 소비를 억제한다
     SIF TALENT:46
         TIMES LOCAL:2 , 0.50
-    SIF TEQUIP:78 == 2 && PALAM:10 >= 5000 && TEQUIP:90 == 0
-        TIMES LOCAL:2 , 0.10
 
     LOCAL:3 = LOCAL:2
 

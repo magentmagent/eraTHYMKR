@@ -96,9 +96,9 @@ SIF FLAG:3 == 3
 IF TFLAG:201 == 0 || TFLAG:201 == 148 || TFLAG:201 == 149 || TFLAG:201 == 400
     LOCALS:1 = 구입가능
 ELSEIF TFLAG:201 >= 423 && TFLAG:201 <= 429
-    LOCALS:1 = “YASAI” 모드 o r[지옥의 훈장] 보유시 구입가능 + 추가 조건 있음
+    LOCALS:1 = [지옥의 훈장] 보유시 구입가능 + 추가 조건 있음
 ELSEIF TFLAG:201 > 400 && TFLAG:201 < 500
-    LOCALS:1 = “YASAI” 모드 or [지옥의 훈장] 보유시 구입가능
+    LOCALS:1 = [지옥의 훈장] 보유시 구입가능
 ELSEIF TFLAG:201 == 65 || TFLAG:201 == 66 || TFLAG:201 == 67 || TFLAG:201 == 96 || TFLAG:201 == 97 || TFLAG:201 == 99
     LOCALS:1 = 구입 조건 있음
 ELSEIF ITEMPRICE:(TFLAG:201+100) <= LOCAL
