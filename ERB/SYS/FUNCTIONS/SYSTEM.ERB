@@ -145,23 +145,6 @@ ELSEIF RESULT == 9
     FLAG:5 |= 1
     CALL START_CHARA_SELECT
     MONEY += 19000
-;「野菜いっぱい」入力で特殊な素質が付いたYASAIモード(実際の扱いは特殊主人で始めるEXTRAモード)
-ELSEIF RESULT == 831181
-    PRINTW “YASAI” 모드를 선택했습니다.
-    FLAG:4 = 2
-    FLAG:5 |= 1
-    FLAG:570 |= 1
-    PRINTW 주인을 선택해 주세요.
-    PRINTL 어느 항목에서 주인을 선택하겠습니까?
-    PRINTL [0] 변경하지 않는다
-    PRINTL [1] 통상 캐릭터
-    $INPUT_LOOP_YASAI
-    INPUT
-    IF RESULT == 1
-        CALL START_CHARA_SELECT
-    ELSEIF RESULT != 0
-        GOTO INPUT_LOOP_YASAI
-    ENDIF
 ELSEIF RESULT == 100
     DRAWLINE
     PRINTL eratohoYM ：보통 플레이를 할 사람 지향. 기한 있음
