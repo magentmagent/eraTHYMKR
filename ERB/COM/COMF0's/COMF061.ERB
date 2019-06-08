@@ -8,8 +8,6 @@
 ;개별 설정 커맨드 필터
 SIF DITEMTYPE:999:61 > 0
     RETURN 0
-SIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000 && TEQUIP:90 == 0
-    RETURN 1
 ;아이템을 가지고 있는지, 아이템 없음 설정이나 촉수 조교중이 아니면 안 됨
 SIF ITEM:61 == 0 && NOITEM == 0 && TEQUIP:90 == 0
     RETURN 0
@@ -34,9 +32,6 @@ RETURN 1
 IF TEQUIP:90
     PRINTL 촉수 미약 전개
     COM_NAME = 촉수 미약 전개
-ELSEIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000
-    PRINTL 야채식 체액 미약 변환
-    COM_NAME = 야채식 체액 미약 변환
 ELSE
     PRINTL 미약
     COM_NAME = 미약
@@ -51,8 +46,6 @@ SIF TALENT:MASTER:55 || (ASSI >= 0 && TALENT:ASSI:55)
 ;調教対象に媚薬中毒があれば消費を抑える
 SIF TALENT:46
     LOCAL:1 /= 2
-SIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000 && TEQUIP:90 == 0
-    LOCAL:1 /= 10
 
 DOWNBASE:0 += LOCAL:1
 DOWNBASE:1 += LOCAL:1
@@ -73,16 +66,10 @@ ELSE
 ENDIF
 
 IF TEQUIP:90 == 0
-    IF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000
-        SOURCE:18 = PALAM:10
-        PALAM:10 = 0
-        SOURCE:31 = 0
-    ELSE
-        IF NOITEM == 0
-            ITEM:61 -= 1
-            SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:61
-                CALL FILL_PLURAL_ITEM, 61
-        ENDIF
+    IF NOITEM == 0
+        ITEM:61 -= 1
+        SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:61
+            CALL FILL_PLURAL_ITEM, 61
     ENDIF
 ENDIF
 
@@ -110,8 +97,6 @@ SIF FLAG:10 == 0 || CFLAG:99 == 1 || RESULT != 0
 PRINTL
 IF TEQUIP:90
     PRINTL 최음효과가 있는 액체가 촉수로부터 나오고 있다.
-ELSEIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000
-    PRINTFORML %조사선택(CALLNAME:MASTER, "는")% %CALLNAME:TARGET%의 몸에 붙은 액체를 미약으로 바꾸었다.
 ELSE
     PRINTFORM %CALLNAME:TARGET%에게 
     SIF ABL:PLAYER:12 >= 3
