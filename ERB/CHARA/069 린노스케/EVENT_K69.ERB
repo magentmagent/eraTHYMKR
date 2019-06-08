@@ -1090,37 +1090,41 @@ ENDIF
 ;-------------------------------------------------
 ;키스한다 CFLAG:9006
 ;-------------------------------------------------
-[SKIPSTART]
 IF SELECTCOM == 6
     ;처음
     IF CFLAG:9006 == 0
         ;연모
         IF TALENT:150
-            PRINTFORMW 
+            PRINTFORMW 「키스? 그러고보니, 우리가 하는 건 처음……이었지」
+			PRINTFORMW 「아니다, 신경쓰지 마라…… 그럼 입술을 내어 주실까」
         ;그 외
         ELSE
-            PRINTFORMW 
+            PRINTFORMW 「키스? 내가 왜 너랑…… 우웁!」
+			PRINTFORMW 바둥거리는 린노스케의 얼굴을 부여잡고 강제로 입을 맞췄다.
         ENDIF
         CFLAG:9006 = 1
     ;2회째 이후
     ELSE
         ;연모
         IF TALENT:150 && (CFLAG:9006 <= 3 || FLAG:11 == 2)
-            PRINTFORMW 
+			IF RAND:2
+				PRINTFORMW 「응웃, 후, %CALLNAME:MASTER%, 좋아, %CALLNAME:MASTER%……」
+			ELSE
+				PRINTFORMW 「응…… 후웃, 하아…… 숨 쉬기 힘들진 않나, %CALLNAME:MASTER%?」
+			ENDIF
             CFLAG:9006 = 4
         ;순종Lv2이상
         ELSEIF ABL:10 >=2 && (CFLAG:9006 <= 2 || FLAG:11 == 2)
-            PRINTFORMW 
+            PRINTFORMW 「……나와 이러는 게 즐겁나?」
             CFLAG:9006 = 3
         ;그 외
         ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
-            PRINTFORMW 
+            PRINTFORMW 「또냐…… 불쾌하군」
             CFLAG:9006 = 2
         ENDIF
     ENDIF
     RETURN 0
 ENDIF
-[SKIPEND]
 
 ;-------------------------------------------------
 ;자위 CFLAG:9007
@@ -6255,6 +6259,110 @@ IF TFLAG:200 == 158
     ENDIF
 ENDIF
 [SKIPEND]
+
+;=================================================
+;밤 이벤트 대사
+;사용 플래그는 TFLAG200의 내용물＋8100 (8501~)
+;이하 EVENT_NIGHT1.ERB 파일 내에서 호출하는 대사입니다. 추가하시려면 먼저 이쪽을 확인해 주세요.
+;(CALLF SET_NIGHT_KOJO, CALL SELF_KOJO)
+;이 파일 내에서는 GET_NIGHT_KOJO(0)를 통해 어떤 상황에서 호출되었는지 확인할 수 있습니다.
+;=================================================
+;-------------------------------------------------
+;자고 있는 주인에게 이것저것 한다
+;여기서의 GET_NIGHT_KOJO 값(주의, 다른 커맨드와 호환되지 않습니다):
+;1(실패), 2(성공), 3(단념), 4(자위), 5(정조대 방어), 6(주인이 범해지는 계열), 7(貝あわせ-주인이 눈을 뜨고 역공?)
+;-------------------------------------------------
+IF TFLAG:200 == 401 && GET_NIGHT_KOJO(0) == 6
+	PRINTFORMW 「안녕, 이라고 말하는 것도 좀 그런가」
+	PRINTFORMW 「몸이 달아올랐을 뿐이다. 네게도 책임이 있다는 자각은 있겠지」
+ENDIF
+
+;-------------------------------------------------
+;노예가 덮치는 행동
+;1(싫은 소리를 하면서도), 2(부끄러워하며), 3(의욕 만만)
+;-------------------------------------------------
+IF TFLAG:200 == 405
+	IF GET_NIGHT_KOJO(0) == 3
+		IF RAND:2 == 0
+			PRINTFORMW 「이대로는 잠들 수가 없어. 진정시켜 주지 않겠나?」
+		ELSE
+			PRINTFORMW 「몸이 뜨거워서 억누를 수가 없군…… 상대해다오」
+		ENDIF
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;반발 노예에 의한 본래의 덮침 CFLAG:8521
+;-------------------------------------------------
+;주인이 당할 때
+IF TFLAG:200 == 421
+	;본래의 덮침, 강간을 포함해 처음 찾아옴
+	IF CFLAG:8521 == 0 && CFLAG:8522 == 0
+		;연모
+		IF TALENT:150
+			PRINTFORMW 「……이렇게 될 거라고 예상하지 못했나?」
+			PRINTFORMW 「이젠 늦었다. 얌전히 받아들여」
+		;연모없음
+		ELSE
+			PRINTFORMW 「사람을, 마음대로, 농락한 대가다」
+		ENDIF
+		CFLAG:8521 = 1
+	ELSE
+		;연모
+		IF TALENT:150
+			PRINTFORMW 「하아, %CALLNAME:MASTER%, 사랑해……」
+			PRINTFORMW 「지금까지, 앞으로도, 끊임없이」
+		;연모없음
+		ELSE
+			PRINTFORMW 「이렇게 되게 만든 건, 너다」
+		ENDIF
+	ENDIF
+ENDIF
+
+;-------------------------------------------------
+;반발 노예에 의한 강간 CFLAG:8522
+;-------------------------------------------------
+;주인이 당할 때
+IF TFLAG:200 == 422
+	PRINTL
+	;본래의 덮침, 강간을 포함해 처음 찾아옴
+	IF CFLAG:8521 == 0 && CFLAG:8522 == 0
+		;연모
+		IF TALENT:150
+			PRINTFORMW 「내가 너를 생각하는 만큼, 너는 날……」
+			PRINTFORMW 「아니, 이젠 상관없나」
+		;연모없음
+		ELSE
+			PRINTFORMW 「하, 사람을 그렇게 마음대로 가지고 놀고, 이제 와서 빌어 봤자다」
+		ENDIF
+		CFLAG:8522 = 1
+	ELSE
+		;연모
+		IF TALENT:150
+			;얀데레 off면 이것만, 아니면 절반 확률로
+			IF (FLAG:14 & 4) == 0 || RAND:2 == 0
+				PRINTFORMW 「후우……하아…… 사랑해, %CALLNAME:MASTER%……」
+				PRINTFORMW 린노스케는 정욕에 미친 눈으로 %조사처리(CALLNAME:MASTER,"를")% 찍어 누르고, 허리를 쳐올렸다.
+			;얀데레 on이면 절반 확률로 이것도
+			ELSE
+				PRINTFORMW %조사처리(CALLNAME:MASTER,"를")% 한참 범하던 도중, 린노스케가 갑자기 귓가에 속삭였다.
+				PRINTFORMW 「네가, 하아, 날, 아무리……흐읏, 버린다고 해도, 난…… 다시 돌아올 거야……하읏」
+				PRINTFORMW 「날 팔아치우고, 마음을 짓밟고, 심지어 죽여 버린대도…… 난 항상 네 옆에 있을 거다」
+				PRINTFORMW 그렇게 이야기하는 린노스케의 얼굴은 그늘져 잘 보이지 않았지만, 눈빛만은 형형하게 빛나고 있었다.
+				;수송 폭주 조건이 만족되지 않아도 나오는 대사지만.
+			ENDIF
+		;연모없음
+		ELSE
+			IF RAND:2 == 0
+				PRINTFORMW 「이러고 있자니, 내가 널 조교하는 것도 괜찮을 것 같은데? %CALLNAME:MASTER%」
+			ELSE
+				PRINTFORMW 「이런 걸, 바라고 있던 게 아닌가?」
+				PRINTFORMW 「나를 '성노예'로써 사 온 시점에서 말이지……」
+			ENDIF
+		ENDIF
+	ENDIF
+	PRINTL
+ENDIF
 
 ;-------------------------------------------------
 ;약혼 반지 사용시

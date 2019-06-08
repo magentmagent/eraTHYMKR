@@ -346,17 +346,17 @@ ELSEIF RAND:2
     TFLAG:200 = 1602
     PRINTFORML %조사처리(CALLNAME:COUNT,"는")% {LOCAL@SPRING_DUMMY:6}명의 고객에게 둘러싸여 
     IF TALENT:COUNT:0
-        PRINT 처음으로 남자를 받아들인 
+        PRINT 처음으로 남자를 받아들이고 
         LOCAL@SPRING_DUMMY:3 += 50
         LOCAL@SPRING_DUMMY:4 |= 4
     ENDIF
     PRINTFORM 앞과 뒤를 동시에 꿰뚫리면서
     SIF LOCAL@SPRING_DUMMY:6 > 3
-        PRINTFORM 입을 범해졌
+        PRINTFORM 입을 범해 \@ LOCAL@SPRING_DUMMY:6 > 5 ? 지면서 # 졌 \@
     SIF LOCAL@SPRING_DUMMY:6 > 5
-        PRINTFORM 양 손에 억지로 남성기가 쥐어졌
+        PRINTFORM  양 손에 억지로 남성기가 쥐어졌\@ LOCAL@SPRING_DUMMY:6 > 8 ? 고 # \@
     SIF LOCAL@SPRING_DUMMY:6 > 8
-        PRINTFORM 덤으로 채 기다리지 못한 고객의 남성기가 몸에 밀어붙여지고 있
+        PRINTFORM  덤으로 채 기다리지 못한 고객의 남성기가 몸에 밀어붙여지고 있
     PRINTFORML 다.
     ;순종, AVBC 노출버릇을 가산합니다
     LOCAL@SPRING_DUMMY:1 = ABL:COUNT:10

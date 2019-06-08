@@ -7251,7 +7251,7 @@ RETURN 0
 ;-------------------------------------------------
 @K31_CALLNAME
 #FUNCTIONS
-IF ASSI > 0 && ASSIPLAY == 1 && NO:ASSI != 31
+IF TFLAG:999 && ASSI > 0 && ASSIPLAY == 1 && NO:ASSI != 31
     RETURNF @"%CALLNAME:PLAYER%"
 ELSEIF CFLAG:6999 == 0
     RETURNF @"%CALLNAME:MASTER%"

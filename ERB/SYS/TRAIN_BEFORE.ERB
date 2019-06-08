@@ -182,10 +182,8 @@ IF BASE:0 <= 0
     ;[주정]용
     ELSEIF TALENT:48
         CALL ZOMBIE_REVIVAL, TARGET
-    ;YASAIリバイバルで救えるか！
-    ELSEIF TALENT:MASTER:831
-        CALL YASAI_REVIVAL
     ENDIF
+
     ;手を尽くしたのですが…無念です.
     SIF BASE:0 <= 0
         JUMP EVENT_CHARA_DIE, TARGET
@@ -376,13 +374,6 @@ ELSEIF LOCAL & 2 && CFLAG:1 < 2
 ELSE
     RETURN 0
 ENDIF
-
-;릴리 그레이 관련 처리(IRC 소재 주의)
-SIF ASSI >= 0 && TALENT:ASSI:835
-    CALL GRAY_TALENT, ASSI
-SIF TALENT:835
-    CALL GRAY_TALENT, TARGET
-RETURN 0
 
 ;--------------------------------------------------
 ;조교 종료시에 실행되는 처리(우선도 낮음)
