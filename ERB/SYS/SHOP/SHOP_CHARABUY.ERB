@@ -379,7 +379,10 @@ FOR COUNT, 100, 600
 NEXT
 ;난이도가 LUNATIC 미만이면 헬코 컷
 SIF FLAG:3 < 4
-    ITEMSALES:497 = 0
+    ITEMSALES:597 = 0
+;지옥의 훈장이 없다면 세이세이히메 컷
+SIF TALENT:MASTER:834 == 0
+    ITEMSALES:598 = 0
 ;아나타와 자식 컷
 ITEMSALES:100 = 0
 ITEMSALES:248 = 0
