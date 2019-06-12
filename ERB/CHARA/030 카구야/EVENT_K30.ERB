@@ -1,5 +1,6 @@
 ﻿;-------------------------------------------------
 ;카구야 구상　Ver1.10（캐릭터의 이름을 넣고, 밑에 컨셉 등 하고싶은 말이 있다면 쓴다）
+;Ａ쪽의 카구야 구상의 어레인지입니다
 ;Ａ쪽에는 없었던 구상도 생겼지만, 반대로 삭제된 구상도 있으니
 ;흥미가 생기신다면 A쪽도 부디
 ;;-------------------------------------------------
@@ -1140,7 +1141,7 @@ ELSEIF CFLAG:5001 < 2 && MARK:2 == 1
             ENDIF
         ELSE
             ;オトコ
-            IF TALENT:MASTER:120
+            IF TALENT:PLAYER:120
                 PRINTFORMW 「나는 %CALLNAME:MASTER% 보다 심한 남성은 몇 사람이나 봐 왔어요」
                 PRINTFORMW 「이래서 지상의 백성은 좋아하지 않는거야」
             ELSE
@@ -1304,7 +1305,7 @@ ELSEIF !(CFLAG:5102 & 4) == 1 && TALENT:TARGET:170
         PRINTFORML 「으읏……！　히얏, 앗, 그만, 그만둬어……」
         PRINTFORMW 카구야는 귀여운 목소리를 내며 몸을 떨었다
         PRINTFORMW 『당신은 나의 능력 때문에 욕정 하게 되는 거라고 마음 속으로는 생각하고 있죠?』
-        PRINTFORMW 『하지만 사실은 달라。그것은 당신 자신이 음란하다는 것을 믿고 싶지 않은 것뿐』
+        PRINTFORMW 『하지만 사실은 그렇지 않아. 그것은 당신 자신이 음란하다는 것을 믿고 싶지 않은 것뿐』
         PRINTFORMW 『알아요, 마지막 벽 정도 남겨 두고 싶겠지?』
         PRINTFORML 『공주님인 만큼 프라이드만은 정말 높으니까……』
         PRINTFORMW 요리히메는 카구야의 윗도리의 착의를 조금 느슨하게 하고, 안에 손을 넣어 손바닥을 사용해 어깨부터 가볍게 어루만졌다
@@ -4113,10 +4114,10 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORMW 토요히메가 애무를 할 때마다, 카구야는 몸을 떨고 신음 소리를 냈다
                     ENDIF
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:3
                         PRINTFORML 「읏……아……후아……」
-                        PRINTFORML 에이린은 카구야를 서게 해,  옆에서 카구야의 신체를 안았다
+                        PRINTFORML 에이린은 카구야를 일으켜 세우고, 옆에서 카구야의 신체를 안았다
                         PRINTFORML 『언제나 강렬한 쾌락뿐이면 기분이 마음이 망가지고 마니까요,  가끔씩은 가볍게 주물러드리죠』
                         PRINTFORML 「으아……아앗……햐앗……하아앗……에이……린……」
                         PRINTFORMW 카구야는 황홀한 눈을 하고 비음 섞인 목소리를 내며 에이린과 입 맞춤을 했다
@@ -4131,7 +4132,7 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORMW 에이린이 가볍게 피부를 어루만지자 그것만으로 카구야는 신체를 떨며 쾌락을 맛보았다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:3
                         PRINTFORML 「앗……후아앗……모코-……」
                         PRINTFORML 모코우는 카구야를 서게 해, 카구야를 안고 국부를 부드럽게 어루만졌다
@@ -4178,13 +4179,13 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORML 「아, 흐읏……！　소리, 낼 것 같아……」
                         PRINTFORMW 『부끄러운거네。서두르지 않아도 좋아』
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         PRINTFORML 「후, 후아……안 돼애……이 이상은……그만 둬……」
                         PRINTFORML 『이젠 저항해도 소용 없다구요？　적당히 포기하세요』
                         PRINTFORML 「싫, 어어……이런 저속한 행위……누군가……누군가 제발……」
                         PRINTFORMW 카구야는 달아오른 숨을 내뱉으면서도 정신만은 아직도 반항하고 있다
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         PRINTFORML 「으윽……뭐야, 내 얼굴에 뭔가 묻었어？」
                         PRINTFORML 『아니, 그래도 너, 아까부터 반응이 야릇하네, 역시 슬슬 한계이려나？』
                         PRINTFORML 「아, 아냐, 별로 이런건 아무것도 아니야……」
@@ -4203,7 +4204,7 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                     IF NO:MASTER == 53 && ASSIPLAY == 0
                         ;前のコマンドが自慰
                         IF !RAND:3 && PREVCOM == 7
-                            PRINTFORML 『어머, 공주에게 쉬는 시간 같은건 없다구요？』
+                            PRINTFORML 『어머, 공주님에게 휴식 시간 같은건 없다구요？』
                             PRINTFORML 토요히메는 자위를 마치고 축 늘어져 있는 카구야를 공주님 안기로 안아올렸다
                             PRINTFORML 『공주님이니까, 공주님다운 방법으로 안아줘야지……』
                             PRINTFORML 그렇게 말하면서 토요히메는 카구야의 가슴과 음핵을 야릇하게 쓰다듬기 시작했다
@@ -4223,7 +4224,7 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                             PRINTFORMW 카구야는 토요히메에게 민감한 부분을 만져질때마다 몸을 떨며 황홀한 목소리를 냈다
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         ;前のコマンドが自慰
                         IF !RAND:3 && PREVCOM == 7
                             PRINTFORML 『후후후……자위하면서 몸부림치는 카구야 귀여웠어요……』
@@ -4243,11 +4244,11 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         ELSE
                             PRINTFORML 「후아아……싫어, 아앙……！　이 이상은 안돼애！」
                             PRINTFORML 『어머, 몸은 꼬지 않아도 되는데, 솔직하게 쾌락을 받아들여』
-                            PRINTFORML 「달, 달라, 우응……이런걸 바랐다니, 구으읏……」
+                            PRINTFORML 「아, 아니야, 우응……이런걸 바란다니, 구으읏……」
                             PRINTFORMW 카구야는 몸을 비틀며 에이린의 손을 피하려 하지만 결국 손이 닿을때마다 달콤한 목소리를 터뜨렸다
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         ;前のコマンドが自慰
                         IF !RAND:3 && PREVCOM == 7
                             PRINTFORML 「아……아후으……」
@@ -4327,12 +4328,12 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                             ENDIF
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         ;媚薬状態
                         IF TEQUIP:11 && !RAND:3
                             PRINTFORML 「으읏……앗……하아아……」
                             PRINTFORML （싫, 싫어……멋대로 소리가 나와버려어……）
-                            PRINTFORML 『미약이 듣고 있구나。더 느끼도록 하렴』
+                            PRINTFORML 『미약이 듣고 있구나。더 느끼도록 하세요』
                             PRINTFORML 「아아앙……！　싫, 나, 느끼지 않아으흣……！」
                             PRINTFORMW 카구야는 에이린이 애무할때마다 몸을 떨었다
                         ELSEIF ABL:0+ABL:3 >= 5 && !RAND:2
@@ -4355,7 +4356,7 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                             ENDIF
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         ;媚薬状態
                         IF TEQUIP:11 && !RAND:3
                             PRINTFORML 「하아……앗……아흐응……」
@@ -4421,13 +4422,13 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORML 「히야아아우읏！　싫, 싫어엇……」
                         PRINTFORMW 카구야는 몸을 움츠리고 덜덜 떨었다
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         PRINTFORML 「뭐, 뭐야 이거……후아……하앗……」
-                        PRINTFORML 『몸이 쾌락을 받아들이려는 거야, 어서 당신도 받아들이렴』
+                        PRINTFORML 『몸이 쾌락을 받아들이려는 거랍니다, 어서 당신도 받아들이렴』
                         PRINTFORML 「하앗……하아……싫, 싫어……누가 그런것 생각할 것 같아……？」
                         PRINTFORMW 카구야는 에이린에 게 만져질 때마다 희미하게 몸을 떨었다
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         PRINTFORML 「아아……하아……뭔가, 이상한 기부운……」
                         PRINTFORML 『조금은 익숙해진 모양이네, 이대로 계속하겠어』
                         PRINTFORMW 카구야는 만져질때마다 희미하게 몸을 떨면서도 애써 태연한 태도를 가장했다
@@ -4455,7 +4456,7 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORMW 「그만 둬！　놔줘！」
                     ENDIF
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2 && ABL:0 >= 2
                         PRINTFORML 『느껴지나요？　조금 정도는 느끼게 된 것 같은데요？』
                         PRINTFORML 에이린이 카구야의 젖꼭지를 손가락으로 꼬집자 카구야는 몸에 살짝 전류가 달린 듯 했다
@@ -4465,11 +4466,11 @@ IF SELECTCOM == 0 && TEQUIP:90 == 0
                         PRINTFORMW 「으읏……앗, 당신이라면 알고 있겠지……방위 반응이야……」
                     ELSE
                         PRINTFORML 『어때요, 기분 좋나요？』
-                        PRINTFORML 「이게 그냥 연습이었다면 얼마나 좋았을까……」
+                        PRINTFORML 「이게 그냥 꿈이었다면 얼마나 좋았을까……」
                         PRINTFORMW 카구야는 에이린이 쓰다듬는 손에 혐오감을 느끼고있는것 같다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2 && ABL:0 >= 2
                         PRINTFORML 「아으, 하악, 그후읏……」
                         PRINTFORML 『조금 얼굴 빨개졌는데, 느끼고 있어？』
@@ -4528,7 +4529,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                 PRINTFORML 「하앙, 하아읏……응, 그만, 가랑이읏, 녹아읏, 버려엇, 흐아아아앙……」
                 PRINTFORMW 카구야는 검은 장발을 흐트러트리며 쾌락에 허덕였다
             ;調教者が永琳
-            ELSEIF NO:MASTER == 29
+            ELSEIF NO:PLAYER == 29
                 IF !RAND:2
                     PRINTFORML 「에이린……너무 핥잖아……후아앙！　그렇게 하니까 이렇게 기분 좋아져버렸어……」
                     PRINTFORML 『카구야……더 핥아줄테니까요, 나한테 몸을 맡기렴』
@@ -4541,9 +4542,9 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     PRINTFORMW 카구야는 에이린에게 핥아질때마다 신음소리를 지르며 몸을 들썩였다
                 ENDIF
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 IF !RAND:2
-                    PRINTFORML 『더 핥아줄게……카구야의 이곳, 정말 맛있어……』
+                    PRINTFORML 『더 핥아줄게……카구야의 여기, 정말 맛있어……』
                     PRINTFORML 「흐앙앗, 모코우……너무 상냥해……」
                     PRINTFORML 『앗, 젖어가는구나……핥짝, 맛있어……』
                     PRINTFORMW 카구야는 모코우에게 핥아질때마다 허리를 떨며 신음을 흘리고 환희의 표정을 짓고있다
@@ -4581,10 +4582,10 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     PRINTFORMW 「핫, 하으, 응하앗♪　언니에게, 핥아져서, 기분좋아아♪」
                     PRINTFORMW 카구야는 토요히메에게 음핵을 핥아져 허리를 젖히며 달콤한 목소리를 내고 있다
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「싫어어……아읏, 안돼……느껴버려어……」
-                        PRINTFORML 『카구야, 이런 부끄러운 곳을 핥아져서 느껴 버리는 거예요, 슬슬 솔직해지는게 어때』
+                        PRINTFORML 『카구야, 이런 부끄러운 곳을 핥아져서 느껴 버리는 거네요, 슬슬 솔직해지는게 어때』
                         PRINTFORML 「싫어……아후응읏……싫어어……」
                         PRINTFORMW 카구야는 에이린에게 핥아질때마다 고개를 좌우로 흔들며 몸을 떨고 비음섞인 신음을 터뜨렸다
                     ELSE
@@ -4595,10 +4596,10 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                         PRINTFORMW 카구야는 쉽게 느껴버리게 되었다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「후아……앙！　구으으……괜찮아, 괜찮다구……」
-                        PRINTFORML 『좀 솔직해지는게 마음이 편해진다구？』
+                        PRINTFORML 『조금은 솔직해지는게 마음이 편해진다구？』
                         PRINTFORML 「아, 아직이야……아직……아흣！」
                         PRINTFORML 카구야는 모코우에게 핥아질때마다 눈을 꽉감고 버티고있다
                         PRINTFORMW 양 손은 꼬옥 움켜쥐고, 허벅지도 음핵을 지키려고 오므리고 있다
@@ -4630,7 +4631,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     PRINTFORMW 「후앗, 싫, 안, 안돼앳♪　녹아버려어♪」
                     PRINTFORMW 카구야는 토요히메에게 혀로 음핵을 찔려 몸을 경련시켰다
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「후아앙！　안 돼에！　더, 핥지마아……」
                         PRINTFORML 『솔직해지고 있네요, 더 민감할것 같은 곳 핥아줄게요』
@@ -4644,7 +4645,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                         PRINTFORMW 에이린에게 농락되는 카구야는 고개를 흔들며 부정하는것밖에 할수 없었다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「자, 잠깐 모코우……그 이상은……아앙！」
                         PRINTFORML 『혀로 핥는거에 엄청 느끼는구나？　좀 더 핥아줄게』
@@ -4666,7 +4667,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                         PRINTFORMW 카구야는 핥아질때마다 신음을 흘렸다
                     ELSE
                         PRINTFORML 「……읏！　하아아！　거깃, 아아아……！」
-                        PRINTFORMW 음부를 핥으면 카구야는 몸을 경련시키고 눈을 감아 쾌락에 농락당하고 있다
+                        PRINTFORMW 음부를 핥으니 카구야는 몸을 경련시키고 눈을 감아 쾌락에 농락당하고 있다
                     ENDIF
                 ENDIF
             ENDIF
@@ -4682,9 +4683,9 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     PRINTFORML 「～～！」
                     PRINTFORMW 울상을 지으며 버티던 카구야의 음핵을 토요히메가 혀로 찌르자 카구야는 눈가에 주름을 지었다
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2
-                        PRINTFORML 「정말 실증나네……굉장히 기분 나빠지고 있어」
+                        PRINTFORML 「정말 싫증나네……굉장히 기분 나빠지고 있어」
                         PRINTFORML 『헤에……실은 기분 좋아지고 있는거 아니야？』
                         PRINTFORML 「아니, 그럴리 없어」
                         PRINTFORMW 카구야는 핥아질 때마다 몸을 떨고 있다
@@ -4695,10 +4696,10 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                         PRINTFORMW 카구야는 에이린에게 음핵을 핥아져 하반신으로부터 저려오기 시작했다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
-                        PRINTFORML 『옷, 반응이 달라졌네, 슬슬 느끼고 있는거지？』
-                        PRINTFORML 「달라, 그냥 기분나쁠 뿐이라고……」
+                        PRINTFORML 『오, 반응이 달라졌네, 슬슬 느끼고 있는거지？』
+                        PRINTFORML 「아니야, 그냥 기분나쁠 뿐이라고……」
                         PRINTFORMW 카구야는 핥아질 때마다 몸을 떨고 있다
                     ELSE
                         PRINTFORML 「응우읏……우읏……구으읏……」
@@ -4728,20 +4729,20 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     PRINTFORMW 「으윽, 읏, 싫어, 싫어요……」
                     PRINTFORMW 상기한 얼굴을 한 카구야는 가끔 입을 열고 뜨거운 한숨을 내뱉었다
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「핥아지고 있을 뿐인데……흐읏！」
-                        PRINTFORML 『몸은 어느정도 솔직해진거같네』
+                        PRINTFORML 『몸은 어느정도 솔직해진거같네요』
                         PRINTFORML 「그……그럴리가……없잖, 후응！　아……」
                         PRINTFORMW 몸이 익숙해진 탓인지 카구야는 에이린에게 음부를 핥아질때마다 몸을 경련시켰다
                     ELSE
                         PRINTFORML 「으읏, 아으, 응우읏, 구읏……」
                         PRINTFORML 카구야는 이를 악물고 목소리를 억눌렀다
-                        PRINTFORML 『기분 좋아졌으려나？』
-                        PRINTFORMW 「달, 달라……누가 그런걸……」
+                        PRINTFORML 『기분 좋아진걸까요?』
+                        PRINTFORMW 「아, 아니야……누가 그런걸……」
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 『츄릅……아까부터 괴로워보이는데 괜찮아？』
                         PRINTFORML 「흐윽……그우으……괘, 괜찮아……」
@@ -4774,20 +4775,20 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                 PRINTFORMW 「악……아팟……！」
                 PRINTFORMW 토요히메가 카구야의 음핵의 표피를 벗기고 핥자 카구야는 격통에 허리를 뺐다
             ;調教者が永琳
-            ELSEIF NO:MASTER == 29
+            ELSEIF NO:PLAYER == 29
                 IF !RAND:2
                     PRINTFORML 「그만둬, 거긴 더러운 곳이니까 입으로는……」
-                    PRINTFORML 『카구야가 기분좋아진다면, 이런것쯤이야』
+                    PRINTFORML 『카구야가 기분좋아진다면, 이런것쯤이야 괜찮답니다』
                     PRINTFORML 「기분 좋아지진……않을거야」
                     PRINTFORMW 카구야는 강한 의지를 품은 눈으로 자신의 음부를 핥고 있는 에이린을 바라보고 있다
                 ELSE
-                    PRINTFORML 『나는 카구야의 종자니까, 당신은 성적인 의미에서도 아름다워 지지않으면 안 돼…』
+                    PRINTFORML 『저는 카구야의 종자니까요, 당신은 성적인 의미에서도 아름다워 지지않으면 안되요…』
                     PRINTFORML 에이린은 카구야의 음핵을 핥았다
                     PRINTFORML 「응우읏……무, 무슨 헛소리를 하는거야……？」
                     PRINTFORMW 카구야는 겁먹은 표정으로 이해못할 소리를 하는 에이린을 바라보았다
                 ENDIF
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 IF !RAND:2
                     PRINTFORML 「그런 곳에 키스하지마, 기분 나쁘다고」
                     PRINTFORML 『수단은 가리지 않을거야, 그리고 너의 것이라면 그렇게 혐오스럽지도 않고』
@@ -4801,7 +4802,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                 ENDIF
             ELSE
                 ;オトコ
-                IF TALENT:MASTER:120 == 1
+                IF TALENT:PLAYER:120 == 1
                     IF !RAND:2
                         PRINTFORMW 「어차피 남자는 다 이렇지……」
                     ELSE
@@ -4811,7 +4812,7 @@ IF SELECTCOM == 1 && TEQUIP:56 == 0
                     IF !RAND:2
                         PRINTFORMW 「추잡스러워요, 역시 미천한 우민이네요……」
                     ELSE
-                        PRINTFORMW 「그읏……이런걸로 느낀다거나, 저는 하지 않으니까요……」
+                        PRINTFORMW 「그읏……이런걸로 느낀다거나, 나는 하지 않으니까요……」
                     ENDIF
                 ENDIF
             ENDIF
@@ -4993,7 +4994,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;恋慕+淫乱+潤滑Lv2以上
             IF TALENT:150 && P >= PALAMLV:2 && (CFLAG:9002 <= 6 || FLAG:11 == 2)
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:3
                         PRINTFORML 「아으……아앗……」
                         PRINTFORML 카구야는 에이린이 항문을 풀어주자 가쁜 숨을 내쉬며 허덕였다
@@ -5012,7 +5013,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
                         PRINTFORMW 카구야는 쾌락에 넋을 잃고 입을 헤 벌리고 있다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:3
                         PRINTFORML 「아읏……히아앙……아앗……」
                         PRINTFORML 『기분 좋아？　좀 더 깊숙히 휘저어 줄게』
@@ -5048,20 +5049,20 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;すぐに濡れるからパターン追加しなくていいよね
             ELSEIF TALENT:150 && P < PALAMLV:2 && (CFLAG:9002 <= 5 || FLAG:11 == 2)
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:2
-                        PRINTFORML 「그으……에이……린？」
-                        PRINTFORML 『카구야, 잠깐만 참아……금방 기분좋게 해줄테니까』
+                        PRINTFORML 「저기……에이……린？」
+                        PRINTFORML 『카구야, 잠깐만 참는거예요……금방 기분좋게 해줄테니까』
                         PRINTFORML 「정말？　나, 믿을게……」
                         PRINTFORMW 카구야는 고통으로 얼굴을 찡그리면서도 견디고 있다
                     ELSE
                         PRINTFORML 「저기, 에이린, 여긴 별로인데, 다른 곳으로 하자아」
-                        PRINTFORML 『어머, 여긴 익숙해지면 확실히 기분 좋은곳이니까 조금만 참아』
+                        PRINTFORML 『어머, 여긴 익숙해지면 확실히 기분 좋은곳이니까 조금만 참으세요』
                         PRINTFORML 「믿기 어려운데……」
                         PRINTFORMW 카구야는 못마땅한 얼굴을 하고 있다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「읏……모코우, 거긴 왜 만지는거야？」
                         PRINTFORML 『그건 말이지……뭐 하다보면 알거야』
@@ -5084,20 +5085,20 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;潤滑Lv2以上＋A感覚Lv3以上+屈服刻印Lv3
             ELSEIF P >= PALAMLV:2 && MARK:2 == 3 && ABL:2 >= 3 && (CFLAG:9002 <= 4 || FLAG:11 == 2)
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「아, 아앗……！　아윽……하……」
-                        PRINTFORML 『어머？　엉덩이로 느끼다니, 꽤나 야한 아이가 됐네』
+                        PRINTFORML 『어머？　엉덩이로 느끼다니, 꽤나 음란한 아이가 됐네요』
                         PRINTFORML 「우흐윽……！　아, 아읏……！　그, 그런거 아니야……！」
                         PRINTFORMW 카구야는 \@TEQUIP:52 ? 땅에 # 바닥에 \@ 고개를 떨군채 울먹거리며 뺨을 붉혔다
                     ELSE
                         PRINTFORML 「흐앙……아읏……안 돼！　엉덩이가 이상해！　아으, 응큿……！」
-                        PRINTFORML 『카구야, 당신 엉덩이로 느끼고 있는거네？　변태라고 생각하지 않아？』
-                        PRINTFORML 「달, 달랏, 아읏！　이건 만져져서 그렇게 된 것 뿐이야！」
+                        PRINTFORML 『카구야, 당신 엉덩이로 느끼고 있는거네요？　변태라고 생각하지 않나요？』
+                        PRINTFORML 「아, 아니야앗, 아읏！　이건 만져져서 그렇게 된 것 뿐이야！」
                         PRINTFORMW 카구야는 엉덩이를 만져지는 것에 질색하면서도 황홀한 표정을 짓고 헐떡이고 있다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「앗……흐앙앗……！　아후으……」
                         PRINTFORMW 모코우가 카구야의 애널을 만지자 등을 젖히면서도 필사적으로 목소리를 억눌렀다
@@ -5108,7 +5109,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
                     ELSE
                         PRINTFORML 「응읏……하읏……으후으……아윽, 그렇게 휘젓지마……」
                         PRINTFORML 『엉덩이만으로 이렇게 되다니 이상하잖아？』
-                        PRINTFORML 「이, 이건 달라……응후으……아니야……싫어……」
+                        PRINTFORML 「이, 이건 아니야……응후으……아니야……싫어……」
                         PRINTFORMW 카구야는 얼굴을 붉히며 숨을 헐떡였다
                     ENDIF
                 ELSE
@@ -5128,12 +5129,12 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;潤滑Lv2以下＋A感覚Lv3以上+屈服刻印Lv3
             ELSEIF P < PALAMLV:2 && MARK:2 == 3 && ABL:2 >= 3 && (CFLAG:9002 <= 3 || FLAG:11 == 2)
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「히앗……거기, 더럽기만 하……잖아……」
                     PRINTFORML 『좀처럼 빠져주지 않으니까 미지의 감각으로 현혹해줄게』
                     PRINTFORML 「흣……이, 이런거……다 헛소문, 이잖아？」
                     PRINTFORMW 카구야는 기대와 불안이 뒤섞인 채 떨기 시작했다
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「최초로 엉덩이로 한 사람은 천재라고 생각해……」
                     PRINTFORML 『그럼 처음에 너의 엉덩이를 만지작거린 나도 천재？』
                     PRINTFORML 「아니, 그건 그냥 변태야」
@@ -5147,7 +5148,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;潤滑Lv2以上＋A感覚Lv3以上
             ELSEIF P >= PALAMLV:2 && ABL:2 >= 3 && (CFLAG:9002 <= 2 || FLAG:11 == 2)
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「우……응우읏……」
                         PRINTFORMW 카구야는 거친 숨을 내쉬며 항문의 쾌락을 견디고 있다
@@ -5163,7 +5164,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
                         PRINTFORMW 카구야는 뺨을 붉히면서도 태연을 가장하고 있다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「아……우응……」
                         PRINTFORMW 『왜 그래？　좀 얌전해진거 같은데？』
@@ -5185,7 +5186,7 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
                     ELSEIF !RAND:2
                         PRINTFORMW 「응, 으읏……！　거, 거짓말……기분 탓이야」
                     ELSE
-                        PRINTFORML 「앙, 아흑, 달, 달라아, 이건……」
+                        PRINTFORML 「앙, 아흑, 아, 아니야, 이건……」
                         PRINTFORMW 카구야는 가끔 높은 신음을 터뜨렸다
                     ENDIF
                 ENDIF
@@ -5193,12 +5194,12 @@ IF SELECTCOM == 2 && TEQUIP:90 == 0
             ;それ以外
             ELSEIF CFLAG:9002 <= 1 || FLAG:11 == 2
                 ;調教者が永琳
-                IF NO:MASTER == 29
-                    PRINTFORML 『카구야……여기, 기분 좋다구?, 여기라면 정조도 지킬수 있어』
+                IF NO:PLAYER == 29
+                    PRINTFORML 『카구야……여기, 기분 좋다구요?, 여기라면 정조도 지킬수 있는걸요』
                     PRINTFORML 「……분명히 처음을 빼앗기는것보단 여기가 낫겠지만, 그래도 싫어」
                     PRINTFORMW 카구야는 기가 막히다는 표정을 짓고 에이린을 바라봤다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「엉덩이를 만져서 뭘 하고 싶은거야？」
                     PRINTFORML 『응？　여길 만져서 느껴버리면 굴욕적이잖아？　그걸 노리고 있어』
                     PRINTFORML 「헤에……흥미없어」
@@ -5239,7 +5240,7 @@ IF SELECTCOM == 7 && TEQUIP:54 == 0
     IF CFLAG:9007 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「저, 잘하진 못하지만 그래도 좋다면……」
+            PRINTFORMW 「그, 잘하진 못하지만 그래도 좋다면……」
         ELSE
             PRINTFORMW 「하아……언젠가는 말할거라 생각했어요」
             PRINTFORMW 「잊어버리신 것 같은데, 저, 일단은 공주였어요」
@@ -5876,15 +5877,15 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                 PRINTFORML 『그런 허세가 계속되는 것도 언제까지일까～♪』
                 PRINTFORMW 싫어하는 카구야와 상관없이 토요히메는 카구야의 가슴을 손으로 움켜쥐고 가볍게 문질러 갔다
             ;調教者が永琳
-            ELSEIF NO:MASTER == 29
-                PRINTFORML 『그거 알아? 작은 가슴이 느끼기 쉬운 거야.』
+            ELSEIF NO:PLAYER == 29
+                PRINTFORML 『그거 아나요? 작은 가슴이 느끼기 쉽답니다』
                 PRINTFORML 「……그런거, 별로 관계 없다구요.」
                 PRINTFORMW 카구야는 기막힌 얼굴을 하고 에이린을 바라보고 있다
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
-                PRINTFORML 『참, 가슴도 만져저서 기분 좋게 될 수 있게 해줄게』
+            ELSEIF NO:PLAYER == 31
+                PRINTFORML 『그렇지, 가슴을 만져셔서 기분 좋아질 수 있게 해줄게』
                 PRINTFORML 「정말 이런 짓에 내가 굴복할 거라고 생각하는거야?」
-                PRINTFORMW 카구야는 여동생의 손을 차갑게 바라보고있다.
+                PRINTFORMW 카구야는 모코우의 손을 차갑게 바라보고있다.
             ELSE
                 PRINTFORMW 「그런 역겨운 손으로 가슴을 만지지 마!」
             ENDIF
@@ -5977,26 +5978,26 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         PRINTFORMW  토요히메가 젖꼭지를 문지르자, 눈물이 글썽한 눈시울에 뜨거운 숨을 내쉬던 카구야는 갑자기 몸을 비틀었다
                     ENDIF
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:3
                         PRINTFORML 「하아아……아읏……」
-                        PRINTFORMW 카구야는 녹는다는 듯한 표정을 지으며 몸을 떨고 있다……
-                        PRINTFORML 『벌써 젖꼭지가 딱딱해져 있네, 기분 좋아요?』
+                        PRINTFORMW 카구야는 완전히 풀어진 표정을 지으며 몸을 떨고 있다……
+                        PRINTFORML 『벌써 젖꼭지가 딱딱해져 있네요, 기분 좋아요?』
                         PRINTFORML 「아읏……！　아, 젖꼭지….. 기분조하앙！」
                         PRINTFORMW  에이린이 젖꼭지를 손가락으로 만지작거리자, 카구야는 칠칠치 못하게 열린 입에서 끈적끈적한 타액을 늘어뜨렸다
                     ELSEIF !RAND:2
                         PRINTFORML 「에이린이 가슴 만지는거…… 기분좋아아, 너무 기분좋아서.....엇!」
-                        PRINTFORML 『카구야의 가슴, 작고 귀여운 것 같아』
+                        PRINTFORML 『카구야의 가슴, 작아서 귀여운 것 같아요』
                         PRINTFORML 「응..…그런 말 하지마……」
                         PRINTFORMW 카구야는 에이린에게 가슴을 만져지면서 뺨을 붉히고 있다.
                     ELSE
                         PRINTFORML 「하아아앙！　에이린, 조금 더！　조금 더 기분 좋게 해줘어어어어엇！」
-                        PRINTFORML 『어라어라, 그렇게 가슴을 내밀고...…그래, 좀 더 만져 줄게엣』
+                        PRINTFORML 『어라어라, 그렇게 가슴을 내밀고...…그래, 좀 더 만져 줄게요』
                         PRINTFORML 「후야아아앗！　으그으으읏！　하우우우우앗！」
                         PRINTFORMW 카구야는 가슴을 내민 모습으로 몸을 튕겨대며 극강의 쾌락을 느끼고 있다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:3
                         PRINTFORML 「우아……앗……후아앗……」
                         PRINTFORML 『아하하, 내 손으로 기분 좋아지다니 기쁘네』
@@ -6006,7 +6007,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         PRINTFORML 「모코우의 손 따뜻해...…」……」
                         PRINTFORML 『카구야…..나의 손으로 좋다면 난 기뻐...…』
                         PRINTFORML 「모코우우……사랑해에에……」
-                        PRINTFORMW 카구야는 여동생에게 얼굴을 붉히며 웃고 있다
+                        PRINTFORMW 카구야는 모코우에게 얼굴을 붉히며 웃고 있다
                     ELSE
                         PRINTFORML 「후아아앙...! 모코우 가슴! 조금 더 만져줘어엇! 죠아앗！」
                         PRINTFORML 『만족할때까지 얼마든지 만져줄거야……, 카구야』
@@ -6057,22 +6058,22 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORMW 「기……기분 좋다니..... 그런 거 아니라고요.....」
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         IF !RAND:2
                             PRINTFORML 「쿠으으……하으으……아우우……하웃！」
-                            PRINTFORML 『기분은 좋지? 솔직히 인정하는게 마음도 편할거라고 생각한다고?』
+                            PRINTFORML 『기분은 좋지요? 솔직히 인정하는게 마음도 편할거라고 생각한답니다?』
                             PRINTFORML 「하으...읏! 가슴이.... 그냥 뜨거워 졌을 뿐이라고……！」
                             PRINTFORMW 카구야는 볼을 붉히며 쾌락에 몸을 떨면서도 쾌락을 받아들이지 않았다...
                         ELSE
                             PRINTFORML 「꺄우응……하우웃……」
                             PRINTFORMW 등 뒤에서 가슴이 만져지며, 카구야는 가슴에서 달아오름이 확산되는 것을 느끼고 있다...
-                            PRINTFORML 「아니 ......…나..…이상한 일인데 말이야……」
+                            PRINTFORML 「뭐야, ......…나..…이상해지고 있어……」
                             PRINTFORML 『받아들인다면 멋진 세계가 기다리고 있을거라구요……』
-                            PRINTFORML 「끄으으……♪　앗, 이흐응, 나……만져줘……」
+                            PRINTFORML 「끄으으……♪　앗, 아흐응, 나……만져줘……」
                             PRINTFORMW 에이린이 카구야를 손톱으로 자극하며, 카구야는 몸을 떨며 에이린에게 기댔다
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         IF !RAND:2
                             PRINTFORML 「하아……하읏！.....！　으으……」
                             PRINTFORML 『목소리가 새어 나오고 있네? 기분 좋은걸까나?』
@@ -6120,19 +6121,19 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORMW 토요히메가 찬란한 밤의 가슴을 주물러대자, 카구야는 등골을 뒤로 젖히고 기쁨에 젖는 표정을 지었다
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         ;欲情が30000以上
                         IF PALAM:13 >= 30000 && !RAND:3
                             PRINTFORML 「아으으읏, 하응, 아우으……」
-                            PRINTFORMW 에이린에게 가슴을 쓸 수 있을 때마다 찬란한 울음소리를 냈다
+                            PRINTFORMW 에이린에게 가슴을 만져질 때마다 절정에 달한 울음소리를 냈다
                             PRINTFORML 「응..…그만해, 에이이, 린……！」
                             PRINTFORML 『후훗, 가슴만으로도 충분히 기분이 좋겠지요』
-                            PRINTFORMW 에이린의 그 말은 욕정 어린 몸이 된 찬야의 귀에 들리지 않는 것 같다
+                            PRINTFORMW 에이린의 그 말은 욕정 어린 몸이 된 카구야의 귀에 들리지 않는 것 같다
                         ELSEIF !RAND:2
-                            PRINTFORML 「응! 안돼! 이젠 가슴이 저려서 말야…히응！」
-                            PRINTFORML 『카구야, 너무 기분이 좋죠? 대충 인정하세요』
-                            PRINTFORML 「와! 에, 야, 응! 이런 음란한 행위라니 싫어……」
-                            PRINTFORMW  카구야는 윤기 흐르는 목소리로 헐떡거리면서도 손을 입에 대고 필사적으로 견디려 하고 있다
+                            PRINTFORML 「응! 안돼! 이젠 가슴이 너무 욱신거려서…히읏！」
+                            PRINTFORML 『카구야, 아주 기분 좋죠? 적당히 인정하세요』
+                            PRINTFORML 「하우! 읏, 으, 으응! 이런 음란한 짓이라니 싫어……」
+                            PRINTFORMW  카구야는 교태가 흐르는 목소리로 헐떡거리면서도 손을 입에 대고 필사적으로 견디려 하고 있다
                         ELSE
                             PRINTFORML 「아웅, 아으읏, 앙……」
                             PRINTFORML 『후후, 이제 가슴에 푹 빠진건가요？』
@@ -6140,25 +6141,25 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORMW 에이린이 카구야 뒤에 손을 돌려 가슴을 두근거리자, 카구야는 얼굴에 풀린 듯한 달콤한 목소리를 냈다
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         ;欲情が30000以上
                         IF PALAM:13 >= 30000 && !RAND:3
                             PRINTFORML 「아우……모.....코.....」
-                            PRINTFORMW  모코우가 가슴을 흔들자, 카구야는 불현듯 눈을 부릅뜨고 거친 숨을 몰아쉬었다
+                            PRINTFORMW  모코우가 가슴을 만지자, 카구야는 불현듯 눈을 부릅뜨고 거친 숨을 몰아쉬었다
                             PRINTFORML 『응？ 무슨일인데？』
                             PRINTFORML 「하아, 하아……앙, 그만둬……어……」
                             PRINTFORML  카구야는 촉촉한 눈으로 모코우를 응시하고 있다.
-                            PRINTFORMW  여동생이 애무할 때마다 달리는 달콤한 쾌락으로 반짝였다
+                            PRINTFORMW  모코우가 애무할 때마다 달리는 달콤한 쾌락으로 반짝였다
                         ELSEIF !RAND:2
                             PRINTFORML 「응! 모코우...… 웃...…응！」
-                            PRINTFORML 『그야 내가 항상 농락했었으니까, 이제 안되면 때려치워도 돼？』
+                            PRINTFORML 『그야 내가 계속해서 만져줬으니까. 뭐, 정말로 싫다면 그만둬도 되는데？』
                             PRINTFORML 「아니, 우웅..…이런 일로 기분 좋아지리라고는..... 인정하고 싶지않아！」
-                            PRINTFORMW 카구야는 윤기 흐르는 목소리로 헐떡이며 입을 손으로 막고 필사적으로 견디려 하고 있다
+                            PRINTFORMW 카구야는 쾌락이 흐르는 목소리로 헐떡이며 입을 손으로 막고 필사적으로 견디려 하고 있다
                         ELSE
                             PRINTFORML 「으앗……！　하아아……아우우으……」
-                            PRINTFORMW  여동생은 젖꼭지를 자극해서, 카구야는 몸을 날리게 했다
-                            PRINTFORML 『쓰다듬은 것 뿐이지만...…그렇게까지 강하게 느꼈어？』
-                            PRINTFORMW 「하아, 아..…안돼, 가슴이, 너무 애달픈...…아~~…닿을 때마다 애절함이 강해져……」
+                            PRINTFORMW 모코우가 젖꼭지를 자극자, 카구야는 몸을 튕기듯이 몸부림쳤다
+                            PRINTFORML 『살짝 만진것 뿐인데...…그렇게나 많이 느꼈어？』
+                            PRINTFORMW 「하아, 아..…안돼, 가슴이, 너무 욱신거려...…아우~~…닿을 때마다 욱신거리는게 강해져……」
                         ENDIF
                     ELSE
                         ;欲情が30000以上
@@ -6185,7 +6186,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             ENDIF
                         ELSEIF !RAND:2
                             PRINTFORML 「하아아……아우웃！ 안 돼..…가슴이 이상해져서...…응！」
-                            PRINTFORMW 카구야는 윤기 흐르는 목소리로 헐떡이며 손을 입에 대어 필사적으로 견디려 하고 있다
+                            PRINTFORMW 카구야는 교태가 흐르는 목소리로 헐떡이며 손을 입에 대어 필사적으로 견디려 하고 있다
                         ELSE
                             PRINTFORML 「아응……하아……하읏！」
                             PRINTFORMW （눈앞이……흐려져어.....）
@@ -6208,7 +6209,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORMW 『헤에..…아직이군요』
                         ELSEIF !RAND:2
                             PRINTFORML 「앗……아으……」
-                            PRINTFORML 『참지 않아도 되는거라구? 응?』
+                            PRINTFORML 『참지 않아도 된다구요? 네?』
                             PRINTFORML 「앗, 하으, 아우웅, 아, 아니야……」
                             PRINTFORMW  싫어하는 카구야를 토요히메가 젖꼭지를 꼬집자 카구야는 등골을 떨게 했다
                         ELSE
@@ -6218,27 +6219,27 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORMW 『그때까지 이 태도를 계속할 수 있을 거같아? 역시 공주님, 엄숙하고 좋아』
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         ;欲情が2000以上
                         IF !RAND:3 && PALAM:13 >= 2000
                             PRINTFORML 「아읏……하아아으응……」
                             PRINTFORML 카구야는 거친 숨을 몰아쉬며 젖은 눈으로 에이린을 바라보고 있다
-                            PRINTFORML 『어머, 그렇게 기분이 좋았어? 더 기분 좋게 해줄게』
-                            PRINTFORML 「앗, 야, 야유, 에잇, 린..…! 헉! 끄응……！」
+                            PRINTFORML 『어머, 그렇게 기분이 좋았나요? 더 기분 좋게 해줄게요』
+                            PRINTFORML 「앗, 싫, 싫어, 에이, 린..…! 히익! 우응……！」
                             PRINTFORMW 에이린가 젖꼭지를 꼬집자, 카구야의 몸에 달콤한 전류가 퍼지고 몸을 튀겼다
                         ELSEIF !RAND:2
-                            PRINTFORML 『숨, 거칠어지는 것 같네? 기분 좋지？』
+                            PRINTFORML 『숨, 거칠어지는 것 같네요? 기분 좋은가봐요？』
                             PRINTFORML 「하아……아……응, 별로 기분 좋게 생각하지 않으니까?」
                             PRINTFORMW 카구야는 숨을 헐떡이며 말했다
                         ELSE
                             PRINTFORML 「에이린？　……하우으, 아으으, 언제까지 계속할 생각이야?」
                             PRINTFORML  카구야는 자신의 가슴을 주물럭거리는 에이린을 바라보았다
-                            PRINTFORML 『네가 솔직해져 줄 때까지야.이것도 카구야를 위해서니까』
+                            PRINTFORML 『당신이 솔직해질 때까지랍니다. 이것도 카구야를 위해서예요』
                             PRINTFORML  그렇게 말하자 에이린은 카구야의 가슴에 입을 대고 핥기 시작했다
                             PRINTFORMW 「아으응……앗……」
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         ;欲情が2000以上
                         IF !RAND:3 && PALAM:13 >= 2000
                             PRINTFORML 「아……하으.…읏, 아으우……」
@@ -6254,7 +6255,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                             PRINTFORML 「와, 나는..…아..…이런 일로는 굴복하지 않을거야……」
                             PRINTFORML 『느끼고 있다고 생각하고 있는데? 조금 더 해줄까?……』
                             PRINTFORML 「아니, 뭘..…아니……아읏！」
-                            PRINTFORMW  여동생이 반짝이는 가슴을 핥더니, 카구야는 귀여운 목소리를 지르며 몸을 떨었다.
+                            PRINTFORMW 모코우가 슬쩍하고 가슴을 핥으니, 카구야는 귀여운 목소리를 지르며 몸을 떨었다.
                         ENDIF
                     ELSE
                         ;欲情が2000以上
@@ -6280,58 +6281,58 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         ;前回が愛撫＆欲情が10000以上
                         IF PREVCOM == 0 && PALAM:13 >= 10000 && !RAND:3
                             PRINTFORML 「응, 하웅, 아읏, 또 이거…..」
-                            PRINTFORML 『어라?.... 불만있어？』
-                            PRINTFORML 「아, 아까 당했는데..... 아으응, 음……」
-                            PRINTFORML 『지금은 가슴만 만질거야~』
+                            PRINTFORML 『어머나, 불만있나요？』
+                            PRINTFORML 「아, 아까 당했는데…… 아으응, 음……」
+                            PRINTFORML 『지금은 가슴만 만질거랍니다~』
                             PRINTFORMW 몸이 쾌락으로 가득찬 카구야는, 토요히메에게 기대어, 가슴에 대한 애무를 받았다.
                         ELSEIF !RAND:2
                             PRINTFORML 「하앗, 히응, 읏……」
                             PRINTFORML 『가슴으로 느껴버리다니, 공주님은 음란하군요♪』
-                            PRINTFORML 「아읏, 잉, 그런거.....읏, 아, 아니야, 이그으으, 하앗♪」
+                            PRINTFORML 「아읏, 잉, 그런거……읏, 아, 아니야, 이그으으, 하앗♪」
                             PRINTFORMW  카구야는 토요히메에게 열심히 가슴을 내밀고,허리를 튕기며 뜨거운 숨을 내쉬고 있다.
                         ELSE
                             PRINTFORML 「아항, 하으……읏……」
                             PRINTFORML 『공주님 가슴은 모양이 예쁘면 좋겠는데-♪ 더 주무르면 예뻐질까?』
-                            PRINTFORML 「그런…… 그런거 아니야......」
+                            PRINTFORML 「그런…… 그런거 아니야………」
                             PRINTFORMW 토효히메가 카구야의 가슴을 세로로 문지르자, 카구야는 달콤한 목소리로 몸을 흔들었다
                         ENDIF
                     ;調教者が永琳
-                    ELSEIF NO:MASTER == 29
+                    ELSEIF NO:PLAYER == 29
                         ;前回が愛撫＆欲情が10000以上
                         IF PREVCOM == 0 && PALAM:13 >= 10000 && !RAND:3
-                            PRINTFORML 「싫다고.…아까 후로 지났다고……」
-                            PRINTFORML 『이렇게 가슴만 만지작거리면 각인이 되어 가슴만으로도 상당히 느낄 수 있게 될 건데도？』
+                            PRINTFORML 「싫어어…… 가버린지 얼마나 됐다고……」
+                            PRINTFORML 『이렇게 가슴만 만지작거리면 각인 되어 가슴만으로도 상당히 느낄 수 있게 될 건데도요？』
                             PRINTFORML 「하응, 히이으……아우우, 그렇다고, 해, 해도, 싫다고……」
-                            PRINTFORMW  카구야는 토요히메의 열정에 손가락을 깨물고 있다
+                            PRINTFORMW  카구야는 에이린의 애무를 견디며 손가락을 깨물고 있다
                         ELSEIF !RAND:2
-                            PRINTFORML 「하아응...안돼.... 더 만지지 말아줘.....」
-                            PRINTFORML 『왜? 기분 좋잖아? 계속할거야』
-                            PRINTFORML 「이..…아..…앗! 기분좋은게아니라 기분나쁜거야! 하으응!」
+                            PRINTFORML 「하아응…… 안돼…… 더 만지지 말아줘…………」
+                            PRINTFORML 『왜요? 기분 좋잖아요? 계속할거예요』
+                            PRINTFORML 「아우, 으으으앙! 기분좋은게아니라 기분나쁜거야! 하으응!」
                             PRINTFORMW 카구야는 에이린의 손을 가슴으로부터 멀어지게 하려고 몸을 뒤틀고 있다
                         ELSE
                             PRINTFORML 「하아아, 아앗, 에이린……」
                             PRINTFORMW  카구야는 눈을 부릅뜨고 에이린을 바라보고 있다
-                            PRINTFORML 『다 되어가는 중이에요.오히려 이제부터라구요?』
+                            PRINTFORML 『다 되어가는 중이에요. 오히려 이제부터라구요?』
                             PRINTFORMW 「아앗, 아아읏.…나, 이대로라면, 나 망가질거같아서...…안돼……」
                         ENDIF
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         ;前回が愛撫＆欲情が10000以上
                         IF PREVCOM == 0 && PALAM:13 >= 10000 && !RAND:3
                             PRINTFORML 「하아아, 또 쓰다듬어져서...」
-                            PRINTFORML 『'이번에는 가슴으로만 보내 줄께'』
-                            PRINTFORML 「하핫, 후응...…아, 안돼, 가슴만으로느은！」
+                            PRINTFORML 『이번에는 가슴으로만 가버리게 해줄게』
+                            PRINTFORML 「하핫, 후응...…아, 안돼, 가슴만으은！」
                             PRINTFORMW  애무 직후 또 가슴을 애무받은 카구야는, 다급해진 모습으로 신체를 조금씩 떨고 있다.
                         ELSEIF !RAND:2
-                            PRINTFORML 「아으..…응! 당신이 그럴 생각이라면 나도 저항을...…아으윽！」
-                            PRINTFORML 『시간 낭비라고 생각해? 그레도 도망가지 않는 편이 체력을 소모하지는 않을거라고 생각한다고?』
-                            PRINTFORML 「앗！　 그, 그럴 수……하아아……」
+                            PRINTFORML 「아으……응! 당신이 그럴 생각이라면 나도 저항을……아으윽！」
+                            PRINTFORML 『시간 낭비라고 생각하는데? 역시 도망가지 않는 편이 체력을 소모하지는 않을거라고 생각한다고?』
+                            PRINTFORML 「앗！　 그, 그럴 수는……하아아……」
                             PRINTFORMW  카구야은 모코우의 손을 가슴에서 멀어지게 하려고 몸을 비틀고 있다.
                         ELSE
                             PRINTFORML 「하아……하앙…아웃, 아읏, 앗, 머, 모코우, 그만……」
                             PRINTFORML 『상당히 느끼고 있는 것처럼 보이는데, 기분 좋아?』
                             PRINTFORML 「앗…아니, 못 느꼈어, 못 느꼈다고, 뭐라는.....아읏……」
-                            PRINTFORMW  카구야야은 여동생 모코우에게 가슴을 비비며 문질러질 때마다 몸을 움찔거렸다
+                            PRINTFORMW  카구야는 모코우에게 가슴을 비비며 문질러질 때마다 몸을 움찔거렸다
                         ENDIF
                     ELSE
                         ;欲情が10000以上
@@ -6360,7 +6361,7 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                 IF NO:MASTER == 53 && ASSIPLAY == 0
                     IF !RAND:2
                         PRINTFORML 「아응응, 그만둬！」
-                        PRINTFORML 『바보- 그만둬라고 해도 곤란하다니까？』
+                        PRINTFORML 『바보- 그만둬라고 해도 곤란한데요？』
                         PRINTFORML 「아으응, 하으……」
                         PRINTFORMW  토요히메가 손톱으로 유두를 만지자, 카구야는 입을 꼭 다물었다
                     ELSE
@@ -6369,27 +6370,27 @@ IF SELECTCOM == 3 && TEQUIP:90 == 0
                         PRINTFORMW 토요히메가 카구야의 가슴을 주물렀을 때, 카구야는 상반신을 비틀며 저항했다
                     ENDIF
                 ;調教者が永琳
-                ELSEIF NO:MASTER == 29
+                ELSEIF NO:PLAYER == 29
                     IF !RAND:2
-                        PRINTFORML 『가슴이 작아서 좋네, 커도 고생한다니까?』
-                        PRINTFORML 「그러한 고민말야, 가슴을 만지고 있는 것도 포함해서 불쾌하다고」
+                        PRINTFORML 『가슴이 작아서 좋겠네요, 커도 고생한답니다?』
+                        PRINTFORML 「그런 고민말야, 가슴을 만지고 있는 것도 포함해서 불쾌하다고」
                         PRINTFORMW 카구야는 기막힌 얼굴을 하고 에이린을 바라보고 있다
                     ELSE
                         PRINTFORML 「저기, 에이린？」
-                        PRINTFORML 『뭐에요? 카구야』
-                        PRINTFORML 「내 가슴을 만지지 말고 니 가슴을 만지면 어때？」
+                        PRINTFORML 『뭔가요? 카구야』
+                        PRINTFORML 「내 가슴을 만지지 말고 너의 가슴을 만지는게 어때？」
                         PRINTFORMW 『……그럼 의미가 없다구요』
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
-                        PRINTFORML 『최종적으로는 가슴만으로도 할 수 있도록 하고 싶어』
-                        PRINTFORML 「흐음..…그치만 무리야」
+                        PRINTFORML 『최종적으로는 가슴만으로도 가버릴 수 있게 만들고 싶어』
+                        PRINTFORML 「흐응… 그건 무리야」
                         PRINTFORMW  카구야는 모코우를 차가운 눈으로 바라보고 있다
                     ELSE
                         PRINTFORML 「아앗……！ 아퍼어.... 너무 심하잖아!」
                         PRINTFORML 『그럴까나? 뭐, 아직 성감대가 되지않아서 그렇겠지만』
-                        PRINTFORMW 모코우가 가슴을 비비자, 카구야는 고통으로 눈살을 찌푸렸다.
+                        PRINTFORMW 모코우가 가슴을 만지작대자, 카구야는 고통으로 눈살을 찌푸렸다.
                     ENDIF
                 ELSE
                     IF !RAND:2
@@ -6412,7 +6413,7 @@ IF SELECTCOM == 6
     IF CFLAG:9006 == 0
         ;恋慕
         IF TALENT:150
-            PRINTFORMW 「그레,좋아」
+            PRINTFORMW 「그래,좋아」
             PRINTFORMW 「%조사처리(CALLNAME:MASTER,"가")% 먼저 입을 떼고 싶다고 해도 안 놓아줄 거니깐♪」
         ;それ以外
         ELSE
@@ -6438,12 +6439,12 @@ IF SELECTCOM == 6
             IF LOCAL:0 == 0
                 IF CFLAG:5101 & 1
                     ;調教者が永琳
-                    IF NO:MASTER == 29
-                        PRINTFORML 「응...…아..…아..…몸이 저려오고 있어어...…」
-                        PRINTFORML 『이렇게 진한 키스를 하면 피곤할거라구우……』
+                    IF NO:PLAYER == 29
+                        PRINTFORML 「응...…아..…아..…몸이 욱신거리고 있어어...…」
+                        PRINTFORML 『이렇게 진한 키스를 하면 피곤한데 말이예요……』
                         PRINTFORMW  카구야는 얼굴을 붉히고 즐거워한다.
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         PRINTFORML 「응..…아..…모코우, 더 키스해 줘」
                         PRINTFORML 『카구야..... 키스가 너무 진해서어엇....웅！』
                         PRINTFORMW 카구야는 모코우의 몸에 두 팔을 두르고 진한 키스를 했다
@@ -6455,50 +6456,50 @@ IF SELECTCOM == 6
                         TEQUIP:11 = 1
                 ELSE
                     ;調教者が永琳
-                    IF NO:MASTER == 29
+                    IF NO:PLAYER == 29
                         PRINTFORML 「아움……으읏……아으으……」
                         PRINTFORML 『음....아으....우우……굉장혜엣』
                         PRINTFORMW 카구야는 에이린과 진한 키스를 하고있다
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         PRINTFORML 「후후……모코우.... 키스 잘하네.....」
-                        PRINTFORML 『응읏.... 카구야도 좋지 않아? 다시 하자....』
-                        PRINTFORMW 카구야는 여동생과 다시 진한 키스를 나누기 시작했다
+                        PRINTFORML 『응읏.... 카구야도 좋지? 다시 하자....』
+                        PRINTFORMW 카구야는 모코우와 다시 진한 키스를 나누기 시작했다
                     ELSE
                         PRINTFORML 「음….후우……아웅……」
-                        PRINTFORMW 카구야는 %CALLNAME: MASTER%의 양 어깨에 팔을 돌려 촉촉하게 키스를 하고 있다.
+                        PRINTFORMW 카구야는 %CALLNAME: MASTER%의 양 어깨에 팔을 두르고 진한 키스를 하고 있다.
                     ENDIF
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 IF CFLAG:5101 & 1
                     ;調教者が永琳
-                    IF NO:MASTER == 29
-                        PRINTFORML 「아아..…키스한것 뿐인데 몸이 편해져어……」
-                        PRINTFORML 『훗, 키스를 하면 건강해질 수 있다구？』
+                    IF NO:PLAYER == 29
+                        PRINTFORML 「아아..…키스한것 뿐인데 몸에 힘이 빠져……」
+                        PRINTFORML 『후후, 키스도 건강요법이라구요？』
                         PRINTFORML 「후에? 그게 정말이야?……？」
-                        PRINTFORMW 『글쎄, 우리에게 별로 관계 없지만 말야....』
+                        PRINTFORMW 『글쎄요, 뭐 우리에게는 그다지 상관 없는 이야기지만요……』
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
-                        PRINTFORML 「하아!……히그읏..…! 모코우, 모코우우,…… 쉬지 않고……더 키스하고 싶어.....!」
-                        PRINTFORML 『조금도 쉬게 하지 않을거니깐...…응』
-                        PRINTFORMW  카구야가 마침내 입을 뗄 때, 모코우는 황홀한 표정을 짓고 있다
+                    ELSEIF NO:PLAYER == 31
+                        PRINTFORML 「하아!……히우읏………! 모코우, 모코우우,…… 쉬지 않고……더 키스하고 싶어………!」
+                        PRINTFORML 『조금도 쉬게 하지 않을거니깐………응』
+                        PRINTFORMW  카구야가 마침내 입을 때자, 모코우는 황홀한 표정을 짓고 있다
                     ELSE
-                        PRINTFORML 「하아……%CALLNAME:MASTER%……더어……뎌어어……」
+                        PRINTFORML 「하아……%CALLNAME:MASTER%……더어……더어어……」
                         PRINTFORMW 요염한 숨을 내쉬면서 카구야는 몽롱한 의식으로 %CALLNAME:MASTER%의 이름을 계속 불렀다.
                     ENDIF
                     SIF CFLAG:5100 == 1
                         TEQUIP:11 = 1
                 ELSE
                     ;調教者が永琳
-                    IF NO:MASTER == 29
+                    IF NO:PLAYER == 29
                         PRINTFORML 「응..…응..…음…달콤해서.... 녹아버릴것만 같아...…」」
-                        PRINTFORML 『나도야...…설마 당신이 이렇게 키스를 적극적으로 할줄은』
+                        PRINTFORML 『저도랍니다...…설마 당신이 이렇게 키스를 적극적으로 할줄은』
                         PRINTFORMW  카구야는 요염한 목소리를 내면서 에이린과 농후한 키스를 했다
                     ;調教者が妹紅
-                    ELSEIF NO:MASTER == 31
+                    ELSEIF NO:PLAYER == 31
                         PRINTFORML 「하우……아움……아으읏……」
                         PRINTFORML 『우응……으음……아으읏……』
-                        PRINTFORMW 카구야는 여동생의 타액을 입에 머금으면서 서로의 혀를 얽히게 하면서 키스를 했다
+                        PRINTFORMW 카구야는 모코우의 타액을 입에 머금으면서 서로의 혀를 얽히게 하면서 키스를 했다
                     ELSE
                         PRINTFORML 「아우움……아흐읏……으웅……」
                         PRINTFORMW 요염한 목소리를 내면서, 카구야는 매혹적인 키스를 했다
@@ -6529,12 +6530,12 @@ IF SELECTCOM == 6
                     TEQUIP:11 = 1
             ELSE
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「응읏……우우우……」
                     PRINTFORML 『하아……웅……굉장히 진해……』
                     PRINTFORMW 카구야는 에이린의 혀에 적극적으로 자신의 혀를 얽혔다.
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「음……응읏……우웅……」
                     PRINTFORML 『..…음,..…조금 솔직해졌는지도, 조금더.....』
                     PRINTFORMW 카구야는 부끄러운듯 하지만 묵묵하게 키스를 받아들이고 있다
@@ -6547,12 +6548,12 @@ IF SELECTCOM == 6
         ;それ以外
         ELSEIF CFLAG:9006 <= 1 || FLAG:11 == 2
             ;調教者が永琳
-            IF NO:MASTER == 29
-                PRINTFORML 『……어때？』
+            IF NO:PLAYER == 29
+                PRINTFORML 『……어때요？』
                 PRINTFORMW 「그만해, 불쾌하다니까?」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
-                PRINTFORML 『아직 솔직하지 않구나, 좀더 나에게 맡겨 봐』
+            ELSEIF NO:PLAYER == 31
+                PRINTFORML 『아직 솔직해지지 않았구나, 좀더 나에게 맡겨 봐』
                 PRINTFORMW 「싫어, 이런 상황에서 맡기면 저항할 수 없게 되잖아?」
             ELSE
                 PRINTFORML 「아……이런 짓을.....」
@@ -7191,7 +7192,7 @@ IF SELECTCOM == 9
                         PRINTFORML 「아……아앗……」
                         PRINTFORMW  카구야는 미약의 작용으로 욕정하여 벌벌 떨리는 몸을 부둥켜안고, 허벅지를 맞부딪치고 있다.
                         PRINTFORML （아으으…… 이런 짓이나 하고... 천하태평이야....）
-                        PRINTFORMW （그레도오... 이렇게라도 하지 않으면 몸이 기분 나빠서 무즈무즈 해버려...…）
+                        PRINTFORMW （그래도오... 이렇게라도 하지 않으면 몸이 기분 나빠서 무즈무즈 해버려...…）
                         PRINTFORML 「아으으……아응……후읏……」
                         PRINTFORMW 「나를 약물로 굴복시키려고 했다니...…아휴..…그렇게는 안 된다니까」
                         PRINTFORMW 카구야는 허벅지를 맞부딪치고, 때때로 사랑스러운 목소리와 함께 몸을 부들부들 떨었다.
@@ -7414,7 +7415,7 @@ IF SELECTCOM == 12 && TEQUIP:20
             ;それ以外
             ELSE
                 PRINTFORMW 「그 떨리는 물건, 설마 나에게 꽂을 생각이야？」
-                PRINTFORMW 「그 만큼은 그만둬워…엉덩이 구멍이라면 얼마든지 만져줘도 좋아！.....제발」
+                PRINTFORMW 「그 만큼은 그만둬워…엉덩이 구멍이라면 얼마든지 해도 되니까！………제발」
             ENDIF
         ;非処女
         ELSE
@@ -7424,7 +7425,7 @@ IF SELECTCOM == 12 && TEQUIP:20
                 PRINTFORMW 「둘 다 버리기 어렵네」
             ;それ以外
             ELSE
-                PRINTFORMW 「그레..…뭐, 해 봐.」
+                PRINTFORMW 「그래……뭐, 해 봐.」
             ENDIF
         ENDIF
             CFLAG:9012 = 1
@@ -7447,9 +7448,9 @@ IF SELECTCOM == 12 && TEQUIP:20
                 ENDIF
             ELSEIF !RAND:2
                 PRINTFORML 「음..…설마 오랜 세월 지켜온 여기가 가장 민감했다니……」
-                PRINTFORMW  카구야의 질에 바이브를 넣자, 삽입할수록 휘황찬란한 표정을 띄워가면서 %조사처리(CALLNAME:MASTER,"를")% 응시했다.
+                PRINTFORMW  카구야의 질에 바이브를 넣자, 삽입할수록 황홀한 표정을 띄워가면서 %조사처리(CALLNAME:MASTER,"를")% 응시했다.
             ELSE
-                PRINTFORML 「아아응……！　하앙..！　이 물건, 엄청나♪」
+                PRINTFORML 「아아응……！　하앙……！　이거, 굉장해♪」
                 PRINTFORMW 질 안에 삽입된 바이브는 가차 없이 카구야를 느끼게 하면서 바로 몸을 튕기게 했다 
             ENDIF
             CFLAG:9012 = 6
@@ -7583,7 +7584,7 @@ IF SELECTCOM == 11
             PRINTFORMW 「그런데……그걸, 하읏?！」
         ;主人が豊姫＆屈服刻印Lv2以下
         ELSEIF NO:MASTER == 53 && ASSIPLAY == 0 && MARK:2 <= 2
-            PRINTFORMW 『이건 알고 있지?』
+            PRINTFORMW 『이건 알고 있죠?』
             PRINTFORMW 「…알고있는데, 그래서 어쩔 생각이야?」
             PRINTFORMW 『이렇게에~』
             PRINTFORML 「 잠깐...…응..…얏, 하아앗……」
@@ -8303,39 +8304,39 @@ IF SELECTCOM == 20
             ENDIF
             IF LOCAL:0 == 0
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:2
-                        PRINTFORML 「아우읏……에이린한테 안겨서 나、기뻐엇……」
-                        PRINTFORMW 『그래？　저도 기뻐요……』
+                        PRINTFORML 「아우읏……에이린한테 안겨서 나, 기뻐엇……」
+                        PRINTFORMW 『그런가요？ 저도 기뻐요……』
                     ELSE
                         PRINTFORML 『좋은 표정이 됐네요。지금부터 넣을게요』
                         PRINTFORML 에이린은 황홀한 표정을 짓고 있는 카구야의 허리에 손을 둘러 끌어안고
                         PRINTFORMW 조금씩 \@TALENT:ASSI:121 ? 남근 # 페니스밴드 \@를 삽입하기 시작했다
-                        PRINTFORML 「하아……흣……에잇……리잉……좋아아……좋아앗……♪」
-                        PRINTFORMW 고양이가 우는 듯한 소리로 헐떡이기 시작한 카구야는 에이린의 허리에 발을 돌려 질에 \@TALENT:ASSI:121 ? 남근 # 페니스밴드 \@가 깊이 꽂아 넣어지도록 유혹했다
+                        PRINTFORML 「하아……흣……에이……리인……좋아아……좋아앗……♪」
+                        PRINTFORMW 고양이가 우는 듯한 소리로 헐떡이기 시작한 카구야는 에이린의 허리에 다리를 둘러 질에 \@TALENT:ASSI:121 ? 남근 # 페니스밴드 \@가 깊이 꽂아 넣어지도록 유혹했다
                         PRINTFORML 『후훗……카구야는 여기가 약한거네요……』
-                        PRINTFORMW 카구야의 흐트러진 척을 보고 에이린은 허리를 빠르게 움직였다
+                        PRINTFORMW 카구야의 흐트러진 모습을 보고 에이린은 허리를 빠르게 움직였다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「모코우……더 움직여도 되는데？」
-                        PRINTFORML 『아니、나는 이걸로 충분해、이렇게 카구야와 연결되어 있는 것만으로도 만족해』
+                        PRINTFORML 『아니, 나는 이걸로 충분해. 이렇게 카구야와 이어져 있는 것만으로도 만족해』
                         PRINTFORMW 「하앗……나도 그래……기뻐……」
                     ELSE
                         PRINTFORML 「으읏……하아아으앙……」
                         PRINTFORML 카구야는 모코우가 삽입한 \@TALENT:ASSI:121 ? 남근 # 페니스밴드 \@의 자극에 몸을 떨며 달콤한 목소리를 흘렸다
-                        PRINTFORML 『후훗、지금의 카구야 굉장히 기분 좋은 듯한 표정 짓고 있어……』
-                        PRINTFORML 「크、읏……그치마안……아앙……안쪽이 스쳐서엇……모코오……」
+                        PRINTFORML 『후후, 지금 카구야 굉장히 기분 좋은 듯한 얼굴을 하고 있다고?』
+                        PRINTFORML 「크, 읏……그치마안……아앙……안쪽이 스쳐서엇……모코오……」
                         PRINTFORML 카구야는 모코우를 강하게 끌어안고 허리에 얽힌 다리에 힘을 줬다
                     ENDIF
                 ELSE
                     IF !RAND:4
                         PRINTFORML 「으아、아앗、아읏、으흣、하으아앗……♪」
                         PRINTFORML 「응……아……하우우우웃……♪　있잖아、읏……더、격렬하게 찔러줘……♪」
-                        PRINTFORMW 남근을 바라며 침을 흘리고 있는 질에 삽입하자 기쁨을 느낀 질은 걸쭉하게 더욱 많은 꿀을 늘어뜨렸다
+                        PRINTFORMW 남근을 바라며 액을 흘리고 있는 질에 삽입하자 기쁨을 느낀 질은 걸쭉하게 더욱 많은 꿀을 늘어뜨렸다
                     ELSEIF !RAND:3 && ABL:1 >= 4
-                        PRINTFORML 「아아、그、그만아읏、안 되헷！안이 너무 이상해앳！」
+                        PRINTFORML 「아아、그、그만아읏、안 되헷！안쪽이 너무 이상해앳！」
                         PRINTFORMW 카구야는 입에서 혀를 늘어뜨리고 헐떡거렸다
                     ELSEIF !RAND:2
                         PRINTFORML 「아읏！　%CALLNAME:MASTER%의 애정이 느껴져、따뜻해……」
@@ -8348,7 +8349,7 @@ IF SELECTCOM == 20
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     IF !RAND:2
                         PRINTFORML 「히잇、아흐읏！　에이린의 허리 움직임、정말 기분좋아앗！」
                         PRINTFORMW 『크으……카구야의 조임이 강해서……대단해요……』
@@ -8360,10 +8361,10 @@ IF SELECTCOM == 20
                         PRINTFORMW 에이린이 허리를 깊숙히 흔들어 카구야의 질을 단번에 찌르자 카구야는 교태섞인 목소리를 지르며 허벅지를 팽팽하게 했다
                     ENDIF
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     IF !RAND:2
                         PRINTFORML 「모코우……더 움직여줘、그리고 나를 기분좋게 해줘어……」
-                        PRINTFORML 『알겠어……크웃、이걸로 맘에들어？』
+                        PRINTFORML 『알겠어……크웃、이러면 맘에 들어？』
                         PRINTFORMW 「히야、아우！　으읏、아후우！　아읏、좋아앗！　그 기세로 부탁해！」
                     ELSE
                         PRINTFORML 「모코……히야아아앗……♪　정말 좋아앗……♪」
@@ -8395,10 +8396,10 @@ IF SELECTCOM == 20
         ;屈服刻印Lv3＋V感覚Lv3以上
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && (CFLAG:9020 <= 4 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 IF !RAND:2
                     PRINTFORML 「아앙！　으읏、흐앙！　그렇게 심하게 움직이지 말아줘……」
-                    PRINTFORML 『에？　저는 움직이지 않았어요、오히려 카구야、당신이 적극적으로 허리를 움직였잖아요』
+                    PRINTFORML 『네？　저는 움직이지 않았어요、오히려 카구야、당신이 적극적으로 허리를 움직였잖아요』
                     PRINTFORML 「으앗！　그、그럴리가……없잖아……」
                     PRINTFORMW 카구야는 자신의 행동을 부정하며 고개를 가로저었다
                 ELSE
@@ -8407,12 +8408,12 @@ IF SELECTCOM == 20
                     PRINTFORML 『어머？　벌써 느끼고 있는건가요？　아직 넣지 않았는데도』
                     PRINTFORML 질 입구에 비벼진것만으로 신체를 떨며、얼굴을 치켜들고 귀여운 목소리를 흘리는 카구야에게
                     PRINTFORMW 심술을 부리듯 에이린은 독설을 퍼부었다
-                    PRINTFORML 「아……아응……달라……아！　히야아우으읏……！」
+                    PRINTFORML 「아……아응……아니야……아！　히야아우으읏……！」
                     PRINTFORML 『잘 참은 카구야에게 상을 줄게요……』
                     PRINTFORMW 부정의 말을 자아내던 카구야는、갑작스럽게 삽입되는 것과 동시에 머리속이 새하얗게 되었다
                 ENDIF
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 IF !RAND:2
                     PRINTFORML 「아으……아앗……아흐읏……」
                     PRINTFORML 
@@ -8435,13 +8436,13 @@ IF SELECTCOM == 20
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9020 <= 3 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「으으、하앗、우으읏……」
                 PRINTFORML 『반응이 없네요……솔직해지면 좋을거라고 하는데도』
                 PRINTFORML 「그읏、으웃……빨리 끝내……」
                 PRINTFORMW 카구야는 눈을 꽉 감고 행위의 고통을 해소하려 하고 있다
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「설마 여자끼리 이런걸 하게 될줄이야……」
                 PRINTFORML 『비관적이게 될 건 없잖아、내가 하나하나 가르쳐줄테니까』
                 PRINTFORMW 「으읏、그것도 싫어」
@@ -8459,13 +8460,13 @@ IF SELECTCOM == 20
         ;貞操観念と抑圧を持ってるのにＶ敏感とか俺を壊すつもりか、もっとふざけろ
         ELSEIF ABL:1 >= 3 && (CFLAG:9020 < 3 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「읏、으흥……아후우！　뭐야 이거……」
-                PRINTFORML 『어머、익숙해졌네、여기가 민감한거지？』
+                PRINTFORML 『어머、익숙해졌나봐요、여기가 민감한거죠？』
                 PRINTFORML 「아읏！　그、그럴리 없으니까앗……！」
                 PRINTFORMW 카구야는 찌를 때마다 신음소리를 흘리면서 허리를 튕겼다
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「으윽、크흐읏！　아앙！　어、어째서……이렇게……」
                 PRINTFORML 『응？　잘 적응했잖아？　엄청 느끼고 있는것처럼 보이는데』
                 PRINTFORML 「읏、후아아！　아우우……그럴리、없……어」
@@ -8478,12 +8479,12 @@ IF SELECTCOM == 20
         ;それ以外
         ELSEIF CFLAG:9020 <= 1 || FLAG:11 == 2
             ;調教者が永琳
-            IF NO:MASTER == 29
-                PRINTFORML 「있잖아、여자끼리 이러는건 절대 이상하다고 생각해……」
+            IF NO:PLAYER == 29
+                PRINTFORML 「있잖아、여자끼리 이러는건 분명히 이상하다고 생각해……」
                 PRINTFORML 『아니、이것도 제법 수요가 있다구요？』
                 PRINTFORMW 「무、무슨 소리야……」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 『자아、움직여 카구야』
                 PRINTFORML 「그읏……너무 움직이잖아、아파아」
                 PRINTFORMW 카구야는 고통의 표정을 짓고있다
@@ -8527,6 +8528,7 @@ IF SELECTCOM == 21
             ELSE
                 PRINTFORMW 「엎드리라니요？」
                 PRINTFORMW 「그래 엎드려 줄게요, 응？ 뒤를 보지 말라니？ 알았어요, 그런데 왜……시, 싫어！　안 돼！　그것만큼은 안 되에！」
+                PRINTFORMW 「이런 짐승의 교미와도 같은 모습으로……, 안 돼……」
             ENDIF
         ;非処女
         ELSE
@@ -9152,7 +9154,7 @@ IF SELECTCOM == 30
         ;屈服刻印Lv3
         ELSEIF MARK:2 >= 3 && (CFLAG:9030 <= 3 || FLAG:11 == 2)
             PRINTFORMW 「응읏、앗、쿠읏、히、히잇……」
-            PRINTFORML 「앗、아、파앗、거기는、달라요오……」
+            PRINTFORML 「앗、아、파앗、거기는、아니예요오……」
             PRINTFORMW 카구야는 고통으로 볼을 경직시키고 허리를 떨며 색기섞인 목소리를 흘렸다
             CFLAG:9030 = 4
         ;A感覚Lv3以上
@@ -9988,7 +9990,7 @@ IF SELECTCOM == 24
         ELSEIF ABL:1 >= 3 && (CFLAG:9024 < 2 || FLAG:11 == 2)
             LOCAL:0 = RAND:2
             IF LOCAL:0 == 0
-                PRINTFORML 「아아읏！　다、달라요！　저는、이렇게 천하지 않……」
+                PRINTFORML 「아아읏！　아、아니야！　나는、이렇게 천박하지 않……」
                 PRINTFORMW 카구야는 고개를 가로저으면서도 허리를 움직여 쾌락을 얻으려고 하고 있다
             ELSEIF LOCAL:0 == 1
                 PRINTFORML 「으읏、흐응！　아흣、아아……！」
@@ -12785,7 +12787,7 @@ IF (SELECTCOM == 504 && TEQUIP:35 == 1) || (SELECTCOM == 3 && TEQUIP:90)
                     IF TEQUIP:11 >= 1
                         PRINTFORMW 「아읏……하앙……읏……어째서……」
                         PRINTFORMW 「가뜩이나……하아……이상한 상태인데……흐읏……괴물 상대로……히잇……느끼고 있다고 하는건가요……」
-                        PRINTFORML 「달라요……이건 약 때문이니까요……흣」
+                        PRINTFORML 「아니야……이건 약 때문이니까요……후읏」
                         PRINTFORML 젖꼭지를 촉수로 강하게 자극하자 카구야는 작게 헐떡이며 뜨거운 숨을 터뜨렸다
                         PRINTFORMW 혼란이 강해졌는지 카구야는 머리를 흔들며 부정하고 있다
                         ;侵食のパラメーターが上昇します
@@ -14284,12 +14286,12 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             ENDIF
             IF LOCAL:0 == 0
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「에이린...…후아..…만지는 방법이 상냥하네...…응..…」
                     PRINTFORML 『행복한 표정을 짓고 있네요...…사랑해요, 카구야』
                     PRINTFORMW 에이린이 약점을 쓸 때마다 카구야는 달콤한 소리를 흘렸다.
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「으우응！　모코우……이 안이, 뜨거워졌어……」
                     PRINTFORML 『정말로？　그럼 좀 더 뜨겁게 해줄게』
                     PRINTFORML 「후아아……나 기뻐……」
@@ -14300,12 +14302,12 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「후아아으응！　에이린, 더 격렬하게！ 더, 더어어！」
                     PRINTFORML 『기분 좋아 보이네……좀 더 격렬하게 해드리죠』
                     PRINTFORMW 에이린이 약점을 매만질때 마다 카구야는 검은 머리카락을 흩날리며 몸을 활처럼 튀게 했다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「아으응！　굉장해, 굉장하다구！　이런거, 버릇이 들어버려엇！」
                     PRINTFORML 『이렇게까지 되는건가, 후후……카구야, 너는 손가락만으로 가버리는 변태인거냐？』
                     PRINTFORML 「네엣！　그렇습니다앗！　이젠 손가락만으로 가버리는 것에 조금도 저항감이 느껴지지 않습니다아앗！」
@@ -14321,13 +14323,13 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             ;抑圧
             IF TALENT:32 == 1
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「하아……하아……잠깐만, 거기 너무 느껴버린다고, 우으응！」
                     PRINTFORML 『여기가 기분좋은 거죠？　더 쑤셔 줄게요』
                     PRINTFORML 「그, 그마안, 후아아！　햐으응！」
                     PRINTFORMW 에린이 약점을 쑤셔댈때 마다 카구야는 달콤한 목소리로 울었다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「머, 머리속이 새하얘져버렸어……」
                     PRINTFORML 『슬슬 참는건 그만두는게 어때？』
                     PRINTFORML 「싫거든, 나는 괜찮아……괜찮고말고」
@@ -14338,13 +14340,13 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                 ENDIF
             ELSE
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「아흣……에, 링……더는 안 돼……의식이……의식이이……」
                     PRINTFORML 『어머나, 쑤셔대는것 만으로 가버린건가요？』
                     PRINTFORML 「그치만……그치마안……으으응！　거기……너무 민감하단 말이야아……햐으응！」
                     PRINTFORMW 카구야는 풀어진 얼굴로 에이린이 약점을 애무할 때마다 온몸을 젖히며 가버리고 있다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「하아우！　안 돼……이거, 버틸수가 없어엇……！」
                     PRINTFORML 『온몸이 움찔거리고 있네, 좀 더 격렬하게 가볼까』
                     PRINTFORML 「후아, 아앙！　크읏！　이, 이정도는, 으응！　참아 보이겠어……」
@@ -14360,13 +14362,13 @@ IF SELECTCOM == 4 || SELECTCOM == 600
             ;抑圧
             IF TALENT:32 == 1
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「어째서 같은곳만 그렇게……아아……」
-                    PRINTFORML 『이런식으로 할수도 있어, 뭐어 그 몸을로 알았겠지만』
+                    PRINTFORML 『이런식으로 할수도 있답니다, 뭐어 그 몸으로 알게 됐겠지만』
                     PRINTFORMW 약점만을 매만져진 카구야는 필사적으로 참고 있다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
-                    PRINTFORML 『기분 좋냐？　나는 조금은 잘하게 됐다고 생각하는데』
+                ELSEIF NO:PLAYER == 31
+                    PRINTFORML 『기분 좋냐？　나도 조금은 잘하게 됐다고 생각하는데』
                     PRINTFORML 「크윽……아무렇지도 않아……！」
                     PRINTFORMW 카구야는 몸을 떨면서 어떻게든 참고 있다
                 ELSE
@@ -14375,13 +14377,13 @@ IF SELECTCOM == 4 || SELECTCOM == 600
                 ENDIF
             ELSE
                 ;調教者が永琳
-                IF NO:MASTER == 29
+                IF NO:PLAYER == 29
                     PRINTFORML 「후으으……크으……으응……」
-                    PRINTFORML 『조금 얼굴이 붉어진것같은데？』
+                    PRINTFORML 『조금 얼굴이 붉어진것같은데요？』
                     PRINTFORML 「아, 니야……그럴리가 없는걸, 으응！　그럴리가 없어……」
                     PRINTFORMW 카구야는 무의식적으로 쾌락을 받아들이며 멍한듯한 얼굴을 붉히고 있다
                 ;調教者が妹紅
-                ELSEIF NO:MASTER == 31
+                ELSEIF NO:PLAYER == 31
                     PRINTFORML 「후아아！　크으으……이 느낌, 뭐냔 말이야」
                     PRINTFORML 『기분좋아지기 시작했지？　슬슬 솔직해지는것 같은데』
                     PRINTFORMW 「싫어……어째서 몸이 이렇게 뜨거워 지는거야……」
@@ -16664,15 +16666,15 @@ IF SELECTCOM == 610
         ;恋慕
         IF TALENT:150
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 『자아 모코우, 함께 카구야를……』
                 PRINTFORML 『알고 있다니까, 자 카구야, 기분 좋게 해줘』
                 PRINTFORML 「으……무섭지만……에이린, 가능하면 기분좋게 해줄게」
                 PRINTFORMW 카구야는 미지의 행위로 인한 공포에 몸을 떨면서도 모코우를 바라보고 있다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
                 PRINTFORML 『카구야, 이번엔 에이린도 함께다』
-                PRINTFORML 『카구야……두사람 동시는 힘들겠지만 부탁할게』
+                PRINTFORML 『카구야……두사람 동시는 힘들겠지만 부탁할게요』
                 PRINTFORML 「그래, 조금 무섭긴 하지만, 나……힘낼게」
                 PRINTFORMW 카구야는 미지의 행위로 인한 공포에 몸을 떨면서도 뭔가를 결심한 듯한 얼굴을 하고있다
             ELSE
@@ -16682,15 +16684,15 @@ IF SELECTCOM == 610
         ;それ以外
         ELSE
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 『자 모코우, 당신도 카구야를 범하세요』
                 PRINTFORML 『음……괜찮은거야？　꽤 싫어하고 있는것 같다만』
                 PRINTFORML 「모……모코우……도와줘……」
                 PRINTFORMW 카구야는 입으로는 위세를 부리고 있지만 공포로 몸을 떨고 있다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
                 PRINTFORML 『에이린, 너는 카구야랑 친하지？　한가지 협력해줬으면 하는게 있는데……』
-                PRINTFORML 『그래, 좋아. 카구야, 당신에게 새로운 세계르 보여줄게』
+                PRINTFORML 『그래, 좋아. 카구야, 당신에게 새로운 세계를 보여줄게요』
                 PRINTFORML 「뭐, 뭐냐구, 두사람 동시라니 비겁해」
                 PRINTFORMW 카구야는 공포로 몸을 떨고 있다
             ELSE
@@ -16716,7 +16718,7 @@ IF SELECTCOM == 610
             ENDIF
             IF LOCAL:0 == 0
                 ;調教者が永琳＆助手が妹紅or調教者が妹紅＆助手が永琳
-                IF (NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29)
+                IF (NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29)
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
                         PRINTFORML 「으우음……으으응……으으음……」
@@ -16744,7 +16746,7 @@ IF SELECTCOM == 610
                 ENDIF
             ELSEIF LOCAL:0 == 1
                 ;調教者が永琳＆助手が妹紅or調教者が妹紅＆助手が永琳
-                IF (NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29)
+                IF (NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31) || (NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29)
                     ;口＆穴
                     IF (TFLAG:130 == 1 && TFLAG:131 == 3) || (TFLAG:130 == 2 && TFLAG:131 == 3) || (TFLAG:130 == 3 && TFLAG:131 == 1) || (TFLAG:130 == 3 && TFLAG:131 == 2)
                         PRINTFORML 「으응……으으읏……우으으응！　읏！　으응……」
@@ -16775,13 +16777,13 @@ IF SELECTCOM == 610
         ;屈服刻印Lv3+V感覚Lv3以上＋A感覚Lv3以上
         ELSEIF MARK:2 == 3 && ABL:1 >= 3 && ABL:2 >= 3 && (CFLAG:9610 <= 4 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 『카구야, 이제 망가질것 같지？　받아들이면 기분좋아질 수 있어』
                 PRINTFORML 『굉장한걸……이렇게나 기쁘게 미쳐버릴 수 있다니』
                 PRINTFORML 「하아윽！　시, 싫어엇! 흐아아응! 너무 느껴버리니까 머리가앗！　후으읏！」
                 PRINTFORMW 카구야는 완전히 얼굴이 풀어진 채로 장발을 흐트러트리며 온몸을 비비적거리고 있다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
                 PRINTFORML 「햐우읏！　틀렸어……이제 머릿속이 새하얗게……」
                 PRINTFORML 『역시 견디지 못하는건가, 슬슬 단념하는게 어때？』
                 PRINTFORML 『그래,기분 좋은일 더 하고 싶지, 카구야?』
@@ -16795,13 +16797,13 @@ IF SELECTCOM == 610
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:9610 <= 3 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 「모코우, 당신도 에이린의 말같은거 듣지 않아도 되잖아…」
                 PRINTFORML 『아니, 나는 에이린에게 거스를 수 없어, 미안하다』
                 PRINTFORML 「그, 그래……」
                 PRINTFORMW 카구야는 낙담한 것인지 고개를 떨어트렸다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
                 PRINTFORML 「에이린을 데리고 오다니 비겁하긴 하지만……꽤 하는걸」
                 PRINTFORML 『그, 그래？　영광이네』
                 PRINTFORML 「하지만 이거랑 그건 별개야, 절대로 지지 않을테니까」
@@ -16814,14 +16816,14 @@ IF SELECTCOM == 610
         ;V感覚Lv3以上＋A感覚Lv3以上
         ELSEIF ABL:1 >= 3 && ABL:2 >= 3 && (CFLAG:9610 <= 2 || FLAG:11 == 2)
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 「후앗……안 돼……이렇게 싫은짓을 당하고 있는데……」
                 PRINTFORML 『느끼기 시작했구나, 모코우, 계속하렴』
                 PRINTFORML 『알았어. 카구야, 좀 더 느끼라고……』
                 PRINTFORMW 카구야는 싫어하면서도 얼굴을 붉히고 있다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
-                PRINTFORML 『얼굴, 새빨개졌네』
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
+                PRINTFORML 『얼굴, 새빨개졌네요』
                 PRINTFORML 『카구야, 기분 좋아지기 시작했지？』
                 PRINTFORML 「아, 아니야……아으……딱히 느끼지 않거든, 으읏！」
                 PRINTFORMW 카구야는 쾌락에 얼굴을 붉혔다
@@ -16833,15 +16835,15 @@ IF SELECTCOM == 610
         ;それ以外
         ELSEIF CFLAG:9610 <= 1 || FLAG:11 == 2
             ;調教者が永琳＆助手が妹紅
-            IF NO:MASTER == 29 && ASSI >= 0 && NO:ASSI == 31
+            IF NO:PLAYER == 29 && ASSI >= 0 && NO:ASSI == 31
                 PRINTFORML 『모코우, 다시 하렴』
                 PRINTFORML 『……미안하다, 하지만 에이린에게는 거스를 수 없어』
                 PRINTFORML 「모코우……모코우……」
                 PRINTFORMW 카구야는 공포로 몸을 떨고 있다
             ;調教者が妹紅＆助手が永琳
-            ELSEIF NO:MASTER == 31 && ASSI >= 0 && NO:ASSI == 29
+            ELSEIF NO:PLAYER == 31 && ASSI >= 0 && NO:ASSI == 29
                 PRINTFORML 『에이린, 다시 부탁하지』
-                PRINTFORML 『그래, 알았어. 그럼 카구야, 좀 더 기분좋아져서 망가져 버리렴……』
+                PRINTFORML 『그래, 알았어. 그럼 카구야, 좀 더 기분좋아져서 망가져 버리는거예요……』
                 PRINTFORML 「뭐냐고, 둘이서 합심해서 덤벼들겠단 생각은 말아줘」
                 PRINTFORMW 카구야는 입으로는 위세를 부리고 있지만 공포로 몸을 떨고 있다
             ELSE
@@ -17120,7 +17122,7 @@ IF P > PALAMLV:2 && CFLAG:TARGET:8001 == 0
         ;それ以外
         ELSE
             PRINTFORML 가랑이를 비비고 있는 카구야의 사타구니에서 희미하게 물소리가 들렸다
-            PRINTFORML 「다, 달라……！　내가 그렇게 음란할 리가 없……어」
+            PRINTFORML 「아, 아니야……！　내가 그렇게 음란할 리가 없……어」
             PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 지적하자, 카구야는 볼을 붉히며 고개를 흔들었다
         ENDIF
     ENDIF
@@ -17214,7 +17216,7 @@ IF NOWEX:0 > 0 && CFLAG:8005 == 0
         PRINTFORMW 「큿……당신 앞에서 가버리다니……이런 걸로 함락했다라고 생각하지 마……」
         PRINTFORMW 「밤의 기술 정도는 배웠다고, 나는 말이죠」
         ;調教者が永琳
-        IF NO:MASTER == 29
+        IF NO:PLAYER == 29
             PRINTFORMW 『어머? 그 밤기술이 성(性)의 전부라고 생각하는건가요？』
             PRINTFORMW 「에……？」
             PRINTFORMW 『철저히 가르쳐 주면 역효과가 되어 버리잖아요』
@@ -18426,14 +18428,14 @@ IF TFLAG:30 > 0
         ;それ以外
         ELSE
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「하읏! 뭐야 이거..…앞이 뜨거워져서 뭔가 나와아앗……」
                 PRINTFORML 『순간이지만 굉장히 기분 좋지♪」 이상해……♪』
                 PRINTFORMW 「아니... 그럴 리가 없잖아?」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「아응! 앞이 이상해……♪ 몸이 뜨거워……」
-                PRINTFORML 『'여성의 것과 달리 감각이 다르다는 소문이 있어, 버릇이 되면 즐거울걸?』
+                PRINTFORML 『여성의 것과 달리 감각이 다르다는 소문이 있어, 익숙해지면 즐거울걸?』
                 PRINTFORMW 「싫어, 누가 이런 거……」
             ELSE
                 PRINTFORML 「아응……우우……」
@@ -18447,12 +18449,12 @@ IF TFLAG:30 > 0
         ;恋慕
         IF TALENT:150 && (CFLAG:8015 <= 5 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「하웃! 나도 기분좋아♪! 히아아아아아♪」
                 PRINTFORML 『사정하는 모습이 마음에 드네』
                 PRINTFORMW 「응! 내버리면 굉장히 기분이 좋아져서 좋아♪」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「아그으읏!! 나 이런 육봉에서 추잡한 즙이 나와서 기분 좋아―♪」
                 PRINTFORML 『그래도 좋은 일이라고 생각해, 자, 더 기분 좋아지는 거야~』
                 PRINTFORMW 「에에, 더 기분 좋아지고 싶어……?」
@@ -18469,12 +18471,12 @@ IF TFLAG:30 > 0
         ;射精経験50以上+屈服刻印Lv3
         ELSEIF EXP:3 >= 50 && MARK:2 == 3 && (CFLAG:8015 < 4 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「"히, 히응! 아, 정말 대단해！대단해엣！」! 우아아아아앗！」
                 PRINTFORML 『사정하는것을 좋아하게 됬어? 몇 번이나 해버렸네?』
                 PRINTFORMW 「응읏, 아크크크읏！　달아올라서어엇, 멈추지않아아……멈추지않아아앗！」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「"앗, 아앗! 멈추지않아아앗! 히아아아아아아아아아앙! 븃븃하고 나와아앗!!"」
                 PRINTFORML 『몸을 젖히면서까지 사정 안해도 되잖아...…이상하다고..』
                 PRINTFORMW 「그, 그런 말을 들어도 멈출 수가 없어엇……아흣、아후우……♪ 하으응！」
@@ -18491,12 +18493,12 @@ IF TFLAG:30 > 0
         ;屈服刻印Lv3
         ELSEIF MARK:2 == 3 && (CFLAG:8015 < 3 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「나와、나와버려어요……♪……」
                 PRINTFORML 『후후, 조금 더 할 수 있죠?』
                 PRINTFORMW 「아, 아니……」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「후훗! 설마 너한테 이런 취미가 있으리라고는 생각도 못했네」
                 PRINTFORML 『후타나리 라는게 기분 좋다고 들어서 말이야,기분은 어떄？』
                 PRINTFORMW 「기, 기분 좋을리가 없잖아……우읏……」
@@ -18507,18 +18509,18 @@ IF TFLAG:30 > 0
         ;射精経験50以上
         ELSEIF EXP:3 >= 50 && (CFLAG:8015 < 2 || FLAG:11 == 2)
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「앗, 아우우……후앗, 아읏, 아아아앙！」
                 PRINTFORML 『에에, 이렇게 븃븃 해버려서, 마음에 들었어?
                 PRINTFORMW （……！으읏, 무심코... 기분 좋다고...생각했어）
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「아으윽, 하우웃！　하아아아읏！」
                 PRINTFORML 『그렇게 우뚝 솟게 하지 않아도, 기분 좋은 걸까...?』
                 PRINTFORMW 「……！　아, 아니야…… 그런거...」
             ELSE
-                PRINTFORML 「ひっ, あぁぁ, 아읏！　ああああっ！」
-                PRINTFORMW （……나, 방금순간 의식 날아갈뻔……?...）
+                PRINTFORML 「히익, 아아아, 아읏！　아아아읏！」
+                PRINTFORMW （……나, 방금 한순간 의식 날아갈뻔 했어……?）
             ENDIF
             ;欲情と屈服のソースが手に入ります
             IF CFLAG:5100 == 1
@@ -18529,14 +18531,14 @@ IF TFLAG:30 > 0
         ;それ以外
         ELSEIF CFLAG:8015 <= 1 || FLAG:11 == 2
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「아으으으.....! 이거 뭐야?…앞이 뜨거워져서 뭔가 븃븃하고 나와버려……」
                 PRINTFORML 『한 순간이지만 굉장히 기분 좋을걸, 병에 걸릴지도 몰라』
                 PRINTFORMW 「쿠...…그럴 리가 없지 않잖아요....」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「응읏! 뭔가……이상、해…!...……」
-                PRINTFORML 『여자와는 달리 감각이 다르다는 소문이 있어, 버릇이 되면 즐거울걸 』
+                PRINTFORML 『여자와는 달리 감각이 다르다는 소문이 있어, 익숙해지면 즐거울걸 』
                 PRINTFORMW 「아니, 그럴수는……」
             ELSE
                 PRINTFORML 「우웃……응읏…」
@@ -18864,16 +18866,16 @@ IF NOWEX:12 >= 1
         PRINTFORML 「아훗……후앗……아아앗……♪」
         PRINTFORMW 카구야는 몸을 떨고, 허벅지에 소변을 흘리며, 칠칠치 못하게 벌어진 입에선 황홀한 소리를 냈다
         ;調教者が永琳
-        IF NO:MASTER == 29
+        IF NO:PLAYER == 29
             PRINTFORMW 『후훗, 소변을 지려버리다니 꽤나 귀엽네요♪』
             PRINTFORML 「후후에……아아……아우……」
             PRINTFORMW 신음 소리를 내며, 힘 없이 고개를 갸웃거리는 카구야를 에이린은 부드럽게 어루만졌다
         ;調教者が妹紅
-        ELSEIF NO:MASTER == 31
+        ELSEIF NO:PLAYER == 31
             PRINTFORMW 『이것이……나의……오줌 ……』
             ;主人が妹紅
             IF NO:MASTER == 31
-                PRINTFORML 『여기까지 잘해왔구나, 나. 음,……그런데 너무 지나쳤나？』
+                PRINTFORML 『여기까지 잘도 해왔구나, 나. 음,……그런데 너무 지나쳤나？』
                 PRINTFORMW 모코우는 팔짱을 끼고, 고개를 끄덕이며 조교의 성취감을 느꼈지만, 조금 후회의 마음이 머리를 스쳤다
             ;それ以外
             ELSE
@@ -18887,12 +18889,12 @@ IF NOWEX:12 >= 1
         ;おもらし癖が付いている
         IF TALENT:45 == 1
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「앗, 지려버렷！　기분 좋아앗！」
                 PRINTFORML 『에에, 얼마든지 싸도 되요』
                 PRINTFORMW 「아, 아읏, 하아아아아아앗♪」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「읏, 으웃！　미안해 모코우, 나, 오줌싸개가 되버린 것 같아……」
                 PRINTFORML 『아냐 괜찮아, 카구야가 어떤 버릇을 갖고 있다고 해도, 나는 받아들일 수 있으니까』
                 PRINTFORMW 「그, 그래？　그러면 기쁠지도, 읏, 아읏！　하아아아아아♪」
@@ -18907,12 +18909,12 @@ IF NOWEX:12 >= 1
         ;放尿経験15回以上
         ELSEIF EXP:6 >= 10
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「아……싸버리는 것 기분 좋은 걸지도……」
                 PRINTFORML 『기분 좋은 것은 좋은 거랍니다, 사양 말고 싸버리세요』
                 PRINTFORMW 「앗, 아읏！　알았어, 알았다고, 하우……하아아♪」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「으우아！　하아아……아아……」
                 PRINTFORML 『으……익숙해진거야？　머지않아 욕정할 때마다 지려버릴껄, 아마』
                 PRINTFORMW 「읏, 아훗, 설마 거기까지 된다고 생각하진 않지만……」
@@ -18932,13 +18934,13 @@ IF NOWEX:12 >= 1
         ;おもらし癖+マゾっ気Lv3以上
         IF TALENT:45 == 1 && ABL:21 >= 3
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「아아……하아아……나와버려어어！　으하아아아아♪」
-                PRINTFORML 『……설마 방뇨하면서 느끼고 있어？　상스럽네, 종자인 내가 부끄러워요』
+                PRINTFORML 『……설마 방뇨하면서 느끼고 있나요？　상스럽네, 종자인 내가 다 부끄러워요』
                 PRINTFORML 「아아……아……」
                 PRINTFORMW 『……얼굴 황홀해 보인다고, 진짜 변태네』
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「나, 나 또 싸버려어어……으아아！」
                 PRINTFORML （나참……아, 그래……）『카구야는 글러먹은 녀석이네, 또 지려 버리다니』
                 PRINTFORML 「읏, 으후우, 그런거 아니……야……하아……하앗……」
@@ -18954,16 +18956,16 @@ IF NOWEX:12 >= 1
         ;おもらし癖が付いている
         ELSEIF TALENT:45 == 1
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「으웃……조금 떨어져……하아, 아아아……♪」
-                PRINTFORML 『너무 경박한거 아니야？　나 참, 이러면 공주의 이름이 운다고』
-                PRINTFORML 「아니야……！　이것만 싸면 다시 원래대로 돌아가니까……자, 해보세요」
+                PRINTFORML 『너무 경박한거 아닌가요？　나 참, 이러면 공주의 이름이 운다구요』
+                PRINTFORML 「아니야……！　이것만 싸면 다시 원래대로 돌아가니까……자, 보라구」
                 PRINTFORMW 『헤에……에에, 좋아요, 그럼 계속해보죠』
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「하아……아아……아……」
                 PRINTFORML 『또 싸버렸나, 꽤나 익숙해진 거 아니야？　어울리는 걸？』
-                PRINTFORML 「으웃……이런 것이 어울리는 사람 들어 본적도 없어……내지 않으면 개운하지 않을 뿐이야」
+                PRINTFORML 「으웃……이런 것이 어울리는 사람 들어 본적도 없어……싸지 않으면 개운하지 않을 뿐이야」
                 PRINTFORMW 『그런게 평범한 걸까？　뭐 상관없어』
             ELSE
                 PRINTFORML 「앗, 또, 또 싸버려……」
@@ -18976,12 +18978,12 @@ IF NOWEX:12 >= 1
         ;放尿経験10回以上
         ELSEIF EXP:6 >= 10
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「아우……또 새어 버려어어……이대로면 버릇이 되어 버리겠어……」
                 PRINTFORML 『솔직해 지는 것이 가장 좋아, 미묘하게 인간같지 않다고？　사소한 일을 신경쓰지 않는게 오래 사는 비결이야』
                 PRINTFORMW 「그, 그러면 나 계속 오래 사니까……아！　하아아……또 싸버렸다……」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「잠깐 모코우, 이건 너무 심하잖아……하아……하앗……화장실 정도는 보내달라고」
                 PRINTFORML 『싫어, 여기가 화장실이니까, 그게 싫으면 내가 떠날 때까지 참던가』
                 PRINTFORML 「읏……으웃……아아……잠깐, 안 됏……하아아……」
@@ -19003,14 +19005,14 @@ IF NOWEX:12 >= 1
         ;おもらし癖が付いている
         IF TALENT:45 == 1
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「앗……또 싸버렷……으아아아아아앗！」
-                PRINTFORML 『아ー아, 또 흘려 버렸다니, 지상을 떠들썩하게 만든 공주가 너무 상스럽네』
-                PRINTFORML 「하아아……그렇게 말해봤자 이것은 에이린의 탓이잖아！？　당신이 약만 잔뜩 먹게 하니까……」
-                PRINTFORML 『하지만 오줌싸개가 되라고는 말 안했어요, 참 어쩔 수가 없네\』
+                PRINTFORML 『아ー아, 또 흘려 버렸다니, 지상을 떠들썩하게 만든 공주가 너무나도 추하군요』
+                PRINTFORML 「하아아……그렇게 말해봤자 이건 에이린 때문이잖아！？　당신이 약만 잔뜩 먹게 하니까……」
+                PRINTFORML 『하지만 오줌싸개가 되라고는 말 안했어요, 참 어쩔 수가 없네』
                 PRINTFORMW 「크읏……！」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「이, 이젠 안 됏……！　하아아아아아……」
                 PRINTFORML 『또 힘차게 방뇨했네, 사실은 싸는 것을 즐긴다거나 이런 거 아니야？』
                 PRINTFORML 「크읏, 약 때문이야！　내가 이런 더러운 짓 좋아할 리가 없잖아！？」
@@ -19026,13 +19028,13 @@ IF NOWEX:12 >= 1
         ;放尿経験10回以上
         ELSEIF EXP:6 >= 10
             ;調教者が永琳
-            IF NO:MASTER == 29
+            IF NO:PLAYER == 29
                 PRINTFORML 「으우……하아……하앗……안 돼엣, 이 이상 만지면 싸버린다고오오……」
-                PRINTFORML 『괜찮아요, 또 싸버리세요, 얍』
+                PRINTFORML 『괜찮아요, 또 싸버리세요, 에잇』
                 PRINTFORML 에이린은 카구야의 요도 주변을 자극했다
                 PRINTFORMW 「읏, 아읏, 으아아아아아아！　……아아……또 싸버렸다……」
             ;調教者が妹紅
-            ELSEIF NO:MASTER == 31
+            ELSEIF NO:PLAYER == 31
                 PRINTFORML 「아아……하아아……으우……」
                 PRINTFORML 『뭘 참고 있는 거야？　아, 그런가, 싸고 싶어서 안절부절 하지 말라고. 싸버려도 문제 없어』
                 PRINTFORML 「그, 그런 거……읏, 하아아……아으……큿, 약 때문엣……！」
@@ -19164,23 +19166,23 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
     ;恋慕
     IF TALENT:150
         ;調教者が토요히메＆助手が依姫
-        IF ASSI > 0  &&  NO:MASTER == 53 && NO:ASSI == 54
+        IF ASSI > 0  &&  NO:PLAYER == 53 && NO:ASSI == 54
             PRINTFORMW 「햐우우웃……！？　앗……♪　앗……」
             PRINTFORMW 『어머나, 기절해 버린걸까……』
             PRINTFORMW 『안심해주세요, 언니。몸부림치고 있는것 뿐입니다』
             PRINTFORMW 『그렇……네。그럼 잠깐만 기다릴까요』
         ;調教者が토요히메
-        ELSEIF NO:MASTER == 53
+        ELSEIF NO:PLAYER == 53
             PRINTFORMW 「아, 하아……♪　언니……기분, 좋아요오……」
             PRINTFORMW 『그러니？　기뻐해주니, 다행이구나♪』
             PRINTFORMW 가구야는 고간에서 있는 힘껏 애액을 뿜어대며 몸부림치고 있다
         ;調教者が永琳
-        ELSEIF NO:MASTER == 29
+        ELSEIF NO:PLAYER == 29
             PRINTFORMW 「아……하아윽……에-……링……」
             PRINTFORMW 『카구야의 몸, 굉장히 따뜻해졌어』
             PRINTFORMW 「응……정말 좋아해……에이린……」
         ;調教者が妹紅
-        ELSEIF NO:MASTER == 31
+        ELSEIF NO:PLAYER == 31
             PRINTFORML 「아아아……몸이 뜨거워어……으으읏……」
             PRINTFORML 『피차 같은 운명이니, 영원히 사랑하자고』
             PRINTFORMW 「그래……앞으로도 영원히……」
@@ -19196,12 +19198,12 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
         ENDIF
     ELSE
         ;調教者が토요히메＆助手が依姫
-        IF ASSI > 0  &&  NO:MASTER == 53 && NO:ASSI == 54
+        IF ASSI > 0  &&  NO:PLAYER == 53 && NO:ASSI == 54
             PRINTFORMW 「아으으읏！？　무, 무슨……일이 일어난거야……」
             PRINTFORMW 『카구야의 몸이 기뻐하고 있는거네. 이 상태로 힘내봐요』
             PRINTFORMW 『네, 언니♪』
         ;調教者が토요히메
-        ELSEIF NO:MASTER == 53
+        ELSEIF NO:PLAYER == 53
             PRINTFORMW 「으아흐윽！？　하아, 하아……뭐, 뭐야, 이건……」
             PRINTFORMW 『몸은 솔직한걸요.기분 좋았지요？』
             PRINTFORML 「싫, 어엇……그렇지 않아. 내가……아윽！」
@@ -19210,12 +19212,12 @@ IF TFLAG:41 == 3 && CFLAG:8098 == 0
             PRINTFORMW 「……크으윽」
             PRINTFORMW 카구야의 마음 속에 강렬한 쾌감이 새겨진것 같다
         ;調教者が永琳
-        ELSEIF NO:MASTER == 29
+        ELSEIF NO:PLAYER == 29
             PRINTFORMW 「아아……우아……아으……」
             PRINTFORMW 『얼굴이 풀어졌네, 엄청 기분 좋았나봐？』
             PRINTFORMW 「그, 그렇지……않아……우읏……」
         ;調教者が妹紅
-        ELSEIF NO:MASTER == 31
+        ELSEIF NO:PLAYER == 31
             PRINTFORML 「아으읏！　모, 코…………」
             PRINTFORML 『그렇게나 기분 좋았어？　그럼 더 해줄게』
             PRINTFORMW 「그, 그만……」
@@ -19324,7 +19326,7 @@ IF TFLAG:42 == 3 && CFLAG:8099 == 0
             PRINTFORMW 『그렇죠？　앞으로는 좀 더 기분좋게 해줄게요ー♪』
             PRINTFORMW 「네에……부탁……드리겠습니다……」
         ;調教者が永琳
-        ELSEIF NO:MASTER == 29
+        ELSEIF NO:PLAYER == 29
             ;Ａが絶頂している場合
             IF NOWEX:2 >= 1
                 PRINTFORMW 「으흐으읏！　하아……하아…그만해……」
@@ -21562,7 +21564,7 @@ IF ARG == 1
     PRINTFORMW 오늘은 만월이다
 ELSEIF ARG == 2
     PRINTFORMW 「앗, 하앗, 으아아♪」
-    PRINTFORML 「여기이이……좀더 쌔게 해줘♪」
+    PRINTFORML 「여기이이……좀더 강하게 해줘♪」
     PRINTFORMW 카구야는 고급스러운 복장과 장신구를 매단 채 주인과 어울리고 있다
     PRINTFORMW 그 옛날, 귀족들을 미치게 했었던 만큼 현재도 그 매력에 의해 카구야는 고급 창녀로서 매우 소중하게 다루고 있다
     PRINTFORML 「하앗……하아……아아……기분 좋아요……♪」
@@ -21655,15 +21657,15 @@ ELSEIF ARG == 8
     PRINTFORMW 마지막에 카구야가 주사를 맞고 있었지만 정말 괜찮은 걸까……
 ;永琳をまだ手に入れてない&토요히메が助手のまま売却
 ELSEIF ARG == 9
-    PRINTFORMW 결국, 그때부터 카구야를 구속하고 있던 사슬은 끊어졌다
+    PRINTFORMW 결국, 그로부터 카구야를 구속하고 있던 사슬은 끊어졌다
     PRINTFORMW 하지만, 사슬이 끊어지는 동안, 카구야의 정신은 쾌락에 의해 완전히 불타버린것 같다……
     PRINTFORML 
-    PRINTFORMW 「저기, 에ー링♪　오늘도 해요」
+    PRINTFORMW 「저기, 에ー링♪　오늘도 하자」
     PRINTFORML 「읏……이미 나, 몸이 욱신거려서 못 견디겠어……♪」
-    PRINTFORMW 욕정 하고 있는 카구야는 음란한 목소리로 업무중인 에이린에게 말을 걸면서 옷자락을 여기저기 잡아당겼다
+    PRINTFORMW 욕정하고 있는 카구야는 음란한 목소리로 업무 중인 에이린에게 말을 걸면서 옷자락을 여기저기 잡아당겼다
     PRINTFORMW 눈동자에 빛은 없고, 항상 게슴츠레 반쯤 열려 있다
     PRINTFORMW 이미 카구야의 마음은 항상 음란한 상태가 되버려 회복될 수 없게 된거 같다
-    PRINTFORML 』읏……그렇게 말해도, 이걸 끝내지 못하면 우리 생활을 못한다구요？』
+    PRINTFORML 『읏……그렇게 말해도, 이걸 끝내지 못하면 우리 생활을 못한다구요？』
     PRINTFORMW 에이린이 조금 화를 내면서 카구야를 타이르자, 카구야는 에이린을 잡아 강제로 쓰러뜨렸다
     PRINTFORML 「괜찮잖아, 어차피 우리 먹지 않아도 죽지 않잖아♪　어서♪」
     PRINTFORMW 카구야가 에이린의 귀에 부드럽게 숨을 불어넣자, 에이린은 몸을 떨며 쾌락을 받아들였다
@@ -22146,7 +22148,7 @@ IF MARK:3 == 3
     PRINTFORMW 그 때마다 고간에서 애액이 배어 나왔다
     PRINTFORML %조사처리(CALLNAME:MASTER,"가")% 존재할 때 약에 절여진 탓인지, 
     PRINTFORMW 지금의 카구야는 눈이 공허하며 초점이 또렷하지 않고, 의식이 몽롱한 것 같다
-    PRINTFORMW 피부도 머리카락도 아주 상하고 더러워져 버렸다
+    PRINTFORMW 피부도 머리카락도 심하게 상하고 더러워져 버렸다
     PRINTFORMW 「우아……히앗, 하훗……우우읏……」
     PRINTFORMW 「%CALLNAME:MASTER%……아니……누구라도 괜찮으니까……약……약을……」
     PRINTFORML 움직이고 싶어도 움직일 수 없는 손 때문에 제대로 처리하지 못한 쾌락이 카구야의 몸과 마음을 물들여가자, 
@@ -22182,9 +22184,9 @@ ELSE
     PRINTFORMW 소녀의 자위는 더욱 고조되어, 수중에 있던 전기 안마기를 들고, 전원을 넣어 사타구니에 댔다……
     PRINTFORMW 「앗, 아아아！　%CALLNAME:MASTER%……좋아욧！　좀더 쌔게에♪」
     PRINTFORMW 검은 장발을 흩뜨리고 쾌락을 탐하는 소녀, 이제는 말라버려도 이상하지 않을 음부에서는 다시 애액이 끓기 시작했다
-    PRINTFORMW 「나의 몸이……아후우……%CALLNAME:MASTER%에게 적응해 버렸어……♪」
+    PRINTFORMW 「나의 몸이……아후우……%CALLNAME:MASTER%에게 익숙해져 버렸어……♪」
     PRINTFORMW 「그러니까……후아……좀더 나를 기분 좋게……아우읏！　해줘어！」
-    PRINTFORMW 칠칠치 못하게 벌어진 입에서 달콤한 목소리를 내어, 지금은 없는 주인에게 간청하는 소녀
+    PRINTFORMW 칠칠치 못하게 벌어진 입에서 달콤한 목소리를 흘리며, 지금은 없는 주인에게 간청하는 소녀
     PRINTFORMW 그렇게, 그 소녀――카구야는 몸도 마음도 %CALLNAME:MASTER%에 의존해 버렸다
     PRINTFORML 
     PRINTFORMW 카구야의 방에서 들려오는 카구야의 교성을 듣고, 괴로워서 소리를 들을 수 없게 되어, 귀를 막는 레이센
@@ -22767,7 +22769,7 @@ ELSEIF TALENT:171 == 1 || TALENT:172 == 1 || TALENT:173 == 1 || TALENT:174 == 1 
     ;ドＭ
     ELSEIF TALENT:178
         PRINTFORMW 카구야의 엉덩이를 스팽킹하기 시작했다
-        PRINTFORMW 「히야, 히야우웅♪　앗, 하앗, 좀 더 심하게에♪」
+        PRINTFORMW 「히야, 히야우웅♪　앗, 하앗, 좀 더 쌔게에♪」
         PRINTFORMW 한대 때릴 때마다 등을 뒤로 젖히며, 달콤한 소리를 내는 카구야
         PRINTFORMW 역시 목소리에 반응 했는지, 점차 주위에 관객이 몰려들기 시작했다
         PRINTFORML 「내가 아픔을 느끼고 헐떡대는 부끄러운 모습……더 보여지고 싶어……」
@@ -22885,7 +22887,7 @@ RETURN 0
 @SENTAKUSHI_K30,ARG:0
 INPUT
 IF RESULT > (ARG:0 - 1)
-    PRINTL 옳바른 입력이 아닙니다
+    PRINTL 올바른 입력이 아닙니다
     RESTART
 ELSE
     RETURN RESULT
