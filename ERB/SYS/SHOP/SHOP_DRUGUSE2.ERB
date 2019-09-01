@@ -9,7 +9,22 @@
 @DRUG_HEAL_MENTAL, ARG
 SIF ARG == -1
     RETURN 0
-    
+
+LOCAL = DRUG_HEAL_MENTAL_CALC(ARG)
+
+CFLAG:ARG:65 = MAX(CFLAG:ARG:65 - LOCAL, 0)
+
+;=============================================================================
+;아이템：진정차의 스트레스 회복치 계산
+;=============================================================================
+@DRUG_HEAL_MENTAL_CALC(ARG)
+#FUNCTION
+#LOCALSIZE 1
+#LOCALSSIZE 1
+
+SIF ARG < 0 || ARG >= CHARANUM
+    THROW 범위에서 벗어난 캐릭터가 지정됐습니다.
+
 LOCAL = 500
 ;[낙관적]
 IF TALENT:ARG:25
@@ -32,7 +47,7 @@ SIF TALENT:ARG:140 || TALENT:ARG:145
 SIF TALENT:ARG:146
     TIMES LOCAL , 0.75
 
-CFLAG:ARG:65 = MAX(CFLAG:ARG:65 - LOCAL, 0)
+RETURNF LOCAL
 
 ;=============================================================================
 ;아이템：영양제의 체력 · 기력 회복 처리
@@ -41,7 +56,23 @@ CFLAG:ARG:65 = MAX(CFLAG:ARG:65 - LOCAL, 0)
 @DRUG_HEAL_LIFE, ARG
 SIF ARG == -1
     RETURN 0
-    
+
+LOCAL = DRUG_HEAL_LIFE_CALC(ARG)
+
+BASE:ARG:0 = MIN(BASE:ARG:0 + LOCAL, MAXBASE:ARG:0)
+BASE:ARG:1 = ((TALENT:ARG:114 && TIME == 0) || (TALENT:ARG:115 && TIME == 1)) ? MAXBASE:ARG:1 # MIN(BASE:ARG:1 + LOCAL*2, MAXBASE:ARG:1)
+
+;=============================================================================
+;아이템：영양제의 체력 · 기력 회복치 계산
+;=============================================================================
+@DRUG_HEAL_LIFE_CALC(ARG)
+#FUNCTION
+#LOCALSIZE 1
+#LOCALSSIZE 1
+
+SIF ARG < 0 || ARG >= CHARANUM
+    THROW 범위에서 벗어난 캐릭터가 지정됐습니다.
+
 LOCAL = 300
 ;[약물내성]
 SIF TALENT:ARG:44
@@ -64,7 +95,6 @@ ENDIF
 ;[日光浴], [月光浴]
 IF (TALENT:ARG:114 && TIME == 0) || (TALENT:ARG:115 && TIME == 1)
     TIMES LOCAL , 1.25
-    BASE:ARG:1 = MAXBASE:ARG:1
 ENDIF
 
 ;[치료](주인)
@@ -77,8 +107,7 @@ SIF TALENT:MASTER:55 && TALENT:MASTER:56
 SIF TALENT:MASTER:197
     TIMES LOCAL , 1.20
 
-BASE:ARG:0 = MIN(BASE:ARG:0 + LOCAL, MAXBASE:ARG:0)
-BASE:ARG:1 = MIN(BASE:ARG:1 + LOCAL*2, MAXBASE:ARG:1)
+RETURNF LOCAL
 
 ;=============================================================================
 ;아이템：기억소거약의 처리
