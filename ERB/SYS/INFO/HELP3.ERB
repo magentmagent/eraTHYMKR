@@ -29,12 +29,6 @@ ELSEIF LOCAL == LOCAL:1
     PRINTLC [801] 불결 표시
     PRINTLC [810] 구현화(주인)/구현화 해제(주인)
     PRINTLC [811] 구현화(조수)/구현화 해제(조수)
-    IF FLAG:999 == 0
-        IF TALENT:MASTER:831
-            PRINTLC [830] Ex모드화
-            PRINTLC [831] Ph모드화
-        ENDIF
-    ENDIF
     PRINTLC [850] 향을 피운다
     PRINTLC [876] 표시 형식 변경
     PRINTLC [888] 커맨드 확장
@@ -6499,24 +6493,6 @@ PRINTL 【구현화(조수)/구현화 해제(조수)】
 PRINTL 구현의 힘으로 조수의 페니스를 표면화(후타나리)시키거나
 PRINTL 해제하거나 한다.
 PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
-
-;Ex모드화
-@DICTIONARY_TRAIN_COMMAND_830
-IF FLAG:999 == 1
-ELSEIF TALENT:MASTER:831
-    PRINTL 【Ex모드화】
-    PRINTL YASAI 모드에 대해 야채를 소비해 Ex모드화한다.
-    PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
-ENDIF
-
-;Ph모드화
-@DICTIONARY_TRAIN_COMMAND_831
-IF FLAG:999 == 1
-ELSEIF TALENT:MASTER:831
-    PRINTL 【Ph모드화】
-    PRINTL YASAI 모드가 두어 야채를 소비해 Ph모드화한다.
-    PRINTW 조교 커맨드 그 자체는 아니기 때문에, 시간은 진행되지 않는다.
-ENDIF
 
 ;향기를 피운다
 @DICTIONARY_TRAIN_COMMAND_850

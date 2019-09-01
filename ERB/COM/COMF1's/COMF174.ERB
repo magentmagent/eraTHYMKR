@@ -119,8 +119,6 @@ IF TFLAG:99 == 2
     ;조교 대상으로 미약중독이 있으면 소비를 억제한다
     SIF TALENT:46
         TIMES LOCAL:2 , 0.50
-    SIF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000 && TEQUIP:90 == 0
-        TIMES LOCAL:2 , 0.10
 
     LOCAL:3 = LOCAL:2
 
@@ -139,17 +137,11 @@ IF TFLAG:99 == 2
         SOURCE:42 = 1 + RAND:3
     ENDIF
 
-    ;YASAI 모드 처리 or미약소비
-    IF TEQUIP:78 == 2 && TALENT:PLAYER:831 && PALAM:10 >= 5000
-        SOURCE:18 += PALAM:10
-        PALAM:10 = 0
-        SOURCE:31 = 0
-    ELSE
-        IF NOITEM == 0
-            ITEM:61 -= 1
-            SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:61
-                CALL FILL_PLURAL_ITEM, 61
-        ENDIF
+    
+    IF NOITEM == 0
+        ITEM:61 -= 1
+        SIF FLAG:13 & 4 && MONEY:0 >= ITEMPRICE:61
+            CALL FILL_PLURAL_ITEM, 61
     ENDIF
 
     ;미약관련의 TEQUIP와 경험 처리

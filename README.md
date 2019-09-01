@@ -2,6 +2,10 @@
 
 > This description is written by korean
 
+## 저작권
+
+NOTICE.md를 봐주세요
+
 ## 실행하는 방법
 
 1. 먼저 releases에 들어갑니다

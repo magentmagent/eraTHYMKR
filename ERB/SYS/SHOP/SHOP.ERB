@@ -459,24 +459,6 @@ ELSE
     SIF LOCAL:2 >= 1
         PRINTLC [666] - 캐릭터 정렬
     PRINTLC [777] - 컨피그 설정
-    ;YASAI 모드인데 더해, 자금이 있고, 마련할 수 있는 노예에 여유가 있을 경우
-    SIF FLAG:570 & 1 && MONEY > 0 && CHARANUM < LOCAL:5
-        PRINTLC [830] - 특수노예 구입
-    ;주인이 [야채의 연금술사]를 가지고 있을 경우
-    IF TALENT:MASTER:831
-        ;주인이 술에 떡이 되어 있지 않고, 야채의 재고수가 최대(99999999개) 미만일 경우
-        SIF BASE:MASTER:8 <= MAXBASE:MASTER:8 && FLAG:574 < 99999999
-            PRINTLC [831] - 채소연성
-        ;주인이 술에 떡이 되어 있지 않고, 자금이 있으며, 밭 확장의 여지(최대 20Lv까지)가 있을 경우
-        SIF FLAG:573 < 20 && MONEY > 0 && BASE:MASTER:8 <= MAXBASE:MASTER:8
-            PRINTLC [832] - 밭 확장
-        ;야채의 재고가 있으며, 조교 대상이 존재하고, 대상의 체력이 최대가 아닌 경우
-        SIF FLAG:574 > 0 && TARGET >= 0 && BASE:0 < MAXBASE:0
-            PRINTLC [833] - 채소재생
-    ENDIF
-    ;개발중
-    ;SIF FLAG:5000 > 0
-    ;    PRINTLC [996] - 개발중.
     ;토리코모드의 헬프
     ;SIF FLAG:5000 > 0
     ;    PRINTLC [997] - 토리코모드 설명
@@ -687,14 +669,6 @@ ELSE
     ELSEIF RESULT == 777
         TFLAG:201 = 0
         CALL SWEET_POTATO_CONFIGURATION
-    ELSEIF RESULT == 830 && FLAG:570 & 1 && MONEY > 0 && CHARANUM < GET_LIST(5)
-        CALL IRC_CHARA_BUY
-    ELSEIF RESULT == 831 && TALENT:MASTER:831 && BASE:MASTER:8 <= MAXBASE:MASTER:8 && FLAG:574 < 99999999
-        CALL IRC_ANATA_YASAI
-    ELSEIF RESULT == 832 && TALENT:MASTER:831 && FLAG:573 < 20 && MONEY > 0 && BASE:MASTER:8 <= MAXBASE:MASTER:8
-        CALL YASAI_FARM
-    ELSEIF RESULT == 833 && TALENT:MASTER:831 && FLAG:574 > 0 && TARGET >= 0 && BASE:0 < MAXBASE:0
-        CALL YASAI_REVIVAL
     ;토리코모드의 헬프
     ;ELSEIF RESULT == 997 && FLAG:5000 > 0
     ;    CALL HELP_TORIKOMODE
