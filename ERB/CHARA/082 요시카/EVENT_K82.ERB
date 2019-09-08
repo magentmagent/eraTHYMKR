@@ -1178,6 +1178,29 @@ IF CFLAG:7022 <= 1 && CFLAG:7000 == 1
     ENDIF
 ENDIF
 
+;==================================================
+;@KOJO_MESSAGE_COM 관계
+;커맨드 대사 판정 처리
+;커맨드 실행시에 출력됩니다
+;==================================================
+@KOJO_MESSAGE_COM_82
+;자고 있을 경우에는 돌아온다
+SIF EQUIP:14
+    RETURN 0
+;재갈이 있고, 재갈을 채우는 커맨드가 아닐 경우에도 돌아온다
+SIF (TEQUIP:42 && (SELECTCOM != 226 && SELECTCOM != 229 && SELECTCOM != 506 && SELECTCOM != 509 && SELECTCOM != 583))
+    RETURN 0
+;기절 중에도 돌아온다
+SIF TFLAG:899 >= 1
+    RETURN 0
+
+;커맨드 첫회 판정을 갱신
+CALL COM_FLAG
+;PANCTION 내의 장비품 대사 보완 함수를 사용한다
+SIF FLAG:10 == 1
+    TRYCALL EQUIPTEXT
+;커맨드 대사 호출
+TRYCALLFORM KOJO_82_TRAIN_MESSAGE_S_COM_{SELECTCOM}
 
 ;========================================================
 ;@KOJO_X_MESSAGE_PALAMCNG
@@ -2433,20 +2456,22 @@ NEXT
 ;PRINTFORML 　　　「」
 
 ;==================================================
-;약혼반지 출력용 구문
+;@SELF_KOJO 관계
+;이벤트 대사 판정 처리
+;SELF_KOJO 실행시에 출력됩니다
 ;==================================================
 @SELF_KOJO_K82
-;眠ってる場合は戻る
+;자고 있을 경우에는 돌아온다
 SIF EQUIP:14
-    RETURN 0
-;調教中かつ口枷つきも戻る
+	RETURN 0
+;조교 중에다 재갈을 물렸을 때에도 돌아온다
 SIF TFLAG:999 && TEQUIP:42
-    RETURN 0
-;調教中かつ気絶中も戻る
+	RETURN 0
+;조교 중에다 기절 중일 때에도 돌아온다
 SIF TFLAG:999 && (TFLAG:899 >= 1 && TFLAG:200 != 12)
-    RETURN 0
+	RETURN 0
 
-;약혼반지 구문 출력
+;이벤트 대사 호출
 TRYCALLFORM K82_MESSAGE_EVENT_{(TFLAG:200)}
 
 ;=============================================================================
