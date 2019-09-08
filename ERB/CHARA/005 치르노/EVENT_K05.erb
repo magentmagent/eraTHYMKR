@@ -98,6 +98,43 @@ ELSEIF CFLAG:0 == 1 && CFLAG:5209 == 0
     CFLAG:5209 = 1
     RETURN 1
 
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 치르노)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:0 == 0 && CFLAG:5400 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「%CALLNAME:MASTER%, 어째서 배가 그렇게 커진거야?」
+        PRINTFORMW 볼록해진 %CALLNAME:MASTER%의 배를 조심스럽게 만져보는 치르노에게, %조사처리(CALLNAME:MASTER, "은")% 치르노의 아이를 임신했다는 사실을 말했다.
+        PRINTFORMW 「아기..? 나랑 %CALLNAME:MASTER%의?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자, 치르노는 미소를 지으며 %CALLNAME:MASTER%의 배를 껴안았다.
+        PRINTFORMW 「히히히...정말로 기뻐 %CALLNAME:MASTER%!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 미소를 지으며 치르노를 끌어안으려 했다.
+        PRINTFORMW ....생각보다 차갑다. 평소에는 기분좋게 시원하던 치르노의 몸이 오늘 따라 얼음장같이 차갑게 느껴진다. %조사처리(CALLNAME:MASTER, "은")% 부드럽게 치르노를 떼어놓으려 했다.
+        PRINTFORMW 「에.. 왜그래? 좀 더 이렇게 있게 해줘!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 아기가 추워하니까 조금 떨어져달라고 치르노에게 부탁했다.
+        PRINTFORMW 「아가가 추워해? 그럼 꼭 껴안아서 따뜻하게 해줘야지!」
+        PRINTFORMW 그러니까 춥단 말이다. %조사처리(CALLNAME:MASTER, "은")% 억지로 치르노를 떼어놓았다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「빨리 여기서 내보내줘!!」
+        PRINTFORMW 문을 열자마자, 치르노가 %CALLNAME:MASTER%에게 달려들어 투닥투닥 때리기 시작했다. 평소 같았으면 아무렇지도 않을 타격이었지만 %조사처리(CALLNAME:MASTER, "은")% 황급히 치르노를 제압했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 치르노를 제압하며 배를 때리는 짓은 그만두라고 말했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "을")% 노려보던 치르노는 커져버린 %CALLNAME:MASTER%의 배를 보자 약간 놀란듯 했다.
+        PRINTFORMW 「에..? 원래 배가 이렇게 컸어?」
+        PRINTFORMW %CALLNAME:MASTER%의 배가 커진 이유를 알게 되자, 치르노의 얼굴은 서서히 굳어갔다.
+        PRINTFORMW 「시...싫어! 아빠같은거 되기 싫다고!!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 몸부림치는 치르노를 제압한 뒤, 옷을 벗기며 조교를 개시했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「에... 어째서 배가 그렇게 커진거야?」
+        PRINTFORMW 치르노는 어째서 %CALLNAME:MASTER%의 배가 커졌는지 궁금해하고 있었다. %조사처리(CALLNAME:MASTER, "은")% 공처럼 부풀어오른 %CALLNAME:MASTER%의 배를 손바닥으로 두드려보는 치르노에게 어째서 배가 커진건지 알려주었다.
+        PRINTFORMW 「임신? 그게 뭐야?」
+        PRINTFORMW 설마 임신의 뜻도 모를줄이야. %조사처리(CALLNAME:MASTER, "은")% 한숨을 내쉬며 치르노에게 임신의 뜻을 알려주었다.
+        PRINTFORMW 「이 안에 내 아기가 있어..?」
+        PRINTFORMW 치르노는 %CALLNAME:MASTER%의 배를 유심히 바라보며 손가락으로 콕콕 찔러보고 있었다. %조사처리(CALLNAME:MASTER, "은")% 별다른 반응을 보이지 않는 치르노의 옷을 벗기며 조교를 개시했다.
+    ENDIF
+    CFLAG:5400 = 1
+    RETURN 1
+
 ;굴복각인Lv1
 ELSEIF CFLAG:5201 < 2 && MARK:2 == 1
     DRAWLINE
@@ -2239,6 +2276,48 @@ ENDIF
 ;이벤트 대사집
 ;-------------------------------------------------
 @SELF_KOJO_K5
+;-------------------------------------------------
+;야뇨(오줌싸개버릇 취득)
+;-------------------------------------------------
+IF TFLAG:200 == 102
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「음냐아...에? 주인님 왜그래?」
+        PRINTFORMW 「우응? 어째서 이몸의 침대가 젖은...트..틀려!」 
+        PRINTFORMW 「우우우...최..최강인 이몸이..오줌같은걸..」
+        PRINTFORMW 치르노를 깨우러 방에 들어서자, %CALLNAME:MASTER%의 눈에는 흠뻑 젖은 치르노의 침대와 눈을 뜨지 못한 치르노가 들어왔다.
+        PRINTFORMW 최근의 조교가 그녀의 몸에 무언가 무리를 주어 몸이 녹기 시작한건가라는 생각이 든 %조사처리(CALLNAME:MASTER, "이")% 치르노에게 달려가 그녀를 흔들자, 다행히도 치르노에게 별다른 문제는 없었는지 무사히 눈을 떳다.
+        PRINTFORMW 냉정을 되찾고 치르노의 침대를 잘 확인하자 그 물기의 정체는 다름아닌 치르노의 오줌으로 밝혀졌다.
+        PRINTFORMW 자신이 이불에 오줌을 싸버렸단 사실은 자존심이 강한 치르노에게는 참을수 없는 굴욕이였는지 침대 위에서 눈물을 뚝뚝 흘리기 시작했다.    
+        PRINTFORMW 「이이잇!! 오줌싸개 아니야!! 하..한번 실수한 것 뿐이라고!!! 두..두고봐!!」
+        PRINTFORMW 「엣? 하..한번 더 오줌싸버리면 소문 내버린다고? 최..최강인 이몸이 이런 실수 두번 다시 하지 않으니깐 상관없어!」  
+        PRINTFORMW 평소 자신만만하고 당당하던 치르노가 이렇게까지 움츠러드는 보기드문 광경에 흥이나서 치르노를 놀려대자 치르노는 눈가에 눈물이 맺힌 체 %CALLNAME:MASTER%에게 반발했다. 
+        PRINTFORMW 이에 %조사처리(CALLNAME:MASTER, "이")% '오줌을 또 쌀지 안쌀지 내기를 해보자'라고 말하자 치르노는 흠칫 떨었으나 이내 강한 척하며 받아들였다.
+        PRINTFORMW 과연 언제 또 실수를 할지 기대하며 %조사처리(CALLNAME:MASTER, "은")% 치르노의 방을 나섰다.
+        PRINTFORMW 참고로 치르노가 다시 한번 오줌을 지린 것은 바로 다음 날이였다. 
+        PRINTFORML ...
+        PRINTFORML ....
+        PRINTFORMW .....
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 치르노가 또 이불에 지도를 그린것을 확인하고는 아침에 일어난 모습 그대로 인간 마을의 광장에 데려와 점심까지 머물기로했다.    
+        PRINTFORMW 『흐음..저 요정은? 아아... 그런겐가, 하긴 그런 버릇은 부끄러운 일을 당하면 빨리 낫긴 하지, 그럼 수고하게』
+        PRINTFORMW 「우우... 부끄러워... 주인님... 빠..빨리 집에 가자아...」
+        PRINTFORMW 치르노의 모습을 본 마을 사람들이 의아해할때마다 %조사처리(CALLNAME:MASTER, "은")% 치르노의 귀에도 들릴만큼 큰소리로 그녀에게 오줌싸개 버릇이 생겨 훈육을 위해 데려왔다고 설명해주었고 그때마다 치르노는 저러다 녹아버리지 않을까 싶을 정도로 얼굴을 붉혔다.
+    ;굴복각인Lv3
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「우으...최강인 이몸이... 아니야 이몸은 오줌싸개같은게 아니야!!」
+        PRINTFORMW 「이..이런거 거짓말이야! 너! 이몸이 자는 사이에 침대에 물을 뿌린거지!!」
+        PRINTFORMW 최근 조교를 하며 꾸준히 소변을 보도록 유도한 결과, 치르노는 이불에 성대하게 지려버렸다.
+        PRINTFORMW 이에 %조사처리(CALLNAME:MASTER, "이")% 치르노를 마음껏 놀려주자 치르노는 행복회로를 돌리며 자신이 지도를 그린것이 아니라 %조사처리(CALLNAME:MASTER, "이")% 물을 뿌린것이라고 소리쳤다.
+        PRINTFORMW 그래봤자 자신의 다리 사이에서 느껴지는 찝찝함과 침대의 오줌 흔적에서 나는 지린내는 치르노에게 현실을 환기시키겠지만... 
+    ;그 외
+    ELSE
+        PRINTFORMW 「읏...이..이거 오줌싼거 아냐! 그..그냥 몸이 조금 녹은거 뿐이야!!」
+        PRINTFORMW 치르노는 자신의 침대에 생긴 커다란 황금색 얼룩을 추궁받자 그것은 자신의 몸이 녹은 것이지 지도를 그린것이 아니라고 필사적으로 변명했다.
+        PRINTFORMW 자신같은 바보가 아니고서야 절대 믿지않을....
+    ENDIF
+    RETURN 0
+ENDIF
+
 ;-------------------------------------------------
 ;매각
 ;-------------------------------------------------

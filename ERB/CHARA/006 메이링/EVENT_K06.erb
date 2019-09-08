@@ -112,6 +112,47 @@ IF CFLAG:5201 == 0
 ;-------------------------------------------------
 ;조교 개시시(1회만) CFLAG201
 ;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG5500 (친부가 메이링)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「주.. 주인님! 그 배는 대체..!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 또 하나의 생명이 자라고 있는 배를 보여주며 메이링의 아이를 임신했다는 사실을 전했다.
+        PRINTFORMW 「제.. 제 아이...라구요..?」
+        PRINTFORMW 메이링은 아무리 연모하고 있다지만 배우자도 아닌 사람을 임신시켰다는 사실에 충격을 받은듯 했다.
+        PRINTFORMW 고개를 숙인 채 무엇인가를 생각하고있던 메이링은 고개를 들고 결의에 찬 표정으로 %CALLNAME:MASTER%에게 말했다.
+        PRINTFORMW 「걱정마세요 주인님. 주인님도, 저와 주인님의 아이도. 전부 책임질 테니까요!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 미소를 지으며 메이링을 침대에 쓰러트렸다. 메이링은 당황하며 옷을 벗기려는 %CALLNAME:MASTER%의 손을 저지하려 했다.
+        PRINTFORMW 「꺗?! 자.. 잠깐만요 주인님! 뱃속에 아기가 있는데 무리하시면..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 메이링의 옷의 단추를 풀어가며 그녀의 귀에 속삭였다. "아기에게 서로 사랑하는 모습을 보여주고싶다." 라는 말을 들은 메이링은 고개를 끄덕인 뒤, %조사처리(CALLNAME:MASTER, "을")% 역으로 침대에 쓰러트렸다.
+        PRINTFORMW 「알겠습니다 주인님. 그럼 지금부터 주인님과 제가 서로 사랑하는 걸, 우리 아기에게 보여주자구요?」
+        PRINTFORMW 메이링은 반쯤 단추가 풀린 자신의 옷을 벗어던진 뒤,  %CALLNAME:MASTER%의 입술에 부드럽게 입을 맞추며 %CALLNAME:MASTER%의 옷을 벗기기 시작했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「...」
+        PRINTFORM 메이링은 아무 말 없이 %조사처리(CALLNAME:MASTER, "을")% 노려보고 있었다. %조사처리(CALLNAME:MASTER, "이")% 옷을 벗어 부풀어오른 배를 보여줘도, 
+        IF TALENT:MASTER:110 == 1 || TALENT:MASTER:111 == 1
+            PRINTFORM 평균 이하의 
+        ELSEIF TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1
+            PRINTFORM 모유로 가득차 커다래진 
+        ENDIF
+        PRINTFORMW 가슴을 주물러 모유를 짜내어 봐도 메이링의 표정은 처음의 험악한 표정에서 조금도 바뀌질 않았다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 메이링의 곁에 앉아 그녀의 아이를 임신했음을 알렸지만,
+        PRINTFORMW 「그래서 저보고 어쩌라는거죠? 멋대로 임신한건 당신이잖아요? 전 그걸 책임질 마음이 없으니 당신이 알아서 하시죠.」
+        PRINTFORMW 라는 매몰찬 말이 되돌아왔다. %조사처리(CALLNAME:MASTER, "은")% 메이링을 침대에 밀어 넘어트리고, 나무토막처럼 미동조차 하지 않는 메이링의 옷을 거칠게 벗겨가기 시작했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「뭐.. 뭡니까 그 배는?!」
+        PRINTFORMW 메이링은 %CALLNAME:MASTER%의 커다래진 배를 보고 놀란 듯 했다. %조사처리(CALLNAME:MASTER, "은")% 메이링의 반응을 보고 웃으며 임신했음을 알렸다.
+        PRINTFORMW 「그.. 그런건 알고 있어요! 대체 누구의 아이를 임신한건가요!」
+        PRINTFORMW 아이의 아버지가 자신이라는 것을 알게 된 메이링의 표정은 딱딱하게 굳어버렸다.
+        PRINTFORMW 「그..  그럴수가.. 장난이죠? 몰래카메라 같은거죠?!」
+        PRINTFORMW 현실을 부정하며 %CALLNAME:MASTER%에게 매달리는 메이링에게, %조사처리(CALLNAME:MASTER, "은")% "그럼 오늘도 사랑을 나눠보자고? 애아빠." 라고 말하며 그녀의 옷을 한꺼풀씩 벗겨나갔다.
+        PRINTFORMW 「시..싫어.. 사쿠야씨.. 구해주세요..」
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
+
 ;굴복 각인 Lv1
 ELSEIF CFLAG:5201 < 2 && MARK:2 == 1
     DRAWLINE

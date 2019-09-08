@@ -75,6 +75,62 @@ IF CFLAG:5201 == 0
 ;-------------------------------------------------
 ;調教開始時(一回のみ) CFLAG201
 ;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG5500 (친부가 대요정)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;연모+새드끼Lv5
+    IF TALENT:150 == 1 && ABL:20 == 5
+        PRINTFORMW 「어라? 그 배는 어떻게 된건가요 %K04CN()%?」
+        PRINTFORMW 평소처럼 조교를 위해 들어온 %CALLNAME:MASTER%의 품에 안기려던 대요정은 볼록 튀어나온 %CALLNAME:MASTER%의 배를 보며 의아해했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 그런 대요정에게 임신했음을 밝혔다.
+        PRINTFORMW 「임신...? 제 아이를 임신했다는건가요?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자 대요정은 미소를 지으며 %조사처리(CALLNAME:MASTER, "을")% 껴안았다. %CALLNAME:MASTER%도 대요정을 껴안으려던 그 순간.
+        PRINTFORMW 「에잇!」
+        PRINTFORMW 대요정은 체중을 실어 %조사처리(CALLNAME:MASTER, "을")% 침대에 밀어넘어트린 뒤, %CALLNAME:MASTER%의 옷의 단추를 풀기 시작했다.
+        IF TALENT:MASTER:110 == 1 || TALENT:MASTER:111 == 1
+            PRINTFORM 아이를 키우기엔 조금 작은 
+        ELSEIF TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1
+            PRINTFORM 마치 찹쌀떡처럼 부드러운 두개의 거대한 
+        ENDIF
+        PRINTFORMW %CALLNAME:MASTER%의 가슴이 드러나자 대요정은 한쪽 유두를 입으로 빨며 남은 한쪽 유두를 손으로 괴롭히기 시작했다. 그리고 남은 한손을 %CALLNAME:MASTER%의 음부에 넣고 G스팟을 괴롭히기 시작하자 %조사처리(CALLNAME:MASTER, "은")% 절정에 달하며 대요정의 입과 얼굴을 모유로 하얗게 물들였다.
+        PRINTFORMW 「쯉...츕.. %K04CN()%의 모유.. 무척 달고 농후해서 맛있어요..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 장난스럽게 아기의 몫이 없어져버린다고 말하면서도 대요정의 머리를 부드럽게 쓰다듬었다.
+        PRINTFORMW 「그럼 %K04CN()%? 오늘도 가득 사랑해드릴게요. 뱃속의 아기랑 함께요.」
+        PRINTFORMW 대요정은 미소를 지으며 %조사처리(CALLNAME:MASTER, "을")% 덮쳤다.
+    ;연모
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「%K04CN()%...그 배는...!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 미소를 지으며 대요정을 껴안았다. 그리고 그녀의 귀에 속삭였다.
+        PRINTFORMW 「제...아이...?」
+        PRINTFORMW 대요정의 눈에서 눈물이 흘러나오기 시작했다. 마치 수도꼭지를 틀어놓은 것처럼 콸콸 흘러내리는 눈물은 도무지 멈출 기색을 보이질 않았다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 예상 외의 반응을 보이는 대요정을 달래려 했지만 대요정은 평소의 눈물이 아니라는걸 보여주듯 미소를 지어보이며 %조사처리(CALLNAME:MASTER, "을")% 안심시켰다.
+        PRINTFORMW 「흑...기...기뻐요...정말로...흐윽..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 눈물을 흘리며 미소를 짓고있는 대요정의 눈물을 닦아주었다.
+        PRINTFORMW 「읏...음.. 감사합니다 %K04CN()%.」
+        PRINTFORMW 「앞으로도 우리 둘... 아니 셋이서 행복하게 지내요!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 자신을 껴안는 대요정에게 입을 맞춘 뒤, 혀를 얽으며 침대에 눕히며 조교를 개시했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 방문을 열자마자, 대요정은 방 밖으로 뛰쳐나가려 했다. 하지만 미리 예상하고 있던 %조사처리(CALLNAME:MASTER, "은")% 그녀를 안아올린 뒤 침대로 데려가기 시작했다.
+        PRINTFORMW 「싫어! 놔줘요! 집에 돌려보내주세요!!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 몸부림을 치며 반항하는 대요정을 침대에 눕힌뒤, 옷을 벗기 시작했다.
+        PRINTFORMW 「엣... 그 배는 대체...!」
+        PRINTFORMW 마치 공처럼 부풀어오를 %CALLNAME:MASTER%의 배를 보며 깜짝 놀라는 대요정을 향해, %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 대요정의 아이를 임신했음을 밝혔다.
+        PRINTFORMW 「...아뇨. 그럴리 없어요. 그 아이는 제 아이가 아니예요.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 여러가지 증거들을 보여주었지만 대요정은 거들떠보지도 않은 채 계속 고개를 젓고 있었다.
+        PRINTFORMW 「그런 가짜 증거들로는 절 속이진 못해요. 무슨 말을 하든, 무엇을 보여주든, 전 속지 않을거예요!」
+        PRINTFORMW 뭐, 상관없지. %조사처리(CALLNAME:MASTER, "은")% 앞으로 열 달 정도 뒤에 자신과 닮은 아기를 보며 현실을 부정할 대요정을 생각하며 대요정의 옷을 벗기기 시작했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「흑..흐극...」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방문을 열자, 대요정의 흐느끼는 소리가 들려왔다. 방문이 열리는 소리를 들은 대요정은 눈물이 맺힌 눈으로 %조사처리(CALLNAME:MASTER, "을")% 보며 말하려했다.
+        PRINTFORMW 「흑...부탁드려요.. 제발 내보내.... 어...? 그 배..」
+        PRINTFORMW 대요정의 시선은 커다래진 %CALLNAME:MASTER%의 배에 멈춰있었다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 미소를 지으며 "이 아이는 대요정 너의 아이다" 라고 말하자 그녀는 또다시 흐느끼기 시작했다.
+        PRINTFORMW 「싫어...그런거 싫어...」
+        PRINTFORMW 집에 돌려보내달라고 애원하는 대요정을, %조사처리(CALLNAME:MASTER, "은")% 번쩍 들어올려 침대에 눕혔다.
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
 
 ;굴복각인Lv1
 ELSEIF CFLAG:5201 < 2 && MARK:2 == 1
@@ -3694,6 +3750,48 @@ ENDIF
 ;이벤트 대사집
 ;-------------------------------------------------
 @SELF_KOJO_K4
+
+;-------------------------------------------------
+;야뇨(오줌싸개버릇 취득)
+;-------------------------------------------------
+IF TFLAG:200 == 102
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 모범생답게 매일 아침 %CALLNAME:MASTER%보다 먼저 일어나서 가사활동을 하는 대요정이 일어나지 않자 그녀를 걱정한 %조사처리(CALLNAME:MASTER, "은")% 그녀의 방을 찾아갔다.
+        PRINTFORMW 「주,주,주,주인님?! 조,조,좋은아침이네요!」
+        PRINTFORMW 「아..아침이요? 저..저는 괜찮으니 주,주인님 먼저 드시도록하세요!」
+        PRINTFORMW 「잠깐, 가까이 오시면-.꺄아앗!!」
+        PRINTFORMW 대요정의 방에 들어가자 다행히도 대요정은 일어난 체였으나 어딘가 눈에 띄게 어색한 미소를 지으며 아침인사를 건넸다.
+        PRINTFORMW 그런 점을 이상하게 여기면서 아침식사를 권하자 대요정은 당황하면서 거절했다.
+        PRINTFORMW 대화를 하는 내내 시선이 아래로 향하며 이불을 꼭잡고 있는 대요정의 모습을 보고 대충 상황을 파악한 %조사처리(CALLNAME:MASTER, "이")% 이불을 들추자
+        PRINTFORMW 아니나 다를까 대요정의 요에는 커다란 환상향의 지도가 그려져있었다. 대요정답다면 대요정다운걸까....
+        PRINTFORMW 그 오줌을 쌌을때의 정석적인 행동을 취하는 그녀의 모습에 %조사처리(CALLNAME:MASTER, "은")% 무심코 웃음기를 머금었다.
+        PRINTFORMW 「웃..우우.. 보지 말아주세요...」
+        PRINTFORMW 「주..주인님이 오..오줌이 많이 나오게 물을 많이 마시게하고 오줌마려워지는 약을 먹이시니깐 이런거에요! 워...원래는 지도같은거...지도같은거 그리지 않... 흐아아앙」
+        PRINTFORMW 자신의 오줌으로 축축하게 젖은 이불 위에 앉아 울적해하는 대요정에게 %조사처리(CALLNAME:MASTER, "이")% 상냥하게 '다이짱은 오줌싸개였구나~'라고 말하자
+        PRINTFORMW 대요정은 발끈하며 변명을 터뜨렸으나 이내 점점 자신의 비참한 상황이 서러워진건지 눈물을 터뜨리며 엉엉 울기 시작했다.
+        PRINTFORMW 「흑흑....쿨쩍... 이제와서 위로해줘봤자 늦었어요 흥!」
+        PRINTFORMW 「앞으론 집안일 같은거 안 도와드릴거네요!」
+        PRINTFORMW 생각보다 훨씬 서럽게 우는 대요정의 모습에 %조사처리(CALLNAME:MASTER, "은")% 대요정의 머리를 쓰다듬어주며 달랬으나
+        PRINTFORMW 이미 완전히 토라져버린 대요정은 파업을 선언하며 자신의 이불을 들고 방 밖으로 달려나갔다.
+    ;굴복각인Lv3
+    ELSEIF MARK:2 == 3
+        PRINTFORMW 「읏..아파아...핫! 주...주인님...왜..왜 벌써...」
+        PRINTFORMW 잠에서 깬 %조사처리(CALLNAME:MASTER, "이")% 씻기위해 방을 나서자 자신의 이불을 들고 마당으로 달려가던 대요정과 부딪혔다.
+        PRINTFORMW 이불을 들고 달려가던 것을 이상하게 여긴 %조사처리(CALLNAME:MASTER, "이")% 그것을 살펴보자, 대요정의 이불에는 커다란 지도가 비밀스러운 노란 물감으로 그려져 있었다.
+        PRINTFORMW 「웃! 보지마세요!! 웃지마세요!!」
+        PRINTFORMW 「주..주인님이 매..매일 이상한 약을 먹이시니깐 이렇게...우와아앙」
+        PRINTFORMW 평소 어른스러운 대요정이 오줌을 싸버린 모습을 본 %조사처리(CALLNAME:MASTER, "이")% 웃음을 흘리며 '다이쨩은 오줌싸개 꼬마아이였구나~'라고 놀리자
+        PRINTFORMW 얼굴이 터질듯이 붉어진 대요정은 변명을 하려다가 결국 눈물을 터뜨렸다.
+        PRINTFORMW 게다가 대요정은 아직 방광에 소변이 남아있었지 대요정의 다리사이에서 오줌이 새어나와 그 이불에 생긴 얼룩을 점점 키워갔다.
+    ;그 외
+    ELSE
+        PRINTFORMW %CALLNAME:MASTER%의 조교의 성과로, 대요정은 이불에 오줌을 지려버렸다.
+        PRINTFORMW 서늘한 감촉에 깨어난 대요정은 빠르게 움직여 %조사처리(CALLNAME:MASTER, "이")% 깨어나기 전에 장대에 널어두는데 성공했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 일어날때까지도 이불이 마르지 않아 그 사실을 결국 %CALLNAME:MASTER%에게 들켜버렸지만....
+    ENDIF
+    RETURN 0
+ENDIF
 
 ;-------------------------------------------------
 ;매각

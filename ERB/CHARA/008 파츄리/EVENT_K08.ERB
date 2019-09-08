@@ -715,6 +715,41 @@ ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
         RETURN 1
 
 ;-------------------------------------------------
+;주인 임신 후 첫 회 개시 이벤트 CFLAG5400
+;-------------------------------------------------
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「그 배.. 당신, 혹시..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이며 파츄리의 아이를 임신했음을 밝히자, 파츄리는 미소를 지으며 %CALLNAME:MASTER%의 배를 쓰다듬기 시작했다.
+        PRINTFORMW 「후훗.. 기뻐. 정말로 기쁘네.. 아, 움직였다.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 배를 어루만지는 파츄리를 침대에 쓰러트리며 그녀의 옷을 벗기기 시작했다.
+        PRINTFORMW 「무.. 무큐.. 아기가 있는데도 여전히 하고 싶은거야? 정말.. 어쩔 수 없다니까..」
+        PRINTFORMW 파츄리는 스스로 옷을 벗은 뒤, 역으로 %조사처리(CALLNAME:MASTER, "을")% 침대에 쓰러트리며 %CALLNAME:MASTER%의 옷을 벗기기 시작했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 방에 들어가자마자 새로운 생명을 품어 불룩해진 배를 보여주며 파츄리의 아이를 임신했음을 밝혔다.
+        PRINTFORMW 「...내 아이라...」
+        PRINTFORMW 파츄리는 의미심장한 눈으로 %CALLNAME:MASTER%의 배를 보고 있었다.
+        PRINTFORMW 그녀는 "당신의 아이. 보고 싶지않아?" 라는 %CALLNAME:MASTER%의 말에 침묵으로 일관했다.
+        PRINTFORMW 「당신말야. 입덧같은거 힘들지 않아? 탈리도마이드라는 좋은 약이 있는데. 구해다줄까?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 저으며 괜찮다고 말하자 파츄리는 조그맣게 혀를 찼다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「그 배.. 혹시 임신한거야?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이며 배를 어루만지자, 파츄리는 침대에 돌아누우며 말했다.
+        PRINTFORMW 「그래. 축하해. 누구 애인지는 모르겠지만. 그 배로 당분간 조교는 무리겠네.」
+        PRINTFORMW 그럴리가. %조사처리(CALLNAME:MASTER, "이")% 파츄리의 옷을 벗기기 시작하자,  파츄리는 당황하며 옷을 여미었다.
+        PRINTFORMW 「무... 무큐?! 자.. 잠깐만! 그 배로 조교를 하겠다고? 뱃속의 아기에게 부끄럽지도 않은거야?!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 파츄리에게 "이건 단지 뱃속의 아기에게 아빠를 만나게 해주는 것뿐" 이라고 말했고,
+        PRINTFORMW 「내... 아이라고..?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 패닉에 빠진 파츄리의 옷을 벗기기 시작했다.
+    ENDIF
+    CFLAG:5400 = 1
+    CALL K8_E_RESET
+    RETURN 1
+
+;-------------------------------------------------
 ;전 회 조교로 처녀상실했다 CFLAG209
 ;-------------------------------------------------
 ELSEIF CFLAG:5209 == 2 && TALENT:140 == 0
