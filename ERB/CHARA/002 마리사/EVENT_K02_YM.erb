@@ -19,10 +19,9 @@ IF CFLAG:5001 == 0
     RETURN 1
 
 ;-------------------------------------------------
-;조교 개시시(1회만) CFLAG:5001
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 마리사)
 ;-------------------------------------------------
-;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 마리사)
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「어.. 뭐야 그 배는?!」
@@ -59,9 +58,12 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW 「난 네가 피임을 하고있는줄 알았는데... 역시 콘돔을 낄걸 그랬나..」
         PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 이런저런 생각에 빠진 마리사를 밀어넘어트리며 조교를 개시했다.
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
     RETURN 1
 
+;-------------------------------------------------
+;조교 개시시(1회만) CFLAG:5001
+;-------------------------------------------------
 ;屈服刻印3
 ;IFの順番逆の方が良かった気もしたが、口上移植だから仕方ない!
 ELSEIF CFLAG:5001 < 4 && MARK:2 == 3

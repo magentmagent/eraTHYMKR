@@ -309,6 +309,58 @@ IF CFLAG:5201 == 0
     RETURN 1
 
 ;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 레밀리아)
+;-------------------------------------------------
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;유아퇴행
+    IF TALENT:159 == 1
+        PRINTFORMW 「와! 파파의 배 엄청 커!」
+        PRINTFORMW 레미는 %CALLNAME:MASTER%의 부풀어오른 배를 마치 북처럼 손으로 두드려보고 있었다. %조사처리(CALLNAME:MASTER, "은")% 레미에게 "뱃속의 아가가 아야하니까 너무 세게 치면 안된다"고 말했다.
+        PRINTFORMW 「우우... 그렇구나.. 아가야 미안해?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 부드럽게 배를 쓰다듬는 레미를 살짝 밀어 침대에 눕혔다.
+        PRINTFORMW 「꺅! 파파, 오늘도 하는거야? 뱃속에 아기도 있는데?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% "레미와 파파의 아이니까 분명 괜찮을거야." 라고 말하며 레미의 옷을 벗기기 시작했다.
+    ;연모
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「앗! %CALLNAME:MASTER%, 그 배는 어떻게 된거야?」
+        PRINTFORMW 침대에 앉아 %조사처리(CALLNAME:MASTER, "을")% 기다리던 레밀리아는 문이 열리는 소리를 듣자마자 고개를 돌리며 %조사처리(CALLNAME:MASTER, "을")% 바라보았다. 그리고 새로운생명이 깃든 %CALLNAME:MASTER%의 배를 보자, 조심스럽게 손을 갖다대었다
+        PRINTFORMW 「임신..? 어.. 음.. 축하할 일이네. 응.. 그런데 애 아빠는 누구이려나?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 시선을 피하며 말을 더듬는 레밀리아에게 누구의 아이일거라 생각하는지 물어보았다.
+        PRINTFORMW 「누.. 누구 아이냐고? 적..어도 내 아이는 아니라고 생각해. 흡혈귀는 그런 방식으로 번식하진 않으니까 말야.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 레밀리아를 껴안으며 뱃속에서 자라고 있는 아이의 부친이 누구인지, 레밀리아에게 알려주었다.
+        PRINTFORMW 「내.. 내 아이라고? 정말로?! ...우우..」
+        PRINTFORMW 레밀리아는 %조사처리(CALLNAME:MASTER, "을")% 꽉 껴안은 채 눈물을 흘리기 시작했다.
+        PRINTFORMW 「기뻐.. 정말로 기뻐.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 품에 안긴 채 눈물을 흘리는 레밀리아의 머리를 쓰다듬으며 그녀를 달래주고 있었다.
+        PRINTFORMW 울음을 그친 레밀리아는 %조사처리(CALLNAME:MASTER, "을")% 침대에 쓰러트리며 말했다.
+        PRINTFORMW 「내가 %조사처리(CALLNAME:MASTER, "을")% 임신시켰다면 그에 대한 책임을 져야겠지? 당신과, 당신의 아기 모두 책임지고 사랑해주겠어!」
+        PRINTFORMW 레밀리아는 %CALLNAME:MASTER%의 옷을 벗기며 목덜미에 키스했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 방의 문을 열고, 안으로 들어온 %조사처리(CALLNAME:MASTER, "은")% 정면에서 달려드는 레밀리아에게 밀려넘어졌다. 마치 기승위를 하는듯한 자세로 %CALLNAME:MASTER%의 위에 올라탄 레밀리아는 날카로운 두 개의 송곳니로 %CALLNAME:MASTER%의 목덜미로 물어뜯으려 했지만, %조사처리(CALLNAME:MASTER, "이")% 온 힘을 다해 밀쳐내는 바람에 미수에 그치고 말았다.
+        PRINTFORMW 「칫. 아깝네. 조금만 더 빨랐으면 %조사처리(CALLNAME:MASTER, "을")% 죽여버릴 수 있었을텐데.」
+        PRINTFORMW 아깝다는 듯한 표정으로 %조사처리(CALLNAME:MASTER, "을")% 바라보던 레밀리아의 시선이, 불룩해진 %CALLNAME:MASTER%의 배에서 멈췄다.
+        PRINTFORMW 「뭐야. 새끼를 뱄네?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "을")% 바라보는 레밀리아의 표정은, 비웃는듯한 경멸의 표정으로 변해있었다.
+        PRINTFORMW 「인간은 참 힘들겠어. 그런 번거로운 방식으로 번식을 하고.. 그 더러운 뱃속에서 자라고있는 새끼의 애비가 누군지 궁금해지는걸?」
+        PRINTFORMW 레밀리아는 %CALLNAME:MASTER%의 입꼬리가 올라가기 시작했다는 것을 눈치채지 못했다.
+        WAIT
+        PRINTFORMW 잠시후, %조사처리(CALLNAME:MASTER, "은")% 광분하여 %CALLNAME:MASTER%의 배를 찢으려고 달려드는 레밀리아를 막아내는데 온힘을 다해야 했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「날 이런 곳에 가둬두다니.. 반드시 후회.. 뭐야 그 배는?!」
+        PRINTFORMW 레밀리아는 공처럼 부풀어오른 %CALLNAME:MASTER%의 배를 보자 경악을 금치 못했다. 뱃속에서 자라고 있는 아이가 자신의 아이라는 사실을, 레밀리아는 부정하고 있었다.
+        PRINTFORMW 「내 아이라고? 하! 그럴리가 없잖아. 고귀한 흡혈귀가 그딴 방식으로 번식할거 같아?」
+        PRINTFORMW 자신만만한 태도로 %CALLNAME:MASTER%의 말을 부정하던 레밀리아는, %조사처리(CALLNAME:MASTER, "이")% 내민 증거들을 볼 때마다 점점 표정이 굳어갔다.
+        PRINTFORMW 「뭐야 이건.. 진짜로.. 내 아이라는거아..?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자, 레밀리아는 패닉에 빠져 날뛰기 시작했다.
+        PRINTFORMW 「싫어... 싫어!!!! 거짓말이야! 전부 거짓말이라고!! 이까짓 것들이 증거라고? 웃기지마! 이딴 것들로 이 레밀리아 스칼렛을 속일 수 있을 거 같아!!」
+        PRINTFORMW 과연 열달 뒤엔 무슨 표정을 지을까. %조사처리(CALLNAME:MASTER, "은")% 그 때를 상상하며 날뛰는 레밀리아를 붙잡은 뒤, 미소를 지으며 옷을 벗기기 시작했다.
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
+
+;-------------------------------------------------
 ;임신 첫회 개시의 이벤트 CFLAG:7890
 ;-------------------------------------------------
 ELSEIF TALENT:140 == 1 && CFLAG:7890 == 0

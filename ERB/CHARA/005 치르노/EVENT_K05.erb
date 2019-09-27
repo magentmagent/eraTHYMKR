@@ -98,8 +98,8 @@ ELSEIF CFLAG:0 == 1 && CFLAG:5209 == 0
     CFLAG:5209 = 1
     RETURN 1
 
-;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 치르노)
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:0 == 0 && CFLAG:5400 == 0
+;주인 임신 후 첫 회의 개시 이벤트 5500 (친부가 치르노)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:0 == 0 && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「%CALLNAME:MASTER%, 어째서 배가 그렇게 커진거야?」
@@ -132,7 +132,7 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:0 == 0 &&
         PRINTFORMW 「이 안에 내 아기가 있어..?」
         PRINTFORMW 치르노는 %CALLNAME:MASTER%의 배를 유심히 바라보며 손가락으로 콕콕 찔러보고 있었다. %조사처리(CALLNAME:MASTER, "은")% 별다른 반응을 보이지 않는 치르노의 옷을 벗기며 조교를 개시했다.
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
     RETURN 1
 
 ;굴복각인Lv1

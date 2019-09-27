@@ -218,6 +218,75 @@ ELSEIF CFLAG:7010 == 3 && CHARANUM >= 3
     PRINTFORMW 억지로 조교하려 하자 첸은 혀를 깨물려고 했다.
     PRINTFORMW 첸의 체력이 1이 되었습니다
     BASE:0 = 1
+
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 첸)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「킁킁.. 주인님, 이 달콤한 냄새는 뭔가요?」
+        PRINTFORMW 첸은 눈을 감은 채 코를 킁킁거리며 달콤한 냄새의 근원지를 찾고 있었다.
+        PRINTFORMW 냄새가 진해지는 쪽으로 고개를 옮기던 첸은 어느새인가 %CALLNAME:MASTER%의 가슴에 얼굴을 묻게 되었다.
+        PRINTFORMW 「앗.. 죄..죄송해요 주인님!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 사과하는 첸에게 괜찮다고 말하며 상의를 벗기 시작했다.
+        PRINTFORMW 모유\@ TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1 ? 가 나오기 시작한 %CALLNAME:MASTER%의 조그만 가슴이 # 로 가득찬 %CALLNAME:MASTER%의 거대한 가슴이 출렁이며 \@ 드러나자, 첸은 침을 꿀꺽 삼키며 %CALLNAME:MASTER%의 가슴을 주물렀다.
+        PRINTFORMW '퓻퓻'하고 달콤한 냄새를 풍기는 모유가 뿜어져나오자, 첸은 혀를 내밀어 흘러내리는 모유를 핥은 뒤, %CALLNAME:MASTER%의 가슴에 달라붙어 직접 모유를 마시기 시작했다.
+        PRINTFORMW 「츄웁..쯉..쪼옥..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 마치 아기처럼 모유를 마시는 첸의 머리를 부드럽게 쓰다듬었다. 첸은 %조사처리(CALLNAME:MASTER, "을")% 올려다보며 더욱 강하게 %CALLNAME:MASTER%의 가슴을 빨기 시작했다.
+        PRINTFORMW 「푸아... 맛있었어요. 잘먹었습니다 주인님.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 입맛을 다시는 첸을 침대에 쓰러트린 뒤, 첸의 아이를 임신했다는 사실을 밝혔다.
+        PRINTFORMW 그 말을 들은 첸은 흐뭇한 미소를 지으며 %CALLNAME:MASTER%의 배를 부드럽게 어루만지기 시작했다.
+        PRINTFORMW 「후훗.. 앗, 방금 움직였어요!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 행복한 표정을 지으며 %CALLNAME:MASTER%의 배를 쓰다듬는 첸의 머리를 부드럽게 쓰다듬기 시작했다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "와")% 첸은 한동안 서로를 부드럽게 쓰다듬어주고 있었다.
+        PRINTFORMW 「귀여운 아이가 태어났으면 좋겠네요.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 분명 첸을 닮은 귀여운 아이일거라고 말하며 그녀의 옷을 벗기기 시작했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 방문을 열자, 손톱자국으로 뒤덮힌 벽이 %CALLNAME:MASTER%의 눈에 들어왔다. %조사처리(CALLNAME:MASTER, "은")% 한숨을 내쉰 뒤, 첸이 앉아있는 침대쪽으로 시선을 돌렸다.
+        PRINTFORMW 「왔네요?」
+        PRINTFORMW 첸은 딱딱하게 굳은 표정으로 %조사처리(CALLNAME:MASTER, "을")% 흘끗 쳐다보았다. 
+        PRINTFORMW 「오늘도 하려는거죠?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕인 뒤, 조교를 개시하기 위해 첸에게 다가갔다.
+        PRINTFORMW 「하앗!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 곁에 다가오자마자, 첸은 날카롭게 갈아둔 손톱을 %CALLNAME:MASTER%의 목을 향해 휘둘렀다. %조사처리(CALLNAME:MASTER, "은")% 황급히 첸의 손목을 잡아낸 뒤, 그녀를 침대에 내동댕이쳐서 제압했다.
+        PRINTFORMW 「쳇.. 조금만 더 빨랐으면 됐는데..! 어라?」
+        PRINTFORMW 몸부림치던 첸은 그제서야 %CALLNAME:MASTER%의 배가 커져있다는 사실을 깨달았다. 첸의 시선이 배쪽을 향하고 있다는걸 알아챈 %조사처리(CALLNAME:MASTER, "은")% "이 안에 나와 첸의 아이가 자라고 있어" 라고 그녀의 귀에 속삭였다.
+        PRINTFORMW 「...내 아기? 누가 그런걸 믿을 거 같아!」
+        PRINTFORMW 또더시 날뛰려는 첸에게, %조사처리(CALLNAME:MASTER, "은")% 준비해둔 증거를 보여주었다. %CALLNAME:MASTER%의 뱃속에서 자라고 있는 아이가 첸의 아이라는 증거들이 하나씩 보여질 때마다, 그녀의 얼굴은 점점 하얗게 질려갔다.
+        PRINTFORMW 「그러니까.. 내 아이라는 거네..?」
+        PRINTFORMW 첸은 초점이 맞지 않는 눈을 한 채, 어딘가 망가진 듯한 웃음을 짓고 있었다.
+        PRINTFORMW 「조심하는게 좋을거야 당신.. 잠깐 한눈 파는 사이에 배가 갈라질 수도 있을테니 말야..」
+        PRINTFORMW 첸은 그렇게 말하며 몸의 힘을 뺐다. %조사처리(CALLNAME:MASTER, "은")% 저항하지 않는 첸을 경계하며 평소보다 신중하게 조교를 개시했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「란님...」
+        PRINTFORMW 침대에 앉은 채 눈물을 흘리고 있던 첸은, 문이 열리는 소리가 들리자 서둘러 울음을 그치고는, %CALLNAME:MASTER%쪽을 노려보았다.
+        PRINTFORMW 「당신이 무슨짓을 하더라도, 난 절대 꺾이지....에엣?!」
+        PRINTFORMW 그리고 부풀어오른 %CALLNAME:MASTER%의 배를 보자 패닉에 빠졌다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 멍하니 %CALLNAME:MASTER%의 배를 바라보고 있는 첸에게 그녀의 아기를 임신했다는 사실을 밝혔다.
+        PRINTFORMW 잠시 뒤, %CALLNAME:MASTER%의 말을 이해한 첸은 패닉에 빠져 날뛰기 시작했다.
+        PRINTFORMW 「싫어... 그런거 싫어!!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 재빨리 첸을 제압한 뒤, 그녀의 옷을 벗기기 시작했다.
+        PRINTFORMW 「싫어... 란님.. 도와주세요 란님..」
+        ;란을 보유하고 란에게 연모가 있을 때
+        IF ITEM:121 && GETCHARA(21) >= 0 && TALENT:GETCHARA(21):150 == 1
+            PRINTFORMW "너의 주인은 이미 내 충실한 노예가 된지 오래다."
+        ;란을 보유하고 있을 때
+        ELSEIF ITEM:121 && GETCHARA(21) >= 0
+            PRINTFORMW "네가 애타게 찾고있는 주인은 나한테 잡힌지 오래다."
+        ;란을 매각했을 때
+        ELSEIF ITEM:121
+            PRINTFORMW "너의 주인은 이미 완전히 조교되어 팔려간지 오래다."
+        ;란을 보유하지 않을 때
+        ELSE
+            PRINTFORMW "너의 주인은 이곳에 없다. 너를 도울 일도 없을 것이다."
+        ENDIF
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 저항하는 첸의 귀에 그렇게 속삭였다.
+        PRINTFORMW 「그런... 싫어..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 절망에 빠진 첸을 덮치며 조교를 개시했다.
+    ENDIF
+    CFLAG:5500 = 1
+
 ;屈服刻印Lv1
 ELSEIF CFLAG:7000 == 0 && MARK:2 == 1
     DRAWLINE

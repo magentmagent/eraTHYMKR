@@ -50,7 +50,7 @@
 ;
 ;첫조교시 조교 개시시(1회만)        CFLAG:5001
 ;임신 후 첫회의 개시 이벤트        CFLAG:5210
-;주인 임신 후 첫회의 개시 이벤트        CFLAG:5400
+;주인 임신 후 첫회의 개시 이벤트        CFLAG:5500
 ;조교 개시시(2번째 이후)            CFLAG:없음 
 ;조교 종료시의 대사                CFLAG:211~220을 사용
 ;    기본 조교계
@@ -321,8 +321,8 @@ ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
     ENDIF
     CFLAG:5210 = 1
 
-;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 레이무)
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG5500 (친부가 레이무)
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「어..어라? 그 배.. 혹시 임신한거야?」
@@ -363,7 +363,7 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW 「저기말야.. 우리 신사는 가난하다고? 새전도 많이 안들어오고.. 아무리 내 아이라고 해도 키울 여유는 없어.」
         PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 상관없다고 말하며 레이무와의 아이를 품은 배를 부드럽게 어루만진 뒤, 조교를 개시하기로 마음먹었다.
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
 
 ;연모 또는 상애
 ELSEIF CFLAG:5001 < 2 && ( TALENT:150 == 1 || TALENT:153 == 1 )
@@ -18314,7 +18314,7 @@ IF TFLAG:200 == 102
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 『이야, 레이무가 결혼하다니 정말 놀랐다구』
-        PRINTFORMW 『후후, '%CALLNAME:MASTER%'%조사처리만(CALLNAME:MASTER, "라")%고 했나요? 레이무를 울리면 가만두지 않을테니 명심하세요?』
+        PRINTFORMW 『후후, '%CALLNAME:MASTER%'%조사만처리(CALLNAME:MASTER, "라")%고 했나요? 레이무를 울리면 가만두지 않을테니 명심하세요?』
         PRINTFORMW 「마리사, 유카리 다들 와줘서 고마워...아, 잠시 나-」
         PRINTFORMW 『이어서~ 기다리고 기다리던 신랑 신부의 입장입니다! 모두 박수로 맞이해주세요!』
         PRINTFORMW 「웃..하..하필...」

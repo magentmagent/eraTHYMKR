@@ -98,6 +98,57 @@ IF CFLAG:7003 == 0
     RETURN 1
 
 ;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 앨리스)
+;-------------------------------------------------
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「후후.. 왠지 모르게... 이러고 있으니 행복하네..」
+        PRINTFORMW 앨리스는 %CALLNAME:MASTER%의 무릎을 벤 채, %CALLNAME:MASTER%의 배에 귀를 대고 있었다. %조사처리(CALLNAME:MASTER, "은")% 미소를 지은 채 그녀를 바라보며 그녀의 머리를 부드럽게 쓰다듬고 있었다.
+        PRINTFORMW 「앗, 방금 움직였어!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "와")% 앨리스는 한동안 느긋하게 시간을 보내었다.
+        PRINTFORML ......
+        PRINTFORML ....
+        PRINTFORMW ..
+        PRINTFORMW 「건강한 아기가 태어났으면 좋겠다..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 앨리스의 말에 동의하며 그녀를 침대에 눕힌 뒤, 옷을 벗기기 시작했다.
+        PRINTFORMW 「꺅! 오늘도 하려고? 뱃속에 아기도 있는데?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 앨리스에게 "괜찮을거야. 우리들의 아이니까." 라고 속삭이며 그녀에게 키스했다.
+        PRINTFORMW 「읍...우음.. 정말.. 어쩔수 없다니까. 뱃속의 아기가 엣찌한 아기가 되어도 난 몰라?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 또다시 그녀에게 부드럽게 입맞춤을 하며 조교를 개시했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 「....」
+        PRINTFORMW 앨리스는 아무 말 없이 %CALLNAME:MASTER%의 부풀어오른 배를 바라보고 있었다.
+        PRINTFORMW 「당신 피임을 깜빡한거야? 아니면 애초에 피임 자체를 안한거야?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 후자쪽이라고 앨리스에게 말했다. 그 말을 들은 앨리스는 한심하다는 듯한 표정으로 %조사처리(CALLNAME:MASTER, "을")% 바라보고 있었다.
+        PRINTFORMW 「보통 조교자라고 한다면 임신하는 쪽보단 임신시키는 쪽 아냐? 대체 아버지도 모르는 아기를 임신하는게 무슨..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 앨리스의 말을 끊으며, "아이의 아버지가 누구인지 정도는 알고있다."고 말했다.
+        PRINTFORMW 앨리스는 코웃음을 치며 "그 불쌍한 아이의 아빠가 대체 누구일까?" 라며 빈정대고 있었다.
+        PRINTFORMW 「...뭐? 내 아이라고?」
+        PRINTFORMW 그 불쌍한 아이의 아빠가 바로 자신이라는 사실을 들은 앨리스의 표정은 순식간에 굳어버렸다.
+        PRINTFORMW 「마... 말도 안돼는 소리...는 아니네..」
+        PRINTFORMW 얼굴을 붉히며 %CALLNAME:MASTER%의 말을 부정하려던 앨리스는, 무엇인가를 떠올린 듯 빠르게 수긍했다.
+        PRINTFORMW 「확실히... 당신의 질내에 엄청나게 많이 싸긴 했었지...」
+        PRINTFORMW 그렇게 중얼거리던 앨리스는 방금 전보단 부드러워진 말투로 %CALLNAME:MASTER%에게 말하기 시작했다.
+        PRINTFORMW 「하지만 그건 내가 당신에게 덮쳐져서 싸버린거잖아? 당신이 그 아이를 키우든 말든 나랑은 상관없는 일이야. 난 그 아이를 내 아이라고 생각하지 않을테니까.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% "무정한 아빠네.."라고 다 들리도록 중얼거리며 앨리스를 밀어넘어트렸다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「혹시.. 임신한.. 거야..?」
+        PRINTFORMW 앨리스는 %CALLNAME:MASTER%의 배를 보며 조심스럽게 묻고 있었다. %조사처리(CALLNAME:MASTER, "은")% 앨리스의 질문에 고개를 끄덕이며 앨리스의 아이를 임신했다고 말했다.
+        PRINTFORMW 「흐응.. 그렇구나.. 내 아이에에에엣?!」
+        PRINTFORMW %CALLNAME:MASTER%의 말을 건성으로 흘려들으며 %CALLNAME:MASTER%의 배를 만지고 있던 앨리스는 한박자 늦게 놀라며 %조사처리(CALLNAME:MASTER, "을")% 바라보았다.
+        PRINTFORMW 「차... 착각이겠지? 나 말고 다른 사람의 아이일 수도 있지 않아?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 앨리스의 머리를 부드럽게 자신의 배에 갖다댄 뒤 앨리스에게 속삭였다.
+        PRINTFORMW "분명 앨리스를 닮은 귀여운 아이일거야."
+        PRINTFORMW 「그럴리가 없잖아!! %조사처리(CALLNAME:MASTER, "은")% 몰라도 난 닮지 않았어. 절대로 닮지 않았을거라고!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 거세게 고개를 저으며 자신의 아이임을 부정하는 앨리스에게 열달 후를 기대하라고 말하며, 그녀를 침대에 쓰러트렸다.
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
+
+;-------------------------------------------------
 ;調教開始時(一回のみ) CFLAG:7003
 ;-------------------------------------------------
 ;屈服刻印Lv1

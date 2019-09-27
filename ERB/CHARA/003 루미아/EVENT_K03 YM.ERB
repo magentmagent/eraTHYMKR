@@ -60,10 +60,9 @@ IF CFLAG:5001 == 0
     RETURN 1
 
 ;-------------------------------------------------
-;조교시작시（一回のみ） CFLAG:5001
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 루미아)
 ;-------------------------------------------------
-;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 루미아)
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 루미아는 %CALLNAME:MASTER%의 무릎을 벤 채 %CALLNAME:MASTER%의 볼록 부풀어오른 배에 귀를 대고 있었다.
@@ -98,9 +97,12 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW 「어린 아이는 살이 부드러워서 맛있는거다-」
         PRINTFORMW 고개를 끄덕이며 그렇게 말하는 루미아를 침대에 밀어 넘어트리며 %조사처리(CALLNAME:MASTER, "은")% 생각했다. '뱃속의 이 아이가 루미아의 아이라는 사실은 아직 말하지 말아야겠다.'
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
     RETURN 1
 
+;-------------------------------------------------
+;조교시작시（一回のみ） CFLAG:5001
+;-------------------------------------------------
 ;연모
 ELSEIF CFLAG:5001 < 5 && TALENT:150 == 1
     DRAWLINE

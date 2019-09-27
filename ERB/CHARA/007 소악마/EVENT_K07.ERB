@@ -213,10 +213,9 @@ IF CFLAG:5001 == 0
     RETURN 1
 
 ;-------------------------------------------------
-;조교 개시시(1회만) CFLAG:5001
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 소악마)
 ;-------------------------------------------------
-;주인 임신 후 첫 회의 개시 이벤트 CFLAG5400 (친부가 소악마)
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「쪽..쪼옥...쯉..」
@@ -250,14 +249,14 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW 「흐흥..」
         PRINTFORMW 소악마는 뿌듯하다는 듯이 그녀의 정기를 받아들여 새로운 생명을 잉태한 %CALLNAME:MASTER%의 배를 바라보고 있었다. 소악마는 부풀어오른 %CALLNAME:MASTER%의 배에 입을 맞춘 뒤, %조사처리(CALLNAME:MASTER, "을")% 침대에 쓰러트리며 옷을 벗기기 시작했다.
         PRINTFORMW 「요즘 정기를 계속 내보내서 그런지 정기가 많이 부족하네요.」
-        IF TALENT:MASTER:110 == 1 || TALENT:MASTER:111 == 1
-            PRINTFORMW 소악마는 옷 밖으로 드러난 %CALLNAME:MASTER%의 조그만 가슴을 보며 약간 실망한 듯 했다.
-            PRINTFORMW 「으음.. 생각보다 조그맣네요. 뭐, 조그만건 조그만대로 색다른 맛이 있으니까.」
-            PRINTFORMW 소악마는 그렇게 말하며 %CALLNAME:MASTER%의 가슴을 주물렀다.
-        ELSEIF TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1
+        IF TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1
             PRINTFORMW 소악마는 '출렁' 하고 옷 밖으로 드러난 커다란 두개의 언덕을 보며 입맛을 다셨다.
             PRINTFORMW 「오오.. 아기를 임신해서 그런지 평소보다 정기가 가득 모여있네요?」
             PRINTFORMW 소악마는 %CALLNAME:MASTER%의 풍만한 가슴을 주무르며 가슴의 감촉과 가슴의 모양이 바뀌는 광경, 그리고 %CALLNAME:MASTER%의 신음소리를 즐겼다.
+        ELSE
+            PRINTFORMW 소악마는 옷 밖으로 드러난 %CALLNAME:MASTER%의 조그만 가슴을 보며 약간 실망한 듯 했다.
+            PRINTFORMW 「으음.. 생각보다 조그맣네요. 뭐, 조그만건 조그만대로 색다른 맛이 있으니까.」
+            PRINTFORMW 소악마는 그렇게 말하며 %CALLNAME:MASTER%의 가슴을 주물렀다.
         ENDIF
         PRINTFORMW 「그럼, 잘먹겠습니다.」
         PRINTFORMW 소악마는 %CALLNAME:MASTER%의 가슴을 빨며 모유를 들이마시기 시작했다. %조사처리(CALLNAME:MASTER, "은")% 가슴에서부터 정기를 빨리기 시작하자 아무런 저항도 하지 못한 채 녹아내린 표정으로 교성을 토해내며 절정했다.
@@ -266,9 +265,12 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW "뱃속의 아기에게, 파파의 정기를 나눠줄 시간이로군요.」
         PRINTFORMW 소악마는 아직 절정의 여운에서 벗어나지 못한 %조사처리(CALLNAME:MASTER, "을")% 덮쳤다.
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
     RETURN 1
 
+;-------------------------------------------------
+;조교 개시시(1회만) CFLAG:5001
+;-------------------------------------------------
 ;예속
 ELSEIF CFLAG:5001 < 7 && TALENT:162
     DRAWLINE

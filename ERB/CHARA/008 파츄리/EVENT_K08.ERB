@@ -715,9 +715,9 @@ ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
         RETURN 1
 
 ;-------------------------------------------------
-;주인 임신 후 첫 회 개시 이벤트 CFLAG5400
+;주인 임신 후 첫 회 개시 이벤트 CFLAG5500 (친부가 파츄리)
 ;-------------------------------------------------
-ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
     ;연모
     IF TALENT:150 == 1
         PRINTFORMW 「그 배.. 당신, 혹시..」
@@ -745,7 +745,7 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5400 == 0
         PRINTFORMW 「내... 아이라고..?」
         PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 패닉에 빠진 파츄리의 옷을 벗기기 시작했다.
     ENDIF
-    CFLAG:5400 = 1
+    CFLAG:5500 = 1
     CALL K8_E_RESET
     RETURN 1
 
