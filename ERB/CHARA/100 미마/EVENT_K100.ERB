@@ -8769,24 +8769,333 @@ ENDIF
 ;----------------------------------------------------------------
 IF TFLAG:200 == 171
     DRAWLINE
-    ;연모면서 3회째 출산 이후.
-    IF TALENT:150 == 1 && EXP:52 > 2
-        PRINTFORMW 「(…이건? 아기가 태어나려는 거구나…)」
-        PRINTFORMW 한밤중. 갑작스러운 진통에 눈을 뜬 미마는 이제 곧 아기가 태어날 것이라는걸 직감했다.
-        PRINTFORMW 하지만 두 번 이상의 출산을 경험해서 그런지 격통은 처음과 비교하면 많이 줄어든 상태.
-        PRINTFORMW 미마는 부드럽게 배를 감싸며 숨을 고르었다.
-        PRINTFORMW 「(여전히 아프기는 하지만… 괜찮아. 처음에 비하면 이 정도는…)」
-        PRINTFORMW 미마는 침착하게 아이를 낳을 준비를 했다.
+    ;레이무와 마리사 모두 있음. 둘 다 미마와 면식 있음 + 레이무 출산 경험 1회 이상, 마리사 출산 경험 1회 이상 + 미마는 초산 + 레이무 마리사 모두 연모 + 입회
+    IF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 > 0 && CFLAG:7014 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 > 0 && TALENT:GETCHARA(1):150 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 > 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 가장 먼저 하쿠레이 레이무를 찾아갔다.
+        PRINTFORMW 『…응? %CALLNAME:MASTER%? 조교?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 레이무를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『…아기? 미마가? …응. 나, 경험도 있으니까.』
+        PRINTFORMW 『미마는 초산이지? …그럼 가서 지켜보자.』
+        PRINTFORMW 그리고 %조사처리(CALLNAME:MASTER,"는")% 마리사 역시 찾아갔고…
+        PRINTFORMW [미마님이? 그걸 왜 이제 말해! 어서 데려가줘!]
+        PRINTFORMW [미마님은 내 스승님이시지만 아이를 낳은건 내가 먼저니까…]
+        PRINTFORMW 요청에 따라 마리사도 함께 데려갔다.
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무, 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?」
+        PRINTFORMW 『아이 낳는거, 아프고 힘들지만 할 수 있는거니까.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW [미마님… 미마님이라면, 할 수 있어. 힘내…]
+        PRINTFORMW 「…하아, 고마워… 마리사…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무, 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
         PRINTFORMW ………
         PRINTFORMW ……
         PRINTFORMW …
-        PRINTFORMW 그리 오래 지나지 않아 아기의 첫 울음소리가 저택에서 울려퍼졌다. 갑작스러운 소리에 %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 갔을때.
-        PRINTFORMW 미마는 이미 갓 태어난 아이의 탯줄까지 자르고 젓을 물리고 있었다.
-        PRINTFORMW 「아, %CSTR:90%… 방금전에 아기가 태어났어. 놀랐지?」
-        PRINTFORMW 「진통이 막 왔는데, 처음에 비하면 그리 아프지도 않았어. 그래서 좀 수월했달까?」
-        PRINTFORMW 미마는 여전히 지친 얼굴이었지만 첫 출산에 비하면 확실히 여유로운 미소를 보였다.
-    ;연모면서 두번째 출산
-    ELSEIF TALENT:150 == 1 && EXP:52 > 1
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 레이무와 마리사 둘에게 그대로 보여졌다.
+        PRINTFORMW [(알고는 있었지만 이렇게 태어나는구나…)]
+        PRINTFORMW 경험이 있는 두 사람은 미마의 아이가 태어나는 그 순간까지 조용히 지켜보고 있었다.
+        PRINTFORMW 『(나도 미마처럼 아이를 낳은거구나…)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7014 = 1
+    ;레이무와 마리사 모두 있음. 둘 다 미마와 면식 있음 + 레이무 출산 경험 1회 이상, 마리사 없음 + 미마는 초산 + 레이무 마리사 모두 연모 + 입회 횟수 없음.
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 > 0 && CFLAG:7015 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 > 0 && TALENT:GETCHARA(1):150 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 == 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 가장 먼저 하쿠레이 레이무를 찾아갔다.
+        PRINTFORMW 『…응? %CALLNAME:MASTER%? 조교?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 레이무를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『…아기? 미마가? …응. 나, 경험도 있으니까.』
+        PRINTFORMW 『미마는 초산이지? …그럼 가서 지켜보자.』
+        PRINTFORMW 그리고 %조사처리(CALLNAME:MASTER,"는")% 마리사 역시 찾아갔고…
+        PRINTFORMW [미마님이? 그걸 왜 이제 말해! 어서 데려가줘! 스승님의 일이라면 나도…]
+        PRINTFORMW 요청에 따라 마리사 역시 함께 데려갔다.
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무, 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?」
+        PRINTFORMW 『아이 낳는거, 아프고 힘들지만 할 수 있는거니까.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW  [미마님… 지켜봐주는것 밖에 할 수 없지만 힘내.]
+        PRINTFORMW 「…하아, 고마워… 마리사…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무, 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 레이무와 경험이 없는 마리사에게도 그대로 보여졌다.
+        PRINTFORMW 『(나도 미마처럼 아이를 낳은거구나…)』
+        PRINTFORMW 레이무는 경험이 있지만 조용히 지켜보고 있었다. 그리고 마리사는 처음 보는 출산의 순간 내내 눈을 떼지 못했다.
+        PRINTFORMW [(이게 아기가 태어나는 모습… 대단해…)]
+        PRINTFORMW [(언젠가 나도 %CALLNAME:MASTER%의 아이를…)]
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7015 = 1
+    ;레이무와 마리사 모두 있음. 둘 다 미마와 면식 있음 + 레이무 출산 경험 없음, 마리사 출산 경험 1회 이상 + 미마는 초산    + 입회 횟수 없음
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 > 0 && CFLAG:7016 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 == 0 && TALENT:GETCHARA(1):150 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 > 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 가장 먼저 키리사메 마리사를 찾아갔다.
+        PRINTFORMW [누구… %CALLNAME:MASTER%?]
+        PRINTFORMW 조교라 생각하고 옷을 벗는 마리사를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW [미마님이? 그걸 왜 이제 말해! 어서 데려가줘!]
+        PRINTFORMW [미마님은 내 스승님이시지만 아이를 낳은건 내가 먼저니까…]
+        PRINTFORMW 그리고 %조사처리(CALLNAME:MASTER,"는")% 레이무 역시 찾아갔고…
+        PRINTFORMW 『…아기? 미마가? …어떻게 해야할지 모르겠지만 일단 가서 지켜보자.』
+        PRINTFORMW 요청에 따라 레이무 역시 함께 데려갔다.
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무, 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?」
+        PRINTFORMW 『지켜보는게 전부지만, 괜찮을거야.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW [미마님… 미마님이라면, 할 수 있어. 힘내…]
+        PRINTFORMW 「…하아, 고마워… 마리사…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무, 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 마리사와 경험이 없는 레이무에게도 그대로 보여졌다.
+        PRINTFORMW [(알고는 있었지만 이렇게 태어나는구나…)]
+        PRINTFORMW 마리사는 경험이 있지만 조용히 지켜보고 있었다. 그리고 레이무는 처음 보는 출산의 순간 내내 눈을 떼지 못했다.
+        PRINTFORMW 『(아이라는게, 이렇게 태어나는 거구나…)』
+        PRINTFORMW 『(나도 %CALLNAME:MASTER%의 아이를 이렇게 낳는걸까?)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7016 = 1
+    ;레이무와 마리사 모두 있음. 둘 다 미마와 면식 있음 + 레이무와 마리사 둘 다 출산 경험 없음 + 미마는 초산
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 > 0 && CFLAG:7017 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 == 0 && TALENT:GETCHARA(1):150 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 == 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 가장 먼저 하쿠레이 레이무를 찾아갔다.
+        PRINTFORMW 『…응? %CALLNAME:MASTER%? 조교?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 레이무를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『…아기? 미마가? …응. 그치만 어떻게 해야할지… 일단은 가서 지켜보자.』
+        PRINTFORMW 그리고 %조사처리(CALLNAME:MASTER,"는")% 마리사 역시 찾아갔고…
+        PRINTFORMW [미마님이? 그걸 왜 이제 말해! 어서 데려가줘! 스승님의 일이라면 나도…]
+        PRINTFORMW 요청에 따라 마리사도 함께 데려갔다.
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무, 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?」
+        PRINTFORMW 『지켜보는게 전부지만, 괜찮을거야.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW [나도 지켜봐주는것 밖에 할 수 없지만 힘내…]
+        PRINTFORMW 「…하아, 고마워… 마리사…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무, 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 없는 레이무와 마리사 둘에게 그대로 보여졌다.
+        PRINTFORMW 『(아이라는게, 이렇게 태어나는 거구나…)』
+        PRINTFORMW 『(나도 이렇게 %CALLNAME:MASTER%의 아이를 낳는걸까?)』
+        PRINTFORMW 경험이 없는 두 사람은 미마의 아이가 태어나는 그 순간까지 눈을 떼지 못했다.
+        PRINTFORMW [(이게 아기가 태어나는 모습… 대단해…)]
+        PRINTFORMW [(언젠가 나도 %CALLNAME:MASTER%의 아이를…)]
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7017 = 1
+    ;레이무만 있을시. 마리사는 연모 상태에서 만난적 없음 + 레이무 출산 경험 1회 이상 + 미마는 초산
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 == 0 && CFLAG:7018 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 > 0 && TALENT:GETCHARA(1):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 미마와 아는 관계인 하쿠레이 레이무를 찾아갔다.
+        PRINTFORMW 『…응? %CALLNAME:MASTER%? 조교?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 레이무를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『…아기? 미마가? …응. 알았어. 나, 경험도 있으니까.』
+        PRINTFORMW 『미마는 초산이지? …그럼 가서 지켜보자.』
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?』
+        PRINTFORMW 『아이 낳는거, 아프고 힘들지만 할 수 있는거니까.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 레이무에게도 그대로 보여졌다.
+        PRINTFORMW 『(나도 미마처럼 아이를 낳은거구나…)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7018 = 1
+    ;레이무만 미마와 면식 있음 + 레이무는 경험 없음. 미마는 초산
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 > 0 && CFLAG:7010 == 0 && CFLAG:7019 == 0 && GETCHARA(1) > 0 && EXP:GETCHARA(1):52 == 0 && TALENT:GETCHARA(1):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 미마와 아는 관계인 하쿠레이 레이무를 찾아갔다.
+        PRINTFORMW 『…응? %CALLNAME:MASTER%? 조교?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 레이무를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『…아기? 미마가? …응. 그치만 어떻게 해야할지…』
+        PRINTFORMW 함께 있어주기만 하면 된다. %조사처리(CALLNAME:MASTER,"는")% 레이무에게 그렇게 말했다.
+        PRINTFORMW 『그래… 그럼 가자.』
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 레이무와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마… 침착해.』
+        PRINTFORMW 「…하아, 레이, 무?』
+        PRINTFORMW 『지켜보는게 전부지만, 괜찮을거야.』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 레이무와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 없는 레이무에게 그대로 보여졌다.
+        PRINTFORMW 『(아이라는게, 이렇게 태어나는 거구나…)』
+        PRINTFORMW 『(나도 이렇게 %CALLNAME:MASTER%의 아이를 낳는걸까?)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7019 = 1
+    ;마리사만 있을시. 레이무는 연모 상태에서 만난적 없음 + 마리사 출산 경험 1회 이상 + 미마는 초산
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 == 0 && CFLAG:7010 > 0 && CFLAG:7020 == 0 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 > 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 미마와 아는 관계인 키리사메 마리사를 찾아갔다.
+        PRINTFORMW 『누구… %CALLNAME:MASTER%?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 마리사를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『미마님이? 그걸 왜 이제 말해! 어서 데려가줘! 미마님은 내 스승님이시지만 아이를 낳은건 내가 먼저니까…』
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마님…』
+        PRINTFORMW 『…하아, 마리, 사?』
+        PRINTFORMW 『미마님이라면, 할 수 있어. 힘내…』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 마리사에게도 그대로 보여졌다.
+        PRINTFORMW 『(알고는 있었지만 이렇게 태어나는구나…)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7020 = 1
+    ;마리사만 있을시. 레이무는 연모 상태에서 만난적 없음 + 마리사 출산 없음 + 미마는 초산
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1 && CFLAG:7009 == 0 && CFLAG:7010 > 0 && CFLAG:7021 == 0 && GETCHARA(2) > 0 && EXP:GETCHARA(2):52 == 0 && TALENT:GETCHARA(2):150
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들중 미마와 아는 관계인 키리사메 마리사를 찾아갔다.
+        PRINTFORMW 『누구… %CALLNAME:MASTER%?』
+        PRINTFORMW 조교라 생각하고 옷을 벗는 마리사를 말린 %조사처리(CALLNAME:MASTER,"는")% 미마의 출산에 입회해 그녀를 안심시켜달라 요청했다.
+        PRINTFORMW 『미마님이? 그걸 왜 이제 말해! 어서 데려가줘! 스승님의 일이라면 나도…』
+        PRINTFORMW 얼마후 %조사처리(CALLNAME:MASTER,"는")% 마리사와 함께 출산중인 미마에게 왔다.
+        PRINTFORMW 「…하아, 하아…」
+        PRINTFORMW 『미마님…』
+        PRINTFORMW 『…하아, 마리, 사?』
+        PRINTFORMW 『나, 지켜봐주는것 밖에 할 수 없지만… 미마님, 힘내…』
+        PRINTFORMW 「…하아, 응…」
+        PRINTFORMW 출산의 격통 때문에 제정신이 아닌 상태의 미마였지만 함께 입회한 마리사와 %조사처리(CALLNAME:MASTER,"를")% 보고 조금은 안심한 모습이었다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그 모습은 아이를 낳은적 있는 마리사에게도 그대로 보여졌다.
+        PRINTFORMW 『(이게 아기가 태어나는 모습… 대단해…)』
+        PRINTFORMW 『(언젠가 나도 %CALLNAME:MASTER%의 아이를…)』
+        PRINTFORMW 잠시후. 미마가 겨우 출산의 격통에서 제정신을 차렸다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        CFLAG:7021 = 1
+    ;연모면서 초산. 레이무나 마리사 없음! 혹은 만난적 없음.
+    ELSEIF TALENT:150 == 1 && EXP:52 == 1
+        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
+        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
+        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들을 흔들어 깨워 대비시켰다.
+        PRINTFORMW 노예들은, 모두 의아스러운 것 같았다가 이유를 알자, 수긍하고 출산에 입회했다.
+        PRINTFORMW ………
+        PRINTFORMW ……
+        PRINTFORMW …
+        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 「하아……하아……아이……태어났어…」
+        PRINTFORMW 「내가…낳은건가?」
+        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
+        PRINTFORMW 「사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+    ;연모면서 두번째 출산.
+    ELSEIF TALENT:150 == 1 && EXP:52 == 2
         PRINTFORMW 「…! 이건……배가……으, 으으윽…」
         PRINTFORMW 밤중에 느껴지는 두번째 출산의 진통. 하지만 한번 겪었음에도 불구하고 진통의 아픔과 괴로움에 신음했다.
         PRINTFORMW ……
@@ -8808,33 +9117,43 @@ IF TFLAG:200 == 171
         PRINTFORMW 곁에 있던 %조사처리(CALLNAME:MASTER,"는")% 뜨거운 물로 소독된 가위로 아기의 탯줄을 잘라냈다.
         PRINTFORMW 「하아…… %조사처리(CSTR:90,"가")% 곁에 있으니까 안심이 됬어. 고마워……」
         PRINTFORMW 미마는 지친 얼굴로 %CALLNAME:MASTER%에게 미소지은뒤 갓 태어난 아이에게 젓을 물렸다.
-    ;연모면서 초산
-    ELSEIF TALENT:150 == 1
-        PRINTFORMW 「…! 이건……배가……으, 으으윽…」
-        PRINTFORMW 미마는, 갑작스러운 진통으로 눈을 떴지만 방에는 아무도 없이, 진통의 아픔과 괴로움에 참고 있었다.
+    ;연모면서 3회 이후 출산.
+    ELSEIF TALENT:150 == 1 && EXP:52 > 2
+        PRINTFORMW 「(…이건? 아기가 태어나려는 거구나…)」
+        PRINTFORMW 한밤중. 갑작스러운 진통에 눈을 뜬 미마는 이제 곧 아기가 태어날 것이라는걸 직감했다.
+        PRINTFORMW 하지만 두 번 이상의 출산을 경험해서 그런지 격통은 처음과 비교하면 많이 줄어든 상태.
+        PRINTFORMW 미마는 부드럽게 배를 감싸며 숨을 고르었다.
+        PRINTFORMW 「(여전히 아프기는 하지만… 괜찮아. 처음에 비하면 이 정도는…)」
+        PRINTFORMW 미마는 침착하게 아이를 낳을 준비를 했다.
+        PRINTFORMW ………
         PRINTFORMW ……
         PRINTFORMW …
         PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 오줌이 마려워 방을 나오자, 미마의 신음소리가 들리고 있다.
         PRINTFORMW %조사처리(CALLNAME:MASTER,"가")% 미마의 방에 들어가자 미마는 진통에 괴로워하고 있었다.
-        PRINTFORMW 「%CSTR:90%… 아기, 나올, 거 같아…」
+        PRINTFORMW 「%CSTR:90%… 아기, 태어날거 같아…」
         PRINTFORMW %조사처리(CALLNAME:MASTER,"는")% 노예들을 흔들어 깨워 대비시켰다.
         PRINTFORMW 노예들은, 모두 의아스러운 것 같았다가 이유를 알자, 수긍하고 출산에 입회했다.
+            IF GETCHARA(1) > 0 && TALENT:GETCHARA(1):150 && GETCHARA(2) > 0 && TALENT:GETCHARA(2):150
+                PRINTFORMW 입회한 노예들 중에는 하쿠레이 레이무와 키리사메 마리사도 있었다.
+            ELSEIF GETCHARA(1) > 0 && TALENT:GETCHARA(1):150
+                PRINTFORMW 입회한 노예들 중에는 하쿠레이 레이무도 있었다.
+            ELSEIF GETCHARA(2) > 0 && TALENT:GETCHARA(2):150
+                PRINTFORMW 입회한 노예들 중에는 키리사메 마리사도 있었다.
+            ENDIF
         PRINTFORMW ………
         PRINTFORMW ……
         PRINTFORMW …
-        PRINTFORMW 잠시 후에 아기의 첫 울음소리가 저택에서 울려퍼졌다.
+        PRINTFORMW 그리 오래 지나지 않아 아기의 첫 울음소리가 저택에서 울려퍼졌다.
         PRINTFORMW 「하아……하아……아이……태어났어…」
-        PRINTFORMW 「내가…낳은건가?」
-        PRINTFORMW 미마는 여전히 믿을 수 없다는 시선으로 아이를 보고 있었다. 그러다 상냥하게 아이를 받아들었다.
-        PRINTFORMW 「사랑하는 사람과의……아이……」
-        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기를 상냥하게 어루만졌다.
+        PRINTFORMW 「또…건강하게… 사랑하는 사람과의……아이……」
+        PRINTFORMW 미마는 태어난지 얼마 안된 갓난아기에게 상냥하게 젓을 물렸다.
     ;그 외
     ELSE
         PRINTFORMW 「…! 이건……배가……으, 으으윽…」
         PRINTFORMW 출산의 때가 되어 아이가 태어나려 한다. 하지만 모성애가 있을리 없는 악령은 그저 힘을 주어 [이물질]을 배출할 뿐…
         PRINTFORMW 그렇게 아이가 태어나 첫 울음소리가 저택에 울려퍼졌지만, 미마는 아이를 낳은 상태 그대로「그것」을 바라보고 있을 뿐이다.
         PRINTFORMW 무감각한 눈동자는 시끄럽게 우는 아이를 보면서 아무 반응도 하지 않는다…
-ENDIF
+    ENDIF
         DRAWLINE
     RETURN 0
 ENDIF
@@ -9397,7 +9716,7 @@ IF TFLAG:200 == 321 && TFLAG:99 == 1
             PRINTFORMW 미마의 가슴은 빨래판이 된 나머지 남자와 비교해도 전혀 손색이 없--
             PRINTFORMW 「흑……… 으흑…… 어째서……」
             PRINTFORMW ……울고 있다.
-            PRINTFORMW 「설마…… 내 가슴이 하쿠레이를 넘어 금발 꼬맹이보다 못하게 되다니…… 이건 꿈이야. 꿈이라고
+            PRINTFORMW 「설마…… 내 가슴이 하쿠레이를 넘어 금발 꼬맹이보다 못하게 되다니…… 이건 꿈이야. 꿈이라고!」
             PRINTFORMW 「이 모든건 꿈이야. 그래! 난 지금 자고 있는거야. 자고 있는……」
             PRINTFORMW 그리고는 현실 도피를 시작했다. 태세 전환이 너무 빠른거 같다.
             ;레이무만 만난적 있음.(레이무가 연모)
@@ -9909,10 +10228,10 @@ IF TFLAG:200 == 405
             PRINTFORMW 「이건… 그러니까… 잠깐! 뭐하는-- 응, 웃!」
             PRINTFORMW 
         ELSE
-			PRINTFORMW 「……이건, 그 뭐랄까… 그렇게 빤히 보지 마!」
-			PRINTFORMW 「왠지 몸이 달아올라서 어쩔 수 없으니까…」
+            PRINTFORMW 「……이건, 그 뭐랄까… 그렇게 빤히 보지 마!」
+            PRINTFORMW 「왠지 몸이 달아올라서 어쩔 수 없으니까…」
         ENDIF
-			DRAWLINE
+            DRAWLINE
     ;적극적인 경우
     ELSEIF GET_NIGHT_KOJO(0) == 3
         IF RAND:5 == 0
