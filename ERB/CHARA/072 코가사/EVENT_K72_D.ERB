@@ -754,7 +754,70 @@ IF LOCAL && (DAY-CFLAG:5206) >= 3 && CFLAG:5217 == 0
     RETURN 1
 ENDIF
 
-
+;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:6042 (친부가 코가사)
+;-------------------------------------------------
+;기입 체크
+LOCAL = 1
+;-------------------------------------------------
+IF LOCAL && TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:6042 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「에헤헤...」
+        PRINTFORMW 코가사는 싱글싱글 웃으며 %CALLNAME:MASTER%의 배를 쓰다듬고 있었다.
+        PRINTFORMW 「앗, 사부, 방금 움직였어!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 기뻐하는 코가사에게 놀랐냐고 물어보았다.
+        PRINTFORMW 「응. 정말 놀랐어! ... 하지만.. 그때만큼은 놀라진 않은것 같아.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 코가사가 말한 '그때'가 언제인지 알고있었다. %조사처리(CALLNAME:MASTER, "이")% 그녀에게 부푼 배를 보여주며 그녀의 아이를 임신했다는 사실을 밝혔던 그 때.
+        PRINTFORMW 「그땐 정말 놀라서 1년 정도는 거뜬할 정도였었지!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 미소지은 채 코가사와 이런저런 이야기를 나누고 있었다.
+        PRINTFORMW 그리고 정신을 차렸을때엔, 그녀에 의해 침대에 눕혀진 채 옷이 벗겨지고 있었다.
+        PRINTFORMW 「자아.. 이번엔 사부랑, 사부의 아이를 잔뜩 놀래켜줄게!」
+        PRINTFORMW 어쩔수 없나.. %조사처리(CALLNAME:MASTER, "은")% 그렇게 생각하며 자신을 덮치려는 코가사를 꼬옥 껴안은 채 그녀의 귀에 속삭였다.
+        PRINTFORMW 「잔뜩.. 놀래켜줘야돼?」
+        PRINTFORMW 「마..맡겨줘 사부!」
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 코가사는 무뚝뚝한 표정으로 커다래진 %CALLNAME:MASTER%의 배를 보고 있었다.
+        PRINTFORMW 「으음.. 임신한거야?
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 코가사의 아이를 임신했다고 말했다.
+        PRINTFORMW 코가사는 여전히 무뚝뚝한 표정 그대로 고개만 끄덕이고 있을 뿐이었다.
+        PRINTFORMW 「그렇구나... 내 아이라.」
+        PRINTFORMW 예상외의 반응에, %조사처리(CALLNAME:MASTER, "은")% 코가사에게 놀라지 않았냐고 물었다.
+        PRINTFORMW 「응. 별로 놀랍진 않네. 그저 원망스러울 뿐이야..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 별다른 반응을 보이지 않는 코가사에게 실망하며 조교를 개시했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 문을 열고 방안에 들어가자, 그곳에 코가사는 없었다. 주위를 둘러보며 코가사를 찾는 %CALLNAME:MASTER%의 얼굴에, 무엇인가가 날아들었다.
+        PRINTFORMW '찰팍' 하는 소리와 함께, 무엇인가 물컹물컹한 것이 %CALLNAME:MASTER%의 얼굴에 부딪혔다.
+        PRINTFORMW 「원망스럽도다아아!!」
+        PRINTFORM %조사처리(CALLNAME:MASTER, "이")% 얼굴에 날아든 곤약을 떼어내는 틈을 타서, 코가사는 정면에서 %조사처리(CALLNAME:MASTER, "을")% 향해 달려들었다. 그리고 %CALLNAME:MASTER%의 
+        ;당신이 거유 이상일 때
+        IF TALENT:MASTER:112 == 1 || TALENT:MASTER:113 == 1
+            PRINTFORMW 떡처럼 부드러운 가슴에 얼굴을 묻게 되었다.
+            PRINTFORMW 「우웁?! 숨막혀!!」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% %CALLNAME:MASTER%의 가슴에 완전히 얼굴이 파묻혀 질식직전의 코가사를 서둘러 구해냈다.
+            PRINTFORMW 코가사는 %CALLNAME:MASTER%의 천연 에어백을 부러움 절반. 두려움 절반이 섞인듯한 표정으로 바라보고 있었다.
+            PRINTFORMW 「역시 사부의 가슴.. 무시무시한 위력이야.. 」
+        ;당신이 보통 이하일 때
+        ELSE
+            PRINTFORMW 조그만 가슴에 얼굴을 부딪힌 뒤, 뒤로 나동그라졌다.
+            PRINTFORMW 「아야야야... 갈비뼈에 부딪혔어.. 코피날것 같아..」
+            PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 갑자기 화가 나는것을 느꼈다.
+        ENDIF
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 코가사의 시선이 가슴에서 %CALLNAME:MASTER%의 배쪽으로 내려와있다는 사실을 깨달았다. %CALLNAME:MASTER%의 배를 유심히 바라보는 코가사에게, %조사처리(CALLNAME:MASTER, "은")% 배가 커진 이유를 알려주었다.
+        PRINTFORMW 「뱃속에 아기가 자라고 있는거구나...잠깐?! 대체 누구 아이.. 내 아이??!!」
+        PRINTFORMW %CALLNAME:MASTER%의 말을 들은 코가사는 굉장한 표정으로 놀라고 있었다. 아마 지금의 놀람은 그녀가 한달 정도는 거뜬히 먹고 살 수 있을 정도였겠지.
+        PRINTFORMW 「...그런거였어..」
+        PRINTFORMW 코가사는 무언가를 깨달은 듯한 표정으로 %CALLNAME:MASTER%의 배를 바라보고 있었다.
+        PRINTFORMW 「그래. 뱃속에 아이가 있다는것 만으로, 사람은 쉽게 놀라는구나!」
+        PRINTFORMW 아무래도 코가사는 무엇인가를 단단히 오해하고 있는것 같았다.
+        PRINTFORMW 「사부! 저, 사부의 아이를 갖고 싶습니다! 그러니까 임신시켜주세요!」
+        PRINTFORMW 뭐, 어차피 하려던 거니 상관없나. %조사처리(CALLNAME:MASTER, "은")% 그렇게 생각하며 코가사를 침대에 밀어넘어트렸다.
+    ENDIF
+    CFLAG:6042 = 1
+    RETURN 1
+ENDIF
 
 RETURN 0
 

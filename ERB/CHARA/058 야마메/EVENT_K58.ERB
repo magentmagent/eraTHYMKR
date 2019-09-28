@@ -242,7 +242,55 @@ IF CFLAG:5201 == 0
     PRINTFORMW 「자, 저항은 하지 않을 테니까 마음대로 즐겨주렴」
     CFLAG:5201 = 1
     RETURN 1
-    
+
+;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 야마메)
+;-------------------------------------------------
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;연모
+    IF TALENT:150 == 1
+        PRINTFORMW 「어...음.. 임신 축하해. %CALLNAME:MASTER%.」
+        PRINTFORMW 야마메는 침대에 다소곳이 앉은 채 %CALLNAME:MASTER%의 볼록한 배를 바라보고 있었다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 그녀에게 가까이 다가가자, 야마메는 %조사처리(CALLNAME:MASTER, "이")% 다가온만큼 물러나며 %CALLNAME:MASTER%에게 말했다.
+        PRINTFORMW 「저기말야... %CALLNAME:MASTER%도 알고 있겠지만.. 나. 츠치구모라구? 병 옮을지도 몰라. %조사처리(CALLNAME:MASTER, "dms")% 몰라도 뱃속의 아기에겐 위험할 수도 있단말야.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 괜찮을거라고 말하며 야마메의 옷을 벗기기 시작했다.
+        PRINTFORMW 「자..잠깐! 아까 말한거 못 들었어? 뱃속의 아기는.. 웁?!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 야마메의 입을 막았다. 처음엔 당황하는 야마메였으나 이내 눈을 감고 %조사처리(CALLNAME:MASTER, "을")% 받아들였다.
+        PRINTFORMW 서로의 혀와 혀가 얽히고, 침과 침이 섞이고, 숨결이 점점 거칠어지는 시간이 흘러갔다.
+        PRINTFORMW 잠시 후. %조사처리(CALLNAME:MASTER, "와")% 야마메가 입을 떼자, 타액으로 이루어진 투명한 거미줄이 늘어졌다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 야마메의 타액을 손가락으로 떠내어 입안에 넣으며, 아기의 아빠는 야마메라는 사실을 밝혔다.
+        PRINTFORMW 「내 아이..?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자, 야마메는 조심스럽게 %CALLNAME:MASTER%의 배를 쓰다듬으며 중얼거렸다.
+        PRINTFORMW 「내 아이라... 그렇다면 괜찮을지도 모르겠네..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 생각에 빠진 야마메를 덮쳤다.
+        PRINTFORMW 「..부드럽게 해줘야해?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕인 뒤, 야마메에게 다시 한번 더 키스하며 조교를 개시했다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 야마메는 의미심장한 눈으로 %CALLNAME:MASTER%의 배를 잠깐 바라보고 있었다.
+        PRINTFORMW 잠시 후. 야마메는 스스로 옷을 벗으며 %CALLNAME:MASTER%에게 말했다.
+        PRINTFORMW 「오늘도 하려는거지? 자. 마음대로 하라고.」
+        PRINTFORMW 야마메는 %CALLNAME:MASTER%에게 밀려넘어지며 생각했다. '중병까지는 안되지만 조그만 병이라면 걸리게 할 수 있어. 저 녀석에겐 몰라도 아기에겐 영향이 있기를..'
+        PRINTFORMW 하지만 야마메가 모르고 있던 사실이 두가지 있었다.
+        PRINTFORMW 첫째는 %CALLNAME:MASTER%의 뱃속에서 자라고있는 아기는 야마메의 아이라는 것.
+        PRINTFORMW 둘째는 츠치구모의 혈통을 이어받은 %CALLNAME:MASTER%의 아이는 잔병에 걸리지 않는다는 것.
+        PRINTFORMW 이 사실을 야마메가 알게 된다면 무슨 표정을 지을까.. %조사처리(CALLNAME:MASTER, "은")% 그렇게 생각하며 조교를 개시했다.
+    ;그 외
+    ELSE
+        PRINTFORMW 「굉장한 배네..」
+        PRINTFORMW 야마메는 방에 들어온 %CALLNAME:MASTER%의 부풀어오른 배를 보자 무심코 뒤로 물러났다.
+        PRINTFORMW 「저기말야... 오늘도 하려는 거야?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이며 그녀를 침대에 눕히자, 야마메는 한숨을 내쉬며 중얼거렸다.
+        PRINTFORMW 「뭐.. 난 상관없지만. 아기가 병에 걸릴지도 모른다고?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% "나와 야마메의 아기니까 병에는 괜찮을거야." 라고 말하며 그녀의 옷을 벗기기 시작했다. 그 말을 들은 야마메는 표정이 굳으며 %CALLNAME:MASTER%에게 되묻기 시작했다.
+        PRINTFORMW 「에..? 진짜로? 내 아이라고?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자 야마메는 당황하며 %CALLNAME:MASTER%의 시선을 피했다.
+        PRINTFORMW 「으음.. 벌써부터 아빠가 될 줄은 몰랐는데...」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 야마메를 덮치며 조교를 개시했다.
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
+
 ;-------------------------------------------------
 ;助手つき調教開始時(調教開始時口上の手前に表示します)
 ;-------------------------------------------------
