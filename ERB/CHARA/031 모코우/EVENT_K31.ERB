@@ -289,6 +289,84 @@ ELSEIF CFLAG:5001 == 0
     RETURN 1
 
 ;-------------------------------------------------
+;주인 임신 후 첫 회의 개시 이벤트 CFLAG:5500 (친부가 모코우)
+;-------------------------------------------------
+ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
+    ;상애
+    IF TALENT:153 == 1
+        PRINTFORMW 모코우의 방. 찔꺽찔꺽 하는 물소리와 두 사람의 교성이 방안에서 들려오고 있었다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 뒤에서부터 모코우에게 범해지고 있었다. %CALLNAME:MASTER%의 배는 공처럼 부풀어올라 그녀에게 한번 찔릴 때마다 출렁거리며 흔들렸고, 음부에서는 대량의 투명한 액체와 백탁액의 혼합물이 흘러넘치며 몇번인지 알지 못할 정도로 그녀와 몸을 섞었다는 사실을 말해주고 있었다.
+        PRINTFORMW '팡 팡' 하는 소리가 날 정도로 격렬하게 허리를 움직이던 모코우는 %CALLNAME:MASTER%의 허리를 양손으로 단단히 붙잡고는, 그녀의 아이가 자라고 있는 %CALLNAME:MASTER%의 자궁을 그녀의 물건으로 노크했다.
+        PRINTFORMW 수 없이 그녀와 몸을 섞이며 풀어진 %CALLNAME:MASTER%의 자궁은 모코우의 백탁액을 직접 마시기 위해 입을 벌려 그녀의 물건을 받아들였다.
+        PRINTFORMW 모코우가 고개를 뒤로 젖히며 절정하자, 그녀의 백탁액이 %조사처리(CALLNAME:MASTER, "이")% 임신한 아이를 하얗게 물들였다.
+        PRINTFORML ......
+        PRINTFORML ....
+        PRINTFORMW ..
+        PRINTFORMW 모코우는 %CALLNAME:MASTER%에게 삽입한 채, 뒤에서 %조사처리(CALLNAME:MASTER, "을")% 껴안은 채 숨을 고르고 있었다. %조사처리(CALLNAME:MASTER, "은")% 그녀의 물건이 또다시 단단해지는 것을 안에서부터 느끼자 또다시 몸을 섞을 생각에 몸이 달아오르는 것을 느꼈다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 몸을 돌려 모코우에게 입을 맞추며 다시 한번 몸을 섞기 시작했다.
+    ;연모
+    ELSEIF TALENT:150 == 1
+        PRINTFORMW 「(아나타), 그 배 혹시.. 임신한거야?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자, 모코우는 어색한 미소를 지으며 %CALLNAME:MASTER%의 임신을 축하했다.
+        PRINTFORMW 「으..응..축하해. 근데 말야.. 이런 말 하긴 뭐하지만.. 애아빠가 누군지 물어봐도 될까?"
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 모코우에게 말했다. "비밀이야."
+        PRINTFORMW '누구의 아이인지 모르는건가.. 하긴. (아나타)는 나 말고도 다른 여자들을 조교하고 있을테니..'
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 그런 생각에 빠진 모코우에게 말했다.
+        PRINTFORMW "이건 희망사항이지만.. 곧 태어날 아이가 아빠를 닮았으면 좋겠어. 곱디고운 은발에, 불꽃처럼 빨간 눈동자를.."
+        PRINTFORMW 「엣..」
+        PRINTFORMW 그게 누구를 가리키는지 눈치챈 모코우는 여전히 반신반의하는 표정으로 손가락을 들어 자신을 가리켜보았고 %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 그녀를 침대에 눕혔다.
+        PRINTFORMW 「어..자.. 잠깐만 (아나타)! 뱃속에 우리 아기가 있는데 이러는건 좀 위험...우웁..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 당황한 모코우의 입을 %CALLNAME:MASTER%의 입으로 막았다. 모코우는 입안으로 들어온 %CALLNAME:MASTER%의 혀에 자신의 혀를 얽으며 %CALLNAME:MASTER%의 키스를 받아들였다.
+        PRINTFORMW 「쯉.. 후아..」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 스위치가 켜진듯 거친 숨을 내쉬기 시작하는 모코우에게 속삭였다.
+        PRINTFORMW "괜찮을거야. 모코우의 아이니까. 분명 아기도 파파를 만나고 싶어할거야."
+        PRINTFORMW %CALLNAME:MASTER%의 말을 들은 모코우는 노력하겠다고 말하며 %CALLNAME:MASTER%에게 덮쳐졌다.
+    ;반발각인 3
+    ELSEIF MARK:9 == 3
+        PRINTFORMW 방문을 열고 들어온 %조사처리(CALLNAME:MASTER, "을")% 향해, 무언가가 날아들었다. 황급히 그것을 피한 %조사처리(CALLNAME:MASTER, "은")%, 벽에 박힌 그것이 무엇인가의 뼈를 깎아만든 단검이라는 사실을 깨달았다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 단검에 정신이 팔려 %조사처리(CALLNAME:MASTER, "을")% 향해 달려드는 모코우를 알아채지 못했다. 그녀를 알아차렸을 때는 이미 그녀에게 밀쳐져 바닥에 쓰러진 뒤였다.
+        PRINTFORMW 「기분이 어때? 자기가 조교하던 노예에게 제압당한 기분은?」
+        PRINTFORMW 모코우는 바닥에 쓰러진 %CALLNAME:MASTER%에게 욕설과 저주를 내뱉으며 %조사처리(CALLNAME:MASTER, "을")% 짖밟기 시작했다. %조사처리(CALLNAME:MASTER, "은")% 모코우의 발길질을 견디며 배를 감싸안았다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 이해할 수 없는 행동을 보이는 것을 의아하게 내려보던 모코우는 %CALLNAME:MASTER%의 배를 보자 어째서 %조사처리(CALLNAME:MASTER, "이")% 그런 반응을 보였는지 이해했다.
+        PRINTFORMW 「그렇군. 임신한거구나? ... 좋은 생각이 떠올랐어.」
+        PRINTFORMW 모코우는 공처럼 부풀어오른 %CALLNAME:MASTER%의 배에 발을 올려놓았다. 그리고 표정이 바뀌며 제발 그만두라고 애원하는 %CALLNAME:MASTER%의 배를 짖밟았다.
+        PRINTFORMW 새로운 생명이 깃든 %CALLNAME:MASTER%의 배에 격통이 달렸다. 배를 손으로 감싼 채 고통스러워하는 %조사처리(CALLNAME:MASTER, "을")% 즐겁다는듯이 바라보는 모코우에게, %조사처리(CALLNAME:MASTER, "은")% 모코우의 아기를 임신했다고 말했다.
+        PRINTFORMW 「내.. 아이..?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "이")% 고개를 끄덕이자, 모코우는 아무렇지도 않다는 듯이 %CALLNAME:MASTER%의 배를 또다시 짖밟았다.
+        PRINTFORMW 「거짓말일게 뻔하잖아 그런거.」
+        PRINTFORML ......
+        PRINTFORML ....
+        PRINTFORMW ..
+        PRINTFORMW 모코우는 고통에 신음하는 %조사처리(CALLNAME:MASTER, "을")%, 마치 쓰레기 보듯 내려보고 있었다. %CALLNAME:MASTER%의 음부에선 피와 조그마한 살점이 흘러나와 붉은 웅덩이를 이루고있었고, 배에는 검푸른 멍이 잔뜩 나있었다.
+        PRINTFORMW 모코우는 %CALLNAME:MASTER%의 배에 발을 올려놓은 채 %조사처리(CALLNAME:MASTER, "을")% 비웃고. 있었다.
+        PRINTFORMW 그리고 깜짝 놀라며 %CALLNAME:MASTER%의 배에서 발을 떼었다.
+        PRINTFORMW 「뭐.. 뭐야?!」
+        PRINTFORMW 모코우는 조심스럽게 %CALLNAME:MASTER%의 배에 손을 대었다. 그녀의 발에 밟혀 태어나지도 못한 채 생명이 끊어졌을 작은 생명은 꿈틀거리며 몸을 움직이고 있었다.
+        PRINTFORMW 자신에게 짖밟힌 아기의 몸이 재생하며 %CALLNAME:MASTER%의 배가 실시간으로 부풀어오르는 것을 바라본 모코우는 자신이 %CALLNAME:MASTER%의 아이의 아버지라는 사실을 깨달았다.
+        PRINTFORMW 정신을 차린 %조사처리(CALLNAME:MASTER, "은")% 패닉에 빠진 모코우를 밀친뒤, 재빨리 그녀를 제압했다.
+        PRINTFORMW 모코우는 여전히 패닉에서 벗어나지 못한 채 %CALLNAME:MASTER%에게 덮쳐졌다.
+        PRINTFORMW %CALLNAME:MASTER%의 체력 -500
+        BASE:MASTER:0 = MAX(1, BASE:MASTER:0 - 500)
+    ;그 외
+    ELSE
+        PRINTFORMW 모코우는 묘한 표정으로 %CALLNAME:MASTER%의 배를 바라보고있었다.
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 상의를 벗어 부풀어오른 배를 모코우에게 보여주려 했지만, 모코우에 의해 제지당했다.
+        PRINTFORMW 「아냐. 벗지 말라고 그 옷.」
+        PRINTFORMW 모코우는 "오늘은 옷 입은 채로 할까?" 라고 물어보는 %조사처리(CALLNAME:MASTER, "을")% 무시한 채 침대의 이불을 %CALLNAME:MASTER%에게 둘러주었다.
+        PRINTFORMW 「따뜻하게 입고 다녀. 홑몸이 아니잖아. 뱃속의 아기도 생각해야지.」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "을")% 챙겨주며 %CALLNAME:MASTER%의 배를 쓰다듬던 모코우는 "마치 부부같네.." 라는 %CALLNAME:MASTER%의 혼잣말을 듣자 얼굴을 붉혔다.
+        PRINTFORMW 「부..부부라니?! 그럴리가 없짆아! 이..이건 그냥 동정심에...꺅!!」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 얼굴을 붉힌 채 말을 더듬는 모코우의 가슴을 더듬으며 그녀를 침대에 밀어넘어트렸다.
+        PRINTFORMW 「저..정말이지.. 아까 내가 한 말 못들은거야? 뱃속의 아기도 생각하라고...」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 모코우의 말을 끊은 뒤, 그녀에게 말했다.
+        PRINTFORMW "뱃속의 아기라면 생각하고 있어. 그래서 아기에게 파파를 만나게 해주려는거야." 라는 %CALLNAME:MASTER%의 말을 들은 모코우의 표정은 딱딱하게 굳어버렸다.
+        PRINTFORMW 「내.. 내 아이..? 거짓말이지?」
+        PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 제발 거짓말이길 바라는 듯한 표정을 지은 채 %조사처리(CALLNAME:MASTER, "을")% 바라보는 모코우에게. "글쎄.. 어느 쪽이라고 생각해 파파?" 라고 속삭이며 그녀를 덮쳤다.
+    ENDIF
+    CFLAG:5500 = 1
+    RETURN 1
+
+;-------------------------------------------------
 ;조교 개시시(1회만) CFLAG:5001
 ;-------------------------------------------------
 
