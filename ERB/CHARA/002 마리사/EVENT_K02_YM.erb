@@ -10437,18 +10437,6 @@ IF TFLAG:200 == 102
         PRINTFORMW 「내..내가 오줌싸개인게 아니라 네가 이상한 짓을 하다보니 이렇게 된거라고!!」
         PRINTFORMW 마리사의 수치스러운 흔적을 가리키며 %조사처리(CALLNAME:MASTER, "이")% 마리사를 조롱하자 마리사는 얼굴을 붉히며 %CALLNAME:MASTER%에게 반발했다.
     ENDIF
-    ;원문
-    [SKIPSTART]
-    ;연모
-    IF TALENT:150 == 1
-        PRINTFORMW (엑, 이 나이 먹고 지도를 그린건가?)
-        PRINTFORMW (나, 위험한데. 저녀석에게 알려지게 하면 안되겠어)
-    ;그 외의 경우
-    ELSE
-        PRINTFORMW (얼래? 설마 나 이 나이 먹고 지도 그린거야?)
-        PRINTFORMW (읏, 이것도 전부 그 놈 탓이야……)
-    ENDIF
-    [SKIPEND]
     RETURN 0
 ENDIF
 
