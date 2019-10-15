@@ -174,7 +174,6 @@ IF CFLAG:5201 == 0
     ENDIF
     PRINTFORML 
     CFLAG:5201 = 1
-    RETURN 1
 
 ;-------------------------------------------------
 ;이상 경험 듬뿍으로 마개조된 채로 기억 소거약을 먹게 되어 개시 CFLAG208
@@ -230,7 +229,6 @@ ELSEIF TALENT:121 == 1 && TALENT:140 == 1 && CFLAG:5201 == 0 && CFLAG:5208 == 0 
     CFLAG:5208 = 1
     CFLAG:5209 = 1
     CFLAG:5210 = 1
-    RETURN 1
 
 ;-------------------------------------------------
 ;임신 후 첫 회 개시 이벤트
@@ -289,8 +287,6 @@ ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 2 && CFLAG:78 == 2 && CFLAG:601
         PRINTFORML 
     ENDIF
         CFLAG:6011 = 1
-        CALL K8_E_RESET
-        RETURN 1
         
 ;메이링의 아이
 ;메이링은 착한 아이
@@ -354,8 +350,6 @@ ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 6 && CFLAG:78 == 6 && CFLAG:601
         PRINTFORML 
     ENDIF
         CFLAG:6012 = 1
-        CALL K8_E_RESET
-        RETURN 1
         
 ;소악마의 아이
 ;그치만 악마인 걸요
@@ -421,8 +415,6 @@ ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 7 && CFLAG:78 == 7 && CFLAG:601
         PRINTFORML 
     ENDIF
         CFLAG:6013 = 1
-        CALL K8_E_RESET
-        RETURN 1
         
 ;사쿠야의 아이
 ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 9 && CFLAG:78 == 9 && CFLAG:6014 == 0
@@ -483,8 +475,6 @@ ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 9 && CFLAG:78 == 9 && CFLAG:601
         PRINTFORML 
     ENDIF
         CFLAG:6014 = 1
-        CALL K8_E_RESET
-        RETURN 1
         
 ;레밀리아의 아이
 ;레미는 절친을 끔찍히 여김
@@ -570,8 +560,6 @@ ELSEIF TALENT:140 == 1 && ASSI > 0 && NO:ASSI == 10 && CFLAG:78 == 10 && CFLAG:6
         PRINTFORML 
     ENDIF
         CFLAG:6015 = 1
-        CALL K8_E_RESET
-        RETURN 1
         
 ;주인이 부친
 ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
@@ -711,8 +699,6 @@ ELSEIF TALENT:140 == 1 && CFLAG:78 == 0 && CFLAG:5210 == 0
         PRINTFORMW 
     ENDIF
     CFLAG:5210 = 1
-    CALL K8_E_RESET
-        RETURN 1
 
 ;-------------------------------------------------
 ;주인 임신 후 첫 회 개시 이벤트 CFLAG5500 (친부가 파츄리)
@@ -746,8 +732,6 @@ ELSEIF TALENT:MASTER:140 == 1 && CFLAG:MASTER:78 == NO:TARGET && CFLAG:5500 == 0
         PRINTFORMW %조사처리(CALLNAME:MASTER, "은")% 고개를 끄덕이며 패닉에 빠진 파츄리의 옷을 벗기기 시작했다.
     ENDIF
     CFLAG:5500 = 1
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;전 회 조교로 처녀상실했다 CFLAG209
@@ -794,8 +778,6 @@ ELSEIF CFLAG:5209 == 2 && TALENT:140 == 0
             CFLAG:5209 = 3
         ENDIF
     ENDIF
-    CALL K8_E_RESET
-    RETURN 1
     
 ;-------------------------------------------------
 ;전 회 조교로 연모를 취득했다
@@ -833,8 +815,6 @@ ELSEIF CFLAG:5201 < 4 && MARK:2 == 3 && TALENT:150 == 1
         PRINTFORML 
     ENDIF
     CFLAG:5201 = 4
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;전 회 조교로 음란을 취득했다
@@ -862,8 +842,6 @@ ELSEIF CFLAG:5901 == 0 && MARK:2 == 3 && TALENT:150 == 1
         PALAM:13 = 20000
         PRINTFORML 
     CFLAG:5901 = 1
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;천식 치료イベントエンディング夜の散歩종료後(CFLAG:5804 == 8)
@@ -904,8 +882,6 @@ ELSEIF TIME == 0 && CFLAG:5804 >= 1 && TALENT:47 == 1 && TALENT:150 == 1 && ASSI
         ENDIF
         PRINTFORMW 
         CFLAG:5804 = 9
-        CALL K8_E_RESET
-        RETURN 1
     
 ;-------------------------------------------------
 ;천식 치료昼の조교開始イベント夜の천식 치료초회イベント後が条件 CFLAG5207
@@ -987,8 +963,6 @@ ELSEIF TIME == 0 && CFLAG:5804 >= 1 && CFLAG:5810 == 0 && TALENT:47 == 1 && TALE
             CFLAG:5807 = 1
         ENDIF
     ENDIF
-    CALL K8_E_RESET
-    RETURN 1
 ;-------------------------------------------------
 ;천식 치료夜の조교開始イベント夜の천식 치료초회イベント後が条件 CFLAG5207
 ;연모と喘息があり, 조수無しで発生
@@ -1035,8 +1009,6 @@ ELSEIF TIME == 1 && CFLAG:5804 >= 1 && CFLAG:5810 == 0 && TALENT:47 == 1 && TALE
             CFLAG:5809 = 0
         ENDIF
     ENDIF
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;조수와의 회화 첫 회 CFLAG6001-6005
@@ -1103,8 +1075,6 @@ ELSEIF ASSI > 0 && NO:ASSI == 2 && CFLAG:6001 == 0
         ENDIF
     ENDIF
     CFLAG:6001 = 1
-    CALL K8_E_RESET
-    RETURN 1
 
 ;조수가 메이링
 ELSEIF ASSI > 0 && NO:ASSI == 6 && CFLAG:6002 == 0
@@ -1126,8 +1096,6 @@ ELSEIF ASSI > 0 && NO:ASSI == 6 && CFLAG:6002 == 0
         PRINTFORMW 『………죄송합니다…. 그냥 메이링이라 하세요……. 흑흑…』
         PRINTFORML 
     CFLAG:6002 = 1
-    CALL K8_E_RESET
-    RETURN 1
     
 ;조수가 소악마
 ELSEIF ASSI > 0 && NO:ASSI == 7 && CFLAG:6003 == 0
@@ -1146,8 +1114,6 @@ ELSEIF ASSI > 0 && NO:ASSI == 7 && CFLAG:6003 == 0
         PRINTFORMW 하지만 소악마의 눈은 웃고 있지 않으며 어둡고 탁한 빛을 띠고 있었다.
         PRINTFORML 
     CFLAG:6003 = 1
-    CALL K8_E_RESET
-    RETURN 1
     
 ;조수가 사쿠야
 ;레밀리아와의 면식 유무는 조교 외의 사건을 버리고 쓰고 있습니다
@@ -1319,8 +1285,6 @@ ELSEIF ASSI > 0 && NO:ASSI == 9 && CFLAG:6004 == 0
         ENDIF
     ENDIF
         CFLAG:6004 = 1
-    CALL K8_E_RESET
-    RETURN 1
     
 ;조수가 레밀리아
 ;死に口上上等로 분기を作成
@@ -1556,8 +1520,6 @@ ELSEIF ASSI > 0 && NO:ASSI == 10 && CFLAG:6005 == 0
         ELSE
             CFLAG:6005 = 1
         ENDIF
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;Ａ감각上昇後の조교개시시 CFLAG5202
@@ -1576,8 +1538,6 @@ ELSEIF ABL:2 >= 3 && CFLAG:5202 == 0
         PRINTFORMW 파츄리의 몸은 희미하게 떨리고 있다.
     ENDIF
     CFLAG:5202 = 1
-    CALL K8_E_RESET
-    RETURN 1
     
 ELSEIF ABL:2 >= 4 && CFLAG:5202 == 1
     DRAWLINE
@@ -1594,8 +1554,6 @@ ELSEIF ABL:2 >= 4 && CFLAG:5202 == 1
     ENDIF
     PRINTFORMW 파츄리에게의 조교, 특히 애널의 개발은 순조롭게 진행되고 있는 것 같다
     CFLAG:5202 = 2
-    CALL K8_E_RESET
-    RETURN 1
     
 ELSEIF ABL:2 >= 5 && CFLAG:5202 == 2
     DRAWLINE
@@ -1608,8 +1566,6 @@ ELSEIF ABL:2 >= 5 && CFLAG:5202 == 2
     PALAM:10 = 20000
     PALAM:13 = 20000
     CFLAG:5202 = 3
-    CALL K8_E_RESET
-    RETURN 1
     
 ELSEIF TALENT:170 == 1 && TALENT:173 == 1 && CFLAG:5202 <= 3
     DRAWLINE
@@ -1630,8 +1586,6 @@ ELSEIF TALENT:170 == 1 && TALENT:173 == 1 && CFLAG:5202 <= 3
     PALAM:10 = 20000
     PALAM:13 = 20000
     CFLAG:5202 = 4
-    CALL K8_E_RESET
-    RETURN 1
 
 ;-------------------------------------------------
 ;ふぉ―ゆ―っ! にハマったCFLAG6060
@@ -1678,8 +1632,6 @@ ELSEIF CFLAG:6060 == 0 && CFLAG:6061 == 1 && CFLAG:6062 == 1 && CFLAG:6063 == 1 
     PRINTFORMW 그런 다음 %조사처리(CALLNAME:MASTER,"는")% 파츄리가 돌아오기를 기다렸다가 조교를 시작했다.
     PRINTFORMl 
     CFLAG:6060 = 1
-    CALL K8_E_RESET
-    RETURN 1
     
 ;-------------------------------------------------
 ;연모 없음の조교개시시2회째 이후
@@ -2114,8 +2066,6 @@ ELSEIF TALENT:150 == 0
         PRINTFORMW 「빨리…… 이제 참을 수가 없어…… 만져……줘」
         PRINTFORMW 파츄리는 음부로부터 애액을 흘리면서 %CALLNAME:MASTER%에게 호소해왔다
     ENDIF
-    CALL K8_E_RESET
-    RETURN 1
     
 ;-------------------------------------------------
 ;연모 있음の조교개시시2회째 이후
@@ -2539,9 +2489,10 @@ ELSEIF TALENT:150 == 1
             PRINTFORMW 「무큐―――――」
         ENDIF
     ENDIF
-    CALL K8_E_RESET
-    RETURN 1
 ENDIF
+
+CALL K8_E_RESET
+RETURN 1
 
 ;-------------------------------------------------
 ;EVENTEND関係
